@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/usuarios', 'UsuariosController@index')->name('users');
+Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
+
+Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
