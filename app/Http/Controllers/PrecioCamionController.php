@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\PrecioCamion;
+use App\CamionesClasificacion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class PrecioCamionController extends Controller
 {
@@ -19,7 +20,16 @@ class PrecioCamionController extends Controller
         //         ->orderBy('name', 'desc')
         //         ->get();
         $datos['PrecioCamion']=PrecioCamion::paginate(10);
+        $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)
+                                                                ->orderBy('cod_int')
+                                                                ->get();
+                                                                // dd($datos['CamionesClasificacion']);
         return view('precio-camion', $datos);
+    }
+
+    public function clasificacion()
+    {
+        
     }
 
     /**
