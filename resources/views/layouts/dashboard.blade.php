@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <!-- LAS BRASAS BOOTSTRAP -->
     <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -144,8 +144,8 @@
                 </div>
             </div>
         </nav>
-        
-        <main class="py-4">
+
+        <main >
             <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -265,7 +265,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link " href="#navbar-maestro" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-maestro">
-              <i class="ni ni-planet text-blue"></i> 
+              <i class="ni ni-planet text-blue"></i>
               <span class="nav-link-text">Maestro</span>
             </a>
             <div class="collapse show" id="navbar-maestro" style="">
@@ -286,7 +286,7 @@
               </div>
           </li>
           <!-- init  -->
-         
+
           <!-- end -->
           <li class="nav-item">
             <a class="nav-link " href="./">
@@ -317,20 +317,20 @@
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
-       
+
       </div>
     </div>
   </nav>
   <div class="main-content">
     <!-- Navbar -->
-        
+
     <!-- End Navbar -->
     <!-- Header -->
-    
+
     @yield('content')
 
   </div>
-            
+
         </main>
     </div>
 </body>
