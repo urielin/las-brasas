@@ -101,15 +101,15 @@
                   <td>3890</td>
                   <td>3790</td>
                   <td></td>
-                  <td>4090</td>
+                  <td class="mostrar-info">4090</td>
                   <td></td>
-                  <td>4090</td>
+                  <td  class="mostrar-info">4090</td>
                   <td></td>
-                  <td>4090</td>
+                  <td class="mostrar-info">4090</td>
                   <td></td>
-                  <td>4090</td>
-                  <td>4190</td>
-                  <td>4090</td>
+                  <td class="mostrar-info">4090</td>
+                  <td class="mostrar-info">4190</td>
+                  <td class="mostrar-info">4090</td>
                 </tr>
 
                 <tr>
@@ -120,11 +120,11 @@
                   <td></td>
                   <td>4090</td>
                   <td></td>
-                  <td>4090</td>
-                  <td>4190</td>
+                  <td class="mostrar-info">4090</td>
+                  <td class="mostrar-info">4190</td>
                   <td></td>
                   <td></td>
-                  <td>4090</td>
+                  <td class="mostrar-info">4090</td>
                   <td></td>
                   <td></td>
                 </tr>
@@ -135,9 +135,9 @@
                   <td>3390</td>
                   <td>3940</td>
                   <td>4190</td>
-                  <td>4090</td>
-                  <td>4190</td>
-                  <td>4090</td>
+                  <td class="mostrar-info">4090</td>
+                  <td class="mostrar-info">4190</td>
+                  <td class="mostrar-info">4090</td>
                   <td></td>
                   <td></td>
                   <td></td>

@@ -91,8 +91,8 @@
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Mes cambiar</label>
                                     <input type="text" class="form-control" id="usr">
                                   </div>
-                                  <div class="col-2 pt-5 pb--4">
-                                    <button type="button" class="btn btn-primary">Imprimir</button>
+                                  <div class="col-2 pt-4 pb--4">
+                                    <button type="button" class="btn btn-primary">Actualizar mes seleccionado</button>
                                   </div>
                                   <div class="2">
 

@@ -335,3 +335,63 @@
     </div>
 </body>
 </html>
+
+<div id="formalModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+          <span id="form_result"></span>
+          <form method="post" id="sample_form" enctype="multipart/form-data">
+            @csrf
+            
+            <div class="form-group">
+              <label class="control-label col-md-4">Precio público: </label>
+              <div class="col-md-12">
+                <input type="text" name="precio_publico" id="precio_publico" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4">Precio mayorista: </label>
+              <div class="col-md-12">
+                <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control">
+              </div>
+            </div>
+            <br>
+            <div class="form-group" align="center">
+              <input type="hidden" name="hidden_id" id="hidden_id">
+              <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add">
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      $('.mostrar-info').click(function(){
+         $('#formalModal').modal('show');
+      });
+
+      $('#sample_form').on('submit', function(event){
+        event.preventDefault();
+        // if ($('#action').val()=='Add')
+        // {
+        //   $.ajax({
+        //     url:"aqui va la ruta en blade",
+        //     method:"POST",
+        //     data: new FormData(this),
+        //     contentType:false,
+        //     cache:false,
+        //     processData: false,
+        //     dataType:"json",
+        //
+        //   })
+        // }
+      });
+  });
+</script>
