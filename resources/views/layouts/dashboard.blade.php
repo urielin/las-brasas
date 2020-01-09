@@ -259,7 +259,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  active ">
-            <a class="nav-link  active " href="./home">
+            <a class="nav-link  active " href="{{route('usuarios')}}">
               <i class="ni ni-tv-2 text-primary"></i> Administrador
             </a>
           </li>
@@ -274,13 +274,13 @@
                     <a href="{{route('precio-camion')}}" class="nav-link">Precios unitarios</a>
                   </li>
                   <li class="nav-item">
-                    <a href="./" class="nav-link">Catalogo de producto</a>
+                    <a href="{{route('precio-camion')}}" class="nav-link">Catalogo de producto</a>
                   </li>
                   <li class="nav-item">
-                    <a href="./" class="nav-link">Tipo de cambio</a>
+                    <a href="{{route('tipo-cambio')}}" class="nav-link">Tipo de cambio</a>
                   </li>
                   <li class="nav-item">
-                    <a href="./" class="nav-link">Gestion de camiones</a>
+                    <a href="{{route('tipo-cambio')}}" class="nav-link">Gestion de camiones</a>
                   </li>
                 </ul>
               </div>
