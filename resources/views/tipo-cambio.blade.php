@@ -79,17 +79,19 @@
                               </div>
                             </div>
                             <div class="tab-pane" id="messages">
-                              <div class="">
+                              {!! Form::open(['route' => ['nuevo-cambio'], 'method' => 'post', 'enctype' => 'multipart/form-data'])!!}
+                                  @csrf
+
 
                                 <div class="row">
                                   <div class="col-4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
-                                    <input type="text" class="form-control" id="usr">
+                                    <input type="text" name="CAMB_CAMBIO" class="form-control" id="usr">
                                   </div>
 
                                   <div class="col-4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Mes cambiar</label>
-                                    <input type="text" class="form-control" id="usr">
+                                    <input type="text" name="CAMB_FECHA" class="form-control" id="usr">
                                   </div>
                                   <div class="col-2 pt-4 pb--4">
                                     <button type="button" class="btn btn-primary">Actualizar mes seleccionado</button>
@@ -101,7 +103,7 @@
 
 
                               </div>
-                            </div>
+                            {!! Form::close()!!}
                             <div class="tab-pane" id="settings">
 
                             </div>
@@ -113,13 +115,6 @@
 
         </div>
     </div>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
 
 
 
@@ -143,13 +138,12 @@
         <div class="table-responsive table-dark table-hover">
 
           <!-- Projects table -->
-          <table class="table align-items-center table-flush">
+          <table  class="table align-items-center table-flush">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">Apellido Paterno</th>
-
+                <th scope="col">Fecha</th>
+                <th scope="col">Cambio</th>
+                <th scope="col">USUARIO</th>
               </tr>
             </thead>
             <tbody>
@@ -172,72 +166,17 @@
             </tbody>
           </table>
         </div>
-        <div >
 
-
-
-      </div>
       </div>
     </div>
 
   </div>
   <!-- Footer -->
 
-  </div>
-{{-- <div class="bg-gradient-primary container-fluid pb-7 pt-3">
-
-<div class="row mt-5">
-<div class="col-xl-12 mb-5 mb-xl-0">
-    <div class="card shadow">
-      <div class="card-header border-0">
-        <div class="row align-items-center">
-          <div class="col">
-            <h3 class="mb-0">ACTUALIZAR TIPO DE CAMBIO</h3>
-          </div>
-          <div class="col">
-
-          </div>
-          <div class="col text-right">
-            <a href="#!" class="btn btn-sm btn-primary">See all</a>
-          </div>
-        </div>
-      </div>
-      <div class="table-responsive">
-        <!-- Projects table -->
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Usuario</th>
-              <th scope="col">Apellido Paterno</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($TipoCambio as $item)
-              <tr>
-                <th scope="row">
-                  {{$item->CAMB_FECHA}}
-                </th>
-                <td>
-                  {{$item->CAMB_CAMBIO}}
-                </td>
-                <td>
-                 {{$item->CAMB_USUARIO}}
-                </td>
-
-
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
-
 </div>
-<!-- Footer -->
 
-</div> --}}
-</div>
+
+
 @endsection
