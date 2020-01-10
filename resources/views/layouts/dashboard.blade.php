@@ -340,25 +340,50 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title">Modificar precio</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
           <span id="form_result"></span>
           <form method="post" id="sample_form" enctype="multipart/form-data">
             @csrf
-            
-            <div class="form-group">
+
+              <div class="row responsive media pb-2">
+                <div class="col-4">
+                  <div class="row pb-3">
+                      <label class="control-label col-md-5 mb-0">Camión: </label>
+                  </div>
+                  <div class="row pb-3">
+                      <label class="control-label col-md-5 mb-0">Código: </label>
+                  </div>
+                  <div class="row">
+                      <label class="control-label col-md-5 mb-0">Descripció: </label>
+                  </div>
+
+                </div>
+                <div class="col-8">
+                  <div class="row pb-2">
+                    <input type="text" name="  " value="datos sin edición" class="form-control-sm" disabled>
+                  </div>
+                  <div class="row pb-2">
+                    <input type="text" name="  " value="datos sin edición" class="form-control-sm" disabled>
+                  </div>
+                  <div class="row pb-2">
+                  <textarea type="text" name="  "  class="form-control-sm" disabled> </textarea>
+                  </div>
+
+                </div>
+              </div>
+
+
+            <div class="form-group row">
               <label class="control-label col-md-4">Precio público: </label>
-              <div class="col-md-12">
-                <input type="text" name="precio_publico" id="precio_publico" class="form-control">
-              </div>
+              <input type="text" name="precio_publico" id="precio_publico" class="form-control col-md-8">
+
             </div>
-            <div class="form-group">
+            <div class="form-group row">
               <label class="control-label col-md-4">Precio mayorista: </label>
-              <div class="col-md-12">
-                <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control">
-              </div>
+              <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control col-md-8">
             </div>
             <br>
             <div class="form-group" align="center">
@@ -371,27 +396,4 @@
   </div>
 </div>
 
-<script>
-  $(document).ready(function(){
-      $('.mostrar-info').click(function(){
-         $('#formalModal').modal('show');
-      });
-
-      $('#sample_form').on('submit', function(event){
-        event.preventDefault();
-        // if ($('#action').val()=='Add')
-        // {
-        //   $.ajax({
-        //     url:"aqui va la ruta en blade",
-        //     method:"POST",
-        //     data: new FormData(this),
-        //     contentType:false,
-        //     cache:false,
-        //     processData: false,
-        //     dataType:"json",
-        //
-        //   })
-        // }
-      });
-  });
-</script>
+<script src="{{ asset('js/las-brasas.js') }}"></script>
