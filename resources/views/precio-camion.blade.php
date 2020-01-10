@@ -8,15 +8,14 @@
 
       <div class="row">
         <div class="col-4">
+          <form action="{{route('precio-camion')}}" method="GET">
           <label class="h4 mb-0 text-white d-lg-inline-block" for="sel1">Clasificacion</label>
-          <select class="form-control" id="sel1">
-            <option>VACIO</option>
-            <option>CONGELADO</option>
-            <option>CERDO</option>
-            <option>POLLO</option>
-            <option>TRASPASOS</option>
-            <option>OTROS</option>
+          <select name="clasificacion" class="form-control" id="sel1" onchange="this.form.submit()">
+          @foreach($CamionesClasificacion as $item)
+            <option value="{{$item->cod_int}}" {{ $item->cod_int==$clasificacion?'selected':' '}} >{{$item->desc01}}</option>
+          @endforeach
           </select>
+          </form>
         </div>
 
         <div class="col-4">
@@ -57,7 +56,46 @@
             </div>
           </div>
           <div class="table-responsive table-dark table-hover">
+          <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Cargo</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($PrecioCamion as $camion)
+              <tr>
+                <th scope="row">
+                  {{$camion->camion}}
+                </th>
+                <td>
+                  {{$camion->codigo}}
+                </td>
+                <td>
+                 {{$camion->descripcion}}
+                </td>
+                <td>
+                 {{$camion->lista_publico}}
+                </td>
+                <td>
+                 {{$camion->precio_publico}}
+                </td>
+                <td>
+                 {{$camion->precio_mayor}}
+                </td>
 
+              </tr> 
+            @endforeach
+          </tbody>
+        </table>
+      </div>
             <!-- Projects table -->
             <table class="table align-items-center table-flush">
               <thead>

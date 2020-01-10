@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\PrecioCamion;
 use App\CamionesClasificacion;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class PrecioCamionController extends Controller
 {
@@ -14,12 +14,16 @@ class PrecioCamionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $datos['PrecioCamion2'] = DB::table("dbo.Precios_Camiones(1, '', '')")
         //         ->orderBy('name', 'desc')
         //         ->get();
-        $datos['PrecioCamion']=PrecioCamion::paginate(10);
+        $clasificacion=$request->get('clasificacion');
+        $datos['clasificacion']=$clasificacion;
+        // $datos['PrecioCamion']=PrecioCamion::paginate(10);
+        $datos['PrecioCamion']=DB::select("SELECT * FROM dbo.Precios_Camiones($clasificacion, '', '')");
+        // dd($preciosCamiones);
         $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)
                                                                 ->orderBy('cod_int')
                                                                 ->get();
@@ -27,10 +31,7 @@ class PrecioCamionController extends Controller
         return view('precio-camion', $datos);
     }
 
-    public function clasificacion()
-    {
-        
-    }
+    
 
     /**
      * Show the form for creating a new resource.
