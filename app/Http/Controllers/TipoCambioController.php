@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TipoCambio;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TipoCambioController extends Controller
 {
@@ -70,9 +71,38 @@ class TipoCambioController extends Controller
      * @param  \App\TipoCambio  $tipoCambio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoCambio $tipoCambio)
+    public function update(Request $request)
     {
-        //
+
+       $request->validate([
+         'Tipo_de_cambio' => 'required',
+         'Mes_cambiar' => 'required',
+       ]);
+
+
+     $form_data =array(
+       'CAMB_CAMBIO'      => $request->Tipo_de_cambio ,
+
+     );
+     // $today = Carbon::today();
+     // return $today;
+     // $a=Carbon::createFromFormat('Y-m-d H', '2019-11-30 00:00:00.000')->toDateTimeString();
+     // $q->whereMonth('CAMB_FECHA', '=', date('m'));
+     // $q->whereYear('CAMB_FECHA', '=', date('Y'));
+     // $fecha = $request->fecha;
+
+      $y=date('Y', strtotime($request->Mes_cambiar));
+      $m=date('m', strtotime($request->Mes_cambiar));
+
+      // $afecha = $request->Mes_cambiar->format('Y');
+      // return $m;
+
+      // $product = \App\Product::find($id);
+     // $mfecha = $request->Mes_cambiar->format('m');
+     // $dfecha = $request->Mes_cambiar->format('d');
+     // return $mfecha;
+     \App\TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->update($form_data);
+     return redirect('tipo-cambio')->with('success','Mes actualizado correctamente. ');
     }
 
     /**
