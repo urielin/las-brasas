@@ -29,4 +29,4 @@ Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCam
 
 Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
 
-Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
+Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
