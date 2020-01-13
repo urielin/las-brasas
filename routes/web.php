@@ -25,5 +25,8 @@ Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camio
 
 Route::get('/tipo-cambio', 'TipoCambioController@index')->name('tipo-cambio');
 
-Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
+Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
 
+Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
+
+Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
