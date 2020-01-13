@@ -19,10 +19,10 @@ class PrecioCamionController extends Controller
         // $datos['PrecioCamion2'] = DB::table("dbo.Precios_Camiones(1, '', '')")
         //         ->orderBy('name', 'desc')
         //         ->get();
-        $clasificacion=$request->get('clasificacion');
+        $clasificacion=$request->get('clasificacion') ? $request->get('clasificacion') : '1';
         $datos['clasificacion']=$clasificacion;
         // $datos['PrecioCamion']=PrecioCamion::paginate(10);
-        $datos['PrecioCamion']=DB::select("SELECT * FROM dbo.Precios_Camiones($clasificacion, '', '')");
+        $datos['PrecioCamion']=DB::select("SELECT * FROM dbo.Precios_Camiones($clasificacion, '', '') ORDER BY descripcion");
         // dd($preciosCamiones);
         $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)
                                                                 ->orderBy('cod_int')
