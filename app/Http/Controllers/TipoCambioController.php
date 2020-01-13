@@ -14,8 +14,10 @@ class TipoCambioController extends Controller
      */
     public function index()
     {
-        $datos['TipoCambio']=TipoCambio::paginate(10);
+        $datos['TipoCambio']=TipoCambio::orderBy('CAMB_FECHA', 'desc')->paginate(10);
+
         return view('tipo-cambio', $datos);
+        // return view('tipo-cambio');
     }
 
     /**

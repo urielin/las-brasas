@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <title>{{ config('app.name', 'Las Brasas') }}</title> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    
+
     <title>LAS BRASAS</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -335,3 +339,65 @@
     </div>
 </body>
 </html>
+
+<div id="formalModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar precio</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <span id="form_result"></span>
+          <form method="post" id="sample_form" enctype="multipart/form-data">
+            @csrf
+
+              <div class="row responsive media pb-2">
+                <div class="col-4">
+                  <div class="row pb-3">
+                      <label class="control-label col-md-5 mb-0">Camión: </label>
+                  </div>
+                  <div class="row pb-3">
+                      <label class="control-label col-md-5 mb-0">Código: </label>
+                  </div>
+                  <div class="row">
+                      <label class="control-label col-md-5 mb-0">Descripció: </label>
+                  </div>
+
+                </div>
+                <div class="col-8">
+                  <div class="row pb-2">
+                    <input type="text" name="  " value="datos sin edición" class="form-control-sm" disabled>
+                  </div>
+                  <div class="row pb-2">
+                    <input type="text" name="  " value="datos sin edición" class="form-control-sm" disabled>
+                  </div>
+                  <div class="row pb-2">
+                  <textarea type="text" name="  "  class="form-control-sm" disabled> </textarea>
+                  </div>
+
+                </div>
+              </div>
+
+
+            <div class="form-group row">
+              <label class="control-label col-md-4">Precio público: </label>
+              <input type="text" name="precio_publico" id="precio_publico" class="form-control col-md-8">
+
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-md-4">Precio mayorista: </label>
+              <input type="text" name="precio_mayorista" id="precio_mayorista" class="form-control col-md-8">
+            </div>
+            <br>
+            <div class="form-group" align="center">
+              <input type="hidden" name="hidden_id" id="hidden_id">
+              <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add">
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ asset('js/las-brasas.js') }}"></script>
