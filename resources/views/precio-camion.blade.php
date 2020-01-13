@@ -137,7 +137,7 @@
         </table>
       </div>
             <!-- Projects table -->
-            <table class="table align-items-center table-flush">
+            <table class="table align-items-center table-flush d-none">
               <thead>
                 <tr>
                   <th></th>
