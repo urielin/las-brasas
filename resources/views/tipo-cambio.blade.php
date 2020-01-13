@@ -54,9 +54,9 @@
                     <div class="card-body pt-0 ">
                         <div class="tab-content text-center">
                             <div class="tab-pane active" id="profile">
-                              <div class="">
 
-                                <div class="row">
+
+                                {{-- <div class="row">
                                   <div class="col-6">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Año</label>
                                     <select class="form-control" id="sel1">
@@ -90,9 +90,28 @@
                                       <option>DICIEMBRE</option>
                                     </select>
                                   </div>
-                                </div>
+                                </div> --}}
 
-                              </div>
+                                {!! Form::open(['route' => ['showCambio'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
+                                    @csrf
+
+                                <div class="row">
+                                  <div class="col-4">
+                                    <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Seleccionar periodo</label>
+                                    {{-- <input type="datetime" name="Mes_cambiar" class="form-control" id="usr"> --}}
+
+                                    <input type="date" name="Mes_cambiar" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}">
+                                    {{-- <input type="datetime-local" name="date_end" value="date('Y-m-d\TH:i',strtotime($yourPassedVariableToView))}}"> --}}
+                                  </div>
+                                  <div class="col4">
+
+                                    <button type="submit" name="buscar" class="btn btn-primary responsive">Buscar mes</button>
+                                  </div>
+                                  <div class="col-6 pt-4 pb--4">
+                                  </div>
+                                </div>
+                                {!! Form::close()!!}
+
                             </div>
 
                             <div class="tab-pane" id="messages">
@@ -120,7 +139,8 @@
                             {!! Form::close()!!}
 
                         </div>
-                    </div></div>
+                    </div>
+                  </div>
                 <!-- End Tabs with icons on Card -->
 
             </div>

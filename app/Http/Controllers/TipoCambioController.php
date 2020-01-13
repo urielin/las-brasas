@@ -48,9 +48,32 @@ class TipoCambioController extends Controller
      * @param  \App\TipoCambio  $tipoCambio
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoCambio $tipoCambio)
+    public function show(Request $request)
     {
-        //
+      // dd($request);
+      $request->validate([
+        'Mes_cambiar' => 'required',
+      ]);
+
+      $form_data =array(
+        'CAMB_CAMBIO'      => $request->Tipo_de_cambio ,
+
+      );
+
+      $y=date('Y', strtotime($request->Mes_cambiar));
+      $m=date('m', strtotime($request->Mes_cambiar));
+
+      // $datos['TipoCambio']=TipoCambio::orderBy('CAMB_FECHA', 'desc')->paginate(10);
+      $datos['TipoCambio']=TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->get();
+      // return redirect('tipo-cambio',$datos)->with('success','Consulta ejecutada correctamente. ');
+        // return view('tipo-cambio', $TipoCambio);
+        // return view('tipo-cambio',compact('TipoCambio'));
+        // return view('tipo-cambio', $datos);
+        // dd($dsatos);
+
+          return view('tipo-cambio', $datos);
+
+        // return $requestñ
     }
 
     /**

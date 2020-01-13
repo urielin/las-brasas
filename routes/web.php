@@ -27,4 +27,6 @@ Route::get('/tipo-cambio', 'TipoCambioController@index')->name('tipo-cambio');
 
 Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
 
+Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
+
 Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
