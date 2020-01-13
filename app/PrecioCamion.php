@@ -9,4 +9,9 @@ class PrecioCamion extends Model
 {
     protected $table="dbo.Precios_Camiones(1, '', '')";
     public $timestamps=false;
+
+    // public function scopeClasificacion($query, $clasificacion)
+    // {
+    //     $query->where('',$clasificacion);
+    // }
 }
