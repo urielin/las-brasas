@@ -123,7 +123,7 @@
                                 <div class="row">
                                   <div class="col-4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
-                                    <input type="text" name="Tipo_de_cambio" class="form-control" id="usr">
+                                    <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control" id="usr">
                                   </div>
 
                                   <div class="col-4 ">

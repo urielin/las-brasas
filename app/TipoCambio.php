@@ -9,7 +9,7 @@ class TipoCambio extends Model
     protected $table="dbo.ADM_TP_CAMBIO";
     public $timestamps=false;
 
-    // protected $fillable = [
+    // protected $fillable = [ 
     //     'CAMB_FECHA',  'CAMB_CAMBIO','CAMB_USUARIO',
     // ];
     // public function getDateFormat()
