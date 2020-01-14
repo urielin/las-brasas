@@ -32,3 +32,6 @@ Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
 Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
 
 Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
+
+
+Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion'); 

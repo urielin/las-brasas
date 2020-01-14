@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GestionCamion extends Model
+class Test extends Model
 {
-  protected $table="dbo.bodega_id_ofertas_camion";
+  protected $table="dbo.MODULO_VENTA_CAMIONES_DETALLE";
   public $timestamps=false;
-} 
+}

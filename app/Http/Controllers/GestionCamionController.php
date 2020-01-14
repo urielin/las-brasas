@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\GestionCamion;
+use App\Test;
+
 class GestionCamionController extends Controller
 {
     /**
@@ -13,7 +16,18 @@ class GestionCamionController extends Controller
      */
     public function index()
     {
-        return view('gestion-camion');
+      $datos='null';
+      // $data['datos']='null'
+      $year=Test::select('gestion')->distinct()->get();
+      // $data['user']=User::all();
+      // $data['employer']=employer::all();
+      // return view('gestion-camion',['data'=>$datos]);
+
+      return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+      // return $year;
+
+        // return view('gestion-camion',compact('datos'));
+        // return view('gestion-camion');
     }
 
     /**
@@ -45,7 +59,18 @@ class GestionCamionController extends Controller
      */
     public function show(Request $request)
     {
-        return "faltaria controlador";
+        // dd($request);
+        $request->validate([
+          'codigo' => 'required',
+        ]);
+
+        $datos=GestionCamion::where('camion', $request->codigo)->get();
+
+            // return view('gestion-camion', $datos);
+            //
+            return view('gestion-camion',compact('datos'));
+// return $datos;
+          // return $requestñ
     }
 
     /**
@@ -69,6 +94,18 @@ class GestionCamionController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function getCamion(Request $request)
+    {
+        if ($request -> ajax()) {
+            $camiones = Test::where('gestion',$request->anio_id)->get();
+            foreach ($camiones as $camion) {
+              $camionArray[$camion->camion] = $camion->camion ;
+            }
+
+            return response()->json($camionArray);
+        }
     }
 
     /**

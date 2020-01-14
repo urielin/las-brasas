@@ -1,5 +1,5 @@
 
-  $(document).ready(function(){ 
+  $(document).ready(function(){
       $('.mostrar-info').click(function(){
          $('#formalModal').modal('show');
       });
@@ -20,4 +20,18 @@
         //   })
         // }
       });
+
+      $('#anio').on('change', function(){
+        var anio_id = $(this).val();
+        if($.trim(anio_id) != ''){
+          $.get('obtener-camion',{anio_id:anio_id},function(camiones){
+             $('#camion').empty();
+             $('#camion').append("<option value=''> Seleccione un camión </option>");
+             $.each(camiones, function(index,value){
+                $('#camion').append("<option value='"+ index +"'>"+ value +"</option>");
+             })
+          });
+        }
+      });
+
   });

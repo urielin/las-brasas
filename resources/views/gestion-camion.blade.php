@@ -8,39 +8,35 @@
         <br><br>
 
       <div class="row ">
-            <div class="col-3 bg-gradient-secondary border ml-5 mr-1">
+            <div class="col-3 bg-gradient-secondary border ml-5 mr-1 card">
               <div class="form-group">
                 {!! Form::open(['route' => ['showCamion'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                 @csrf
                 <label for="exampleFormControlInput1">Buscar camión</label>
-                <input type="text" name="Código" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese código camión">
+                <input type="text" name="codigo" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese código camión">
                 {{-- <br> --}}
                 <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
                 {!! Form::close()!!}
               </div>
             </div>
 
-        <div class="col-8 bg-gradient-secondary border ">
+        <div class="col-8 bg-gradient-secondary border card">
           <div class="row">
             <div class="form-group col-4">
-              <label for="exampleFormControlSelect1">Ingresar año</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-                <option>2016</option>
+              <label for="anio">Ingresar año</label>
+              <select class="form-control" id="anio">
+                @foreach ($year as $y)
+
+                  <option value="{{$y->gestion}}" >{{$y->gestion}}</option>
+
+                @endforeach
               </select>
             </div>
 
             <div class="form-group col-8">
-              <label for="exampleFormControlSelect2">Seleccionar camión </label>
-              <select class="form-control" id="exampleFormControlSelect2">
-                <option>17PO20</option>
-                <option>17PO21</option>
-                <option>17PO22</option>
-                <option>17PO23</option>
-                <option>17PO24</option>
+              <label for="camion">Seleccionar camión </label>
+              <select class="form-control" id="camion">
+
               </select>
             </div>
 
@@ -94,24 +90,37 @@
                                 <table  class="table align-items-center table-flush">
                                   <thead>
                                     <tr>
-                                      <th scope="col">Fecha</th>
-                                      <th scope="col">Cambio</th>
-                                      <th scope="col">USUARIO</th>
+                                      <th scope="col">Camión</th>
+                                      <th scope="col">Estado</th>
+                                      <th scope="col">Usuario de ingreso</th>
+                                      <th scope="col">Fecha de ingreso</th>
+                                      <th scope="col">Salida</th>
                                     </tr>
                                   </thead>
                                   <tbody>
+                                @if ( $datos !="null" )
 
+                                  @foreach ($datos as $item)
                                     <tr>
                                       <td>
-                                        A
+                                        {{$item->camion}}
                                       </td>
                                       <td>
-                                        B
+                                        {{$item->estado}}
                                       </td>
                                       <td>
-                                        C
+                                        {{$item->usuario_ingreo}}
+                                      </td>
+                                      <td>
+                                        {{$item->fecha_ingreso}}
+                                      </td>
+                                      <td>
+                                        {{$item->usuario_salida}}
                                       </td>
                                     </tr>
+
+                                  @endforeach
+                                @endif
 
                                   </tbody>
                                 </table>
