@@ -85,23 +85,29 @@
                       <div class="tab-content text-center">
                           <div class="tab-pane active" id="profile">
 
+                            <div class="table">
+                              <thead>
+                                <tr>
+
+                            </div>
                             <div class="row">
                               <div class="table-responsive table-dark table-hover">
                                 <table  class="table align-items-center table-flush">
                                   <thead>
                                     <tr>
                                       <th scope="col">Camión</th>
-                                      <th scope="col">Estado</th>
-                                      <th scope="col">Usuario de ingreso</th>
-                                      <th scope="col">Fecha de ingreso</th>
-                                      <th scope="col">Salida</th>
-                                    </tr>
+                                      <th scope="col">Descripcion</th>
+                                      <th scope="col">Cantidad</th>
+                                      <th scope="col">Moneda</th>
+                                      <th scope="col">Costo</th>
+
                                   </thead>
-                                  <tbody>
-                                @if ( $datos !="null" )
+                                  <tbody id="camiontabla">
+                                    {{-- <tr><td>asdasd</td></tr> --}}
+                                {{-- @if ( $datos !="null" )
 
                                   @foreach ($datos as $item)
-                                    <tr>
+                                    <tr >
                                       <td>
                                         {{$item->camion}}
                                       </td>
@@ -120,7 +126,7 @@
                                     </tr>
 
                                   @endforeach
-                                @endif
+                                @endif --}}
 
                                   </tbody>
                                 </table>

@@ -34,4 +34,6 @@ Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-ca
 Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
 
 
-Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion'); 
+Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
+
+Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');

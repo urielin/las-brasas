@@ -103,9 +103,20 @@ class GestionCamionController extends Controller
             foreach ($camiones as $camion) {
               $camionArray[$camion->camion] = $camion->camion ;
             }
-
             return response()->json($camionArray);
+            // return $camionArray;
         }
+    }
+  // $datos=GestionCamion::where('camion', $request->codigo)->get();
+    public function gettablecamion(Request $request)
+    {
+      if ($request -> ajax()) {
+          $camioninfo = Test::where('camion',$request->camion_id)->get();
+          return response()->json(
+              $camioninfo->toArray()
+          );
+
+      }
     }
 
     /**
