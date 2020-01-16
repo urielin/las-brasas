@@ -27,7 +27,7 @@
               <select class="form-control" id="anio">
                 @foreach ($year as $y)
 
-                  <option value="{{$y->gestion}}" >{{$y->gestion}}</option>
+                  <option value="{{$y->fecha_llegada}}" >{{$y->fecha_llegada}}</option>
 
                 @endforeach
               </select>

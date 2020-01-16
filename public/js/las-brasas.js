@@ -25,7 +25,7 @@
         var anio_id = $(this).val();
         // console.log(anio_id);
         if($.trim(anio_id) != ''){
-          $.get('obtener-camion',{anio_id:anio_id},function(camiones){
+          request=$.get('obtener-camion',{anio_id:anio_id},function(camiones){
              $('#camion').empty();
              $('#camion').append("<option value=''> Seleccione un camión </option>");
              $.each(camiones, function(index,value){
@@ -33,6 +33,17 @@
 
              })
           });
+
+          request.done(function( msg ) {
+            // $( "#log" ).html( msg );
+            console.log(msg);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR.responseText,textStatus);
+            alert( "Request failed: " + textStatus + jqXHR.responseText);
+          });
+
         }
       });
 
