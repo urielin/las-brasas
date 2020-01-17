@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
+  
   <div class="main-content">
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
       <p class="h1 mb-0 text-white text-uppercase d-lg-inline-block" >GESTIÓN CAMIONES</p>
@@ -12,8 +13,8 @@
               <div class="form-group">
                 {!! Form::open(['route' => ['showCamion'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                 @csrf
-                <label for="exampleFormControlInput1">Buscar camión</label>
-                <input type="text" name="codigo" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese código camión">
+                <label for="buscar-codigo-camion">Buscar camión</label>
+                <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
                 {{-- <br> --}}
                 <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
                 {!! Form::close()!!}
@@ -104,7 +105,8 @@
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}
-                                {{-- @if ( $datos !="null" )
+
+
 
                                   @foreach ($datos as $item)
                                     <tr >
@@ -126,7 +128,7 @@
                                     </tr>
 
                                   @endforeach
-                                @endif --}}
+
 
                                   </tbody>
                                 </table>

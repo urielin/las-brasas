@@ -55,7 +55,9 @@
              $('#camiontabla').empty();
              // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
              $(res).each(function(key,value){
-                $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
+                // $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
+                $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
+
              });
 
           });
@@ -75,5 +77,36 @@
 
         }
       });
+
+      // $('#buscar-codigo-camion').on('submit', function(){
+      //   var camion_cod = $(this).val();
+      //   // console.log(camion_id);
+      //   if($.trim(camion_cod) != ''){
+      //       request=$.get('ver-camion',{camion_cod:camion_id},function(res){
+      //        $('#camiontabla').empty();
+      //        // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
+      //        $(res).each(function(key,value){
+      //           // $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
+      //           $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
+      //
+      //        });
+      //
+      //     });
+      //
+      //
+      //     request.done(function( msg ) {
+      //       // $( "#log" ).html( msg );
+      //       console.log(msg);
+      //     });
+      //
+      //     request.fail(function( jqXHR, textStatus ) {
+      //       console.log(jqXHR.responseText,textStatus);
+      //       alert( "Request failed: " + textStatus + jqXHR.responseText);
+      //     });
+      //
+      //
+      //
+      //   }
+      // });
 
   });
