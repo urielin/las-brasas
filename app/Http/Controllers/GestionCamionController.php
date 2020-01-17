@@ -84,7 +84,7 @@ class GestionCamionController extends Controller
         $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
         SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        $datos=GestionCamion::where('camion', $request->codigo)->get();
+        $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
             return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
 

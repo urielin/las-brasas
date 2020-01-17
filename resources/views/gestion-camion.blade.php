@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-  
+
   <div class="main-content">
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
       <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >GESTIÓN CAMIONES</p>
@@ -111,19 +111,19 @@
                                   @foreach ($datos as $item)
                                     <tr >
                                       <td>
-                                        {{$item->camion}}
+                                        {{$item->codigo}}
                                       </td>
                                       <td>
-                                        {{$item->estado}}
+                                        {{$item->descripcion}}
                                       </td>
                                       <td>
-                                        {{$item->usuario_ingreo}}
+                                        {{$item->cierre_cantidad}}
                                       </td>
                                       <td>
-                                        {{$item->fecha_ingreso}}
+                                        {{$item->monto_cierre}}
                                       </td>
                                       <td>
-                                        {{$item->usuario_salida}}
+                                        {{$item->ingreso_cantidad}}
                                       </td>
                                     </tr>
 
