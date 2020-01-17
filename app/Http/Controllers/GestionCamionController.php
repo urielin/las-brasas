@@ -116,37 +116,49 @@ class GestionCamionController extends Controller
     {
 
           if ($request -> ajax()) {
-            try{
+            // try{
         $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id
 			  UNION
 			  SELECT  camion=CAST(nro_traslado AS NVARCHAR(20)) FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE YEAR(fecha_viza) = $request->anio_id
 			  order by camion desc");
-        }
-        catch(\Exception $e){
-          return $e->getMessage();
-        }
-        // $camiones1=DB::select('SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = ?', [$request->anio_id]);
-      // -- UNION
-      // $camiones=DB::select('SELECT  camion=CAST(nro_traslado AS NVARCHAR(20)) FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE YEAR(fecha_viza) = ?', [$request->anio_id],
-      //  'order by camion desc');
 
- // $year=DbsysCamiones::select(('fecha_llegada'))->distinct()->get();
-            // $camiones1 = Test::where('gestion',$request->anio_id)->get();
-            foreach ($camiones as $camion) {
-              $camionArray[$camion->camion] = $camion->camion ;
-            }
-            return response()->json($camionArray);
-            // return $camionArray;
+        foreach ($camiones as $camion) {
+          $camionArray[$camion->camion] = $camion->camion ;
+        }
+        return response()->json($camionArray);
+        // return $camionArray;
+
+
         }
     }
   // $datos=GestionCamion::where('camion', $request->codigo)->get();
     public function gettablecamion(Request $request)
     {
       if ($request -> ajax()) {
-          $camioninfo = Test::where('camion',$request->camion_id)->get();
+
+          // $DATO= '13H01';
+          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE codigo = $DATO ");
+          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = '2018'");
+           // UNION
+  			   //   $documento=DB::select("SELECT   documento = zeta FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE nro_traslado  = $request->camion_id");
+          //
+          // $documento=Test::where('camion','17M30')->get();
+          // $documento2=Test::where('camion','17M30')->get();
+
+          $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
+          // $documento=AdmTrasladoSalidaExt::where('nro_traslado','13H01')->get();
+
+          // if ($documento1->fecha_llegada != '') {
+          //   $documento=$documento1;
+          //   $documento->get();
+          // }else {
+          //   $documento=$documento2;
+          //   // $documento->get();
+          // }
           return response()->json(
-              $camioninfo->toArray()
+              $documento->toArray()
           );
+
 
       }
     }
