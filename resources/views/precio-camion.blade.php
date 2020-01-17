@@ -58,7 +58,7 @@
 
             </div>
           </div>
-          <div class="table-responsive table-light table-hover">
+          <div class="table-responsive  table-hover">
           <div id="table-precio-camion" class="table-responsive">
            <!-- Projects table -->
            @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])

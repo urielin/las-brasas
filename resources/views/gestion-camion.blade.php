@@ -3,14 +3,14 @@
 @section('content')
   <div class="main-content">
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
-      <p class="h1 mb-0 text-white text-uppercase d-lg-inline-block" >GESTIÓN CAMIONES</p>
+      <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >GESTIÓN CAMIONES</p>
 
         <br><br>
 
       <div class="row ">
-            <div class="col-3 bg-gradient-secondary border ml-5 mr-1 card">
+            <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
               <div class="form-group">
-                {!! Form::open(['route' => ['showCamion'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => ['showCamion'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                 @csrf
                 <label for="exampleFormControlInput1">Buscar camión</label>
                 <input type="text" name="codigo" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese código camión">
@@ -20,7 +20,7 @@
               </div>
             </div>
 
-        <div class="col-8 bg-gradient-secondary border card">
+        <div class="col-7 bg-gradient-secondary border card pt-3">
           <div class="row">
             <div class="form-group col-4">
               <label for="anio">Ingresar año</label>
@@ -59,22 +59,22 @@
                               <ul class="nav nav-tabs" data-tabs="tabs">
                                   <li class="nav-item">
                                       <a class="nav-link active " href="#profile" data-toggle="tab">
-                                          <i class="material-icons">Habilitar la venta</i>
+                                          <i style=" font-style: normal; " class="material-icons">Habilitar la venta</i>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="#messages" data-toggle="tab">
-                                          <i class="material-icons">Consistencia de mercancía</i>
+                                          <i style=" font-style: normal; " class="material-icons">Consistencia de mercancía</i>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="#messages2" data-toggle="tab">
-                                          <i class="material-icons">Bloqueo por camiones</i>
+                                          <i style=" font-style: normal; " class="material-icons">Bloqueo por camiones</i>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="#messages3" data-toggle="tab">
-                                          <i class="material-icons">Boqueo por ítems</i>
+                                          <i style=" font-style: normal; " class="material-icons">Boqueo por ítems</i>
                                       </a>
                                   </li>
                               </ul>
@@ -91,9 +91,9 @@
 
                             </div>
                             <div class="row">
-                              <div class="table-responsive table-dark table-hover">
+                              <div class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
-                                  <thead>
+                                  <thead class="thead-light">
                                     <tr>
                                       <th scope="col">Camión</th>
                                       <th scope="col">Descripcion</th>
@@ -138,9 +138,9 @@
                           <div class="tab-pane" id="messages">
 
                             <div class="row">
-                              <div class="table-responsive table-dark table-hover">
+                              <div class="table-responsive  table-hover">
                                 <table  class="table align-items-center table-flush">
-                                  <thead>
+                                  <thead class="thead-light">
                                     <tr>
                                       <th scope="col">Fecha</th>
                                       <th scope="col">Cambio</th>
@@ -171,9 +171,9 @@
                       <div class="tab-pane" id="messages2">
 
                         <div class="row">
-                          <div class="table-responsive table-dark table-hover">
+                          <div class="table-responsive  table-hover">
                             <table  class="table align-items-center table-flush">
-                              <thead>
+                              <thead class="thead-light">
                                 <tr>
                                   <th scope="col">Fecha</th>
                                   <th scope="col">Cambio</th>
@@ -204,9 +204,9 @@
                   <div class="tab-pane" id="messages3">
 
                     <div class="row">
-                      <div class="table-responsive table-dark table-hover">
+                      <div class="table-responsive  table-hover">
                         <table  class="table align-items-center table-flush">
-                          <thead>
+                          <thead class="thead-light">
                             <tr>
                               <th scope="col">Fecha</th>
                               <th scope="col">Cambio</th>
