@@ -32,7 +32,10 @@ class GestionCamionController extends Controller
       // $y=date('Y', strtotime($request->Mes_cambiar));
 
       // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
-      return view('gestion-camion')->with(compact('year'));
+      $datos=GestionCamion::where('camion', '0')->get();
+
+
+      return view('gestion-camion')->with(compact('year'))->with(compact('datos'));
       // dd($year1);
 
         // return view('gestion-camion',compact('datos'));
@@ -78,14 +81,13 @@ class GestionCamionController extends Controller
         $request->validate([
           'codigo' => 'required',
         ]);
+        $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+        SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        $datos=GestionCamion::where('camion', $request->codigo)->get();
+        $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
-            // return view('gestion-camion', $datos);
-            //
-            return view('gestion-camion',compact('datos'));
-// return $datos;
-          // return $requestñ
+            return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+
     }
 
     /**
@@ -146,7 +148,7 @@ class GestionCamionController extends Controller
           // $documento2=Test::where('camion','17M30')->get();
 
           $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
-          // $documento=AdmTrasladoSalidaExt::where('nro_traslado','13H01')->get();
+            // $documento=AdmTrasladoSalidaExt::where('nro_traslado',$request->camion_id)->get();
 
           // if ($documento1->fecha_llegada != '') {
           //   $documento=$documento1;

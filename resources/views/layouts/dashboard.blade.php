@@ -291,7 +291,7 @@
                     <a href="{{route('tipo-cambio')}}" class="nav-link">Tipo de cambio</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('gestion-camion')}}" class="nav-link">Gestion de camiones</a>
+                    <a href="{{route('gestion-camion')}}" class="nav-link">Gestión de camiones</a>
                   </li>
                 </ul>
               </div>
@@ -342,7 +342,7 @@
 
   </div>
 
-        </main> 
+        </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 
