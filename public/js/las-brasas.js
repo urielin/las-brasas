@@ -21,20 +21,20 @@
         form_data.append('id_camion', id_camion);
         var   id_corte=$('#actualizar_precio input[name=codigo]').val();
         form_data.append('id_corte', id_corte);
-        
+
         var clasificacion=$('select#sel1').val();
         form_data.append('clasificacion', clasificacion);
         // debugger
         // console.log(json);
         // for (var value of form_data.values()) {
-        //   console.log(value); 
+        //   console.log(value);
         // }
-        bootbox.confirm("¿Esta seguro que quiere actualizar los datos?", function(result){ 
-          console.log('This was logged in the callback: ' + result); 
-        
+        bootbox.confirm("¿Esta seguro que quiere actualizar los datos?", function(result){
+          console.log('This was logged in the callback: ' + result);
+
         if (($('input#action_button').val()=='Actualizar Datos') && (result==true))
         {
-          
+
 
           var request = $.ajax({
             url: form_url,
@@ -53,7 +53,7 @@
             // console.log(response);
             // activar loader
             $('div.loader-6').removeClass('d-none');
-            
+
             $('div#table-precio-camion').html(response);
             $('#formalModal').modal('hide');
 
@@ -71,7 +71,7 @@
               $('#formalModal').modal('show');
            });
           });
-          
+
           request.fail(function( jqXHR, textStatus ) {
             console.log(jqXHR.responseText,textStatus);
             alert( "Request failed: " + textStatus + jqXHR.responseText);
@@ -114,8 +114,8 @@
              $('#camiontabla').empty();
              // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
              $(res).each(function(key,value){
-                // $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
-                $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
+                $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
+                // $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
 
              });
 

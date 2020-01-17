@@ -86,11 +86,8 @@ class GestionCamionController extends Controller
 
         $datos=GestionCamion::where('camion', $request->codigo)->get();
 
-            // return view('gestion-camion', $datos);
-            //
             return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
-// return $datos;
-          // return $requestñ
+
     }
 
     /**
@@ -150,8 +147,8 @@ class GestionCamionController extends Controller
           // $documento=Test::where('camion','17M30')->get();
           // $documento2=Test::where('camion','17M30')->get();
 
-          // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
-            $documento=AdmTrasladoSalidaExt::where('nro_traslado',$request->camion_id)->get();
+          $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
+            // $documento=AdmTrasladoSalidaExt::where('nro_traslado',$request->camion_id)->get();
 
           // if ($documento1->fecha_llegada != '') {
           //   $documento=$documento1;
