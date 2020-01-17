@@ -95,11 +95,13 @@
                                 <table  class="table align-items-center table-flush">
                                   <thead class="thead-light">
                                     <tr>
+                                      <th scope="col">Habilitar</th>
                                       <th scope="col">Camión</th>
                                       <th scope="col">Descripcion</th>
                                       <th scope="col">Cantidad</th>
                                       <th scope="col">Moneda</th>
                                       <th scope="col">Costo</th>
+                                      
 
                                   </thead>
                                   <tbody id="camiontabla">
@@ -122,6 +124,12 @@
                                       </td>
                                       <td>
                                         {{$item->usuario_salida}}
+                                      </td>
+                                      <td>
+                                      <label class="custom-toggle custom-toggle-default">
+                                        <input type="checkbox" checked="">
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                      </label>
                                       </td>
                                     </tr>
 
