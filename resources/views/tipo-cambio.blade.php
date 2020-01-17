@@ -56,41 +56,6 @@
                             <div class="tab-pane active" id="profile">
 
 
-                                {{-- <div class="row">
-                                  <div class="col-6">
-                                    <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Año</label>
-                                    <select class="form-control" id="sel1">
-                                      <option>2011</option>
-                                      <option>2012</option>
-                                      <option>2013</option>
-                                      <option>2014</option>
-                                      <option>2015</option>
-                                      <option>2016</option>
-                                      <option>2017</option>
-                                      <option>2018</option>
-                                      <option>2019</option>
-                                      <option>2020</option>
-                                    </select>
-                                  </div>
-
-                                  <div class="col-6">
-                                    <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Mes</label>
-                                    <select class="form-control" id="sel1">
-                                      <option>ENERO</option>
-                                      <option>FEBRERO</option>
-                                      <option>MARZO</option>
-                                      <option>ABRIL</option>
-                                      <option>MAYO</option>
-                                      <option>JUNIO</option>
-                                      <option>JULIO</option>
-                                      <option>AGOSTO</option>
-                                      <option>SEPTIEMBRE</option>
-                                      <option>OCTUBRE</option>
-                                      <option>NOVIEMBRE</option>
-                                      <option>DICIEMBRE</option>
-                                    </select>
-                                  </div>
-                                </div> --}}
 
                                 {!! Form::open(['route' => ['showCambio'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                                     @csrf
@@ -123,7 +88,7 @@
                                 <div class="row">
                                   <div class="col-4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
-                                    <input type="text" name="Tipo_de_cambio" class="form-control" id="usr">
+                                    <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control" id="usr">
                                   </div>
 
                                   <div class="col-4 ">

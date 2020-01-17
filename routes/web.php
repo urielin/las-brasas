@@ -29,6 +29,14 @@ Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCam
 
 Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
 
-Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
+// Route::get('/gestion-camion', 'TUsuariosController@index')->name('gestion-camion');
 
 Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
+Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
+
+Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
+
+
+Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
+
+Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');

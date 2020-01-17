@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TipoCambio;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+
 
 class TipoCambioController extends Controller
 {
@@ -62,9 +62,10 @@ class TipoCambioController extends Controller
 
       $y=date('Y', strtotime($request->Mes_cambiar));
       $m=date('m', strtotime($request->Mes_cambiar));
+      $d=date('d', strtotime($request->Mes_cambiar));
 
       // $datos['TipoCambio']=TipoCambio::orderBy('CAMB_FECHA', 'desc')->paginate(10);
-      $datos['TipoCambio']=TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->get();
+      $datos['TipoCambio']=TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->whereday('CAMB_FECHA', $d)->get();
       // return redirect('tipo-cambio',$datos)->with('success','Consulta ejecutada correctamente. ');
         // return view('tipo-cambio', $TipoCambio);
         // return view('tipo-cambio',compact('TipoCambio'));
