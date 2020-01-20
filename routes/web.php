@@ -40,3 +40,8 @@ Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
 Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
 
 Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');
+
+Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
+
+
+Route::get('/test', 'GestionCamionController@test')->name('test');

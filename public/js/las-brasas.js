@@ -82,13 +82,15 @@
 
       $('#anio').on('change', function(){
         var anio_id = $(this).val();
+
         // console.log(anio_id);
-        if($.trim(anio_id) != ''){
-          request=$.get('obtener-camion',{anio_id:anio_id},function(camiones){
-             $('#camion').empty();
-             $('#camion').append("<option value=''> Seleccione un camión </option>");
-             $.each(camiones, function(index,value){
-                $('#camion').append("<option value='"+ value +"'>"+ value +"</option>");
+        if($.trim(anio_id) != ''  ){
+              // console.log('consicion 1');
+            request=$.get('select-clasificacion',{anio_id:anio_id},function(res){
+             $('#clasificacion').empty();
+             // $('#camion').append("<option value=''> Seleccione un camión </option>");
+             $.each(res, function(index,value){
+               $('#clasificacion').append("<option value='"+ value +"'>"+ value +"</option>");
 
              })
           });
@@ -104,18 +106,55 @@
           });
 
         }
+        // else{
+        //     console.log('condicion 2');
+        // }
+      });
+
+      $('#clasificacion').on('change', function(){
+        var clasificacion_id = $(this).val();
+        var anio_id = $(anio).val();
+
+        // console.log(camion_id);
+        if($.trim(clasificacion_id) != ''){
+            request=$.get('obtener-camion',{anio_id:anio_id,clasificacion_id:clasificacion_id },function(res){
+             $('#camion').empty();
+             $('#camion').append("<option value=''> Seleccione un camión </option>");
+             // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
+             $.each(res, function(index,value){
+             // $(res).each(function(key,value){
+                // $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
+                $('#camion').append("<option value='"+ index +"'>"+ value +"</option>");
+
+             });
+
+          });
+
+
+          request.done(function( msg ) {
+            // $( "#log" ).html( msg );
+            console.log(msg);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR.responseText,textStatus);
+            alert( "Request failed: " + textStatus + jqXHR.responseText);
+          });
+        }
       });
 
       $('#camion').on('change', function(){
         var camion_id = $(this).val();
+
+
         // console.log(camion_id);
         if($.trim(camion_id) != ''){
-            request=$.get('tabla-camion',{camion_id:camion_id},function(res){
+            request=$.get('tabla-camion',{camion_id:camion_id },function(res){
              $('#camiontabla').empty();
              // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
-             $(res).each(function(key,value){
-                $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
-                // $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
+             $.each(res, function(index,value){
+                 $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
+                          // $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
 
              });
 

@@ -23,7 +23,7 @@
 
         <div class="col-7 bg-gradient-secondary border card pt-3">
           <div class="row">
-            <div class="form-group col-4">
+            <div class="form-group col-3">
               <label for="anio">Ingresar año</label>
               <select class="form-control" id="anio">
                 @foreach ($year as $y)
@@ -34,7 +34,18 @@
               </select>
             </div>
 
-            <div class="form-group col-8">
+            <div class="form-group col-4">
+              <label for="camion">Clasificar camión </label>
+              <select class="form-control" id="clasificacion">
+                {{-- @foreach ($clasificaciones as $clasificacion)
+
+                  <option value="{{$clasificacion->CLCO_CODIGO}}" >{{$clasificacion->CLCO_DESCRIPCION}}</option>
+
+                @endforeach --}}
+              </select>
+            </div>
+
+            <div class="form-group col-5">
               <label for="camion">Seleccionar camión </label>
               <select class="form-control" id="camion">
 

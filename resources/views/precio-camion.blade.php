@@ -18,7 +18,7 @@
           </select>
           </form>
         </div>
-<!-- 
+<!--
         <div class="col-4">
           <label class="h4 mb-0 text-white d-lg-inline-block" for="usr">Camión</label>
           <button type="button" class="btn btn-primary btn-sm">Agregar/Retirar</button>
@@ -63,11 +63,11 @@
            <!-- Projects table -->
            @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])
 
- 
-          </div>
+
+          </div> 
 
             <!-- Projects table -->
-      
+
           </div>
         </div>
 
@@ -77,7 +77,7 @@
         </div>
       </div>
 
-    
+
     <!-- Footer -->
 
     </div>
@@ -115,7 +115,7 @@
 
             <div class="form-group row">
               <label class="control-label col-md-4">Precio público: </label>
-              
+
               <input id="publico" type="text" name="publico"  class="form-control col-md-8" id="example" placeholder "name@example.com">
 
             </div>

@@ -293,6 +293,7 @@
                   <li class="nav-item">
                     <a href="{{route('gestion-camion')}}" class="nav-link">Gestión de camiones</a>
                   </li>
+
                 </ul>
               </div>
           </li>
@@ -313,6 +314,10 @@
             <a class="nav-link " href="./">
               <i class="ni ni-bullet-list-67 text-red"></i> Contenedores y Camiones
             </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('test')}}" class="nav-link">Test</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="./examples/login.html">
@@ -348,10 +353,6 @@
 
     <script src="{{ asset('js/las-brasas.js') }}"></script>
 
-    
+
 </body>
 </html>
-
-
-
-
