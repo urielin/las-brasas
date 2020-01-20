@@ -23,7 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/preloader.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
     <!-- LAS BRASAS BOOTSTRAP -->
     <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
     <!-- Fonts -->
