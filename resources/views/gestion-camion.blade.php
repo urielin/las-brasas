@@ -113,7 +113,7 @@
                                       <th scope="col">Cantidad</th>
                                       <th scope="col">Moneda</th>
                                       <th scope="col">Costo</th>
-                                      
+
 
                                   </thead>
                                   <tbody id="camiontabla">
@@ -123,6 +123,12 @@
 
                                   @foreach ($datos as $item)
                                     <tr >
+                                      <td>
+                                      <label class="custom-toggle custom-toggle-default">
+                                        <input type="checkbox" checked="">
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                      </label>
+                                      </td>
                                       <td>
                                         {{$item->codigo}}
                                       </td>
@@ -138,12 +144,7 @@
                                       <td>
                                         {{$item->ingreso_cantidad}}
                                       </td>
-                                      <td>
-                                      <label class="custom-toggle custom-toggle-default">
-                                        <input type="checkbox" checked="">
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                      </label>
-                                      </td>
+
                                     </tr>
 
                                   @endforeach
