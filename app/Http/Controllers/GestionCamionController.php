@@ -121,22 +121,24 @@ class GestionCamionController extends Controller
 
           if ($request -> ajax()) {
             // try{
-        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '$request->clasificacion_id'");
+        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
 
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion = '$request->clasificacion_id'
         //     	UNION
         //     	SELECT  camion=CAST(nro_traslado AS NVARCHAR(20)) FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE YEAR(fecha_viza) = $request->anio_id LIKE 'ACEITE%'
         //       order by camion desc");
 
+          if ($camiones != null) {
+            foreach ($camiones as $camion) {
+              $camionArray[$camion->camion] = $camion->camion ;
+            }
+            return response()->json($camionArray);
 
-
-        foreach ($camiones as $camion) {
-          $camionArray[$camion->camion] = $camion->camion ;
-        }
-        return response()->json($camionArray);
-        // return $camionArray;
-
-
+          }else {
+            $camionArray['1'] = 'Camiones no encontrados' ;
+            return response()->json($camionArray);
+          }
+          // return $camionArray;
         }
     }
   // $datos=GestionCamion::where('camion', $request->codigo)->get();

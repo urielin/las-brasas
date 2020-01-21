@@ -118,15 +118,20 @@
         // console.log(camion_id);
         if($.trim(clasificacion_id) != ''){
             request=$.get('obtener-camion',{anio_id:anio_id,clasificacion_id:clasificacion_id },function(res){
-             $('#camion').empty();
-             $('#camion').append("<option value=''> Seleccione un camión </option>");
-             // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
-             $.each(res, function(index,value){
-             // $(res).each(function(key,value){
-                // $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
-                $('#camion').append("<option value='"+ index +"'>"+ value +"</option>");
 
-             });
+                $('#camion').empty();
+                $('#camion').append("<option value=''> Seleccione un camión </option>");
+                // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
+                $.each(res, function(index,value){
+                  // $(res).each(function(key,value){
+                    // $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
+                    if (value != 'Camiones no encontrados') {
+                      $('#camion').append("<option value='"+ index +"'>"+ value +"</option>");
+                    } else {
+                      $('#camion').empty();
+                      $('#camion').append("<option value=''> Camiones no encontrados </option>");
+                    }
+                });
 
           });
 
@@ -150,11 +155,9 @@
         if($.trim(camion_id) != ''){
             request=$.get('tabla-camion',{camion_id:camion_id },function(res){
              $('#camiontabla').empty();
-             // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
+
              $.each(res, function(index,value){
                  $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked=""> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+"<td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
-                          // $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
-
              });
 
           });
