@@ -153,18 +153,18 @@
                                       </td>
                                       <td>
                                         {{-- {{$item->producto}} --}}
-                                        F-producto
+                                        {{$item->producto}}
                                       </td>
                                       <td>
                                         {{$item->cantidad_cierre}}
                                       </td>
                                       <td>
-                                        {{-- {{$item->bultos_ingresos}} --}}
-                                        F-bultos_ingresos
+                                        {{$item->bultos_ingreso}}
+                                        {{-- F-bultos_ingresos --}}
                                       </td>
                                       <td>
-                                        {{-- {{$item->cantidad_ingresos}} --}}
-                                        F-cantidad_ingresos
+                                        {{$item->cantidad_ingreso}}
+                                        {{-- F-cantidad_ingresos --}}
                                       </td>
                                       <td>
                                         {{$item->cantidad_diferencia}}
@@ -194,13 +194,17 @@
                                         {{$item->total_costo}}
                                       </td>
                                       <td>
-                                        EDIT-SAVE-DEL
+                                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
+                                        {{-- {!! Form::open(['route' => [], 'method' => 'DELETE'])!!} --}}
+                                          <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+                                          {{-- <button type="submit" name="button">Eliminar</button> --}}
+                                        {{-- {!! Form::close()!!} --}}
                                       </td>
 
                                     </tr>
                                     @php
-                                      $bi+=0;
-                                      $ci+=0;
+                                      $bi+=$item->bultos_ingreso;
+                                      $ci+=$item->cantidad_ingreso;
                                       $mm+=$item->cantidad_diferencia;
                                       $tf+=$item->total_compra;
                                       $tcf+=$item->total_costo;

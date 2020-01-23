@@ -87,10 +87,19 @@ class GestionCamionController extends Controller
         // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
         // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        $datos=DB::select("SELECT * FROM dbsys.camiones c
-                              inner join dbsys.camiones_detalle cd
-                              on c.id_camion = cd.id_camion
-                              where c.codigo ='$request->codigo' and estado = '1'");
+        // $datos=DB::select("SELECT * FROM dbsys.camiones c
+        //                       inner join dbsys.camiones_detalle cd
+        //                       on c.id_camion = cd.id_camion
+        //                       where c.codigo ='$request->codigo' and estado = '1'");
+        //
+        //
+      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                              inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
 
         $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
@@ -221,12 +230,19 @@ class GestionCamionController extends Controller
 
 
           // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
+          //
+          // $documentos=DB::select("SELECT * FROM dbsys.camiones c
+          //                       inner join dbsys.camiones_detalle cd
+          //                       on c.id_camion = cd.id_camion
+          //                       where c.codigo ='$request->camion_id'");
 
-          $documentos=DB::select("SELECT * FROM dbsys.camiones c
-                                inner join dbsys.camiones_detalle cd
-                                on c.id_camion = cd.id_camion
-                                where c.codigo ='$request->camion_id'");
-
+                                $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                  ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                    , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                          inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                          							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                          							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                          								WHERE  c.codigo ='$request->camion_id' ");
 
           // SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
           // return $camiones;
