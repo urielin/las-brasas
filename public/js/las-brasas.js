@@ -155,11 +155,25 @@
         if($.trim(camion_id) != ''){
             request=$.get('tabla-camion',{camion_id:camion_id },function(res){
              $('#camiontabla').empty();
+            var bi=0;
 
+            var ci=0;
+
+            var mm=0;
+            // value.cantidad_diferencia
+            var tf=0;
+            // value.total_compra
+            var tcf=0;
+            // value.total_costo
              $.each(res, function(index,value){
-                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked=""> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+"<td>"+ value.id_camion +"</td><td>"+ value.descripcion+"</td><td>"+ value.contenido +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
-             });
+                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked=""> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+"<td>"+ value.nro_item +"</td><td>"+ value.codigo+"</td><td> F-producto </td><td>"+ value.cantidad_cierre +"</td><td>F-bultos_ingresos </td><td>F-cantidad_ingresos </td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td><td> EDIT DEL</td></tr>");
 
+                  mm+=parseFloat(value.cantidad_diferencia);
+                  tf+=parseFloat(value.total_compra);
+                  tcf+= parseFloat(value.total_costo);
+              });
+              // tf=parseFloat()+parseFloat();
+               $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+ci+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td><td></td></tr>");
           });
 
 

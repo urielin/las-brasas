@@ -110,7 +110,8 @@
                                   <thead class="thead-light">
                                     <tr>
                                       <th scope="col">Bloqueo</th>
-                                      <th scope="col">Codigo</th>
+                                      <th scope="col">Nro</th>
+                                      <th scope="col">Cod.</th>
                                       <th scope="col">Producto</th>
                                       <th scope="col">Cantidad cierre</th>
                                       <th scope="col">Bultos ingreso</th>
@@ -128,7 +129,12 @@
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}
+                                @php
+                                $bi=0;$ci=0;$mm=0;$tf=0;$tcf=0;
+                                @endphp
 
+                                {{-- // value.cantidad_diferencia --}}
+                                {{-- // value.total_compra --}}
 
 
                                   @foreach ($datos as $item)
@@ -140,24 +146,133 @@
                                       </label>
                                       </td>
                                       <td>
+                                        {{$item->nro_item}}
+                                      </td>
+                                      <td>
                                         {{$item->codigo}}
                                       </td>
                                       <td>
-                                        {{$item->descripcion}}
+                                        {{-- {{$item->producto}} --}}
+                                        F-producto
                                       </td>
                                       <td>
-                                        {{$item->cierre_cantidad}}
+                                        {{$item->cantidad_cierre}}
                                       </td>
                                       <td>
-                                        {{$item->monto_cierre}}
+                                        {{-- {{$item->bultos_ingresos}} --}}
+                                        F-bultos_ingresos
                                       </td>
                                       <td>
-                                        {{$item->ingreso_cantidad}}
+                                        {{-- {{$item->cantidad_ingresos}} --}}
+                                        F-cantidad_ingresos
+                                      </td>
+                                      <td>
+                                        {{$item->cantidad_diferencia}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_moneda_ext}}
+                                      </td>
+                                      <td>
+                                        {{$item->viu_moneda_nal}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_moneda_nal}}
+                                      </td>
+                                      <td>
+                                        {{$item->precio_compra}}
+                                      </td>
+                                      <td>
+                                        {{$item->total_compra}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_adicional_nal}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_final_nal}}
+                                      </td>
+                                      <td>
+                                        {{$item->total_costo}}
+                                      </td>
+                                      <td>
+                                        EDIT-SAVE-DEL
                                       </td>
 
                                     </tr>
-
+                                    @php
+                                      $bi+=0;
+                                      $ci+=0;
+                                      $mm+=$item->cantidad_diferencia;
+                                      $tf+=$item->total_compra;
+                                      $tcf+=$item->total_costo;
+                                    @endphp
+                                      {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
                                   @endforeach
+
+                                  <tr >
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->nro_item}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->codigo}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->producto}} --}}
+                                      {{-- F-producto --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cantidad_cierre}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->bultos_ingresos}} --}}
+                                      {{-- Total=F-bultos_ingresos --}}
+                                      {{$bi}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cantidad_ingresos}} --}}
+                                      {{-- Total=F-cantidad_ingresos --}}
+                                      {{$ci}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cantidad_diferencia}} --}}
+                                      {{-- Total true --}}
+                                      {{$mm}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cif_moneda_ext}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->viu_moneda_nal}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cif_moneda_nal}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->precio_compra}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->total_compra}} --}}
+                                      {{-- Total true --}}
+                                      {{$tf}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cif_adicional_nal}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->cif_final_nal}} --}}
+                                    </td>
+                                    <td>
+                                      {{-- {{$item->total_costo}} --}}
+                                      {{-- total true --}}
+                                      {{$tcf}}
+                                    </td>
+                                    <td>
+                                      {{-- EDIT-SAVE-DEL --}}
+                                    </td>
+
+                                  </tr>
 
 
                                   </tbody>

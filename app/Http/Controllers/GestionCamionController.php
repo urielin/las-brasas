@@ -84,12 +84,19 @@ class GestionCamionController extends Controller
         $request->validate([
           'codigo' => 'required',
         ]);
-        $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-        SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+        // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+        // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
+        $datos=DB::select("SELECT * FROM dbsys.camiones c
+                              inner join dbsys.camiones_detalle cd
+                              on c.id_camion = cd.id_camion
+                              where c.codigo ='$request->codigo' and estado = '1'");
 
-            return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+        // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
+
+            return view('gestion-camion')->with(compact('datos'))->with(compact('clasificaciones'));
 
     }
 
@@ -211,9 +218,7 @@ class GestionCamionController extends Controller
           // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = '2018'");
            // UNION
   			   //   $documento=DB::select("SELECT   documento = zeta FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE nro_traslado  = $request->camion_id");
-          //
-          // $documento=Test::where('camion','17M30')->get();
-          // $documento2=Test::where('camion','17M30')->get();
+
 
           // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
 
@@ -221,6 +226,7 @@ class GestionCamionController extends Controller
                                 inner join dbsys.camiones_detalle cd
                                 on c.id_camion = cd.id_camion
                                 where c.codigo ='$request->camion_id'");
+
 
           // SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
           // return $camiones;
