@@ -23,29 +23,31 @@
 
         <div class="col-7 bg-gradient-secondary border card pt-3">
           <div class="row">
-            <div class="form-group col-3">
+            {{-- <div class="form-group col-3">
               <label for="anio">Ingresar año</label>
+
               <select class="form-control" id="anio">
+                <option>Año</option>
                 @foreach ($year as $y)
 
                   <option value="{{$y->fecha_llegada}}" >{{$y->fecha_llegada}}</option>
 
                 @endforeach
               </select>
-            </div>
+            </div> --}}
 
-            <div class="form-group col-4">
+            <div class="form-group col-6">
               <label for="camion">Clasificar camión </label>
               <select class="form-control" id="clasificacion">
-                {{-- @foreach ($clasificaciones as $clasificacion)
+                @foreach ($clasificaciones as $clasificacion)
 
-                  <option value="{{$clasificacion->CLCO_CODIGO}}" >{{$clasificacion->CLCO_DESCRIPCION}}</option>
+                  <option value="{{$clasificacion->desc01}}" >{{$clasificacion->desc01}}</option>
 
-                @endforeach --}}
+                @endforeach
               </select>
             </div>
 
-            <div class="form-group col-5">
+            <div class="form-group col-6">
               <label for="camion">Seleccionar camión </label>
               <select class="form-control" id="camion">
 
@@ -71,7 +73,7 @@
                               <ul class="nav nav-tabs" data-tabs="tabs">
                                   <li class="nav-item">
                                       <a class="nav-link active " href="#profile" data-toggle="tab">
-                                          <i style=" font-style: normal; " class="material-icons">Habilitar la venta</i>
+                                          <i style=" font-style: normal; " class="material-icons">Detalle</i>
                                       </a>
                                   </li>
                                   <li class="nav-item">
@@ -107,14 +109,22 @@
                                 <table  class="table align-items-center table-flush">
                                   <thead class="thead-light">
                                     <tr>
-                                      <th scope="col">Habilitar</th>
-                                      <th scope="col">Camión</th>
-                                      <th scope="col">Descripcion</th>
-                                      <th scope="col">Cantidad</th>
-                                      <th scope="col">Moneda</th>
-                                      <th scope="col">Costo</th>
-
-
+                                      <th scope="col">Bloqueo</th>
+                                      <th scope="col">Codigo</th>
+                                      <th scope="col">Producto</th>
+                                      <th scope="col">Cantidad cierre</th>
+                                      <th scope="col">Bultos ingreso</th>
+                                      <th scope="col">Cantidad ingreso</th>
+                                      <th scope="col">(+/-)</th>
+                                      <th scope="col">C.I.F</th>
+                                      <th scope="col">V.I.U</th>
+                                      <th scope="col">C.I.F(MN)</th>
+                                      <th scope="col">Precio_Compra(MN)</th>
+                                      <th scope="col">Total factura</th>
+                                      <th scope="col">Gastos(MN)</th>
+                                      <th scope="col">CIF tierra(MN)</th>
+                                      <th scope="col">Total_Costo_Final</th>
+                                      <th scope="col">Acción</th>
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}

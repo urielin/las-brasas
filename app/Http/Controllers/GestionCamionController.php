@@ -25,7 +25,8 @@ class GestionCamionController extends Controller
       $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
       SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-      $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
+      // $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
+      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
       // $year->distinct();
       // $year= DbsysCamiones::select(date('Y', strtotime('fecha_llegada')))->get();
@@ -121,7 +122,8 @@ class GestionCamionController extends Controller
 
           if ($request -> ajax()) {
             // try{
-        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
+        // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
+        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '1' ");
 
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion = '$request->clasificacion_id'
         //     	UNION
@@ -145,70 +147,61 @@ class GestionCamionController extends Controller
 
   public function test(Request $request)
   {
+  // ----------------------  Union de tablas inner join  ----------------------
 
-    // $documento=DbsysCamiones::get();
-    // return $documento;
+  // $documento=DB::select("SELECT  ingreso_zeta FROM dbsys.camiones  WHERE codigo = '15PO15' ");
+  // $doc=$documento
+  // return $doc;
 
-//     $data = [
-// ['nombre' => 'Pablo'],
-// ['nombre' => 'Pedro'],
-// ['nombre' => 'Luis'],
-// ];
-    //   $data[1][1]='A';
-    //   $data[1][2]='B';
-    //   $data[1][3]='C';
-    //   $data[2][1]='D';
-    //   $data[2][2]='E';
-    //   $data[2][3]='F';
-    // // return view('test')->with(compact('data')) ;
-    // return $data;
+  // $camiones=DB::select("SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
+  // return $camiones;
 
-
-      $ingenieros= [
-              0=>  [
-                    'nombre'        =>'Diego',
-                      'especialidad'=>'Informatica'
-                   ],
-              1=>  [
-                      'nombre'      =>'Walter',
-                      'especialidad'=>'Comercial'
-                   ],
-
-              2=>  [
-                      'nombre'      =>'Marco',
-                      'especialidad'=>'Minas'
-                   ]
-      ];
-
-      // return $ingenieros;
-      // $ingenieros[3]['nombre']= 'Alberth';
-      // $ingenieros[3]['especialidad']='Mecanica'
-
-      $ingenieros+= [
-      3=>  [
-              'nombre'      =>'Alberth',
-              'especialidad'=>'Mecanica'
-           ]
-         ];
-      return view('test')->with(compact('ingenieros')) ;
+// ------------Declaracion de arreglos--------------
+      // $ingenieros= [
+      //         0=>  [
+      //                 'nombre'      =>'Diego',
+      //                 'especialidad'=>'Informatica'
+      //              ],
+      //         1=>  [
+      //                 'nombre'      =>'Walter',
+      //                 'especialidad'=>'Comercial'
+      //              ],
+      //
+      //         2=>  [
+      //                 'nombre'      =>'Marco',
+      //                 'especialidad'=>'Minas'
+      //              ]
+      // ];
+      //
+      // // return $ingenieros;
+      // // $ingenieros[3]['nombre']= 'Alberth';
+      // // $ingenieros[3]['especialidad']='Mecanica'
+      //
+      // $ingenieros+= [
+      // 3=>  [
+      //         'nombre'      =>'Alberth',
+      //         'especialidad'=>'Mecanica'
+      //      ]
+      //    ];
+      // return view('test')->with(compact('ingenieros')) ;
 
 
   }
 
-  public function getclasificacion(Request $request)
-  {
-    if ($request -> ajax()) {
-
-      $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
-
-
-          foreach ($clasificaciones as $clasificacion) {
-            $clasificacionArray[$clasificacion->CLCO_CODIGO] = $clasificacion->CLCO_DESCRIPCION ;
-          }
-          return response()->json($clasificacionArray);
-          // return $camionArray;
-      }
-  }
+  // public function getclasificacion(Request $request)
+  // {
+  //   if ($request -> ajax()) {
+  //
+  //     $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+  //
+  //
+  //         foreach ($clasificaciones as $clasificacion) {
+  //           $clasificacionArray[$clasificacion->cod_int] = $clasificacion->desc01 ;
+  //         }
+  //         return response()->json($clasificacionArray);
+  //         // return $camionArray;
+  //     }
+  // }
     public function gettablecamion(Request $request)
     {
       if ($request -> ajax()) {
@@ -222,8 +215,15 @@ class GestionCamionController extends Controller
           // $documento=Test::where('camion','17M30')->get();
           // $documento2=Test::where('camion','17M30')->get();
 
-          $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
+          // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
 
+          $documentos=DB::select("SELECT * FROM dbsys.camiones c
+                                inner join dbsys.camiones_detalle cd
+                                on c.id_camion = cd.id_camion
+                                where c.codigo ='$request->camion_id'");
+
+          // SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
+          // return $camiones;
           // $sql = "SELECT ad.doc_ingreso, a.nro_traslado AS zeta, ad.codigo_mercancia, ad.cantidad
 			    //    FROM   ADM_TRASLADO_SALIDA_EXT a INNER JOIN ADM_TRASLADO_SALIDA_DET_EXT ad ON a.folio = ad.folio
 			    //    WHERE  (a.zeta = $documento->ingreso_zeta)";
@@ -240,9 +240,10 @@ class GestionCamionController extends Controller
           //   $documento=$documento2;
           //   // $documento->get();
           // }
-          return response()->json(
-              $documento->toArray()
-          );
+          // foreach ($documento as $documento) {
+          //   $camionArray['descripcion'] = $camion->descripcion ;
+          // }
+          return response()->json($documentos);
 
 
       }
