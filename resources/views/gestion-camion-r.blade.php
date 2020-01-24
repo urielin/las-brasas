@@ -83,11 +83,11 @@
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>
                                   </li>
-                                  <li class="nav-item">
+                                  {{-- <li class="nav-item">
                                       <a class="nav-link" href="#messages2" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camion</i>
                                       </a>
-                                  </li>
+                                  </li> --}}
                               </ul>
                           </div>
                       </div>
