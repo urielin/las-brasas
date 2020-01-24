@@ -298,10 +298,10 @@
                     <div class="collapse " id="navbar-maestro1" style="">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                            <a href="{{route('gestion-camion')}}" class="nav-link">En recepcion</a>
+                            <a href="{{route('gestion-camion')}}" class="nav-link">Para recepción</a>
                           </li>
                           <li class="nav-item">
-                            <a href="{{route('gestion-camion')}}" class="nav-link">Recepcionados</a>
+                            <a href="{{route('gestion-camion-r')}}" class="nav-link">Recepcionados</a>
                           </li>
                         </ul>
                       </div>
@@ -364,8 +364,11 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 
-    <script src="{{ asset('js/las-brasas.js') }}"></script>
 
 
 </body>
 </html>
+
+  @yield('js')
+
+  <script src="{{ asset('js/las-brasas.js') }}"></script>

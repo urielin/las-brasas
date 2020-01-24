@@ -10,6 +10,7 @@ use App\GestionCamion;
 use App\Test;
 use App\DbsysCamiones;
 use App\AdmTrasladoSalidaExt;
+use Validator;
 
 class GestionCamionController extends Controller
 {
@@ -51,6 +52,17 @@ class GestionCamionController extends Controller
 
     }
 
+    public function indexr()
+    {
+
+      $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+      SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      $datos=GestionCamion::where('camion', '0')->get();
+
+      return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -69,7 +81,28 @@ class GestionCamionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+          'first_name' => 'required',
+          'last_name'  => 'required'
+        );
+
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails())
+        {
+          return response()->json(['errors'=>$error->errors()->all]);
+        }
+
+        $form_data = array(
+          'first_name'    => $request->first_name,
+          'last_name'     => $request->last_name
+        );
+
+        Sample_data::create($form_data);
+
+        return response()->json([
+          'success'  => 'Data Added successfully.'
+        ]);
     }
 
     /**
@@ -106,6 +139,25 @@ class GestionCamionController extends Controller
         // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
             return view('gestion-camion')->with(compact('datos'))->with(compact('clasificaciones'));
+
+    }
+
+    public function showr(Request $request)
+    {
+        $request->validate([
+          'codigo' => 'required',
+        ]);
+
+      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
+
+        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+        return view('gestion-camion-r')->with(compact('datos'))->with(compact('clasificaciones'));
 
     }
 
@@ -157,6 +209,24 @@ class GestionCamionController extends Controller
             return response()->json($camionArray);
           }
           // return $camionArray;
+        }
+    }
+
+    public function getCamionr(Request $request)
+    {
+
+          if ($request -> ajax()) {
+              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '2' ");
+              if ($camiones != null) {
+                foreach ($camiones as $camion) {
+                  $camionArray[$camion->camion] = $camion->camion ;
+                }
+                return response()->json($camionArray);
+
+              }else {
+                $camionArray['1'] = 'Camiones no encontrados' ;
+                return response()->json($camionArray);
+              }
         }
     }
   // $datos=GestionCamion::where('camion', $request->codigo)->get();
@@ -267,6 +337,22 @@ class GestionCamionController extends Controller
           // }
           return response()->json($documentos);
 
+
+      }
+    }
+
+    public function gettablecamionr(Request $request)
+    {
+      if ($request -> ajax()) {
+              $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+              ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+              , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+              inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+              inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+              left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+              WHERE  c.codigo ='$request->camion_id' ");
+
+          return response()->json($documentos);
 
       }
     }
