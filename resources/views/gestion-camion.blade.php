@@ -60,10 +60,10 @@
                               <ul class="nav nav-tabs" data-tabs="tabs">
                                   <li class="nav-item">
                                       <a class="nav-link active " href="#profile" data-toggle="tab">
-                                          <i style=" font-style: normal; " class="material-icons">Habilitar la venta</i>
+                                          <i style=" font-style: normal; " class="material-icons">Consistencia de mercancía</i>
                                       </a>
                                   </li>
-                                  <li class="nav-item">
+                                  <!-- <li class="nav-item">
                                       <a class="nav-link" href="#messages" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Consistencia de mercancía</i>
                                       </a>
@@ -77,7 +77,7 @@
                                       <a class="nav-link" href="#messages3" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Boqueo por ítems</i>
                                       </a>
-                                  </li>
+                                  </li> -->
                               </ul>
                           </div>
                       </div>

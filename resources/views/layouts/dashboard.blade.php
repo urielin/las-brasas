@@ -33,6 +33,7 @@
     <link href="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
+    <link href="{{ asset('assets\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div class="loader loader-6 d-none cyan full-loader" id="loader-6">
@@ -346,9 +347,20 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 
-    <script src="{{ asset('js/las-brasas.js') }}"></script>
 
-    
+    <!--   Core   -->
+    <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!--   Optional JS   -->
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
+    <!--   Argon JS   -->
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
+
+    <script src="{{ asset('js/las-brasas.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.1') }}"></script>
 </body>
 </html>
 
