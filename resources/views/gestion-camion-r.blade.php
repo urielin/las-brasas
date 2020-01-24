@@ -4,14 +4,14 @@
 
   <div class="main-content">
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
-      <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >Contenedores / Camiones - PARA RECEPCIÓN</p>
+      <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >Contenedores / Camiones - RECEPCIONADOS</p>
 
         <br><br>
 
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
               <div class="form-group">
-                {!! Form::open(['route' => ['showCamion'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                 @csrf
                 <label for="buscar-codigo-camion">Buscar camión</label>
                 <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
@@ -38,7 +38,7 @@
 
             <div class="form-group col-6">
               <label for="camion">Clasificar camión </label>
-              <select class="form-control" id="clasificacion">
+              <select class="form-control" id="clasificacionr">
                 @foreach ($clasificaciones as $clasificacion)
 
                   <option value="{{$clasificacion->desc01}}" >{{$clasificacion->desc01}}</option>
@@ -49,7 +49,7 @@
 
             <div class="form-group col-6">
               <label for="camion">Seleccionar camión </label>
-              <select class="form-control" id="camion">
+              <select class="form-control" id="camionr">
 
               </select>
             </div>
@@ -78,7 +78,7 @@
                                           <i style=" font-style: normal; " class="material-icons">Detalle</i>
                                       </a>
                                   </li>
-                                  <!-- <li class="nav-item">
+                                  <li class="nav-item">
                                       <a class="nav-link" href="#messages" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>

@@ -40,3 +40,21 @@ Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
 Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
 
 Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');
+
+Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
+
+
+Route::get('/test', 'GestionCamionController@test')->name('test');
+
+// ---------------------
+
+Route::get('/gestion-camion-r', 'GestionCamionController@indexr')->name('gestion-camion-r');
+
+Route::get('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
+//
+//
+Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
+//
+Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('gettableCamion-r');
+//
+// Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');

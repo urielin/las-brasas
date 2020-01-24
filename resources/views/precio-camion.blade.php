@@ -18,7 +18,7 @@
           </select>
           </form>
         </div>
-<!-- 
+<!--
         <div class="col-4">
           <label class="h4 mb-0 text-white d-lg-inline-block" for="usr">Camión</label>
           <button type="button" class="btn btn-primary btn-sm">Agregar/Retirar</button>
@@ -67,7 +67,7 @@
           </div>
 
             <!-- Projects table -->
-      
+
           </div>
         </div>
 
@@ -77,7 +77,7 @@
         </div>
       </div>
 
-    
+
     <!-- Footer -->
 
     </div>

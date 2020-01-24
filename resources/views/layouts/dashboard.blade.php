@@ -276,11 +276,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#navbar-maestro" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-maestro">
+            <a class="nav-link " href="#navbar-maestro" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maestro">
               <i class="ni ni-planet text-blue"></i>
               <span class="nav-link-text">Maestro</span>
             </a>
-            <div class="collapse show" id="navbar-maestro" style="">
+            <div class="collapse " id="navbar-maestro" style="">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
                     <a href="{{route('precio-camion')}}" class="nav-link">Precios unitarios</a>
@@ -292,8 +292,22 @@
                     <a href="{{route('tipo-cambio')}}" class="nav-link">Tipo de cambio</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('gestion-camion')}}" class="nav-link">Gestión de camiones</a>
+                    <a class="nav-link " href="#navbar-maestro1" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maestro">
+                      {{-- <i class="ni ni-planet text-blue"></i> --}}
+                      <span class="nav-link-text">Gestión de camiones</span>
+                    </a>
+                    <div class="collapse " id="navbar-maestro1" style="">
+                        <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                            <a href="{{route('gestion-camion')}}" class="nav-link">Para recepción</a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{route('gestion-camion-r')}}" class="nav-link">Recepcionados</a>
+                          </li>
+                        </ul>
+                      </div>
                   </li>
+
                 </ul>
               </div>
           </li>
@@ -314,6 +328,10 @@
             <a class="nav-link " href="./">
               <i class="ni ni-bullet-list-67 text-red"></i> Contenedores y Camiones
             </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('test')}}" class="nav-link">Test</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="./examples/login.html">
@@ -364,6 +382,6 @@
 </body>
 </html>
 
+  @yield('js')
 
-
-
+  <script src="{{ asset('js/las-brasas.js') }}"></script>
