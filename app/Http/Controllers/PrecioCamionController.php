@@ -25,8 +25,14 @@ class PrecioCamionController extends Controller
         $clasificacion=$request->get('clasificacion') ? $request->get('clasificacion') : '1';
         $datos['clasificacion']=$clasificacion;
         // $datos['PrecioCamion']=PrecioCamion::paginate(10);
-        $datos['PrecioCamion']=DB::select("SELECT * FROM dbo.Precios_Camiones($clasificacion, '', '') ORDER BY descripcion");
+        $datos['PrecioCamion']=DB::select("SELECT *
+        FROM dbo.Precios_Camiones($clasificacion, '', '') left join dbo.bodega_id_ofertas
+        on dbo.bodega_id_ofertas.id_camion = dbo.Precios_Camiones.camion and 
+        dbo.bodega_id_ofertas.id_corte = dbo.Precios_Camiones.codigo 
+        WHERE estado = 1 or estado IS NULL
+        ORDER BY descripcion");
         // dd($preciosCamiones);
+        
         $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)
                                                                 ->orderBy('cod_int')
                                                                 ->get();
@@ -98,12 +104,15 @@ class PrecioCamionController extends Controller
         $precio=$request->get('publico');
         $mayorista=$request->get('mayor');
         $clasificacion=$request->get('clasificacion');
+        $fecha_baja=$request->get('fecha_baja');
+        $fecha_baja=date('d-m-Y H:i:s', strtotime($fecha_baja));
+        // $fecha_baja=substr($fecha_baja, 0, -3);
         // $app = BodegaIdOfertas::find(1);
         // $app->name = $request->name;
         // $app->email = $request->email;
         // $app->save();
         
-        // return $request;
+        // return $fecha_baja;
         // buscar si existe y actualizar estado a 0
         try{
             $BodegaIdOfertas = BodegaIdOfertas::firstOrNew(
@@ -112,28 +121,32 @@ class PrecioCamionController extends Controller
 
             if($BodegaIdOfertas->exists){
                 
-                // $BodegaIdOfertas->estado = 2;
-                // ACTUALIZA EL ESTADO A 2 PARA DESABILITARLO
+                // $BodegaIdOfertas->estado = 0;
+                // ACTUALIZA EL ESTADO A 0 PARA DESABILITARLO
                 
                 $BodegaIdOfertas___ = BodegaIdOfertas::where('id_camion', $id_camion)
                 ->where('id_corte', $id_corte)->where('estado', 1)
-                ->update(['estado' => 0,'usuario' => $user,'fecha_baja' => $fecha_actual]);
+                ->update([
+                'precio' => $precio,
+                'mayorista' => $mayorista,
+                'fecha_baja' => $fecha_baja      
+                            ]);
                 
             }else{
-       
-                
+                // CREA UN NUEVO ITEM CON ESTADO A 1
+                $BodegaIdOfertas = new BodegaIdOfertas;
+                $BodegaIdOfertas->id_camion = $id_camion;
+                $BodegaIdOfertas->id_corte = $id_corte;
+                $BodegaIdOfertas->precio = $precio;
+                $BodegaIdOfertas->mayorista = $mayorista;
+                $BodegaIdOfertas->estado = 1;
+                $BodegaIdOfertas->usuario = $user;
+                $BodegaIdOfertas->fecha = $fecha_actual;
+                $BodegaIdOfertas->save();
 
             }
             // CREA UN NUEVO ITEM CON ESTADO A 1
-            $BodegaIdOfertas = new BodegaIdOfertas;
-            $BodegaIdOfertas->id_camion = $id_camion;
-            $BodegaIdOfertas->id_corte = $id_corte;
-            $BodegaIdOfertas->precio = $precio;
-            $BodegaIdOfertas->mayorista = $mayorista;
-            $BodegaIdOfertas->estado = 1;
-            $BodegaIdOfertas->usuario = $user;
-            $BodegaIdOfertas->fecha = $fecha_actual;
-            $BodegaIdOfertas->save();
+
 
             // $BodegaIdOfertas->save();
          }
@@ -142,8 +155,13 @@ class PrecioCamionController extends Controller
             return $e->getMessage();   // insert query
          }
         
-         $datos['PrecioCamion']=DB::select("SELECT * FROM dbo.Precios_Camiones($clasificacion, '', '') ORDER BY descripcion");
-          return view('table-precio-camion', $datos);
+         $datos['PrecioCamion']=DB::select("SELECT *
+         FROM dbo.Precios_Camiones($clasificacion, '', '') left join dbo.bodega_id_ofertas
+         on dbo.bodega_id_ofertas.id_camion = dbo.Precios_Camiones.camion and 
+         dbo.bodega_id_ofertas.id_corte = dbo.Precios_Camiones.codigo 
+         WHERE estado = 1 or estado IS NULL
+         ORDER BY descripcion");
+         return view('table-precio-camion', $datos);
  
         //actualizar estado a 0 
         // $BodegaIdOfertas = BodegaIdOfertas::updateOrCreate(

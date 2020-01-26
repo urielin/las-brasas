@@ -1,16 +1,24 @@
 
   $(document).ready(function(){
-      $('.mostrar-info').click(function(){
-         var data=$(this).data();
-        console.log(data);
-         $('#formalModal #codigo').val(data.codigo);
-         $('#formalModal #descripcion').val(data.descripcion);
-         $('#formalModal #camion').val(data.camion);
-         $('#formalModal #publico').val(data.publico);
-         $('#formalModal #mayor').val(data.mayor);
-         $('#formalModal').modal('show');
-      });
+      function asignarEventoModalCeldas(){
+        $('.mostrar-info').click(function(){
+          var data=$(this).data();
+          // console.log(data);
+          // debugger
+          $('#formalModal #codigo').val(data.codigo);
+          $('#formalModal #descripcion').val(data.descripcion);
+          $('#formalModal #camion').val(data.camion);
+          $('#formalModal #publico').val(data.publico);
+          $('#formalModal #mayor').val(data.mayor);
+          //  fecha_baja= fecha_baja.datepicker.formatDate( "mm/dd/yyyy", new Date(data.fecha_baja));
+          $('#formalModal #fecha_baja').val(data.fecha_baja);
+          $('#formalModal #interval').val(data.interval);
+          console.log(data.fecha_baja);
+          $('#formalModal').modal('show');
 
+        });
+      }
+      asignarEventoModalCeldas();
       $('#actualizar_precio').on('submit', function(event){
         // form_=new FormData(this);
         event.preventDefault();
@@ -60,16 +68,7 @@
             // desactivar loader
             setTimeout(function() {$('div.loader-6').addClass('d-none'); }, 1500);
             // asignar evento a celdas
-            $('.mostrar-info').click(function(){
-              var data=$(this).data();
-              console.log(data);
-              $('#formalModal #codigo').val(data.codigo);
-              $('#formalModal #descripcion').val(data.descripcion);
-              $('#formalModal #camion').val(data.camion);
-              $('#formalModal #publico').val(data.publico);
-              $('#formalModal #mayor').val(data.mayor);
-              $('#formalModal').modal('show');
-           });
+            asignarEventoModalCeldas();
           });
 
           request.fail(function( jqXHR, textStatus ) {
@@ -184,7 +183,6 @@
 
       $('#camion').on('change', function(){
         var camion_id = $(this).val();
-
         // console.log(camion_id);
         if($.trim(camion_id) != ''){
             request=$.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -273,7 +271,10 @@
 
         }
       });
-
+      $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'es'
+    });
       // $('#buscar-codigo-camion').on('submit', function(){
       //   var camion_cod = $(this).val();
       //   // console.log(camion_id);

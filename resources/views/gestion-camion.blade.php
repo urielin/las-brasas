@@ -78,7 +78,7 @@
                                           <i style=" font-style: normal; " class="material-icons">Detalle</i>
                                       </a>
                                   </li>
-                                  <li class="nav-item">
+                                  <!-- <li class="nav-item">
                                       <a class="nav-link" href="#messages" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>

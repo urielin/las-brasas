@@ -44,7 +44,7 @@
                       <h1 class="mb-0">Saldo por camiones        </h2>
                     </div>
                     <div class="col-4">
-                      <button type="button" class="btn btn-primary">Imprimir</button>
+                      <!-- <button type="button" class="btn btn-primary">Imprimir</button> -->
                       <a href="{{route('precio-camion')}}" type="button" class="btn btn-success">Actualizar</a>
                     </div>
                     <div class="col-4">
@@ -60,11 +60,11 @@
           </div>
           <div class="table-responsive  table-hover">
           <div id="table-precio-camion" class="table-responsive">
-           <!-- Projects table -->
+           <!--  tabla -->
            @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])
-
-
-          </div> 
+            <!--  endtabla -->
+ 
+          </div>
 
             <!-- Projects table -->
 
@@ -108,21 +108,32 @@
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-4 mb-0">Descripción: </label>
-                <textarea id="descripcion" type="text" name="descripcion"  class="form-control col-md-8 form-control-alternative" disabled> </textarea>
+                <input id="descripcion" type="text" name="descripcion"  class="form-control col-md-8 form-control-alternative" disabled> 
 
             </div>
 
 
             <div class="form-group row">
               <label class="control-label col-md-4">Precio público: </label>
-
-              <input id="publico" type="text" name="publico"  class="form-control col-md-8" id="example" placeholder "name@example.com">
+              
+              <input id="publico" type="text" name="publico"  class="form-control col-md-8" id="example" placeholder ="">
 
             </div>
             <div class="form-group row">
               <label class="control-label col-md-4">Precio mayorista: </label>
               <input id="mayor" type="text" name="mayor" class="form-control col-md-8">
             </div>
+
+          <div class="form-group row">
+              <div class="input-group ">
+                  <label class="control-label col-md-4" for="exampleDatepicker">Fecha de caducidad</label>
+
+                  <div class="input-group-prepend ">
+                          <span class="input-group-text"><i class="ni ni-calendar-grid-58" style=" max-height: 46px; "></i></span>
+                  </div>
+                  <input id="fecha_baja"  name="fecha_baja" class="form-control datepicker col-md-8" placeholder="Selecciona una fecha" type="text" value="">
+              </div>
+          </div>
             <br>
             <div class="form-group align-center">
               <input type="hidden" name="hidden_id" id="hidden_id">
