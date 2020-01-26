@@ -101,6 +101,9 @@
                                 <tr>
 
                             </div> --}}
+                            {{-- <input type="submit" class="edit" name="" value="edit"> --}}
+                            {{-- <button type="button" id="editar-gestion" class=" btn-block btn btn-danger "  >Editar</button> --}}
+
                             <div class="row">
                               <div class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
@@ -144,7 +147,7 @@
                                       </label>
                                       </td>
                                       <td>
-                                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="#" id="{{$item->nro_item}}"  class="editar-gestion btn btn-warning btn-sm">Editar</a>
 
                                       </td>
                                       <td>
@@ -207,6 +210,8 @@
                                     @endphp
                                       {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
                                   @endforeach
+
+                                    <input type="hidden" id="camion-codigo" value="{{$item->codigo}}">
 
                                   <tr >
                                     <td>
@@ -293,10 +298,7 @@
                                   <button type="button" class="btn-block btn btn-success">Agregar Datos de Camión</button>
                                 </div>
                                 <div class="col-4">
-                                  <button type="button" id="create_record" class=" btn-block btn btn-danger "  >
-                                    <div class="overflow-auto">
-                                      Fechas Embarque Cierre y Llegada
-                                    </div></button>
+                                  <button type="button" id="create_record" class=" btn-block btn btn-danger "  >Fechas Embarque Cierre y Llegada</button>
                                 </div>
                                 <div class="col-4">
                                   <button type="button" class="btn-block btn btn-warning">Forma y Fecha de Pago</button>
@@ -404,19 +406,82 @@
             <span id="form_result"></span>
             <form  method="post" id="sample_form" class="form-horizontal">
               @csrf
-              <div class="form-group row">
-                <label class="control-label col-md-4">First Name: </label>
-                <div class="col-md-8">
-                  <input type="text" name="first_name" id="first_name" class="form-control">
-                </div>
+
+              <div class="row">
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Nro item: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="nro_item" id="nro_item" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Código: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="codigo" id="codigo" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Cantidad cierre: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Bultos ingreso: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Cantidad ingreso: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Cif moneda ext: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="Cif moneda ext:" id="Cif moneda ext:" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Viu moneda nal: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="Viu moneda nal:" id="Viu moneda nal:" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group row">
+                        <label class="control-label col-md-4">Precio compra: </label>
+                        <div class="col-md-8">
+                          <input type="text" name="precio_compra" id="precio_compra" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
               </div>
 
-              <div class="form-group row">
-                <label class="control-label col-md-4">Last Name: </label>
-                <div class="col-md-8">
-                  <input type="text" name="last_name" id="last_name" class="form-control">
-                </div>
-              </div>
+
+
               <br />
               <div class="form-group" align="center">
                 <input type="hidden" name="action" id="action" value="Add">

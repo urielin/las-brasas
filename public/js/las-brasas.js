@@ -347,4 +347,65 @@
         });
       });
 
+      // $('.editar-gestion').on('click',function(){
+      //   console.log('se clicqueoooooo');
+      // });
+
+      $('.editar-gestion').on('click', function(){
+
+
+        var item_id =$(this).attr('id');
+        var camion_id = $('#camion-codigo').val();
+
+        // console.log(camion_id);
+
+          request=$.get('item-camion',{item_id:item_id,camion_id:camion_id },function(res){
+               $.each(res, function(index,value){
+
+
+                 
+               });
+          });
+
+          //
+          request.done(function( msg ) {
+            $( "#log" ).html( msg );
+            console.log(msg);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR.responseText,textStatus);
+            alert( "Request failed: " + textStatus + jqXHR.responseText);
+          });
+
+      });
+
+
+
+      $('.editar-gestionE').on('click',function(){
+
+
+
+        // console.log('se cliqueooooo');
+
+        // $('#formModal').modal('show');
+        var id= $(this).attr('id');
+        $('#form_result').html('');
+        $.ajax({
+          url : "/sample/"+id+"/edit",
+          dataType:"json",
+          success:function(data)
+          {
+            // $('#first_name').val('valor nombre');
+            // $('#last_name').val('valor apellido');
+            // $('#hidden_id').val(id);
+            // $('.modal-tittle').text('Edit Record');
+            $('#action_button').val('Edit');
+            $('#action').text('Edit');
+            $('#formModal').modal('show');
+
+          }
+        })
+      });
+
   });
