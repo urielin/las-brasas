@@ -18,17 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'UsuariosController@index')->name('home');
-
 Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
-
 Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
-
 Route::get('/tipo-cambio', 'TipoCambioController@index')->name('tipo-cambio');
-
 Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
-
 Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
-
 Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
 Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
 Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
