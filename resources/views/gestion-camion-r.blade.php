@@ -103,7 +103,7 @@
                             </div> --}}
                             <div class="row">
                               <div class="table-responsive table-hover">
-                                <table  class="table align-items-center table-flush">
+                                <table  class="table align-items-left table-flush">
                                   <thead class="thead-light">
                                     <tr>
                                       <th scope="col">Bloqueo</th>
@@ -137,66 +137,46 @@
 
                                   @foreach ($datos as $item)
                                     <tr >
+                                      @php
+                                        if ($item->bloqueo_2 == '1') {
+                                          @endphp
+                                          <td>
+                                          <label class="custom-toggle custom-toggle-default">
+                                            <input type="checkbox" checked  class="btn-switch">
+                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                          </label>
+                                          </td>
+                                          @php
+                                        }
+                                        else {
+                                          @endphp
+                                          <td>
+                                          <label class="custom-toggle custom-toggle-default">
+                                            <input type="checkbox"  class="btn-switch">
+                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                          </label>
+                                          </td>
+                                          @php
+                                        }
+                                      @endphp
                                       <td>
-                                      <label class="custom-toggle custom-toggle-default">
-                                        <input type="checkbox" checked="">
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                      </label>
+                                        <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
                                       </td>
-                                      <td>
-                                        <a href="#" class="edit btn btn-warning btn-sm">Editar</a>
-
-                                      </td>
-                                      <td>
-                                        {{$item->nro_item}}
-                                      </td>
-                                      <td>
-                                        {{$item->codigo}}
-                                      </td>
-                                      <td>
-                                        {{-- {{$item->producto}} --}}
-                                        {{$item->producto}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_cierre}}
-                                      </td>
-                                      <td>
-                                        {{$item->bultos_ingreso}}
-                                        {{-- F-bultos_ingresos --}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_ingreso}}
-                                        {{-- F-cantidad_ingresos --}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_diferencia}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_moneda_ext}}
-                                      </td>
-                                      <td>
-                                        {{$item->viu_moneda_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_moneda_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->precio_compra}}
-                                      </td>
-                                      <td>
-                                        {{$item->total_compra}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_adicional_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_final_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->total_costo}}
-                                      </td>
-
-
+                                      <td>{{$item->nro_item}}</td>
+                                      <td>{{$item->codigo}}</td>
+                                      <td>{{$item->producto}}</td>
+                                      <td>{{$item->cantidad_cierre}}</td>
+                                      <td>{{$item->bultos_ingreso}}</td>
+                                      <td>{{$item->cantidad_ingreso}}</td>
+                                      <td>{{$item->cantidad_diferencia}}</td>
+                                      <td>{{$item->cif_moneda_ext}}</td>
+                                      <td>{{$item->viu_moneda_nal}}</td>
+                                      <td>{{$item->cif_moneda_nal}}</td>
+                                      <td>{{$item->precio_compra}}</td>
+                                      <td>{{$item->total_compra}}</td>
+                                      <td>{{$item->cif_adicional_nal}}</td>
+                                      <td>{{$item->cif_final_nal}}</td>
+                                      <td>{{$item->total_costo}}</td>
                                     </tr>
                                     @php
                                       $bi+=$item->bultos_ingreso;
@@ -397,31 +377,75 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Add New Record</h4>
+            <h4 class="modal-title">Editar producto</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
             <span id="form_result"></span>
             <form  method="post" id="sample_form" class="form-horizontal">
               @csrf
-              <div class="form-group row">
-                <label class="control-label col-md-4">First Name: </label>
-                <div class="col-md-8">
-                  <input type="text" name="first_name" id="first_name" class="form-control">
-                </div>
-              </div>
 
-              <div class="form-group row">
-                <label class="control-label col-md-4">Last Name: </label>
-                <div class="col-md-8">
-                  <input type="text" name="last_name" id="last_name" class="form-control">
+              <div class="row container">
+
+                  <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
+                  <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
+                <div class="row pb-3">
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Nro item: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="nro_item" id="nro_item" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Cantidad Ingreso: </label>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row pb-3">
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label">Código: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="codigo" id="codigo" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-1">
+                  </div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Cantidad cierre: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                    <div class="row mb--2">
+                      <label class="control-label ">Bultos ingreso: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
+                    </div>
+                  </div>
                 </div>
               </div>
               <br />
               <div class="form-group" align="center">
-                <input type="hidden" name="action" id="action" value="Add">
-                <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add">
-
+                <input type="hidden" name="action" id="action" value="Editar">
+                <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
               </div>
             </form>
           </div>

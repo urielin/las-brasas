@@ -140,66 +140,48 @@
 
                                   @foreach ($datos as $item)
                                     <tr >
-                                      <td>
-                                      <label class="custom-toggle custom-toggle-default">
-                                        <input type="checkbox" checked="">
-                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                      </label>
-                                      </td>
+                                      @php
+                                        if ($item->bloqueo_2 == '1') {
+                                          @endphp
+                                          <td>
+                                          <label class="custom-toggle custom-toggle-default">
+                                            <input type="checkbox" checked  class="btn-switch">
+                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                          </label>
+                                          </td>
+                                          @php
+                                        }
+                                        else {
+                                          @endphp
+                                          <td>
+                                          <label class="custom-toggle custom-toggle-default">
+                                            <input type="checkbox"  class="btn-switch">
+                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                          </label>
+                                          </td>
+                                          @php
+                                        }
+                                      @endphp
+
                                       <td>
                                         {{-- <a href="#" id="{{$item->nro_item}}"  class="editar-gestion btn btn-warning btn-sm">Editar</a> --}}
                                         <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
                                       </td>
-                                      <td>
-                                        {{$item->nro_item}}
-                                      </td>
-                                      <td>
-                                        {{$item->codigo}}
-                                      </td>
-                                      <td>
-                                        {{-- {{$item->producto}} --}}
-                                        {{$item->producto}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_cierre}}
-                                      </td>
-                                      <td>
-                                        {{$item->bultos_ingreso}}
-                                        {{-- F-bultos_ingresos --}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_ingreso}}
-                                        {{-- F-cantidad_ingresos --}}
-                                      </td>
-                                      <td>
-                                        {{$item->cantidad_diferencia}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_moneda_ext}}
-                                      </td>
-                                      <td>
-                                        {{$item->viu_moneda_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_moneda_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->precio_compra}}
-                                      </td>
-                                      <td>
-                                        {{$item->total_compra}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_adicional_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->cif_final_nal}}
-                                      </td>
-                                      <td>
-                                        {{$item->total_costo}}
-                                      </td>
-
-
+                                      <td>{{$item->nro_item}}</td>
+                                      <td>{{$item->codigo}}</td>
+                                      <td>{{$item->producto}}</td>
+                                      <td>{{$item->cantidad_cierre}}</td>
+                                      <td>{{$item->bultos_ingreso}}</td>
+                                      <td>{{$item->cantidad_ingreso}}</td>
+                                      <td>{{$item->cantidad_diferencia}}</td>
+                                      <td>{{$item->cif_moneda_ext}}</td>
+                                      <td>{{$item->viu_moneda_nal}}</td>
+                                      <td>{{$item->cif_moneda_nal}}</td>
+                                      <td>{{$item->precio_compra}}</td>
+                                      <td>{{$item->total_compra}}</td>
+                                      <td>{{$item->cif_adicional_nal}}</td>
+                                      <td>{{$item->cif_final_nal}}</td>
+                                      <td>{{$item->total_costo}}</td>
                                     </tr>
                                     @php
                                       $bi+=$item->bultos_ingreso;

@@ -59,4 +59,5 @@ Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('
 //
 Route::post('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');
 
+Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');
 // Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');

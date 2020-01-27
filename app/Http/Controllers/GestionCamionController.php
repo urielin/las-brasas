@@ -117,22 +117,14 @@ class GestionCamionController extends Controller
         $request->validate([
           'codigo' => 'required',
         ]);
-        // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-        // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        // $datos=DB::select("SELECT * FROM dbsys.camiones c
-        //                       inner join dbsys.camiones_detalle cd
-        //                       on c.id_camion = cd.id_camion
-        //                       where c.codigo ='$request->codigo' and estado = '1'");
-        //
-        //
-      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+      $datos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
         ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
           , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
                               inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
 							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
 							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
+								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
 
         $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
@@ -148,13 +140,13 @@ class GestionCamionController extends Controller
           'codigo' => 'required',
         ]);
 
-      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+      $datos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
         ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
           , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
                 inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
 							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
 							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
+								WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
 
         $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
         return view('gestion-camion-r')->with(compact('datos'))->with(compact('clasificaciones'));
@@ -295,20 +287,6 @@ class GestionCamionController extends Controller
     {
       if ($request -> ajax()) {
 
-          // $DATO= '13H01';
-          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE codigo = $DATO ");
-          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = '2018'");
-           // UNION
-  			   //   $documento=DB::select("SELECT   documento = zeta FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE nro_traslado  = $request->camion_id");
-
-
-          // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
-          //
-          // $documentos=DB::select("SELECT * FROM dbsys.camiones c
-          //                       inner join dbsys.camiones_detalle cd
-          //                       on c.id_camion = cd.id_camion
-          //                       where c.codigo ='$request->camion_id'");
-
                                 $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
                                   ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
                                     , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
@@ -317,27 +295,6 @@ class GestionCamionController extends Controller
                           							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
                           								WHERE  c.codigo ='$request->camion_id' ");
 
-          // SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
-          // return $camiones;
-          // $sql = "SELECT ad.doc_ingreso, a.nro_traslado AS zeta, ad.codigo_mercancia, ad.cantidad
-			    //    FROM   ADM_TRASLADO_SALIDA_EXT a INNER JOIN ADM_TRASLADO_SALIDA_DET_EXT ad ON a.folio = ad.folio
-			    //    WHERE  (a.zeta = $documento->ingreso_zeta)";
-          //
-          //    $documento=DB::select($sql);
-          // $documento1=DB::table('dbo.ADM_TRASLADO_SALIDA_EXT')
-
-            // $documento=AdmTrasladoSalidaExt::where('nro_traslado',$request->camion_id)->get();
-
-          // if ($documento1->fecha_llegada != '') {
-          //   $documento=$documento1;
-          //   $documento->get();
-          // }else {
-          //   $documento=$documento2;
-          //   // $documento->get();
-          // }
-          // foreach ($documento as $documento) {
-          //   $camionArray['descripcion'] = $camion->descripcion ;
-          // }
           return response()->json($documentos);
 
 
@@ -353,7 +310,7 @@ class GestionCamionController extends Controller
               inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
               inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
               left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-              WHERE  c.codigo ='$request->camion_id' ");
+              WHERE  c.codigo ='$request->camion_id' and cd.bloqueo_2='1' ");
 
           return response()->json($documentos);
 
@@ -370,6 +327,17 @@ class GestionCamionController extends Controller
     {
 
 
+    }
+
+    public function switchitem(Request $request)
+    {
+          if ($request -> ajax()) {
+    
+            DB::update("UPDATE dbsys.camiones_detalle
+                            set bloqueo_2='$request->bloqueo_2_id'
+                            where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");
+              return response()->json();
+          }
     }
 
     public function updateitem(Request $request)
