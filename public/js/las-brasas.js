@@ -259,18 +259,15 @@
             // value.total_costo
              $.each(res, function(index,value){
 
-               if (value.bultos_ingreso == '1') {
-                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox" checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+               if (value.bloqueo_2 == '1' ) {
+                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                } else {
-                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox" > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                 $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                }
-
-
-
-                 bi+=parseFloat(value.bultos_ingreso);
-                 ci+=parseFloat(value.cantidad_ingreso);
+                  bi+=parseFloat(value.bultos_ingreso);
+                  ci+=parseFloat(value.cantidad_ingreso);
                   mm+=parseFloat(value.cantidad_diferencia);
                   tf+=parseFloat(value.total_compra);
                   tcf+= parseFloat(value.total_costo);
@@ -289,8 +286,6 @@
             console.log(jqXHR.responseText,textStatus);
             alert( "Request failed: " + textStatus + jqXHR.responseText);
           });
-
-
 
         }
       });
@@ -365,10 +360,7 @@
       //   console.log('se clicqueoooooo');
       // });
 
-
-
-
-
+// --------------------------------------------------
 
       $(document).on('click','.editar-gestion',function(){
 
@@ -399,7 +391,7 @@
 
       });
 
-
+      // --------------------------------------------------
 
       $('.editar-gestionE').on('click',function(){
 
@@ -422,7 +414,9 @@
           }
         })
       });
+
 // --------------------------------------------------
+
 $(document).on('change','.btn-switch',function(){
 
       var valores = new Array();
@@ -477,16 +471,7 @@ $(document).on('change','.btn-switch',function(){
 
       });
 
-
-
-  // $('.editar-gestion').on('click',function(){
-  //   console.log('se clicqueoooooo');
-  // });
-
-
-
-
-
+// ------------------------------------------------------------------------
 
   $(document).on('click','.editar-gestion',function(){
 
@@ -512,4 +497,5 @@ $(document).on('change','.btn-switch',function(){
           $('#formModal').modal('show');
 
         });
+// ------------------------------------------------------
   });

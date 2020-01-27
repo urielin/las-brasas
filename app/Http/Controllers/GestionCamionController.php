@@ -310,7 +310,7 @@ class GestionCamionController extends Controller
               inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
               inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
               left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-              WHERE  c.codigo ='$request->camion_id' and cd.bloqueo_2='1' ");
+              WHERE  c.codigo ='$request->camion_id'");
 
           return response()->json($documentos);
 
