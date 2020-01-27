@@ -62,7 +62,6 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -228,7 +227,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('precio-camion')}}" class="nav-link">
+                    <a href="{{route('product.index')}}" class="nav-link">
                       <span class="sidenav-mini-icon">C</span>
                       <span class="sidenav-normal"> Catalogo de producto </span>
                     </a>
@@ -336,5 +335,4 @@
 </html>
 
   @yield('js')
-
 

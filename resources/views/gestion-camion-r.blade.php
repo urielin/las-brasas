@@ -144,7 +144,7 @@
                                       </label>
                                       </td>
                                       <td>
-                                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
+                                        <a href="#" class="edit btn btn-warning btn-sm">Editar</a>
 
                                       </td>
                                       <td>
