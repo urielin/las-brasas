@@ -48,7 +48,7 @@ $(document).ready(function(){
     let id = $(this).data("id");
     //$(event.target).closest('#catalogoTable tr td'+`#${id}`).prop("contentEditable", true);
       var currentTD = $(this).parents('tr').find('td'+`#${id}`);
-      if (currentTD == id) {
+      if (currentTD) {
           $.each(currentTD, function () {
               $(this).prop('contenteditable', true)
           });
@@ -98,14 +98,17 @@ $(document).ready(function(){
       let params = await findName(data[i].CODI_RCODIGO);
       if (i >= 1) {
         array[i] = `<tr>
-
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].CODI_PADRE}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].CODI_RCODIGO}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${params[0].CODI_RNOMBRE}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].factor_multi}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].factor_div}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].tipo}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].ESTADO}</td>
+                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>
+                         ${data[i].tipo == 1 ? "POR CAJA" : "FACTORIZADO"}
+                      </td>
+                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>
+                         ${data[i].ESTADO == 1 ? "SI" : "NO"}
+                      </td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].USUARIO}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].FECHA_REG}</td>
                       <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>
@@ -319,6 +322,30 @@ $(document).ready(function(){
     }
     return array;
   }
+  function setCatalogoEstado(data) {
+    let state;
+    if (data == 1) {
+       state = `<option value='1' selected>Si</option>
+                   <option value='0'>No</option>`;
+    }
+    if(data == 0) {
+       state = `<option value='1' >Si</option>
+                   <option value='0' selected>No</option>`;
+    }
+    return state;
+  }
+   function setCatalogoTipo() {
+     let tipo;
+     if (data[i].tipo == 1) {
+       tipo = `<option value='1' selected>POR CAJA</option>
+                    <option value='2'>FACTORIZADO</option>`;
+     }
+     if (data[i].tipo == 2) {
+       tipo = `<option value='1' >POR CAJA</option>
+                    <option value='2' selected>FACTORIZADO</option>`;
+     }
+     return tipo;
+   }
   function updateNutricional() {
     let data = {
       codigo: $('#info-code').val(),

@@ -48,7 +48,7 @@ class Product extends Model
                 'CODI_RAFECTO5' => $request['CODI_RAFECTO5'],
                 'IMP_ADICIONAL' => $request['IMP_ADICIONAL'],
                 'codi_arancelario' => $request['codi_arancelario'],
-                'clco_codigo' => $request['clco_codigo'] ?? 0 ,
+                'clco_codigo' => $request['clco_codigo'],
                 'clco_codigo2' => $request['clco_codigo2'],
                 'prod_mayor' => $request['prod_mayor'],
                 'estado' => $request['estado'],
