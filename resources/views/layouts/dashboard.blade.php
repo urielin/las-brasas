@@ -325,6 +325,7 @@
 
 
     <script src="{{ asset('js/las-brasas.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.1') }}"></script> -->
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/js-cookie/js.cookie.js"></script>
