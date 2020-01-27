@@ -160,7 +160,51 @@
                                         }
                                       @endphp
                                       <td>
+<<<<<<< HEAD
                                         <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
+=======
+                                      <label class="custom-toggle custom-toggle-default">
+                                        <input type="checkbox" checked="">
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
+                                      </label>
+                                      </td>
+                                      <td>
+                                        <a href="#" class="edit btn btn-warning btn-sm">Editar</a>
+
+                                      </td>
+                                      <td>
+                                        {{$item->nro_item}}
+                                      </td>
+                                      <td>
+                                        {{$item->codigo}}
+                                      </td>
+                                      <td>
+                                        {{-- {{$item->producto}} --}}
+                                        {{$item->producto}}
+                                      </td>
+                                      <td>
+                                        {{$item->cantidad_cierre}}
+                                      </td>
+                                      <td>
+                                        {{$item->bultos_ingreso}}
+                                        {{-- F-bultos_ingresos --}}
+                                      </td>
+                                      <td>
+                                        {{$item->cantidad_ingreso}}
+                                        {{-- F-cantidad_ingresos --}}
+                                      </td>
+                                      <td>
+                                        {{$item->cantidad_diferencia}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_moneda_ext}}
+                                      </td>
+                                      <td>
+                                        {{$item->viu_moneda_nal}}
+                                      </td>
+                                      <td>
+                                        {{$item->cif_moneda_nal}}
+>>>>>>> eb808583cb749f1e6c882aebf6f8ee124c81ba13
                                       </td>
                                       <td>{{$item->nro_item}}</td>
                                       <td>{{$item->codigo}}</td>

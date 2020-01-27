@@ -287,7 +287,7 @@ class GestionCamionController extends Controller
     {
       if ($request -> ajax()) {
 
-                                $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
                                   ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
                                     , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
                                           inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
@@ -304,7 +304,7 @@ class GestionCamionController extends Controller
     public function gettablecamionr(Request $request)
     {
       if ($request -> ajax()) {
-              $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+              $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
               ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
               , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
               inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
@@ -332,7 +332,7 @@ class GestionCamionController extends Controller
     public function switchitem(Request $request)
     {
           if ($request -> ajax()) {
-    
+
             DB::update("UPDATE dbsys.camiones_detalle
                             set bloqueo_2='$request->bloqueo_2_id'
                             where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");

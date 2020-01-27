@@ -53,3 +53,10 @@
     border-left: none !important;
     box-sizing: content-box;
 }
+
+.table-warning {
+    background-color: #ffd60045 !important;
+}
+.table-warning:hover {
+    background-color: #ffd60078 !important;
+}

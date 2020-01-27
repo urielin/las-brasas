@@ -144,7 +144,7 @@
                  {{$usuario->cargo}}
                 </td>
 
-              </tr> 
+              </tr>
             @endforeach
           </tbody>
         </table>
