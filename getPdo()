@@ -1,0 +1,4 @@
+Psy Shell v0.9.12 (PHP 7.3.6 — cli) by Justin Hileman
+PHP Warning:  include(DB::connection()-;): failed to open stream: No such file or directory in C:/xampp/htdocs/laravelprojects/las-brasas-laravel/vendor/psy/psysh/src/ExecutionLoop.php on line 48
+
+Exit:  Ctrl+D

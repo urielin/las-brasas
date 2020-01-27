@@ -1,0 +1,55 @@
+.custom-toggle-slider:after {
+    font-family: inherit;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    overflow: hidden;
+    min-width: 1.66667rem;
+    margin: 0 .21667rem;
+    content: attr(data-label-off);
+    transition: all .15s ease;
+    text-align: center;
+    color: #ced4da;
+}
+.custom-toggle input:checked+.custom-toggle-slider:after {
+    right: auto;
+    left: -7px;
+    position: relative;
+    content: attr(data-label-on);
+    color: #5e72e4;
+}
+
+.td-warning {
+    border: 3px solid var(--yellow) !important;
+    border-right: none !important;
+    box-sizing: content-box;
+}
+.td-warning + td{
+    border: 3px solid var(--yellow) !important;
+    border-left: none !important;
+    box-sizing: content-box;
+}
+.td-danger {
+    border: 3px solid var(--danger) !important;
+    border-right: none !important;
+    box-sizing: content-box;
+}
+.td-danger + td{
+    border: 3px solid var(--danger) !important;
+    border-left: none !important;
+    box-sizing: content-box;
+}
+.td-success {
+    border: 3px solid var(--success) !important;
+    border-right: none !important;
+    box-sizing: content-box;
+}
+.td-success + td{
+    border: 3px solid var(--success) !important;
+    border-left: none !important;
+    box-sizing: content-box;
+}
