@@ -78,7 +78,7 @@
                                           <i style=" font-style: normal; " class="material-icons">Detalle</i>
                                       </a>
                                   </li>
-                                  <!-- <li class="nav-item">
+                                  <li class="nav-item">
                                       <a class="nav-link" href="#messages" data-toggle="tab">
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>
@@ -105,7 +105,7 @@
                             {{-- <button type="button" id="editar-gestion" class=" btn-block btn btn-danger "  >Editar</button> --}}
 
                             <div class="row">
-                              <div class="table-responsive table-hover">
+                              <div id="tabla-load" class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
                                   <thead class="thead-light">
                                     <tr>
@@ -147,8 +147,8 @@
                                       </label>
                                       </td>
                                       <td>
-                                        <a href="#" id="{{$item->nro_item}}"  class="editar-gestion btn btn-warning btn-sm">Editar</a>
-
+                                        {{-- <a href="#" id="{{$item->nro_item}}"  class="editar-gestion btn btn-warning btn-sm">Editar</a> --}}
+                                        <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
                                       </td>
                                       <td>
                                         {{$item->nro_item}}
@@ -211,7 +211,7 @@
                                       {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
                                   @endforeach
 
-                                    <input type="hidden" id="camion-codigo" value="{{$item->codigo}}">
+
 
                                   <tr >
                                     <td>
@@ -399,7 +399,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Add New Record</h4>
+            <h4 class="modal-title">Editar producto</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
@@ -407,86 +407,100 @@
             <form  method="post" id="sample_form" class="form-horizontal">
               @csrf
 
-              <div class="row">
-                  <div class="col-6">
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Nro item: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="nro_item" id="nro_item" class="form-control">
-                        </div>
-                      </div>
+              <div class="row container">
+
+                  <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
+                  <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
+                <div class="row pb-3">
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Nro item: </label>
                     </div>
                     <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Código: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="codigo" id="codigo" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Cantidad cierre: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Bultos ingreso: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
-                        </div>
-                      </div>
+                      <input type="text" name="nro_item" id="nro_item" class="form-control">
                     </div>
                   </div>
-
-                  <div class="col-6">
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Cantidad ingreso: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="form-control">
-                        </div>
-                      </div>
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Cantidad Ingreso: </label>
                     </div>
                     <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Cif moneda ext: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="Cif moneda ext:" id="Cif moneda ext:" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Viu moneda nal: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="Viu moneda nal:" id="Viu moneda nal:" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-group row">
-                        <label class="control-label col-md-4">Precio compra: </label>
-                        <div class="col-md-8">
-                          <input type="text" name="precio_compra" id="precio_compra" class="form-control">
-                        </div>
-                      </div>
+                        <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="form-control">
                     </div>
                   </div>
+                </div>
+                <div class="row pb-3">
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label">Código: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="codigo" id="codigo" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-1">
+                  </div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label ">Cantidad cierre: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-2"></div>
+                  <div class="col-10">
+                    <div class="row mb--2">
+                      <label class="control-label ">Bultos ingreso: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
+                    </div>
+                  </div>
+                  {{-- <div class="col-1">
+                  </div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label">Precio compra(MN): </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="precio_compra" id="precio_compra" class="form-control">
+                    </div>
+                  </div> --}}
+                </div>
+                {{-- <div class="row ">
+                  <div class="col-1"></div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label">CIF moneda ext: </label>
+                    </div>
+                    <div class="row">
+                      <input type="text" name="cif_moneda_ext" id="cif_moneda_ext" class="form-control">
+                      </div>
+                  </div>
+                  <div class="col-1">
+                  </div>
+                  <div class="col-md">
+                    <div class="row mb--2">
+                      <label class="control-label">V.I.U moneda nal: </label>
 
+                    </div>
+                    <div class="row">
+                      <input type="text" name="viu_moneda_nal" id="viu_moneda_nal" class="form-control">
+                      </div>
+                  </div>
+                </div> --}}
               </div>
-
-
 
               <br />
               <div class="form-group" align="center">
-                <input type="hidden" name="action" id="action" value="Add">
-                <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add">
-
+                <input type="hidden" name="action" id="action" value="Editar">
+                <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
               </div>
             </form>
           </div>

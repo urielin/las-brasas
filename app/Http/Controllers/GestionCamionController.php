@@ -368,21 +368,81 @@ class GestionCamionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
     }
 
-    public function getitem(Request $request)
+    public function updateitem(Request $request)
     {
-      if ($request -> ajax()) {
-              $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-              ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-              , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
-              inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
-              inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
-              left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-              WHERE  c.codigo ='$request->camion_id' and ad.nro_item ='$request->item_id' ");
 
-          return response()->json($datos);
+      if ($request -> ajax()) {
+        $rules = array(
+          'nro_item' => 'required',
+          'codigo' => 'required',
+          'cantidad_cierre' => 'required',
+          'bultos_ingreso' => 'required',
+          'cantidad_ingreso' => 'required',
+          // 'cif_moneda_ext' => 'required',
+          // 'viu_moneda_nal' => 'required',
+          // 'precio_compra' => 'required'
+        );
+
+        $error = Validator::make($request->all(),$rules);
+
+        if ($error->fails()) {
+          return response()->json([
+            'errors' => $error->errors()->all()
+          ]);
+        }
+        $form_data = array(
+
+          'nro_item'     => $request->nro_item,
+          'nro_itemreal' => $request->nro_item,
+
+          'codigo'     => $request->codigo,
+          'codigoreal' => $request->codigo,
+
+          'cantidad_cierre'  => $request->cantidad_cierre,
+          'bultos_ingreso'   => $request->bultos_ingreso,
+          'cantidad_ingreso' => $request->cantidad_ingreso,
+          // 'cif_moneda_ext' => $request->cif_moneda_ext,
+          // 'viu_moneda_nal' => $request->viu_moneda_nal,
+          // 'precio_compra' => $request->precio_compra,
+        );
+        // nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+        //                     ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+        //                     , cif_adicional_nal,cif_final_nal,total_costo
+        //
+
+
+          DB::update("UPDATE dbsys.camiones_detalle
+                          set nro_item='$request->nro_item',
+                        	cantidad_cierre='$request->cantidad_cierre',
+                        	bultos_ingreso='$request->bultos_ingreso',
+                        	cantidad_ingreso='$request->cantidad_ingreso'
+                          FROM dbsys.camiones c
+                          inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                          inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                          left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                          where c.codigo= '$request->codigo' and cd.nro_item = '$request->nro_itemreal' ");
+
+          DB::update("UPDATE dbsys.camiones
+                    set codigo='$request->codigo'
+                    FROM dbsys.camiones c
+                    inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                    inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                    left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                    where c.codigo= '$request->codigoreal'");
+
+
+
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+                'aea'=>'Los datos fueron
+                        actualizados exitosamente'
+
+              ]);
+
 
       }
     }
