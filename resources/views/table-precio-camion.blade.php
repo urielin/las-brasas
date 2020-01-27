@@ -53,10 +53,10 @@
 
                       //diferencia en formato dias
                       $interval = $fecha_actual->diff($fecha_baja);
-                      $interval_dias = intval($interval->format('%a'));
-                      $interval = intval($interval->format('%h')) + $interval_dias*24;
+                      $interval_dias = intval($interval->format('%R%a'));
+                      $interval = intval($interval->format('%R%h')) + $interval_dias*24;
                       $fecha_baja= $fecha_baja->format('d/m/Y');
-                      $td_class = $interval<=0 ? '' : ($interval<=24 ? 'td-danger' : ($interval<=48 ? 'td-warning': ($interval<=72? 'td-success' :''))) ;
+                      $td_class = $interval==0 ? '' : ($interval<=0 ? 'table-danger' : ($interval<=48 ? 'table-warning': ($interval<=72? 'table-success' :''))) ;
                 @endphp
                 @switch($loop->iteration % $row_count)
                   @case(1)

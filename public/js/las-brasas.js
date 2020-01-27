@@ -1,16 +1,50 @@
 
   $(document).ready(function(){
-      $('.mostrar-info').click(function(){
-         var data=$(this).data();
-        console.log(data);
-         $('#formalModal #codigo').val(data.codigo);
-         $('#formalModal #descripcion').val(data.descripcion);
-         $('#formalModal #camion').val(data.camion);
-         $('#formalModal #publico').val(data.publico);
-         $('#formalModal #mayor').val(data.mayor);
-         $('#formalModal').modal('show');
-      });
+      function asignarEventoModalCeldas(){
+        $('.mostrar-info').click(function(){
+          var data=$(this).data();
+          // console.log(data);
+          // debugger
+          $('#formalModal #codigo').val(data.codigo);
+          $('#formalModal #descripcion').val(data.descripcion);
+          $('#formalModal #camion').val(data.camion);
+          $('#formalModal #publico').val(data.publico);
+          $('#formalModal #mayor').val(data.mayor);
+          //  fecha_baja= fecha_baja.datepicker.formatDate( "mm/dd/yyyy", new Date(data.fecha_baja));
+          $('#formalModal #fecha_baja').val(data.fecha_baja);
+          // interval= $('#formalModal #interval').val(data.interval);
+          interval=Math.floor(data.interval);
+          console.log(interval);
+          if (interval<0) {
+              $('#formalModal .modal-title').text('Modificar precio (La oferta expiro hace  '+Math.abs(interval)+' horas)');
+              $('#formalModal .modal-header').css("border-bottom", "1px solid var(--danger)");
+              $('#formalModal .modal-title').css("color", "var(--danger)");
+              // console.log(data.fecha_baja);
+              
+          }else if(interval==0) {
+              $('#formalModal .modal-title').text('Modificar precio (Es una nueva oferta)');
+              $('#formalModal .modal-header').css("border-bottom", "1px solid #565cc0");
+              $('#formalModal .modal-title').css("color", "#565cc0");
+              // console.log(data.fecha_baja);
+              
+          }else if(interval<=24) {
+              $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
+              $('#formalModal .modal-header').css("border-bottom", "1px solid var(--yellow)");
+              $('#formalModal .modal-title').css("color", "var(--yellow)");
+              // console.log(data.fecha_baja);
+              
+          }else if(interval<=48) {
+              $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
+              $('#formalModal .modal-header').css("border-bottom", "1px solid var(--success)");
+              $('#formalModal .modal-title').css("color", "var(--success)");
+              // console.log(data.fecha_baja);
+              
+          }
+          $('#formalModal').modal('show');
 
+        });
+      }
+      asignarEventoModalCeldas();
       $('#actualizar_precio').on('submit', function(event){
         // form_=new FormData(this);
         event.preventDefault();
@@ -60,16 +94,7 @@
             // desactivar loader
             setTimeout(function() {$('div.loader-6').addClass('d-none'); }, 1500);
             // asignar evento a celdas
-            $('.mostrar-info').click(function(){
-              var data=$(this).data();
-              console.log(data);
-              $('#formalModal #codigo').val(data.codigo);
-              $('#formalModal #descripcion').val(data.descripcion);
-              $('#formalModal #camion').val(data.camion);
-              $('#formalModal #publico').val(data.publico);
-              $('#formalModal #mayor').val(data.mayor);
-              $('#formalModal').modal('show');
-           });
+            asignarEventoModalCeldas();
           });
 
           request.fail(function( jqXHR, textStatus ) {
@@ -275,8 +300,41 @@
 
         }
       });
+      $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'es'
+    });
+      // $('#buscar-codigo-camion').on('submit', function(){
+      //   var camion_cod = $(this).val();
+      //   // console.log(camion_id);
+      //   if($.trim(camion_cod) != ''){
+      //       request=$.get('ver-camion',{camion_cod:camion_id},function(res){
+      //        $('#camiontabla').empty();
+      //        // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
+      //        $(res).each(function(key,value){
+      //           // $('#camiontabla').append("<tr><td>"+ value.id_camion +"</td><td>"+ value.codigo+"</td><td>"+ value.fecha_llegada +"</td><td>"+ value.descripcion +"</td><td>"+ value.contenido +"</td></tr>");
+      //           $('#camiontabla').append("<tr><td>"+ value.zeta +"</td><td>"+ value.nro_traslado+"</td><td>"+ value.fecha_viza +"</td><td>"+ value.tipo_traslado +"</td><td>"+ value.tipo_moneda +"</td></tr>");
+      //
+      //        });
+      //
+      //     });
+      //
+      //
+      //     request.done(function( msg ) {
+      //       // $( "#log" ).html( msg );
+      //       console.log(msg);
+      //     });
+      //
+      //     request.fail(function( jqXHR, textStatus ) {
+      //       console.log(jqXHR.responseText,textStatus);
+      //       alert( "Request failed: " + textStatus + jqXHR.responseText);
+      //     });
+      //
+      //
+      //
+      //   }
+      // });
 
-// ----------------------------------------------------
       $('#create_record').click(function(){
         // console.log('Se cliqueoooo');
         $('#formModal').modal('show');

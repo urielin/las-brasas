@@ -443,7 +443,6 @@ class GestionCamionController extends Controller
 
               ]);
 
-
       }
     }
 }
