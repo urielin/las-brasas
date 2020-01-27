@@ -19,25 +19,25 @@
               $('#formalModal .modal-title').text('Modificar precio (La oferta expiro hace  '+Math.abs(interval)+' horas)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid var(--danger)");
               $('#formalModal .modal-title').css("color", "var(--danger)");
-              console.log(data.fecha_baja);
+              // console.log(data.fecha_baja);
               
           }else if(interval==0) {
               $('#formalModal .modal-title').text('Modificar precio (Es una nueva oferta)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid #565cc0");
               $('#formalModal .modal-title').css("color", "#565cc0");
-              console.log(data.fecha_baja);
+              // console.log(data.fecha_baja);
               
           }else if(interval<=24) {
               $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid var(--yellow)");
               $('#formalModal .modal-title').css("color", "var(--yellow)");
-              console.log(data.fecha_baja);
+              // console.log(data.fecha_baja);
               
           }else if(interval<=48) {
               $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid var(--success)");
               $('#formalModal .modal-title').css("color", "var(--success)");
-              console.log(data.fecha_baja);
+              // console.log(data.fecha_baja);
               
           }
           $('#formalModal').modal('show');
