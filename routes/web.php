@@ -57,4 +57,5 @@ Route::get('/clasificacion/list', 'ProductController@clasificacion')->name('prod
 Route::get('/clasificacion/list2', 'ProductController@clasificacion2')->name('product.clasificacion2');
 Route::get('/productos/nutricionals', 'ProductController@nutricionals')->name('product.nutricionals');
 Route::post('/products/nutricionals/update', 'ProductController@updateNutricional')->name('product.updateNutricional');
+Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
 //JULIO

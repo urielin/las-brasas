@@ -44,22 +44,64 @@ $(document).ready(function(){
     e.stopPropagation();
     updateNutricional();
   })
-  $('#catalogoTable').on('mousedown', 'td button', function (event) {
-    let id = $(this).data("id");
-    //$(event.target).closest('#catalogoTable tr td'+`#${id}`).prop("contentEditable", true);
-      var currentTD = $(this).parents('tr').find('td'+`#${id}`);
-      if (currentTD == id) {
-          $.each(currentTD, function () {
-              $(this).prop('contenteditable', true)
-          });
-      } else {
-         $.each(currentTD, function () {
-              $(this).prop('contenteditable', false)
-          });
-      }
+  $('#catalogoTable').on('mousedown', 'td button.btn-edit', function (event) {
 
+    let code = $(this).parents("tr").attr('data-code');
+    let factor_multi = $(this).parents("tr").attr('data-factor_multi');
+    let factor_div = $(this).parents("tr").attr('data-factor_div');
+    let tipo = $(this).parents("tr").attr('data-tipo');
+    let estado = $(this).parents("tr").attr('data-estado');
+
+    $(this).parents("tr").find("td:eq(1)").html('<input style="width:70px" class="form-control" name="code" value="'+code+'" >');
+    $(this).parents("tr").find("td:eq(3)").html('<input style="width:70px" class="form-control" name="factor_multi" value="'+factor_multi+'">');
+    $(this).parents("tr").find("td:eq(4)").html('<input style="width:70px" class="form-control" name="factor_div" value="'+factor_div+'">');
+    $(this).parents("tr").find("td:eq(5)").html(setCatalogoTipo(tipo));
+    $(this).parents("tr").find("td:eq(6)").html(setCatalogoEstado(estado));
+    $(this).parents("tr").find("td:eq(9)").prepend("<button class='btn btn-info btn-xs btn-update'>Guardar</button><button class='btn btn-warning btn-xs btn-cancel'>Cancelar</button>")
+    $(this).hide();
   });
+  $("#catalogoTable").on("click", ".btn-cancel", function(){
+      let code = $(this).parents("tr").attr('data-code');
+      let factor_multi = $(this).parents("tr").attr('data-factor_multi');
+      let factor_div = $(this).parents("tr").attr('data-factor_div');
+      let tipo = $(this).parents("tr").attr('data-tipo');
+      let estado = $(this).parents("tr").attr('data-estado');
 
+      $(this).parents("tr").find("td:eq(1)").text(code);
+      $(this).parents("tr").find("td:eq(3)").text(factor_multi);
+      $(this).parents("tr").find("td:eq(4)").text(factor_div);
+      $(this).parents("tr").find("td:eq(5)").text(tipo);
+      $(this).parents("tr").find("td:eq(6)").text(estado);
+
+      $(this).parents("tr").find(".btn-edit").show();
+      $(this).parents("tr").find(".btn-update").remove();
+      $(this).parents("tr").find(".btn-cancel").remove();
+  });
+  $("#catalogoTable").on("click", ".btn-update", function(){
+      var code = $(this).parents("tr").find("input[name='code']").val();
+      var factor_multi = $(this).parents("tr").find("input[name='factor_multi']").val();
+      var factor_div = $(this).parents("tr").find("input[name='factor_div']").val();
+      var tipo = $(this).parents("tr").find("select[name='tipo']").val();
+      var estado = $(this).parents("tr").find("select[name='estado']").val();
+
+      $(this).parents("tr").find("td:eq(1)").text(code);
+      $(this).parents("tr").find("td:eq(3)").text(factor_multi);
+      $(this).parents("tr").find("td:eq(4)").text(factor_div);
+      $(this).parents("tr").find("td:eq(5)").text(tipo == 1 ? 'POR CAJA': "FACTORIZADO");
+      $(this).parents("tr").find("td:eq(6)").text(estado == 1 ? 'SI': "NO");
+
+      $(this).parents("tr").attr('data-code', code);
+      $(this).parents("tr").attr('data-factor_multi', factor_multi);
+      $(this).parents("tr").attr('data-factor_div', factor_div);
+      $(this).parents("tr").attr('data-tipo', tipo);
+      $(this).parents("tr").attr('data-estado', estado);
+
+      $(this).parents("tr").find(".btn-edit").show();
+      $(this).parents("tr").find(".btn-cancel").remove();
+      $(this).parents("tr").find(".btn-update").remove();
+
+      updateProduct({ code: code, factor_multi: factor_multi, factor_div: factor_div, tipo: tipo, estado: estado, _token: $("meta[name='csrf-token']").attr("content") });
+  });
   function filter(params) {
     $.ajax({
       type: 'GET',
@@ -74,8 +116,8 @@ $(document).ready(function(){
     let array = [];
     for (let i = 0; i < data.length; i++) {
       array[i] = `<tr>
-                    <td>${data[i].CODI_RCODIGO}</td>
-                    <td>${data[i].CODI_RNOMBRE}</td>
+                    <td style='padding: 0.5rem;white-space: pre-line;text-align: center;'>${data[i].CODI_RCODIGO}</td>
+                    <td style='padding: 0.5rem;white-space: pre-line;'>${data[i].CODI_RNOMBRE}</td>
                   </tr>`;
     }
     return array;
@@ -83,37 +125,39 @@ $(document).ready(function(){
   async function setCatalogo(data){
     let array = [];
     array[0] = `<tr>
-                  <th>Padre</th>
-                  <th>Codigo</th>
-                  <th>Producto</th>
-                  <th>Multipl.</th>
-                  <th>Divisor</th>
-                  <th>Tipo</th>
-                  <th>Estado</th>
-                  <th>Usuario</th>
-                  <th>Fecha</th>
-                  <th>Edit</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Padre</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Codigo</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Producto</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Multipl.</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Divisor</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Tipo</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Estado</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Usuario</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>Fecha</th>
+                  <th style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'></th>
                 </tr>`
     for (let i = 0; i < data.length; i++) {
       let params = await findName(data[i].CODI_RCODIGO);
       if (i >= 1) {
-        array[i] = `<tr>
+        array[i] = `<tr id='${data[i].CODI_RCODIGO}' data-factor_multi='${data[i].factor_multi}' data-tipo='${data[i].tipo}'
+                        data-factor_div='${data[i].factor_div}' data-estado='${data[i].ESTADO}' data-code='${data[i].CODI_RCODIGO}'>
 
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].CODI_PADRE}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].CODI_RCODIGO}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${params[0].CODI_RNOMBRE}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].factor_multi}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].factor_div}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].tipo}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].ESTADO}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].USUARIO}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>${data[i].FECHA_REG}</td>
-                      <td data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>
-                            <button class="btn btn-icon btn-2 btn-primary" type="button" data-id='${data[i].CODI_RCODIGO}' id='${data[i].CODI_RCODIGO}'>
-                              <span class="btn-inner--icon"><i class="ni ni-atom"></i></span>
-                            </button>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].CODI_PADRE}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].CODI_RCODIGO}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${params[0].CODI_RNOMBRE}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].factor_multi}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].factor_div}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].tipo == 1 ? "POR CAJA" : "FACTORIZADO"}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${data[i].ESTADO == 1 ? "SI" : "NO"}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${ data[i].USUARIO ? data[i].USUARIO : "-" }</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>${ data[i].FECHA_REG ? data[i].FECHA_REG  : "-" }</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;white-space: pre-line;'>
+                        <button class="btn btn-info btn-edit"   data-id='${data[i].CODI_RCODIGO}'>
+                          <div>
+                            <i class="ni ni-ruler-pencil"></i>
+                          </div>
+                        </button>
                       </td>
-
                   </tr>`;
       }
 
@@ -129,7 +173,6 @@ $(document).ready(function(){
           data: {id: id},
       });
   }
-
   function findOne(id){
     $.ajax({
       type:'GET',
@@ -229,6 +272,15 @@ $(document).ready(function(){
 
     })
   }
+  function updateProduct(data) {
+    $.ajax({
+      type:'POST',
+      url:'/productos/terminado/update',
+      data: data,
+    }).then((data) => {
+      alert('producto actualizado')
+    })
+  }
   function getNutricional(id){
     $.ajax({
       type: 'GET',
@@ -319,6 +371,39 @@ $(document).ready(function(){
     }
     return array;
   }
+  function setCatalogoEstado(data) {
+    let state;
+    if (data == 1) {
+       state = `<select class='form-control' name='estado' style='width: 70px'>
+                  <option value='1' selected>Si</option>
+                   <option value='0'>No</option>
+                </select>`;
+    }
+    if(data == 0) {
+
+     state = `<select class='form-control' name='estado' style='width: 70px'>
+                 <option value='1' >Si</option>
+                 <option value='0' selected>No</option>
+               </select>`;
+    }
+    return state;
+  }
+  function setCatalogoTipo(data) {
+     let tipo;
+     if (data == 1) {
+       tipo = `<select class='form-control' name='tipo' style='width: 120px'>
+                <option value='1' selected>POR CAJA</option>
+                <option value='2'>FACTORIZADO</option>
+               </select>`;
+     }
+     if (data == 2) {
+       tipo = `<select class='form-control' name='tipo' style='width: 120px'>
+                <option value='1' >POR CAJA</option>
+                <option value='2' selected>FACTORIZADO</option>
+               </select>`;
+     }
+     return tipo;
+   }
   function updateNutricional() {
     let data = {
       codigo: $('#info-code').val(),
@@ -349,4 +434,5 @@ $(document).ready(function(){
 
     })
   }
+
  })
