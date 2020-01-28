@@ -66,5 +66,7 @@ class ProductController extends Controller
     public function updateNutricional(Request $request) {
       return $this->oProduct->updateNutricional($request->all());
     }
-
+    public function updateProduct(Request $request) {
+      return $this->oProductoTerminado->updateProduct($request->all());
+    }
 }

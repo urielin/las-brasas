@@ -34,7 +34,7 @@
     <!-- CSS Files -->
     <!-- <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" /> -->
     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/argon.min.css?v=1.2.0" rel="stylesheet" />
-    
+
     <link href="{{ asset('assets\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" />
 </head>
 <body class="g-sidenav-show g-sidenav-pinned">
@@ -56,7 +56,7 @@
                 <button class="navbar-toggler" type="button" data-action="sidenav-pin" data-target="#sidenav-main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -209,7 +209,7 @@
           <ul class="navbar-nav">
             <li class="nav-item  active ">
               <a class="nav-link  active " href="{{route('usuarios')}}">
-                <i class="ni ni-tv-2 text-primary"></i> 
+                <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Administrador</span>
               </a>
             </li>
@@ -268,19 +268,19 @@
           <li class="nav-item">
             <a class="nav-link " href="./">
               <i class="ni ni-pin-3 text-orange"></i>
-              <span class="nav-link-text">Prosegur</span> 
+              <span class="nav-link-text">Prosegur</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="./">
               <i class="ni ni-single-02 text-yellow"></i>
-              <span class="nav-link-text">Contabilidad</span> 
+              <span class="nav-link-text">Contabilidad</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="./">
               <i class="ni ni-bullet-list-67 text-red"></i>
-              <span class="nav-link-text">Contenedores y Camiones</span>  
+              <span class="nav-link-text">Contenedores y Camiones</span>
             </a>
           </li>
 
@@ -289,14 +289,14 @@
           </li>
           </ul>
           <!-- Divider -->
-    
+
         </div>
       </div>
     </div><div class="scroll-element scroll-x scroll-scrollx_visible scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 19px; left: 0px;"></div></div></div><div class="scroll-element scroll-y scroll-scrollx_visible scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 66px; top: 0px;"></div></div></div></div>
   </nav>
   <!-- antigua nav -->
    <!-- antigua nav -->
- 
+
   <div class="main-content">
     <!-- Navbar -->
 
@@ -323,6 +323,8 @@
 
 
     <script src="{{ asset('js/las-brasas.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+
     <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.1') }}"></script> -->
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/js-cookie/js.cookie.js"></script>
@@ -330,9 +332,8 @@
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/js/argon.min.js?v=1.2.0"></script>
 
-    
+
 </body>
 </html>
 
   @yield('js')
-

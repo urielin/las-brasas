@@ -11,6 +11,7 @@ class Product extends Model
     protected $table1 = 'dbo.ADM_CLASIFICACIONCODIGO';
     protected $table2 = 'dbo.ADM_CLASIFICACIONCODIGO_2';
     protected $table3 = 'dbo.ADM_CODIGOS_NUTRICION';
+
     protected $fillable = ['CODI_RCODIGO' ,'TUME_CODIGO' ,'TUME_MULT' ,'TPCO_CODIGO' ,'CODI_RNOMBRE' ,'CODI_RDESCRIP',
                            'CODI_RCODADU' ,'CODI_RAFECTO5' ,'CODI_PESO' ,'IMP_ADICIONAL' ,'CODI_P_VENTA' ,'codi_arancelario',
                            'codi_p_factor' ,'codi_p_venta_x_m1' ,'codi_p_margen', 'codi_p_venta_x_m2' ,'clco_codigo' ,'clco_codigo2',
@@ -107,4 +108,5 @@ class Product extends Model
             'hierro' => $request['hierro'],
           ]);
     }
+    
 }

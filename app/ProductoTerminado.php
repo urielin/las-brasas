@@ -15,4 +15,16 @@ class ProductoTerminado extends Model
      public function findAllSon($params) {
         return ProductoTerminado::where('CODI_PADRE', $params['id'])->get();
      }
+
+     public function updateProduct($params) {
+       DB::table($this->table)
+           ->where('CODI_RCODIGO', $params['code'])
+           ->update([
+             'CODI_RCODIGO' => $params['code'],
+             'factor_multi' => $params['factor_multi'],
+             'factor_div' => $params['factor_div'],
+             'tipo' => $params['tipo'],
+             'estado' => $params['estado'],
+           ]);
+     }
 }
