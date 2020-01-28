@@ -18371,7 +18371,7 @@ textarea[resize="horizontal"] {
 .table td,
 .table th {
   font-size: 0.8125rem;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
 }
 
 .table.align-items-center td,
@@ -18421,8 +18421,8 @@ textarea[resize="horizontal"] {
 
 .card .table td,
 .card .table th {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  /*padding-left: 1.5rem;
+  padding-right: 1.5rem;*/
 }
 
 p {

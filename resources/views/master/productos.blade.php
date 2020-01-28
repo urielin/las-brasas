@@ -91,19 +91,19 @@
                           <div class="form-group form-group-lg col-md-12">
                             <label class="col-sm-4 control-label" for="formGroupInputLarge">Codigo: </label>
                             <div class="col-sm-8">
-                              <input class="form-control" type="text" id="edt-code" placeholder="Large input">
+                              <input class="form-control" type="text" id="edt-code" placeholder=" ">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Nombre Producto: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-name" placeholder="Small input">
+                              <input class="form-control" type="text" id="edt-name" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Unidad de medida: </label>
                             <div class="col-sm-8  ">
-                              <select class="form-control" type="text" id="edt-unid-media" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-unid-media" placeholder="">
                                 @foreach($unidades as $value)
                                 <option value="{{$value->TUME_CODIGO}}">{{$value->TUME_DESCR}}</option>
                                 @endforeach
@@ -113,31 +113,31 @@
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Mult/Unidad: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-multi-unid" placeholder="Small input">
+                              <input class="form-control" type="text" id="edt-multi-unid" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Tipo Codigo: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-tipo-code" placeholder="Small input">
+                              <input class="form-control" type="text" id="edt-tipo-code" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Descripcion: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-descripcion" placeholder="Small input">
+                              <input class="form-control" type="text" id="edt-descripcion" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Peso / Producto: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-peso" placeholder="Small input">
+                              <input class="form-control" type="text" id="edt-peso" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Afecto Adicional: </label>
                             <div class="col-sm-8  ">
-                              <select class="form-control" type="text" id="edt-afecto-adicional" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-afecto-adicional" placeholder="">
                                 <option value="1">Si</option>
                                 <option value="2">No</option>
                               </select>
@@ -146,19 +146,19 @@
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Impuesto Adicional %: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="number" id="edt-impuesto" placeholder="Small input">
+                              <input class="form-control" type="number" id="edt-impuesto" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Codigo Arancelario: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="number" id="edt-code-arancelario" placeholder="Small input">
+                              <input class="form-control" type="number" id="edt-code-arancelario" placeholder="">
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Clasificación Producto: </label>
                             <div class="col-sm-8  ">
-                              <select class="form-control" type="text" id="edt-clasificacion-producto" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-clasificacion-producto" placeholder="">
                                 <option value="" selected>-----</option>
                               </select>
                             </div>
@@ -166,7 +166,7 @@
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Clasificación Mercancia: </label>
                             <div class="col-sm-8  ">
-                              <select class="form-control" type="text" id="edt-clasificacion-mercancia" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-clasificacion-mercancia" placeholder="">
                                 <option value="" selected>-----</option>
                                 <option value="1">Si</option>
                                 <option value="2">No</option>
@@ -177,7 +177,7 @@
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Mayorista: </label>
                             <div class="col-sm-8  ">
 
-                              <select class="form-control" type="text" id="edt-mayorista" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-mayorista" placeholder="">
                                 <option value="" selected>-----</option>
                                 <option value="1">Si</option>
                                 <option value="2">No</option>
@@ -188,7 +188,7 @@
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Estado: </label>
                             <div class="col-sm-8  ">
-                              <select class="form-control" type="text" id="edt-state" placeholder="Small input">
+                              <select class="form-control" type="text" id="edt-state" placeholder="">
                                 <option value="1">Si</option>
                                 <option value="2">No</option>
                               </select>
@@ -220,7 +220,8 @@
                                 <th>Estado</th>
                                 <th>Usuario</th>
                                 <th>Fecha</th>
-                                <th>Edit</th>
+                                <th> </th>
+                                <th> </th>
                               </tr>
                             </thead>
 
@@ -237,19 +238,19 @@
                               <div class="form-group form-group-lg col-md-12">
                                 <label class="col-sm-4 control-label" for="formGroupInputLarge">Codigo: </label>
                                 <div class="col-sm-8">
-                                  <input class="form-control" type="text" id="create-code" placeholder="Large input">
+                                  <input class="form-control" type="text" id="create-code" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Nombre Producto: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-name" placeholder="Small input">
+                                  <input class="form-control" type="text" id="create-name" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Unidad de medida: </label>
                                 <div class="col-sm-8  ">
-                                  <select class="form-control" type="text" id="create-unid-media" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-unid-media" placeholder="">
                                     @foreach($unidades as $value)
                                     <option value="{{$value->TUME_CODIGO}}">{{$value->TUME_DESCR}}</option>
                                     @endforeach
@@ -259,31 +260,31 @@
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Mult/Unidad: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-multi-unid" placeholder="Small input">
+                                  <input class="form-control" type="text" id="create-multi-unid" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Tipo Codigo: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-tipo-code" placeholder="Small input">
+                                  <input class="form-control" type="text" id="create-tipo-code" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Descripcion: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-descripcion" placeholder="Small input">
+                                  <input class="form-control" type="text" id="create-descripcion" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Peso / Producto: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-peso" placeholder="Small input">
+                                  <input class="form-control" type="text" id="create-peso" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Afecto Adicional: </label>
                                 <div class="col-sm-8  ">
-                                  <select class="form-control" type="text" id="create-afecto-adicional" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-afecto-adicional" placeholder="">
                                     <option value="1">Si</option>
                                     <option value="0">No</option>
                                   </select>
@@ -292,19 +293,19 @@
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Impuesto Adicional %: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="number" id="create-impuesto" placeholder="Small input">
+                                  <input class="form-control" type="number" id="create-impuesto" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Codigo Arancelario: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="number" id="create-code-arancelario" placeholder="Small input">
+                                  <input class="form-control" type="number" id="create-code-arancelario" placeholder="">
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Clasificación Producto: </label>
                                 <div class="col-sm-8  ">
-                                  <select class="form-control" type="text" id="create-clasificacion-producto" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-clasificacion-producto" placeholder="">
                                     @foreach($clasifications as $value)
                                       @if($value->CLCO_CODIGO == 0)
                                         <option value="{{$value->CLCO_CODIGO}}" selected> {{$value->CLCO_DESCRIPCION}}</option>
@@ -318,7 +319,7 @@
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Clasificación Mercancia: </label>
                                 <div class="col-sm-8  ">
-                                  <select class="form-control" type="text" id="create-clasificacion-mercancia" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-clasificacion-mercancia" placeholder="">
                                     @foreach($clasifications2 as $value)
                                       @if($value->clco_codigo == 0)
                                         <option value="{{$value->clco_codigo}}" selected> {{$value->clco_descripcion}}</option>
@@ -333,7 +334,7 @@
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Mayorista: </label>
                                 <div class="col-sm-8  ">
 
-                                  <select class="form-control" type="text" id="create-mayorista" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-mayorista" placeholder="">
                                     <option value="" selected>-----</option>
                                     <option value="1">Si</option>
                                     <option value="0">No</option>
@@ -344,7 +345,7 @@
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Estado: </label>
                                 <div class="col-sm-8  ">
-                                  <select class="form-control" type="text" id="create-state" placeholder="Small input">
+                                  <select class="form-control" type="text" id="create-state" placeholder="">
                                     <option value="1">Si</option>
                                     <option value="0">No</option>
                                   </select>
