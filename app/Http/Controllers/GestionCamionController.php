@@ -41,7 +41,7 @@ class GestionCamionController extends Controller
       $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
-
+      // return $datos;
       return view('gestion-camion')->with(compact('year'))->with(compact('datos'));
       // dd($year1);
 
@@ -297,6 +297,35 @@ class GestionCamionController extends Controller
           // return $camionArray;
       }
   }
+
+
+public function changeBloqueoCamion(Request $request)
+{
+  if ($request -> ajax()) {
+
+    DB::update("UPDATE dbsys.camiones
+                set bloqueo_camion='$request->bloqueo_2_id'
+                where codigo= '$request->camion_id'");
+
+
+        DB::update("UPDATE dbsys.camiones_detalle
+                    set bloqueo_2='$request->bloqueo_2_id'
+                    where camion_codigo= '$request->camion_id' ");
+
+                            $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                              ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                      inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                                      inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                                      left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                                      WHERE  c.codigo ='$request->camion_id' ");
+
+      return response()->json($documentos);
+
+
+  }
+}
+
     public function gettablecamion(Request $request)
     {
       if ($request -> ajax()) {
@@ -361,6 +390,7 @@ class GestionCamionController extends Controller
                 $documentos=DB::select("SELECT *
                 FROM dbsys.camiones
                 WHERE  codigo ='$request->cod_camion_id'");
+
 
             // DB::update("UPDATE dbsys.camiones_detalle
             //                 set bloqueo_2='$request->bloqueo_2_id'

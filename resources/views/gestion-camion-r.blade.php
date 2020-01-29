@@ -265,61 +265,378 @@
 
                           </div>
 
-                          <div class="tab-pane" id="messages">
+                      <div class="tab-pane" id="messages">
 
-                            <div class=" row justify-content-center align-items-center mb-3 responsive ">
+                        <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="nav-home" aria-selected="true">Datos de camión</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#dos" role="tab" aria-controls="nav-profile" aria-selected="false">Fecha embarque y llegada</a>
+                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="nav-contact" aria-selected="false">Forma de pago</a>
+                          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#cuatro" role="tab" aria-controls="nav-profile" aria-selected="false">Datos embarque y llegada</a>
+                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#cinco" role="tab" aria-controls="nav-contact" aria-selected="false">Valor total del camion</a>
+                          </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                              <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="nav-home-tab">
+                                  @php if ($datos != '[]') { @endphp @php } else { @endphp
+                                        <br/>
+                                          <form  method="post" id="consulta1" class="form-horizontal">
+                                          @csrf
 
-                              {{-- <div class="row justify-content-center align-items-center mb-3"> --}}
-                                <div class="col-4">
-                                  <button type="button" class="btn-block btn btn-success">Agregar Datos de Camión</button>
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Código oficial</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Código auxiliar</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Nro de contenedor</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Nro BL</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Clasificación de mercancía</label>
+                                                  <div class="col-sm-6">
+                                                    <select class=" form-control" id="clasificación_de_mercancía">
+                                                       <option>Mercacías</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Proveedor</label>
+                                                  <div class="col-sm-6">
+                                                    <select class=" form-control" id="proveedor">
+                                                       <option>Proveedor</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Marca origen</label>
+                                                  <div class="col-sm-3">
+                                                  <select class=" form-control" id="marca_origen">
+                                                     <option>Marca origen</option>
+                                                  </select>
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Pais origen</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Contenido</label>
+                                                  <div class="col-sm-6">
+                                                    <textarea class="form-control form-control-sm" type="text" placeholder="2"></textarea>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Observaciones</label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Lugar de arribo</label>
+                                                  <div class="col-sm-6">
+                                                    <select class=" form-control" id="lugar_de_arribo">
+                                                       <option>Lugar de arribo</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <br />
+                                                <div class="form-group" align="center">
+                                                  <input type="hidden" name="action" id="action" value="Editar">
+                                                  <input type="submit" name="action_b1" id="action_b1" class="btn btn-warning" value="Actualizar">
+                                                </div>
+
+                                          </form>
+                                    @php } @endphp
+                                  </div>
+                          <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            @php if ($datos != '[]') { @endphp @php } else { @endphp
+                                  <br/>
+                                <form  method="post" id="consulta2" class="form-horizontal">
+                                  @csrf
+
+                                      <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de cierre</label>
+                                        <div class="col-sm-6">
+                                          <select class=" form-control" id="fecha_de_cierre">
+                                             <option>Fecha de cierre</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
+                                        <div class="col-sm-6">
+                                          <select class=" form-control" id="fecha_de_embarque_desde">
+                                             <option>Fecha de cierre</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
+                                        <div class="col-sm-3">
+                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                        </div>
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                        <div class="col-sm-3">
+                                          <input class="form-control form-control-sm" type="text" placeholder="2">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada desde</label>
+                                        <div class="col-sm-3">
+                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                        </div>
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                        <div class="col-sm-3">
+                                          <input class="form-control form-control-sm" type="text" placeholder="2">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Observación</label>
+                                        <div class="col-sm-6">
+                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                        </div>
+                                      </div>
+
+
+                                      <br />
+                                      <div class="form-group" align="center">
+                                        <input type="hidden" name="action" id="action_2" value="Editar">
+                                        <input type="submit" name="action_b2" id="action_b2" class="btn btn-warning" value="Actualizar">
+                                      </div>
+                                </form>
+                             @php } @endphp
+                          </div>
+                          <div class="tab-pane fade" id="tres" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                            @php
+                              if ($datos != '[]') { @endphp @php } else { @endphp
+
+                                  <br/>
+                                <form  method="post" id="consulta3" class="form-horizontal">
+                                  @csrf
+
+                                    <div class="form-group row">
+                                      <label for="staticEmail" class="col-sm-2 col-form-label">Forma de pago</label>
+                                      <div class="col-sm-6">
+                                        <select class=" form-control" id="forma_de_pago">
+                                           <option>Forma de pago</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="staticEmail" class="col-sm-2 col-form-label">A cumplirse a</label>
+                                      <div class="col-sm-6">
+                                        <select class=" form-control" id="a_cumplirse_a">
+                                           <option>A cumplirse a</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                      <label for="staticEmail" class="col-sm-2 col-form-label">-</label>
+                                      <div class="col-sm-6">
+                                        <select class=" form-control" id="-">
+                                           <option>-</option>
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                  <br />
+                                  <div class="form-group" align="center">
+                                    <input type="hidden" name="action" id="action3" value="Editar">
+                                    <input type="submit" name="action_b3" id="action_b3" class="btn btn-warning" value="Actualizar">
+                                  </div>
+                              </form>
+                           @php } @endphp
+                          </div>
+                          <div class="tab-pane fade" id="cuatro" role="tabpanel" aria-labelledby="nav-home-tab">
+                              {{-- ---------------------------- --}}
+                              {{-- @foreach ($datos as $item) --}}
+
+                                  @php
+                                    if ($datos != '[]') {
+                                  @endphp
+
+                                  @php
+                                    }
+                                    else {
+
+                                  @endphp
+                                        <br/>
+                                          <form  method="post" id="consulta4" class="form-horizontal">
+                                          @csrf
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque real </label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada </label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Resol. Sanitaria</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Resol. Sanitaria</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Forward</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Forward</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Fecha producción desde</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Fecha vencimiento desde</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <br />
+                                                <div class="form-group" align="center">
+                                                  <input type="hidden" name="action" id="action4" value="Editar">
+                                                  <input type="submit" name="action_b4" id="action_b4" class="btn btn-warning" value="Actualizar">
+                                                </div>
+
+                                          </form>
+                                    @php
+                                    }
+                                    @endphp
+                                {{-- @endforeach --}}
+
+                              {{-- ---------------------------- --}}
+                          </div>
+                          <div class="tab-pane fade" id="cinco" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                                  @php
+                                      if ($datos != '[]')
+                                      {
+                                  @endphp
+                                  asdasdasdasd
+                                    @php
+                                  }
+                                  else
+                                  {
+                                  @endphp
+                                        <br/>
+                                          <form  method="post" id="consulta5" class="form-horizontal">
+                                          @csrf
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Factura proveedor</label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad recibida</label>
+                                                  <div class="col-sm-3">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                  </div>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                                  <div class="col-sm-3">
+                                                    <select class=" form-control" id="hasta_1">
+                                                      <option>Caja</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Valor total</label>
+                                                  <div class="col-sm-6">
+                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Tipo de moneda</label>
+                                                  <div class="col-sm-6">
+                                                    <select class=" form-control" id="tipo_de_moneda">
+                                                       <option>Peso chileno</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <br />
+                                                <div class="form-group" align="center">
+                                                  <input type="hidden" name="action" id="action5" value="Editar">
+                                                  <input type="submit" name="action_b5" id="action_b5" class="btn btn-warning" value="Actualizar">
+                                                </div>
+
+                                          </form>
+                                    @php
+                                  }
+                                   @endphp
+
                                 </div>
-                                <div class="col-4">
-                                  <button type="button" id="create_record" class=" btn-block btn btn btn-success "  >
-                                    <div class="overflow-auto">
-                                      Fechas Embarque Cierre y Llegada
-                                    </div></button>
-                                </div>
-                                <div class="col-4">
-                                  <button type="button" class="btn-block btn btn-success">Forma y Fecha de Pago</button>
-                                </div>
-                                {{-- </div> --}}
-                              {{-- <div class="table-responsive  table-hover">
-                                <table  class="table align-items-center table-flush">
-                                  <thead class="thead-light">
-                                    <tr>
-                                      <th scope="col">Fecha</th>
-                                      <th scope="col">Cambio</th>
-                                      <th scope="col">USUARIO</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
+                        </div>
 
-                                    <tr>
-                                      <td>
-                                        D
-                                      </td>
-                                      <td>
-                                        E
-                                      </td>
-                                      <td>
-                                        F
-                                      </td>
-                                    </tr>
-
-                                  </tbody>
-                                </table>
-                              </div> --}}
-                            </div>
-
-                            <div class="row justify-content-center align-items-center mb-3 responsive">
-                              <div class="col-6">
-                                <button type="button" class="btn-block btn btn btn-success">Datos Reales de Embarque y Llegada</button>
-                              </div>
-
-                              <div class="col-6">
-                                <button type="button" class="btn-block btn btn-success">Valor Total del Camion</button>
-                              </div>
-                            </div>
 
                       </div>
 

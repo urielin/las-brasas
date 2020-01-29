@@ -42,6 +42,9 @@ Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchit
 
 Route::get('/fecha-embarque', 'GestionCamionController@getembarque')->name('getembarque');
 
+Route::get('/cambiar-bloqueo-camion', 'GestionCamionController@changeBloqueoCamion')->name('changecamion');
+
+
 // Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
 
 
