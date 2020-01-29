@@ -56,7 +56,7 @@
                       $interval_dias = intval($interval->format('%R%a'));
                       $interval = intval($interval->format('%R%h')) + $interval_dias*24;
                       $fecha_baja= $fecha_baja->format('d/m/Y');
-                      $td_class = $interval==0 ? '' : ($interval<=0 ? 'table-danger' : ($interval<=48 ? 'table-warning': ($interval<=72? 'table-success' :''))) ;
+                      $td_class = $interval==0 ? '' : ($interval<=0 ? 'table-danger' : ($interval<=48 ? 'table-warning': ($interval<=168? 'table-success' :''))) ;
                 @endphp
                 @switch($loop->iteration % $row_count)
                   @case(1)
@@ -77,7 +77,7 @@
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
                         {{$camion->precio_publico}}
                       </td>
-                      <td class="mostrar-info  " data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
+                      <td class="mostrar-info  {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
                         {{$camion->precio_mayor}}
                       </td>
@@ -87,7 +87,7 @@
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
                         </td>
-                      <td class="mostrar-info " data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
+                      <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
                       </td>
                     </tr> 
@@ -97,7 +97,7 @@
                         <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
                         </td>
-                        <td class="mostrar-info" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
+                        <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
                            data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
                         </td>
                 @endswitch

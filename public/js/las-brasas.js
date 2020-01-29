@@ -27,13 +27,13 @@
               $('#formalModal .modal-title').css("color", "#565cc0");
               // console.log(data.fecha_baja);
 
-          }else if(interval<=24) {
+          }else if(interval<=48) {
               $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid var(--yellow)");
               $('#formalModal .modal-title').css("color", "var(--yellow)");
               // console.log(data.fecha_baja);
 
-          }else if(interval<=48) {
+          }else if(interval<=168) {
               $('#formalModal .modal-title').text('Modificar precio (Quedan menos de '+interval+' horas)');
               $('#formalModal .modal-header').css("border-bottom", "1px solid var(--success)");
               $('#formalModal .modal-title').css("color", "var(--success)");
@@ -43,7 +43,7 @@
           $('#formalModal').modal('show');
       });
     }
-
+    asignarEventoModalCeldas();
       $('#actualizar_precio').on('submit', function(event){
         // form_=new FormData(this);
         event.preventDefault();
@@ -93,16 +93,7 @@
             // desactivar loader
             setTimeout(function() {$('div.loader-6').addClass('d-none'); }, 1500);
             // asignar evento a celdas
-            $('.mostrar-info').click(function(){
-              var data=$(this).data();
-              console.log(data);
-              $('#formalModal #codigo').val(data.codigo);
-              $('#formalModal #descripcion').val(data.descripcion);
-              $('#formalModal #camion').val(data.camion);
-              $('#formalModal #publico').val(data.publico);
-              $('#formalModal #mayor').val(data.mayor);
-              $('#formalModal').modal('show');
-           });
+            asignarEventoModalCeldas();
           });
 
           request.fail(function( jqXHR, textStatus ) {

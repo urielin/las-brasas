@@ -39,7 +39,7 @@
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 </head>
-<body class="g-sidenav-show g-sidenav-pinned">
+<body class="g-sidenav-pinned  ">
     <div class="loader loader-6 d-none cyan full-loader" id="loader-6">
               <span></span>
               <span></span>
@@ -55,7 +55,7 @@
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
-                <button class="navbar-toggler" type="button" data-action="sidenav-pin" data-target="#sidenav-main">
+                <button class="navbar-toggler active" type="button" data-action="sidenav-pin" data-target="#sidenav-main" aria-expanded="true">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -315,8 +315,8 @@
 
 
     <!--   Core   -->
-    <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script> -->
+    <!-- <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script> -->
     <!--   Optional JS   -->
     <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
