@@ -23,11 +23,13 @@ class GestionCamionController extends Controller
     {
 
       // $year=DbsysCamiones::select(('fecha_llegada'))->distinct()->get();
-      $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+
+
 
       // $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
-      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
       // $year->distinct();
       // $year= DbsysCamiones::select(date('Y', strtotime('fecha_llegada')))->get();
@@ -36,10 +38,11 @@ class GestionCamionController extends Controller
       // $y=date('Y', strtotime($request->Mes_cambiar));
 
       // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
 
-      return view('gestion-camion')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+      return view('gestion-camion')->with(compact('year'))->with(compact('datos'));
       // dd($year1);
 
         // return view('gestion-camion',compact('datos'));
@@ -55,12 +58,18 @@ class GestionCamionController extends Controller
     public function indexr()
     {
 
-      $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
-      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $datos=GestionCamion::where('camion', '0')->get();
+      //
+      // return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
-      return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+
+      return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'));
+
     }
 
     /**
@@ -126,11 +135,13 @@ class GestionCamionController extends Controller
 							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
 								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
 
-        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+
+        // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
         // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
-            return view('gestion-camion')->with(compact('datos'))->with(compact('clasificaciones'));
+            return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
 
     }
 
@@ -148,8 +159,10 @@ class GestionCamionController extends Controller
 							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
 								WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
 
-        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-        return view('gestion-camion-r')->with(compact('datos'))->with(compact('clasificaciones'));
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+
+        // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+        return view('gestion-camion-r')->with(compact('datos'))->with(compact('year'));
 
     }
 
@@ -186,7 +199,7 @@ class GestionCamionController extends Controller
           if ($request -> ajax()) {
             // try{
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
-        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '1' ");
+        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1' ");
 
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion = '$request->clasificacion_id'
         //     	UNION
@@ -211,7 +224,7 @@ class GestionCamionController extends Controller
     {
 
           if ($request -> ajax()) {
-              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '2' ");
+              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = '$request->anio_id' and estado = '2' ");
               if ($camiones != null) {
                 foreach ($camiones as $camion) {
                   $camionArray[$camion->camion] = $camion->camion ;
@@ -269,20 +282,21 @@ class GestionCamionController extends Controller
 
   }
 
-  // public function getclasificacion(Request $request)
-  // {
-  //   if ($request -> ajax()) {
-  //
-  //     $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-  //
-  //
-  //         foreach ($clasificaciones as $clasificacion) {
-  //           $clasificacionArray[$clasificacion->cod_int] = $clasificacion->desc01 ;
-  //         }
-  //         return response()->json($clasificacionArray);
-  //         // return $camionArray;
-  //     }
-  // }
+  public function getclasificacion(Request $request)
+  {
+    if ($request -> ajax()) {
+
+      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+
+          foreach ($clasificaciones as $clasificacion) {
+            $clasificacionArray[$clasificacion->cod_int] = $clasificacion->desc01 ;
+          }
+          return response()->json($clasificacionArray);
+          // return $camionArray;
+      }
+  }
     public function gettablecamion(Request $request)
     {
       if ($request -> ajax()) {
@@ -339,6 +353,23 @@ class GestionCamionController extends Controller
               return response()->json();
           }
     }
+
+    public function getembarque(Request $request)
+    {
+          if ($request -> ajax()) {
+
+                $documentos=DB::select("SELECT *
+                FROM dbsys.camiones
+                WHERE  codigo ='$request->cod_camion_id'");
+
+            // DB::update("UPDATE dbsys.camiones_detalle
+            //                 set bloqueo_2='$request->bloqueo_2_id'
+            //                 where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");
+              return response()->json($documentos);
+          }
+    }
+
+
 
     public function updateitem(Request $request)
     {

@@ -39,6 +39,9 @@ Route::post('/actualizar-camion', 'GestionCamionController@updateitem')->name('u
 
 
 Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');
+
+Route::get('/fecha-embarque', 'GestionCamionController@getembarque')->name('getembarque');
+
 // Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
 
 

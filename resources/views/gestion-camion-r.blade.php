@@ -21,38 +21,38 @@
               </div>
             </div>
 
-        <div class="col-7 bg-gradient-secondary border card pt-3">
-          <div class="row">
-            {{-- <div class="form-group col-3">
-              <label for="anio">Ingresar año</label>
+      <div class="col-7 bg-gradient-secondary border card pt-3">
+        <div class="row">
+          <div class="form-group col-3">
+            <label for="anior">Ingresar año</label>
 
-              <select class="form-control" id="anio">
-                <option>Año</option>
-                @foreach ($year as $y)
+            <select class="form-control" id="anior">
+              <option>Año</option>
+              @foreach ($year as $y)
 
-                  <option value="{{$y->fecha_llegada}}" >{{$y->fecha_llegada}}</option>
+                <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
 
-                @endforeach
-              </select>
-            </div> --}}
+              @endforeach
+            </select>
+          </div>
 
-            <div class="form-group col-6">
-              <label for="camion">Clasificar camión </label>
-              <select class="form-control" id="clasificacionr">
-                @foreach ($clasificaciones as $clasificacion)
+          <div class="form-group col-4">
+            <label for="clasificacionr">Clasificar camión </label>
+            <select class="form-control" id="clasificacionr">
+              {{-- @foreach ($clasificaciones as $clasificacion)
 
-                  <option value="{{$clasificacion->desc01}}" >{{$clasificacion->desc01}}</option>
+                <option value="{{$clasificacion->desc01}}" >{{$clasificacion->desc01}}</option>
 
-                @endforeach
-              </select>
-            </div>
+              @endforeach --}}
+            </select>
+          </div>
 
-            <div class="form-group col-6">
-              <label for="camion">Seleccionar camión </label>
-              <select class="form-control" id="camionr">
+          <div class="form-group col-5">
+            <label for="camionr">Seleccionar camión </label>
+            <select class="form-control" id="camionr">
 
-              </select>
-            </div>
+            </select>
+          </div>
 
           </div>
         </div>
@@ -274,13 +274,13 @@
                                   <button type="button" class="btn-block btn btn-success">Agregar Datos de Camión</button>
                                 </div>
                                 <div class="col-4">
-                                  <button type="button" id="create_record" class=" btn-block btn btn-danger "  >
+                                  <button type="button" id="create_record" class=" btn-block btn btn btn-success "  >
                                     <div class="overflow-auto">
                                       Fechas Embarque Cierre y Llegada
                                     </div></button>
                                 </div>
                                 <div class="col-4">
-                                  <button type="button" class="btn-block btn btn-warning">Forma y Fecha de Pago</button>
+                                  <button type="button" class="btn-block btn btn-success">Forma y Fecha de Pago</button>
                                 </div>
                                 {{-- </div> --}}
                               {{-- <div class="table-responsive  table-hover">
@@ -313,11 +313,11 @@
 
                             <div class="row justify-content-center align-items-center mb-3 responsive">
                               <div class="col-6">
-                                <button type="button" class="btn-block btn btn-info">Datos Reales de Embarque y Llegada</button>
+                                <button type="button" class="btn-block btn btn btn-success">Datos Reales de Embarque y Llegada</button>
                               </div>
 
                               <div class="col-6">
-                                <button type="button" class="btn-block btn btn-light">Valor Total del Camion</button>
+                                <button type="button" class="btn-block btn btn-success">Valor Total del Camion</button>
                               </div>
                             </div>
 
