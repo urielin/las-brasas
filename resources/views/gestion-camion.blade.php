@@ -10,14 +10,51 @@
 
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
-              <div class="form-group">
-                {!! Form::open(['route' => ['showCamion'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
+
+              {{-- <form  method="post" id="sample_form" class="form-horizontal">
                 @csrf
-                <label for="buscar-codigo-camion">Buscar camión</label>
-                <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                {{-- <br> --}}
-                <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
-                {!! Form::close()!!}
+
+                <div class="row container">
+
+                    <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
+                    <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
+
+
+                  <div class="row ">
+                    <div class="col-2"></div>
+                    <div class="col-10">
+                      <div class="row mb--2">
+                        <label class="control-label ">Bultos ingreso: </label>
+                      </div>
+                      <div class="row">
+                        <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <br />
+                <div class="form-group" align="center">
+                  <input type="hidden" name="action" id="action1" value="Editar">
+                  <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
+                </div>
+              </form> --}}
+
+              <div class="form-group">
+                {{-- {!! Form::open(['route' => ['showCamion'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!} --}}
+                <form  method="post" id="buscar-camion" class="form-horizontal">
+                    @csrf
+                    <label for="buscar-codigo-camion">Buscar camión</label>
+
+                    <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
+                    <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                    {{-- <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control"> --}}
+                    {{-- <br> --}}
+                    <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
+                </form>
+                {{-- {!! Form::close()!!} --}}
               </div>
             </div>
 
@@ -91,11 +128,9 @@
                                 <div class="row ">
                                     <div class="col-12 float-right">
                                       <li class="nav-item">
-                                        <label for="" class="pt-0">Bloquear camión</label>
-                                        <label class="custom-toggle custom-toggle-default">
-                                          <input type="checkbox" checked  id="change-bloqueo-camion">
-                                          <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                        </label>
+
+                                          <span id="bloquear-camion"></span>
+
                                       </li>
                                     </div>
                                 </div>
@@ -134,141 +169,8 @@
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}
-                                    @php
-                                    $bi=0;$ci=0;$mm=0;$tf=0;$tcf=0;
-                                    @endphp
 
-                                    {{-- // value.cantidad_diferencia --}}
-                                    {{-- // value.total_compra --}}
-
-
-                                      @foreach ($datos as $item)
-                                        <tr >
-                                          @php
-                                            if ($item->bloqueo_2 == '1') {
-                                              @endphp
-                                              <td>
-                                              <label class="custom-toggle custom-toggle-default">
-                                                <input type="checkbox" checked  class="btn-switch">
-                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                              </label>
-                                              </td>
-                                              @php
-                                            }
-                                            else {
-                                              @endphp
-                                              <td>
-                                              <label class="custom-toggle custom-toggle-default">
-                                                <input type="checkbox"  class="btn-switch">
-                                                <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                              </label>
-                                              </td>
-                                              @php
-                                            }
-                                          @endphp
-
-                                          <td>
-                                            {{-- <a href="#" id="{{$item->nro_item}}"  class="editar-gestion btn btn-warning btn-sm">Editar</a> --}}
-                                            <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
-                                          </td>
-                                          <td>{{$item->nro_item}}</td>
-                                          <td>{{$item->codigo}}</td>
-                                          <td>{{$item->producto}}</td>
-                                          <td>{{$item->cantidad_cierre}}</td>
-                                          <td>{{$item->bultos_ingreso}}</td>
-                                          <td>{{$item->cantidad_ingreso}}</td>
-                                          <td>{{$item->cantidad_diferencia}}</td>
-                                          <td>{{$item->cif_moneda_ext}}</td>
-                                          <td>{{$item->viu_moneda_nal}}</td>
-                                          <td>{{$item->cif_moneda_nal}}</td>
-                                          <td>{{$item->precio_compra}}</td>
-                                          <td>{{$item->total_compra}}</td>
-                                          <td>{{$item->cif_adicional_nal}}</td>
-                                          <td>{{$item->cif_final_nal}}</td>
-                                          <td>{{$item->total_costo}}</td>
-                                        </tr>
-                                        @php
-                                          $bi+=$item->bultos_ingreso;
-                                          $ci+=$item->cantidad_ingreso;
-                                          $mm+=$item->cantidad_diferencia;
-                                          $tf+=$item->total_compra;
-                                          $tcf+=$item->total_costo;
-                                        @endphp
-                                          {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
-                                      @endforeach
-
-
-
-                                      <tr >
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->nro_item}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->codigo}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->producto}} --}}
-                                          {{-- F-producto --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->cantidad_cierre}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->bultos_ingresos}} --}}
-                                          {{-- Total=F-bultos_ingresos --}}
-
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->cantidad_ingresos}} --}}
-                                          {{-- Total=F-cantidad_ingresos --}}
-                                          {{$bi}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->cantidad_diferencia}} --}}
-                                          {{-- Total true --}}
-                                          {{$ci}}
-                                        </td>
-                                        <td>
-                                          {{$mm}}
-                                          {{-- {{$item->cif_moneda_ext}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->viu_moneda_nal}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->cif_moneda_nal}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->precio_compra}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->total_compra}} --}}
-                                          {{-- Total true --}}
-
-                                        </td>
-                                        <td>
-                                          {{$tf}}
-                                          {{-- {{$item->cif_adicional_nal}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->cif_final_nal}} --}}
-                                        </td>
-                                        <td>
-                                          {{-- {{$item->total_costo}} --}}
-                                          {{-- total true --}}
-
-                                        </td>
-                                        <td>
-                                          {{$tcf}}
-                                        </td>
-
-                                      </tr>
-
-
-                                      </tbody>
+                                  </tbody>
                                 </table>
                               </div>
                             </div>

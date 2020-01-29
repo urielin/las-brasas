@@ -25,14 +25,14 @@ Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCam
 Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
 Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
 Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
-Route::get('/ver-camion', 'GestionCamionController@show')->name('showCamion');
+Route::POST('/ver-camion', 'GestionCamionController@show')->name('showCamion');
 Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
 Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');
 
 Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
 Route::get('/test', 'GestionCamionController@test')->name('test');
 Route::get('/gestion-camion-r', 'GestionCamionController@indexr')->name('gestion-camion-r');
-Route::get('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
+Route::POST('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
 Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
 Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('gettableCamion-r');
 Route::post('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');

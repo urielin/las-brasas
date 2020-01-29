@@ -11,13 +11,18 @@
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
               <div class="form-group">
-                {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
-                @csrf
-                <label for="buscar-codigo-camion">Buscar camión</label>
-                <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                {{-- <br> --}}
-                <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
-                {!! Form::close()!!}
+                {{-- {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!} --}}
+                <form  method="post" id="buscar-camion-r" class="form-horizontal">
+                    @csrf
+                    <label for="buscar-codigo-camion">Buscar camión</label>
+
+                    <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
+                    <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                    {{-- <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control"> --}}
+                    {{-- <br> --}}
+                    <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
+                </form>
+                {{-- {!! Form::close()!!} --}}
               </div>
             </div>
 
@@ -48,6 +53,7 @@
           </div>
 
           <div class="form-group col-5">
+            <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
             <label for="camionr">Seleccionar camión </label>
             <select class="form-control" id="camionr">
 
@@ -83,11 +89,15 @@
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>
                                   </li>
-                                  {{-- <li class="nav-item">
-                                      <a class="nav-link" href="#messages2" data-toggle="tab">
-                                          <i style=" font-style: normal; " class="material-icons">Actualizar camion</i>
-                                      </a>
-                                  </li> --}}
+                                  <div class="row ">
+                                      <div class="col-12 float-right">
+                                        <li class="nav-item">
+
+                                            <span id="bloquear-camion"></span>
+
+                                        </li>
+                                      </div>
+                                  </div>
                               </ul>
                           </div>
                       </div>
@@ -126,137 +136,7 @@
 
                                   </thead>
                                   <tbody id="camiontabla">
-                                    {{-- <tr><td>asdasd</td></tr> --}}
-                                @php
-                                $bi=0;$ci=0;$mm=0;$tf=0;$tcf=0;
-                                @endphp
-
-                                {{-- // value.cantidad_diferencia --}}
-                                {{-- // value.total_compra --}}
-
-
-                                  @foreach ($datos as $item)
-                                    <tr >
-                                      @php
-                                        if ($item->bloqueo_2 == '1') {
-                                          @endphp
-                                          <td>
-                                          <label class="custom-toggle custom-toggle-default">
-                                            <input type="checkbox" checked  class="btn-switch">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                          </label>
-                                          </td>
-                                          @php
-                                        }
-                                        else {
-                                          @endphp
-                                          <td>
-                                          <label class="custom-toggle custom-toggle-default">
-                                            <input type="checkbox"  class="btn-switch">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                          </label>
-                                          </td>
-                                          @php
-                                        }
-                                      @endphp
-                                      <td>
-
-                                        <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
-
-                                      <td>{{$item->nro_item}}</td>
-                                      <td>{{$item->codigo}}</td>
-                                      <td>{{$item->producto}}</td>
-                                      <td>{{$item->cantidad_cierre}}</td>
-                                      <td>{{$item->bultos_ingreso}}</td>
-                                      <td>{{$item->cantidad_ingreso}}</td>
-                                      <td>{{$item->cantidad_diferencia}}</td>
-                                      <td>{{$item->cif_moneda_ext}}</td>
-                                      <td>{{$item->viu_moneda_nal}}</td>
-                                      <td>{{$item->cif_moneda_nal}}</td>
-                                      <td>{{$item->precio_compra}}</td>
-                                      <td>{{$item->total_compra}}</td>
-                                      <td>{{$item->cif_adicional_nal}}</td>
-                                      <td>{{$item->cif_final_nal}}</td>
-                                      <td>{{$item->total_costo}}</td>
-                                    </tr>
-                                    @php
-                                      $bi+=$item->bultos_ingreso;
-                                      $ci+=$item->cantidad_ingreso;
-                                      $mm+=$item->cantidad_diferencia;
-                                      $tf+=$item->total_compra;
-                                      $tcf+=$item->total_costo;
-                                    @endphp
-                                      {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
-                                  @endforeach
-
-                                  <tr >
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->nro_item}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->codigo}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->producto}} --}}
-                                      {{-- F-producto --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_cierre}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->bultos_ingresos}} --}}
-                                      {{-- Total=F-bultos_ingresos --}}
-
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_ingresos}} --}}
-                                      {{-- Total=F-cantidad_ingresos --}}
-                                      {{$bi}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_diferencia}} --}}
-                                      {{-- Total true --}}
-                                      {{$ci}}
-                                    </td>
-                                    <td>
-                                      {{$mm}}
-                                      {{-- {{$item->cif_moneda_ext}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->viu_moneda_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cif_moneda_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->precio_compra}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->total_compra}} --}}
-                                      {{-- Total true --}}
-
-                                    </td>
-                                    <td>
-                                      {{$tf}}
-                                      {{-- {{$item->cif_adicional_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cif_final_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->total_costo}} --}}
-                                      {{-- total true --}}
-
-                                    </td>
-                                    <td>
-                                      {{$tcf}}
-                                    </td>
-
-                                  </tr>
-
+                                    {{-- JavaScript --}}
 
                                   </tbody>
                                 </table>

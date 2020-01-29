@@ -122,47 +122,113 @@ class GestionCamionController extends Controller
      */
     public function show(Request $request)
     {
-        // dd($request);
-        $request->validate([
-          'codigo' => 'required',
-        ]);
 
-      $datos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
-                              inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
-							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
-							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
+        if ($request -> ajax()) {
 
-      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+                $rules = array(
+                  'codigo' => 'required',
+                  // 'codigo' => 'required',
+                  // 'cantidad_cierre' => 'required',
+                  // 'bultos_ingreso' => 'required',
+                  // 'cantidad_ingreso' => 'required',
+                  // 'cif_moneda_ext' => 'required',
+                  // 'viu_moneda_nal' => 'required',
+                  // 'precio_compra' => 'required'
+                );
+
+                $error = Validator::make($request->all(),$rules);
+
+                      if ($error->fails()) {
+                        return response()->json([
+                          'errors' => $error->errors()->all()
+                        ]);
+                      }
+                      // return response()->json(['success'=>'Los datos fueron
+                      //       actualizados exitosamente',
+                      //       'aea'=>'Los datos fueron
+                      //               actualizados exitosamente'
+                      //
+                      //     ]);
+
+                                  $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                    ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                      , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                                          inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                            							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                            							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                            								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
+
+            return response()->json($documentos);
+
+
+        }
+
+
+
+      // $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
 
         // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
         // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
-            return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+            // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
 
     }
 
     public function showr(Request $request)
     {
-        $request->validate([
-          'codigo' => 'required',
-        ]);
+    //     $request->validate([
+    //       'codigo' => 'required',
+    //     ]);
+    //
+    //   $datos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+    //     ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+    //       , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+    //             inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+		// 					  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+		// 					  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+		// 						WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
+    //
+    //   $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+    //
+    //     // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+    //     return view('gestion-camion-r')->with(compact('datos'))->with(compact('year'));
 
-      $datos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
-                inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
-							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
-							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
 
-      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+            $rules = array(
+              'codigo' => 'required',
+              // 'codigo' => 'required',
+              // 'cantidad_cierre' => 'required',
+              // 'bultos_ingreso' => 'required',
+              // 'cantidad_ingreso' => 'required',
+              // 'cif_moneda_ext' => 'required',
+              // 'viu_moneda_nal' => 'required',
+              // 'precio_compra' => 'required'
+            );
 
-        // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-        return view('gestion-camion-r')->with(compact('datos'))->with(compact('year'));
+            $error = Validator::make($request->all(),$rules);
+
+                  if ($error->fails()) {
+                    return response()->json([
+                      'errors' => $error->errors()->all()
+                    ]);
+                  }
+                  // return response()->json(['success'=>'Los datos fueron
+                  //       actualizados exitosamente',
+                  //       'aea'=>'Los datos fueron
+                  //               actualizados exitosamente'
+                  //
+                  //     ]);
+
+                              $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                  , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                                      inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                                        inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                                        left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                                        WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
+
+        return response()->json($documentos);
 
     }
 
