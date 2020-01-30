@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- <title>{{ config('app.name', 'Las Brasas') }}</title> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -19,10 +17,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/preloader.css') }}" rel="stylesheet">
+    <!--
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('css/preloader.css') }}" rel="styleshee1t">
     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
     <!-- LAS BRASAS BOOTSTRAP -->
     <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
@@ -34,10 +32,19 @@
     <!-- CSS Files -->
     <!-- <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" /> -->
     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/argon.min.css?v=1.2.0" rel="stylesheet" />
+    
+    <link href="{{ asset('assets\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" />
+    <style media="screen">
+    .form-inline .form-group {
+      margin-bottom: 2px
+    }
+    #productTable tbody tr td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
 
-    {{-- <link href="{{ asset('assets\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> --}}
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+   .selected {
+       background-color: brown;
+       color: #FFF;
+   }
+    </style>
 </head>
 <body class="">
     <div class="loader loader-6 d-none cyan full-loader" id="loader-6">
@@ -480,8 +487,6 @@
     <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
     <!--   Argon JS   -->
     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-
-
     <script src="{{ asset('js/las-brasas.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>

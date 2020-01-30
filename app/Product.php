@@ -11,6 +11,7 @@ class Product extends Model
     protected $table1 = 'dbo.ADM_CLASIFICACIONCODIGO';
     protected $table2 = 'dbo.ADM_CLASIFICACIONCODIGO_2';
     protected $table3 = 'dbo.ADM_CODIGOS_NUTRICION';
+    protected $table4 = "dbo.ADM_CODIGOS_PADRE";
 
     protected $fillable = ['CODI_RCODIGO' ,'TUME_CODIGO' ,'TUME_MULT' ,'TPCO_CODIGO' ,'CODI_RNOMBRE' ,'CODI_RDESCRIP',
                            'CODI_RCODADU' ,'CODI_RAFECTO5' ,'CODI_PESO' ,'IMP_ADICIONAL' ,'CODI_P_VENTA' ,'codi_arancelario',
@@ -58,7 +59,7 @@ class Product extends Model
     public function create($request){
       DB::table($this->table)
           ->insert([
-              'CODI_PADRE' => $request['CODI_PADRE'],
+              //'CODI_PADRE' => $request['CODI_PADRE'],
               'CODI_RCODIGO' => $request['CODI_RCODIGO'],
               'TUME_CODIGO' => $request['TUME_CODIGO'],
               'CODI_RNOMBRE' => $request['CODI_RNOMBRE'],
@@ -108,5 +109,5 @@ class Product extends Model
             'hierro' => $request['hierro'],
           ]);
     }
-    
+
 }
