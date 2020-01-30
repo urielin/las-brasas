@@ -1,3 +1,7 @@
+.tr-selected {
+    background-color: #245772;
+    color: #FFF;
+}
 .custom-toggle-slider:after {
     font-family: inherit;
     font-size: .75rem;
