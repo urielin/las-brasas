@@ -404,9 +404,48 @@ public function changeBloqueoCamion(Request $request)
                           							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
                           								WHERE  c.codigo ='$request->camion_id' ");
 
+                                $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                          marca_origen ,    descripcion,        contenido,observaciones,
+                                          lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                                          fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+
+                                          forma_pago, despues_dias, despues_fecha,
+
+                                          fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                                    	    forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                                    	    fecha_vencimiento, fecha_vencimiento2,
+
+                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                                          FROM dbsys.camiones
+                                          WHERE  codigo ='$request->camion_id'");
+
+
+          // return response()->json($documentos);
+          // return response()->json([
+          //       'documentos' => $documentos,
+          //       'datos_generales' => $dato_general
+          //   ]);
+
+            return response()->json([
+                'documento' => $documentos,
+                'dato_general' => $dato_general,
+                ]);
+
+
+      }
+    }
+
+
+    public function generalCamion(Request $request)
+    {
+      if ($request -> ajax()) {
+              $documentos=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                      marca_origen ,    descripcion,        contenido,observaciones,
+                                      lugar_arribo ,     codigo_aux,      pais_origen, doc_bl
+                                      FROM dbsys.camiones
+                                      WHERE  c.codigo ='$request->camion_id'");
           return response()->json($documentos);
-
-
       }
     }
 

@@ -36,6 +36,7 @@ Route::POST('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-
 Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
 Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('gettableCamion-r');
 Route::POST('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');
+Route::get('/datos-generales', 'GestionCamionController@generalCamion')->name('generalCamion');
 
 
 Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');

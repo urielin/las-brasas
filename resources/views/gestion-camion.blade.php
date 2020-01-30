@@ -199,11 +199,11 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Código oficial</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" id="codigo_oficial" type="text" >
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Código auxiliar</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="codigo_auxiliar" type="text" >
                                                             </div>
 
                                                           </div>
@@ -211,18 +211,18 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Nro de contenedor</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" id="nro_de_contenedor" type="text" >
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Nro BL</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="nro_bl" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Clasificación de mercancía</label>
                                                             <div class="col-sm-6">
-                                                              <select class=" form-control" id="clasificación_de_mercancía">
+                                                              <select class=" form-control" id="clasificacion_de_mercancia">
                                                                  <option>Mercacías</option>
                                                               </select>
                                                             </div>
@@ -246,28 +246,28 @@
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Pais origen</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="pais_origen" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="descripcion" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Contenido</label>
                                                             <div class="col-sm-6">
-                                                              <textarea class="form-control form-control-sm" type="text" placeholder="2"></textarea>
+                                                              <textarea class="form-control form-control-sm" id="contenido" type="text"></textarea>
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Observaciones</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="observaciones" type="text" >
                                                             </div>
                                                           </div>
 
@@ -298,47 +298,36 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de cierre</label>
                                                   <div class="col-sm-6">
-                                                    <select class=" form-control" id="fecha_de_cierre">
-                                                       <option>Fecha de cierre</option>
-                                                    </select>
-                                                  </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                  <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
-                                                  <div class="col-sm-6">
-                                                    <select class=" form-control" id="fecha_de_embarque_desde">
-                                                       <option>Fecha de cierre</option>
-                                                    </select>
+                                                    <input class="form-control form-control-sm" id="fecha_de_cierre" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" id="fecha_de_embarque_desde" type="text" >
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" id="fecha_de_embarque_desde_hasta" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" type="text" id="fecha_de_llegada_desde">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" type="text" id="fecha_de_llegada_desde_hasta">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Observación</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" id="observacion" type="text" placeholder="1">
                                                   </div>
                                                 </div>
 
@@ -381,7 +370,7 @@
                                               <div class="form-group row">
                                                 <label for="staticEmail" class="col-sm-2 col-form-label">-</label>
                                                 <div class="col-sm-6">
-                                                  <select class=" form-control" id="-">
+                                                  <select class=" form-control" id="a_cumplirse_a-">
                                                      <option>-</option>
                                                   </select>
                                                 </div>
@@ -415,58 +404,58 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque real </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="fecha_de_embarque_real" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" id="fecha_de_llegada" type="text">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Resol. Sanitaria</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" type="text" id="resol_sanitaria">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Resol. Sanitaria</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_de_resol_sanitaria">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Forward</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" type="text" id="forward">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Forward</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_forward">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha producción desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_producción_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_producción_desde_hasta">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha vencimiento desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_vencimiento_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="fecha_vencimiento_desde_hasta">
                                                             </div>
                                                           </div>
 
@@ -494,18 +483,18 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Factura proveedor</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="factura_proveedor" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad recibida</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                              <input class="form-control form-control-sm" type="text" id="cantidad_recibida">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <select class=" form-control" id="hasta_1">
+                                                              <select class=" form-control" id="cantidad_recibida_hasta">
                                                                 <option>Caja</option>
                                                               </select>
                                                             </div>
@@ -514,7 +503,7 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Valor total</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                              <input class="form-control form-control-sm" type="text" id="valor_total">
                                                             </div>
                                                           </div>
 
@@ -523,6 +512,15 @@
                                                             <div class="col-sm-6">
                                                               <select class=" form-control" id="tipo_de_moneda">
                                                                  <option>Peso chileno</option>
+                                                              </select>
+                                                            </div>
+                                                          </div>
+
+                                                          <div class="form-group row">
+                                                            <label for="staticEmail" class="col-sm-2 col-form-label">Tratamiento del CIF</label>
+                                                            <div class="col-sm-6">
+                                                              <select class=" form-control" id="tratamiento_del_CIF">
+                                                                 <option>Tratamiento por camion</option>
                                                               </select>
                                                             </div>
                                                           </div>
