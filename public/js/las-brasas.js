@@ -210,17 +210,17 @@
         if($.trim(clasificacion_id) != ''){
             request=$.get('obtener-camion-r',{clasificacion_id:clasificacion_id,anio_id:anio_id},function(res){
 
-                $('#camionr').empty();
-                $('#camionr').append("<option value=''> Seleccione un camión </option>");
+                $('#camion').empty();
+                $('#camion').append("<option value=''> Seleccione un camión </option>");
                 // $('#camiontabla').append("<tr><td>aaaaaaaaaaa</td></tr>");
                 $.each(res, function(index,value){
                   // $(res).each(function(key,value){
                     // $('#camiontabla').append("<tr><td>"+ value.codigo +"</td><td>"+ value.descripcion+"</td><td>"+ value.cierre_cantidad +"</td><td>"+ value.monto_cierre +"</td><td>"+ value.ingreso_cantidad +"</td></tr>");
                     if (value != 'Camiones no encontrados') {
-                      $('#camionr').append("<option value='"+ index +"'>"+ value +"</option>");
+                      $('#camion').append("<option value='"+ index +"'>"+ value +"</option>");
                     } else {
-                      $('#camionr').empty();
-                      $('#camionr').append("<option value=''> Camiones no encontrados </option>");
+                      $('#camion').empty();
+                      $('#camion').append("<option value=''> Camiones no encontrados </option>");
                     }
                 });
 
@@ -242,10 +242,25 @@
       $('#camion').on('change', function(){
 
         var camion_id = $(this).val();
+        var valor;
+        var action_url;
+          // console.log($("#icamion").val());
+        if ($('#icamion').val() == 'camion')
+        {
+
+            action_url = 'tabla-camion';
+            valor= '2';
+        }
+        if ($("#icamion").val() == 'camion-r')
+        {
+            action_url = 'tabla-camion-r';
+            valor= '2';
+        }
+
 
         // console.log(camion_id);
         if($.trim(camion_id) != ''){
-            $.get('tabla-camion',{camion_id:camion_id },function(res){
+            $.get(action_url,{camion_id:camion_id },function(res){
               $('#bloquear-camion').empty();
              $('#camiontabla').empty();
 
@@ -264,10 +279,10 @@
             $('#bloquear-camion').append('<label for="" class="pt-0">Bloquear camión</label><label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked  id="change-bloqueo-camion" value="2"><span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span></label>');
              $.each(res, function(index,value){
                   if (value.bloqueo_2 == '1' ) {
-                    $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                    $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                   } else {
-                    $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                    $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                   }
 
@@ -357,22 +372,31 @@
         $('#formModal').modal('show');
       });
 // ----------------------------------------------------
-$('#sample_form').on('submit',function(event){
+$(document).on('submit','#sample_form',function(){
+// $('#sample_form').on('submit',function(event){
           event.preventDefault();
-
+          var camion_id;
+          var valor ;
           // $('#sample_form')[0].reset();
           // $('#form_result').html();
 
           var action_url = '';
-
-          if ($('#action').val() == 'Add')
+          action_url = 'actualizar-camion';
+          console.log('lineaaaaaaaaa para la ultima condicion');
+          console.log($('#action-producto').val());
+          if ($('#action-producto').val() == '1')
           {
-              action_url = "{{ route('GestionCamionController.updateitem')}}";
+              camion_id = $('#buscar-codigo-camion').val();
+              valor ='1';
           }
-          if ($('#action').val() == 'Editar')
-          {
-              action_url = 'actualizar-camion';
+          else{
+              camion_id = $('#camion').val();
+              valor= '2';
           }
+          // if ($('#action').val() == 'Editar')
+          // {
+          //     action_url = 'actualizar-camion';
+          // }
 
           request=$.ajax({
             url: action_url,
@@ -394,10 +418,54 @@ $('#sample_form').on('submit',function(event){
               if (data.success)
               {
                   html= '<div class="alert alert-success">'+ data.success+'</div>';
-                  $('#sample_form')[0].reset();
-                  // $('#user_table').DataTable().ajax.reload();
-                  // $('#tabla-load').load();
-                  // $('#tabla-load').html(response);
+                  // $('#sample_form')[0].reset();
+
+                  // ----------------
+
+
+
+                  // console.log(camion_id);
+                  if($.trim(camion_id) != ''){
+                      $.get('tabla-camion',{camion_id:camion_id },function(res){
+                        $('#bloquear-camion').empty();
+                        console.log('actualizando tablaaaaa');
+                       $('#camiontabla').empty();
+
+                      var bi=0;
+
+                      var ci=0;
+
+                      var mm=0;
+                      // value.cantidad_diferencia
+                      var tf=0;
+                      // value.total_compra
+                      var tcf=0;
+                      // value.total_costo
+                      // var co = 'class="editar-gestion btn btn-warning btn-sm"';
+                      // console.log(co);
+                      $('#bloquear-camion').append('<label for="" class="pt-0">Bloquear camión</label><label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked  id="change-bloqueo-camion" value="2"><span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span></label>');
+                       $.each(res, function(index,value){
+                            if (value.bloqueo_2 == '1' ) {
+                              $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+
+                            } else {
+                              $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+
+                            }
+
+                           bi+=parseFloat(value.bultos_ingreso);
+                           ci+=parseFloat(value.cantidad_ingreso);
+                            mm+=parseFloat(value.cantidad_diferencia);
+                            tf+=parseFloat(value.total_compra);
+                            tcf+= parseFloat(value.total_costo);
+                        });
+                        // tf=parseFloat()+parseFloat();
+                           $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+bi+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
+
+                           });
+                         }
+                  // ------------------------
+
               }
               $('#form_result').html(html);
             }
@@ -513,7 +581,9 @@ $('#buscar-camion-r').on('submit',function(event){
 
 });
 
-      $('#buscar-camion').on('submit',function(event){
+    $(document).on('submit','#buscar-camion',function(){
+      // $('#buscar-camion').on('submit',function(event){
+        var valor;
         event.preventDefault();
         $('#bloquear-camion').empty();
         // $('#sample_form')[0].reset();
@@ -523,11 +593,15 @@ $('#buscar-camion-r').on('submit',function(event){
 
         if ($('#action-buscar-camion').val() == 'buscar-camion')
         {
+            console.log('buscar-camion');
             action_url = 'ver-camion';
+            valor= '1';
         }
         if ($('#action-buscar-camion').val() == 'buscar-camion-r')
         {
+            console.log('buscar-camion-r');
             action_url = 'ver-camion-r';
+            valor= '1';
         }
 
         request=$.ajax({
@@ -568,10 +642,10 @@ $('#buscar-camion-r').on('submit',function(event){
 
               $.each(data, function(index,value){
                    if (value.bloqueo_2 == '1' ) {
-                     $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                     $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  checked> <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                    } else {
-                     $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                     $('#camiontabla').append("<tr>"+'<td> <label class="custom-toggle custom-toggle-default"> <input class="btn-switch" type="checkbox"  > <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span> </label> </td>'+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
                    }
 
@@ -619,6 +693,9 @@ $('#buscar-camion-r').on('submit',function(event){
         var valores = new Array();
         var i=0, j=1;
 
+
+
+
           $(this).parents("tr").find("td").each(function(){
             if (j>2) {
               valores[i] =$(this).html();
@@ -627,9 +704,12 @@ $('#buscar-camion-r').on('submit',function(event){
             j++;
           });
 
-        // $('#formModal').modal('show');
-        // console.log(valores);
 
+        // $('#formModal').modal('show');
+        console.log('-------');
+        console.log($(this).val());
+
+        $('#form_result').empty();
         $('#nro_item').val(valores[0]);
         $('#nro_itemreal').val(valores[0]);
         $('#codigo').val(valores[1]);
@@ -637,6 +717,7 @@ $('#buscar-camion-r').on('submit',function(event){
         $('#cantidad_cierre').val(valores[3]);
         $('#bultos_ingreso').val(valores[4]);
         $('#cantidad_ingreso').val(valores[5]);
+        $('#action-producto').val($(this).val());
 
         $('#formModal').modal('show');
 

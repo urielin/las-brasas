@@ -35,7 +35,7 @@ Route::get('/gestion-camion-r', 'GestionCamionController@indexr')->name('gestion
 Route::POST('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
 Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
 Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('gettableCamion-r');
-Route::post('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');
+Route::POST('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');
 
 
 Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');

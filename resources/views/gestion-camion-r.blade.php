@@ -12,7 +12,7 @@
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
               <div class="form-group">
                 {{-- {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!} --}}
-                <form  method="post" id="buscar-camion-r" class="form-horizontal">
+                <form  method="post" id="buscar-camion" class="form-horizontal">
                     @csrf
                     <label for="buscar-codigo-camion">Buscar camión</label>
 
@@ -53,9 +53,9 @@
           </div>
 
           <div class="form-group col-5">
-            <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
+            <input type="hidden" name="action" id="icamion"  value="camion-r">
             <label for="camionr">Seleccionar camión </label>
-            <select class="form-control" id="camionr">
+            <select class="form-control"  id="camion">
 
             </select>
           </div>
@@ -642,7 +642,8 @@
               </div>
               <br />
               <div class="form-group" align="center">
-                <input type="hidden" name="action" id="action" value="Editar">
+                <input type="hidden" name="action" id="action-producto" >
+                {{-- <input type="hidden" name="action" id="action" value="Editar"> --}}
                 <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
               </div>
             </form>
