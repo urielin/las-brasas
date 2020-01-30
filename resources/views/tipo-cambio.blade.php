@@ -5,7 +5,7 @@
   {{-- <div class="main-content ">
     <div class=""> --}}
 <div class="main-content">
-  <div class="bg-gradient-primary container-fluid pb-7 pt-3">
+  <div class="bg-gradient-primary container pb-7 pt-3">
     <p class="h1 mb-0 text-white text-uppercase d-lg-inline-block" >ACTUALIZAR TIPO DE CAMBIO</p>
     <div class="container">
       @if ($message = Session::get('success'))
@@ -31,7 +31,7 @@
 
 
                 <!-- Tabs with icons on Card -->
-                <div class="card card-nav-tabs ">
+                <div class="card card-nav-tabs mb-1">
                     <div class="card-header card-header-primary">
                         <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                         <div class="nav-tabs-navigation ">
@@ -39,12 +39,12 @@
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
                                         <a class="nav-link active " href="#profile" data-toggle="tab">
-                                            <i class="material-icons">Seleccione el periodo a verificar</i>
+                                            Seleccione el periodo a verificar
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#messages" data-toggle="tab">
-                                            <i class="material-icons">Actualizar un mes completo de la gestión actual</i>
+                                            Actualizar un mes completo de la gestión actual
                                         </a>
                                     </li>
                                 </ul>
@@ -118,8 +118,15 @@
 
 
 
-  <div class="row ">
-  <div class="col-xl-12 mb-5 mb-xl-0">
+ 
+  <!-- Footer -->
+
+    </div>
+
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
       <div class="card shadow mt-3">
         <div class="card-header border-0  ">
           <div class="row align-items-center">
@@ -132,11 +139,11 @@
             </div>
           </div>
         </div>
-        <div class="table-responsive table-dark table-hover">
+        <div class="table-responsive table-hover">
 
           <!-- Projects table -->
           <table  class="table align-items-center table-flush">
-            <thead>
+            <thead class="thead-light">
               <tr>
                 <th scope="col">Fecha</th>
                 <th scope="col">Cambio</th>
@@ -166,11 +173,8 @@
 
       </div>
     </div>
-
-  </div>
-  <!-- Footer -->
-
     </div>
+    
   </div>
 </div>
 
