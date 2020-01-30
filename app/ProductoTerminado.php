@@ -17,14 +17,41 @@ class ProductoTerminado extends Model
      }
 
      public function updateProduct($params) {
-       DB::table($this->table)
-           ->where('CODI_RCODIGO', $params['code'])
-           ->update([
-             'CODI_RCODIGO' => $params['code'],
-             'factor_multi' => $params['factor_multi'],
-             'factor_div' => $params['factor_div'],
-             'tipo' => $params['tipo'],
-             'estado' => $params['estado'],
-           ]);
+       $father = DB::table($this->table2)
+                      ->where('CODI_RCODIGO', $params['code'])
+                      ->where('TPCO_CODIGO', '2')->get();
+       if (isset($father[0])) {
+         $flat = DB::table($this->table)
+                      ->where('CODI_RCODIGO', $params['code'])->get();
+                if (isset($flat[0])) {
+                  DB::table($this->table)
+                      ->where('CODI_RCODIGO', $params['code'])
+                      ->update([ 
+                        'CODI_RCODIGO' => $params['code'],
+                        'factor_multi' => $params['factor_multi'],
+                        'factor_div' => $params['factor_div'],
+                        'tipo' => $params['tipo'],
+                        'estado' => $params['estado'],
+                      ]);
+                } else {
+                  DB::table($this->table)
+                      ->where('CODI_RCODIGO', $params['code'])
+                      ->insert([
+                        'CODI_PADRE' => $params['parent'],
+                        'CODI_RCODIGO' => $params['code'],
+                        'factor_multi' => $params['factor_multi'],
+                        'factor_div' => $params['factor_div'],
+                        'tipo' => $params['tipo'],
+                        'estado' => $params['estado'],
+                      ]);
+                }
+
+             return 'ok';
+       }
+       return 'error';
+
+     }
+     public function deleteProduct($params) {
+       ProductoTerminado::where('CODI_RCODIGO', $params['id'])->delete();
      }
 }

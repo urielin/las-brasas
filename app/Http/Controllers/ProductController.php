@@ -69,4 +69,7 @@ class ProductController extends Controller
     public function updateProduct(Request $request) {
       return $this->oProductoTerminado->updateProduct($request->all());
     }
+    public function deleteProduct(Request $request) {
+      return $this->oProductoTerminado->deleteProduct($request->all());
+    }
 }

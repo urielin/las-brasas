@@ -119,7 +119,11 @@
                           <div class="form-group  col-md-12">
                             <label class="col-sm-4 control-label  " for="formGroupInputSmall">Tipo Codigo: </label>
                             <div class="col-sm-8  ">
-                              <input class="form-control" type="text" id="edt-tipo-code" placeholder="">
+                               <select  id="edt-tipo-code" name="edt-tipo-code"   class="form-control">
+                                 <option value="1" selected>MERCANCIA</option>
+                                 <option value="2">PRODUCTO</option>
+                                 <option value="3">INSUMOS</option>
+                              </select>
                             </div>
                           </div>
                           <div class="form-group  col-md-12">
@@ -207,6 +211,9 @@
                   <div class="tab-pane fade" id="catalogo" role="tabpanel" aria-labelledby="catalogo-tab">
                     <div >
                       <div class="table-responsive">
+                        <div class="pull-right">
+                          <button type="button"  class="btn btn-success btn-add-product" name="button">+</button>
+                        </div>
                         <div>
                           <table id='catalogoTable' style="width:auto !important" class="table align-items-center">
                             <thead>
@@ -224,7 +231,9 @@
                                 <th> </th>
                               </tr>
                             </thead>
+                            <tbody>
 
+                            </tbody>
                           </table>
                         </div>
                       </div>
@@ -266,7 +275,11 @@
                               <div class="form-group  col-md-12">
                                 <label class="col-sm-4 control-label  " for="formGroupInputSmall">Tipo Codigo: </label>
                                 <div class="col-sm-8  ">
-                                  <input class="form-control" type="text" id="create-tipo-code" placeholder="">
+                                  <select  id="create-tipo-code" name="TPCO_CODIGO" dl="0"  class="form-control">
+                                    <option value="1" selected>MERCANCIA</option>
+                                    <option value="2">PRODUCTO</option>
+                                    <option value="3">INSUMOS</option>
+                                  </select>
                                 </div>
                               </div>
                               <div class="form-group  col-md-12">
