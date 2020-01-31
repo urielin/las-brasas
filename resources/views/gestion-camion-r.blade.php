@@ -11,13 +11,18 @@
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
               <div class="form-group">
-                {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
-                @csrf
-                <label for="buscar-codigo-camion">Buscar camión</label>
-                <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                {{-- <br> --}}
-                <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
-                {!! Form::close()!!}
+                {{-- {!! Form::open(['route' => ['showCamion-r'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!} --}}
+                <form  method="post" id="buscar-camion" class="form-horizontal">
+                    @csrf
+                    <label for="buscar-codigo-camion">Buscar camión</label>
+
+                    <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
+                    <input type="text" name="codigo_id" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                    {{-- <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control"> --}}
+                    {{-- <br> --}}
+                    <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
+                </form>
+                {{-- {!! Form::close()!!} --}}
               </div>
             </div>
 
@@ -48,8 +53,9 @@
           </div>
 
           <div class="form-group col-5">
+            <input type="hidden" name="action" id="icamion"  value="camion-r">
             <label for="camionr">Seleccionar camión </label>
-            <select class="form-control" id="camionr">
+            <select class="form-control"  id="camion">
 
             </select>
           </div>
@@ -83,11 +89,15 @@
                                           <i style=" font-style: normal; " class="material-icons">Actualizar camión</i>
                                       </a>
                                   </li>
-                                  {{-- <li class="nav-item">
-                                      <a class="nav-link" href="#messages2" data-toggle="tab">
-                                          <i style=" font-style: normal; " class="material-icons">Actualizar camion</i>
-                                      </a>
-                                  </li> --}}
+                                  <div class="row ">
+                                      <div class="col-12 float-right">
+                                        <li class="nav-item">
+
+                                            <span id="bloquear-camion"></span>
+
+                                        </li>
+                                      </div>
+                                  </div>
                               </ul>
                           </div>
                       </div>
@@ -126,137 +136,7 @@
 
                                   </thead>
                                   <tbody id="camiontabla">
-                                    {{-- <tr><td>asdasd</td></tr> --}}
-                                @php
-                                $bi=0;$ci=0;$mm=0;$tf=0;$tcf=0;
-                                @endphp
-
-                                {{-- // value.cantidad_diferencia --}}
-                                {{-- // value.total_compra --}}
-
-
-                                  @foreach ($datos as $item)
-                                    <tr >
-                                      @php
-                                        if ($item->bloqueo_2 == '1') {
-                                          @endphp
-                                          <td>
-                                          <label class="custom-toggle custom-toggle-default">
-                                            <input type="checkbox" checked  class="btn-switch">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                          </label>
-                                          </td>
-                                          @php
-                                        }
-                                        else {
-                                          @endphp
-                                          <td>
-                                          <label class="custom-toggle custom-toggle-default">
-                                            <input type="checkbox"  class="btn-switch">
-                                            <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span>
-                                          </label>
-                                          </td>
-                                          @php
-                                        }
-                                      @endphp
-                                      <td>
-
-                                        <button type="button" value="{{$item->nro_item}}" class="editar-gestion btn btn-warning btn-sm">Editar</button>
-
-                                      <td>{{$item->nro_item}}</td>
-                                      <td>{{$item->codigo}}</td>
-                                      <td>{{$item->producto}}</td>
-                                      <td>{{$item->cantidad_cierre}}</td>
-                                      <td>{{$item->bultos_ingreso}}</td>
-                                      <td>{{$item->cantidad_ingreso}}</td>
-                                      <td>{{$item->cantidad_diferencia}}</td>
-                                      <td>{{$item->cif_moneda_ext}}</td>
-                                      <td>{{$item->viu_moneda_nal}}</td>
-                                      <td>{{$item->cif_moneda_nal}}</td>
-                                      <td>{{$item->precio_compra}}</td>
-                                      <td>{{$item->total_compra}}</td>
-                                      <td>{{$item->cif_adicional_nal}}</td>
-                                      <td>{{$item->cif_final_nal}}</td>
-                                      <td>{{$item->total_costo}}</td>
-                                    </tr>
-                                    @php
-                                      $bi+=$item->bultos_ingreso;
-                                      $ci+=$item->cantidad_ingreso;
-                                      $mm+=$item->cantidad_diferencia;
-                                      $tf+=$item->total_compra;
-                                      $tcf+=$item->total_costo;
-                                    @endphp
-                                      {{-- F-bultos_ingresos F-cantidad_ingresos{{$item->cantidad_diferencia}}{{$item->total_compra}}{{$item->total_costo}} --}}
-                                  @endforeach
-
-                                  <tr >
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->nro_item}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->codigo}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->producto}} --}}
-                                      {{-- F-producto --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_cierre}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->bultos_ingresos}} --}}
-                                      {{-- Total=F-bultos_ingresos --}}
-
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_ingresos}} --}}
-                                      {{-- Total=F-cantidad_ingresos --}}
-                                      {{$bi}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cantidad_diferencia}} --}}
-                                      {{-- Total true --}}
-                                      {{$ci}}
-                                    </td>
-                                    <td>
-                                      {{$mm}}
-                                      {{-- {{$item->cif_moneda_ext}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->viu_moneda_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cif_moneda_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->precio_compra}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->total_compra}} --}}
-                                      {{-- Total true --}}
-
-                                    </td>
-                                    <td>
-                                      {{$tf}}
-                                      {{-- {{$item->cif_adicional_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->cif_final_nal}} --}}
-                                    </td>
-                                    <td>
-                                      {{-- {{$item->total_costo}} --}}
-                                      {{-- total true --}}
-
-                                    </td>
-                                    <td>
-                                      {{$tcf}}
-                                    </td>
-
-                                  </tr>
-
+                                    {{-- JavaScript --}}
 
                                   </tbody>
                                 </table>
@@ -271,26 +151,28 @@
                           <div class="nav nav-tabs" id="nav-tab" role="tablist">
                           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="nav-home" aria-selected="true">Datos de camión</a>
                           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#dos" role="tab" aria-controls="nav-profile" aria-selected="false">Fecha embarque y llegada</a>
-                          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="nav-contact" aria-selected="false">Forma de pago</a>
+                          {{-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="nav-contact" aria-selected="false">Forma de pago</a> --}}
                           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#cuatro" role="tab" aria-controls="nav-profile" aria-selected="false">Datos embarque y llegada</a>
                           <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#cinco" role="tab" aria-controls="nav-contact" aria-selected="false">Valor total del camion</a>
                           </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                              <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="nav-home-tab">
+                          <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="nav-home-tab">
                                   @php if ($datos != '[]') { @endphp @php } else { @endphp
                                         <br/>
-                                          <form  method="post" id="consulta1" class="form-horizontal">
+                                          <span id="form_result_consulta1"></span>
+                                          <form  method="POST" id="consulta1" class="form-horizontal">
                                           @csrf
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Código oficial</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" name="codigo_oficial" id="codigo_oficial" type="text" >
+                                                    <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Código auxiliar</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
                                                   </div>
 
                                                 </div>
@@ -298,19 +180,19 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Nro de contenedor</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm"  name="nro_de_contenedor" id="nro_de_contenedor" type="text" >
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Nro BL</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="nro_bl" id="nro_bl" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Clasificación de mercancía</label>
                                                   <div class="col-sm-6">
-                                                    <select class=" form-control" id="clasificación_de_mercancía">
-                                                       <option>Mercacías</option>
+                                                    <select class=" form-control" name="clasificacion_de_mercancia" id="clasificacion_de_mercancia">
+                                                       // <option>Mercacías</option>
                                                     </select>
                                                   </div>
                                                 </div>
@@ -318,8 +200,8 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Proveedor</label>
                                                   <div class="col-sm-6">
-                                                    <select class=" form-control" id="proveedor">
-                                                       <option>Proveedor</option>
+                                                    <select class=" form-control" name="proveedor" id="proveedor">
+                                                       // <option>Proveedor</option>
                                                     </select>
                                                   </div>
                                                 </div>
@@ -327,48 +209,52 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Marca origen</label>
                                                   <div class="col-sm-3">
-                                                  <select class=" form-control" id="marca_origen">
-                                                     <option>Marca origen</option>
+                                                  <select class=" form-control" name="marca_origen" id="marca_origen">
+
                                                   </select>
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Pais origen</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="pais_origen" id="pais_origen" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="descripcion" id="descripcion" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Contenido</label>
                                                   <div class="col-sm-6">
-                                                    <textarea class="form-control form-control-sm" type="text" placeholder="2"></textarea>
+                                                    <textarea class="form-control form-control-sm" name="contenido" id="contenido" type="text"></textarea>
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Observaciones</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="observaciones" id="observaciones" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Lugar de arribo</label>
                                                   <div class="col-sm-6">
-                                                    <select class=" form-control" id="lugar_de_arribo">
-                                                       <option>Lugar de arribo</option>
+                                                    <select class=" form-control" name="lugar_de_arribo" id="lugar_de_arribo">
+
                                                     </select>
                                                   </div>
                                                 </div>
 
                                                 <br />
                                                 <div class="form-group" align="center">
+                                                  <span id="bandera-general"></span>
+
+                                                  <input type="hidden" name="ac"  value="">
+
                                                   <input type="hidden" name="action" id="action" value="Editar">
                                                   <input type="submit" name="action_b1" id="action_b1" class="btn btn-warning" value="Actualizar">
                                                 </div>
@@ -379,53 +265,44 @@
                           <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="nav-profile-tab">
                             @php if ($datos != '[]') { @endphp @php } else { @endphp
                                   <br/>
+                                  <span id="form_result_consulta2"></span>
                                 <form  method="post" id="consulta2" class="form-horizontal">
                                   @csrf
 
                                       <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de cierre</label>
                                         <div class="col-sm-6">
-                                          <select class=" form-control" id="fecha_de_cierre">
-                                             <option>Fecha de cierre</option>
-                                          </select>
-                                        </div>
-                                      </div>
-
-                                      <div class="form-group row">
-                                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
-                                        <div class="col-sm-6">
-                                          <select class=" form-control" id="fecha_de_embarque_desde">
-                                             <option>Fecha de cierre</option>
-                                          </select>
+                                          <input class="form-control form-control-sm" name="fecha_de_cierre" id="fecha_de_cierre" type="text" >
+                                          <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real2" id="codigo_oficial_real2" type="text" >
                                         </div>
                                       </div>
 
                                       <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                         <div class="col-sm-3">
-                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                          <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
                                         </div>
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                         <div class="col-sm-3">
-                                          <input class="form-control form-control-sm" type="text" placeholder="2">
+                                          <input class="form-control form-control-sm" name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="text" >
                                         </div>
                                       </div>
 
                                       <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada desde</label>
                                         <div class="col-sm-3">
-                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                          <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde">
                                         </div>
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                         <div class="col-sm-3">
-                                          <input class="form-control form-control-sm" type="text" placeholder="2">
+                                          <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta">
                                         </div>
                                       </div>
 
                                       <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-2 col-form-label">Observación</label>
                                         <div class="col-sm-6">
-                                          <input class="form-control form-control-sm" type="text" placeholder="1">
+                                          <input class="form-control form-control-sm"  type="text" name="observacion" id="observacion">
                                         </div>
                                       </div>
 
@@ -450,7 +327,7 @@
                                     <div class="form-group row">
                                       <label for="staticEmail" class="col-sm-2 col-form-label">Forma de pago</label>
                                       <div class="col-sm-6">
-                                        <select class=" form-control" id="forma_de_pago">
+                                        <select class=" form-control" name="forma_de_pago" id="forma_de_pago">
                                            <option>Forma de pago</option>
                                         </select>
                                       </div>
@@ -460,7 +337,7 @@
                                       <label for="staticEmail" class="col-sm-2 col-form-label">A cumplirse a</label>
                                       <div class="col-sm-6">
                                         <select class=" form-control" id="a_cumplirse_a">
-                                           <option>A cumplirse a</option>
+
                                         </select>
                                       </div>
                                     </div>
@@ -468,7 +345,7 @@
                                     <div class="form-group row">
                                       <label for="staticEmail" class="col-sm-2 col-form-label">-</label>
                                       <div class="col-sm-6">
-                                        <select class=" form-control" id="-">
+                                        <select class=" form-control" id="a_cumplirse_a-">
                                            <option>-</option>
                                         </select>
                                       </div>
@@ -496,64 +373,66 @@
 
                                   @endphp
                                         <br/>
+                                        <span id="form_result_consulta4"></span>
                                           <form  method="post" id="consulta4" class="form-horizontal">
                                           @csrf
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque real </label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="text" >
+                                                    <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real4" id="codigo_oficial_real4" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada </label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="fecha_de_llegada" id="fecha_de_llegada" type="text">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Resol. Sanitaria</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" name="resol_sanitaria" type="text" id="resol_sanitaria">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Resol. Sanitaria</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="fecha_de_resol_sanitaria" type="text" id="fecha_de_resol_sanitaria">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Forward</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" name="forward" type="text" id="forward">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Forward</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" name="fecha_forward" type="text" id="fecha_forward">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha producción desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_producción_desde" id="fecha_producción_desde">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha vencimiento desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta">
                                                   </div>
                                                 </div>
 
@@ -573,36 +452,29 @@
                           </div>
                           <div class="tab-pane fade" id="cinco" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                                  @php
-                                      if ($datos != '[]')
-                                      {
-                                  @endphp
-                                  asdasdasdasd
-                                    @php
-                                  }
-                                  else
-                                  {
-                                  @endphp
+                                  @php if ($datos != '[]') { @endphp @php } else { @endphp
                                         <br/>
+                                          <span id="form_result_consulta5"></span>
                                           <form  method="post" id="consulta5" class="form-horizontal">
                                           @csrf
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Factura proveedor</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" type="text" name="factura_proveedor" id="factura_proveedor" >
+                                                    <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad recibida</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm" type="text" name="cantidad_recibida" id="cantidad_recibida">
                                                   </div>
-                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                                  <label for="inputPassword" class="col-sm-2 col-form-label">Unidad</label>
                                                   <div class="col-sm-3">
-                                                    <select class=" form-control" id="hasta_1">
-                                                      <option>Caja</option>
+                                                    <select class=" form-control" name="unidad" id="unidad">
+
                                                     </select>
                                                   </div>
                                                 </div>
@@ -610,18 +482,20 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Valor total</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" type="text" placeholder="2">
+                                                    <input class="form-control form-control-sm" type="text" name="valor_total" id="valor_total">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Tipo de moneda</label>
                                                   <div class="col-sm-6">
-                                                    <select class=" form-control" id="tipo_de_moneda">
-                                                       <option>Peso chileno</option>
+                                                    <select class=" form-control" name="tipo_de_moneda" id="tipo_de_moneda">
+
                                                     </select>
                                                   </div>
                                                 </div>
+
+
 
                                                 <br />
                                                 <div class="form-group" align="center">
@@ -630,9 +504,7 @@
                                                 </div>
 
                                           </form>
-                                    @php
-                                  }
-                                   @endphp
+                                    @php } @endphp
 
                                 </div>
                         </div>
@@ -762,7 +634,8 @@
               </div>
               <br />
               <div class="form-group" align="center">
-                <input type="hidden" name="action" id="action" value="Editar">
+                <input type="hidden" name="action" id="action-producto" >
+                {{-- <input type="hidden" name="action" id="action" value="Editar"> --}}
                 <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
               </div>
             </form>
