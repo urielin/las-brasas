@@ -1169,7 +1169,7 @@ $('#buscar-camion-r').on('submit',function(event){
           success:function(res)
           {
             var html ='';
-
+              console.log('entro');
               $('#camiontabla').empty();
              var bi=0;
 
