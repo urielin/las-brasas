@@ -88,7 +88,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modificar precio</h4>
+        <h4 class="modal-title align-items-center">Modificar precio</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body card-body px-lg-5 py-lg-4">
