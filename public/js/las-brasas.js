@@ -23,9 +23,9 @@
               // console.log(data.fecha_baja);
 
           }else if(interval==0) {
-              $('#formalModal .modal-title').text('Modificar precio (Es una nueva oferta)');
-              $('#formalModal .modal-header').css("border-bottom", "1px solid #565cc0");
-              $('#formalModal .modal-title').css("color", "#565cc0");
+              // $('#formalModal .modal-title').text('Modificar precio (Es una nueva oferta)');
+              // $('#formalModal .modal-header').css("border-bottom", "1px solid #565cc0");
+              // $('#formalModal .modal-title').css("color", "#565cc0");
               // console.log(data.fecha_baja);
 
           }else if(interval<=48) {
