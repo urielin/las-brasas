@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'UsuariosController@index')->name('home');
+Route::get('/', 'UsuariosController@index')->name('home');
 Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
 Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
 Route::get('/tipo-cambio', 'TipoCambioController@index')->name('tipo-cambio');

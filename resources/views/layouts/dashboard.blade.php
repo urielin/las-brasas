@@ -159,9 +159,9 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{route('test')}}" class="nav-link">Test</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <!-- Divider -->
 
