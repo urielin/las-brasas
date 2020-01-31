@@ -37,6 +37,11 @@ Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('get
 Route::get('/tabla-camion-r', 'GestionCamionController@gettablecamionr')->name('gettableCamion-r');
 Route::POST('/actualizar-camion', 'GestionCamionController@updateitem')->name('updateitem');
 Route::get('/datos-generales', 'GestionCamionController@generalCamion')->name('generalCamion');
+Route::POST('/actualizar-camion-general', 'GestionCamionController@updategeneralCamion')->name('updategeneralCamion');
+Route::POST('/actualizar-camion-fecha', 'GestionCamionController@updategeneralFecha')->name('updategeneralFecha');
+Route::POST('/actualizar-camion-embarque', 'GestionCamionController@updategeneralEmbarque')->name('updategeneralEmbarque');
+Route::POST('/actualizar-camion-valor-total', 'GestionCamionController@updategeneralValorTotal')->name('updategeneralValorTotal');
+
 
 
 Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');

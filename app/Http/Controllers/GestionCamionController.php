@@ -158,7 +158,54 @@ class GestionCamionController extends Controller
                             							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
                             								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
 
-            return response()->json($documentos);
+                                            $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+                                            $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+                                            $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+                                            $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+                                            $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+                                            $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+                                            $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+                                            $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                                      marca_origen ,    descripcion,        contenido,observaciones,
+                                                      lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                                                      fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+
+                                                      forma_pago, despues_dias, despues_fecha,
+
+                                                      fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                                                      forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                                                      fecha_vencimiento, fecha_vencimiento2,
+
+                                                      factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                                                      FROM dbsys.camiones
+                                                      WHERE  codigo ='$request->codigo'");
+
+
+                                          // return response()->json($documentos);
+                                          // return response()->json([
+                                          //       'documentos' => $documentos,
+                                          //       'datos_generales' => $dato_general
+                                          //   ]);
+
+                                          return response()->json([
+                                            'documento'              =>$documentos,
+                                            'dato_general'           =>$dato_general,
+                                            'clasificaciones_camion' =>$clasificaciones_camion,
+                                            'proveedor_camion'       =>$proveedor_camion,
+                                            'marca_origen'           =>$marca_origen,
+                                            'lugar_de_arribo'        =>$lugar_de_arribo,
+                                            'forma_pago'             =>$forma_pago,
+                                            'unidad'                 =>$unidad,
+                                            'tipo_moneda'            =>$tipo_moneda
+                                          ]);
 
 
         }
@@ -404,11 +451,26 @@ public function changeBloqueoCamion(Request $request)
                           							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
                           								WHERE  c.codigo ='$request->camion_id' ");
 
+                                $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+                                $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+                                $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+                                $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+                                $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+                                $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+                                $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+
                                 $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
                                           marca_origen ,    descripcion,        contenido,observaciones,
                                           lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
 
-                                          fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+                                          fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha,
 
                                           forma_pago, despues_dias, despues_fecha,
 
@@ -416,7 +478,7 @@ public function changeBloqueoCamion(Request $request)
                                     	    forward, forward_fecha, fecha_produccion, fecha_produccion2,
                                     	    fecha_vencimiento, fecha_vencimiento2,
 
-                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda
                                           FROM dbsys.camiones
                                           WHERE  codigo ='$request->camion_id'");
 
@@ -428,8 +490,15 @@ public function changeBloqueoCamion(Request $request)
           //   ]);
 
             return response()->json([
-                'documento' => $documentos,
-                'dato_general' => $dato_general,
+                'documento'              =>$documentos,
+                'dato_general'           =>$dato_general,
+                'clasificaciones_camion' =>$clasificaciones_camion,
+                'proveedor_camion'       =>$proveedor_camion,
+                'marca_origen'           =>$marca_origen,
+                'lugar_de_arribo'        =>$lugar_de_arribo,
+                'forma_pago'             =>$forma_pago,
+                'unidad'                 =>$unidad,
+                'tipo_moneda'            =>$tipo_moneda
                 ]);
 
 
@@ -460,7 +529,47 @@ public function changeBloqueoCamion(Request $request)
               left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
               WHERE  c.codigo ='$request->camion_id'");
 
-          return response()->json($documentos);
+              $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+              $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+              $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+
+              $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+              $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                        marca_origen ,    descripcion,        contenido,observaciones,
+                        lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                        fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+
+                        forma_pago, despues_dias, despues_fecha,
+
+                        fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                        forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                        fecha_vencimiento, fecha_vencimiento2,
+
+                        factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                        FROM dbsys.camiones
+                        WHERE  codigo ='$request->camion_id'");
+
+
+// return response()->json($documentos);
+// return response()->json([
+//       'documentos' => $documentos,
+//       'datos_generales' => $dato_general
+//   ]);
+
+                return response()->json([
+                'documento'              => $documentos,
+                'dato_general'           => $dato_general,
+                'clasificaciones_camion' => $clasificaciones_camion,
+                'proveedor_camion'       =>$proveedor_camion,
+                'marca_origen'           =>$marca_origen,
+                'lugar_de_arribo'           =>$lugar_de_arribo
+                ]);
+
 
       }
     }
@@ -504,7 +613,85 @@ public function changeBloqueoCamion(Request $request)
           }
     }
 
+    public function updategeneralValorTotal(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          factura_nro='$request->factura_proveedor',
+                          cantidad_unidades='$request->cantidad_recibida',
+                          tipo_unidades='$request->unidad',
+                          valor_total='$request->valor_total',
+                          tipo_moneda='$request->tipo_de_moneda'
 
+
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real5'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+
+
+    public function updategeneralEmbarque(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          fecha_embarque= CONVERT (Datetime, '$request->fecha_de_embarque_real', 120),
+                          fecha_llegada=CONVERT (Datetime, '$request->fecha_de_llegada', 120),
+                          resolucion_sanitaria='$request->resol_sanitaria',
+                          fecha_resolucion=CONVERT (Datetime,'$request->fecha_de_resol_sanitaria' , 120),
+	                        forward='$request->forward',
+                          forward_fecha=CONVERT (Datetime, '$request->fecha_forward', 120),
+                          fecha_produccion=CONVERT (Datetime,'$request->fecha_producción_desde' , 120),
+                          fecha_produccion2=CONVERT (Datetime,'$request->fecha_producción_desde_hasta' , 120),
+	                        fecha_vencimiento=CONVERT (Datetime,'$request->fecha_vencimiento_desde' , 120),
+                          fecha_vencimiento2=CONVERT (Datetime, '$request->fecha_vencimiento_desde_hasta', 120)
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real4'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+
+    public function updategeneralFecha(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          fecha_cierre=CONVERT (Datetime, '$request->fecha_de_cierre', 120),
+                          fecha_embarque1=CONVERT (Datetime, '$request->fecha_de_embarque_desde', 120),
+                          fecha_embarque2=CONVERT (Datetime, '$request->fecha_de_embarque_desde_hasta', 120),
+                          fecha_llegada1=CONVERT (Datetime, '$request->fecha_de_llegada_desde', 120),
+                          fecha_llegada2=CONVERT (Datetime, '$request->fecha_de_llegada_desde_hasta', 120),
+                          observacion_fecha ='$request->observacion'
+
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real2'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+    public function updategeneralCamion(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          codigo='$request->codigo_oficial',
+                          doc_contenedor='$request->nro_de_contenedor',
+                          clasif_mercancia='$request->clasificacion_de_mercancia',
+                          proveedor='$request->proveedor',
+                          marca_origen='$request->marca_origen',
+                          descripcion='$request->descripcion',
+                          contenido='$request->contenido',
+                          observaciones='$request->observaciones',
+                          lugar_arribo='$request->lugar_de_arribo',
+                          codigo_aux='$request->codigo_auxiliar',
+                          pais_origen='$request->pais_origen',
+                          doc_bl='$request->nro_bl'
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
 
     public function updateitem(Request $request)
     {

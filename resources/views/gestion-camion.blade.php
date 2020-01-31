@@ -190,20 +190,22 @@
                                     </div>
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
-                                        <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="nav-home-tab">
                                             @php if ($datos != '[]') { @endphp @php } else { @endphp
                                                   <br/>
-                                                    <form  method="post" id="consulta1" class="form-horizontal">
+                                                    <span id="form_result_consulta1"></span>
+                                                    <form  method="POST" id="consulta1" class="form-horizontal">
                                                     @csrf
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Código oficial</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" id="codigo_oficial" type="text" >
+                                                              <input class="form-control form-control-sm" name="codigo_oficial" id="codigo_oficial" type="text" >
+                                                              <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Código auxiliar</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" id="codigo_auxiliar" type="text" >
+                                                              <input class="form-control form-control-sm" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
                                                             </div>
 
                                                           </div>
@@ -211,19 +213,19 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Nro de contenedor</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" id="nro_de_contenedor" type="text" >
+                                                              <input class="form-control form-control-sm"  name="nro_de_contenedor" id="nro_de_contenedor" type="text" >
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Nro BL</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" id="nro_bl" type="text" >
+                                                              <input class="form-control form-control-sm" name="nro_bl" id="nro_bl" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Clasificación de mercancía</label>
                                                             <div class="col-sm-6">
-                                                              <select class=" form-control" id="clasificacion_de_mercancia">
-                                                                 <option>Mercacías</option>
+                                                              <select class=" form-control" name="clasificacion_de_mercancia" id="clasificacion_de_mercancia">
+                                                                 // <option>Mercacías</option>
                                                               </select>
                                                             </div>
                                                           </div>
@@ -231,8 +233,8 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Proveedor</label>
                                                             <div class="col-sm-6">
-                                                              <select class=" form-control" id="proveedor">
-                                                                 <option>Proveedor</option>
+                                                              <select class=" form-control" name="proveedor" id="proveedor">
+                                                                 // <option>Proveedor</option>
                                                               </select>
                                                             </div>
                                                           </div>
@@ -240,48 +242,52 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Marca origen</label>
                                                             <div class="col-sm-3">
-                                                            <select class=" form-control" id="marca_origen">
-                                                               <option>Marca origen</option>
+                                                            <select class=" form-control" name="marca_origen" id="marca_origen">
+
                                                             </select>
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Pais origen</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" id="pais_origen" type="text" >
+                                                              <input class="form-control form-control-sm" name="pais_origen" id="pais_origen" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Descripción</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" id="descripcion" type="text" >
+                                                              <input class="form-control form-control-sm" name="descripcion" id="descripcion" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Contenido</label>
                                                             <div class="col-sm-6">
-                                                              <textarea class="form-control form-control-sm" id="contenido" type="text"></textarea>
+                                                              <textarea class="form-control form-control-sm" name="contenido" id="contenido" type="text"></textarea>
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Observaciones</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" id="observaciones" type="text" >
+                                                              <input class="form-control form-control-sm" name="observaciones" id="observaciones" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Lugar de arribo</label>
                                                             <div class="col-sm-6">
-                                                              <select class=" form-control" id="lugar_de_arribo">
-                                                                 <option>Lugar de arribo</option>
+                                                              <select class=" form-control" name="lugar_de_arribo" id="lugar_de_arribo">
+
                                                               </select>
                                                             </div>
                                                           </div>
 
                                                           <br />
                                                           <div class="form-group" align="center">
+                                                            <span id="bandera-general"></span>
+
+                                                            <input type="hidden" name="ac"  value="">
+
                                                             <input type="hidden" name="action" id="action" value="Editar">
                                                             <input type="submit" name="action_b1" id="action_b1" class="btn btn-warning" value="Actualizar">
                                                           </div>
@@ -292,42 +298,44 @@
                                     <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="nav-profile-tab">
                                       @php if ($datos != '[]') { @endphp @php } else { @endphp
                                             <br/>
+                                            <span id="form_result_consulta2"></span>
                                           <form  method="post" id="consulta2" class="form-horizontal">
                                             @csrf
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de cierre</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" id="fecha_de_cierre" type="text" >
+                                                    <input class="form-control form-control-sm" name="fecha_de_cierre" id="fecha_de_cierre" type="text" >
+                                                    <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real2" id="codigo_oficial_real2" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" id="fecha_de_embarque_desde" type="text" >
+                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" id="fecha_de_embarque_desde_hasta" type="text" >
+                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="text" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" id="fecha_de_llegada_desde">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" id="fecha_de_llegada_desde_hasta">
+                                                    <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta">
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Observación</label>
                                                   <div class="col-sm-6">
-                                                    <input class="form-control form-control-sm" id="observacion" type="text" placeholder="1">
+                                                    <input class="form-control form-control-sm"  type="text" name="observacion" id="observacion">
                                                   </div>
                                                 </div>
 
@@ -352,7 +360,7 @@
                                               <div class="form-group row">
                                                 <label for="staticEmail" class="col-sm-2 col-form-label">Forma de pago</label>
                                                 <div class="col-sm-6">
-                                                  <select class=" form-control" id="forma_de_pago">
+                                                  <select class=" form-control" name="forma_de_pago" id="forma_de_pago">
                                                      <option>Forma de pago</option>
                                                   </select>
                                                 </div>
@@ -362,7 +370,7 @@
                                                 <label for="staticEmail" class="col-sm-2 col-form-label">A cumplirse a</label>
                                                 <div class="col-sm-6">
                                                   <select class=" form-control" id="a_cumplirse_a">
-                                                     <option>A cumplirse a</option>
+
                                                   </select>
                                                 </div>
                                               </div>
@@ -398,64 +406,66 @@
 
                                             @endphp
                                                   <br/>
+                                                  <span id="form_result_consulta4"></span>
                                                     <form  method="post" id="consulta4" class="form-horizontal">
                                                     @csrf
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque real </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" id="fecha_de_embarque_real" type="text" >
+                                                              <input class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="text" >
+                                                              <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real4" id="codigo_oficial_real4" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" id="fecha_de_llegada" type="text">
+                                                              <input class="form-control form-control-sm" name="fecha_de_llegada" id="fecha_de_llegada" type="text">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Resol. Sanitaria</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="resol_sanitaria">
+                                                              <input class="form-control form-control-sm" name="resol_sanitaria" type="text" id="resol_sanitaria">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Resol. Sanitaria</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_de_resol_sanitaria">
+                                                              <input class="form-control form-control-sm" name="fecha_de_resol_sanitaria" type="text" id="fecha_de_resol_sanitaria">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Forward</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="forward">
+                                                              <input class="form-control form-control-sm" name="forward" type="text" id="forward">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Forward</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_forward">
+                                                              <input class="form-control form-control-sm" name="fecha_forward" type="text" id="fecha_forward">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha producción desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_producción_desde">
+                                                              <input class="form-control form-control-sm" type="text" name="fecha_producción_desde" id="fecha_producción_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_producción_desde_hasta">
+                                                              <input class="form-control form-control-sm" type="text" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha vencimiento desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_vencimiento_desde">
+                                                              <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="fecha_vencimiento_desde_hasta">
+                                                              <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta">
                                                             </div>
                                                           </div>
 
@@ -477,25 +487,27 @@
 
                                             @php if ($datos != '[]') { @endphp @php } else { @endphp
                                                   <br/>
+                                                    <span id="form_result_consulta5"></span>
                                                     <form  method="post" id="consulta5" class="form-horizontal">
                                                     @csrf
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Factura proveedor</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" id="factura_proveedor" >
+                                                              <input class="form-control form-control-sm" type="text" name="factura_proveedor" id="factura_proveedor" >
+                                                              <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="text" >
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad recibida</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" id="cantidad_recibida">
+                                                              <input class="form-control form-control-sm" type="text" name="cantidad_recibida" id="cantidad_recibida">
                                                             </div>
-                                                            <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
+                                                            <label for="inputPassword" class="col-sm-2 col-form-label">Unidad</label>
                                                             <div class="col-sm-3">
-                                                              <select class=" form-control" id="cantidad_recibida_hasta">
-                                                                <option>Caja</option>
+                                                              <select class=" form-control" name="unidad" id="unidad">
+
                                                               </select>
                                                             </div>
                                                           </div>
@@ -503,27 +515,20 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Valor total</label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" type="text" id="valor_total">
+                                                              <input class="form-control form-control-sm" type="text" name="valor_total" id="valor_total">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo de moneda</label>
                                                             <div class="col-sm-6">
-                                                              <select class=" form-control" id="tipo_de_moneda">
-                                                                 <option>Peso chileno</option>
+                                                              <select class=" form-control" name="tipo_de_moneda" id="tipo_de_moneda">
+
                                                               </select>
                                                             </div>
                                                           </div>
 
-                                                          <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-2 col-form-label">Tratamiento del CIF</label>
-                                                            <div class="col-sm-6">
-                                                              <select class=" form-control" id="tratamiento_del_CIF">
-                                                                 <option>Tratamiento por camion</option>
-                                                              </select>
-                                                            </div>
-                                                          </div>
+
 
                                                           <br />
                                                           <div class="form-group" align="center">
