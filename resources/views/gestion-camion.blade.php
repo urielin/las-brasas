@@ -184,7 +184,7 @@
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="nav-home" aria-selected="true">Datos de camión</a>
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#dos" role="tab" aria-controls="nav-profile" aria-selected="false">Fecha embarque y llegada</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="nav-contact" aria-selected="false">Forma de pago</a>
+                                    {{-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="nav-contact" aria-selected="false">Forma de pago</a> --}}
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#cuatro" role="tab" aria-controls="nav-profile" aria-selected="false">Datos embarque y llegada</a>
                                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#cinco" role="tab" aria-controls="nav-contact" aria-selected="false">Valor total del camion</a>
                                     </div>
@@ -495,7 +495,7 @@
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Factura proveedor</label>
                                                             <div class="col-sm-6">
                                                               <input class="form-control form-control-sm" type="text" name="factura_proveedor" id="factura_proveedor" >
-                                                              <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="text" >
+                                                              <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
                                                             </div>
                                                           </div>
 

@@ -1155,6 +1155,7 @@ $('#buscar-camion-r').on('submit',function(event){
         }
         if ($('#action-buscar-camion').val() == 'buscar-camion-r')
         {
+            console.log('errreeeeeeeeee');
             console.log('buscar-camion-r');
             action_url = 'ver-camion-r';
             valor= '1';
@@ -1204,6 +1205,8 @@ $('#buscar-camion-r').on('submit',function(event){
                // tf=parseFloat()+parseFloat();
                   $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+bi+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
                   // ---------------------------------
+                  console.log('aaaaaaaaaa');
+                  console.log(res.dato_general[0]['codigo']);
                   $('#codigo_oficial').val(res.dato_general[0]['codigo']);
                   $('#codigo_oficial_real').val(res.dato_general[0]['codigo']);
                   $('#codigo_auxiliar').val(res.dato_general[0]['codigo_aux']);
