@@ -16,8 +16,9 @@
                     @csrf
                     <label for="buscar-codigo-camion">Buscar camión</label>
 
+                    <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
                     <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
-                    <input type="text" name="codigo_id" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                    {{-- <input type="text" name="codigo_id" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión"> --}}
                     {{-- <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control"> --}}
                     {{-- <br> --}}
                     <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
