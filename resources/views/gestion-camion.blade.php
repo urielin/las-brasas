@@ -6,7 +6,7 @@
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
       <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >Contenedores / Camiones - PARA RECEPCIÓN</p>
 
-        <br><br>
+        <br><br> 
 
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
