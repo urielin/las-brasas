@@ -6,7 +6,7 @@
     <div class="bg-gradient-primary container-fluid pb-7 pt-3">
       <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >Contenedores / Camiones - PARA RECEPCIÓN</p>
 
-        <br><br> 
+        <br><br>
 
       <div class="row ">
             <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
@@ -147,26 +147,8 @@
                             <div class="row">
                               <div id="tabla-load" class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
-                                  <thead class="thead-light">
-                                    <tr>
-                                      <th scope="col">Bloqueo</th>
-                                      <th scope="col">Acción</th>
-                                      <th scope="col">Nro</th>
-                                      <th scope="col">Cod.</th>
-                                      <th scope="col">Producto</th>
-                                      <th scope="col">Cantidad cierre</th>
-                                      <th scope="col">Bultos ingreso</th>
-                                      <th scope="col">Cantidad ingreso</th>
-                                      <th scope="col">(+/-)</th>
-                                      <th scope="col">C.I.F</th>
-                                      <th scope="col">V.I.U</th>
-                                      <th scope="col">C.I.F(MN)</th>
-                                      <th scope="col">Precio_Compra(MN)</th>
-                                      <th scope="col">Total factura</th>
-                                      <th scope="col">Gastos(MN)</th>
-                                      <th scope="col">CIF tierra(MN)</th>
-                                      <th scope="col">Total_Costo_Final</th>
-
+                                  <thead id="camionabla-head" class="thead-light">
+                                    
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}
