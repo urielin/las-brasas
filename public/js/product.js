@@ -16,7 +16,7 @@ $(document).ready(function(){
     const id = $(this)[0]['cells'][0].innerText;
     findOne(id);
     getUnidadMedida(id);
-    findSonId(id);
+    findSonId({id: id, state: ''});
     getNutricional(id);
   })
   $('#create-son-product').on('click', (e) => {
@@ -115,7 +115,6 @@ $(document).ready(function(){
       updateProduct({ parent:current.CODI_RCODIGO, code: code, factor_multi: factor_multi, factor_div: factor_div, tipo: tipo, estado: estado, _token: $("meta[name='csrf-token']").attr("content") });
   });
   $("#productTable tbody").on('click','tr', function(e){
-    console.log("CLICK");
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
   $("#catalogoTable").on("click", ".btn-delete", function(){
@@ -146,18 +145,18 @@ $(document).ready(function(){
                       </div>
                     </button>
                   </td>
-                  <td style='padding-right: 1rem;padding-left: 1rem;;'>
-                    <button title='Eliminar' style='padding: 5px 10px;' class="btn btn-warning btn-delete" data-id='${current.CODI_RCODIGO}'>
-                    <div>
-                      <i class="fa fa-trash"></i>
-                    </div>
-                    </button>
-                  </td>
               </tr>`;
 
     $('#catalogoTable > tbody > tr:first').before(news);
 
   })
+  $('#filter_state').on('change', function() {
+    let state = $('#filter_state').val();
+    let data = JSON.parse(localStorage.getItem('mercancia'));
+
+    console.log("id", {id: data.CODI_RCODIGO, state: state});
+    findSonId({id: data.CODI_RCODIGO, state: state})
+  });
   function getCurrentDate() {
     let date = new Date();
 
@@ -192,20 +191,6 @@ $(document).ready(function(){
   }
   async function setCatalogo(data){
     let array = [];
-    /*array[0] = `<tr>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Padre</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Codigo</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Producto</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Multipl.</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Divisor</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Tipo</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Estado</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Usuario</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'>Fecha</th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'></th>
-                  <th style='padding-right: 1rem;padding-left: 1rem;;'></th>
-
-                </tr>`*/
     for (let i = 0; i < data.length; i++) {
       let params = await findName(data[i].CODI_RCODIGO);
       if (i >= 0) {
@@ -228,18 +213,8 @@ $(document).ready(function(){
                           </div>
                         </button>
                       </td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>
-                        <button title='Eliminar' style='padding: 5px 10px;' class="btn btn-warning btn-delete" data-id='${data[i].CODI_RCODIGO}'>
-                          <div>
-                            <i class="fa fa-trash"></i>
-                          </div>
-                        </button>
-                      </td>
                   </tr>`;
       }
-
-
-
     }
     return array;
   }
@@ -293,11 +268,11 @@ $(document).ready(function(){
     }
     $('#edt-tipo-code').empty().append(array);
   }
-  function findSonId(id) {
+  function findSonId(data) {
     $.ajax({
       type:'GET',
       url:'/productos/catalogo',
-      data: {id: id}
+      data: data,
     }).then((data) => {
        setCatalogo(data).then(function(html) {
           $('#catalogoTable tbody').empty().append(html);

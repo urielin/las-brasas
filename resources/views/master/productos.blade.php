@@ -82,13 +82,13 @@
             <div class="card-body">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="producto-tab" data-toggle="tab" href="#producto" role="tab" aria-controls="producto" aria-selected="true">Producto</a>
+                  <a class="nav-link active" id="producto-tab" data-toggle="tab" href="#producto" role="tab" aria-controls="producto" aria-selected="true">Codigo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="catalogo-tab" data-toggle="tab" href="#catalogo" role="tab" aria-controls="catalogo" aria-selected="false">Catalogo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="nuevo-tab" data-toggle="tab" href="#nuevo" role="tab" aria-controls="nuevo" aria-selected="false">Nuevo Producto</a>
+                  <a class="nav-link" id="nuevo-tab" data-toggle="tab" href="#nuevo" role="tab" aria-controls="nuevo" aria-selected="false">Nuevo Codigo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="nutricional-tab" data-toggle="tab" href="#nutricional" role="tab" aria-controls="nutricional" aria-selected="false">Nutricional</a>
@@ -100,9 +100,8 @@
                     <div class="">
                       <h4>
                         <div>
-                          <i class="fa fa-bars">
-                          </i>
-                          Editar Producto
+                          <i class="fa fa-bars"></i>
+                          Editar Codigo
                          </div>
                       </h4>
                     </div>
@@ -116,7 +115,7 @@
                           </div>
                         </div>
                         <div class="form-group  col-md-6">
-                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputSmall">Nombre Producto: </label>
+                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputSmall">Nombre Codigo: </label>
                           <div class="col-sm-6  ">
                             <input class="form-control" type="text" id="edt-name" placeholder="">
                           </div>
@@ -154,7 +153,7 @@
                           </div>
                         </div>
                         <div class="form-group  col-md-6">
-                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputSmall">Peso / Producto: </label>
+                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputSmall">Peso / Codigo: </label>
                           <div class="col-sm-6  ">
                             <input class="form-control" type="text" id="edt-peso" placeholder="">
                           </div>
@@ -181,7 +180,7 @@
                           </div>
                         </div>
                         <div class="form-group  col-md-6">
-                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación Producto: </label>
+                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación 2: </label>
                           <div class="col-sm-6  ">
                             <select class="form-control" type="text" id="edt-clasificacion-producto" placeholder=""  style="height:46px">
                               <option value="" selected>-----</option>
@@ -189,7 +188,7 @@
                           </div>
                         </div>
                         <div class="form-group  col-md-6">
-                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"for="formGroupInputSmall">Clasificación Mercancia: </label>
+                          <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"for="formGroupInputSmall">Clasificación 1: </label>
                           <div class="col-sm-6  ">
                             <select class="form-control" type="text" id="edt-clasificacion-mercancia" placeholder=""  style="height:46px">
                               <option value="" selected>-----</option>
@@ -238,6 +237,12 @@
                             <i class="fa fa-bars">
                             </i>
                             Catalogo de Productos
+                            <select class="form-control col-md-1 float-right" id="filter_state">
+                              <option value="" selected>Seleccione</option>
+
+                              <option value="1">Si</option>
+                              <option value="0">No</option>
+                            </select>
                             <button type="button"  class="btn btn-success btn-add-product pull-right btn-icon-only rounded-circle float-right" name="button">+</button>
                           </div>
                         </h4>
@@ -255,8 +260,7 @@
                               <th>Estado</th>
                               <th>Usuario</th>
                               <th>Fecha</th>
-                              <th> </th>
-                              <th> </th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -275,7 +279,7 @@
                             <div>
                               <i class="fa fa-bars">
                               </i>
-                              Crear Producto
+                              Crear Codigo
                              </div>
                           </h4>
                         </div>
@@ -288,7 +292,7 @@
                               </div>
                             </div>
                             <div class="form-group  col-md-6">
-                              <label class="col-sm-6  form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Nombre Producto: </label>
+                              <label class="col-sm-6  form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Nombre Codigo: </label>
                               <div class="col-sm-6  ">
                                 <input class="form-control" type="text" id="create-name" placeholder="">
                               </div>
@@ -326,7 +330,7 @@
                               </div>
                             </div>
                             <div class="form-group  col-md-6">
-                              <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Peso / Producto: </label>
+                              <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Peso / Codigo: </label>
                               <div class="col-sm-6">
                                 <input class="form-control" type="text" id="create-peso" placeholder="">
                               </div>
@@ -353,7 +357,7 @@
                               </div>
                             </div>
                             <div class="form-group  col-md-6">
-                              <label class="col-sm-6 control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación Producto: </label>
+                              <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación 2: </label>
                               <div class="col-sm-6">
                                 <select class="form-control" type="text" id="create-clasificacion-producto" placeholder="">
                                   @foreach($clasifications as $value)
@@ -367,7 +371,7 @@
                               </div>
                             </div>
                             <div class="form-group  col-md-6">
-                              <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación Mercancia: </label>
+                              <label class="col-sm-6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputSmall">Clasificación 1: </label>
                               <div class="col-sm-6">
                                 <select class="form-control" type="text" id="create-clasificacion-mercancia" placeholder="">
                                   @foreach($clasifications2 as $value)

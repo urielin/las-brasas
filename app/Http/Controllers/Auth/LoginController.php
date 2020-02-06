@@ -1,39 +1,57 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\User;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    //use AuthenticatesUsers;
 
-    use AuthenticatesUsers;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME; 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected function validatecreade(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+        $this->validate($request, [
+            $this->username() => 'required',
+            'pass' => 'required',
+        ]);
     }
+     public function login(Request $request){
+       $request = $request->all();
+       $user = User::where('usuario' ,'=', $request['usuario'])
+                   ->where('pass' ,'=', $request['pass'])
+                   ->first();
+       if ($user) {
+         session(['user' => $user]);
+         return redirect()->route('home');
+       }
+     }
+     public function showLoginForm(){
+         return view('auth.login');
+     }
+
+     public function logout(Request $request){
+         Auth::logout();
+         $request->session()->invalidate();
+         return redirect('/');
+     }
+     public function username() {
+        return 'usuario';
+     }
+
 }
+/* $datos  = $this->validate(request(), [
+     $this->username() => 'required|string',
+     'pass' => 'required|string'
+ ]);
+ if (Auth::attempt(['usuario' => $datos['usuario'], 'password' => $datos['pass']])){
+    return redirect()->route('home');
+ } else {
+   return redirect()->route('login');
+ }*/
