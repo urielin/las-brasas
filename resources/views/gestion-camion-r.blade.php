@@ -115,7 +115,7 @@
                             <div class="row">
                               <div class="table-responsive table-hover">
                                 <table  class="table align-items-left table-flush">
-                                  <thead id="camionabla-head" class="thead-light">
+                                  <thead id="camiontabla-head" class="thead-light">
 
                                   </thead>
                                   <tbody id="camiontabla">
@@ -432,7 +432,6 @@
                                         <br/>
                                           <span id="form_result_consulta5"></span>
                                           <form  method="post"  class="form-horizontal">
-                                          // <form  method="post" id="consulta5" class="form-horizontal">
                                           @csrf
 
                                                 <div class="form-group row">

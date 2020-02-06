@@ -147,8 +147,8 @@
                             <div class="row">
                               <div id="tabla-load" class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
-                                  <thead id="camionabla-head" class="thead-light">
-                                    
+                                  <thead id="camiontabla-head" class="thead-light">
+
                                   </thead>
                                   <tbody id="camiontabla">
                                     {{-- <tr><td>asdasd</td></tr> --}}
@@ -295,7 +295,9 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
+
+                                                     <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
+
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
