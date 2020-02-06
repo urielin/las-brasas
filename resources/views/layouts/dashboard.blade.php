@@ -495,9 +495,9 @@
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
     <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/js/argon.min.js?v=1.2.0"></script>
+    @yield('js')
 
 
 </body>
 </html>
 
-  @yield('js')

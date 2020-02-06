@@ -10,13 +10,23 @@
         <div class="col-xs-12 col-md-4">
           <form action="{{route('precio-camion')}}" method="GET">
           @csrf
-          <label class="h4 mb-0 text-white d-lg-inline-block" for="sel1">Clasificacion</label>
-          <select name="clasificacion" class="form-control" id="sel1" onchange="this.form.submit()">
+          <label class="h4 mb-0 text-white d-lg-inline-block" for="pc_clasificacion">Clasificacion</label>
+          <select name="clasificacion" class="form-control" id="pc_clasificacion" onchange="this.form.submit()">
           @foreach($CamionesClasificacion as $item)
             <option value="{{$item->cod_int}}" {{ $item->cod_int==$clasificacion?'selected':' '}} >{{$item->desc01}}</option>
           @endforeach
           </select>
           </form>
+        </div>
+        <div class="col-xs-12 col-md-4">
+
+          <label class="h4 mb-0 text-white d-lg-inline-block" for="pc_sucursal">Sucursal</label>
+          <select name="sucursal" class="form-control" id="pc_sucursal" >
+          @foreach($AdmSucursal as $item)
+            <option value="{{$item->SUCU_CODIGO}}"  >{{$item->SUCU_NOMBRE}}</option>
+          @endforeach
+          </select>
+
         </div>
 <!--
         <div class="col-4">
@@ -41,7 +51,7 @@
               <div class="col-12 ">
                   <div class="row">
                     <div class="col-md-3 col-sm-12 media">
-                      <h1 class="mb-0">Saldo por camiones        </h2>
+                      <h1 class="mb-0">Precio por camiones        </h2>
                     </div>
                     <div class="col-4 py-3">
                       <!-- <button type="button" class="btn btn-primary">Imprimir</button> -->

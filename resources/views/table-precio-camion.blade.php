@@ -74,31 +74,31 @@
                         {{$camion->lista_mayor}}
                       </th>
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
                         {{$camion->precio_publico}}
                       </td>
                       <td class="mostrar-info  {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
                         {{$camion->precio_mayor}}
                       </td>
                         @break
 
                   @case(0)
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
                         </td>
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
                       </td>
                     </tr> 
                     @break
  
                   @default
                         <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
                         </td>
                         <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
                         </td>
                 @endswitch
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PrecioCamion;
 use App\CamionesClasificacion;
 use App\BodegaIdOfertas;
+use App\AdmSucursal;
 use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,25 +20,29 @@ class PrecioCamionController extends Controller
      */
     public function index(Request $request)
     {
-        // $datos['PrecioCamion2'] = DB::table("dbo.Precios_Camiones(1, '', '')")
-        //         ->orderBy('name', 'desc')
-        //         ->get();
+        // SI LA CLASIFICACION DEL REQUEST ES NULL ENTONCES CLASIFICACION = 1
         $clasificacion=$request->get('clasificacion') ? $request->get('clasificacion') : '1';
         $datos['clasificacion']=$clasificacion;
-        // $datos['PrecioCamion']=PrecioCamion::paginate(10);
+        // SI LA SUCURSAL DEL REQUEST ES NULL ENTONCES CLASIFICACION = 0
+        $sucursal=$request->get('sucursal') ? $request->get('sucursal') : '0';
+        $datos['sucursal']=$sucursal;
+        // OBTENER DATOS PARA LA TABLA PRECIO CAMION
         $datos['PrecioCamion']=DB::select("SELECT *
         FROM dbo.Precios_Camiones($clasificacion, '', '') left join dbo.bodega_id_ofertas
         on dbo.bodega_id_ofertas.id_camion = dbo.Precios_Camiones.camion and 
         dbo.bodega_id_ofertas.id_corte = dbo.Precios_Camiones.codigo 
         WHERE estado = 1 or estado IS NULL
         ORDER BY descripcion");
-        // dd($preciosCamiones);
+        // OBTENER DATOS PARA LOS SELECT
+        $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)->orderBy('cod_int')->get();
+        $datos['AdmSucursal']=AdmSucursal::orderBy('SUCU_RESUMEN')->get();
+        //
+ 
+        if($request->ajax()){
+            return view('table-precio-camion', $datos); 
+        }
+        return view('precio-camion', $datos);        
         
-        $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)
-                                                                ->orderBy('cod_int')
-                                                                ->get();
-                                                                // dd($datos['CamionesClasificacion']);
-        return view('precio-camion', $datos);
     }
 
     
@@ -154,7 +159,7 @@ class PrecioCamionController extends Controller
             // do task when error
             return $e->getMessage();   // insert query
          }
-        
+         // DEVOLVER DATOS ACTUALIZADOS A LA TABLA PRECIO CAMION
          $datos['PrecioCamion']=DB::select("SELECT *
          FROM dbo.Precios_Camiones($clasificacion, '', '') left join dbo.bodega_id_ofertas
          on dbo.bodega_id_ofertas.id_camion = dbo.Precios_Camiones.camion and 
