@@ -13,7 +13,9 @@ class ProductoTerminado extends Model
                            'factor_div' ,'tipo' ,'ESTADO','USUARIO','FECHA_REG','USUARIO_AUT',
                            'FECHA_AUT', 'RECLAZAR_SOBREPROD'];
      public function findAllSon($params) {
-        return ProductoTerminado::where('CODI_PADRE', $params['id'])->get();
+        return ProductoTerminado::where('CODI_PADRE', $params['id'])
+                                  ->where('ESTADO', 'like', '%'. $params['state'] . '%')
+                                  ->get();
      }
 
      public function updateProduct($params) {
@@ -26,7 +28,7 @@ class ProductoTerminado extends Model
                 if (isset($flat[0])) {
                   DB::table($this->table)
                       ->where('CODI_RCODIGO', $params['code'])
-                      ->update([ 
+                      ->update([
                         'CODI_RCODIGO' => $params['code'],
                         'factor_multi' => $params['factor_multi'],
                         'factor_div' => $params['factor_div'],

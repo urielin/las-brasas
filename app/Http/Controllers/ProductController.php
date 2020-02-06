@@ -20,6 +20,7 @@ class ProductController extends Controller
       $this->oUnidadMedida = new UnidadMedida();
       $this->oProductoTerminado = new ProductoTerminado();
     }
+
     public function index()
     {
        $clasificacion = $this->oClasificacion->list();

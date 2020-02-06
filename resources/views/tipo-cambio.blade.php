@@ -65,7 +65,9 @@
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Seleccionar periodo</label>
                                     {{-- <input type="datetime" name="Mes_cambiar" class="form-control" id="usr"> --}}
 
-                                    <input type="date" name="Mes_cambiar" class="form-control" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}">
+                                    {{-- <input type="date" name="Mes_cambiar" class="form-control" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}"> --}}
+                                    <input class="form-control" name="Mes_cambiar" class="form-control" type="month" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}" >
+
                                     {{-- <input type="datetime-local" name="date_end" value="date('Y-m-d\TH:i',strtotime($yourPassedVariableToView))}}"> --}}
                                   </div>
                                   <div class="col4 pt-4">
@@ -88,13 +90,20 @@
                                 <div class="row">
                                   <div class="col-4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
+
                                     <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control" id="usr">
+
+
                                   </div>
 
                                   <div class="col-4 ">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Mes cambiar</label> <br>
                                     {{-- <input type="datetime" name="Mes_cambiar" class="form-control" id="usr"> --}}
-                                    <input type="date" name="Mes_cambiar" class="form-control" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}">
+
+                                    {{-- <input type="date" name="Mes_cambiar" class="form-control" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}"> --}}
+                                    <input class="form-control" name="Mes_cambiar" class="form-control" type="month" value="date('YYYYMMDD',strtotime($yourPassedVariableToView))}}" >
+
+
                                     {{-- <input type="datetime-local" name="date_end" value="date('Y-m-d\TH:i',strtotime($yourPassedVariableToView))}}"> --}}
                                   </div>
                                   <div class="col-2 pt-4 pb--4">
@@ -118,7 +127,7 @@
 
 
 
- 
+
   <!-- Footer -->
 
     </div>
@@ -174,7 +183,7 @@
       </div>
     </div>
     </div>
-    
+
   </div>
 </div>
 

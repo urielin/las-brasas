@@ -147,25 +147,7 @@
                             <div class="row">
                               <div id="tabla-load" class="table-responsive table-hover">
                                 <table  class="table align-items-center table-flush">
-                                  <thead class="thead-light">
-                                    <tr>
-                                      <th scope="col">Bloqueo</th>
-                                      <th scope="col">Acción</th>
-                                      <th scope="col">Nro</th>
-                                      <th scope="col">Cod.</th>
-                                      <th scope="col">Producto</th>
-                                      <th scope="col">Cantidad cierre</th>
-                                      <th scope="col">Bultos ingreso</th>
-                                      <th scope="col">Cantidad ingreso</th>
-                                      <th scope="col">(+/-)</th>
-                                      <th scope="col">C.I.F</th>
-                                      <th scope="col">V.I.U</th>
-                                      <th scope="col">C.I.F(MN)</th>
-                                      <th scope="col">Precio_Compra(MN)</th>
-                                      <th scope="col">Total factura</th>
-                                      <th scope="col">Gastos(MN)</th>
-                                      <th scope="col">CIF tierra(MN)</th>
-                                      <th scope="col">Total_Costo_Final</th>
+                                  <thead id="camiontabla-head" class="thead-light">
 
                                   </thead>
                                   <tbody id="camiontabla">
@@ -313,7 +295,9 @@
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
+
+                                                     <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
+
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">

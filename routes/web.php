@@ -15,7 +15,13 @@
 //     return view('welcome');
 // });
 
-Auth::routes();
+//Auth::routes();
+
+Route::group(['middleware'=> ['guest']],function(){
+  Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
+  Route::post('/login', 'Auth\LoginController@login');
+});
+
 
 Route::get('/', 'UsuariosController@index')->name('home');
 Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
@@ -71,4 +77,3 @@ Route::get('/productos/nutricionals', 'ProductController@nutricionals')->name('p
 Route::post('/products/nutricionals/update', 'ProductController@updateNutricional')->name('product.updateNutricional');
 Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
 Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
-//JULIO
