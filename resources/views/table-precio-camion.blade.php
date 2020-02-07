@@ -13,7 +13,7 @@
 
 
         @endphp
-        <table class="table align-items-center table-flush">
+        <table class="responsive-table striped">
           <thead class="thead-light">
              <tr>
               <th scope="col"colspan="2"></th>

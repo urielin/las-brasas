@@ -177,12 +177,12 @@
     <script src="assets/js/scripts/customizer.min.js"></script>
     <!--<script src="assets/js/scripts/dashboard-analytics.min.js"></script>-->
 
-     <script src="vendors/data-tables/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
-    <script src="vendors/data-tables/js/dataTables.select.min.js"></script>
-     <script src="js/scripts/customizer.min.js"></script>
-    <script src="js/scripts/data-tables.min.js"></script>
-    <script src="js/scripts/advance-ui-modals.min.js"></script>
+     <script src="assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+    <script src="assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
+    <script src="assets/vendors/data-tables/js/dataTables.select.min.js"></script>
+     <script src="assets/js/scripts/customizer.min.js"></script>
+    <script src="assets/js/scripts/data-tables.min.js"></script>
+    <script src="assets/js/scripts/advance-ui-modals.min.js"></script>
 
     <script src="{{ asset('js/las-brasas.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
