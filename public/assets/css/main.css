@@ -312,3 +312,6 @@ tr td button {
   margin-left: 1px !important;
   padding-bottom: 15px !important;
 }
+table.responsive-table {
+  table-layout: auto !important;
+}
