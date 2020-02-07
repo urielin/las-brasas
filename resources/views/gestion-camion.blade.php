@@ -296,23 +296,23 @@
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque desde</label>
                                                   <div class="col-sm-3">
 
-                                                     <input class="form-control form-control-sm" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" type="text" >
+                                                     <input class="form-control form-control-sm"  type="datetime-local" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" >
 
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="text" >
+                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" >
                                                   </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                   <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada desde</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde">
+                                                    <input class="form-control form-control-sm" type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde">
                                                   </div>
                                                   <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                   <div class="col-sm-3">
-                                                    <input class="form-control form-control-sm" type="text" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta">
+                                                    <input class="form-control form-control-sm" type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta">
                                                   </div>
                                                 </div>
 
@@ -397,7 +397,7 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de embarque real </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="text" >
+                                                              <input class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" >
                                                               <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real4" id="codigo_oficial_real4" type="text" >
                                                             </div>
                                                           </div>
@@ -405,7 +405,7 @@
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de llegada </label>
                                                             <div class="col-sm-6">
-                                                              <input class="form-control form-control-sm" name="fecha_de_llegada" id="fecha_de_llegada" type="text">
+                                                              <input class="form-control form-control-sm" name="fecha_de_llegada" id="fecha_de_llegada" type="datetime-local">
                                                             </div>
                                                           </div>
 
@@ -416,7 +416,7 @@
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Resol. Sanitaria</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" name="fecha_de_resol_sanitaria" type="text" id="fecha_de_resol_sanitaria">
+                                                              <input class="form-control form-control-sm" name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria">
                                                             </div>
                                                           </div>
 
@@ -427,29 +427,29 @@
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Fecha Forward</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" name="fecha_forward" type="text" id="fecha_forward">
+                                                              <input class="form-control form-control-sm" name="fecha_forward" type="datetime-local" id="fecha_forward">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha producción desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" name="fecha_producción_desde" id="fecha_producción_desde">
+                                                              <input class="form-control form-control-sm" type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta">
+                                                              <input class="form-control form-control-sm" type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta">
                                                             </div>
                                                           </div>
 
                                                           <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha vencimiento desde</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde">
+                                                              <input class="form-control form-control-sm" type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde">
                                                             </div>
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Hasta</label>
                                                             <div class="col-sm-3">
-                                                              <input class="form-control form-control-sm" type="text" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta">
+                                                              <input class="form-control form-control-sm" type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta">
                                                             </div>
                                                           </div>
 
