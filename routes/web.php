@@ -13,7 +13,7 @@
 
 
 
-//Auth::routes();
+
 
 Route::group(['middleware'=> ['guest']],function(){
   Route::get('/login','Auth\LoginController@showLoginForm')->name('login');

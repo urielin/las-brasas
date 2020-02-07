@@ -13,7 +13,7 @@ a{
               margin-top: 50px;
       margin-bottom: 100px;
   }
-  .col-md-3 {
+  .loader.col-md-3 {
       display: block;
       float:left;
       margin: 1% 0 1% 1.6%;
@@ -21,7 +21,7 @@ a{
     padding: 50px 0;
   }
   
-  .col:first-of-type {
+  .loader.col:first-of-type {
     margin-left: 0;
   }
   

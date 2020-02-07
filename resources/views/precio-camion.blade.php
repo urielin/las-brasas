@@ -7,7 +7,7 @@
       <p class="h1 mb-0 text-white text-uppercase d-lg-inline-block" >Precios / Camión</p>
 
       <div class="row">
-        <div class="col-4">
+        <div class="col-xs-12 col-md-4">
           <form action="{{route('precio-camion')}}" method="GET">
           @csrf
           <label class="h4 mb-0 text-white d-lg-inline-block" for="sel1">Clasificacion</label>
@@ -40,10 +40,10 @@
             <div class="row align-items-center">
               <div class="col-12 ">
                   <div class="row">
-                    <div class="col-4 media">
+                    <div class="col-md-3 col-sm-12 media">
                       <h1 class="mb-0">Saldo por camiones        </h2>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 py-3">
                       <!-- <button type="button" class="btn btn-primary">Imprimir</button> -->
                       <a href="{{route('precio-camion')}}" type="button" class="btn btn-success">Actualizar</a>
                     </div>
@@ -88,7 +88,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modificar precio</h4>
+        <h4 class="modal-title align-items-center">Modificar precio</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body card-body px-lg-5 py-lg-4">

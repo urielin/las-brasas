@@ -23,11 +23,13 @@ class GestionCamionController extends Controller
     {
 
       // $year=DbsysCamiones::select(('fecha_llegada'))->distinct()->get();
-      $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+
+
 
       // $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
-      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
       // $year->distinct();
       // $year= DbsysCamiones::select(date('Y', strtotime('fecha_llegada')))->get();
@@ -36,10 +38,11 @@ class GestionCamionController extends Controller
       // $y=date('Y', strtotime($request->Mes_cambiar));
 
       // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
-
-      return view('gestion-camion')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+      // return $datos;
+      return view('gestion-camion')->with(compact('year'))->with(compact('datos'));
       // dd($year1);
 
         // return view('gestion-camion',compact('datos'));
@@ -55,12 +58,18 @@ class GestionCamionController extends Controller
     public function indexr()
     {
 
-      $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
-      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
+      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $datos=GestionCamion::where('camion', '0')->get();
+      //
+      // return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+      $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
-      return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
+
+      return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'));
+
     }
 
     /**
@@ -113,51 +122,196 @@ class GestionCamionController extends Controller
      */
     public function show(Request $request)
     {
-        // dd($request);
-        $request->validate([
-          'codigo' => 'required',
-        ]);
-        // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-        // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
 
-        // $datos=DB::select("SELECT * FROM dbsys.camiones c
-        //                       inner join dbsys.camiones_detalle cd
-        //                       on c.id_camion = cd.id_camion
-        //                       where c.codigo ='$request->codigo' and estado = '1'");
-        //
-        //
-      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
-                              inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
-							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
-							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
+        if ($request -> ajax()) {
 
-        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+                $rules = array(
+                  'codigo' => 'required',
+                  // 'codigo' => 'required',
+                  // 'cantidad_cierre' => 'required',
+                  // 'bultos_ingreso' => 'required',
+                  // 'cantidad_ingreso' => 'required',
+                  // 'cif_moneda_ext' => 'required',
+                  // 'viu_moneda_nal' => 'required',
+                  // 'precio_compra' => 'required'
+                );
+
+                $error = Validator::make($request->all(),$rules);
+
+                      if ($error->fails()) {
+                        return response()->json([
+                          'errors' => $error->errors()->all()
+                        ]);
+                      }
+                      // return response()->json(['success'=>'Los datos fueron
+                      //       actualizados exitosamente',
+                      //       'aea'=>'Los datos fueron
+                      //               actualizados exitosamente'
+                      //
+                      //     ]);
+
+                                  $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                    ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                      , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                                          inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                            							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                            							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                            								WHERE  c.codigo ='$request->codigo' and c.estado = '1' ");
+
+                                            $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+                                            $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+                                            $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+                                            $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+                                            $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+                                            $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+                                            $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+                                            $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                                      marca_origen ,    descripcion,        contenido,observaciones,
+                                                      lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                                                      fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+
+                                                      forma_pago, despues_dias, despues_fecha,
+
+                                                      fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                                                      forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                                                      fecha_vencimiento, fecha_vencimiento2,
+
+                                                      factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                                                      FROM dbsys.camiones
+                                                      WHERE  codigo ='$request->codigo'");
+
+
+                                          // return response()->json($documentos);
+                                          // return response()->json([
+                                          //       'documentos' => $documentos,
+                                          //       'datos_generales' => $dato_general
+                                          //   ]);
+
+                                          return response()->json([
+                                            'documento'              =>$documentos,
+                                            'dato_general'           =>$dato_general,
+                                            'clasificaciones_camion' =>$clasificaciones_camion,
+                                            'proveedor_camion'       =>$proveedor_camion,
+                                            'marca_origen'           =>$marca_origen,
+                                            'lugar_de_arribo'        =>$lugar_de_arribo,
+                                            'forma_pago'             =>$forma_pago,
+                                            'unidad'                 =>$unidad,
+                                            'tipo_moneda'            =>$tipo_moneda
+                                          ]);
+
+
+        }
+
+
+
+      // $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
+
+        // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
         // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
 
-            return view('gestion-camion')->with(compact('datos'))->with(compact('clasificaciones'));
+            // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
 
     }
 
     public function showr(Request $request)
     {
-        $request->validate([
-          'codigo' => 'required',
-        ]);
 
-      $datos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-        ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-          , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
-                inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
-							  inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
-							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-								WHERE  c.codigo ='$request->codigo' and c.estado = '1'");
+      if ($request -> ajax()) {
 
-        $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-        return view('gestion-camion-r')->with(compact('datos'))->with(compact('clasificaciones'));
+              $rules = array(
+                'codigo' => 'required',
+                // 'codigo' => 'required',
+                // 'cantidad_cierre' => 'required',
+                // 'bultos_ingreso' => 'required',
+                // 'cantidad_ingreso' => 'required',
+                // 'cif_moneda_ext' => 'required',
+                // 'viu_moneda_nal' => 'required',
+                // 'precio_compra' => 'required'
+              );
+
+              $error = Validator::make($request->all(),$rules);
+
+                    if ($error->fails()) {
+                      return response()->json([
+                        'errors' => $error->errors()->all()
+                      ]);
+                    }
+                    // return response()->json(['success'=>'Los datos fueron
+                    //       actualizados exitosamente',
+                    //       'aea'=>'Los datos fueron
+                    //               actualizados exitosamente'
+                    //
+                    //     ]);
+
+                    $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                      ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                        , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                            inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                              inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                              left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                              WHERE  c.codigo ='$request->codigo' and c.estado = '2' ");
+
+                                          $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+                                          $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+                                          $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+                                          $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+                                          $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+                                          $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+                                          $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+                                          $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                                    marca_origen ,    descripcion,        contenido,observaciones,
+                                                    lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                                                    fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha
+
+                                                    forma_pago, despues_dias, despues_fecha,
+
+                                                    fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                                                    forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                                                    fecha_vencimiento, fecha_vencimiento2,
+
+                                                    factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda, tratamiento_camion
+                                                    FROM dbsys.camiones
+                                                    WHERE  codigo ='$request->codigo'");
+
+
+                                        // return response()->json($documentos);
+                                        // return response()->json([
+                                        //       'documentos' => $documentos,
+                                        //       'datos_generales' => $dato_general
+                                        //   ]);
+
+                                        return response()->json([
+                                          'documento'              =>$documentos,
+                                          'dato_general'           =>$dato_general,
+                                          'clasificaciones_camion' =>$clasificaciones_camion,
+                                          'proveedor_camion'       =>$proveedor_camion,
+                                          'marca_origen'           =>$marca_origen,
+                                          'lugar_de_arribo'        =>$lugar_de_arribo,
+                                          'forma_pago'             =>$forma_pago,
+                                          'unidad'                 =>$unidad,
+                                          'tipo_moneda'            =>$tipo_moneda
+                                        ]);
+
+
+      }
+
 
     }
 
@@ -194,7 +348,7 @@ class GestionCamionController extends Controller
           if ($request -> ajax()) {
             // try{
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
-        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '1' ");
+        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1' ");
 
         // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion = '$request->clasificacion_id'
         //     	UNION
@@ -219,7 +373,7 @@ class GestionCamionController extends Controller
     {
 
           if ($request -> ajax()) {
-              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and estado = '2' ");
+              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = '$request->anio_id' and estado = '2' ");
               if ($camiones != null) {
                 foreach ($camiones as $camion) {
                   $camionArray[$camion->camion] = $camion->camion ;
@@ -277,39 +431,55 @@ class GestionCamionController extends Controller
 
   }
 
-  // public function getclasificacion(Request $request)
-  // {
-  //   if ($request -> ajax()) {
-  //
-  //     $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-  //
-  //
-  //         foreach ($clasificaciones as $clasificacion) {
-  //           $clasificacionArray[$clasificacion->cod_int] = $clasificacion->desc01 ;
-  //         }
-  //         return response()->json($clasificacionArray);
-  //         // return $camionArray;
-  //     }
-  // }
+  public function getclasificacion(Request $request)
+  {
+    if ($request -> ajax()) {
+
+      $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+
+          foreach ($clasificaciones as $clasificacion) {
+            $clasificacionArray[$clasificacion->cod_int] = $clasificacion->desc01 ;
+          }
+          return response()->json($clasificacionArray);
+          // return $camionArray;
+      }
+  }
+
+
+public function changeBloqueoCamion(Request $request)
+{
+  if ($request -> ajax()) {
+
+    DB::update("UPDATE dbsys.camiones
+                set bloqueo_camion='$request->bloqueo_2_id'
+                where codigo= '$request->camion_id'");
+
+
+        DB::update("UPDATE dbsys.camiones_detalle
+                    set bloqueo_2='$request->bloqueo_2_id'
+                    where camion_codigo= '$request->camion_id' ");
+
+                            $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                              ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                      inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                                      inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                                      left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                                      WHERE  c.codigo ='$request->camion_id' ");
+
+      return response()->json($documentos);
+
+
+  }
+}
+
     public function gettablecamion(Request $request)
     {
       if ($request -> ajax()) {
 
-          // $DATO= '13H01';
-          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE codigo = $DATO ");
-          // $documento=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = '2018'");
-           // UNION
-  			   //   $documento=DB::select("SELECT   documento = zeta FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE nro_traslado  = $request->camion_id");
-
-
-          // $documento=DbsysCamiones::where('codigo',$request->camion_id)->get();
-          //
-          // $documentos=DB::select("SELECT * FROM dbsys.camiones c
-          //                       inner join dbsys.camiones_detalle cd
-          //                       on c.id_camion = cd.id_camion
-          //                       where c.codigo ='$request->camion_id'");
-
-                                $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                                $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
                                   ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
                                     , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
                                           inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
@@ -317,45 +487,134 @@ class GestionCamionController extends Controller
                           							  left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
                           								WHERE  c.codigo ='$request->camion_id' ");
 
-          // SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
-          // return $camiones;
-          // $sql = "SELECT ad.doc_ingreso, a.nro_traslado AS zeta, ad.codigo_mercancia, ad.cantidad
-			    //    FROM   ADM_TRASLADO_SALIDA_EXT a INNER JOIN ADM_TRASLADO_SALIDA_DET_EXT ad ON a.folio = ad.folio
-			    //    WHERE  (a.zeta = $documento->ingreso_zeta)";
-          //
-          //    $documento=DB::select($sql);
-          // $documento1=DB::table('dbo.ADM_TRASLADO_SALIDA_EXT')
+                                $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
 
-            // $documento=AdmTrasladoSalidaExt::where('nro_traslado',$request->camion_id)->get();
+                                $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
 
-          // if ($documento1->fecha_llegada != '') {
-          //   $documento=$documento1;
-          //   $documento->get();
-          // }else {
-          //   $documento=$documento2;
-          //   // $documento->get();
-          // }
-          // foreach ($documento as $documento) {
-          //   $camionArray['descripcion'] = $camion->descripcion ;
-          // }
+                                $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+                                $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+                                $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+                                $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+                                $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+
+                                $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                          marca_origen ,    descripcion,        contenido,observaciones,
+                                          lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                                          fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha,
+
+                                          forma_pago, despues_dias, despues_fecha,
+
+                                          fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                                    	    forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                                    	    fecha_vencimiento, fecha_vencimiento2,
+
+                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda
+                                          FROM dbsys.camiones
+                                          WHERE  codigo ='$request->camion_id'");
+
+
+          // return response()->json($documentos);
+          // return response()->json([
+          //       'documentos' => $documentos,
+          //       'datos_generales' => $dato_general
+          //   ]);
+
+            return response()->json([
+                'documento'              =>$documentos,
+                'dato_general'           =>$dato_general,
+                'clasificaciones_camion' =>$clasificaciones_camion,
+                'proveedor_camion'       =>$proveedor_camion,
+                'marca_origen'           =>$marca_origen,
+                'lugar_de_arribo'        =>$lugar_de_arribo,
+                'forma_pago'             =>$forma_pago,
+                'unidad'                 =>$unidad,
+                'tipo_moneda'            =>$tipo_moneda
+                ]);
+
+
+      }
+    }
+
+
+    public function generalCamion(Request $request)
+    {
+      if ($request -> ajax()) {
+              $documentos=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                                      marca_origen ,    descripcion,        contenido,observaciones,
+                                      lugar_arribo ,     codigo_aux,      pais_origen, doc_bl
+                                      FROM dbsys.camiones
+                                      WHERE  c.codigo ='$request->camion_id'");
           return response()->json($documentos);
-
-
       }
     }
 
     public function gettablecamionr(Request $request)
     {
       if ($request -> ajax()) {
-              $documentos=DB::select("SELECT nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+              $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
               ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
               , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
               inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
               inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
               left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
-              WHERE  c.codigo ='$request->camion_id' ");
+              WHERE  c.codigo ='$request->camion_id'");
 
-          return response()->json($documentos);
+              $clasificaciones_camion=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
+
+              $proveedor_camion=DB::select('SELECT  * from dbo.ADM_PROVEEDOR');
+
+              $marca_origen=DB::select('SELECT  * from dbo.ADM_MARCA');
+
+              $lugar_de_arribo=DB::select('SELECT  * from dbo.ADM_CIUDAD');
+
+              $forma_pago=DB::select('SELECT  * from dbo.ADM_FORMAPAGO');
+
+              $unidad=DB::select('SELECT * from dbo.ADM_TP_UNIDMEDIDA');
+
+              $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
+
+
+              $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
+                        marca_origen ,    descripcion,        contenido,observaciones,
+                        lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
+
+                        fecha_cierre, fecha_embarque1, fecha_embarque2, fecha_llegada1,fecha_llegada2, observacion_fecha,
+
+                        forma_pago, despues_dias, despues_fecha,
+
+                        fecha_embarque, fecha_llegada, resolucion_sanitaria, fecha_resolucion,
+                        forward, forward_fecha, fecha_produccion, fecha_produccion2,
+                        fecha_vencimiento, fecha_vencimiento2,
+
+                        factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda
+                        FROM dbsys.camiones
+                        WHERE  codigo ='$request->camion_id'");
+
+
+// return response()->json($documentos);
+// return response()->json([
+//       'documentos' => $documentos,
+//       'datos_generales' => $dato_general
+//   ]);
+
+                  return response()->json([
+                  'documento'              =>$documentos,
+                  'dato_general'           =>$dato_general,
+                  'clasificaciones_camion' =>$clasificaciones_camion,
+                  'proveedor_camion'       =>$proveedor_camion,
+                  'marca_origen'           =>$marca_origen,
+                  'lugar_de_arribo'        =>$lugar_de_arribo,
+                  'forma_pago'             =>$forma_pago,
+                  'unidad'                 =>$unidad,
+                  'tipo_moneda'            =>$tipo_moneda
+                  ]);
+
 
       }
     }
@@ -370,6 +629,113 @@ class GestionCamionController extends Controller
     {
 
 
+    }
+
+    public function switchitem(Request $request)
+    {
+          if ($request -> ajax()) {
+
+            DB::update("UPDATE dbsys.camiones_detalle
+                            set bloqueo_2='$request->bloqueo_2_id'
+                            where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");
+              return response()->json();
+          }
+    }
+
+    public function getembarque(Request $request)
+    {
+          if ($request -> ajax()) {
+
+                $documentos=DB::select("SELECT *
+                FROM dbsys.camiones
+                WHERE  codigo ='$request->cod_camion_id'");
+
+
+            // DB::update("UPDATE dbsys.camiones_detalle
+            //                 set bloqueo_2='$request->bloqueo_2_id'
+            //                 where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");
+              return response()->json($documentos);
+          }
+    }
+
+    public function updategeneralValorTotal(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          factura_nro='$request->factura_proveedor',
+                          cantidad_unidades='$request->cantidad_recibida',
+                          tipo_unidades='$request->unidad',
+                          valor_total='$request->valor_total',
+                          tipo_moneda='$request->tipo_de_moneda'
+
+
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real5'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+
+
+    public function updategeneralEmbarque(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          fecha_embarque= CONVERT (Datetime, '$request->fecha_de_embarque_real', 120),
+                          fecha_llegada=CONVERT (Datetime, '$request->fecha_de_llegada', 120),
+                          resolucion_sanitaria='$request->resol_sanitaria',
+                          fecha_resolucion=CONVERT (Datetime,'$request->fecha_de_resol_sanitaria' , 120),
+	                        forward='$request->forward',
+                          forward_fecha=CONVERT (Datetime, '$request->fecha_forward', 120),
+                          fecha_produccion=CONVERT (Datetime,'$request->fecha_producción_desde' , 120),
+                          fecha_produccion2=CONVERT (Datetime,'$request->fecha_producción_desde_hasta' , 120),
+	                        fecha_vencimiento=CONVERT (Datetime,'$request->fecha_vencimiento_desde' , 120),
+                          fecha_vencimiento2=CONVERT (Datetime, '$request->fecha_vencimiento_desde_hasta', 120)
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real4'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+
+    public function updategeneralFecha(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          fecha_cierre=CONVERT (Datetime, '$request->fecha_de_cierre', 120),
+                          fecha_embarque1=CONVERT (Datetime, '$request->fecha_de_embarque_desde', 120),
+                          fecha_embarque2=CONVERT (Datetime, '$request->fecha_de_embarque_desde_hasta', 120),
+                          fecha_llegada1=CONVERT (Datetime, '$request->fecha_de_llegada_desde', 120),
+                          fecha_llegada2=CONVERT (Datetime, '$request->fecha_de_llegada_desde_hasta', 120),
+                          observacion_fecha ='$request->observacion'
+
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real2'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
+    }
+    public function updategeneralCamion(Request $request)
+    {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          codigo='$request->codigo_oficial',
+                          doc_contenedor='$request->nro_de_contenedor',
+                          clasif_mercancia='$request->clasificacion_de_mercancia',
+                          proveedor='$request->proveedor',
+                          marca_origen='$request->marca_origen',
+                          descripcion='$request->descripcion',
+                          contenido='$request->contenido',
+                          observaciones='$request->observaciones',
+                          lugar_arribo='$request->lugar_de_arribo',
+                          codigo_aux='$request->codigo_auxiliar',
+                          pais_origen='$request->pais_origen',
+                          doc_bl='$request->nro_bl'
+                          FROM dbsys.camiones where codigo = '$request->codigo_oficial_real'
+                    ");
+        return response()->json(['success'=>'Los datos fueron
+                actualizados exitosamente',
+              ]);
     }
 
     public function updateitem(Request $request)
@@ -442,6 +808,7 @@ class GestionCamionController extends Controller
                         actualizados exitosamente'
 
               ]);
+
 
       }
     }
