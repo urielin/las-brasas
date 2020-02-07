@@ -1546,15 +1546,15 @@ $(document).on('change','.btn-switch',function(){
               console.log('actualizado');
             });
 
-            request.done(function( msg ) {
-              // $( "#log" ).html( msg );
-              console.log(msg);
-            });
-
-            request.fail(function( jqXHR, textStatus ) {
-              console.log(jqXHR.responseText,textStatus);
-              alert( "Request failed: " + textStatus + jqXHR.responseText);
-            });
+            // request.done(function( msg ) {
+            //   // $( "#log" ).html( msg );
+            //   console.log(msg);
+            // });
+            //
+            // request.fail(function( jqXHR, textStatus ) {
+            //   console.log(jqXHR.responseText,textStatus);
+            //   alert( "Request failed: " + textStatus + jqXHR.responseText);
+            // });
 
 
           }else{

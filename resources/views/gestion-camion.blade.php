@@ -2,68 +2,30 @@
 
 @section('content')
 
-  <div class="main-content">
-    <div class="bg-gradient-primary container-fluid pb-7 pt-3">
+
       <p class="h1 my-3 text-white text-uppercase d-lg-inline-block" >Contenedores / Camiones - PARA RECEPCIÓN</p>
 
         <br><br>
 
       <div class="row ">
-            <div class="col-4 bg-gradient-secondary border ml-3 mr-1 pt-3 card">
-
-              {{-- <form  method="post" id="sample_form" class="form-horizontal">
-                @csrf
-
-                <div class="row container">
-
-                    <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
-                    <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
-
-
-                  <div class="row ">
-                    <div class="col-2"></div>
-                    <div class="col-10">
-                      <div class="row mb--2">
-                        <label class="control-label ">Bultos ingreso: </label>
-                      </div>
-                      <div class="row">
-                        <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <br />
-                <div class="form-group" align="center">
-                  <input type="hidden" name="action" id="action1" value="Editar">
-                  <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
-                </div>
-              </form> --}}
-
+            <div class="col l4 border ml-3 mr-1 pt-3 card">
               <div class="form-group">
-                {{-- {!! Form::open(['route' => ['showCamion'],'class' => 'text-center', 'method' => 'get', 'enctype' => 'multipart/form-data'])!!} --}}
                 <form  method="post" id="buscar-camion" class="form-horizontal">
                     @csrf
                     <label for="buscar-codigo-camion">Buscar camión</label>
-
                     <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
                     <input type="text" name="codigo" class="form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                    {{-- <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control"> --}}
-                    {{-- <br> --}}
                     <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
                 </form>
-                {{-- {!! Form::close()!!} --}}
               </div>
             </div>
 
-        <div class="col-7 bg-gradient-secondary border card pt-3">
+        <div class="col l7 bg-gradient-secondary border card pt-3">
           <div class="row">
-            <div class="form-group col-3">
+            <div class="form-group col l3 ">
               <label for="anios">Ingresar año</label>
 
-              <select class="form-control" id="anio">
+              <select class="form-control browser-default" id="anio">
                 <option>Año</option>
                 @foreach ($year as $y)
 
@@ -73,9 +35,9 @@
               </select>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col l4">
               <label for="clasificacion">Clasificar camión </label>
-              <select class="form-control" id="clasificacion">
+              <select class="form-control browser-default" id="clasificacion">
                 {{-- @foreach ($clasificaciones as $clasificacion)
 
                   <option value="{{$clasificacion->desc01}}" >{{$clasificacion->desc01}}</option>
@@ -84,15 +46,15 @@
               </select>
             </div>
 
-            <div class="form-group col-5">
+            <div class="form-group col l5">
               <input type="hidden" name="action" id="icamion"  value="camion">
               <label for="camion">Seleccionar camión </label>
-              <select class="form-control" value="camion" id="camion">
+              <select class="form-control browser-default" value="camion" id="camion">
 
               </select>
             </div>
-
           </div>
+
         </div>
       </div>
 
@@ -574,8 +536,7 @@
 
 
 
-    </div>
-  </div>
+
 @endsection
 
 @section('js')
