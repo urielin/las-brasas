@@ -7,9 +7,13 @@
 
     <div class="container">
       @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <h4>ACTUALIZAR TIPO DE CAMBIO</h4>
-            <p>{{ $message }}</p>
+        <div class="card-alert card green">
+          <div class="card-content white-text">
+                    <p>{{ $message }}</p>
+          </div>
+          <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+          </button>
         </div>
       @endif
 
