@@ -52,7 +52,7 @@ class TipoCambioController extends Controller
     {
       // dd($request);
       $request->validate([
-        'Mes_cambiar' => 'required',
+        'Mes_cambiar' => 'required'
       ]);
 
 
@@ -98,7 +98,7 @@ class TipoCambioController extends Controller
 
        $request->validate([
          'Tipo_de_cambio' => 'required',
-         'Mes_cambiar' => 'required',
+         'Mes_cambiar' => 'required'
        ]);
 
 
