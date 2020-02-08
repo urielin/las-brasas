@@ -20,8 +20,8 @@
               </div>
             </div>
 
-        <div class="col l7 bg-gradient-secondary border card pt-3">
-          <div class="row">
+        <div class="col l7 border card pt-3">
+          <div class="row mb-7">
             <div class="form-group col l3 ">
               <label for="anios">Ingresar año</label>
 
