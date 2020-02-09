@@ -3,7 +3,7 @@
 @section('content')
 
 
-<p class="h1 " >Contenedores / Camiones - PARA RECEPCIÓN</p>
+<h5>Contenedores / Camiones - PARA RECEPCIÓN</h5> 
 
 <br>
 

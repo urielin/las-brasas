@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-content">
   <div class=" container pb-3 pt-3">
-    <h4>ACTUALIZAR TIPO DE CAMBIO</h4>
+    <h5>ACTUALIZAR TIPO DE CAMBIO</h5>
 
     <div class="container">
       @if ($message = Session::get('success'))
@@ -21,7 +21,7 @@
             <div class="card-content white-text">
                 <li>{{ $error }}</li>
             </div>
-          
+
           @endforeach
         </div>
       @endif
@@ -93,16 +93,23 @@
                       </div>
                     </div>
                   </div>
-
+{{-- ---------------------------- --}}
                   <div class="row">
-                    <div class="col s12">
-                      <table class="bordered responsive-table">
-                                  <thead>
-                                  <tr>
-                                    <th >Fecha</th>
-                                    <th >Cambio</th>
-                                    <th >USUARIO</th>
-                                  </tr>
+                    <div id="responsive-table" class="card card card-default scrollspy">
+                      <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+                        <h4 class="card-title"></h4>
+                        <p class="mb-2"></p>
+                        <div class="row">
+                          <div class="col s12">
+                          </div>
+                          <div class="col s12 dataTables_scrollBody">
+                             <table class="responsive-table striped">
+                                  <thead class="thead-light" id="camiontabla-head">
+                                    <tr>
+                                      <th >Fecha</th>
+                                      <th >Cambio</th>
+                                      <th >USUARIO</th>
+                                    </tr>
                                   </thead>
 
                                   <tbody>
@@ -120,9 +127,13 @@
                                         </tr>
                                       @endforeach
                                   </tbody>
-                                </table>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </div>
+{{-- -----------------------------                   --}}
                 </div>
             </div>
           </div>
