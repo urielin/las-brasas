@@ -11,9 +11,7 @@
           <div class="card-content white-text">
                     <p>{{ $message }}</p>
           </div>
-          <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-          </button>
+
         </div>
       @endif
 
@@ -23,9 +21,7 @@
             <div class="card-content white-text">
                 <li>{{ $error }}</li>
             </div>
-            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-            </button>
+          
           @endforeach
         </div>
       @endif

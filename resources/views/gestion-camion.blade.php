@@ -124,6 +124,7 @@
                               @php if ($datos != '[]') { @endphp @php } else { @endphp
 
                                       <span id="form_result_consulta1"></span>
+
                                           <form method="POST" id="consulta1" class="col s12">
                                                     @csrf
 

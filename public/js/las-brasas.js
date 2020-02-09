@@ -267,7 +267,10 @@
             $.get(action_url,{camion_id:camion_id },function(res){
               // console.log(res.documento);
               $('#bloquear-camion').empty();
-
+              $('#form_result_consulta1').empty();
+              $('#form_result_consulta2').empty();
+              $('#form_result_consulta4').empty();
+              $('#form_result_consulta5').empty();
               $('#camiontabla-head').empty();
              $('#camiontabla').empty();
 
@@ -538,7 +541,8 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -643,7 +647,7 @@ $(document).on('submit','#consulta1',function(){
                       if (data.success)
                       {
                           console.log('exito');
-                          html= '<div class="alert alert-success">'+ data.success+'</div>';
+                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -744,7 +748,7 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -844,7 +848,7 @@ $(document).on('submit','#consulta1',function(){
 
                       if (data.success)
                       {
-                          html= '<div class="alert alert-success">'+ data.success+'</div>';
+                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -883,10 +887,11 @@ $(document).on('submit','#consulta1',function(){
                           // ------------------------
 
                       }
-                      setTimeout(function() {
-                      //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-                      $('#form_result_consulta5').html(html);}, 1500);
+                      setTimeout(function(){
+                          $('#form_result_consulta5').html(html);
+                       }, 3000);
+
                     }
                   });
 
@@ -1154,6 +1159,11 @@ $('#buscar-camion-r').on('submit',function(event){
               console.log('entro');
               $('#camiontabla').empty();
               $('#camiontabla-head').empty();
+              $('#form_result_consulta1').empty();
+              $('#form_result_consulta2').empty();
+              $('#form_result_consulta4').empty();
+              $('#form_result_consulta5').empty();
+
              var bi=0;
 
              var ci=0;
@@ -1433,7 +1443,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
             // console.log('consicion 1');
           $.get('cambiar-bloqueo-camion',{camion_id:camion_id, bloqueo_2_id:bloqueo_2_id},function(res){
             console.log('nueva tabla');
-
+            $('#camiontabla-head').empty();
             $('#camiontabla').empty();
            var bi=0;
 
@@ -1447,8 +1457,8 @@ $(document).on('change','#change-bloqueo-camion',function(){
            // value.total_costo
            // var co = 'class="editar-gestion btn btn-warning btn-sm"';
            // console.log(co);
-
-            $('#camiontabla').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
+            
+            $('#camiontabla-head').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
 
             $.each(res, function(index,value){
                  if (value.bloqueo_2 == '1' ) {

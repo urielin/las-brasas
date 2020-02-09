@@ -28,6 +28,18 @@
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
 
+     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".content").fadeOut(1500);
+    },3000);
+
+    setTimeout(function() {
+        $(".content2").fadeIn(1500);
+    },6000);
+});
+</script>
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -190,4 +202,3 @@
   </body>
 
  </html>
-
