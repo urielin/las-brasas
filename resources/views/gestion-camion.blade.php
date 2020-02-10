@@ -144,7 +144,7 @@
                                                     @csrf
 
                                             <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
+                                              <div class="row pb-2">
 
                                                     <div class=" col s6">
 
@@ -161,7 +161,7 @@
                                                     </div>
                                               </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class=" col s6">
 
                                                           <label for="icon_prefix">Nro de contenedor</label>
@@ -176,7 +176,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class=" col s6">
 
                                                           <label for="icon_prefix">Clasificación de mercancía</label>
@@ -192,7 +192,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s6">
 
                                                           <label for="icon_prefix">Marca origen</label>
@@ -207,7 +207,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s6">
 
                                                           <label for="icon_prefix">Descripción</label>
@@ -222,7 +222,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s6">
 
                                                           <label for="icon_prefix">Observaciones</label>
@@ -267,54 +267,54 @@
                                                     @csrf
 
                                             <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s12">
 
                                                       <label for="icon_prefix">Fecha de cierre</label>
-                                                      <input class="form-control " name="fecha_de_cierre" id="fecha_de_cierre" type="datetime-local" >
+                                                      <input class="form-control browser-default" name="fecha_de_cierre" id="fecha_de_cierre" type="datetime-local" >
                                                       <input type="hidden" class="form-control " name="codigo_oficial_real2" id="codigo_oficial_real2" type="text" >
 
                                                     </div>
 
                                               </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_telephone">Fecha de embarque desde</label>
 
-                                                      <input class="form-control" type="datetime-local" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" >
+                                                      <input class="form-control browser-default" type="datetime-local" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" >
                                                     </div>
 
                                                       <div class="col s6">
                                                         <label for="icon_prefix">Hasta</label>
-                                                        <input name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" class="form-control">
+                                                        <input name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" class="form-control browser-default">
                                                       </div>
 
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s6">
 
                                                         <label for="icon_telephone">Fecha de llegada desde</label>
-                                                        <input type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde" class="form-control">
+                                                        <input type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde" class="form-control browser-default">
                                                       </div>
                                                       <div class="col s6">
                                                         <label for="icon_prefix">Hasta</label>
-                                                        <input  type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta" class="form-control">
+                                                        <input  type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta" class="form-control browser-default">
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
 
                                                       <div class="col s12">
 
                                                         <label for="icon_telephone">Observación</label>
-                                                        <input type="text" name="observacion" id="observacion" class="validate form-control">
+                                                        <input type="text" name="observacion" id="observacion" class="validate form-control browser-default">
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s12">
                                                         <input type="hidden" name="action" id="action_2" value="Editar">
                                                         <input type="submit" name="action_b2" id="action_b2" class="btn btn-primary mt-1 float-center" value="Actualizar">
@@ -340,71 +340,71 @@
                                                   @csrf
 
                                           <div class="card card card-default scrollspy pt-2 pb-3">
-                                            <div class="row ">
+                                            <div class="row pb-2">
                                                   <div class="col s6">
 
                                                     <label for="icon_prefix">Fecha de embarque real</label>
-                                                    <input class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" step="1" >
-                                                    <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real4" id="codigo_oficial_real4" >
+                                                    <input class="form-control browser-default" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" step="1" >
+                                                    <input type="hidden" class="form-control browser-default" name="codigo_oficial_real4" id="codigo_oficial_real4" >
 
                                                   </div>
                                                   <div class="col s6">
 
                                                     <label for="icon_telephone">Fecha de llegada</label>
 
-                                                    <input class="validate form-control" name="fecha_de_llegada" id="fecha_de_llegada" type="datetime-local" step="1">
+                                                    <input class="validate form-control browser-default" name="fecha_de_llegada" id="fecha_de_llegada" type="datetime-local" step="1">
                                                   </div>
                                             </div>
 
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_prefix">Nro de contenedorResol. Sanitaria</label>
-                                                      <input name="resol_sanitaria" type="text" id="resol_sanitaria" class="validate form-control">
+                                                      <input name="resol_sanitaria" type="text" id="resol_sanitaria" class="validate form-control browser-default">
                                                     </div>
                                                     <div class="col s6">
 
                                                       <label for="icon_telephone">Fecha de Resol. Sanitaria</label>
-                                                      <input name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria" class=" form-control" step="1">
+                                                      <input name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria" class=" form-control browser-default" step="1">
                                                     </div>
                                               </div>
 
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_prefix">Forward</label>
-                                                    <input name="forward" type="text" id="forward" class="validate form-control">
+                                                    <input name="forward" type="text" id="forward" class="validate form-control browser-default">
                                                     </div>
                                                     <div class="col s6">
 
                                                       <label for="icon_telephone">Fecha Forward</label>
-                                                      <input name="fecha_forward" type="datetime-local" id="fecha_forward" class="validate form-control" step="1">
+                                                      <input name="fecha_forward" type="datetime-local" id="fecha_forward" class="validate form-control browser-default" step="1">
                                                     </div>
                                               </div>
 
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_prefix">Fecha producción desde</label>
-                                                      <input type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde" class="validate form-control" step="1">
+                                                      <input type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde" class="validate form-control browser-default" step="1">
                                                     </div>
                                                     <div class="col s6">
 
                                                       <label for="icon_telephone">Hasta</label>
-                                                      <input type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta" class="validate form-control" step="1">
+                                                      <input type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta" class="validate form-control browser-default" step="1">
                                                     </div>
                                               </div>
 
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_prefix">Fecha vencimiento desde</label>
-                                                      <input type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde" class="validate form-control" step="1">
+                                                      <input type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde" class="validate form-control browser-default" step="1">
                                                     </div>
                                                     <div class="col s6">
 
                                                       <label for="icon_telephone">Hasta</label>
-                                                      <input type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta" class="validate form-control" step="1">
+                                                      <input type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta" class="validate form-control browser-default" step="1">
                                                     </div>
                                               </div>
 
@@ -439,11 +439,11 @@
                                                     @csrf
 
                                             <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
+                                              <div class="row pb-2">
                                                     <div class="col s6">
 
                                                       <label for="icon_prefix">Factura proveedor</label>
-                                                      <input class="form-control form-control-sm"  type="text" name="factura_proveedor" id="factura_proveedor" >
+                                                      <input class="form-control browser-default"  type="text" name="factura_proveedor" id="factura_proveedor" >
                                                       <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
 
                                                     </div>
@@ -451,11 +451,11 @@
 
                                                       <label for="icon_telephone">Cantidad recibida</label>
 
-                                                      <input class="validate form-control" type="text" name="cantidad_recibida" id="cantidad_recibida" >
+                                                      <input class="validate form-control browser-default" type="text" name="cantidad_recibida" id="cantidad_recibida" >
                                                     </div>
                                               </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s6">
 
                                                         <label for="icon_prefix">Unidad</label>
@@ -466,11 +466,11 @@
                                                       <div class="col s6">
 
                                                         <label for="icon_telephone">Valor total</label>
-                                                        <input type="text" name="valor_total" id="valor_total" class="validate form-control">
+                                                        <input type="text" name="valor_total" id="valor_total" class="validate form-control browser-default">
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row pb-2">
                                                       <div class="col s12">
 
                                                         <label for="icon_prefix">Tipo de moneda</label>
@@ -546,7 +546,7 @@
                   <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
                   <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
 {{-- ----------------------------- --}}
-                                    <div class="row ">
+                                    <div class="row pb-2">
                                           <div class="col s6">
                                             <label for="icon_prefix">Nro item: </label>
                                             <input type="text" name="nro_item" id="nro_item" class="validate form-control" step="1">
@@ -557,7 +557,7 @@
                                           </div>
                                     </div>
 
-                                    <div class="row ">
+                                    <div class="row pb-2">
                                           <div class="col s6">
                                             <label for="icon_prefix">Código: </label>
                                             <input type="text" name="codigo" id="codigo" class="validate form-control" step="1">
@@ -568,7 +568,7 @@
                                           </div>
                                     </div>
 
-                                    <div class="row ">
+                                    <div class="row pb-2">
                                           <div class="col s6">
                                             <label for="icon_prefix">Bultos ingreso: </label>
                                             <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="validate form-control" step="1">
