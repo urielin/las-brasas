@@ -26,8 +26,7 @@
                         @foreach($AdmSucursal as $item)
                           <option value="{{$item->SUCU_CODIGO}}"  >{{$item->SUCU_NOMBRE}}</option>
                         @endforeach
-                        </select>
-
+                        </select> 
                       </form>
               </div>
             </div>
