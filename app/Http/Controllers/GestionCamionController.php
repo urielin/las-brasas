@@ -679,18 +679,29 @@ public function changeBloqueoCamion(Request $request)
 
     public function updategeneralEmbarque(Request $request)
     {
+        // fecha_embarque= CONVERT (Datetime, '$request->fecha_de_embarque_real', 120),
+      $fecha_de_embarque_real = date('d-m-Y H:i:s', strtotime($request->fecha_de_embarque_real));
+      $fecha_de_llegada = date('d-m-Y H:i:s', strtotime($request->fecha_de_llegada));
+      $fecha_de_resol_sanitaria = date('d-m-Y H:i:s', strtotime($request->fecha_de_resol_sanitaria));
+      $fecha_forward = date('d-m-Y H:i:s', strtotime($request->fecha_forward));
+      $fecha_producción_desde = date('d-m-Y H:i:s', strtotime($request->fecha_producción_desde));
+      $fecha_producción_desde_hasta = date('d-m-Y H:i:s', strtotime($request->fecha_producción_desde_hasta));
+      $fecha_vencimiento_desde = date('d-m-Y H:i:s', strtotime($request->fecha_vencimiento_desde));
+      $fecha_vencimiento_desde_hasta = date('d-m-Y H:i:s', strtotime($request->fecha_vencimiento_desde_hasta));
+
+
           DB::update("UPDATE dbsys.camiones
                           set
-                          fecha_embarque= CONVERT (Datetime, '$request->fecha_de_embarque_real', 120),
-                          fecha_llegada=CONVERT (Datetime, '$request->fecha_de_llegada', 120),
+                          fecha_embarque= '$fecha_de_embarque_real',
+                          fecha_llegada= '$fecha_de_llegada',
                           resolucion_sanitaria='$request->resol_sanitaria',
-                          fecha_resolucion=CONVERT (Datetime,'$request->fecha_de_resol_sanitaria' , 120),
+                          fecha_resolucion='$fecha_de_resol_sanitaria' ,
 	                        forward='$request->forward',
-                          forward_fecha=CONVERT (Datetime, '$request->fecha_forward', 120),
-                          fecha_produccion=CONVERT (Datetime,'$request->fecha_producción_desde' , 120),
-                          fecha_produccion2=CONVERT (Datetime,'$request->fecha_producción_desde_hasta' , 120),
-	                        fecha_vencimiento=CONVERT (Datetime,'$request->fecha_vencimiento_desde' , 120),
-                          fecha_vencimiento2=CONVERT (Datetime, '$request->fecha_vencimiento_desde_hasta', 120)
+                          forward_fecha='$fecha_forward',
+                          fecha_produccion='$fecha_producción_desde' ,
+                          fecha_produccion2='$fecha_producción_desde_hasta' ,
+	                        fecha_vencimiento='$fecha_vencimiento_desde' ,
+                          fecha_vencimiento2= '$fecha_vencimiento_desde_hasta'
                           FROM dbsys.camiones where codigo = '$request->codigo_oficial_real4'
                     ");
         return response()->json(['success'=>'Los datos fueron
@@ -700,13 +711,19 @@ public function changeBloqueoCamion(Request $request)
 
     public function updategeneralFecha(Request $request)
     {
+          $fecha_de_cierre = date('d-m-Y H:i:s', strtotime($request->fecha_de_cierre));
+          $fecha_de_embarque_desde = date('d-m-Y H:i:s', strtotime($request->fecha_de_embarque_desde));
+          $fecha_de_embarque_desde_hasta = date('d-m-Y H:i:s', strtotime($request->fecha_de_embarque_desde_hasta));
+          $fecha_de_llegada_desde = date('d-m-Y H:i:s', strtotime($request->fecha_de_llegada_desde));
+          $fecha_de_llegada_desde_hasta = date('d-m-Y H:i:s', strtotime($request->fecha_de_llegada_desde_hasta));
+
           DB::update("UPDATE dbsys.camiones
                           set
-                          fecha_cierre=CONVERT (Datetime, '$request->fecha_de_cierre', 120),
-                          fecha_embarque1=CONVERT (Datetime, '$request->fecha_de_embarque_desde', 120),
-                          fecha_embarque2=CONVERT (Datetime, '$request->fecha_de_embarque_desde_hasta', 120),
-                          fecha_llegada1=CONVERT (Datetime, '$request->fecha_de_llegada_desde', 120),
-                          fecha_llegada2=CONVERT (Datetime, '$request->fecha_de_llegada_desde_hasta', 120),
+                          fecha_cierre='$fecha_de_cierre',
+                          fecha_embarque1='$fecha_de_embarque_desde',
+                          fecha_embarque2= '$fecha_de_embarque_desde_hasta',
+                          fecha_llegada1='$fecha_de_llegada_desde',
+                          fecha_llegada2= '$fecha_de_llegada_desde_hasta',
                           observacion_fecha ='$request->observacion'
 
                           FROM dbsys.camiones where codigo = '$request->codigo_oficial_real2'

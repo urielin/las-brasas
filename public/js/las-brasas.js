@@ -165,7 +165,10 @@
             $.get(action_url,{camion_id:camion_id },function(res){
               // console.log(res.documento);
               $('#bloquear-camion').empty();
-
+              $('#form_result_consulta1').empty();
+              $('#form_result_consulta2').empty();
+              $('#form_result_consulta4').empty();
+              $('#form_result_consulta5').empty();
               $('#camiontabla-head').empty();
              $('#camiontabla').empty();
 
@@ -185,9 +188,9 @@
 
             if (bandera_bloqueo=="1") {
               $('#bloquear-camion').append('<label for="" class="pt-0">Bloquear camión</label><label class="custom-toggle custom-toggle-default"> <input type="checkbox" checked  id="change-bloqueo-camion" value="2"><span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Si"></span></label>');
-               $('#camiontabla-head').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
+               $('#camiontabla-head').append('<tr><th >Bloqueo</th><th>Nro</th><th>Cod.</th><th>Producto</th><th >Cantidad cierre</th><th>Bultos ingreso</th><th >Cantidad ingreso</th><th >(+/-)</th><th >C.I.F</th><th >V.I.U</th><th >C.I.F(MN)</th><th >Precio_Compra(MN)</th><th >Total factura</th><th>Gastos(MN)</th><th >CIF tierra(MN)</th><th >Total_Costo_Final</th>');
             } else {
-               $('#camiontabla-head').append('<tr><th scope="col">Acción</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
+               $('#camiontabla-head').append('<tr><th >Acción</th><th >Nro</th><th >Cod.</th><th >Producto</th><th >Cantidad cierre</th><th >Bultos ingreso</th><th >Cantidad ingreso</th><th >(+/-)</th><th >C.I.F</th><th >V.I.U</th><th >C.I.F(MN)</th><th >Precio_Compra(MN)</th><th >Total factura</th><th >Gastos(MN)</th><th >CIF tierra(MN)</th><th >Total_Costo_Final</th>');
             }
              $.each(res.documento, function(index,value){
 
@@ -210,7 +213,7 @@
                 else
                 {
 
-                    $('#camiontabla').append("<tr>"+'<td> <button type="button" value="'+valor+'" class="editar-gestion btn btn-warning btn-sm">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
+                    $('#camiontabla').append("<tr>"+'<td> <button type="button" value="'+valor+'" class="editar-gestion waves-effect waves-light  btn">Editar</button></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ value.cantidad_cierre +"</td><td>"+ value.bultos_ingreso +" </td><td>"+ value.cantidad_ingreso +"</td><td>"+ value.cantidad_diferencia +"</td><td>"+ value.cif_moneda_ext +"</td><td>"+ value.viu_moneda_nal +"</td><td>"+ value.cif_moneda_nal +"</td><td>"+ value.precio_compra +"</td><td>"+ value.total_compra +"</td><td>"+ value.cif_adicional_nal +"</td><td>"+ value.cif_final_nal +"</td><td>"+ value.total_costo +"</td></tr>");
 
 
                     bi+=parseFloat(value.bultos_ingreso);
@@ -242,9 +245,14 @@
               $('#bandera-general').append('<input type="hidden" id="subbandera"  value="2">');
 
               $('#codigo_oficial_real2').val(res.dato_general[0]['codigo']);
-              $('#fecha_de_cierre').val(res.dato_general[0]['fecha_cierre']);
+              $('#fecha_de_cierre').val(dateUTC(res.dato_general[0]['fecha_cierre']));
+                console.log('sin UTC');
+                console.log(res.dato_general[0]['fecha_cierre']);
               $('#fecha_de_embarque_desde').val(dateUTC(res.dato_general[0]['fecha_embarque1']));
-
+                console.log('CON utc 2');
+                console.log(dateUTC(res.dato_general[0]['fecha_embarque1']));
+                console.log('sin utc 2');
+                console.log(res.dato_general[0]['fecha_embarque1']);
 
               $('#fecha_de_embarque_desde_hasta').val(dateUTC(res.dato_general[0]['fecha_embarque2']));
               $('#fecha_de_llegada_desde').val(dateUTC(res.dato_general[0]['fecha_llegada1']));
@@ -431,7 +439,8 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -511,19 +520,20 @@ $(document).on('submit','#consulta1',function(){
                   if ($('#subbandera').val() == '2')
                   {
                     camion_id = $('#camion').val();
-
+                    console.log('val 2');
                     valor= '2';
                   }
                   else{
                     camion_id = $('#buscar-codigo-camion').val();
                     valor ='1';
+                    console.log('val 1');
                   }
                   // if ($('#action').val() == 'Editar')
                   // {
                   //     action_url = 'actualizar-camion';
                   // }
 
-                  $.ajax({
+                  request=$.ajax({
                     url: action_url,
                     method:"POST",
                     data:$(this).serialize(),
@@ -534,7 +544,8 @@ $(document).on('submit','#consulta1',function(){
 
                       if (data.success)
                       {
-                          html= '<div class="alert alert-success">'+ data.success+'</div>';
+                          console.log('exito');
+                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -580,16 +591,16 @@ $(document).on('submit','#consulta1',function(){
                     }
                   });
 
-                  // request.done(function( msg ) {
-                  //
-                  // $( "#log" ).html( msg );
-                  //   console.log(msg);
-                  // });
-                  //
-                  // request.fail(function( jqXHR, textStatus ) {
-                  //   console.log(jqXHR.responseText,textStatus);
-                  //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-                  // });
+                  request.done(function( msg ) {
+
+                  $( "#log" ).html( msg );
+                    console.log(msg);
+                  });
+
+                  request.fail(function( jqXHR, textStatus ) {
+                    console.log(jqXHR.responseText,textStatus);
+                    alert( "Request failed: " + textStatus + jqXHR.responseText);
+                  });
 
 
                 });
@@ -624,7 +635,7 @@ $(document).on('submit','#consulta1',function(){
           //     action_url = 'actualizar-camion';
           // }
 
-          $.ajax({
+          request=$.ajax({
             url: action_url,
             method:"POST",
             data:$(this).serialize(),
@@ -635,7 +646,7 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -681,16 +692,16 @@ $(document).on('submit','#consulta1',function(){
             }
           });
 
-          // request.done(function( msg ) {
-          //
-          // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
+          request.done(function( msg ) {
+
+          $( "#log" ).html( msg );
+            console.log(msg);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR.responseText,textStatus);
+            alert( "Request failed: " + textStatus + jqXHR.responseText);
+          });
 
 
         });
@@ -735,7 +746,7 @@ $(document).on('submit','#consulta1',function(){
 
                       if (data.success)
                       {
-                          html= '<div class="alert alert-success">'+ data.success+'</div>';
+                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -774,10 +785,11 @@ $(document).on('submit','#consulta1',function(){
                           // ------------------------
 
                       }
-                      setTimeout(function() {
-                      //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-                      $('#form_result_consulta5').html(html);}, 1500);
+                      setTimeout(function(){
+                          $('#form_result_consulta5').html(html);
+                       }, 3000);
+
                     }
                   });
 
@@ -840,7 +852,8 @@ $(document).on('submit','#sample_form',function(){
               }
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
                   // $('#sample_form')[0].reset();
 
                   // ----------------
@@ -1045,6 +1058,11 @@ $('#buscar-camion-r').on('submit',function(event){
               console.log('entro');
               $('#camiontabla').empty();
               $('#camiontabla-head').empty();
+              $('#form_result_consulta1').empty();
+              $('#form_result_consulta2').empty();
+              $('#form_result_consulta4').empty();
+              $('#form_result_consulta5').empty();
+
              var bi=0;
 
              var ci=0;
@@ -1263,7 +1281,8 @@ $('#buscar-camion-r').on('submit',function(event){
         $('#cantidad_ingreso').val(valores[5]);
         $('#action-producto').val($(this).val());
 
-        $('#formModal').modal('show');
+        $('#formModal').modal('open');
+        // $('#modal2').modal('open');
 
 
       });
@@ -1324,7 +1343,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
             // console.log('consicion 1');
           $.get('cambiar-bloqueo-camion',{camion_id:camion_id, bloqueo_2_id:bloqueo_2_id},function(res){
             console.log('nueva tabla');
-
+            $('#camiontabla-head').empty();
             $('#camiontabla').empty();
            var bi=0;
 
@@ -1339,7 +1358,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
            // var co = 'class="editar-gestion btn btn-warning btn-sm"';
            // console.log(co);
 
-            $('#camiontabla').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
+            $('#camiontabla-head').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
 
             $.each(res, function(index,value){
                  if (value.bloqueo_2 == '1' ) {
@@ -1479,12 +1498,7 @@ $(document).on('change','.btn-switch',function(){
 // ------------------------------------------------------
 // ------------------------------------------------------
 
-      function pad(number) {
-      if (number < 10) {
-       return '0' + number;
-      }
-      return number;
-      }
+
 
       function dateUTC(ms) {
         var ms, fecha,año, mes, dia, hora, minuto, segundo;
@@ -1505,7 +1519,7 @@ $(document).on('change','.btn-switch',function(){
         dia=ms.getUTCDate();
         // console.log('Horas');
         // console.log(ms.getUTCHours()-4);
-        hora=ms.getUTCHours()-4;
+        hora=ms.getUTCHours()-3;
         // console.log('Minutos');
         // console.log(ms.getUTCMinutes());
         minuto=ms.getUTCMinutes();
@@ -1516,5 +1530,26 @@ $(document).on('change','.btn-switch',function(){
         // console.log('fechaaaa:');
         // console.log(fecha);
         return fecha;
+      }
+
+      function pad(number) {
+        // console.log('este numero es:');
+        // console.log(number);
+      if (number < 10) {
+        if (number == 0) {
+          // console.log('el numero es ceroooo');
+          return '0' + number;
+        }
+        else {
+          // console.log('aqui hay numero may 0 y menor q 10:');
+          // console.log(number);
+          return '0' + number;
+        }
+       // console.log('pad');
+       // console.log('00' + number);
+      }
+
+      // console.log('es numero mayor de 9');
+      return number;
       }
   });
