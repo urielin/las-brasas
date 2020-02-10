@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet"> 
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/vertical-modern-menu-template/materialize.min.css">
