@@ -82,6 +82,7 @@
         </div>
       </div>
         {{-- -------------------------------------- --}}
+
         <div class="row">
           <div class="col s12">
             <div class="card card card-default scrollspy">
@@ -94,6 +95,8 @@
                     </div>
                   </div>
 {{-- ---------------------------- --}}
+
+{{-- ----------------------------------- --}}
                   <div class="row">
                     <div id="responsive-table" class="card card card-default scrollspy">
                       <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">

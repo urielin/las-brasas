@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h5>Contenedores / Camiones - PARA RECEPCIÓN</h5> 
+<h5>Contenedores / Camiones - PARA RECEPCIÓN</h5>
 
 <br>
 
@@ -487,13 +487,30 @@
 @endsection
 
 @section('js')
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
     <div id="formModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Editar producto</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="row">
+              <div class=" col s6">
+                <h5 class="modal-title">Editar producto</h5>
+              </div>
+              <div class="col s6" align="right">
+                <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
+              </div>
+            </div>
           </div>
+
           <div class="modal-body">
             <span id="form_result"></span>
             <form  method="POST" id="sample_form" class="form-horizontal">
@@ -503,68 +520,51 @@
 
                   <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
                   <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
-                        <div class="row pb-3">
-                          <div class="col-1"></div>
-                          <div class="col-md">
-                            <div class="row mb--2">
-                              <label class="control-label ">Nro item: </label>
-                            </div>
-                            <div class="row">
-                              <input type="text" name="nro_item" id="nro_item" class="form-control">
-                            </div>
-                          </div>
-                          <div class="col-1"></div>
-                          <div class="col-md">
-                            <div class="row mb--2">
-                              <label class="control-label ">Cantidad Ingreso: </label>
-                            </div>
-                            <div class="row">
-                                <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="form-control">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row pb-3">
-                  <div class="col-1"></div>
-                  <div class="col-md">
-                    <div class="row mb--2">
-                      <label class="control-label">Código: </label>
-                    </div>
-                    <div class="row">
-                      <input type="text" name="codigo" id="codigo" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-1">
-                  </div>
-                  <div class="col-md">
-                    <div class="row mb--2">
-                      <label class="control-label ">Cantidad cierre: </label>
-                    </div>
-                    <div class="row">
-                      <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                        <div class="row ">
-                          <div class="col-2"></div>
-                          <div class="col-10">
-                            <div class="row mb--2">
-                              <label class="control-label ">Bultos ingreso: </label>
-                            </div>
-                            <div class="row">
-                              <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="form-control">
-                            </div>
-                          </div>
+{{-- ----------------------------- --}}
+                                    <div class="row ">
+                                          <div class="input-field col s6">
+                                            <label for="icon_prefix">Nro item: </label>
+                                            <input type="text" name="nro_item" id="nro_item" class="validate form-control" step="1">
+                                          </div>
+                                          <div class="input-field col s6">
+                                            <label for="icon_telephone">Cantidad Ingreso:</label>
+                                            <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="validate form-control" step="1">
+                                          </div>
+                                    </div>
 
-                        </div>
+                                    <div class="row ">
+                                          <div class="input-field col s6">
+                                            <label for="icon_prefix">Código: </label>
+                                            <input type="text" name="codigo" id="codigo" class="validate form-control" step="1">
+                                          </div>
+                                          <div class="input-field col s6">
+                                            <label for="icon_telephone">Cantidad cierre:</label>
+                                            <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="validate form-control" step="1">
+                                          </div>
+                                    </div>
+
+                                    <div class="row ">
+                                          <div class="input-field col s6">
+                                            <label for="icon_prefix">Bultos ingreso: </label>
+                                            <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="validate form-control" step="1">
+                                          </div>
+
+                                    </div>
+                                    <div class="row ">
+                                          <div class="input-field col s12">
+                                          </div>
+                                    </div>
+                                    <div class="row " align="right">
+                                          <div class="input-field col s12">
+                                            <input type="hidden" name="action" id="action-producto">
+                                            <input type="submit" name="action_button" id="action_button"  class="btn btn-warning" value="Actualizar">
+                                          </div>
+                                    </div>
 
               </div>
 
               <br />
-              <div class="form-group" align="center">
-                <input type="hidden" name="action" id="action-producto" >
-                {{-- <input type="hidden" name="action" id="action" value="Editar"> --}}
-                <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar">
-              </div>
+
             </form>
           </div>
         </div>

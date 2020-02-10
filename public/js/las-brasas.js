@@ -954,7 +954,8 @@ $(document).on('submit','#sample_form',function(){
               }
               if (data.success)
               {
-                  html= '<div class="alert alert-success">'+ data.success+'</div>';
+
+                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
                   // $('#sample_form')[0].reset();
 
                   // ----------------
@@ -1382,7 +1383,8 @@ $('#buscar-camion-r').on('submit',function(event){
         $('#cantidad_ingreso').val(valores[5]);
         $('#action-producto').val($(this).val());
 
-        $('#formModal').modal('show');
+        $('#formModal').modal('open');
+        // $('#modal2').modal('open');
 
 
       });
@@ -1457,7 +1459,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
            // value.total_costo
            // var co = 'class="editar-gestion btn btn-warning btn-sm"';
            // console.log(co);
-            
+
             $('#camiontabla-head').append('<tr><th scope="col">Bloqueo</th><th scope="col">Nro</th><th scope="col">Cod.</th><th scope="col">Producto</th><th scope="col">Cantidad cierre</th><th scope="col">Bultos ingreso</th><th scope="col">Cantidad ingreso</th><th scope="col">(+/-)</th><th scope="col">C.I.F</th><th scope="col">V.I.U</th><th scope="col">C.I.F(MN)</th><th scope="col">Precio_Compra(MN)</th><th scope="col">Total factura</th><th scope="col">Gastos(MN)</th><th scope="col">CIF tierra(MN)</th><th scope="col">Total_Costo_Final</th>');
 
             $.each(res, function(index,value){
