@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet"> 
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/vertical-modern-menu-template/materialize.min.css">
@@ -73,7 +73,7 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold">
           <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
-            <i class="material-icons">settings_input_svideo</i>
+            <i class="material-icons">home</i>
             <span class="menu-title" data-i18n="Dashboard">Administrador</span>
           </a>
         </li>
@@ -83,29 +83,29 @@
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">mail_outline</i>
+            <i class="material-icons">public</i>
             <span class="menu-title" data-i18n="Mail">Prosegur</span>
            </a>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">chat_bubble_outline</i>
+            <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>
         </li>
        <li class="navigation-header">
-         <a class="navigation-header-text">Pages </a>
+         <a class="navigation-header-text">SISTEMA DE GESTION </a>
          <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-          <i class="material-icons">person_outline</i>
+          <i class="material-icons">local_shipping</i>
           <span class="menu-title" data-i18n="User Profile">Contenedores y Camiones</span>
           </a>
         </li>
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
-            <i class="material-icons">filter_tilt_shift</i>
+            <i class="material-icons">apps</i>
             <span class="menu-title" data-i18n="Misc">Maestro</span>
           </a>
           <div class="collapsible-body">

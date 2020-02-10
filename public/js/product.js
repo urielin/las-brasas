@@ -52,9 +52,9 @@ $(document).ready(function(){
     let tipo = $(this).parents("tr").attr('data-tipo') == undefined ? ' ': $(this).parents("tr").attr('data-tipo');
     let estado = $(this).parents("tr").attr('data-estado') == undefined ? ' ': $(this).parents("tr").attr('data-estado');
 
-    $(this).parents("tr").find("td:eq(1)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="code" value="'+code+'" >');
-    $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="factor_multi" value="'+factor_multi+'">');
-    $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="factor_div" value="'+factor_div+'">');
+    $(this).parents("tr").find("td:eq(1)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="code" value="'+code+'" >');
+    $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="factor_multi" value="'+factor_multi+'">');
+    $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="factor_div" value="'+factor_div+'">');
     $(this).parents("tr").find("td:eq(5)").html(setCatalogoTipo(tipo));
     $(this).parents("tr").find("td:eq(6)").html(setCatalogoEstado(estado));
     $(this).parents("tr").find("td:eq(9)").prepend(`<span style='display: flex;'>
