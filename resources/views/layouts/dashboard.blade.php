@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/pages/dashboard.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
 
+    <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/flag-icon/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/jquery.dataTables.min.css">
@@ -184,9 +185,12 @@
     <script src="assets/js/scripts/data-tables.min.js"></script>
     <script src="assets/js/scripts/advance-ui-modals.min.js"></script>
 
-    <script src="{{ asset('js/las-brasas.js') }}"></script>
-    <script src="{{ asset('js/product.js') }}"></script>
-    @yield('js')
+    <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
+
+    @section('js')
+      <script src="{{ asset('js/las-brasas.js') }}"></script>
+      <script src="{{ asset('js/product.js') }}"></script>
+    @show
   </body>
 
  </html>
