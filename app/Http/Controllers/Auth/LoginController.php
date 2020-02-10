@@ -37,8 +37,8 @@ class LoginController extends Controller
      }
 
      public function logout(Request $request){
-         Auth::logout();
-         $request->session()->invalidate();
+         $request->session()->forget('user');
+         $request->session()->flush(); 
          return redirect('/');
      }
      public function username() {

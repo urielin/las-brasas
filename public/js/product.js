@@ -185,8 +185,8 @@ $(document).ready(function(){
     let array = [];
     for (let i = 0; i < data.length; i++) {
       array[i] = `<tr>
-                    <td style='padding: 0.5rem;;text-align: center;white-space: normal;'>${data[i].CODI_RCODIGO}</td>
-                    <td style='padding: 0.5rem;white-space: normal;'>${data[i].CODI_RNOMBRE}</td>
+                    <td style='padding: 0.5rem;;text-align: center;white-space: normal;' tabindex="0">${data[i].CODI_RCODIGO}</td>
+                    <td style='padding: 0.5rem;white-space: normal;' tabindex="0">${data[i].CODI_RNOMBRE}</td>
                   </tr>`;
     }
     return array;
