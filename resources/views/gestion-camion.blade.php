@@ -10,20 +10,21 @@
   <div class="row">
     <div class="col s4">
       <div class="card card card-default scrollspy">
-          <div class="row pt-2 pb-3">
+          <div class="row pt-2 pb-1">
             <form  method="post" id="buscar-camion" class="col s12">
               <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field mb-1 col s12">
                   @csrf
                   <label for="buscar-codigo-camion">Buscar camión</label>
                   <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
-                  <input type="text" name="codigo" class="validate form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                  <input type="text" name="codigo" class="form-control browser-default" id="buscar-codigo-camion" placeholder="Ingrese código camión">
                 </div>
               </div>
 
+
               <div class="row">
-                <div class="input-field col s12">
-                  <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
+                <div class="input-field mt-1 mb-1 col s12">
+                  <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right browser-default">Buscar</button>
                 </div>
               </div>
             </form>
@@ -35,28 +36,42 @@
 
     <div class="col s8">
       <div class="card card card-default scrollspy">
-            <div class="row pt-4 pb-4">
+            <div class="row pt-2 pb-1">
               <form class="col s12">
                 <div class="row">
-                  <div class="input-field col s3">
-                    <label for="anios">Ingresar año</label>
-                    <select class="form-control browser-default" id="anio">
-                      <option>Año</option>
-                      @foreach ($year as $y)
-                        <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
-                      @endforeach
-                    </select>
+                  <div class="input-field col sm">
+                    <form class="" action="index.html" method="post">
+
+                    </form>
                   </div>
                   <div class="input-field col s4">
-                    <label for="clasificacion">Clasificar camión </label>
-                    <select class="form-control browser-default" id="clasificacion">
-                    </select>
+                    <form class="" action="index.html" method="post">
+                        <label for="anio" >Ingresar año</label>
+                        <select class="form-control browser-default" id="anio">
+                          <option>Año</option>
+                          @foreach ($year as $y)
+                            <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
+                          @endforeach
+                        </select>
+                      </form>
                   </div>
-                  <div class="input-field col s5">
+
+                  <div class="input-field col s4">
+                    <form >
+                      <label for="clasificacion">Clasificar camión </label>
+                      <select class="form-control browser-default" id="clasificacion">
+                      </select>
+                    </form>
+                  </div>
+
+                  <div class="input-field col s3">
+                    <form >
+
                     <input type="hidden" name="action" id="icamion"  value="camion">
                     <label for="camion">Seleccionar camión </label>
                     <select class="form-control browser-default" value="camion" id="camion">
                     </select>
+                  </form>
                   </div>
                 </div>
               </form>
@@ -131,17 +146,15 @@
                                             <div class="card card card-default scrollspy pt-2 pb-3">
                                               <div class="row ">
                                                     <div class="input-field col s6">
-
-                                                      <label for="icon_prefix">Código oficial</label>
-                                                      <input class="form-control form-control-sm" name="codigo_oficial" id="codigo_oficial" type="text" >
-                                                      <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
-
+                                                        <label for="icon_prefix">Código oficial</label>
+                                                        <input class="form-control  browser-default" name="codigo_oficial" id="codigo_oficial" type="text" >
+                                                        <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
                                                     </div>
                                                     <div class="input-field col s6">
 
                                                       <label for="icon_telephone">Código auxiliar</label>
 
-                                                      <input class="validate form-control" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
+                                                      <input class=" form-control browser-default" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
                                                     </div>
                                               </div>
 
@@ -149,12 +162,12 @@
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_prefix">Nro de contenedor</label>
-                                                        <input name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="validate form-control">
+                                                        <input name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="browser-default form-control">
                                                       </div>
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_telephone">Nro BL</label>
-                                                        <input name="nro_bl" id="nro_bl" type="text" class="validate form-control">
+                                                        <input name="nro_bl" id="nro_bl" type="text" class="browser-default form-control">
                                                       </div>
                                                 </div>
 
@@ -169,7 +182,7 @@
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_telephone">Proveedor</label>
-                                                        <input name="proveedor" id="proveedor" type="text" class="validate form-control">
+                                                        <input name="proveedor" id="proveedor" type="text" class="validate form-control browser-default">
                                                       </div>
                                                 </div>
 
@@ -177,12 +190,12 @@
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_prefix">Marca origen</label>
-                                                        <input name="marca_origen" id="marca_origen"  type="text" class="validate form-control">
+                                                        <input name="marca_origen" id="marca_origen"  type="text" class="browser-default form-control">
                                                       </div>
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_telephone">Pais origen</label>
-                                                        <input name="pais_origen" id="pais_origen" type="text" class="validate form-control">
+                                                        <input name="pais_origen" id="pais_origen" type="text" class="browser-default form-control">
                                                       </div>
                                                 </div>
 
@@ -190,12 +203,12 @@
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_prefix">Descripción</label>
-                                                        <input name="descripcion" id="descripcion" type="text" class="validate form-control">
+                                                        <input name="descripcion" id="descripcion" type="text" class="browser-default form-control">
                                                       </div>
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_telephone">Contenido</label>
-                                                        <input name="contenido" id="contenido" type="tel" class="validate form-control">
+                                                        <input name="contenido" id="contenido" type="tel" class="browser-default form-control">
                                                       </div>
                                                 </div>
 
@@ -203,7 +216,7 @@
                                                       <div class="input-field col s6">
 
                                                         <label for="icon_prefix">Observaciones</label>
-                                                        <input name="observaciones" id="observaciones" type="text" class="validate form-control">
+                                                        <input name="observaciones" id="observaciones" type="text" class="browser-default form-control">
                                                       </div>
                                                       <div class="input-field col s6">
 

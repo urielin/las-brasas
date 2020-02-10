@@ -10,19 +10,19 @@
   <div class="row">
     <div class="col s4">
       <div class="card card card-default scrollspy">
-          <div class="row pt-2 pb-3">
+          <div class="row pt-2 pb-1">
             <form  method="post" id="buscar-camion" class="col s12">
               <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field mb-1 col s12">
                   @csrf
                   <label for="buscar-codigo-camion">Buscar camión</label>
                   <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
-                  <input type="text" name="codigo" class="validate form-control" id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                  <input type="text" name="codigo" class="validate form-control browser-default " id="buscar-codigo-camion" placeholder="Ingrese código camión">
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field mt-1 mb-1  col s12">
                   <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
                 </div>
               </div>
@@ -35,28 +35,39 @@
 
     <div class="col s8">
       <div class="card card card-default scrollspy">
-            <div class="row pt-4 pb-4">
+            <div class="row pt-2 pb-1">
               <form class="col s12">
                 <div class="row">
-                  <div class="input-field col s3">
-                    <label for="anior">Ingresar año</label>
-                    <select class="form-control browser-default" id="anior">
-                      <option>Año</option>
-                      @foreach ($year as $y)
-                        <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
-                      @endforeach
-                    </select>
+                  <div class="input-field col sm">
+                    <form >
+
+                    </form>
                   </div>
                   <div class="input-field col s4">
-                    <label for="clasificacion">Clasificar camión </label>
-                    <select class="form-control browser-default" id="clasificacionr">
-                    </select>
+                    <form >
+                      <label for="anior">Ingresar año</label>
+                      <select class="form-control browser-default" id="anior">
+                        <option>Año</option>
+                        @foreach ($year as $y)
+                          <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
+                        @endforeach
+                      </select>
+                    </form>
                   </div>
-                  <div class="input-field col s5">
-                    <input type="hidden" name="action" id="icamion"  value="camion-r">
-                    <label for="camion">Seleccionar camión </label>
-                    <select class="form-control browser-default" value="camion" id="camion">
-                    </select>
+                  <div class="input-field col s4">
+                    <form>
+                      <label for="clasificacion">Clasificar camión </label>
+                      <select class="form-control browser-default" id="clasificacionr">
+                      </select>
+                    </form>
+                  </div>
+                  <div class="input-field col s3">
+                    <form>
+                      <input type="hidden" name="action" id="icamion"  value="camion-r">
+                      <label for="camion">Seleccionar camión </label>
+                      <select class="form-control browser-default" value="camion" id="camion">
+                      </select>
+                    </form>
                   </div>
                 </div>
               </form>
@@ -483,7 +494,7 @@
 @endsection
 
 @section('js')
-  
+
     <div id="formModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">

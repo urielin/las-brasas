@@ -12,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="assets/css/main.css" rel="stylesheet"> 
+    <link href="assets/css/main.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/themes/vertical-modern-menu-template/materialize.min.css">
@@ -29,7 +29,7 @@
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-     
+
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -94,7 +94,7 @@
           </a>
         </li>
        <li class="navigation-header">
-         <a class="navigation-header-text">SISTEMA DE GESTION </a>
+         <a class="navigation-header-text">SISTEMA DE GESTIÓN </a>
          <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="bold">
@@ -128,7 +128,7 @@
               <li class="">
                 <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0">
                   <i class="material-icons">radio_button_unchecked</i>
-                  <span data-i18n="Second level child">Gestion de camiones</span>
+                  <span data-i18n="Second level child">Gestión de camiones</span>
                 </a>
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">

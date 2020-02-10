@@ -10,7 +10,7 @@
                     <div class="input-field col s3">
                     <form action="{{route('precio-camion')}}" method="GET">
               @csrf
-              <label class="" for="pc_clasificacion">Clasificacion</label>
+              <label class="" for="pc_clasificacion">Clasificación</label>
               <select name="clasificacion" class="browser-default form-control" id="pc_clasificacion" onchange="this.form.submit()">
               @foreach($CamionesClasificacion as $item)
                 <option value="{{$item->cod_int}}" {{ $item->cod_int==$clasificacion?'selected':' '}} >{{$item->desc01}}</option>
@@ -19,12 +19,16 @@
               </form>
                     </div>
                     <div class="input-field col s3">
-                    <label class="" for="pc_sucursal">Sucursal</label>
-              <select name="sucursal" class="browser-default form-control" id="pc_sucursal" >
-              @foreach($AdmSucursal as $item)
-                <option value="{{$item->SUCU_CODIGO}}"  >{{$item->SUCU_NOMBRE}}</option>
-              @endforeach
-              </select>
+                      <form class="" action="index.html" method="post">
+
+                        <label class="" for="pc_sucursal">Sucursal</label>
+                        <select name="sucursal" class="browser-default form-control" id="pc_sucursal" >
+                        @foreach($AdmSucursal as $item)
+                          <option value="{{$item->SUCU_CODIGO}}"  >{{$item->SUCU_NOMBRE}}</option>
+                        @endforeach
+                        </select>
+
+                      </form>
               </div>
             </div>
         </div>
@@ -46,7 +50,7 @@
       </div>
     </div>
   </div>
- 
+
 
 <!-- modal  -->
 <div id="formalModal" class="modal fade" role="dialog">
@@ -73,14 +77,14 @@
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-4 mb-0">Descripción: </label>
-                <input id="descripcion" type="text" name="descripcion"  class="form-control col-md-8 form-control-alternative" disabled> 
+                <input id="descripcion" type="text" name="descripcion"  class="form-control col-md-8 form-control-alternative" disabled>
 
             </div>
 
 
             <div class="form-group row">
               <label class="control-label col-md-4">Precio público: </label>
-              
+
               <input id="publico" type="text" name="publico"  class="form-control col-md-8" id="example" placeholder ="">
 
             </div>
