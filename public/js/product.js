@@ -52,23 +52,24 @@ $(document).ready(function(){
     let tipo = $(this).parents("tr").attr('data-tipo') == undefined ? ' ': $(this).parents("tr").attr('data-tipo');
     let estado = $(this).parents("tr").attr('data-estado') == undefined ? ' ': $(this).parents("tr").attr('data-estado');
 
-    $(this).parents("tr").find("td:eq(1)").html('<input style="width:70px;height: 38px;" class="form-control" name="code" value="'+code+'" >');
-    $(this).parents("tr").find("td:eq(3)").html('<input style="width:70px;height: 38px;" class="form-control" name="factor_multi" value="'+factor_multi+'">');
-    $(this).parents("tr").find("td:eq(4)").html('<input style="width:70px;height: 38px;" class="form-control" name="factor_div" value="'+factor_div+'">');
+    $(this).parents("tr").find("td:eq(1)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="code" value="'+code+'" >');
+    $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="factor_multi" value="'+factor_multi+'">');
+    $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control" name="factor_div" value="'+factor_div+'">');
     $(this).parents("tr").find("td:eq(5)").html(setCatalogoTipo(tipo));
     $(this).parents("tr").find("td:eq(6)").html(setCatalogoEstado(estado));
-    $(this).parents("tr").find("td:eq(9)").prepend(`<span style='display: inline;'>
-                                                      <button title='Guardar' style='padding: 5px 10px;' class='btn btn-info btn-xs btn-update'>
+    $(this).parents("tr").find("td:eq(9)").prepend(`<span style='display: flex;'>
+                                                      <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'>
                                                         <div>
-                                                          <i class="fa fa-save"></i>
+                                                          <i class="material-icons dp48">save</i>
                                                         </div>
                                                       </button>
-                                                      <button title='Cancelar' style='padding: 5px 10px;' class='btn btn-warning btn-xs btn-cancel'>
+                                                      <button title='Cancelar' style='padding: 5px 10px;' class='btn btn-50 red btn-xs btn-cancel'>
                                                         <div>
-                                                          <i class="fa fa-window-close"></i>
+                                                          <i class="material-icons dp48">close</i>
                                                         </div>
                                                       </button>
                                                     </span>`)
+
     $(this).hide();
   });
   $("#catalogoTable").on("click", ".btn-cancel", function(){
@@ -139,9 +140,10 @@ $(document).ready(function(){
                   <td style='padding-right: 1rem;padding-left: 1rem;;'>morellla</td>
                   <td style='padding-right: 1rem;padding-left: 1rem;;'>${ getCurrentDate() }</td>
                   <td style='padding-right: 1rem;padding-left: 1rem;;'>
-                    <button title='Editar' style='padding: 5px 10px;' class="btn btn-info btn-edit"   data-id='${current.CODI_RCODIGO}'>
+                    <button title='Editar' style='padding: 5px 10px;' class="btn btn-50 cyan btn-edit"   data-id='${current.CODI_RCODIGO}'>
                       <div>
-                        <i class="fa fa-pencil-alt"></i>
+                      <i class="material-icons dp48">edit</i>
+
                       </div>
                     </button>
                   </td>
@@ -207,9 +209,9 @@ $(document).ready(function(){
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${ data[i].USUARIO ? data[i].USUARIO : "-" }</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${ data[i].FECHA_REG ? data[i].FECHA_REG  : "-" }</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>
-                        <button title='Editar' style='padding: 5px 10px;' class="btn btn-info btn-edit"   data-id='${data[i].CODI_RCODIGO}'>
+                        <button title='Editar' style='padding: 5px 10px;' class="btn btn-50 cyan btn-edit"   data-id='${data[i].CODI_RCODIGO}'>
                           <div>
-                            <i class="fa fa-pencil-alt"></i>
+                            <i class="material-icons dp48">edit</i>
                           </div>
                         </button>
                       </td>
@@ -443,14 +445,14 @@ $(document).ready(function(){
   function setCatalogoEstado(data) {
     let state;
     if (data == 1) {
-       state = `<select class='form-control' name='estado' style='width: 70px'>
+       state = `<select class='form-control' name='estado' style='width: 100%; height:35px !important'>
                   <option value='1' selected>Si</option>
                    <option value='0'>No</option>
                 </select>`;
     }
     if(data == 0) {
 
-     state = `<select class='form-control' name='estado' style='width: 70px'>
+     state = `<select class='form-control' name='estado' style='width: 100%; height:35px !important'>
                  <option value='1' >Si</option>
                  <option value='0' selected>No</option>
                </select>`;
@@ -460,13 +462,13 @@ $(document).ready(function(){
   function setCatalogoTipo(data) {
      let tipo;
      if (data == 1) {
-       tipo = `<select class='form-control' name='tipo' style='width: 120px'>
+       tipo = `<select class='form-control' name='tipo' style='width: 100%; height:35px !important'>
                 <option value='1' selected>POR CAJA</option>
                 <option value='2'>FACTORIZADO</option>
                </select>`;
      }
      if (data == 2) {
-       tipo = `<select class='form-control' name='tipo' style='width: 120px'>
+       tipo = `<select class='form-control' name='tipo' style='width: 100%; height:35px !important'>
                 <option value='1' >POR CAJA</option>
                 <option value='2' selected>FACTORIZADO</option>
                </select>`;
