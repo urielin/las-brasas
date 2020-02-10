@@ -31,7 +31,7 @@
      <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -54,12 +54,7 @@
 
             </ul>
             <ul class="dropdown-content" id="profile-dropdown">
-              <li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> Profile</a></li>
-              <li><a class="grey-text text-darken-1" href="app-chat.html"><i class="material-icons">chat_bubble_outline</i> Chat</a></li>
-              <li><a class="grey-text text-darken-1" href="page-faq.html"><i class="material-icons">help_outline</i> Help</a></li>
-              <li class="divider"></li>
-              <li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i class="material-icons">lock_outline</i> Lock</a></li>
-              <li><a class="grey-text text-darken-1" href="user-login.html"><i class="material-icons">keyboard_tab</i> Logout</a></li>
+              <li><a class="grey-text text-darken-1" href="/logout">Cerrar sesion</a></li>
             </ul>
           </div>
 
@@ -75,7 +70,7 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold">
           <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
-            <i class="material-icons">settings_input_svideo</i>
+            <i class="material-icons">home</i>
             <span class="menu-title" data-i18n="Dashboard">Administrador</span>
           </a>
         </li>
@@ -85,29 +80,29 @@
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">mail_outline</i>
+            <i class="material-icons">public</i>
             <span class="menu-title" data-i18n="Mail">Prosegur</span>
            </a>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">chat_bubble_outline</i>
+            <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>
         </li>
        <li class="navigation-header">
-         <a class="navigation-header-text">Pages </a>
+         <a class="navigation-header-text">SISTEMA DE GESTIÓN </a>
          <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-          <i class="material-icons">person_outline</i>
+          <i class="material-icons">local_shipping</i>
           <span class="menu-title" data-i18n="User Profile">Contenedores y Camiones</span>
           </a>
         </li>
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
-            <i class="material-icons">filter_tilt_shift</i>
+            <i class="material-icons">apps</i>
             <span class="menu-title" data-i18n="Misc">Maestro</span>
           </a>
           <div class="collapsible-body">
@@ -130,7 +125,7 @@
               <li class="">
                 <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0">
                   <i class="material-icons">radio_button_unchecked</i>
-                  <span data-i18n="Second level child">Gestion de camiones</span>
+                  <span data-i18n="Second level child">Gestión de camiones</span>
                 </a>
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">

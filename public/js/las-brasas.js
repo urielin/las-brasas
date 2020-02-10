@@ -223,15 +223,8 @@
                     tcf+= parseFloat(value.total_costo);
 
                 }
-
-
-
-
               });
               $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+ci+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
-
-
-
               // $('#form_result').empty();
               $('#codigo_oficial').val(res.dato_general[0]['codigo']);
               $('#codigo_oficial_real').val(res.dato_general[0]['codigo']);
@@ -907,7 +900,8 @@ $(document).on('submit','#sample_form',function(){
                   // ------------------------
 
               }
-              $('#form_result').html(html);
+              // $('#form_result').html(html).show(3000);
+              // $('#form_result').html(html).hide(10000);
             }
           });
 
@@ -1314,7 +1308,7 @@ $('#buscar-camion-r').on('submit',function(event){
 // --------------------------------------------------
 
 $(document).on('change','#change-bloqueo-camion',function(){
-
+      event.preventDefault();
       // var valores = new Array();
       // var id_bloque_2;
       // var i=0, j=1;

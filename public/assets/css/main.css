@@ -2,8 +2,16 @@
 /* Borders */
 /* Inputs */
 /* Some defaults */
- 
+
 /* Tables */
+#productTable tbody tr {
+    cursor: pointer;
+}
+.tr-selected {
+    background-color: #245772;
+    color: #FFF; 
+}
+
  .table-wrapper {
 	 background-color: #fff;
 	 border: 1px solid #ddd;

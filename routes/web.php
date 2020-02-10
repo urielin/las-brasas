@@ -9,15 +9,18 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ 
+*/
 
 Route::group(['middleware'=> ['guest']],function(){
   Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'Auth\LoginController@login');
+  Route::get('/logout', 'Auth\LoginController@logout');
+  
 });
 
 Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/home', 'UsuariosController@index')->name('home');
+  Route::get('/', 'UsuariosController@index')->name('index');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
   Route::post('/show-precio-camion', 'PrecioCamionController@show')->name('show-precio-camion');

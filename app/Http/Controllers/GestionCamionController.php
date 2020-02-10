@@ -501,7 +501,6 @@ public function changeBloqueoCamion(Request $request)
 
                                 $tipo_moneda=DB::select('SELECT * from dbo.ADM_TP_MONEDA');
 
-
                                 $dato_general=DB::select("SELECT codigo, doc_contenedor, clasif_mercancia,proveedor,
                                           marca_origen ,    descripcion,        contenido,observaciones,
                                           lugar_arribo ,     codigo_aux,      pais_origen, doc_bl,
@@ -514,16 +513,12 @@ public function changeBloqueoCamion(Request $request)
                                     	    forward, forward_fecha, fecha_produccion, fecha_produccion2,
                                     	    fecha_vencimiento, fecha_vencimiento2,
 
-                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda
+                                          factura_nro, cantidad_unidades, tipo_unidades, valor_total, tipo_moneda,
+
+                                          id_camion, fecha_declaracion, fecha_transbordo, fecha_llegada_estimada, fecha_descarga, fecha_devolucion_contenedor, fecha_finalizacion
+
                                           FROM dbsys.camiones
                                           WHERE  codigo ='$request->camion_id'");
-
-
-          // return response()->json($documentos);
-          // return response()->json([
-          //       'documentos' => $documentos,
-          //       'datos_generales' => $dato_general
-          //   ]);
 
             return response()->json([
                 'documento'              =>$documentos,

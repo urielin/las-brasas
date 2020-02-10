@@ -33,8 +33,8 @@
             <div class="row pb-4">
                     <div class="col s12">
                       <ul class="tabs">
-                        <li class="tab col m6"><a href="#test1">Seleccione el periodo a verificar</a></li>
-                        <li class="tab col m6"><a class="active" href="#test2">Actualizar un mes completo de la gestión actual</a></li>
+                        <li class="tab col m6"><a class="active" href="#test1">Seleccione el periodo a verificar</a></li>
+                        <li class="tab col m6"><a href="#test2">Actualizar un mes completo de la gestión actual</a></li>
                       </ul>
                     </div>
 
@@ -44,7 +44,7 @@
                                 <div class="row">
                                   <div class="col l4">
                                     <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Seleccionar periodo</label>
-                                    <input class="form-control" name="Mes_cambiar" class="form-control" type="month"  >
+                                    <input class="form-control browser-default" name="Mes_cambiar" class="form-control" type="month"  >
                                   </div>
                                   <div class="col l4 pt-3">
                                     <button type="submit" name="buscar" class="btn btn-primary responsive">Buscar mes</button>
@@ -63,7 +63,7 @@
                             <div class="row">
                               <div class="col l4">
                                 <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
-                                <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control" id="usr">
+                                <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control browser-default" id="usr">
                               </div>
 
                               <div class="col l4 ">
