@@ -1009,7 +1009,8 @@ $(document).on('submit','#sample_form',function(){
                   // ------------------------
 
               }
-              $('#form_result').html(html);
+              // $('#form_result').html(html).show(3000);
+              // $('#form_result').html(html).hide(10000);
             }
           });
 
