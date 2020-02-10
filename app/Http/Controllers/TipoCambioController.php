@@ -51,8 +51,8 @@ class TipoCambioController extends Controller
     public function show(Request $request)
     {
       // dd($request);
-      $request->validate([
-        'Mes_cambiar' => 'required',
+      $validarData = $request->validate([
+        'Mes_cambiar' => 'required'
       ]);
 
 
@@ -96,16 +96,16 @@ class TipoCambioController extends Controller
     public function update(Request $request)
     {
 
-       $request->validate([
+       $validarData = $request->validate([
          'Tipo_de_cambio' => 'required',
-         'Mes_cambiar' => 'required',
+         'Mes_cambiar' => 'required'
        ]);
 
 
-     $form_data =array(
-       'CAMB_CAMBIO'      => $request->Tipo_de_cambio ,
+       $form_data =array(
+         'CAMB_CAMBIO'      => $request->Tipo_de_cambio ,
 
-     );
+       );
      // $today = Carbon::today();
      // return $today;
      // $a=Carbon::createFromFormat('Y-m-d H', '2019-11-30 00:00:00.000')->toDateTimeString();
@@ -123,8 +123,8 @@ class TipoCambioController extends Controller
      // $mfecha = $request->Mes_cambiar->format('m');
      // $dfecha = $request->Mes_cambiar->format('d');
      // return $mfecha;
-     \App\TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->update($form_data);
-     return redirect('tipo-cambio')->with('success','Mes actualizado correctamente. ');
+       \App\TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->update($form_data);
+       return redirect('tipo-cambio')->with('success','Mes actualizado correctamente. ');
     }
 
     /**

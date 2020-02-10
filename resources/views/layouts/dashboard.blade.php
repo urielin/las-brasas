@@ -28,6 +28,8 @@
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
 
+     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -73,7 +75,7 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold">
           <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
-            <i class="material-icons">settings_input_svideo</i>
+            <i class="material-icons">home</i>
             <span class="menu-title" data-i18n="Dashboard">Administrador</span>
           </a>
         </li>
@@ -83,29 +85,29 @@
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">mail_outline</i>
+            <i class="material-icons">public</i>
             <span class="menu-title" data-i18n="Mail">Prosegur</span>
            </a>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">chat_bubble_outline</i>
+            <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>
         </li>
        <li class="navigation-header">
-         <a class="navigation-header-text">Pages </a>
+         <a class="navigation-header-text">SISTEMA DE GESTION </a>
          <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="bold">
           <a class="waves-effect waves-cyan " href="./">
-          <i class="material-icons">person_outline</i>
+          <i class="material-icons">local_shipping</i>
           <span class="menu-title" data-i18n="User Profile">Contenedores y Camiones</span>
           </a>
         </li>
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
-            <i class="material-icons">filter_tilt_shift</i>
+            <i class="material-icons">apps</i>
             <span class="menu-title" data-i18n="Misc">Maestro</span>
           </a>
           <div class="collapsible-body">
@@ -185,8 +187,10 @@
      <script src="assets/js/scripts/customizer.min.js"></script>
     <script src="assets/js/scripts/data-tables.min.js"></script>
     <script src="assets/js/scripts/advance-ui-modals.min.js"></script>
-    <script src="/js/product.js"></script>
 
+    <script src="{{ asset('js/las-brasas.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+    @yield('js')
   </body>
 
  </html>

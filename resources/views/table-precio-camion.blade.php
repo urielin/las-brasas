@@ -13,7 +13,7 @@
 
 
         @endphp
-        <table class="table align-items-center table-flush">
+        <table class="responsive-table striped">
           <thead class="thead-light">
              <tr>
               <th scope="col"colspan="2"></th>
@@ -33,7 +33,7 @@
               @if(!empty($row_count))
               @for($i = 0; $i < $row_count; $i++)
               <th scope="col">Publico</th>
-              <th scope="col">Mayorista</th>
+              <th scope="col">Mayor</th>
               @endfor
               @endif
             </tr>
@@ -68,37 +68,37 @@
                         {{$camion->descripcion}}
                       </th>
                       <th scope="row">
-                        {{$camion->lista_publico}}
+                        {{floatval($camion->lista_publico)}}
                       </th>
                       <th scope="row">
-                        {{$camion->lista_mayor}}
+                        {{floatval($camion->lista_mayor)}}
                       </th>
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
-                        {{$camion->precio_publico}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                        {{floatval($camion->precio_publico)}}
                       </td>
                       <td class="mostrar-info  {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
-                        {{$camion->precio_mayor}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                        {{floatval($camion->precio_mayor)}}
                       </td>
                         @break
 
                   @case(0)
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{floatval($camion->precio_publico)}}
                         </td>
                       <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{floatval($camion->precio_mayor)}}
                       </td>
                     </tr> 
                     @break
  
                   @default
                         <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{$camion->precio_publico}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                         {{floatval($camion->precio_publico)}}
                         </td>
                         <td class="mostrar-info {{$td_class}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-publico="{{$camion->precio_publico}}" data-mayor="{{$camion->precio_mayor}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{$camion->precio_mayor}}
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">                          {{floatval($camion->precio_mayor)}}
                         </td>
                 @endswitch
 

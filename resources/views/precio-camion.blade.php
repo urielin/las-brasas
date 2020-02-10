@@ -2,86 +2,51 @@
 
 @section('content')
 
-<div class="main-content ">
-    <div class="bg-gradient-primary container-fluid pb-7 pt-3">
-      <p class="h1 mb-0 text-white text-uppercase d-lg-inline-block" >Precios / Camión</p>
 
-      <div class="row">
-        <div class="col-xs-12 col-md-4">
-          <form action="{{route('precio-camion')}}" method="GET">
-          @csrf
-          <label class="h4 mb-0 text-white d-lg-inline-block" for="sel1">Clasificacion</label>
-          <select name="clasificacion" class="form-control" id="sel1" onchange="this.form.submit()">
-          @foreach($CamionesClasificacion as $item)
-            <option value="{{$item->cod_int}}" {{ $item->cod_int==$clasificacion?'selected':' '}} >{{$item->desc01}}</option>
-          @endforeach
-          </select>
-          </form>
-        </div>
-<!--
-        <div class="col-4">
-          <label class="h4 mb-0 text-white d-lg-inline-block" for="usr">Camión</label>
-          <button type="button" class="btn btn-primary btn-sm">Agregar/Retirar</button>
-          <input type="text" class="form-control" id="agregar-camion">
-        </div>
-
-        <div class="col-4">
-          <label class="h4 mb-0 text-white d-lg-inline-block" for="pwd">Código</label>
-          <button type="button" class="btn btn-primary btn-sm">Agregar/Retirar</button>
-          <input type="text" class="form-control" id="producto-camion">
-        </div> -->
-      </div>
-    </div>
-    <div class="container-fluid mt--7">
-    <div class="row ">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-        <div class="card shadow mt-3">
-          <div class="card-header border-0  mb--2">
-            <div class="row align-items-center">
-              <div class="col-12 ">
+    <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+    <div class="card">
+        <div class="card-content">
                   <div class="row">
-                    <div class="col-md-3 col-sm-12 media">
-                      <h1 class="mb-0">Saldo por camiones        </h2>
+                    <div class="input-field col s3">
+                    <form action="{{route('precio-camion')}}" method="GET">
+              @csrf
+              <label class="" for="pc_clasificacion">Clasificacion</label>
+              <select name="clasificacion" class="browser-default form-control" id="pc_clasificacion" onchange="this.form.submit()">
+              @foreach($CamionesClasificacion as $item)
+                <option value="{{$item->cod_int}}" {{ $item->cod_int==$clasificacion?'selected':' '}} >{{$item->desc01}}</option>
+              @endforeach
+              </select>
+              </form>
                     </div>
-                    <div class="col-4 py-3">
-                      <!-- <button type="button" class="btn btn-primary">Imprimir</button> -->
-                      <a href="{{route('precio-camion')}}" type="button" class="btn btn-success">Actualizar</a>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                  </div>
-
-
-                {{-- <h1 class="mb-0">Edición del precio de Camión</h3> --}}
+                    <div class="input-field col s3">
+                    <label class="" for="pc_sucursal">Sucursal</label>
+              <select name="sucursal" class="browser-default form-control" id="pc_sucursal" >
+              @foreach($AdmSucursal as $item)
+                <option value="{{$item->SUCU_CODIGO}}"  >{{$item->SUCU_NOMBRE}}</option>
+              @endforeach
+              </select>
               </div>
-
-
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col s12 m12 l12">
+      <div id="responsive-table" class="card card card-default scrollspy">
+        <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+          <h4 class="card-title"></h4>
+          <p class="mb-2"></p>
+          <div class="row">
+            <div class="col s12">
+            </div>
+            <div class="col s12 dataTables_scrollBody">
+               @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])
             </div>
           </div>
-          <div class="table-responsive  table-hover">
-          <div id="table-precio-camion" class="table-responsive">
-           <!--  tabla -->
-           @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])
-            <!--  endtabla -->
- 
-          </div>
-
-            <!-- Projects table -->
-
-          </div>
-        </div>
-
-
-
-        </div>
         </div>
       </div>
-
-
-    <!-- Footer -->
-
     </div>
-</div>
+  </div>
+ 
 
 <!-- modal  -->
 <div id="formalModal" class="modal fade" role="dialog">
