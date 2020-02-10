@@ -45,17 +45,15 @@
                       $row_count=count($result)==1?2:count($result);
                       $fecha_actual = new \DateTime();
                       $fecha_actual->setTimezone(new \DateTimeZone('America/Lima'));
-                      //$fecha_actual= $fecha_actual->format('d-m-Y H:i:s');
-
+                      
+                      //si no hay fecha de baja DateTime tomara la fecha actual
                       $fecha_baja = new \DateTime($camion->fecha_baja);
-                      //$fecha_baja->setTimezone(new \DateTimeZone('America/Lima'));
-                      //$fecha_baja= $fecha_baja->format('d-m-Y H:i:s');
-
+          
                       //diferencia en formato dias
                       $interval = $fecha_actual->diff($fecha_baja);
                       $interval_dias = intval($interval->format('%R%a'));
                       $interval = intval($interval->format('%R%h')) + $interval_dias*24;
-                      $fecha_baja= $fecha_baja->format('d/m/Y');
+                      $fecha_baja= $fecha_baja->format('Y-m-d');
                       $td_class = $interval==0 ? '' : ($interval<=0 ? 'table-danger' : ($interval<=48 ? 'table-warning': ($interval<=168? 'table-success' :''))) ;
                 @endphp
                 @switch($loop->iteration % $row_count)

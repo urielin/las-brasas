@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
+     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
      {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
@@ -112,7 +113,7 @@
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li><a href="{{route('precio-camion')}}" >
-                <i class="material-icons">radio_button_unchecked</i>
+                <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
                 <span data-i18n="404">Precios unitarios</span>
               </a>
               </li>

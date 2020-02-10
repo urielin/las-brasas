@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/home', 'UsuariosController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
+  Route::post('/show-precio-camion', 'PrecioCamionController@show')->name('show-precio-camion');
   Route::get('/tipo-cambio', 'TipoCambioController@index')->name('tipo-cambio');
   Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
