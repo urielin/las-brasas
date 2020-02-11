@@ -328,7 +328,9 @@
           });
 
 
+          // setTimeout(function(){ alert("Hello"); }, 9000);
         }
+
 
       });
 
@@ -478,6 +480,7 @@ $(document).on('submit','#consulta1',function(){
               }
               setTimeout(function() {
               //   $('div.loader-6').addClass('d-none'); }, 1500);
+
 
               $('#form_result_consulta1').html(html);}, 1500);
             }
@@ -900,7 +903,15 @@ $(document).on('submit','#sample_form',function(){
                   // ------------------------
 
               }
-              $('#form_result').html(html);
+              setTimeout(function() {
+                $('#form_result').html(html).fadeOut(1000);
+             },3000);
+
+             // setTimeout(function() {
+             //     $('#form_result').html(html).fadeIn(3000);
+             // },1000);
+
+             // $('#form_result').empty();
               // $('#form_result').html(html).hide(10000);
             }
           });
