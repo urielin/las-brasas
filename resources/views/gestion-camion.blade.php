@@ -142,14 +142,14 @@
                                             <div class="card card card-default scrollspy pt-2 pb-3">
                                               <div class="row pb-2">
 
-                                                    <div class=" col s6">
+                                                    <div class=" col s12 l6">
 
                                                           <label for="form-control-label ">Código oficial</label>
                                                           <input class="form-control  browser-default" name="codigo_oficial" id="codigo_oficial" type="text" >
                                                           <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
 
                                                     </div>
-                                                    <div class=" col s6">
+                                                    <div class=" col s12 l6">
 
                                                         <label for="icon_telephone">Código auxiliar</label>
                                                         <input class=" form-control browser-default" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
@@ -158,13 +158,13 @@
                                               </div>
 
                                                 <div class="row pb-2">
-                                                      <div class=" col s6">
+                                                      <div class=" col s12 l6">
 
                                                           <label for="icon_prefix">Nro de contenedor</label>
                                                           <input name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="browser-default form-control">
 
                                                       </div>
-                                                      <div class=" col s6">
+                                                      <div class=" col s12 l6">
 
                                                           <label for="icon_telephone">Nro BL</label>
                                                           <input name="nro_bl" id="nro_bl" type="text" class="browser-default form-control">
@@ -173,14 +173,14 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class=" col s6">
+                                                      <div class=" col s12 l6">
 
                                                           <label for="icon_prefix">Clasificación de mercancía</label>
                                                           <select class="form-control browser-default" name="clasificacion_de_mercancia" id="clasificacion_de_mercancia">
                                                           </select>
 
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_telephone">Proveedor</label>
                                                           <input name="proveedor" id="proveedor" type="text" class="validate form-control browser-default">
@@ -189,13 +189,13 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_prefix">Marca origen</label>
                                                           <input name="marca_origen" id="marca_origen"  type="text" class="browser-default form-control">
 
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_telephone">Pais origen</label>
                                                           <input name="pais_origen" id="pais_origen" type="text" class="browser-default form-control">
@@ -204,13 +204,13 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_prefix">Descripción</label>
                                                           <input name="descripcion" id="descripcion" type="text" class="browser-default form-control">
 
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_telephone">Contenido</label>
                                                           <input name="contenido" id="contenido" type="tel" class="browser-default form-control">
@@ -219,13 +219,13 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_prefix">Observaciones</label>
                                                           <input name="observaciones" id="observaciones" type="text" class="browser-default form-control">
 
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                           <label for="icon_telephone">Lugar de arribo</label>
                                                           <select class="form-control browser-default" name="lugar_de_arribo" id="lugar_de_arribo">
@@ -236,7 +236,7 @@
                                                 </div>
 
                                                 <div class="row ">
-                                                      <div class="col s12">
+                                                      <div class="col s12 l12">
 
                                                         <span id="bandera-general"></span>
                                                         <input type="hidden" name="ac"  value="">
@@ -264,7 +264,7 @@
 
                                             <div class="card card card-default scrollspy pt-2 pb-3">
                                               <div class="row pb-2">
-                                                    <div class="col s12">
+                                                    <div class="col s12 l12">
 
                                                       <label for="icon_prefix">Fecha de cierre</label>
                                                       <input class="form-control browser-default" name="fecha_de_cierre" id="fecha_de_cierre" type="datetime-local" >
@@ -275,14 +275,14 @@
                                               </div>
 
                                                 <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Fecha de embarque desde</label>
 
                                                       <input class="form-control browser-default" type="datetime-local" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" >
                                                     </div>
 
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
                                                         <label for="icon_prefix">Hasta</label>
                                                         <input name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" class="form-control browser-default">
                                                       </div>
@@ -290,12 +290,12 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                         <label for="icon_telephone">Fecha de llegada desde</label>
                                                         <input type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde" class="form-control browser-default">
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
                                                         <label for="icon_prefix">Hasta</label>
                                                         <input  type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta" class="form-control browser-default">
                                                       </div>
@@ -303,7 +303,7 @@
 
                                                 <div class="row pb-2">
 
-                                                      <div class="col s12">
+                                                      <div class="col s12 l12">
 
                                                         <label for="icon_telephone">Observación</label>
                                                         <input type="text" name="observacion" id="observacion" class="validate form-control browser-default">
@@ -311,7 +311,7 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s12">
+                                                      <div class="col s12 l12">
                                                         <input type="hidden" name="action" id="action_2" value="Editar">
                                                         <input type="submit" name="action_b2" id="action_b2" class="btn btn-primary mt-1 float-center" value="Actualizar">
                                                       </div>
@@ -337,14 +337,14 @@
 
                                           <div class="card card card-default scrollspy pt-2 pb-3">
                                             <div class="row pb-2">
-                                                  <div class="col s6">
+                                                  <div class="col s12 l6">
 
                                                     <label for="icon_prefix">Fecha de embarque real</label>
                                                     <input class="form-control browser-default" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" step="1" >
                                                     <input type="hidden" class="form-control browser-default" name="codigo_oficial_real4" id="codigo_oficial_real4" >
 
                                                   </div>
-                                                  <div class="col s6">
+                                                  <div class="col s12 l6">
 
                                                     <label for="icon_telephone">Fecha de llegada</label>
 
@@ -353,12 +353,12 @@
                                             </div>
 
                                               <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_prefix">Nro de contenedorResol. Sanitaria</label>
                                                       <input name="resol_sanitaria" type="text" id="resol_sanitaria" class="validate form-control browser-default">
                                                     </div>
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Fecha de Resol. Sanitaria</label>
                                                       <input name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria" class=" form-control browser-default" step="1">
@@ -366,12 +366,12 @@
                                               </div>
 
                                               <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_prefix">Forward</label>
                                                     <input name="forward" type="text" id="forward" class="validate form-control browser-default">
                                                     </div>
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Fecha Forward</label>
                                                       <input name="fecha_forward" type="datetime-local" id="fecha_forward" class="validate form-control browser-default" step="1">
@@ -379,12 +379,12 @@
                                               </div>
 
                                               <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_prefix">Fecha producción desde</label>
                                                       <input type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde" class="validate form-control browser-default" step="1">
                                                     </div>
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Hasta</label>
                                                       <input type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta" class="validate form-control browser-default" step="1">
@@ -392,12 +392,12 @@
                                               </div>
 
                                               <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_prefix">Fecha vencimiento desde</label>
                                                       <input type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde" class="validate form-control browser-default" step="1">
                                                     </div>
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Hasta</label>
                                                       <input type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta" class="validate form-control browser-default" step="1">
@@ -406,7 +406,7 @@
 
 
                                               <div class="row ">
-                                                    <div class="col s12">
+                                                    <div class="col s12 l12">
 
 
                                                       <input type="hidden" name="action" id="action4" value="Editar">
@@ -436,14 +436,14 @@
 
                                             <div class="card card card-default scrollspy pt-2 pb-3">
                                               <div class="row pb-2">
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_prefix">Factura proveedor</label>
                                                       <input class="form-control browser-default"  type="text" name="factura_proveedor" id="factura_proveedor" >
                                                       <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
 
                                                     </div>
-                                                    <div class="col s6">
+                                                    <div class="col s12 l6">
 
                                                       <label for="icon_telephone">Cantidad recibida</label>
 
@@ -452,14 +452,14 @@
                                               </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                         <label for="icon_prefix">Unidad</label>
                                                         <select class="form-control browser-default" name="unidad" id="unidad">
 
                                                         </select>
                                                       </div>
-                                                      <div class="col s6">
+                                                      <div class="col s12 l6">
 
                                                         <label for="icon_telephone">Valor total</label>
                                                         <input type="text" name="valor_total" id="valor_total" class="validate form-control browser-default">
@@ -467,7 +467,7 @@
                                                 </div>
 
                                                 <div class="row pb-2">
-                                                      <div class="col s12">
+                                                      <div class="col s12 l12">
 
                                                         <label for="icon_prefix">Tipo de moneda</label>
                                                         <select class="form-control browser-default" name="tipo_de_moneda" id="tipo_de_moneda">
@@ -478,7 +478,7 @@
                                                 </div>
 
                                                 <div class="row ">
-                                                      <div class="col s12">
+                                                      <div class="col s12 l12">
 
 
                                                         <input type="hidden" name="action" id="action5" value="Editar">
@@ -543,40 +543,40 @@
                   <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
 {{-- ----------------------------- --}}
                                     <div class="row pb-2">
-                                          <div class="col s6">
+                                          <div class="col s12 l6">
                                             <label for="icon_prefix">Nro item: </label>
                                             <input type="text" name="nro_item" id="nro_item" class="validate form-control" step="1">
                                           </div>
-                                          <div class="col s6">
+                                          <div class="col s12 l6">
                                             <label for="icon_telephone">Cantidad Ingreso:</label>
                                             <input type="text" name="cantidad_ingreso" id="cantidad_ingreso" class="validate form-control" step="1">
                                           </div>
                                     </div>
 
                                     <div class="row pb-2">
-                                          <div class="col s6">
+                                          <div class="col s12 l6">
                                             <label for="icon_prefix">Código: </label>
                                             <input type="text" name="codigo" id="codigo" class="validate form-control" step="1">
                                           </div>
-                                          <div class="col s6">
+                                          <div class="col s12 l6">
                                             <label for="icon_telephone">Cantidad cierre:</label>
                                             <input type="text" name="cantidad_cierre" id="cantidad_cierre" class="validate form-control" step="1">
                                           </div>
                                     </div>
 
                                     <div class="row pb-2">
-                                          <div class="col s6">
+                                          <div class="col s12 l6">
                                             <label for="icon_prefix">Bultos ingreso: </label>
                                             <input type="text" name="bultos_ingreso" id="bultos_ingreso" class="validate form-control" step="1">
                                           </div>
 
                                     </div>
                                     <div class="row ">
-                                          <div class="col s12">
+                                          <div class="col s12 l12">
                                           </div>
                                     </div>
                                     <div class="row " align="right">
-                                          <div class="col s12">
+                                          <div class="col s12 l12">
                                             <input type="hidden" name="action" id="action-producto">
                                             <input type="submit" name="action_button" id="action_button"  class="btn btn-warning" value="Actualizar">
                                           </div>
