@@ -65,7 +65,7 @@
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
       <div class="brand-sidebar">
         <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index-2.html">
-          <img class="hide-on-med-and-down" src="assets/images/logo/materialize-logo-color.png" alt="materialize logo"/><img class="show-on-medium-and-down hide-on-med-and-up" src="assets/images/logo/materialize-logo.png" alt="materialize logo"/><span class="logo-text hide-on-med-and-down">Materialize</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
+        <img class="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8jtUc7a4cG1e8lYJqDa-NQGo6V2jLspu33gfebJW84yWuTeuW" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="active bold">
