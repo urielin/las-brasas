@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/pages/dashboard.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
 
+    <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/flag-icon/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/jquery.dataTables.min.css">
@@ -27,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
+     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -106,7 +108,7 @@
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li><a href="{{route('precio-camion')}}" >
-                <i class="material-icons">radio_button_unchecked</i>
+                <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
                 <span data-i18n="404">Precios unitarios</span>
               </a>
               </li>
@@ -181,9 +183,12 @@
     <script src="assets/js/scripts/data-tables.min.js"></script>
     <script src="assets/js/scripts/advance-ui-modals.min.js"></script>
 
-    <script src="{{ asset('js/las-brasas.js') }}"></script>
-    <script src="{{ asset('js/product.js') }}"></script>
-    @yield('js')
+    <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
+
+    @section('js')
+      <script src="{{ asset('js/las-brasas.js') }}"></script>
+      <script src="{{ asset('js/product.js') }}"></script>
+    @show
   </body>
 
  </html>

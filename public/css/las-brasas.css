@@ -64,3 +64,11 @@
 .table-warning:hover {
     background-color: #ffd60078 !important;
 }
+
+
+@media (min-width: 992px){
+.precio-camion-modal {
+    width: 40%;
+    height: 50%
+}
+}
