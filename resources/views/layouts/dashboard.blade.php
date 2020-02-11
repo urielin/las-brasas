@@ -124,20 +124,20 @@
               </li>
               <li class="">
                 <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0">
-                  <i class="material-icons">radio_button_unchecked</i>
+                  <i class="material-icons">local_shipping</i>
                   <span data-i18n="Second level child">Gestión de camiones</span>
                 </a>
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
                       <a href="{{route('gestion-camion')}}">
-                        <i class="material-icons">radio_button_unchecked</i>
+                        <i class="material-icons">call_made</i>
                         <span data-i18n="Third level"> Para recepción</span>
                       </a>
                     </li>
                     <li>
                       <a href="{{route('gestion-camion-r')}}">
-                        <i class="material-icons">radio_button_unchecked</i>
+                        <i class="material-icons">call_received</i>
                         <span data-i18n="Third level"> Recepcionados</span>
                       </a>
                     </li>
