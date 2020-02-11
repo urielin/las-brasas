@@ -346,14 +346,18 @@ class GestionCamionController extends Controller
     {
 
           if ($request -> ajax()) {
-            // try{
-        // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion LIKE '%'+'$request->clasificacion_id'+'%' ");
-        $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1' ");
 
-        // $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE YEAR(fecha_llegada) = $request->anio_id and descripcion = '$request->clasificacion_id'
-        //     	UNION
-        //     	SELECT  camion=CAST(nro_traslado AS NVARCHAR(20)) FROM dbo.ADM_TRASLADO_SALIDA_EXT WHERE YEAR(fecha_viza) = $request->anio_id LIKE 'ACEITE%'
-        //       order by camion desc");
+              if ($request->clasificacion_id != 'OTROS') {
+                $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20)) 
+                FROM dbsys.camiones c
+                     inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
+                WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1'");
+
+              }
+
+
+
+
 
           if ($camiones != null) {
             foreach ($camiones as $camion) {
@@ -373,7 +377,16 @@ class GestionCamionController extends Controller
     {
 
           if ($request -> ajax()) {
-              $camiones=DB::select("SELECT  camion=CAST(codigo AS NVARCHAR(20)) FROM dbsys.camiones WHERE  descripcion LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = '$request->anio_id' and estado = '2' ");
+
+                if ($request->clasificacion_id != 'OTROS') {
+
+                  $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20))
+                  FROM dbsys.camiones c
+                       inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
+                  WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '2'");
+                }
+
+
               if ($camiones != null) {
                 foreach ($camiones as $camion) {
                   $camionArray[$camion->camion] = $camion->camion ;
