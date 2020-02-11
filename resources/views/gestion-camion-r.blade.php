@@ -493,7 +493,7 @@
 
 @endsection
 
-@section('js')
+@section('modal')
 
     <div id="formModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -578,8 +578,5 @@
         </div>
       </div>
     </div>
-
-@endsection
-@section('js')
 
 @endsection

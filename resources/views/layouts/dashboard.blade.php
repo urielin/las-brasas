@@ -185,10 +185,14 @@
 
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 
-    @section('js')
-      <script src="{{ asset('js/las-brasas.js') }}"></script>
-      <script src="{{ asset('js/product.js') }}"></script>
-    @show
+    <script src="{{ asset('js/gestion-camion.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+
+    @yield('js')
+
+    @yield('modal')
+
+
   </body>
 
  </html>

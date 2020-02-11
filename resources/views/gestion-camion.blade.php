@@ -511,7 +511,7 @@
 
 @endsection
 
-@section('js')
+@section('modal')
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
@@ -538,7 +538,7 @@
 
           <div class="modal-body">
             <span id="form_result"></span>
-            <form  method="POST" id="sample_form" class="form-horizontal">
+            <form  method="GET" id="sample_form" class="form-horizontal">
               @csrf
 
               <div class="row container">
@@ -595,8 +595,5 @@
         </div>
       </div>
     </div>
-
-@endsection
-@section('js')
 
 @endsection
