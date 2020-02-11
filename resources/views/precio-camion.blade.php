@@ -4,7 +4,7 @@
 
 
     <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
-    <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+    <div class="breadcrumbs-dark pb-0 pt-1" id="breadcrumbs-wrapper">
           <!-- Search for small screen-->
           <div class="container">
             <div class="row">
@@ -36,7 +36,7 @@
               <div class="row">
                 <form id="buscar-precio-camion" action="{{route('show-precio-camion')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="input-field col s6 l3">
+                <div class=" col s6 l3">
                     <label class="" for="pc_clasificacion">Clasificacion</label>
                     <select name="clasificacion" class="browser-default form-control" id="pc_clasificacion" >
                     @foreach($CamionesClasificacion as $item)
@@ -45,7 +45,7 @@
                     </select>
                     
                 </div>
-                <div class="input-field col s6 l3">
+                <div class=" col s6 l3">
                     <label class="" for="pc_sucursal">Sucursal</label>
                     <select name="sucursal" class="browser-default form-control" id="pc_sucursal" >
                       <option value="0"  >---</option>
@@ -61,7 +61,7 @@
     <div class="row">
     <div class="col s12 m12 l12">
       <div id="responsive-table" class="card card card-default scrollspy">
-        <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+        <div class="card-content pt-0" style=" margin-top: -6px; overflow: scroll; height: 60vh; ">
           <h4 class="card-title"></h4>
           <p class="mb-2"></p>
           <div class="row">
@@ -78,50 +78,50 @@
 
 
 <!-- modal  -->
-<div id="pc-modal" class="modal modal-fixed-footer precio-camion-modal" role="dialog" style="width: 40%">
+<div id="pc-modal" class="modal modal-fixed-footer precio-camion-modal" role="dialog" style="">
       <form method="post" id="actualizar_precio" action="{{route('actualizar-ofertas')}}" enctype="multipart/form-data">
 
       <div class="modal-content container" style=" background: white; ">
          <h5 class="modal-title ">Modificar precio</h5>
           <span id="form_result"></span>
             @csrf
-            <div class="input-field col s12 l4">
+            <div class=" col s12 l3">
                 <label class="control-label col-md-4 mb-0">Camión: </label>
                 <input id="camion" type="text" name="camion"  class="browser-default form-control" disabled>
             </div>
-            <div class="input-field col s12 l4">
+            <div class=" col s12 l3">
                 <label class="control-label col-md-4 mb-0">Código: </label>
                 <input id="codigo" type="text" name="codigo" class="browser-default form-control" disabled>
 
             </div>
-            <div class="input-field col s12 l4">
+            <div class=" col s12 l6">
                 <label class="control-label col-md-4 mb-0">Descripción: </label>
                 <input id="descripcion" type="text" name="descripcion"  class="browser-default form-control" disabled> 
 
             </div>
 
 
-            <div class="input-field col s12 l4">
+            <div class=" col s12 l3">
               <label class="control-label col-md-4">Precio público: </label>
               
               <input id="publico" type="text" name="publico"  class="browser-default form-control" id="example" placeholder ="">
 
             </div>
-            <div class="input-field col s12 l4">
+            <div class=" col s12 l3">
               <label class="control-label col-md-4">Precio mayorista: </label>
               <input id="mayor" type="text" name="mayor" class="browser-default form-control">
             </div>
 
-          <!-- <div class="input-field col s12 l4">
+          <!-- <div class=" col s12 l6">
     
                   <label class="control-label col-md-4" for="fecha_baja">Fecha de caducidad</label>
                   <input id="fecha_baja"  name="fecha_baja" class="datepicker" placeholder="Selecciona una fecha" type="text" value="">
              
           </div> -->
-          <div class="input-field col s12 l4">
+          <div class=" col s12 l6">
     
-                  <label class="control-label col-md-4" for="fecha_baja">Fecha de caducidad</label>
-                  <input id="fecha_baja"  name="fecha_baja" class="form-control col-md-8" placeholder="Selecciona una fecha" type="date" value="">
+                  <label class="control-label col-md-4" for="fecha_baja">Fecha de <br> caducidad</label>
+                  <input id="fecha_baja"  name="fecha_baja" class="browser-default form-control" placeholder="Selecciona una fecha" type="date" value="">
              
           </div>
 
@@ -129,7 +129,7 @@
          
       </div>
       <div class="modal-footer">
-       <div class="col offset-s7 s5">
+       <div class="col s12 offset-l7 l5">
               <input type="hidden" name="hidden_id" id="hidden_id">
               <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar Datos">
         </div>
@@ -141,4 +141,5 @@
 
 @section('js')
   <script src="{{ asset('js/precio-camion.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @endsection

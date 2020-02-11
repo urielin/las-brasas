@@ -1,8 +1,6 @@
 
   $(document).ready(function(){
 
-
-
       $('#anio').on('change', function(){
         var anio_id = $(this).val();
 
