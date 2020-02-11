@@ -8,12 +8,12 @@
 <br>
 
   <div class="row">
-    <div class="col s4">
+    <div class="col s12 l4">
       <div class="card card card-default scrollspy">
           <div class="row pt-2 pb-1">
             <form  method="post" id="buscar-camion" class="col s12">
               <div class="row">
-                <div class="mb-1 col s12">
+                <div class="mb-1 col s12 l12">
                   @csrf
                   <label for="buscar-codigo-camion">Buscar camión</label>
                   <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
@@ -23,7 +23,7 @@
 
 
               <div class="row">
-                <div class="mt-1 mb-1 col s12">
+                <div class="mt-1 mb-1 col s12 l12">
                   <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right browser-default">Buscar</button>
                 </div>
               </div>
@@ -34,17 +34,13 @@
 
     {{-- ------------------------------------------- --}}
 
-    <div class="col s8">
+    <div class="col s12 l8">
       <div class="card card card-default scrollspy">
             <div class="row pt-3 pb-5">
               <form class="col s12">
                 <div class="row">
-                  <div class="col sm">
-                    <form class="" action="index.html" method="post">
 
-                    </form>
-                  </div>
-                  <div class="col s4">
+                  <div class="col s12 l3">
                     <form class="" action="index.html" method="post">
                         <label for="anio" >Ingresar año</label>
                         <select class="form-control browser-default" id="anio">
@@ -56,7 +52,7 @@
                       </form>
                   </div>
 
-                  <div class="col s4">
+                  <div class="col s12 l4">
                     <form >
                       <label for="clasificacion">Clasificar camión </label>
                       <select class="form-control browser-default" id="clasificacion">
@@ -64,7 +60,7 @@
                     </form>
                   </div>
 
-                  <div class="col s3">
+                  <div class="col s12 l5">
                     <form >
 
                     <input type="hidden" name="action" id="icamion"  value="camion">
