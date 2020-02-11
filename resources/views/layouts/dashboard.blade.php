@@ -118,7 +118,7 @@
               </li>
               <li>
                 <a href="{{route('tipo-cambio')}}">
-                <i class="material-icons">radio_button_unchecked</i>
+                <i class="material-icons" style=" font-size: 1.2rem; ">monetization_on</i>
                 <span data-i18n="500">Tipo de cambio </span>
                 </a>
               </li>
