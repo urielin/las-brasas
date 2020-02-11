@@ -347,16 +347,11 @@ class GestionCamionController extends Controller
 
           if ($request -> ajax()) {
 
-              if ($request->clasificacion_id != 'OTROS') {
-                $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20)) 
+
+                $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20))
                 FROM dbsys.camiones c
                      inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
                 WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1'");
-
-              }
-
-
-
 
 
           if ($camiones != null) {
@@ -378,13 +373,12 @@ class GestionCamionController extends Controller
 
           if ($request -> ajax()) {
 
-                if ($request->clasificacion_id != 'OTROS') {
 
                   $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20))
                   FROM dbsys.camiones c
                        inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
                   WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '2'");
-                }
+
 
 
               if ($camiones != null) {
