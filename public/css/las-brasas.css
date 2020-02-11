@@ -77,7 +77,7 @@ table.table-precio-camion td,table.table-precio-camion th,table.table-precio-cam
     border-left: none;
 }
 
-td i.material-icons {
+table.table-precio-camion td i.material-icons {
     font-size: 10px;
     position: absolute;
     left: 4px;
