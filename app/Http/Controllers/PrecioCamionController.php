@@ -35,17 +35,18 @@ class PrecioCamionController extends Controller
         // WHERE estado = 1 or estado IS NULL
         // ORDER BY descripcion, camion");
         // OBTENER DATOS PARA LOS SELECT
-         $datos['PrecioCamion']=DB::select("		 SELECT camion , codigo, ADM_CODIGOS.CODI_RNOMBRE AS descripcion, ADM_CODIGOS.CODI_P_VENTA AS lista_publico,
-         ADM_CODIGOS.codi_p_venta_x_m1 AS lista_mayor, ISNULL(precio, 0) AS precio_publico, ISNULL(mayorista, 0) AS precio_mayor,
-         bodega_id_ofertas.fecha_baja as fecha_baja, ISNULL(bodega_id_ofertas.sucursal, 0) as sucursal
-         FROM    (bodega_id_ofertas_camion 
-         INNER JOIN bodega_id_ofertas_catalogo 
-         ON bodega_id_ofertas_camion.clasificacion = bodega_id_ofertas_catalogo.clasificacion 
-         INNER JOIN ADM_CODIGOS ON bodega_id_ofertas_catalogo.codigo = ADM_CODIGOS.CODI_RCODIGO) 
-         LEFT JOIN bodega_id_ofertas ON bodega_id_ofertas.id_camion = camion and  dbo.bodega_id_ofertas.id_corte = codigo 
-         WHERE   (bodega_id_ofertas_camion.clasificacion = $clasificacion) AND (bodega_id_ofertas_camion.estado = 1) AND (bodega_id_ofertas_catalogo.estado = 1) AND (bodega_id_ofertas.estado = 1 or bodega_id_ofertas.estado IS NULL)
-				 AND  (bodega_id_ofertas.sucursal = $sucursal or bodega_id_ofertas.sucursal IS NULL)
-         ORDER BY DESCRIPCION, camion");
+        $datos['PrecioCamion']=DB::select("		 SELECT camion , codigo, ADM_CODIGOS.CODI_RNOMBRE AS descripcion, ADM_CODIGOS.CODI_P_VENTA AS lista_publico,
+        ADM_CODIGOS.codi_p_venta_x_m1 AS lista_mayor, ISNULL(precio, 0) AS precio_publico, ISNULL(mayorista, 0) AS precio_mayor,
+        bodega_id_ofertas.fecha_baja as fecha_baja, ISNULL(bodega_id_ofertas.sucursal, 0) as sucursal
+        FROM    (bodega_id_ofertas_camion 
+        INNER JOIN bodega_id_ofertas_catalogo 
+        ON bodega_id_ofertas_camion.clasificacion = bodega_id_ofertas_catalogo.clasificacion 
+        INNER JOIN ADM_CODIGOS ON bodega_id_ofertas_catalogo.codigo = ADM_CODIGOS.CODI_RCODIGO) 
+        LEFT JOIN bodega_id_ofertas ON bodega_id_ofertas.id_camion = bodega_id_ofertas_camion.camion and  dbo.bodega_id_ofertas.id_corte = bodega_id_ofertas_catalogo.codigo 
+                AND  ( bodega_id_ofertas.sucursal=$sucursal)
+                AND (bodega_id_ofertas.estado = 1)
+        WHERE   (bodega_id_ofertas_camion.clasificacion = $clasificacion) AND (bodega_id_ofertas_camion.estado = 1) AND (bodega_id_ofertas_catalogo.estado = 1) 
+        ORDER BY DESCRIPCION, camion");
 
         $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)->orderBy('cod_int')->get();
         $datos['AdmSucursal']=AdmSucursal::orderBy('SUCU_RESUMEN')->get();
@@ -112,9 +113,10 @@ class PrecioCamionController extends Controller
                  INNER JOIN bodega_id_ofertas_catalogo 
                  ON bodega_id_ofertas_camion.clasificacion = bodega_id_ofertas_catalogo.clasificacion 
                  INNER JOIN ADM_CODIGOS ON bodega_id_ofertas_catalogo.codigo = ADM_CODIGOS.CODI_RCODIGO) 
-                 LEFT JOIN bodega_id_ofertas ON bodega_id_ofertas.id_camion = camion and  dbo.bodega_id_ofertas.id_corte = codigo 
-                 WHERE   (bodega_id_ofertas_camion.clasificacion = $clasificacion) AND (bodega_id_ofertas_camion.estado = 1) AND (bodega_id_ofertas_catalogo.estado = 1) AND (bodega_id_ofertas.estado = 1 or bodega_id_ofertas.estado IS NULL)
-                         AND  (bodega_id_ofertas.sucursal = $sucursal or bodega_id_ofertas.sucursal IS NULL)
+                 LEFT JOIN bodega_id_ofertas ON bodega_id_ofertas.id_camion = bodega_id_ofertas_camion.camion and  dbo.bodega_id_ofertas.id_corte = bodega_id_ofertas_catalogo.codigo 
+                         AND  ( bodega_id_ofertas.sucursal=$sucursal)
+                         AND (bodega_id_ofertas.estado = 1)
+                 WHERE   (bodega_id_ofertas_camion.clasificacion = $clasificacion) AND (bodega_id_ofertas_camion.estado = 1) AND (bodega_id_ofertas_catalogo.estado = 1) 
                  ORDER BY DESCRIPCION, camion");
         
                 $datos['CamionesClasificacion']=CamionesClasificacion::where('cod_int', '>', 0)->orderBy('cod_int')->get();
@@ -155,6 +157,7 @@ class PrecioCamionController extends Controller
         $precio=$request->get('publico');
         $mayorista=$request->get('mayor');
         $clasificacion=$request->get('clasificacion');
+        $sucursal=$request->get('sucursal');
         $fecha_baja=$request->get('fecha_baja');
         $fecha_baja=date('d-m-Y H:i:s', strtotime($fecha_baja));
         // $fecha_baja=substr($fecha_baja, 0, -3);
@@ -167,7 +170,7 @@ class PrecioCamionController extends Controller
         // buscar si existe y actualizar estado a 0
         try{
             $BodegaIdOfertas = BodegaIdOfertas::firstOrNew(
-                ['id_camion' => $id_camion, 'id_corte'=> $id_corte, 'estado'=> 1]
+                ['id_camion' => $id_camion, 'id_corte'=> $id_corte, 'sucursal'=> $sucursal, 'estado'=> 1]
             );
 
             if($BodegaIdOfertas->exists){
@@ -176,7 +179,7 @@ class PrecioCamionController extends Controller
                 // ACTUALIZA EL ESTADO A 0 PARA DESABILITARLO
                 
                 $BodegaIdOfertas___ = BodegaIdOfertas::where('id_camion', $id_camion)
-                ->where('id_corte', $id_corte)->where('estado', 1)
+                ->where('id_corte', $id_corte)->where('sucursal', $sucursal)->where('estado', 1)
                 ->update([
                 'precio' => $precio,
                 'mayorista' => $mayorista,
@@ -185,14 +188,16 @@ class PrecioCamionController extends Controller
                 
             }else{
                 // CREA UN NUEVO ITEM CON ESTADO A 1
-                $BodegaIdOfertas = new BodegaIdOfertas;
-                $BodegaIdOfertas->id_camion = $id_camion;
-                $BodegaIdOfertas->id_corte = $id_corte;
+                // $BodegaIdOfertas = new BodegaIdOfertas;
+                // $BodegaIdOfertas->id_camion = $id_camion;
+                // $BodegaIdOfertas->id_corte = $id_corte;
+                // $BodegaIdOfertas->sucursal = $sucursal;
+                // $BodegaIdOfertas->estado = 1;
                 $BodegaIdOfertas->precio = $precio;
-                $BodegaIdOfertas->mayorista = $mayorista;
-                $BodegaIdOfertas->estado = 1;
+                $BodegaIdOfertas->mayorista = $mayorista;       
                 $BodegaIdOfertas->usuario = $user;
                 $BodegaIdOfertas->fecha = $fecha_actual;
+                // return var_dump($BodegaIdOfertas->toArray());
                 $BodegaIdOfertas->save();
 
             }
@@ -206,12 +211,18 @@ class PrecioCamionController extends Controller
             return $e->getMessage();   // insert query
          }
          // DEVOLVER DATOS ACTUALIZADOS A LA TABLA PRECIO CAMION
-         $datos['PrecioCamion']=DB::select("SELECT *
-         FROM dbo.Precios_Camiones($clasificacion, '', '') left join dbo.bodega_id_ofertas
-         on dbo.bodega_id_ofertas.id_camion = dbo.Precios_Camiones.camion and 
-         dbo.bodega_id_ofertas.id_corte = dbo.Precios_Camiones.codigo 
-         WHERE estado = 1 or estado IS NULL
-         ORDER BY descripcion");
+         $datos['PrecioCamion']=DB::select("		 SELECT camion , codigo, ADM_CODIGOS.CODI_RNOMBRE AS descripcion, ADM_CODIGOS.CODI_P_VENTA AS lista_publico,
+         ADM_CODIGOS.codi_p_venta_x_m1 AS lista_mayor, ISNULL(precio, 0) AS precio_publico, ISNULL(mayorista, 0) AS precio_mayor,
+         bodega_id_ofertas.fecha_baja as fecha_baja, ISNULL(bodega_id_ofertas.sucursal, 0) as sucursal
+         FROM    (bodega_id_ofertas_camion 
+         INNER JOIN bodega_id_ofertas_catalogo 
+         ON bodega_id_ofertas_camion.clasificacion = bodega_id_ofertas_catalogo.clasificacion 
+         INNER JOIN ADM_CODIGOS ON bodega_id_ofertas_catalogo.codigo = ADM_CODIGOS.CODI_RCODIGO) 
+         LEFT JOIN bodega_id_ofertas ON bodega_id_ofertas.id_camion = bodega_id_ofertas_camion.camion and  dbo.bodega_id_ofertas.id_corte = bodega_id_ofertas_catalogo.codigo 
+                 AND  ( bodega_id_ofertas.sucursal=$sucursal)
+                 AND (bodega_id_ofertas.estado = 1)
+         WHERE   (bodega_id_ofertas_camion.clasificacion = $clasificacion) AND (bodega_id_ofertas_camion.estado = 1) AND (bodega_id_ofertas_catalogo.estado = 1) 
+         ORDER BY DESCRIPCION, camion");
          return view('table-precio-camion', $datos);
  
         //actualizar estado a 0 

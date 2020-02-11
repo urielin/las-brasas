@@ -1,3 +1,8 @@
+/* inputs disabled */
+input:disabled {
+    cursor: no-drop;
+}
+/* tabla precio camion */
 .tr-selected {
     background-color: #245772;
     color: #FFF;
@@ -65,10 +70,23 @@
     background-color: #ffd60078 !important;
 }
 
+table.table-precio-camion td,table.table-precio-camion th,table.table-precio-camion tr{
+    position: relative;
+    cursor: pointer;
+    border-right: none;
+    border-left: none;
+}
+
+td i.material-icons {
+    font-size: 10px;
+    position: absolute;
+    left: 4px;
+    top: 20px;
+}
 
 @media (min-width: 992px){
 .precio-camion-modal {
-    width: 40%;
-    height: 50%
+    width: 40% !important;
+    height: 50% !important;
 }
 }
