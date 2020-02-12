@@ -59,17 +59,16 @@ $(document).ready(function(){
     $(this).parents("tr").find("td:eq(6)").html(setCatalogoEstado(estado));
     $(this).parents("tr").find("td:eq(9)").prepend(`<span style='display: flex;'>
                                                       <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'>
-                                                        <div>
+
                                                           <i class="material-icons dp48">save</i>
-                                                        </div>
+
                                                       </button>
                                                       <button title='Cancelar' style='padding: 5px 10px;' class='btn btn-50 red btn-xs btn-cancel'>
-                                                        <div>
+
                                                           <i class="material-icons dp48">close</i>
-                                                        </div>
+
                                                       </button>
                                                     </span>`)
-
     $(this).hide();
   });
   $("#catalogoTable").on("click", ".btn-cancel", function(){
@@ -141,10 +140,11 @@ $(document).ready(function(){
                   <td style='padding-right: 1rem;padding-left: 1rem;;'>${ getCurrentDate() }</td>
                   <td style='padding-right: 1rem;padding-left: 1rem;;'>
                     <button title='Editar' style='padding: 5px 10px;' class="btn btn-50 cyan btn-edit"   data-id='${current.CODI_RCODIGO}'>
-                      <div>
+
+
                       <i class="material-icons dp48">edit</i>
 
-                      </div>
+
                     </button>
                   </td>
               </tr>`;
@@ -210,9 +210,11 @@ $(document).ready(function(){
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${ data[i].FECHA_REG ? data[i].FECHA_REG  : "-" }</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>
                         <button title='Editar' style='padding: 5px 10px;' class="btn btn-50 cyan btn-edit"   data-id='${data[i].CODI_RCODIGO}'>
-                          <div>
+
+
                             <i class="material-icons dp48">edit</i>
-                          </div>
+
+
                         </button>
                       </td>
                   </tr>`;

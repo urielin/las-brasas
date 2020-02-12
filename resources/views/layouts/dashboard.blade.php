@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
 
     <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/flag-icon/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/jquery.dataTables.min.css">
@@ -28,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
-     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet"> 
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
