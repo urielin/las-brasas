@@ -21,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
 
     <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" type="text/css" href="assets/vendors/flag-icon/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/jquery.dataTables.min.css">
@@ -29,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
-     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet"> 
+     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -64,10 +63,11 @@
     </header>
 
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
-      <!-- <div class="brand-sidebar">
-        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index-2.html">
+      <div class="brand-sidebar">
+        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="/">
         <img class="hide-on-med-and-down" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8jtUc7a4cG1e8lYJqDa-NQGo6V2jLspu33gfebJW84yWuTeuW" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
-      </div> -->
+        </a>
+      </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="navigation-header">
          <a class="navigation-header-text">SISTEMA DE GESTIÓN </a>
