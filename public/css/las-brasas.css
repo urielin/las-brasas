@@ -1,6 +1,7 @@
 /* inputs disabled */
 input:disabled {
     cursor: no-drop;
+    background-color: #f8f5f5;
 }
 /* tabla precio camion */
 .tr-selected {
@@ -83,10 +84,14 @@ table.table-precio-camion td i.material-icons {
     left: 4px;
     top: 20px;
 }
+.precio-camion-modal {
+    min-height: 80%;
+    top: 5%;
+}
 
 @media (min-width: 992px){
 .precio-camion-modal {
     width: 40% !important;
-    height: 50% !important;
+    height: 53% !important;
 }
 }

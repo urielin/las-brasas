@@ -85,7 +85,7 @@
          <h5 class="modal-title ">Modificar precio</h5>
           <span id="form_result"></span>
             @csrf
-            <div class=" col s12 l3">
+            <div class=" col s12 l4">
                 <label class="control-label col-md-4 mb-0">Camión: </label>
                 <input id="camion" type="text" name="camion"  class="browser-default form-control" disabled>
             </div>
@@ -94,7 +94,7 @@
                 <input id="codigo" type="text" name="codigo" class="browser-default form-control" disabled>
 
             </div>
-            <div class=" col s12 l6">
+            <div class=" col s12 l4">
                 <label class="control-label col-md-4 mb-0">Descripción: </label>
                 <input id="descripcion" type="text" name="descripcion"  class="browser-default form-control" disabled> 
 
@@ -118,7 +118,7 @@
                   <input id="fecha_baja"  name="fecha_baja" class="datepicker" placeholder="Selecciona una fecha" type="text" value="">
              
           </div> -->
-          <div class=" col s12 l6">
+          <div class=" col s12 l5">
     
                   <label class="control-label col-md-4" for="fecha_baja">Fecha de <br> caducidad</label>
                   <input id="fecha_baja"  name="fecha_baja" class="browser-default form-control" placeholder="Selecciona una fecha" type="date" value="">
