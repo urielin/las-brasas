@@ -1,486 +1,367 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
-
-<h5>Contenedores / Camiones - RECEPCIONADOS</h5>
-
-<br>
-
   <div class="row">
-    <div class="col s12 l4">
-      <div class="card card card-default scrollspy">
-          <div class="row pt-2 pb-1">
-            <form  method="post" id="buscar-camion" class="col s12">
-              <div class="row">
-                <div class="mb-1 col s12 l12">
-                  @csrf
-                  <label for="buscar-codigo-camion">Buscar camión</label>
-                  <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
-                  <input type="text" name="codigo" class="validate form-control browser-default " id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                </div>
-              </div>
+    <div class="col s12">
 
-              <div class="row">
-                <div class="mt-1 mb-1  col s12 l12">
-                  <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right">Buscar</button>
-                </div>
-              </div>
-            </form>
-          </div>
-      </div>
-    </div>
-
-    {{-- ------------------------------------------- --}}
-
-    <div class="col s12 l8">
-      <div class="card card card-default scrollspy">
-            <div class="row pt-3 pb-5">
-              <form class="col s12">
-                <div class="row">
-
-                  <div class="col s12 l3">
-                    <form >
-                      <label for="anior">Ingresar año</label>
-                      <select class="form-control browser-default" id="anior">
-                        <option>Año</option>
-                        @foreach ($year as $y)
-                          <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
-                        @endforeach
-                      </select>
-                    </form>
-                  </div>
-                  <div class="col s12 l4">
-                    <form>
-                      <label for="clasificacion">Clasificar camión </label>
-                      <select class="form-control browser-default" id="clasificacionr">
-                      </select>
-                    </form>
-                  </div>
-                  <div class="col s12 l5">
-                    <form>
-                      <input type="hidden" name="action" id="icamion"  value="camion-r">
-                      <label for="camion">Seleccionar camión </label>
-                      <select class="form-control browser-default" value="camion" id="camion">
-                      </select>
-                    </form>
-                  </div>
-                </div>
-              </form>
+    <div class="card card  card-default scrollspy">
+      <div class="row"  style="padding:20px">
+        <div style="display: flex; justify-content: space-between">
+            <div style="display: flex">
+              <i class="material-icons dp48">subject</i><span class="card-title">Contenedores / Camiones - RECEPCIONADOS</span>
             </div>
         </div>
+        <div class="col s12 l4" style="margin-top: 20px;">
+          <!--<div class="card card card-default scrollspy">-->
+              <div class="row ">
+                <form  method="post" id="buscar-camion" class="col s12">
+                  <div class="row">
+                    <div class="mb-1 col s12 l12">
+                      @csrf
+                      <label for="buscar-codigo-camion">Buscar camión</label>
+                      <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">
+                      <div class="input-group">
+                        <input type="text" name="codigo" class="validate form-control browser-default " style="border-radius: 0px " id="buscar-codigo-camion" placeholder="Ingrese código camión">
+                        <div class="input-group-append">
+                          <button type="submit" name="actualizar" class="btn btn-50 cyan" style="border-radius: 0px !important; line-height: 45px !important; height:45px !important;width:46px !important">
+                            <i class="material-icons dp48">search</i>
+                          </button>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+        <!--  </div>-->
+        </div>
+        <div class="col s12 l8" style="margin-top: 20px;">
+          <!--<div class="card card card-default scrollspy">-->
+                <div class="row ">
+                  <form class="col s12" >
+                    <div class="row">
+                      <div class="col s12 l3">
+                        <form >
+                          <label for="anior">Ingresar año</label>
+                          <select class="form-control browser-default" id="anior">
+                            <option>Año</option>
+                            @foreach ($year as $y)
+                              <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
+                            @endforeach
+                          </select>
+                        </form>
+                      </div>
+                      <div class="col s12 l4">
+                        <form>
+                          <label for="clasificacion">Clasificar camión </label>
+                          <select class="form-control browser-default" id="clasificacionr">
+                          </select>
+                        </form>
+                      </div>
+                      <div class="col s12 l5">
+                        <form>
+                          <input type="hidden" name="action" id="icamion"  value="camion-r">
+                          <label for="camion">Seleccionar camión </label>
+                          <select class="form-control browser-default" value="camion" id="camion">
+                          </select>
+                        </form>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            <!--</div>-->
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 
-  <hr>
 
   <div class="row">
     <div class="col s12">
       <div class="card card card-default scrollspy">
-          <div class="row pb-4">
+        <div class="row pb-4">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col m3"><a class="active" href="#test1">Detalle</a></li>
+                <li class="tab col m3"><a href="#test2">Actualizado</a></li>
+                <li class="tab col m6"><span id="bloquear-camion"></span></li>
+              </ul>
+            </div>
+            <div id="test1" class="col s12">
+              <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="responsive-table" class=" ">
+                      <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+                        <h4 class="card-title"></h4>
+                        <p class="mb-2"></p>
+                        <div class="row">
+
+                          <div class="col s12 dataTables_scrollBody">
+                            <table class="responsive-table striped">
+                                  <thead class="thead-light" id="camiontabla-head">
+                                  </thead>
+                                  <tbody id="camiontabla">
+                                  </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
+                <div class="row">
                   <div class="col s12">
                     <ul class="tabs">
-                      <li class="tab col m3"><a class="active" href="#test1">Detalle</a></li>
-                      <li class="tab col m3"><a href="#test2">Actualizado</a></li>
-                      <li class="tab col m6"><span id="bloquear-camion"></span></li>
+                      <li class="tab col m3"><a class="active" href="#uno">Datos de camión</a></li>
+                      <li class="tab col s3"><a href="#dos">Fecha embarque y llegada</a></li>
+                      {{-- <li class="tab col sm disabled"><a href="#tres">Forma de pago</a></li> --}}
+                      <li class="tab col s3"><a href="#cuatro">Datos embarque y llegada</a></li>
+                      <li class="tab col m3"><a href="#cinco">Valor total del camion</a></li>
                     </ul>
                   </div>
-
-                  <div id="test1" class="col s12">
+                  <div id="uno" class="col s12 l12" style="padding-top:20px">
                     <div class="row">
-                        <div class="col s12 m12 l12">
-                              <div id="responsive-table" class="card card card-default scrollspy">
-                                <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
-                                  <h4 class="card-title"></h4>
-                                  <p class="mb-2"></p>
-                                  <div class="row">
-                                    <div class="col s12">
+                      @php if ($datos != '[]') { @endphp @php } else { @endphp
+                              <span id="form_result_consulta1"></span>
+                                  <form method="POST" id="consulta1" class="col s12">
+                                            @csrf
+                                    <div class=" ">
+                                      <div class="row">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Código oficial</label>
+                                              <input disabled class="form-control form-control-sm browser-default" name="codigo_oficial" id="codigo_oficial" type="text" >
+                                              <input type="hidden" class="form-control form-control-sm browser-default" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Código auxiliar</label>
+                                              <input disabled class="validate form-control browser-default" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
+                                            </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col s12 l6">
+                                            <label for="icon_prefix">Nro de contenedor</label>
+                                            <input disabled name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="validate form-control browser-default">
+                                          </div>
+                                          <div class="col s12 l6">
+                                            <label for="icon_telephone">Nro BL</label>
+                                            <input disabled name="nro_bl" id="nro_bl" type="text" class="validate form-control browser-default">
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Clasificación de mercancía</label>
+                                              <select disabled class="form-control browser-default" name="clasificacion_de_mercancia" id="clasificacion_de_mercancia">
+                                              </select>
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Proveedor</label>
+                                              <input disabled name="proveedor" id="proveedor" type="text" class="validate form-control browser-default">
+                                            </div>
+                                      </div>
+                                      <div class="row">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Marca origen</label>
+                                              <input disabled name="marca_origen" id="marca_origen"  type="text" class="validate form-control browser-default">
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Pais origen</label>
+                                              <input disabled name="pais_origen" id="pais_origen" type="text" class="validate form-control browser-default">
+                                            </div>
+                                      </div>
+                                      <div class="row">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Descripción</label>
+                                              <input disabled name="descripcion" id="descripcion" type="text" class="validate form-control browser-default">
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Contenido</label>
+                                              <input disabled name="contenido" id="contenido" type="tel" class="validate form-control browser-default">
+                                            </div>
+                                      </div>
+                                      <div class="row">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Observaciones</label>
+                                              <input disabled name="observaciones" id="observaciones" type="text" class="validate form-control browser-default">
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Lugar de arribo</label>
+                                              <select disabled class="form-control browser-default" name="lugar_de_arribo" id="lugar_de_arribo">
+                                              </select>
+                                            </div>
+                                      </div>
+                                      <div class="row ">
+                                          <div class="col s12 l12">
+                                            <span id="bandera-general"></span>
+                                            <input disabled type="hidden" name="ac"  value="">
+                                          </div>
+                                      </div>
                                     </div>
-                                    <div class="col s12 dataTables_scrollBody">
-                                       <table class="responsive-table striped">
-                                            <thead class="thead-light" id="camiontabla-head">
 
-                                            </thead>
-                                            <tbody id="camiontabla">
-
-                                            </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                            </div>
-                          </div>
-                        </div>
+                                  </form>
+                            @php } @endphp
                     </div>
                   </div>
-
-                  <div id="test2" class="col s12">
-{{-- ------------------------- --}}
-                        <div class="row">
-                          <div class="col s12">
-                            <ul class="tabs">
-                              <li class="tab col m3"><a class="active" href="#uno">Datos de camión</a></li>
-                              <li class="tab col s3"><a href="#dos">Fecha embarque y llegada</a></li>
-                              {{-- <li class="tab col sm disabled"><a href="#tres">Forma de pago</a></li> --}}
-                              <li class="tab col s3"><a href="#cuatro">Datos embarque y llegada</a></li>
-                              <li class="tab col m3"><a href="#cinco">Valor total del camion</a></li>
-                            </ul>
-                          </div>
-                          <div id="uno" class="col s12 l12">
-                            Datos de camión
-
-                            <div class="row">
-                              @php if ($datos != '[]') { @endphp @php } else { @endphp
-
-                                      <span id="form_result_consulta1"></span>
-
-                                          <form method="POST" id="consulta1" class="col s12">
-                                                    @csrf
-
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Código oficial</label>
-                                                      <input disabled class="form-control form-control-sm" name="codigo_oficial" id="codigo_oficial" type="text" >
-                                                      <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real" id="codigo_oficial_real" type="text" >
-
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Código auxiliar</label>
-
-                                                      <input disabled class="validate form-control" name="codigo_auxiliar" id="codigo_auxiliar" type="text" >
-                                                    </div>
-                                              </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Nro de contenedor</label>
-                                                        <input disabled name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="validate form-control">
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Nro BL</label>
-                                                        <input disabled name="nro_bl" id="nro_bl" type="text" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Clasificación de mercancía</label>
-                                                        <select disabled class="form-control browser-default" name="clasificacion_de_mercancia" id="clasificacion_de_mercancia">
-
-                                                        </select>
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Proveedor</label>
-                                                        <input disabled name="proveedor" id="proveedor" type="text" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Marca origen</label>
-                                                        <input disabled name="marca_origen" id="marca_origen"  type="text" class="validate form-control">
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Pais origen</label>
-                                                        <input disabled name="pais_origen" id="pais_origen" type="text" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Descripción</label>
-                                                        <input disabled name="descripcion" id="descripcion" type="text" class="validate form-control">
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Contenido</label>
-                                                        <input disabled name="contenido" id="contenido" type="tel" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Observaciones</label>
-                                                        <input disabled name="observaciones" id="observaciones" type="text" class="validate form-control">
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Lugar de arribo</label>
-                                                        <select disabled class="form-control browser-default" name="lugar_de_arribo" id="lugar_de_arribo">
-
-                                                        </select>
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
-
-                                                        <span id="bandera-general"></span>
-                                                        <input disabled type="hidden" name="ac"  value="">
-                                                      </div>
-                                                </div>
-                                            </div>
-
-                                          </form>
-                                    @php } @endphp
-                            </div>
-                          </div>
-{{-- ----------------------------------------------                             --}}
-
-                          <div id="dos" class="col s12">
-                            Fecha embarque y llegada
-
-                            <div class="row">
-                              @php if ($datos != '[]') { @endphp @php } else { @endphp
-
-                                      <span id="form_result_consulta2"></span>
-                                          <form  method="post" id="consulta2" class="col s12">
-                                                    @csrf
-
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
-                                                    <div class="col s12 l12">
-
-                                                      <label for="icon_prefix">Fecha de cierre</label>
-                                                      <input disabled class="form-control " name="fecha_de_cierre" id="fecha_de_cierre" type="datetime-local" >
-                                                      <input type="hidden" class="form-control " name="codigo_oficial_real2" id="codigo_oficial_real2" type="text" >
-
-                                                    </div>
-
-                                              </div>
-
-                                                <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Fecha de embarque desde</label>
-
-                                                      <input disabled class="form-control" type="datetime-local" name="fecha_de_embarque_desde" id="fecha_de_embarque_desde" >
-                                                    </div>
-
-                                                      <div class="col s12 l6">
-                                                        <label for="icon_prefix">Hasta</label>
-                                                        <input disabled name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" class="form-control">
-                                                      </div>
-
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Fecha de llegada desde</label>
-                                                        <input disabled type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde" class="form-control">
-                                                      </div>
-                                                      <div class="col s12 l6">
-                                                        <label for="icon_prefix">Hasta</label>
-                                                        <input  disabled type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta" class="form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-
-                                                      <div class="col s12 l12">
-
-                                                        <label for="icon_telephone">Observación</label>
-                                                        <input disabled type="text" name="observacion" id="observacion" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
-
-                                                      </div>
-                                                </div>
-                                            </div>
-
-                                          </form>
-                                    @php } @endphp
-                            </div>
-                          </div>
-
-
-{{-- --------------------------------------- --}}
-
-                          <div id="cuatro" class="col s12 l12">
-                            Datos embarque y llegada
-                            <div class="row">
-                            @php if ($datos != '[]') { @endphp @php } else { @endphp
-
-                                    <span id="form_result_consulta4"></span>
-                                        <form method="POST" id="consulta4" class="col s12">
-                                                  @csrf
-
-                                          <div class="card card card-default scrollspy pt-2 pb-3">
-                                            <div class="row ">
-                                                  <div class="col s12 l6">
-
-                                                    <label for="icon_prefix">Fecha de embarque real</label>
-                                                    <input disabled class="form-control form-control-sm" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" step="1" >
-                                                    <input type="hidden" class="form-control form-control-sm" name="codigo_oficial_real4" id="codigo_oficial_real4" >
-
-                                                  </div>
-                                                  <div class="col s12 l6">
-
-                                                    <label for="icon_telephone">Fecha de llegada</label>
-
-                                                    <input disabled class="validate form-control" name="fecha_de_llegada" id="fecha_de_llegada" type="datetime-local" step="1">
-                                                  </div>
-                                            </div>
-
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Nro de contenedorResol. Sanitaria</label>
-                                                      <input disabled name="resol_sanitaria" type="text" id="resol_sanitaria" class="validate form-control">
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Fecha de Resol. Sanitaria</label>
-                                                      <input disabled name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria" class=" form-control" step="1">
-                                                    </div>
-                                              </div>
-
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Forward</label>
-                                                    <input disabled name="forward" type="text" id="forward" class="validate form-control">
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Fecha Forward</label>
-                                                      <input disabled name="fecha_forward" type="datetime-local" id="fecha_forward" class="validate form-control" step="1">
-                                                    </div>
-                                              </div>
-
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Fecha producción desde</label>
-                                                      <input disabled type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde" class="validate form-control" step="1">
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Hasta</label>
-                                                      <input disabled type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta" class="validate form-control" step="1">
-                                                    </div>
-                                              </div>
-
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Fecha vencimiento desde</label>
-                                                      <input disabled type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde" class="validate form-control" step="1">
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Hasta</label>
-                                                      <input disabled type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta" class="validate form-control" step="1">
-                                                    </div>
-                                              </div>
-
-
-                                              <div class="row ">
-                                                    <div class="col s12 l12">
-
-
-
-                                                    </div>
-                                              </div>
+                  <div id="dos" class="col s12" style="padding-top:20px">
+
+                    <div class="row">
+                      @php if ($datos != '[]') { @endphp @php } else { @endphp
+                              <span id="form_result_consulta2"></span>
+                                  <form  method="post" id="consulta2" class="col s12">
+                                            @csrf
+                                    <div class=" ">
+                                      <div class="row">
+                                          <div class="col s12 l12">
+                                            <label for="icon_prefix">Fecha de cierre</label>
+                                            <input disabled class="form-control browser-default" name="fecha_de_cierre" id="fecha_de_cierre" type="datetime-local" >
+                                            <input type="hidden" class="form-control browser-default" name="codigo_oficial_real2" id="codigo_oficial_real2" type="text" >
                                           </div>
-
-                                        </form>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha de embarque desde</label>
+                                          <input disabled class="form-control browser-default" type="datetime-local" name="fecha_de_embarque_desde " id="fecha_de_embarque_desde" >
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Hasta</label>
+                                          <input disabled name="fecha_de_embarque_desde_hasta" id="fecha_de_embarque_desde_hasta" type="datetime-local" class="form-control browser-default">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha de llegada desde</label>
+                                          <input disabled type="datetime-local" name="fecha_de_llegada_desde" id="fecha_de_llegada_desde" class="form-control browser-default">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Hasta</label>
+                                          <input  disabled type="datetime-local" name="fecha_de_llegada_desde_hasta" id="fecha_de_llegada_desde_hasta" class="form-control browser-default">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="icon_telephone">Observación</label>
+                                          <input disabled type="text" name="observacion" id="observacion" class="validate form-control browser-default">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </form>
                             @php } @endphp
-                            </div>
-                          </div>
-
-
-                            {{-- ------------------------------- --}}
-
-
-                          <div id="cinco" class="col s12 l12">
-                            Valor total del camión
-
-                            <div class="row">
-                              @php if ($datos != '[]') { @endphp @php } else { @endphp
-
-                                      <span id="form_result_consulta5"></span>
-                                          <form method="POST" id="consulta5" class="col s12">
-                                                    @csrf
-
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
-                                              <div class="row ">
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_prefix">Factura proveedor</label>
-                                                      <input disabled class="form-control form-control-sm"  type="text" name="factura_proveedor" id="factura_proveedor" >
-                                                      <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
-
-                                                    </div>
-                                                    <div class="col s12 l6">
-
-                                                      <label for="icon_telephone">Cantidad recibida</label>
-
-                                                      <input disabled class="validate form-control" type="text" name="cantidad_recibida" id="cantidad_recibida" >
-                                                    </div>
-                                              </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_prefix">Unidad</label>
-                                                        <select disabled class="form-control browser-default" name="unidad" id="unidad">
-
-                                                        </select>
-                                                      </div>
-                                                      <div class="col s12 l6">
-
-                                                        <label for="icon_telephone">Valor total</label>
-                                                        <input disabled type="text" name="valor_total" id="valor_total" class="validate form-control">
-                                                      </div>
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
-
-                                                        <label for="icon_prefix">Tipo de moneda</label>
-                                                        <select disabled class="form-control browser-default" name="tipo_de_moneda" id="tipo_de_moneda">
-
-                                                        </select>
-                                                      </div>
-
-                                                </div>
-
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
-
-
-
-                                                      </div>
-                                                </div>
-                                            </div>
-
-                                          </form>
-                                    @php } @endphp
-                            </div>
-                          </div>
-                            {{-- ------------------------------------ --}}
-
-
-                        </div>
-
-
-{{-- -------------------------------------- --}}
+                    </div>
                   </div>
+                  <div id="cuatro" class="col s12 l12" style="padding-top:20px">
+
+                    <div class="row">
+                    @php if ($datos != '[]') { @endphp @php } else { @endphp
+
+                            <span id="form_result_consulta4"></span>
+                                <form method="POST" id="consulta4" class="col s12">
+                                          @csrf
+
+                                  <div class=" ">
+                                    <div class="row">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Fecha de embarque real</label>
+                                          <input disabled class="form-control form-control-sm browser-default" name="fecha_de_embarque_real" id="fecha_de_embarque_real" type="datetime-local" step="1" >
+                                          <input type="hidden" class="form-control form-control-sm browser-default" name="codigo_oficial_real4" id="codigo_oficial_real4" >
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha de llegada</label>
+                                          <input disabled class="validate form-control browser-default" name="fecha_de_llegada" id="fecha_de_llegada" type="datetime-local" step="1">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Nro de contenedorResol. Sanitaria</label>
+                                          <input disabled name="resol_sanitaria" type="text" id="resol_sanitaria" class="validate form-control browser-default">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha de Resol. Sanitaria</label>
+                                          <input disabled name="fecha_de_resol_sanitaria" type="datetime-local" id="fecha_de_resol_sanitaria" class=" form-control browser-default" step="1">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Forward</label>
+                                          <input disabled name="forward" type="text" id="forward" class="validate form-control browser-default">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha Forward</label>
+                                          <input disabled name="fecha_forward" type="datetime-local" id="fecha_forward" class="validate form-control browser-default" step="1">
+                                        </div>
+                                      </div>
+                                      <div class="row ">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Fecha producción desde</label>
+                                          <input disabled type="datetime-local" name="fecha_producción_desde" id="fecha_producción_desde" class="validate form-control browser-default" step="1">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Hasta</label>
+                                          <input disabled type="datetime-local" name="fecha_producción_desde_hasta" id="fecha_producción_desde_hasta" class="validate form-control browser-default" step="1">
+                                        </div>
+                                      </div>
+                                      <div class="row ">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Fecha vencimiento desde</label>
+                                          <input disabled type="datetime-local" name="fecha_vencimiento_desde" id="fecha_vencimiento_desde" class="validate form-control browser-default" step="1">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Hasta</label>
+                                          <input disabled type="datetime-local" name="fecha_vencimiento_desde_hasta" id="fecha_vencimiento_desde_hasta" class="validate form-control browser-default" step="1">
+                                        </div>
+                                      </div>
+                                  </div>
+
+                                </form>
+                    @php } @endphp
+                    </div>
+                  </div>
+                  <div id="cinco" class="col s12 l12" style="padding-top:20px">
+
+                    <div class="row">
+                      @php if ($datos != '[]') { @endphp @php } else { @endphp
+                              <span id="form_result_consulta5"></span>
+                                  <form method="POST" id="consulta5" class="col s12">
+                                            @csrf
+                                    <div class=" ">
+                                      <div class="row ">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Factura proveedor</label>
+                                          <input disabled class="form-control form-control-sm browser-default"  type="text" name="factura_proveedor" id="factura_proveedor" >
+                                          <input class="form-control form-control-sm" name="codigo_oficial_real5" id="codigo_oficial_real5" type="hidden" >
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Cantidad recibida</label>
+                                          <input disabled class="validate form-control browser-default" type="text" name="cantidad_recibida" id="cantidad_recibida" >
+                                        </div>
+                                      </div>
+                                      <div class="row ">
+                                            <div class="col s12 l6">
+                                              <label for="icon_prefix">Unidad</label>
+                                              <select disabled class="form-control browser-default" name="unidad" id="unidad">
+                                              </select>
+                                            </div>
+                                            <div class="col s12 l6">
+                                              <label for="icon_telephone">Valor total</label>
+                                              <input disabled type="text" name="valor_total" id="valor_total" class="validate form-control browser-default">
+                                            </div>
+                                      </div>
+                                      <div class="row ">
+                                            <div class="col s12 l12">
+                                              <label for="icon_prefix">Tipo de moneda</label>
+                                              <select disabled class="form-control browser-default" name="tipo_de_moneda" id="tipo_de_moneda">
+                                              </select>
+                                            </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                            @php } @endphp
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
       </div>
     </div>
@@ -502,9 +383,7 @@
             <span id="form_result"></span>
             <form  method="POST" id="sample_form" class="form-horizontal">
               @csrf
-
               <div class="row container">
-
                   <input type="hidden" name="codigoreal" id="codigoreal" class="form-control" >
                   <input type="hidden" name="nro_itemreal" id="nro_itemreal" class="form-control">
                         <div class="row pb-3">
