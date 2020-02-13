@@ -408,7 +408,7 @@
 
 
                           <div id="cinco" class="col s12 l12">
-                            Valor total del camion
+                            Valor total del camión
 
                             <div class="row">
                               @php if ($datos != '[]') { @endphp @php } else { @endphp

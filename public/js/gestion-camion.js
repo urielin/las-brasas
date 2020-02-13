@@ -903,9 +903,11 @@ $(document).on('submit','#sample_form',function(){
                   // ------------------------
 
               }
-              setTimeout(function() {
-                $('#form_result').html(html).fadeOut(1000);
-             },3000);
+             //  setTimeout(function() {
+             //    $('#form_result').html(html).fadeOut(1000);
+             // },3000);
+              $('#form_result').html(html);
+             
 
              // setTimeout(function() {
              //     $('#form_result').html(html).fadeIn(3000);

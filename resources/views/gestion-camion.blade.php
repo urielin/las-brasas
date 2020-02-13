@@ -235,8 +235,8 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
+                                                <div class="row " align="center">
+                                                      <div class="col s12 l12 ">
 
                                                         <span id="bandera-general"></span>
                                                         <input type="hidden" name="ac"  value="">
@@ -310,7 +310,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row pb-2">
+                                                <div class="row pb-2" align="center">
                                                       <div class="col s12 l12">
                                                         <input type="hidden" name="action" id="action_2" value="Editar">
                                                         <input type="submit" name="action_b2" id="action_b2" class="btn btn-primary mt-1 float-center" value="Actualizar">
@@ -405,7 +405,7 @@
                                               </div>
 
 
-                                              <div class="row ">
+                                              <div class="row " align="center">
                                                     <div class="col s12 l12">
 
 
@@ -425,7 +425,7 @@
 
 
                           <div id="cinco" class="col s12">
-                            Valor total del camion
+                            Valor total del camión
 
                             <div class="row">
                               @php if ($datos != '[]') { @endphp @php } else { @endphp
@@ -477,7 +477,7 @@
 
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row " align="center">
                                                       <div class="col s12 l12">
 
 
