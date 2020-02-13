@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
-     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet"> 
+     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -86,7 +86,7 @@
            </a>
         </li>
         <li class="bold">
-          <a class="waves-effect waves-cyan " href="./">
+          <a class="waves-effect waves-cyan " href="/contabilidad">
             <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>

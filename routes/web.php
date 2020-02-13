@@ -17,6 +17,8 @@ Route::group(['middleware'=> ['guest']],function(){
 });
 
 Route::group(['middleware' => 'auth_custom'], function () {
+  Route::get('/', 'UsuariosController@index')->name('home');
+
   Route::get('/home', 'UsuariosController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
@@ -64,4 +66,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('/products/nutricionals/update', 'ProductController@updateNutricional')->name('product.updateNutricional');
   Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
   Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
+
+  Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
+
 });
