@@ -7,9 +7,12 @@
 #productTable tbody tr {
     cursor: pointer;
 }
+#tableRetiroProsegur tbody tr {
+    cursor: pointer;
+}
 .tr-selected {
     background-color: #245772;
-    color: #FFF; 
+    color: #FFF;
 }
 
  .table-wrapper {
@@ -30,8 +33,7 @@
 	 border: none;
 }
  table, .table {
-	 display: table;
-	 table-layout: fixed;
+	 display: table; 
 	 border-collapse: collapse;
 	 border-spacing: 0;
 	 width: 100%;
@@ -319,7 +321,7 @@ tr td button {
   padding-left: 15px !important;
   margin-left: 1px !important;
   padding-bottom: 15px !important;
-}
+}/*
 table.responsive-table {
   table-layout: auto !important;
-}
+}*/

@@ -33,29 +33,29 @@
                   </div>
                 </div>
                  <div class=" ">
-                    <div class="col m12" style="margin-top: 20px;">
+                    <div class="col l12 m12 s12" style="margin-top: 20px;">
                       <div style="display: flex">
                         <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
                       </div>
-                      <table class="table responsive-table centered">
-                      <thead>
-                        <tr>
-                          <th width='6%'>ID</th>
-                          <th>Tipo Retiro</th>
-                          <th>Desde</th>
-                          <th>Hasta</th>
-                          <th>Cantidad</th>
-                          <th>Monto total</th>
-                          <th>Estado</th>
-                          <th>Fecha cierre</th>
-                          <th>Responsable</th>
-                          <th>Observacion</th>
-                        </tr>
-                      </thead>
-                      <tbody id="retiroTabla">
+                      <table id='tableRetiroProsegur' class="table responsive-table">
+                        <thead>
+                          <tr>
+                            <th width='6%'>ID</th>
+                            <th>Tipo Retiro</th>
+                            <!--<th>Desde</th>
+                            <th>Hasta</th>-->
+                            <th>Cantidad</th>
+                            <th>Monto total</th>
+                            <th>Estado</th>
+                            <th>Fecha cierre</th>
+                            <th>Responsable</th>
+                            <th>Observacion</th>
+                          </tr>
+                        </thead>
+                        <tbody id="retiroTabla">
 
-                      </tbody>
-                    </table>
+                        </tbody>
+                      </table>
                      </div>
 
                      <div class="col m12" style="margin-top: 20px;">
@@ -100,12 +100,12 @@
                   </div>
                   <div class="col s12 dataTables_scrollBody">
 
-
+                    
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
                               </div>
-                              <table class="responsive-table centered striped">
+                              <table class=" table responsive-table centered striped">
                               <thead>
                                 <tr>
                                   <th width='6%'>ID</th>

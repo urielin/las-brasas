@@ -19,7 +19,8 @@ Route::group(['middleware'=> ['guest']],function(){
 });
 
 Route::group(['middleware' => 'auth_custom'], function () {
-  Route::get('/', 'UsuariosController@index')->name('home');
+
+  Route::get('/', 'UsuariosController@index');
 
   Route::get('/home', 'UsuariosController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
