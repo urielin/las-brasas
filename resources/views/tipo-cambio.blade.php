@@ -42,22 +42,7 @@
                       </ul>
                     </div>
                     <div id="test1" class="col s12">
-<<<<<<< HEAD
-                      {!! Form::open(['route' => ['showCambio'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
-                                    @csrf
-                                <div class="row">
-                                  <div class="col s12 l4">
-                                    <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Seleccionar periodo</label>
-                                    <input class="form-control browser-default" name="Mes_cambiar" class="form-control" type="month"  >
-                                  </div>
-                                  <div class="col s12 l4 pt-3">
-                                    <button type="submit" name="buscar" class="btn btn-primary responsive">Buscar mes</button>
-                                  </div>
-                                  <div class="col l4">
-                                  </div>
-                                </div>
-                      {!! Form::close()!!}
-=======
+
                       <div class="container" style="margin-top: 30px">
                         {!! Form::open(['route' => ['showCambio'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                         @csrf
@@ -74,31 +59,11 @@
                         </div>
                         {!! Form::close()!!}
                       </div>
->>>>>>> 9e236418d573d3e40ec777fe15492ce057e468c4
+
                     </div>
                     <div id="test2" class="col s12">
                       <div class="container" style="margin-top: 30px">
 
-<<<<<<< HEAD
-                          {!! Form::open(['route' => ['updateCambio'], 'method' => 'put', 'enctype' => 'multipart/form-data'])!!}
-                              @csrf
-
-
-                            <div class="row">
-                              <div class="col s12 l4">
-                                <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Tipo de cambio</label>
-                                <input type="text" name="Tipo_de_cambio" placeholder="Ingresar nuevo tipo de cambio" class="form-control browser-default" id="usr">
-                              </div>
-
-                              <div class="col s12 l4 ">
-                                <label class="h4 mb-0 text-black d-lg-inline-block" for="sel1">Mes cambiar</label> <br>
-                                <input class="form-control" name="Mes_cambiar" class="form-control" type="month"  >
-                              </div>
-
-                              <div class="col s12 l2 pt-3 pb--4">
-                                <button type="submit" name="actualizar" class="btn btn-primary">Actualizar mes seleccionado</button>
-                              </div>
-=======
                         {!! Form::open(['route' => ['updateCambio'], 'method' => 'put', 'enctype' => 'multipart/form-data'])!!}
                         @csrf
                         <div class="row">
@@ -114,7 +79,7 @@
 
                           <div class="col l2 ">
                             <button type="submit" name="actualizar" class="btn btn-45 cyan" style="margin-top: 21px;width:200px !important">Actualizar Mes</button>
->>>>>>> 9e236418d573d3e40ec777fe15492ce057e468c4
+
                           </div>
                         </div>
                         {!! Form::close()!!}

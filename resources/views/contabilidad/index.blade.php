@@ -19,17 +19,17 @@
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="desde1" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="hasta1" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l2 m2 s2">
-                    <button type="button" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                    <button type="button" id="buscar-salida-bancos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
                  <div class=" ">
@@ -52,11 +52,25 @@
                           <th>Observacion</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="retiroTabla">
 
                       </tbody>
                     </table>
                      </div>
+
+                     <div class="col m12" style="margin-top: 20px;">
+
+                          <span id="icono1"></span>
+
+                       <table class="table table-striped centered">
+                       <thead id="depositoDetalleHead">
+
+                       </thead>
+                       <tbody id="depositoDetalleTabla">
+
+                       </tbody>
+                     </table>
+                      </div>
                 </div>
               </div>
             </div>
@@ -67,17 +81,17 @@
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="desde2" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="hasta2" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l2 m2 s2">
-                    <button type="button" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                    <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
                  <div class=" ">
@@ -98,7 +112,7 @@
                           <th>Monto</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="otroRetiroTabla">
 
                       </tbody>
                     </table>
@@ -113,4 +127,8 @@
     </div>
   </div>
 
+@endsection
+
+@section('js')
+  <script src="{{ asset('js/contabilidad.js') }}"></script>
 @endsection
