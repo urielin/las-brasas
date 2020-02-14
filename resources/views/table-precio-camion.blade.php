@@ -72,14 +72,14 @@
                         {{floatval($camion->lista_mayor)}}
                       </th>
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif
                            {{floatval($camion->precio_publico)}}
                       </td>
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif
@@ -89,14 +89,14 @@
 
                   @case(0)
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif
                            {{floatval($camion->precio_publico)}}
                       </td>
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif
@@ -107,14 +107,14 @@
  
                   @default
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif
                            {{floatval($camion->precio_publico)}}
                       </td>
                       <td data-tooltip="{{$td_tooltip}}" class="{{$td_class}} mostrar-info right-align {{!empty($td_tooltip)?'tooltipped':''}}" data-codigo="{{$camion->codigo}}" data-camion="{{$camion->camion}}" data-descripcion="{{$camion->descripcion}}"
-                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}">
+                           data-sucursal="{{$camion->sucursal}}" data-publico="{{floatval($camion->precio_publico)}}" data-mayor="{{floatval($camion->precio_mayor)}}" data-fecha_baja="{{$fecha_baja}}" data-interval="{{$interval}}" data-cif_tierra="{{$camion->cif_tierra}}">
                            @if(!empty($td_tooltip))
                            <i class="{{$td_class}} text-lighten-2 material-icons small-icons p-0 m-0" style=" ">fiber_manual_record </i>
                            @endif

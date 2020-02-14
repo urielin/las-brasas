@@ -99,26 +99,23 @@
             </div>
 
 
-            <div class=" col s12 ">
+            <div class=" col s6 ">
               <label class="control-label ">Precio público: </label>
               
               <input id="publico" type="text" name="publico"  class="browser-default form-control" id="example" placeholder ="">
 
             </div>
-            <div class=" col s12 ">
+            <div class=" col s6 ">
               <label class="control-label ">Precio mayorista: </label>
               <input id="mayor" type="text" name="mayor" class="browser-default form-control">
             </div>
-
-          <!-- <div class=" col s12 ">
+            <div class=" col s6 ">
+              <label class="control-label ">CIF TIERRA </label>
+              <input id="cif_tierra" type="text" name="cif_tierra" class="browser-default form-control" disabled>
+            </div>
+          <div class=" col s6 ">
     
                   <label class="control-label " for="fecha_baja">Fecha de caducidad</label>
-                  <input id="fecha_baja"  name="fecha_baja" class="datepicker" placeholder="Selecciona una fecha" type="text" value="">
-             
-          </div> -->
-          <div class=" col s12 ">
-    
-                  <label class="control-label " for="fecha_baja">Fecha de <br> caducidad</label>
                   <input id="fecha_baja"  name="fecha_baja" class="browser-default form-control" placeholder="Selecciona una fecha" type="date" value="">
              
           </div>
