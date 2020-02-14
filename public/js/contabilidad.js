@@ -47,13 +47,13 @@ $(document).on('click','#mostrar-detalle',function(){
               $('#depositoDetalleTabla').empty();
 
               $('#icono1').append('<div style="display: flex"><i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span></div>');
-              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th>Tipo</th><th>Operación</th><th>Suc</th><th>Nombre Sucursal</th><th>Caja</th><th>Nro. Deposito</th><th>Fecha</th><th>Monto</th><th>Observaciones</th><th>Fecha Cartola</th><th>Eliminar</th></tr>');
+              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th>Tipo</th><th>Operación</th><th>Suc</th><th>Nombre Sucursal</th><th>Caja</th><th>Nro. Deposito</th><th>Fecha</th><th>Monto</th><th>Observaciones</th><th>Fecha Cartola</th><th>Acción</th></tr>');
               $.each(res.depositosDetalle, function(index,value){
 
                   if (value.tipo == "1") {
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC+"</td><td>"+value.SUCU_CODIGO+" </td><td>"+ value.SUCU_NOMBRE +"</td><td> - </td><td> - </td><td>"+ value.fecha_ingreso +" </td><td>"+ value.monto +"</td><td>"+ value.descripcion +"</td><td>"+ value.cartola_fecha +"</td><td>X</td></tr>");
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC+"</td><td>"+value.SUCU_CODIGO+" </td><td>"+ value.SUCU_NOMBRE +"</td><td> - </td><td> - </td><td>"+ value.fecha_ingreso +" </td><td>"+ value.monto +"</td><td>"+ value.descripcion +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value="" style="color: rgba(255, 255, 255, 0.901961);" class="editar-gestion  btn red darken-1">Eliminar</button></td></tr>');
                   } else {
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ value.OPER_DESC+"</td><td>"+value.SUCU_CODIGO+" </td><td>"+ value.SUCU_NOMBRE +"</td><td> - </td><td> - </td><td>"+ value.fecha_ingreso +" </td><td>"+ value.monto +"</td><td>"+ value.descripcion +"</td><td>"+ value.cartola_fecha +"</td><td>X</td></tr>");
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ value.OPER_DESC+"</td><td>"+value.SUCU_CODIGO+" </td><td>"+ value.SUCU_NOMBRE +"</td><td> - </td><td> - </td><td>"+ value.fecha_ingreso +" </td><td>"+ value.monto +"</td><td>"+ value.descripcion +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value="" style="color: rgba(255, 255, 255, 0.901961);" class="editar-gestion  btn red darken-1">Eliminar</button></td></tr>');
                   }
                   if (value.monto == null) {
                     montoTotal+=0;

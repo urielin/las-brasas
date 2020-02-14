@@ -37,7 +37,7 @@
                       <div style="display: flex">
                         <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
                       </div>
-                      <table class="table table-striped centered">
+                      <table class="table responsive-table centered">
                       <thead>
                         <tr>
                           <th width='6%'>ID</th>
@@ -62,7 +62,7 @@
 
                           <span id="icono1"></span>
 
-                       <table class="table table-striped centered">
+                       <table class="table responsive-table centered">
                        <thead id="depositoDetalleHead">
 
                        </thead>
@@ -94,30 +94,40 @@
                     <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
-                 <div class=" ">
-                    <div class="col m12" style="margin-top: 20px;">
-                      <div style="display: flex">
-                        <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
-                      </div>
-                      <table class="table table-striped centered">
-                      <thead>
-                        <tr>
-                          <th width='6%'>ID</th>
-                          <th>Folio</th>
-                          <th>Fecha</th>
-                          <th>Descripcion</th>
-                          <th>Sucursal</th>
-                          <th>Usuario</th>
-                          <th>Deposito</th>
-                          <th>Monto</th>
-                        </tr>
-                      </thead>
-                      <tbody id="otroRetiroTabla">
 
-                      </tbody>
-                    </table>
-                     </div>
-                </div>
+                <div class="row">
+                  <div class="col s12">
+                  </div>
+                  <div class="col s12 dataTables_scrollBody">
+
+                         <div class=" ">
+                           
+                            <div class="col m12" style="margin-top: 20px;">
+                              <div style="display: flex">
+                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                              </div>
+                              <table class="responsive-table centered striped">
+                              <thead>
+                                <tr>
+                                  <th width='6%'>ID</th>
+                                  <th>Folio</th>
+                                  <th>Fecha</th>
+                                  <th>Descripcion</th>
+                                  <th>Sucursal</th>
+                                  <th>Usuario</th>
+                                  <th>Deposito</th>
+                                  <th>Monto</th>
+                                </tr>
+                              </thead>
+                              <tbody id="otroRetiroTabla">
+
+                              </tbody>
+                            </table>
+                             </div>
+                        </div>
+
+                    </div>
+                  </div>
               </div>
             </div>
             <div id="test3" class="col s12  lighten-4">Test 2</div>
