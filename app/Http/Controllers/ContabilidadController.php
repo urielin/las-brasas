@@ -102,38 +102,5 @@ public function getOtroRetiro(Request $request)
         }
   }
 
-  public function getCamion(Request $request)
-  {
-
-        if ($request -> ajax()) {
-
-
-              $camiones=DB::select("SELECT camion=CAST(codigo AS NVARCHAR(20))
-              FROM dbsys.camiones c
-                   inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
-              WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '1'");
-
-
-        if ($camiones != null) {
-          foreach ($camiones as $camion) {
-            $camionArray[$camion->camion] = $camion->camion ;
-          }
-          return response()->json($camionArray);
-
-        }else {
-          $camionArray['1'] = 'Camiones no encontrados' ;
-          return response()->json($camionArray);
-        }
-        // return $camionArray;
-      }
-  }
-
-
-
-
-
-
-
-
 
 }
