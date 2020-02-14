@@ -3,80 +3,85 @@
 @section('content')
 
 
-<h5>Contenedores / Camiones - PARA RECEPCIÓN</h5>
-
-<br>
-
-  <div class="row">
-    <div class="col s12 l4">
-      <div class="card card card-default scrollspy">
-          <div class="row pt-2 pb-1">
-            <form  method="post" id="buscar-camion" class="col s12">
-              <div class="row">
-                <div class="mb-1 col s12 l12">
-                  @csrf
-                  <label for="buscar-codigo-camion">Buscar camión</label>
-                  <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
-                  <input type="text" name="codigo" class="form-control browser-default" id="buscar-codigo-camion" placeholder="Ingrese código camión">
-                </div>
-              </div>
-
-
-              <div class="row">
-                <div class="mt-1 mb-1 col s12 l12">
-                  <button type="submit" name="actualizar" class="btn btn-primary mt-1 float-right browser-default">Buscar</button>
-                </div>
-              </div>
-            </form>
+<div class="card card card-default scrollspy">
+  <div class="row" style="padding:20px">
+      <div style="display: flex; justify-content: space-between">
+          <div style="display: flex">
+            <i class="material-icons dp48">subject</i><span class="card-title">Contenedores / Camiones - PARA RECEPCIÓN</span>
           </div>
       </div>
-    </div>
+      <div class="col s12 l4" style="margin-top: 20px;">
+            <div class="">
 
-    {{-- ------------------------------------------- --}}
+              <div class="row">
+                <form  method="post" id="buscar-camion" class="col s12">
+                  <div class="row">
+                    <div class="mb-1 col s12 l12">
+                      @csrf
+                      <label for="buscar-codigo-camion">Buscar camión</label>
 
-    <div class="col s12 l8">
-      <div class="card card card-default scrollspy">
-            <div class="row pt-3 pb-5">
-              <form class="col s12">
-                <div class="row">
-
-                  <div class="col s12 l3">
-                    <form class="" action="index.html" method="post">
-                        <label for="anio" >Ingresar año</label>
-                        <select class="form-control browser-default" id="anio">
-                          <option>Año</option>
-                          @foreach ($year as $y)
-                            <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
-                          @endforeach
-                        </select>
-                      </form>
+                      <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
+                      <div class="input-group">
+                        <input type="text" name="codigo" class="form-control browser-default" id="buscar-codigo-camion" placeholder="Ingrese código camión" style="border-radius:0px">
+                        <div class="input-group-append">
+                          <button type="submit" name="actualizar" class="btn btn-50 cyan " style="border-radius: 0px !important; line-height: 45px !important; height:45px !important;width:46px !important">
+                            <i class="material-icons dp48">search</i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="col s12 l4">
-                    <form >
-                      <label for="clasificacion">Clasificar camión </label>
-                      <select class="form-control browser-default" id="clasificacion">
-                      </select>
-                    </form>
-                  </div>
 
-                  <div class="col s12 l5">
-                    <form >
+                </form>
+              </div>
+            </div>
+
+      </div>
+      <div class="col s12 l8" style="margin-top: 20px;">
+        <div class="row">
+
+          <div class="row ">
+            <form class="col s12">
+              <div class="row">
+
+                <div class="col s12 l3">
+                  <form class="" action="index.html" method="post">
+                    <label for="anio" >Ingresar año</label>
+                    <select class="form-control browser-default" id="anio">
+                      <option>Año</option>
+                      @foreach ($year as $y)
+                      <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
+                      @endforeach
+                    </select>
+                  </form>
+                </div>
+
+                <div class="col s12 l4">
+                  <form >
+                    <label for="clasificacion">Clasificar camión </label>
+                    <select class="form-control browser-default" id="clasificacion">
+                    </select>
+                  </form>
+                </div>
+
+                <div class="col s12 l5">
+                  <form >
 
                     <input type="hidden" name="action" id="icamion"  value="camion">
                     <label for="camion">Seleccionar camión </label>
                     <select class="form-control browser-default" value="camion" id="camion">
                     </select>
                   </form>
-                  </div>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
         </div>
     </div>
   </div>
 
-  <hr>
+</div>
 
   <div class="row">
     <div class="col s12">
@@ -92,7 +97,7 @@
                   <div id="test1" class="col s12">
                     <div class="row">
                         <div class="col s12 m12 l12">
-                              <div id="responsive-table" class="card card card-default scrollspy">
+                              <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
                                   <h4 class="card-title"></h4>
                                   <p class="mb-2"></p>
@@ -116,8 +121,8 @@
                     </div>
                   </div>
 
-                  <div id="test2" class="col s12">
-{{-- ------------------------- --}}
+                  <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
+
                         <div class="row">
                           <div class="col s12">
                             <ul class="tabs">
@@ -128,7 +133,7 @@
                               <li class="tab col m3"><a href="#cinco">Valor total del camion</a></li>
                             </ul>
                           </div>
-                          <div id="uno" class="col s12">
+                          <div id="uno" class="col s12"  style="padding-top:20px">
                             Datos de camión
 
                             <div class="row ">
@@ -139,7 +144,7 @@
                                           <form method="POST" id="consulta1" class="col s12 form-group">
                                                     @csrf
 
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
+                                            <div class=" pt-2 pb-3">
                                               <div class="row pb-2">
 
                                                     <div class=" col s12 l6">
@@ -235,13 +240,13 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
+                                                <div class="row " align="center">
+                                                      <div class="col s12 l12 ">
 
                                                         <span id="bandera-general"></span>
                                                         <input type="hidden" name="ac"  value="">
                                                         <input type="hidden" name="action" id="action" value="Editar">
-                                                        <input type="submit" name="action_b1" id="action_b1" class="btn btn-primary mt-1 float-center" value="Actualizar">
+                                                        <input type="submit" name="action_b1" id="action_b1" class="btn cyan mt-1 float-center" value="Actualizar">
                                                       </div>
                                                 </div>
                                             </div>
@@ -250,9 +255,8 @@
                                     @php } @endphp
                             </div>
                           </div>
-{{-- ----------------------------------------------                             --}}
 
-                          <div id="dos" class="col s12">
+                          <div id="dos" class="col s12"  style="padding-top:20px">
                             Fecha embarque y llegada
 
                             <div class="row">
@@ -262,7 +266,7 @@
                                           <form  method="post" id="consulta2" class="col s12">
                                                     @csrf
 
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
+                                            <div class=" pt-2 pb-3">
                                               <div class="row pb-2">
                                                     <div class="col s12 l12">
 
@@ -310,10 +314,10 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row pb-2">
+                                                <div class="row pb-2" align="center">
                                                       <div class="col s12 l12">
                                                         <input type="hidden" name="action" id="action_2" value="Editar">
-                                                        <input type="submit" name="action_b2" id="action_b2" class="btn btn-primary mt-1 float-center" value="Actualizar">
+                                                        <input type="submit" name="action_b2" id="action_b2" class="btn cyan mt-1 float-center" value="Actualizar">
                                                       </div>
                                                 </div>
                                             </div>
@@ -324,9 +328,8 @@
                           </div>
 
 
-{{-- --------------------------------------- --}}
 
-                          <div id="cuatro" class="col s12">
+                          <div id="cuatro" class="col s12"  style="padding-top:20px">
                             Datos embarque y llegada
                             <div class="row">
                             @php if ($datos != '[]') { @endphp @php } else { @endphp
@@ -335,7 +338,7 @@
                                         <form method="POST" id="consulta4" class="col s12">
                                                   @csrf
 
-                                          <div class="card card card-default scrollspy pt-2 pb-3">
+                                          <div class=" pt-2 pb-3">
                                             <div class="row pb-2">
                                                   <div class="col s12 l6">
 
@@ -405,12 +408,12 @@
                                               </div>
 
 
-                                              <div class="row ">
+                                              <div class="row " align="center">
                                                     <div class="col s12 l12">
 
 
                                                       <input type="hidden" name="action" id="action4" value="Editar">
-                                                      <input type="submit" name="action_b4" id="action_b4" class="btn btn-primary mt-1 float-center" value="Actualizar">
+                                                      <input type="submit" name="action_b4" id="action_b4" class="btn cyan mt-1 float-center" value="Actualizar">
                                                     </div>
                                               </div>
                                           </div>
@@ -424,7 +427,7 @@
                             {{-- ------------------------------- --}}
 
 
-                          <div id="cinco" class="col s12">
+                          <div id="cinco" class="col s12"  style="padding-top:20px">
                             Valor total del camion
 
                             <div class="row">
@@ -434,7 +437,7 @@
                                           <form method="POST" id="consulta5" class="col s12">
                                                     @csrf
 
-                                            <div class="card card card-default scrollspy pt-2 pb-3">
+                                            <div class=" pt-2 pb-3">
                                               <div class="row pb-2">
                                                     <div class="col s12 l6">
 
@@ -477,12 +480,12 @@
 
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row " align="center">
                                                       <div class="col s12 l12">
 
 
                                                         <input type="hidden" name="action" id="action5" value="Editar">
-                                                        <input type="submit" name="action_b5" id="action_b5" class="btn btn-warning" value="Actualizar">
+                                                        <input type="submit" name="action_b5" id="action_b5" class="btn cyan" value="Actualizar">
                                                       </div>
                                                 </div>
                                             </div>
@@ -491,13 +494,7 @@
                                     @php } @endphp
                             </div>
                           </div>
-                            {{-- ------------------------------------ --}}
-
-
                         </div>
-
-
-{{-- -------------------------------------- --}}
                   </div>
           </div>
       </div>
