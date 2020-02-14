@@ -85,13 +85,14 @@ table.table-precio-camion td i.material-icons {
     top: 20px;
 }
 .precio-camion-modal {
-    min-height: 80%;
-    top: 5%;
+    left: 0 !important;
+    right: 0 !important;
+    min-height: 80% !important;
+    top: 5% !important;
 }
 
 @media (min-width: 992px){
 .precio-camion-modal {
-    width: 40% !important;
-    height: 53% !important;
+    min-height: 90% !important;
 }
 }
