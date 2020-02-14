@@ -59,17 +59,17 @@
                      </div>
 
                      <div class="col m12" style="margin-top: 20px;">
+                       <span id="icono1"></span>
 
-                          <span id="icono1"></span>
+                           <table class="responsive-table striped">
+                             <thead id="depositoDetalleHead">
 
-                       <table class="table responsive-table centered">
-                       <thead id="depositoDetalleHead">
+                             </thead>
+                             <tbody id="depositoDetalleTabla">
 
-                       </thead>
-                       <tbody id="depositoDetalleTabla">
+                             </tbody>
+                           </table>
 
-                       </tbody>
-                     </table>
                       </div>
                 </div>
               </div>
@@ -100,8 +100,7 @@
                   </div>
                   <div class="col s12 dataTables_scrollBody">
 
-                         <div class=" ">
-                           
+
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
@@ -124,10 +123,12 @@
                               </tbody>
                             </table>
                              </div>
-                        </div>
+
 
                     </div>
                   </div>
+
+
               </div>
             </div>
             <div id="test3" class="col s12  lighten-4">Test 2</div>
