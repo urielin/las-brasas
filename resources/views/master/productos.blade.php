@@ -58,7 +58,7 @@
       <div class="col l3 m12 s12">
         <div class="card">
           <div class="card-body" style="height: 25vh; overflow-y: auto;">
-            <table id='productTable' class="centered">
+            <table id='productTable' class="table centered">
               <thead>
                 <tr>
                   <th style='width: 30%;'>COD.</th>
@@ -241,7 +241,7 @@
                     </div>
                     <div>
 
-                      <table id='catalogoTable' style=" " class="responsive-table centered table-striped">
+                      <table id='catalogoTable' style=" " class="table responsive-table centered table-striped">
                         <thead>
                           <tr >
                             <th width='7%'>Padre</th>

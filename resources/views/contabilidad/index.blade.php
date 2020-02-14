@@ -19,44 +19,58 @@
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="desde1" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="hasta1" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l2 m2 s2">
-                    <button type="button" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                    <button type="button" id="buscar-salida-bancos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
                  <div class=" ">
-                    <div class="col m12" style="margin-top: 20px;">
+                    <div class="col l12 m12 s12" style="margin-top: 20px;">
                       <div style="display: flex">
                         <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
                       </div>
-                      <table class="table table-striped centered">
-                      <thead>
-                        <tr>
-                          <th width='6%'>ID</th>
-                          <th>Tipo Retiro</th>
-                          <th>Desde</th>
-                          <th>Hasta</th>
-                          <th>Cantidad</th>
-                          <th>Monto total</th>
-                          <th>Estado</th>
-                          <th>Fecha cierre</th>
-                          <th>Responsable</th>
-                          <th>Observacion</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                      <table id='tableRetiroProsegur' class="table responsive-table">
+                        <thead>
+                          <tr>
+                            <th width='6%'>ID</th>
+                            <th>Tipo Retiro</th>
+                            <!--<th>Desde</th>
+                            <th>Hasta</th>-->
+                            <th>Cantidad</th>
+                            <th>Monto total</th>
+                            <th>Estado</th>
+                            <th>Fecha cierre</th>
+                            <th>Responsable</th>
+                            <th>Observacion</th>
+                          </tr>
+                        </thead>
+                        <tbody id="retiroTabla">
 
-                      </tbody>
-                    </table>
+                        </tbody>
+                      </table>
                      </div>
+
+                     <div class="col m12" style="margin-top: 20px;">
+
+                          <span id="icono1"></span>
+
+                       <table class="table responsive-table centered">
+                       <thead id="depositoDetalleHead">
+
+                       </thead>
+                       <tbody id="depositoDetalleTabla">
+
+                       </tbody>
+                     </table>
+                      </div>
                 </div>
               </div>
             </div>
@@ -67,43 +81,53 @@
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="desde2" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l5 m5 s5">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
-                      <input type="date" class="form-control browser-default">
+                      <input type="date" id="hasta2" class="form-control browser-default">
                     </div>
                   </div>
                   <div class="col l2 m2 s2">
-                    <button type="button" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                    <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
-                 <div class=" ">
-                    <div class="col m12" style="margin-top: 20px;">
-                      <div style="display: flex">
-                        <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
-                      </div>
-                      <table class="table table-striped centered">
-                      <thead>
-                        <tr>
-                          <th width='6%'>ID</th>
-                          <th>Folio</th>
-                          <th>Fecha</th>
-                          <th>Descripcion</th>
-                          <th>Sucursal</th>
-                          <th>Usuario</th>
-                          <th>Deposito</th>
-                          <th>Monto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
 
-                      </tbody>
-                    </table>
-                     </div>
-                </div>
+                <div class="row">
+                  <div class="col s12">
+                  </div>
+                  <div class="col s12 dataTables_scrollBody">
+
+                         <div class=" ">
+
+                            <div class="col m12" style="margin-top: 20px;">
+                              <div style="display: flex">
+                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                              </div>
+                              <table class=" table responsive-table centered striped">
+                              <thead>
+                                <tr>
+                                  <th width='6%'>ID</th>
+                                  <th>Folio</th>
+                                  <th>Fecha</th>
+                                  <th>Descripcion</th>
+                                  <th>Sucursal</th>
+                                  <th>Usuario</th>
+                                  <th>Deposito</th>
+                                  <th>Monto</th>
+                                </tr>
+                              </thead>
+                              <tbody id="otroRetiroTabla">
+
+                              </tbody>
+                            </table>
+                             </div>
+                        </div>
+
+                    </div>
+                  </div>
               </div>
             </div>
             <div id="test3" class="col s12  lighten-4">Test 2</div>
@@ -113,4 +137,8 @@
     </div>
   </div>
 
+@endsection
+
+@section('js')
+  <script src="{{ asset('js/contabilidad.js') }}"></script>
 @endsection

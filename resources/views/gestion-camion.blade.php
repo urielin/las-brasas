@@ -240,8 +240,8 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row ">
-                                                      <div class="col s12 l12">
+                                                <div class="row " align="center">
+                                                      <div class="col s12 l12 ">
 
                                                         <span id="bandera-general"></span>
                                                         <input type="hidden" name="ac"  value="">
@@ -314,7 +314,7 @@
                                                       </div>
                                                 </div>
 
-                                                <div class="row pb-2">
+                                                <div class="row pb-2" align="center">
                                                       <div class="col s12 l12">
                                                         <input type="hidden" name="action" id="action_2" value="Editar">
                                                         <input type="submit" name="action_b2" id="action_b2" class="btn cyan mt-1 float-center" value="Actualizar">
@@ -408,7 +408,7 @@
                                               </div>
 
 
-                                              <div class="row ">
+                                              <div class="row " align="center">
                                                     <div class="col s12 l12">
 
 
@@ -480,7 +480,7 @@
 
                                                 </div>
 
-                                                <div class="row ">
+                                                <div class="row " align="center">
                                                       <div class="col s12 l12">
 
 

@@ -19,7 +19,9 @@ Route::group(['middleware'=> ['guest']],function(){
 });
 
 Route::group(['middleware' => 'auth_custom'], function () {
+
   Route::get('/', 'UsuariosController@index');
+
   Route::get('/home', 'UsuariosController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
@@ -68,6 +70,13 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
   Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
 
+//---------------------------------------
   Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
+  Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
+  Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
+  Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
+
+
+
 
 });

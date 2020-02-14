@@ -42,6 +42,7 @@
                       </ul>
                     </div>
                     <div id="test1" class="col s12">
+
                       <div class="container" style="margin-top: 30px">
                         {!! Form::open(['route' => ['showCambio'], 'method' => 'get', 'enctype' => 'multipart/form-data'])!!}
                         @csrf
@@ -58,6 +59,7 @@
                         </div>
                         {!! Form::close()!!}
                       </div>
+
                     </div>
                     <div id="test2" class="col s12">
                       <div class="container" style="margin-top: 30px">
@@ -77,6 +79,7 @@
 
                           <div class="col l2 ">
                             <button type="submit" name="actualizar" class="btn btn-45 cyan" style="margin-top: 21px;width:200px !important">Actualizar Mes</button>
+
                           </div>
                         </div>
                         {!! Form::close()!!}
