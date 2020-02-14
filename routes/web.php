@@ -12,13 +12,14 @@
 */
 
 Route::group(['middleware'=> ['guest']],function(){
+  Route::get('/','Auth\LoginController@showLoginForm');
+  Route::get('/logout','Auth\LoginController@showLoginForm')->name('logout');
   Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'Auth\LoginController@login');
 });
 
 Route::group(['middleware' => 'auth_custom'], function () {
-  Route::get('/', 'UsuariosController@index')->name('home');
-
+  Route::get('/', 'UsuariosController@index');
   Route::get('/home', 'UsuariosController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');

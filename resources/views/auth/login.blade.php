@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
                             <div class="col-md-6">
-                                <input id="pass" type="text" class="form-control " name="pass" required autocomplete="current-password">
+                                <input id="pass" type="password" class="form-control " name="pass" required autocomplete="current-password">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
