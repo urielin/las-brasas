@@ -8,8 +8,8 @@
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
     <title>Las brasas | Grupo Arinez</title>
-    <!-- <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon-152x152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon-32x32.png"> -->
+    <!-- <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon-152x152.png">-->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="assets/css/main.css" rel="stylesheet">
@@ -64,9 +64,14 @@
 
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
       <div class="brand-sidebar">
-        <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="/">
-        <img class="hide-on-med-and-down" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8jtUc7a4cG1e8lYJqDa-NQGo6V2jLspu33gfebJW84yWuTeuW" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
+        <h1 class="logo-wrapper"><a class="brand-logo darken-1 hide-on-med-and-down" href="/">
+        <img class="" src="assets/images/favicon/icon.png" alt="materialize logo" style=" position: absolute; top: 15px; margin: 0 6px; height: 32px; ">
+        <span>
+        <img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
+        </span>
         </a>
+        <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+        </h1>
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li class="navigation-header">
@@ -104,7 +109,7 @@
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li><a href="{{route('precio-camion')}}" >
                 <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
-                <span data-i18n="404">Precios unitarios</span>
+                <span data-i18n="404">Precios por camion</span>
               </a>
               </li>
               <li><a href="{{route('product.index')}}">

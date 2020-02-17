@@ -17,14 +17,14 @@
             </div>
             <div class="card-body" style="padding: 15px">
               <div class="table-wrapper" style="margin: 10px;" >
-              <table class="table centered table-responsive align-items-center table-flush" style="padding: 15px">
+              <table class="table responsive-table " style="padding: 15px">
                 <thead class="thead-light">
                   <tr>
-                    <th width='5%'>#</th>
-                    <th scope="col" width='12%'>Usuario</th>
-                    <th scope="col" width='15%'>Apellido Paterno</th>
-                    <th scope="col" width='15%'>Apellido Materno</th>
-                    <th scope="col" width='20%'>Nombres</th>
+                    <th >#</th>
+                    <th scope="col" >Usuario</th>
+                    <th scope="col" >Ap. Paterno</th>
+                    <th scope="col" >Ap. Materno</th>
+                    <th scope="col" >Nombres</th>
                     <th scope="col">Cargo</th>
                   </tr>
                 </thead>
