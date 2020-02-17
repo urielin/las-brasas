@@ -51,9 +51,8 @@ class ContabilidadController extends Controller
 public function getOtroRetiro(Request $request)
 {
         if ($request -> ajax()) {
-
-
-                $otrosRetiros=DB::select("SELECT rd.folio, ro.fecha_ingreso, ro.descripcion, s.SUCU_NOMBRE, op.OPER_DESC,rd.usuario,ro.monto FROM  dbo.MODULO_RETIROS_INDICE_DETALLE rd
+                    
+                $otrosRetiros=DB::select("SELECT rd.folio, ro.fecha_ingreso, ro.descripcion, s.SUCU_NOMBRE, op.OPER_DESC,rd.usuario,ro.deposito,ro.monto FROM  dbo.MODULO_RETIROS_INDICE_DETALLE rd
                           INNER JOIN   dbo.MODULO_RETIROS_INDICE ri on ri.id_retiros_indice = rd.id_retiros_indice
                            left outer join dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio
                           left outer join dbo.ADM_SUCURSAL s on ro.sucursal =s.SUCU_CODIGO
@@ -80,11 +79,13 @@ public function getOtroRetiro(Request $request)
           if ($request -> ajax()) {
 
 
-                  $depositosDetalle1=DB::select("SELECT rc.folio, rd.tipo, op.OPER_DESC, rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
+                  $depositosDetalle1=DB::select("SELECT rc.folio, rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
                                         FROM dbo.MODULO_RETIROS_INDICE ri
                                         INNER JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on ri.id_retiros_indice = rd.id_retiros_indice
                                         INNER JOIN dbo.MODULO_RETIROS_CAJA rc on rd.folio =rc.folio
                                         INNER JOIN dbo.MODULO_RETIROS_CAJA_DETALLE rcd on rc.folio=rcd.id_folio
+                                        INNER JOIN ID_PUNTEROS_CAJAS ipc on rc.num_caja = ipc.id_caja
+	                                      INNER JOIN dbo.ADM_SUCURSAL s on ipc.id_sucursal =s.SUCU_CODIGO
                                         INNER JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
                                         WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo ='1'");
 
@@ -104,7 +105,7 @@ public function getOtroRetiro(Request $request)
 
                           'depositosDetalle1'              =>$depositosDetalle1,
                           'depositosDetalle2'              =>$depositosDetalle2
-                            
+
                         ]);
 
                   }else {

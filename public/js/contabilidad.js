@@ -68,9 +68,9 @@ $(document).on('click','#mostrar-detalle',function(){
                   // let cartola_fecha = value.cartola_fecha == null ? '-' : value.cartola_fecha;
 
                   if (value.tipo == "1") {
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td> - </td><td> - </td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ value.fecha_caja +" </td><td>"+value.monto +"</td><td>"+ value.obs +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value=""   class="editar-gestion  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ value.fecha_caja +" </td><td>"+value.monto +"</td><td>"+ value.obs +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value=""   class="editar-gestion  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
                   } else {
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ value.OPER_DESC +"</td><td> - </td><td> - </td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ value.fecha_caja +" </td><td>"+value.monto +"</td><td>"+ value.obs +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value=""   class="editar-gestion  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ value.fecha_caja +" </td><td>"+value.monto +"</td><td>"+ value.obs +"</td><td>"+ value.cartola_fecha +'</td><td><button type="button" value=""   class="editar-gestion  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
                   }
                   if (value.monto == null) {
                     montoTotal+=0;
@@ -130,14 +130,14 @@ $(document).on('click','#buscar-otros-depositos',function(){
                   console.log(res);
               $('#otroRetiroTabla').empty();
               $.each(res.otrosRetiros, function(index,value){
-                  $('#otroRetiroTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.fecha_ingreso +"</td><td>"+ value.descripcion+"</td><td>"+value.SUCU_NOMBRE+" </td><td>"+ value.OPER_DESC +"</td><td>"+ value.usuario +" </td><td> - </td><td>"+ value.monto +"</td></tr>");
+                  $('#otroRetiroTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.fecha_ingreso +"</td><td>"+ value.descripcion+"</td><td>"+value.SUCU_NOMBRE+" </td><td>"+ value.OPER_DESC +"</td><td>"+ value.usuario +" </td><td>"+ value.monto +"</td><td>"+ value.monto +"</td></tr>");
                   if (value.monto == null) {
                     montoOtroTotal+=0;
                   } else {
                       montoOtroTotal+=parseFloat(value.monto);
                   }
               });
-              $('#otroRetiroTabla').append("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td> - </td><td>"+ montoOtroTotal +"</td></tr>");
+              $('#otroRetiroTabla').append("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>"+ montoOtroTotal +"</td></tr>");
 
 
 
