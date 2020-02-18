@@ -9,7 +9,7 @@
     <meta name="author" content="ThemeSelect">
     <title>Las brasas | Grupo Arinez</title>
     <!-- <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon-152x152.png">-->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png"> 
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="assets/css/main.css" rel="stylesheet">
@@ -214,8 +214,6 @@
     @yield('js')
 
     @yield('modal')
-
-
   </body>
 
  </html>
