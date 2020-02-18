@@ -57,7 +57,8 @@ public function getOtroRetiro(Request $request)
                            left outer join dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio
                           left outer join dbo.ADM_SUCURSAL s on ro.sucursal =s.SUCU_CODIGO
                           left outer join dbo.MODULO_TP_OPERACION op on ro.t_oper= op.OPER_COD
-                          WHERE fecha_desde >= convert(date,'$request->fecha1') and fecha_hasta <= convert(date,'$request->fecha2') and rd.tipo='2'");
+                          WHERE fecha_desde >= convert(date,'$request->fecha1') and fecha_hasta <= convert(date,'$request->fecha2') and rd.tipo='2'
+                          order by ro.fecha_ingreso desc");
 
                 if ($otrosRetiros != null) {
                   return response()->json([
