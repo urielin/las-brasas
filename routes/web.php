@@ -77,6 +77,34 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
 
 
+  // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
 
+  Route::get('/reporte', function () {
+
+    $mpdf = new \Mpdf\Mpdf([
+      'margin_left' => 20,
+      'margin_right' => 15,
+      'margin_top' => 48,
+      'margin_bottom' => 25,
+      'margin_header' => 10,
+      'margin_footer' => 10
+    ]);
+
+    $mpdf->SetProtection(array('print'));
+    $mpdf->SetTitle("Resumen de transacciones");
+    $mpdf->SetAuthor("Las Brasas");
+    $mpdf->SetWatermarkText("LAS BRASAS");
+    $mpdf->showWatermarkText = true;
+    $mpdf->watermark_font = 'DejaVuSansCondensed';
+    $mpdf->watermarkTextAlpha = 0.1;
+    $mpdf->SetDisplayMode('fullpage');
+    $html =view('reports.resumen-retiros-prosegur')->render();
+    $mpdf->WriteHTML($html);
+
+    $mpdf->Output();
+
+  });
+
+  Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
 
 });

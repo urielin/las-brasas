@@ -42,8 +42,8 @@
                           <tr>
                             <th width='6%'>ID</th>
                             <th>Tipo Retiro</th>
-                            <!--<th>Desde</th>
-                            <th>Hasta</th>-->
+                            <th>Desde</th>
+                            <th>Hasta</th>
                             <th>Cantidad</th>
                             <th>Monto total</th>
                             <th>Estado</th>
@@ -59,17 +59,17 @@
                      </div>
 
                      <div class="col m12" style="margin-top: 20px;">
+                       <span id="icono1"></span>
 
-                          <span id="icono1"></span>
+                           <table class="responsive-table striped">
+                             <thead id="depositoDetalleHead">
 
-                       <table class="table responsive-table centered">
-                       <thead id="depositoDetalleHead">
+                             </thead>
+                             <tbody id="depositoDetalleTabla">
 
-                       </thead>
-                       <tbody id="depositoDetalleTabla">
+                             </tbody>
+                           </table>
 
-                       </tbody>
-                     </table>
                       </div>
                 </div>
               </div>
@@ -100,7 +100,6 @@
                   </div>
                   <div class="col s12 dataTables_scrollBody">
 
-                         <div class=" ">
 
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
@@ -109,11 +108,11 @@
                               <table class=" table responsive-table centered striped">
                               <thead>
                                 <tr>
-                                  <th width='6%'>ID</th>
-                                  <th>Folio</th>
+                                  <th  width='6%'>Folio</th>
                                   <th>Fecha</th>
                                   <th>Descripcion</th>
                                   <th>Sucursal</th>
+                                  <th>Operación</th>
                                   <th>Usuario</th>
                                   <th>Deposito</th>
                                   <th>Monto</th>
@@ -124,10 +123,12 @@
                               </tbody>
                             </table>
                              </div>
-                        </div>
+
 
                     </div>
                   </div>
+
+
               </div>
             </div>
             <div id="test3" class="col s12  lighten-4">Test 2</div>

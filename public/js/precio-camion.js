@@ -21,6 +21,7 @@ $(document).ready(function(){
         // $('#pc-modal #fecha_baja').setDate(new Date(data.fecha_baja));
         // interval= $('#pc-modal #interval').val(data.interval);
         interval=Math.floor(data.interval);
+        $('#pc-modal #cif_tierra').val(data.cif_tierra);
         console.log(interval);
         if (interval<0) {
             $('#pc-modal .modal-title').html('Modificar precio <br>(La oferta expiro hace  '+Math.abs(interval)+' horas)');

@@ -61,12 +61,10 @@
     <div class="row">
     <div class="col s12 m12 l12">
       <div id="responsive-table" class="card card card-default scrollspy">
-        <div class="card-content pt-0" style=" margin-top: -6px; overflow: scroll; height: 60vh; ">
-          <h4 class="card-title"></h4>
-          <p class="mb-2"></p>
+        <div class="card-content pl-1 pt-1" style=" margin-top: -6px; overflow: scroll; height: 60vh; ">
+  
           <div class="row">
-            <div class="col s12">
-            </div>
+       
             <div id="table-precio-camion" class="col s12 dataTables_scrollBody">
                @include('table-precio-camion', ['PrecioCamion' => $PrecioCamion])
             </div>
@@ -78,49 +76,46 @@
 
 
 <!-- modal  -->
-<div id="pc-modal" class="modal modal-fixed-footer precio-camion-modal" role="dialog" style="">
+<div id="pc-modal" class="modal modal-fixed-footer precio-camion-modal col s10 p-0 l5" role="dialog" style="">
       <form method="post" id="actualizar_precio" action="{{route('actualizar-ofertas')}}" enctype="multipart/form-data">
 
-      <div class="modal-content container" style=" background: white; ">
+      <div class="modal-content container pb-0" style=" background: white; ">
          <h5 class="modal-title ">Modificar precio</h5>
           <span id="form_result"></span>
             @csrf
-            <div class=" col s12 l3">
-                <label class="control-label col-md-4 mb-0">Camión: </label>
+            <div class=" col s12 ">
+                <label class="control-label  mb-0">Camión: </label>
                 <input id="camion" type="text" name="camion"  class="browser-default form-control" disabled>
             </div>
-            <div class=" col s12 l3">
-                <label class="control-label col-md-4 mb-0">Código: </label>
+            <div class=" col s12 ">
+                <label class="control-label  mb-0">Código: </label>
                 <input id="codigo" type="text" name="codigo" class="browser-default form-control" disabled>
 
             </div>
-            <div class=" col s12 l6">
-                <label class="control-label col-md-4 mb-0">Descripción: </label>
+            <div class=" col s12 ">
+                <label class="control-label  mb-0">Descripción: </label>
                 <input id="descripcion" type="text" name="descripcion"  class="browser-default form-control" disabled> 
 
             </div>
 
 
-            <div class=" col s12 l3">
-              <label class="control-label col-md-4">Precio público: </label>
+            <div class=" col s6 ">
+              <label class="control-label ">Precio público: </label>
               
               <input id="publico" type="text" name="publico"  class="browser-default form-control" id="example" placeholder ="">
 
             </div>
-            <div class=" col s12 l3">
-              <label class="control-label col-md-4">Precio mayorista: </label>
+            <div class=" col s6 ">
+              <label class="control-label ">Precio mayorista: </label>
               <input id="mayor" type="text" name="mayor" class="browser-default form-control">
             </div>
-
-          <!-- <div class=" col s12 l6">
+            <div class=" col s6 ">
+              <label class="control-label ">CIF TIERRA </label>
+              <input id="cif_tierra" type="text" name="cif_tierra" class="browser-default form-control" disabled>
+            </div>
+          <div class=" col s6 ">
     
-                  <label class="control-label col-md-4" for="fecha_baja">Fecha de caducidad</label>
-                  <input id="fecha_baja"  name="fecha_baja" class="datepicker" placeholder="Selecciona una fecha" type="text" value="">
-             
-          </div> -->
-          <div class=" col s12 l6">
-    
-                  <label class="control-label col-md-4" for="fecha_baja">Fecha de <br> caducidad</label>
+                  <label class="control-label " for="fecha_baja">Fecha de caducidad</label>
                   <input id="fecha_baja"  name="fecha_baja" class="browser-default form-control" placeholder="Selecciona una fecha" type="date" value="">
              
           </div>
@@ -131,7 +126,7 @@
       <div class="modal-footer">
        <div class="col s12 offset-l7 l5">
               <input type="hidden" name="hidden_id" id="hidden_id">
-              <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Actualizar Datos">
+              <input type="submit" name="action_button" id="action_button" class="btn btn-warning col s12" value="Actualizar Datos">
         </div>
 
       </div>
