@@ -29,6 +29,7 @@
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
      <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
+     <link href="{{ asset('assets/css/tabs.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -185,6 +186,7 @@
     </div>
   </div>
 
+
     <script src="assets/js/vendors.min.js"></script>
     <script src="assets/vendors/sparkline/jquery.sparkline.min.js"></script>
     <!--<script src="assets/vendors/chartjs/chart.min.js"></script>-->
@@ -205,10 +207,11 @@
 
     <script src="{{ asset('js/gestion-camion.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
-
+    <!--<script src="{{ asset('js/tabs.js') }}"></script>-->
     @yield('js')
-
     @yield('modal')
+    @yield('after-scripts')
+
 
 
   </body>
