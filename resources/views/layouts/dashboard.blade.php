@@ -98,7 +98,8 @@
                   <span data-i18n="404">Prosegur</span>
                 </a>
               </li>
-              <li><a href="/comiciones-por-venta">
+              <li><a href="/comicion   -
+              0'or-venta">
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Comiciones por Venta </span></a>
               </li>
