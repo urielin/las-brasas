@@ -166,16 +166,14 @@
                               <thead>
                                 <tr>
                                   <th  width='6%'>Folio</th>
-                                  <th>Fecha</th>
-                                  <th>Descripcion</th>
-                                  <th>Sucursal</th>
-                                  <th>Operación</th>
-                                  <th>Usuario</th>
-                                  <th>Deposito</th>
                                   <th>Monto</th>
+                                  <th>Fecha caja</th>
+                                  <th>Operación</th>
+                                  <th>Tipo de cheque</th>
+                                  <th>Deposito</th>
                                 </tr>
                               </thead>
-                              <tbody id="RetiroPendienteTabla">
+                              <tbody id="retiroPendienteTabla">
 
                               </tbody>
                             </table>

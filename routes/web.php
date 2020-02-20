@@ -75,6 +75,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
   Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
+  Route::get('/obtener-depositos-pendientes', 'ContabilidadController@getRetiroPendiente')->name('getRetiroPendiente');
 
 
   // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
