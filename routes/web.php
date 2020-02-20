@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
 
 //---------------------------------------
   Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
+  Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
   Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
   Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
@@ -107,5 +108,6 @@ Route::group(['middleware' => 'auth_custom'], function () {
   });
 
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
+
 
 });
