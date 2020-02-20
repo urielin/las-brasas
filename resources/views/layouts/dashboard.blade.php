@@ -93,13 +93,24 @@
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li>
-                <a href="/contabilidad" >
+                <a class="collapsible-header waves-effect waves-cyan" >
                   <i class="material-icons">radio_button_unchecked</i>
                   <span data-i18n="404">Prosegur</span>
                 </a>
+                <div class="collapsible-body">
+                  <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a href="/contabilidad">
+                      <i class="material-icons">radio_button_unchecked</i>
+                      <span data-i18n="Page Maintenanace"> Retiros </span></a>
+                    </li>
+                    <li><a href="/ingreso-cartolas">
+                      <i class="material-icons">radio_button_unchecked</i>
+                      <span data-i18n="Page Maintenanace"> Ingreso Cartolas </span></a>
+                    </li>
+                  </ul>
+                </div>
               </li>
-              <li><a href="/comicion   -
-              0'or-venta">
+              <li><a href="/comicion-por-venta">
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Comiciones por Venta </span></a>
               </li>
