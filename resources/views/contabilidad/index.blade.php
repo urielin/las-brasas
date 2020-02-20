@@ -106,21 +106,21 @@
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
                               </div>
                               <table class=" table responsive-table centered striped">
-                              <thead>
-                                <tr>
-                                  <th  width='6%'>Folio</th>
-                                  <th>Fecha</th>
-                                  <th>Descripcion</th>
-                                  <th>Sucursal</th>
-                                  <th>Operación</th>
-                                  <th>Usuario</th>
-                                  <th>Deposito</th>
-                                  <th>Monto</th>
-                                </tr>
-                              </thead>
-                              <tbody id="otroRetiroTabla">
+                                <thead>
+                                  <tr>
+                                    <th width='6%'>Folio</th>
+                                    <th>Fecha</th>
+                                    <th>Descripcion</th>
+                                    <th>Sucursal</th>
+                                    <th>Operación</th>
+                                    <th>Usuario</th>
+                                    <th>Deposito</th>
+                                    <th>Monto</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="otroRetiroTabla">
 
-                              </tbody>
+                                </tbody>
                             </table>
                              </div>
 
