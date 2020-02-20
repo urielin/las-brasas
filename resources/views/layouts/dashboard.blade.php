@@ -29,6 +29,7 @@
      <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
      <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
      <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
+     <link href="{{ asset('assets/css/tabs.css') }}" rel="stylesheet">
 
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -85,10 +86,26 @@
            </a>
         </li>
         <li class="bold">
-          <a class="waves-effect waves-cyan " href="/contabilidad">
+          <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
             <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li>
+                <a href="/contabilidad" >
+                  <i class="material-icons">radio_button_unchecked</i>
+                  <span data-i18n="404">Prosegur</span>
+                </a>
+              </li>
+              <li><a href="/comiciones-por-venta">
+                <i class="material-icons">radio_button_unchecked</i>
+                <span data-i18n="Page Maintenanace"> Comiciones por Venta </span></a>
+              </li>
+
+
+            </ul>
+          </div>
         </li>
        <li class="navigation-header">
          <a class="navigation-header-text">SISTEMA DE GESTIÓN </a>
@@ -107,10 +124,11 @@
           </a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li><a href="{{route('precio-camion')}}" >
-                <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
-                <span data-i18n="404">Precios por camion</span>
-              </a>
+              <li>
+                <a href="{{route('precio-camion')}}" >
+                  <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
+                  <span data-i18n="404">Precios por camion</span>
+                </a>
               </li>
               <li><a href="{{route('product.index')}}">
                 <i class="material-icons">radio_button_unchecked</i>
@@ -190,6 +208,7 @@
     </div>
   </div>
 
+
     <script src="assets/js/vendors.min.js"></script>
     <script src="assets/vendors/sparkline/jquery.sparkline.min.js"></script>
     <!--<script src="assets/vendors/chartjs/chart.min.js"></script>-->
@@ -210,10 +229,13 @@
 
     <script src="{{ asset('js/gestion-camion.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
-
+    <!--<script src="{{ asset('js/tabs.js') }}"></script>-->
     @yield('js')
-
     @yield('modal')
+    @yield('after-scripts')
+
+
+
   </body>
 
  </html>

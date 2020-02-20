@@ -2,14 +2,10 @@ $(document).ready(function(){
 
   $("#tableRetiroProsegur tbody").on('click','tr', function(e){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
-  });
-
+  }); 
 });
-
 $(document).ready(function(){
-
-    $(document).on('click','#buscar-salida-bancos',function(){
-
+$(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
