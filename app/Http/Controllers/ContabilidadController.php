@@ -33,7 +33,7 @@ class ContabilidadController extends Controller
                                          INNER JOIN dbo.MODULO_RETIROS_TP_INDICE rd on r.documento=rd.TP_RET_DOCUMENTO
                                          WHERE fecha_desde >= convert(date,'$request->fecha1') and fecha_hasta <= convert(date,'$request->fecha2')");
 
-                  if ($retiros != null) {
+                  if ($retiros != null) { 
                     return response()->json([
                         'retiros'              =>$retiros
                         ]);

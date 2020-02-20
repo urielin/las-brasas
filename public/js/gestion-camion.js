@@ -1544,19 +1544,13 @@ $(document).on('change','.btn-switch',function(){
         // console.log(number);
       if (number < 10) {
         if (number == 0) {
-          // console.log('el numero es ceroooo');
+
           return '0' + number;
         }
         else {
-          // console.log('aqui hay numero may 0 y menor q 10:');
-          // console.log(number);
           return '0' + number;
         }
-       // console.log('pad');
-       // console.log('00' + number);
       }
-
-      // console.log('es numero mayor de 9');
       return number;
       }
   });
