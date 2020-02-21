@@ -6,17 +6,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-
 class ComicionVentaController extends Controller
 {
   public function index() {
 
     $gestion = DB::select('SELECT TP_GESTION, TP_GESTION as ges FROM ADM_TP_GESTION order by TP_GESTION desc');
-
-    
-
- 
-
     return view('contabilidad.comicion-por-venta')->with(compact('gestion'));
   }
 
@@ -30,10 +24,7 @@ class ComicionVentaController extends Controller
         'meses'              =>$meses
 
       ]);
-
     }
- 
-
   }
 
   public function getSucursal(){
@@ -48,11 +39,8 @@ class ComicionVentaController extends Controller
       ]);
 
     }
- 
-
   }
 
-  
   public function getVendedor(Request $request){
 
     if ($request -> ajax()){
@@ -60,22 +48,10 @@ class ComicionVentaController extends Controller
       $vendedor = DB::select("SELECT vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal FROM MODULO_VENTA_HIST vh LEFT OUTER JOIN ADM_VENDEDORES av ON vh.cod_vendedor = av.VEND_CODIGO 
                               WHERE YEAR(vh.fecha) = '$request->gestion' AND MONTH(vh.fecha) = '$request->mes'  AND vh.sucursal = '$request->sucursal'
                               GROUP BY vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal");
-    
-      
       return response()->json([
 
-        'vendedor'              =>$vendedor
-                
+        'vendedor'              =>$vendedor      
       ]);
-
     }
- 
-
   }
-  
-
-
- 
-
-
 }
