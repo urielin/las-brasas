@@ -59,23 +59,21 @@
           <table class="table table-responsive responsive-table">
             <thead>
               <tr>
-                <th>Gestion</th>
-                <th>Mes</th>
-                <th>Forma Pago</th>
-                <th>Descripcion</th>
-                <th>Cantidad</th>
+                <th>Folio</th>
+                <th>IDVenta</th>
+                <th>ProcFolio</th>
+                <th>FechaDeVenta</th>
+                <th>FormaDePago</th>
+                <th>CodVendedor</th>
+                <th>Total</th>
                 <th>Impuesto</th>
                 <th>Adicional</th>
-                <th>Monto Total</th>
-                <th>Monto Neto</th>
-                <th>Operacion</th>
-                <th>Operacion Gest</th>
-                <th>Operacion Mes</th>
-                <th>Est</th>
-                <th>Descripcion</th>
-                <th>Cartola Gestion</th>
-                <th>Cartola Mes</th>
-                <th>Monto confirmado</th>
+                <th>Comision</th>
+                <th>RUTCliente</th>
+                <th>FechaDePago</th>
+                <th>Monto</th>
+                <th>TipoDeDocumento</th>
+                <th>N° Deposito</th>
               </tr>
             </thead>
             <tbody>
