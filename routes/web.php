@@ -109,6 +109,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   });
 
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
-
+  Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
+  Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
 
 });
