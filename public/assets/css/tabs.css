@@ -1,0 +1,43 @@
+
+/* Style the tab */
+.tab {
+  float: left;
+  width: 30%;
+  height: 300px;
+}
+/* Style the buttons inside the tab */
+.tab div {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 15px;
+  width: 100%;
+  border-width: 0 0 1px 0;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+  border-width: 0px 1px 1px 1px;
+    border-color: #CECECE;
+    border-style: solid;
+}
+
+/* Change background color of buttons on hover */
+.tab div:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab div.active {
+  background-color: #fff;
+  border-left: 3px solid #7280ce;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  width: 70%;
+  border-left: none;
+}

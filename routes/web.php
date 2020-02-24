@@ -70,17 +70,20 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
   Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
 
-//---------------------------------------
+//---------------------------------------Contabilidad - Retiros prosegur
   Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
   Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
   Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
-
+  Route::get('/obtener-depositos-pendientes', 'ContabilidadController@getRetiroPendiente')->name('getRetiroPendiente');
+// ---------------------------------------Contabilidad - Confirmación bancaria
+  Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
+// -------------------------------------------------------------
 
   // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
 
   Route::get('/reporte', function () {
-    
+
     $mpdf = new \Mpdf\Mpdf([
       'margin_left' => 20,
       'margin_right' => 15,
@@ -102,8 +105,12 @@ Route::group(['middleware' => 'auth_custom'], function () {
     $mpdf->WriteHTML($html);
 
     $mpdf->Output();
-    
-});
+
+  });
+
+  Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
+  Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
+  Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
 
 Route::get('/reporte2', function () {
     

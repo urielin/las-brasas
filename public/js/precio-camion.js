@@ -54,8 +54,7 @@ $(document).ready(function(){
     //  asignar toltip mensaje de ayuda
     $('.tooltipped').tooltip();
   }
-  asignarEventoModalCeldas();
-
+    asignarEventoModalCeldas();
     $('#actualizar_precio').on('submit', function(event){
       // form_=new FormData(this);
       event.preventDefault();
@@ -100,22 +99,22 @@ $(document).ready(function(){
               responseText: true,
               // dataType: "html",
             })
-    
+
             request.done(function( response ) {
               // $( "#log" ).html( response );
               console.log(response);
               // activar loader
               // $('div.loader-6').removeClass('d-none');
-    
+
               $('div#table-precio-camion').html(response);
               $('#pc-modal').modal('close');
-    
+
               // desactivar loader
               // setTimeout(function() {$('div.loader-6').addClass('d-none'); }, 1500);
               // asignar evento a celdas
               asignarEventoModalCeldas();
             });
-    
+
             request.fail(function( jqXHR, textStatus ) {
               // console.log(jqXHR.responseText,textStatus);
               alert( "Request failed: " + textStatus + jqXHR.responseText);
@@ -126,13 +125,12 @@ $(document).ready(function(){
 
       // });
     });
-
     $('select#pc_sucursal, select#pc_clasificacion').on('change', function(event){
     // $('#buscar-precio-camion').on('submit', function(event){
           event.preventDefault();
           var form_url= $("#buscar-precio-camion").attr('action'),
           form_data=new FormData($("#buscar-precio-camion")[0]);
-          // clasificacion=$("#pc_clasificacion").val(); 
+          // clasificacion=$("#pc_clasificacion").val();
           // form_data=new FormData();
           // form_data.append('sucursal', sucursal);
           // form_data.append('sucursal', clasificacion);
@@ -152,7 +150,7 @@ $(document).ready(function(){
             // console.log(response);
             $('div#table-precio-camion').html(response);
             asignarEventoModalCeldas();
-   
+
           });
 
           request.fail(function( jqXHR, textStatus ) {

@@ -3,13 +3,10 @@ $(document).ready(function(){
   $("#tableRetiroProsegur tbody").on('click','tr', function(e){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
-
 });
-
+console.log();
 $(document).ready(function(){
-
-    $(document).on('click','#buscar-salida-bancos',function(){
-
+$(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
@@ -161,6 +158,51 @@ $(document).on('click','#buscar-otros-depositos',function(){
                   }
               });
               $('#otroRetiroTabla').append("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>"+ montoOtroTotal +"</td></tr>");
+
+
+
+      });
+
+      request.done(function( msg ) {
+        // $( "#log" ).html( msg );
+        console.log(msg);
+      });
+
+      request.fail(function( jqXHR, textStatus ) {
+        console.log(jqXHR.responseText,textStatus);
+        alert( "Request failed: " + textStatus + jqXHR.responseText);
+      });
+    }
+  });
+//--------------------------------------------------------------
+// $(document).on('click','buscar-depositos-pendientes',function(){
+$('#buscar-depositos-pendientes').on('click', function(){
+
+      var fecha1=$('#desde3').val();
+      var fecha2=$('#hasta3').val();
+      // var montoOtroTotal= 0;
+      // console.log(fecha1);
+      // console.log(fecha2);
+
+    if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
+
+          request = $.get('obtener-depositos-pendientes',{fecha1:fecha1,fecha2:fecha2 },function(res){
+
+              $('#retiroPendienteTabla').empty();
+              $.each(res.retirosPendientes1, function(index,value){
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.monto +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
+
+              });
+
+              $.each(res.retirosPendientes2, function(index,value){
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.monto +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
+
+              });
+
+              $.each(res.retirosPendientes3, function(index,value){
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.monto +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
+
+              });
 
 
 

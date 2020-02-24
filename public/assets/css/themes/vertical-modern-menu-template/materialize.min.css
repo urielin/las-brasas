@@ -6360,8 +6360,8 @@ textarea.materialize-textarea+label:after {
 }
 
 textarea {
-	width: 100%;
-	height: 3rem;
+	/*width: 100%;*/
+	/*height: 3rem;*/
 	background-color: transparent
 }
 
