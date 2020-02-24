@@ -21,20 +21,20 @@
         </div>
         <div class="form-group col l4 m6 s12">
           <label for="" class="form-control-label">Gestion</label>
-          <select id="elegir-gestion" class="form-control browser-default" name="gestion">
+          <select disabled id="elegir-gestion" class="form-control browser-default" name="gestion">
             @foreach ($gestion as $g)
               <option value="{{$g->TP_GESTION }}" >{{$g->tp}}</option>
             @endforeach
           </select>
         </div>
         <div class="form-group col l4 m6 s12">
-          <label for="" class="form-control-label">Cartola</label>
-          <input id="insertar-cartolar" type='text' class="form-control browser-default" name="cartola"/>
+          <label  for="" class="form-control-label">Cartola</label>
+          <input disabled id="insertar-cartolar" type='text' class="form-control browser-default" name="cartola"/>
 
         </div>
         <div class="form-group col l12 m12 s12">
           <label for="" class="form-control-label">Texto de migracion</label>
-          <textarea id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
+          <textarea disabled id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
 
           </textarea>
         </div>
