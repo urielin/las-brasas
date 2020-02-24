@@ -10,24 +10,31 @@
       <div class="row" style="margin-top:10px">
         <div class="form-group col l4 m6 s12">
           <label for="" class="form-control-label">Cuenta</label>
-          <select class="form-control browser-default" name="cuenta">
-            <option value=""></option>
+          <select id="elegir-cuenta"  class="form-control browser-default" name="cuenta">
+            <option value="disabled">Seleccione cuenta</option>
+
+            @foreach ($cuentas as $cuenta)
+            <option value="{{$cuenta->COD_CUENTA}}" >{{$cuenta->DESCRIPCION_CUENTA}}</option>
+            @endforeach
+
           </select>
         </div>
         <div class="form-group col l4 m6 s12">
           <label for="" class="form-control-label">Gestion</label>
-          <select class="form-control browser-default" name="gestion">
-            <option value=""></option>
+          <select id="elegir-gestion" class="form-control browser-default" name="gestion">
+            @foreach ($gestion as $g)
+              <option value="{{$g->TP_GESTION }}" >{{$g->tp}}</option>
+            @endforeach
           </select>
         </div>
         <div class="form-group col l4 m6 s12">
           <label for="" class="form-control-label">Cartola</label>
-          <input type='text' class="form-control browser-default" name="cartola"/>
+          <input id="insertar-cartolar" type='text' class="form-control browser-default" name="cartola"/>
 
         </div>
         <div class="form-group col l12 m12 s12">
           <label for="" class="form-control-label">Texto de migracion</label>
-          <textarea rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
+          <textarea id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
 
           </textarea>
         </div>
@@ -68,4 +75,5 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('js/ingreso-cartola.js') }}"></script>
 @endsection

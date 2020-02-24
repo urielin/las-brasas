@@ -70,14 +70,15 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
   Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
 
-//---------------------------------------
+//---------------------------------------Contabilidad - Retiros prosegur
   Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
-  Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
   Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
   Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
   Route::get('/obtener-depositos-pendientes', 'ContabilidadController@getRetiroPendiente')->name('getRetiroPendiente');
-
+// ---------------------------------------Contabilidad - Confirmación bancaria
+  Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
+// -------------------------------------------------------------
 
   // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
 

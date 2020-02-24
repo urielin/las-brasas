@@ -4,6 +4,7 @@ $(document).ready(function(){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
 });
+console.log();
 $(document).ready(function(){
 $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
