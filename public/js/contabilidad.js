@@ -221,17 +221,16 @@ $('#buscar-depositos-pendientes').on('click', function(){
     }
   });
   //--------------------------------------------------------------
-  $('#agregar-retiro-indice').on('click', function(){
+  $('#agregar-otro-retiro').on('click', function(){
 
+        request=$.get('retiros-otros-generar',function(res){
+            // console.log(res.numRetiro);
+            console.log(res.numOtroRetiro[0].otroNum);
+            if (res.numOtroRetiro[0].otroNum == '0') {
 
-        request=$.get('retiros-generar',function(res){
-            console.log(res.numRetiro);
-            console.log(res.numRetiro[0].num);
-            if (res.numRetiro[0].num == '0') {
-
-              alert("Retiro generado exitosamente");
+              alert("Deposito generado exitosamente");
             } else {
-              alert("Ya existe un retiro generado");
+              alert("Ya existe un deposito generado");
             }
          });
 
@@ -247,6 +246,34 @@ $('#buscar-depositos-pendientes').on('click', function(){
 
 
   });
+// -------------------------------------------------------------
+
+$('#agregar-retiro-indice').on('click', function(){
+
+
+      request=$.get('retiros-generar',function(res){
+          console.log(res.numRetiro);
+          console.log(res.numRetiro[0].num);
+          if (res.numRetiro[0].num == '0') {
+
+            alert("Retiro generado exitosamente");
+          } else {
+            alert("Ya existe un retiro generado");
+          }
+       });
+
+       request.done(function( msg ) {
+         // $( "#log" ).html( msg );
+         console.log(msg);
+       });
+
+       request.fail(function( jqXHR, textStatus ) {
+         console.log(jqXHR.responseText,textStatus);
+         alert( "Request failed: " + textStatus + jqXHR.responseText);
+       });
+
+
+});
 // -------------------------------------------------------------
 
   function dateUTC(ms) {

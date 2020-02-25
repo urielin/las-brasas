@@ -77,6 +77,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
   Route::get('/obtener-depositos-pendientes', 'ContabilidadController@getRetiroPendiente')->name('getRetiroPendiente');
   Route::get('/retiros-generar', 'ContabilidadController@upRetiro')->name('subirRetiro');
+  Route::get('/retiros-otros-generar', 'ContabilidadController@upOtroRetiro')->name('subirOtroRetiro');
+
 
 // ---------------------------------------Contabilidad - Confirmación bancaria
   Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
@@ -115,7 +117,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
 
 Route::get('/reporte2', function () {
-    
+
   $mpdf = new \Mpdf\Mpdf([
     'margin_left' => 20,
     'margin_right' => 15,
@@ -137,10 +139,10 @@ Route::get('/reporte2', function () {
   $mpdf->WriteHTML($html);
 
   $mpdf->Output();
-  
+
 });
 Route::get('/reporte3', function () {
-    
+
   $mpdf = new \Mpdf\Mpdf([
     'margin_left' => 20,
     'margin_right' => 15,
@@ -162,6 +164,6 @@ Route::get('/reporte3', function () {
   $mpdf->WriteHTML($html);
 
   $mpdf->Output();
-  
+
 });
 });
