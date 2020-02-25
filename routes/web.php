@@ -113,15 +113,16 @@ Route::group(['middleware' => 'auth_custom'], function () {
   });
 
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
+  Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
+  Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+
+  Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
 
-<<<<<<< HEAD
 
-});
-=======
 Route::get('/reporte2', function () {
 
   $mpdf = new \Mpdf\Mpdf([
@@ -173,4 +174,3 @@ Route::get('/reporte3', function () {
 
 });
 });
->>>>>>> f213d0c7e784b10bc3ade7a201e561ab859d1539
