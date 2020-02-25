@@ -20,9 +20,9 @@ Route::group(['middleware'=> ['guest']],function(){
 
 Route::group(['middleware' => 'auth_custom'], function () {
 
-  Route::get('/', 'UsuariosController@index');
+  Route::get('/', 'HomeController@index');
 
-  Route::get('/home', 'UsuariosController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
   Route::get('/precio-camion', 'PrecioCamionController@index')->name('precio-camion');
   Route::post('/show-precio-camion', 'PrecioCamionController@show')->name('show-precio-camion');
@@ -103,7 +103,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
     $mpdf->watermark_font = 'DejaVuSansCondensed';
     $mpdf->watermarkTextAlpha = 0.1;
     $mpdf->SetDisplayMode('fullpage');
-    $html =view('reports.resumen-retiros-prosegur')->render();
+    $html =view('reports.prosegur.resumen-retiros')->render();
     $mpdf->WriteHTML($html);
 
     $mpdf->Output();
@@ -114,4 +114,54 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
 
+Route::get('/reporte2', function () {
+    
+  $mpdf = new \Mpdf\Mpdf([
+    'margin_left' => 20,
+    'margin_right' => 15,
+    'margin_top' => 48,
+    'margin_bottom' => 25,
+    'margin_header' => 10,
+    'margin_footer' => 10
+  ]);
+
+  $mpdf->SetProtection(array('print'));
+  $mpdf->SetTitle("Resumen de transacciones");
+  $mpdf->SetAuthor("Las Brasas");
+  $mpdf->SetWatermarkText("LAS BRASAS");
+  $mpdf->showWatermarkText = true;
+  $mpdf->watermark_font = 'DejaVuSansCondensed';
+  $mpdf->watermarkTextAlpha = 0.1;
+  $mpdf->SetDisplayMode('fullpage');
+  $html =view('reports.prosegur.resumen-general')->render();
+  $mpdf->WriteHTML($html);
+
+  $mpdf->Output();
+  
+});
+Route::get('/reporte3', function () {
+    
+  $mpdf = new \Mpdf\Mpdf([
+    'margin_left' => 20,
+    'margin_right' => 15,
+    'margin_top' => 48,
+    'margin_bottom' => 25,
+    'margin_header' => 10,
+    'margin_footer' => 10
+  ]);
+
+  $mpdf->SetProtection(array('print'));
+  $mpdf->SetTitle("Resumen de transacciones");
+  $mpdf->SetAuthor("Las Brasas");
+  $mpdf->SetWatermarkText("LAS BRASAS");
+  $mpdf->showWatermarkText = true;
+  $mpdf->watermark_font = 'DejaVuSansCondensed';
+  $mpdf->watermarkTextAlpha = 0.1;
+  $mpdf->SetDisplayMode('fullpage');
+  $html =view('reports.prosegur.detalle-depositos')->render();
+  $mpdf->WriteHTML($html);
+
+  $mpdf->Output();
+  
+});
 });
