@@ -76,6 +76,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-retiro-detalle', 'ContabilidadController@getRetiroDetalle')->name('getRetiroDetalle');
   Route::get('/obtener-otro-retiro', 'ContabilidadController@getOtroRetiro')->name('getOtroRetiro');
   Route::get('/obtener-depositos-pendientes', 'ContabilidadController@getRetiroPendiente')->name('getRetiroPendiente');
+  Route::get('/retiros-generar', 'ContabilidadController@upRetiro')->name('subirRetiro');
+
 // ---------------------------------------Contabilidad - Confirmación bancaria
   Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
 // -------------------------------------------------------------

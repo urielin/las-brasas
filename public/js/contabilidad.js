@@ -6,6 +6,7 @@ $(document).ready(function(){
 });
 console.log();
 $(document).ready(function(){
+
 $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
@@ -218,6 +219,33 @@ $('#buscar-depositos-pendientes').on('click', function(){
         alert( "Request failed: " + textStatus + jqXHR.responseText);
       });
     }
+  });
+  //--------------------------------------------------------------
+  $('#agregar-retiro-indice').on('click', function(){
+
+
+        request=$.get('retiros-generar',function(res){
+            console.log(res.numRetiro);
+            console.log(res.numRetiro[0].num);
+            if (res.numRetiro[0].num == '0') {
+
+              alert("Retiro generado exitosamente");
+            } else {
+              alert("Ya existe un retiro generado");
+            }
+         });
+
+         request.done(function( msg ) {
+           // $( "#log" ).html( msg );
+           console.log(msg);
+         });
+
+         request.fail(function( jqXHR, textStatus ) {
+           console.log(jqXHR.responseText,textStatus);
+           alert( "Request failed: " + textStatus + jqXHR.responseText);
+         });
+
+
   });
 // -------------------------------------------------------------
 

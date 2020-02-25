@@ -75,6 +75,29 @@ public function getOtroRetiro(Request $request)
       }
     }
 
+    public function upRetiro(Request $request)
+    {
+            if ($request -> ajax()) {
+
+                     $numRetiro= DB::SELECT("SELECT COUNT(*)  as num FROM MODULO_RETIROS_INDICE WHERE estado = '0'");
+                     foreach($numRetiro as $num)
+                     {
+                           $conteo=$num->num;
+                     }
+                     // $num= $numRetiro;
+                     // $a = count($numRetiro);
+                    if ($conteo == '0') {
+                        DB::insert("INSERT INTO MODULO_RETIROS_INDICE (documento, fecha_desde, fecha_hasta,estado )
+                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), GETDATE(), 0 )");
+                    }
+
+
+                      return response()->json([
+                          'numRetiro'   =>$numRetiro
+                      ]);
+          }
+        }
+
   public function getRetiroDetalle(Request $request)
   {
           if ($request -> ajax()) {
