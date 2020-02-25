@@ -18,7 +18,7 @@
          <div class="card">
             <div class="card-content">
                <h4 class="card-title mb-0">SISTEMA WEB LAS BRASAS</h4>
-               <p class="medium-small">Aplicacion web administrativa renovada, para gestion de contenedores, retiros ventas y mas</p>
+               <p class="medium-small">Aplicación web administrativa renovada, para gestión de contenedores, retiros, ventas y más.</p>
 
             </div>
          </div>
