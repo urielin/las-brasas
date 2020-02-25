@@ -36,6 +36,9 @@
                     <div class="col l12 m12 s12" style="margin-top: 20px;">
                       <div style="display: flex">
                         <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
+                        <a class="btn-floating cyan mb-1 float-right" >
+                          <i class="material-icons" id="agregar-retiro-indice">add</i>
+                        </a>
                       </div>
                       <table id='tableRetiroProsegur' class="table responsive-table">
                         <thead>
@@ -104,6 +107,9 @@
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                                <a class="btn-floating cyan mb-1 float-right" >
+                                  <i class="material-icons" id="agregar-otro-retiro">add</i>
+                                </a>
                               </div>
                               <table class=" table responsive-table centered striped">
                                 <thead>
@@ -131,7 +137,60 @@
 
               </div>
             </div>
-            <div id="test3" class="col s12  lighten-4">Test 2</div>
+            <div id="test3" class="col s12  lighten-4">
+              <div class="container" style="margin-top: 30px">
+                <div class=" " data-example-id="form-group-height-sizes">
+
+                  <div class="col l5 m5 s5">
+                    <div class="form-group">
+                      <label for="" class="form-control-babel">Desde</label>
+                      <input type="date" id="desde3" class="form-control browser-default">
+                    </div>
+                  </div>
+                  <div class="col l5 m5 s5">
+                    <div class="form-group">
+                      <label for="" class="form-control-babel">Hasta</label>
+                      <input type="date" id="hasta3" class="form-control browser-default">
+                    </div>
+                  </div>
+                  <div class="col l2 m2 s2">
+                    <button type="button" id="buscar-depositos-pendientes" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s12">
+                  </div>
+                  <div class="col s12 dataTables_scrollBody">
+
+
+                            <div class="col m12" style="margin-top: 20px;">
+                              <div style="display: flex">
+                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                              </div>
+                              <table class=" table responsive-table centered striped">
+                              <thead>
+                                <tr>
+                                  <th  width='6%'>Folio</th>
+                                  <th>Monto</th>
+                                  <th>Fecha caja</th>
+                                  <th>Operación</th>
+                                  <th>Tipo de cheque</th>
+                                  <th>Deposito</th>
+                                </tr>
+                              </thead>
+                              <tbody id="retiroPendienteTabla">
+
+                              </tbody>
+                            </table>
+                             </div>
+
+
+                    </div>
+                  </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>

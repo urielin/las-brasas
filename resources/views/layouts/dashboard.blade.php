@@ -168,7 +168,7 @@
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                      <a href="{{route('gestion-camion')}}">
+                      <a href="{{route('gestion-camion')}}"> 
                         <i class="material-icons" style=" font-size: 1.2rem; ">call_made</i>
                         <span data-i18n="Third level"> Para recepción</span>
                       </a>
