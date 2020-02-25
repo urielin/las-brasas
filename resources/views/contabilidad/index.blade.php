@@ -36,6 +36,9 @@
                     <div class="col l12 m12 s12" style="margin-top: 20px;">
                       <div style="display: flex">
                         <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
+                        <a class="btn-floating cyan mb-1 float-right" >
+                          <i class="material-icons" id="agregar-retiro-indice">add</i>
+                        </a>
                       </div>
                       <table id='tableRetiroProsegur' class="table responsive-table">
                         <thead>
@@ -104,6 +107,9 @@
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                                <a class="btn-floating cyan mb-1 float-right" >
+                                  <i class="material-icons" id="agregar-otro-retiro">add</i>
+                                </a>
                               </div>
                               <table class=" table responsive-table centered striped">
                                 <thead>

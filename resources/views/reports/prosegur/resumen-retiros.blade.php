@@ -41,21 +41,26 @@ table thead td { background-color: #EEEEEE;
 <!--mpdf
 <htmlpageheader name="myheader">
 <table width="100%">
-<tr>
-<td width="40%"  >   
-	 <img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
-</td>
-<td width="60%"  style="text-align: right; font-weight: bold; font-size: 12pt; vertical-align: middle;" colspan="2" >Resumen de transacciones
-</td>
+<tr  height="30">
+	<td width="40%" >   
+		<img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
+	</td>
+	<td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="2" >
+		Resumen de transacciones
+	</td>
 </tr>
 <tr>
-<td width="40%" style="color:#000000; ">
-	<span > Alejandro Azolas 2999, Arica - Chile</span>
-	<br />
-	<span style="font-family:dejavusanscondensed;">&#9742;</span> +56 58 247 5880
-</td>
-<td width="12%" style="text-align: right; ">Desde <br /><span style="font-weight: bold; font-size: 12pt;">13/07/2019</span></td>
-<td width="12%" style="text-align: right;">Hasta <br /><span style="font-weight: bold; font-size: 12pt;">16/07/2019</span></td>
+	<td width="40%" style="color:#000000; font-size: 10px;">
+		<span > Alejandro Azolas 2999, Arica - Chile</span>
+		<br />
+		<span style="font-family:dejavusanscondensed;">&#9742;</span> +56 58 247 5880
+	</td>
+	<td width="12%" style="text-align: right; ">Desde <br /><span style="font-weight: bold; font-size: 10pt;">
+		13/07/2019
+	</span></td>
+	<td width="12%" style="text-align: right;">Hasta <br /><span style="font-weight: bold; font-size: 10pt;">
+		16/07/2019
+	</span></td>
 </tr></table>
 
 </htmlpageheader>
@@ -70,7 +75,7 @@ Page {PAGENO} of {nb}
 <sethtmlpagefooter name="myfooter" value="on" />
 mpdf-->
 
-<h2 style="">Resumen de transacciones</h2>
+<h3 style="">Resumen de transacciones</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <thead>
 
@@ -90,8 +95,8 @@ mpdf-->
 </tbody>
 </table>
 <br>
-<h2 style="">Desglose</h2>
-<h2 style="">1. Ventas Diarias</h2>
+<h3 style="">Desglose</h3>
+<h3 style="">1. Ventas Diarias</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <thead>
 <tr>
@@ -119,7 +124,7 @@ mpdf-->
 </tbody>
 </table>
 <br>
-<h2 style="">2. Otros Retiros - Cobranza</h2>
+<h3 style="">2. Otros Retiros - Cobranza</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <!-- <thead>
 <tr>
@@ -147,7 +152,7 @@ mpdf-->
 </tbody>
 </table>
 <br>
-<h2 style="">3. Abono clientes</h2>
+<h3 style="">3. Abono clientes</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <!-- <thead>
 <tr>
@@ -175,7 +180,7 @@ mpdf-->
 </tbody>
 </table>
 <br>
-<h2 style="">4. Prosegur</h2>
+<h3 style="">4. Prosegur</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <!-- <thead>
 <tr>

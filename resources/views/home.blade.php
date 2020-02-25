@@ -3,61 +3,27 @@
 @section('content')
 
 <div class="container">
-    <div class="row ">
-       <div class="col l12 m12 s12">
-          <div class="card">
-            <div class="card-header "  style="padding-left: 15px">
-              <div class="row align-items-center">
-                <div style="display: flex; justify-content: space-between">
-                  <div style="display: flex">
-                    <i class="material-icons dp48">subject</i><span class="card-title">Usuarios</span>
-                  </div>
-                </div>
-              </div>
+    <div class="section valign-wrapper" style=" position: relative; height: calc(100vh - 150px); ">
+    <div class="row vertical-modern-dashboard">
+      <div class="col s12 m4 l4 offset-l2">
+         <!-- Current Balance -->
+         <div class="card animate fadeLeft">
+            <div class="card-content pt-0 pb-0">
+               <img class="" src="assets/images/favicon/logo.png" alt="las brasas logo" style="width: 93%;">
             </div>
-            <div class="card-body" style="padding: 15px">
-              <div class="table-wrapper" style="margin: 10px;" >
-              <table class="table responsive-table " style="padding: 15px">
-                <thead class="thead-light">
-                  <tr>
-                    <th >#</th>
-                    <th scope="col" >Usuario</th>
-                    <th scope="col" >Ap. Paterno</th>
-                    <th scope="col" >Ap. Materno</th>
-                    <th scope="col" >Nombres</th>
-                    <th scope="col">Cargo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($usuarios as $usuario)
-                    <tr>
-                      <th style='text-align: center;'>
-                        {{$usuario->id_usuario}}
-                      </th>
-                      <td>
-                        {{$usuario->usuario}}
-                      </td>
-                      <td>
-                       {{$usuario->paterno}}
-                      </td>
-                      <td>
-                       {{$usuario->materno}}
-                      </td>
-                      <td>
-                       {{$usuario->nombres}}
-                      </td>
-                      <td>
-                       {{$usuario->cargo}}
-                      </td>
-
-                    </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-            </div>
-          </div>
+         </div>
       </div>
+      <div class="col s12 m4 l4 animate fadeRight">
+         <!-- Total Transaction -->
+         <div class="card">
+            <div class="card-content">
+               <h4 class="card-title mb-0">SISTEMA WEB LAS BRASAS</h4>
+               <p class="medium-small">Aplicación web administrativa renovada, para gestión de contenedores, retiros, ventas y más.</p>
+
+            </div>
+         </div>
+      </div>
+   </div>
     </div>
 </div>
 @endsection

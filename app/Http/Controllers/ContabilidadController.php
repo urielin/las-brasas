@@ -75,6 +75,61 @@ public function getOtroRetiro(Request $request)
       }
     }
 
+
+    public function upOtroRetiro(Request $request)
+    {
+            if ($request -> ajax()) {
+
+                     $numOtroRetiro= DB::SELECT("SELECT COUNT(*) as otroNum FROM MODULO_OTROS_RETIROS_PROSEGUR WHERE estado = 0");
+                     foreach($numOtroRetiro as $num)
+                     {
+                           $otroConteo=$num->otroNum;
+                     }
+                     // $num= $numRetiro;
+                     // $a = count($numRetiro);
+                    if ($otroConteo == '0') {
+                        $puntero= DB::SELECT("SELECT * FROM  ID_PUNTEROS  WHERE (id_puntero = 20)");
+
+                        foreach($puntero as $p)
+                        {
+                              $valor=$p->Valor;
+                        }
+                        DB::update("UPDATE dbo.ID_PUNTEROS set Valor = Valor + 1 where (id_puntero = 20)");
+
+
+                        DB::insert("INSERT INTO MODULO_OTROS_RETIROS_PROSEGUR (folio, descripcion, estado, usuario, fecha_ingreso, monto, t_oper )
+                        VALUES ( '$valor' , '',0, 'laura',GETDATE(),0,1)");
+                    }
+
+
+                      return response()->json([
+                          'numOtroRetiro'   =>$numOtroRetiro
+                      ]);
+          }
+    }
+    public function upRetiro(Request $request)
+    {
+            if ($request -> ajax()) {
+
+                     $numRetiro= DB::SELECT("SELECT COUNT(*)  as num FROM MODULO_RETIROS_INDICE WHERE estado = '0'");
+                     foreach($numRetiro as $num)
+                     {
+                           $conteo=$num->num;
+                     }
+                     // $num= $numRetiro;
+                     // $a = count($numRetiro);
+                    if ($conteo == '0') {
+                        DB::insert("INSERT INTO MODULO_RETIROS_INDICE (documento, fecha_desde, fecha_hasta,estado )
+                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), GETDATE(), 0 )");
+                    }
+
+
+                      return response()->json([
+                          'numRetiro'   =>$numRetiro
+                      ]);
+          }
+  }
+
   public function getRetiroDetalle(Request $request)
   {
           if ($request -> ajax()) {
