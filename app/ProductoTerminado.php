@@ -7,15 +7,35 @@ use Illuminate\Support\Facades\DB;
 
 class ProductoTerminado extends Model
 {
+
     protected $table = "dbo.ADM_CODIGOS_PADRE";
     protected $table2 = "dbo.ADM_CODIGOS";
     protected $fillable = ['id_catalogo' ,'CODI_RCODIGO' ,'CODI_PADRE' ,'factor_multi' ,
                            'factor_div' ,'tipo' ,'ESTADO','USUARIO','FECHA_REG','USUARIO_AUT',
                            'FECHA_AUT', 'RECLAZAR_SOBREPROD'];
+
      public function findAllSon($params) {
+
+
+        return DB::table('dbo.ADM_CODIGOS_PADRE as padre')
+                      ->select('padre.CODI_PADRE',
+                                'padre.CODI_RCODIGO',
+                                'cod.CODI_RNOMBRE',
+                                'padre.factor_multi',
+                                'padre.factor_div',
+                                'padre.factor_div',
+                                'padre.tipo',
+                                'padre.ESTADO',
+                                'padre.USUARIO',
+                                'padre.FECHA_REG')
+                      ->Join('dbo.ADM_CODIGOS as cod', 'cod.CODI_RCODIGO', '=', 'padre.CODI_RCODIGO')
+                      ->where('padre.CODI_PADRE', $params['id'])
+                      ->where('padre.ESTADO', 'like', '%'. $params['state'] . '%')
+                      ->get();
+/*
         return ProductoTerminado::where('CODI_PADRE', $params['id'])
                                   ->where('ESTADO', 'like', '%'. $params['state'] . '%')
-                                  ->get();
+                                  ->get();*/
      }
 
      public function updateProduct($params) {
@@ -56,4 +76,12 @@ class ProductoTerminado extends Model
      public function deleteProduct($params) {
        ProductoTerminado::where('CODI_RCODIGO', $params['id'])->delete();
      }
+
+     public function products()
+     {
+        return $this->belongsTo('App\Product',  'CODI_RCODIGO');
+     }
+     public function getKeyName(){
+        return "CODI_RCODIGO";
+    }
 }

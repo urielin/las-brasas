@@ -51,7 +51,7 @@ class ProductController extends Controller
       $request = $request->all();
       return $this->oProduct->create($request);
     }
-    public function catalogo(Request $request) {
+    public function catalogo(Request $request) { 
       $request = $request->all();
       return $this->oProductoTerminado->findAllSon($request);
     }
