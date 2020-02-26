@@ -9,8 +9,8 @@
           <div class="col s12">
             <ul class="tabs">
               <li class="tab col m3"><a class='active' href="#test1">Salida Bancos</a></li>
-              <li class="tab col m3"><a class="" href="#test2">Otros Depositos</a></li>
-              <li class="tab col m4"><a class="" href="#test3">Depositos Pendientes</a></li>
+              <li class="tab col m3"><a class="" href="#test2">Otros Depósitos</a></li>
+              <li class="tab col m4"><a class="" href="#test3">Depósitos Pendientes</a></li>
             </ul>
             <div id="test1">
               <div class="container" style="margin-top: 30px">
@@ -166,7 +166,7 @@
 
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
-                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
+                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle depósitos pendientes</span>
                               </div>
                               <table class=" table responsive-table centered striped">
                               <thead>
