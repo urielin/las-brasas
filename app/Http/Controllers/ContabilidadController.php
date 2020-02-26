@@ -98,7 +98,7 @@ public function getOtroRetiro(Request $request)
 
 
                         DB::insert("INSERT INTO MODULO_OTROS_RETIROS_PROSEGUR (folio, descripcion, estado, usuario, fecha_ingreso, monto, t_oper )
-                        VALUES ( '$valor' , '',0, 'laura',GETDATE(),0,1)");
+                        VALUES ( '$valor' , '',0, Session::get('user')->name,GETDATE(),0,1)");
                     }
 
 
