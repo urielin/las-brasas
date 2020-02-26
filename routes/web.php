@@ -116,6 +116,13 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
 
+  Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
+  Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
+  Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
+  Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
+  Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
+
+
 Route::get('/reporte2', function () {
 
   $mpdf = new \Mpdf\Mpdf([
