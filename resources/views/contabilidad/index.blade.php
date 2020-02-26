@@ -34,11 +34,15 @@
                 </div>
                  <div class=" ">
                     <div class="col l12 m12 s12" style="margin-top: 20px;">
-                      <div style="display: flex">
-                        <i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span>
-                        <a class="btn-floating cyan mb-1 float-right" >
-                          <i class="material-icons" id="agregar-retiro-indice">add</i>
-                        </a>
+                      <div style="display: flex;justify-content: space-between">
+                          <div style="display: flex;">
+                            <i class="material-icons dp48">subject</i>
+                            <span class="card-title">Detalle Retiro Prosegur</span>
+                          </div>
+                          <a class="btn btn-50 cyan  float-right" >
+                            <i class="material-icons" id="agregar-retiro-indice">add_box</i>
+                          </a>
+
                       </div>
                       <table id='tableRetiroProsegur' class="table responsive-table">
                         <thead>
