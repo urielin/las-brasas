@@ -68,7 +68,7 @@
                      <div class="col m12" style="margin-top: 20px;">
                        <span id="icono1"></span>
 
-                           <table class="responsive-table striped">
+                           <table id="table-detalle" class="responsive-table striped">
                              <thead id="depositoDetalleHead">
 
                              </thead>

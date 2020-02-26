@@ -130,6 +130,53 @@ public function getOtroRetiro(Request $request)
           }
   }
 
+
+public function deleteItemRetiro(Request $request)
+{
+        if ($request -> ajax()) {
+
+
+                $retiro_indice=DB::select("SELECT  id_retiros_indice FROM MODULO_RETIROS_INDICE_DETALLE WHERE id_retiro_detalle = '$request->id_retiro_detalle'");
+
+                if ($retiro_indice != null) {
+                      foreach($retiro_indice as $idr)
+                      {
+                            $id_retiros_indice=$idr->id_retiros_indice;
+                      }
+
+                      $estado_indice = DB::select("SELECT estado FROM  MODULO_RETIROS_INDICE WHERE id_retiros_indice = $id_retiros_indice");
+                      foreach($estado_indice as $estado)
+                      {
+                            $estado=$estado->estado;
+                      }
+
+                      if ($estado == '0') {
+
+                        DB::table('MODULO_RETIROS_INDICE_DETALLE')->where('id_retiro_detalle', '=', $request->id_retiro_detalle)->delete();
+                          $b='eliminado';
+
+                      } else {
+                          $b='noEliminado';
+                      }
+
+
+
+
+                } else {
+                   $retiro_indice= 'esta vacio';
+                }
+
+                  return response()->json([
+
+                        // 'id_retiros_indice'              =>$id_retiros_indice,
+                        'a'                              =>$retiro_indice,
+                        'b'                              =>$b
+                      ]);
+
+
+      }
+}
+
   public function getRetiroDetalle(Request $request)
   {
           if ($request -> ajax()) {
