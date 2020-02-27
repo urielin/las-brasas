@@ -30,6 +30,8 @@ class LoginController extends Controller
        if ($user) {
          session(['user' => $user]);
          return redirect()->route('home');
+       } else {
+         return redirect()->route('login');
        }
      }
      public function showLoginForm(){
@@ -38,7 +40,7 @@ class LoginController extends Controller
 
      public function logout(Request $request){
          $request->session()->forget('user');
-         $request->session()->flush(); 
+         $request->session()->flush();
          return redirect('/');
      }
      public function username() {

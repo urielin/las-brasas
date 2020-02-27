@@ -15,6 +15,11 @@ $(document).ready(function(){
     e.stopPropagation();
     const id = $(this)[0]['cells'][0].innerText;
     findOne(id);
+
+    let elem = $('.tabs')
+    let instance = M.Tabs.getInstance(elem);
+    instance.select('test2');
+
     getUnidadMedida(id);
     findSonId({id: id, state: ''});
     getNutricional(id);
@@ -201,7 +206,7 @@ $(document).ready(function(){
 
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_PADRE}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RCODIGO}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${params[0].CODI_RNOMBRE}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RNOMBRE}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].factor_multi}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].factor_div}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].tipo == 1 ? "POR CAJA" : "FACTORIZADO"}</td>

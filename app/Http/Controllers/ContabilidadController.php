@@ -107,6 +107,19 @@ public function getOtroRetiro(Request $request)
                       ]);
           }
     }
+
+    public function IncluirRetiro(Request $request)
+    {
+        if ($request -> ajax()) {
+
+                DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
+                $resultado= 'Retiro incluido';
+              return response()->json([
+                  'resultado'   =>$resultado
+              ]);
+        }
+    }
+
     public function upRetiro(Request $request)
     {
             if ($request -> ajax()) {
@@ -120,7 +133,7 @@ public function getOtroRetiro(Request $request)
                      // $a = count($numRetiro);
                     if ($conteo == '0') {
                         DB::insert("INSERT INTO MODULO_RETIROS_INDICE (documento, fecha_desde, fecha_hasta,estado )
-                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), GETDATE(), 0 )");
+                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), dbo.todate_only(GETDATE()), 0 )");
                     }
 
 
@@ -130,12 +143,62 @@ public function getOtroRetiro(Request $request)
           }
   }
 
+
+public function deleteItemRetiro(Request $request)
+{
+        if ($request -> ajax()) {
+
+
+                $retiro_indice=DB::select("SELECT  id_retiros_indice FROM MODULO_RETIROS_INDICE_DETALLE WHERE id_retiro_detalle = '$request->id_retiro_detalle'");
+
+                if ($retiro_indice != null) {
+                      foreach($retiro_indice as $idr)
+                      {
+                            $id_retiros_indice=$idr->id_retiros_indice;
+                      }
+
+                      $estado_indice = DB::select("SELECT estado FROM  MODULO_RETIROS_INDICE WHERE id_retiros_indice = $id_retiros_indice");
+                      foreach($estado_indice as $estado)
+                      {
+                            $estado=$estado->estado;
+                      }
+
+                      if ($estado == '0') {
+
+                        DB::table('MODULO_RETIROS_INDICE_DETALLE')->where('id_retiro_detalle', '=', $request->id_retiro_detalle)->delete();
+
+                        DB::raw("exec [dbo].[Retiros_Consolidar] '".$id_retiros_indice."'");
+
+                          $b='eliminado';
+
+                      } else {
+                          $b='noEliminado';
+                      }
+
+
+
+
+                } else {
+                   $retiro_indice= 'esta vacio';
+                }
+
+                  return response()->json([
+
+                        // 'id_retiros_indice'              =>$id_retiros_indice,
+                        'a'                              =>$retiro_indice,
+                        'b'                              =>$b
+                      ]);
+
+
+      }
+}
+
   public function getRetiroDetalle(Request $request)
   {
           if ($request -> ajax()) {
 
 
-                  $depositosDetalle1=DB::select("SELECT rc.folio, rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
+                  $depositosDetalle1=DB::select("SELECT rd.id_retiro_detalle,rc.folio, rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
                                         FROM dbo.MODULO_RETIROS_INDICE ri
                                         INNER JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on ri.id_retiros_indice = rd.id_retiros_indice
                                         INNER JOIN dbo.MODULO_RETIROS_CAJA rc on rd.folio =rc.folio
@@ -145,7 +208,7 @@ public function getOtroRetiro(Request $request)
                                         INNER JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
                                         WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo ='1'");
 
-                  $depositosDetalle2=DB::select("SELECT rd.folio, rd.tipo, op.OPER_DESC, s.SUCU_CODIGO, s.SUCU_NOMBRE, ro.deposito, ro.fecha_ingreso, ro.monto, ro.descripcion, ro.cartola_fecha
+                  $depositosDetalle2=DB::select("SELECT rd.id_retiro_detalle,rd.folio, rd.tipo, op.OPER_DESC, s.SUCU_CODIGO, s.SUCU_NOMBRE, ro.deposito, ro.fecha_ingreso, ro.monto, ro.descripcion, ro.cartola_fecha
                                         FROM  dbo.MODULO_RETIROS_INDICE_DETALLE rd
                                         INNER JOIN dbo.MODULO_RETIROS_INDICE ri on ri.id_retiros_indice = rd.id_retiros_indice
                                         INNER JOIN dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio

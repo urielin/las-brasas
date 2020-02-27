@@ -12,22 +12,22 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="assets/vendors/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/themes/vertical-modern-menu-template/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/themes/vertical-modern-menu-template/style.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/pages/dashboard.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/vertical-modern-menu-template/materialize.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/vertical-modern-menu-template/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/dashboard.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom/custom.css') }}">
 
     <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
 
-    <link rel="stylesheet" type="text/css" href="assets/vendors/flag-icon/css/flag-icon.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/data-tables/css/select.dataTables.min.css">
-     <link rel="stylesheet" type="text/css" href="assets/css/pages/data-tables.min.css">
-     <link rel="stylesheet" type="text/css" href="assets/css/variables.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/flag-icon/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/css/select.dataTables.min.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/data-tables.min.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/variables.css') }}">
      <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
      <link href="{{ asset('assets/css/tabs.css') }}" rel="stylesheet">
 
@@ -41,9 +41,20 @@
           <div class="nav-wrapper">
 
             <ul class="navbar-list right">
-               <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
-              <li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
-               <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="assets/images/avatar/avatar-7.png" alt="avatar"><i></i></span></a></li>
+               <li class="hide-on-med-and-down">
+                 <a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);">
+                   <i class="material-icons">settings_overscan</i>
+                 </a>
+               </li>
+               <li class="hide-on-large-only search-input-wrapper">
+                 <a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);">
+                   <i class="material-icons">search</i>
+                 </a>
+               </li>
+               <li>
+                 <a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+                   <span class="avatar-status avatar-online">
+                     <img src="{{ asset('assets/images/avatar/avatar-7.png') }}" alt="avatar"><i></i></span></a></li>
              </ul>
             <ul class="dropdown-content" id="translation-dropdown">
 
@@ -66,9 +77,9 @@
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
       <div class="brand-sidebar">
         <h1 class="logo-wrapper"><a class="brand-logo darken-1 hide-on-med-and-down" href="/">
-        <img class="" src="assets/images/favicon/icon.png" alt="materialize logo" style=" position: absolute; top: 15px; margin: 0 6px; height: 32px; ">
+        <img class="" src="{{ asset('assets/images/favicon/icon.png') }}" alt="materialize logo" style=" position: absolute; top: 15px; margin: 0 6px; height: 32px; ">
         <span>
-        <img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
+        <img class="" src="{{ asset('assets/images/favicon/logo.png') }}" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
         </span>
         </a>
         <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
@@ -86,7 +97,7 @@
            </a>
         </li>
         <li class="bold">
-          <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
+          <a class="collapsible-header waves-effect waves-cyan">
             <i class="material-icons">insert_chart</i>
             <span class="menu-title" data-i18n="Chat">Contabilidad</span>
           </a>
@@ -123,12 +134,7 @@
          <a class="navigation-header-text">SISTEMA DE GESTIÓN </a>
          <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <!-- <li class="bold">
-          <a class="waves-effect waves-cyan " href="./">
-          <i class="material-icons">local_shipping</i>
-          <span class="menu-title" data-i18n="User Profile">Contenedores y Camiones</span>
-          </a>
-        </li> -->
+
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
             <i class="material-icons">local_shipping</i>
@@ -160,7 +166,7 @@
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                      <a href="{{route('gestion-camion')}}"> 
+                      <a href="{{route('gestion-camion')}}">
                         <i class="material-icons" style=" font-size: 1.2rem; ">call_made</i>
                         <span data-i18n="Third level"> Para recepción</span>
                       </a>
@@ -177,33 +183,39 @@
             </ul>
           </div>
        </li>
-        <li class="active bold">
+
+
+        <li class=" bold">
           <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
             <i class="material-icons">home</i>
             <span class="menu-title" data-i18n="Dashboard">Administrador</span>
           </a>
         </li>
-        <li class="navigation-header">
-          <a class="navigation-header-text">Applications</a>
-          <i class="navigation-header-icon material-icons">more_horiz</i>
-        </li>
-        <li class="bold">
-          <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">public</i>
-            <span class="menu-title" data-i18n="Mail">Prosegur</span>
-           </a>
-        </li>
-        <li class="bold">
-          <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">insert_chart</i>
-            <span class="menu-title" data-i18n="Chat">Contabilidad</span>
+        <li class=" bold">
+          <a class="collapsible-header waves-effect waves-cyan">
+            <i class="material-icons">local_shipping</i>
+            <span class="menu-title" data-i18n="Dashboard">Contenedor/Camion</span>
           </a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li><a href="{{route('contenedor.pagos')}}">
+                <i class="material-icons">radio_button_unchecked</i>
+                <span data-i18n="Page Maintenanace"> Seguimiento a Pagos </span></a>
+              </li>
+              <li><a href="{{route('contenedor.parametros')}}">
+                <i class="material-icons">radio_button_unchecked</i>
+                <span data-i18n="Page Maintenanace"> Gestion de Parametros </span></a>
+              </li>
+            </ul>
+          </div>
         </li>
+
+
+
 
        </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>
-
     <div id="main">
       <div class="row">
         <div class="col s12">
@@ -221,21 +233,21 @@
   </div>
 
 
-    <script src="assets/js/vendors.min.js"></script>
-    <script src="assets/vendors/sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/sparkline/jquery.sparkline.min.js') }}"></script>
     <!--<script src="assets/vendors/chartjs/chart.min.js"></script>-->
-    <script src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/search.min.js"></script>
-    <script src="assets/js/custom/custom-script.min.js"></script>
-    <script src="assets/js/scripts/customizer.min.js"></script>
+    <script src="{{ asset('assets/js/plugins.min.js') }}"></script>
+    <script src="{{ asset('assets/js/search.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/custom-script.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts/customizer.min.js') }}"></script>
     <!--<script src="assets/js/scripts/dashboard-analytics.min.js"></script>-->
 
-     <script src="assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
-    <script src="assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
-    <script src="assets/vendors/data-tables/js/dataTables.select.min.js"></script>
-     <script src="assets/js/scripts/customizer.min.js"></script>
-    <script src="assets/js/scripts/data-tables.min.js"></script>
-    <script src="assets/js/scripts/advance-ui-modals.min.js"></script>
+    <script src="{{ asset('assets/vendors/data-tables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/data-tables/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts/customizer.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts/data-tables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts/advance-ui-modals.min.js') }}"></script>
 
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 
