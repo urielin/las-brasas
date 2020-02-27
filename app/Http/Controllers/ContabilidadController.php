@@ -120,7 +120,7 @@ public function getOtroRetiro(Request $request)
                      // $a = count($numRetiro);
                     if ($conteo == '0') {
                         DB::insert("INSERT INTO MODULO_RETIROS_INDICE (documento, fecha_desde, fecha_hasta,estado )
-                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), GETDATE(), 0 )");
+                        VALUES (1 , DATEADD(DAY, -3, dbo.todate_only(GETDATE())), dbo.todate_only(GETDATE()), 0 )");
                     }
 
 
@@ -153,6 +153,9 @@ public function deleteItemRetiro(Request $request)
                       if ($estado == '0') {
 
                         DB::table('MODULO_RETIROS_INDICE_DETALLE')->where('id_retiro_detalle', '=', $request->id_retiro_detalle)->delete();
+
+                        DB::raw("exec [dbo].[Retiros_Consolidar] '".$id_retiros_indice."'");
+
                           $b='eliminado';
 
                       } else {
