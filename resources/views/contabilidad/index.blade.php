@@ -72,12 +72,9 @@
                             <br>
                             <div class="form-group col l12 m12 s12">
                               <label for="" class="form-control-label">Nro. de Deposito</label>
-                              <textarea disabled id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
-
+                              <textarea  id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
                               </textarea>
                             </div>
-
-
                        </span>
                        <span id="icono1"></span>
 
