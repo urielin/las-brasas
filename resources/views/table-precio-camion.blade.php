@@ -7,7 +7,7 @@
           foreach ($PrecioCamion as $camion) {
               $result[$camion->camion][] = $camion;
           }
-          $row_count=count($result);
+          $col_count=count($result);
           }
           //dd($result);
 
@@ -28,8 +28,8 @@
             <tr>
               <th scope="col"colspan="2"></th>
               <th scope="col"colspan="2"></th>
-              @if(!empty($row_count))
-              @for($i = 0; $i < $row_count; $i++)
+              @if(!empty($col_count))
+              @for($i = 0; $i < $col_count; $i++)
               <th scope="col">Publico</th>
               <th scope="col">P.Mayor</th>
               @endfor
@@ -40,7 +40,9 @@
             @if(!empty($PrecioCamion[0]))
             @foreach($PrecioCamion as $camion)
                 @php
-                      $row_count=count($result)==1?2:count($result);
+                      //si hay solo una columna asignamos col_count a 2 para que se ejecute switch case(1) para todas las filas
+                      $col_count=count($result)==1?2:count($result);
+
                       $fecha_actual = new \DateTime();
                       $fecha_actual->setTimezone(new \DateTimeZone('America/Lima'));
                       
@@ -56,7 +58,7 @@
                       $td_tooltip = $interval==0 ? '' : ($interval<=0 ? 'Oferta caducada' : ($interval<=48 ? 'A dias de vencer': ($interval<=168? 'Vence en una semana' :''))) ;
 
                 @endphp
-                @switch($loop->iteration % $row_count)
+                @switch($loop->iteration % $col_count)
                   @case(1)
                     <tr>
                       <th scope="row">

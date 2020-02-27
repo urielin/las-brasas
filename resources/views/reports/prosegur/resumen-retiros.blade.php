@@ -56,10 +56,10 @@ table thead td { background-color: #EEEEEE;
 		<span style="font-family:dejavusanscondensed;">&#9742;</span> +56 58 247 5880
 	</td>
 	<td width="12%" style="text-align: right; ">Desde <br /><span style="font-weight: bold; font-size: 10pt;">
-		13/07/2019
+		{{$fecha1}}
 	</span></td>
 	<td width="12%" style="text-align: right;">Hasta <br /><span style="font-weight: bold; font-size: 10pt;">
-		16/07/2019
+		{{$fecha2}}
 	</span></td>
 </tr></table>
 
@@ -74,29 +74,75 @@ Page {PAGENO} of {nb}
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
 <sethtmlpagefooter name="myfooter" value="on" />
 mpdf-->
+@php
+	if(!empty($depositosDetalle1[0])){
+		foreach ($depositosDetalle1 as $item) {
+			if (!isset($total_group[$item->OPER_DESC])) {
+				$total_group[$item->OPER_DESC]=0;
+			} 
+			$group[$item->OPER_DESC][] = $item;
+			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
+		}
+		$group_1=$group;
+		$total_group_1=$total_group;
+		//dd($group_1);
+		//dd($total_group_1);
+	}
 
-<h3 style="">Resumen de transacciones</h3>
+	//unset($group);
+	//unset($total_group);
+	if(!empty($depositosDetalle2[0])){
+		foreach ($depositosDetalle2 as $item) {
+			if (!isset($total_group[$item->OPER_DESC])) {
+				$total_group[$item->OPER_DESC]=0;
+			} 
+			if (!isset($total_group_2[$item->OPER_DESC])) {
+				$total_group_2[$item->OPER_DESC]=0;
+			}
+			$group_2[$item->OPER_DESC][] = $item;
+			$group[$item->OPER_DESC][] = $item;
+			$total_group_2[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
+			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;			
+		}
+		//dd($group_2);
+		//dd($total_group_2);
+	}
+@endphp
+<h3 style="">Resumen de ventas</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <thead>
 
 <tr>
 <td width="25%">Codigo</td>
 <td width="45%">Forma de pago</td>
-<td width="30%">Total</td>
+<td width="30%">Sub-total</td>
 </tr>
 </thead>
 <tbody>
 <!-- ITEMS HERE -->
+{{ $total_ventas= 0 }}
+@foreach($resumen_ventas as $item)
 <tr>
-<td align="center">MF1234567</td>
-<td>Large pack Hoover bags</td>
-<td class="cost">&pound;25.60</td>
+	<td align="center">{{$item->FRPG_CODIGO}}</td>
+	<td>{{$item->FRPG_DESCRIPCION}}</td>
+	<td class="cost">&#36;&#32;{{$item->sub_total}}</td>
+</tr>
+@php
+	$total_ventas += $item->sub_total;
+@endphp
+@endforeach
+<tr>
+	<td align="center">-</td>
+	<td >TOTAL</td>
+	<td class="cost">&#36;&#32;{{$total_ventas}}</td>
 </tr>
 </tbody>
 </table>
 <br>
 <h3 style="">Desglose</h3>
-<h3 style="">1. Ventas Diarias</h3>
+<h3 style="">1. Retiros Diarios</h3>
+<h3 style="">
+</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
 <thead>
 <tr>
@@ -108,18 +154,23 @@ mpdf-->
 </thead>
 <tbody>
 <!-- ITEMS HERE -->
+{{ $total_diarios = 0 }}
+@foreach($group_1 as $item => $value)
 <tr>
-<td   align="center">-</td>
-<td  >R. Cheque</td>
-<td   >En cartera</td>
-<td   class="cost">&pound;25.60</td>
+<td   align="center">{{$loop->iteration}}</td>
+<td  >{{$item}}</td>
+<td   >-</td>
+<td   class="cost">{{$total_group_1[$item]}}</td>
 </tr>
-
+@php
+	$total_diarios += $total_group_1[$item];
+@endphp
+@endforeach
 <tr>
 <td align="center">-</td>
-<td>R. Cheque</td>
-<td >En cartera</td>
-<td class="cost">&pound;25.60</td>
+<td>-</td>
+<td >TOTAL</td>
+<td class="cost">{{$total_diarios}}</td>
 </tr>
 </tbody>
 </table>
@@ -136,13 +187,36 @@ mpdf-->
 </thead> -->
 <tbody>
 <!-- ITEMS HERE -->
+{{ $total_otros = 0 }}
+@foreach($group_2 as $item => $value)
+<tr>
+<td width="20%"  align="center">{{$loop->iteration}}</td>
+<td width="35%" >{{$item}}</td>
+<td width="25%"  >-</td>
+<td width="20%"  class="cost">{{$total_group_2[$item]}}</td>
+</tr>
+@php
+	$total_otros += $total_group_2[$item];
+@endphp
+@endforeach
+<tr>
+<td align="center">-</td>
+<td>-</td>
+<td >TOTAL</td>
+<td class="cost">{{$total_otros}}</td>
+</tr>
+</tbody>
+</table>
+<br>
+<!-- <h3 style="">3. Abono clientes</h3>
+<table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
+<tbody>
 <tr>
 <td width="20%"  align="center">-</td>
 <td width="35%" >R. Cheque</td>
 <td width="25%"  >En cartera</td>
 <td width="20%"  class="cost">&pound;25.60</td>
 </tr>
-
 <tr>
 <td align="center">-</td>
 <td>R. Cheque</td>
@@ -150,60 +224,28 @@ mpdf-->
 <td class="cost">&pound;25.60</td>
 </tr>
 </tbody>
-</table>
+</table> -->
 <br>
-<h3 style="">3. Abono clientes</h3>
+<h3 style="">3. Prosegur</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
-<!-- <thead>
-<tr>
-<td width="20%"></td>
-<td width="35%">Tipo de operación</td>
-<td width="25%">Observación</td>
-<td width="20%">Total</td>
-</tr>
-</thead> -->
 <tbody>
-<!-- ITEMS HERE -->
+{{ $total_prosegur = 0 }}
+@foreach($group as $item => $value)
 <tr>
-<td width="20%"  align="center">-</td>
-<td width="35%" >R. Cheque</td>
-<td width="25%"  >En cartera</td>
-<td width="20%"  class="cost">&pound;25.60</td>
+<td width="20%"  align="center">{{$loop->iteration}}</td>
+<td width="35%" >{{$item}}</td>
+<td width="25%"  >-</td>
+<td width="20%"  class="cost">{{$total_group[$item]}}</td>
 </tr>
-
+@php
+	$total_prosegur += $total_group[$item];
+@endphp
+@endforeach
 <tr>
 <td align="center">-</td>
-<td>R. Cheque</td>
-<td >En cartera</td>
-<td class="cost">&pound;25.60</td>
-</tr>
-</tbody>
-</table>
-<br>
-<h3 style="">4. Prosegur</h3>
-<table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
-<!-- <thead>
-<tr>
-<td width="20%"></td>
-<td width="35%">Tipo de operación</td>
-<td width="25%">Observación</td>
-<td width="20%">Total</td>
-</tr>
-</thead> -->
-<tbody>
-<!-- ITEMS HERE -->
-<tr>
-<td width="20%"  align="center">-</td>
-<td width="35%" >R. Cheque</td>
-<td width="25%"  >En cartera</td>
-<td width="20%"  class="cost">&pound;25.60</td>
-</tr>
-
-<tr>
-<td align="center">-</td>
-<td>R. Cheque</td>
-<td >En cartera</td>
-<td class="cost">&pound;25.60</td>
+<td>-</td>
+<td >TOTAL</td>
+<td class="cost">{{$total_prosegur}}</td>
 </tr>
 </tbody>
 </table>

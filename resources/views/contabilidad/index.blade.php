@@ -50,6 +50,7 @@
                             <th>Fecha cierre</th>
                             <th>Responsable</th>
                             <th>Observacion</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody id="retiroTabla">
