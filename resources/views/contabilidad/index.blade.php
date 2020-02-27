@@ -39,12 +39,11 @@
                             <i class="material-icons dp48">subject</i>
                             <span class="card-title">Detalle Retiro Prosegur</span>
                           </div>
-                          <a class="btn btn-50 cyan  float-right" >
+                          <a class="btn btn-50 cyan float-right">
                             <i class="material-icons" id="agregar-retiro-indice">add_box</i>
                           </a>
-
                       </div>
-                      <table id='tableRetiroProsegur' class="table responsive-table">
+                      <table id='tableRetiroProsegur' class="table centered responsive-table">
                         <thead>
                           <tr>
                             <th width='6%'>ID</th>
@@ -68,7 +67,7 @@
                      <div class="col m12" style="margin-top: 20px;">
                        <span id="icono1"></span>
 
-                           <table class="responsive-table striped">
+                           <table class="table responsive-table centered striped">
                              <thead id="depositoDetalleHead">
 
                              </thead>
@@ -109,10 +108,16 @@
 
 
                             <div class="col m12" style="margin-top: 20px;">
-                              <div style="display: flex">
-                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
-                                <a class="btn-floating cyan mb-1 float-right" >
-                                  <i class="material-icons" id="agregar-otro-retiro">add</i>
+
+
+
+                              <div style="display: flex;justify-content: space-between">
+                                <div style="display: flex;">
+                                  <i class="material-icons dp48">subject</i>
+                                  <span class="card-title">Detalle otros retiros prosegur</span>
+                                </div>
+                                <a class="btn-50 btn cyan float-right" >
+                                  <i class="material-icons" id="agregar-otro-retiro">add_box</i>
                                 </a>
                               </div>
                               <table class=" table responsive-table centered striped">
