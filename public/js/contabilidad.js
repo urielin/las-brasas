@@ -71,8 +71,19 @@ $('#table-detalle').on('click','.eliminar-item',function(){
 
   });
 
+  // -------------------------------------------------------------
+  $(document).on('click','#incluir-deposito',function(){
 
-
+      var texto= $('#text-deposito').val();
+      var id_retiro_indice = $(this).attr('data-id_retiros_indice');
+      console.log(texto);
+      console.log(id_retiro_indice);
+      if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
+         $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice },function(res){
+              console.log(res.resultado);
+         });
+      }
+  });
 // -------------------------------------------------------------
 $(document).on('click','.mostrar-detalle',function(){
 
@@ -95,6 +106,8 @@ $(document).on('click','.mostrar-detalle',function(){
 
         fecha1=valores[2];
         fecha2=valores[3];
+    $('#icono0').empty();
+    $('#icono0').append('<div class="form-group col l12 m12 s12 pb-2"><h6 class="center">Ingrese el número de depósito que desea agregar al Prosegur</h6></div><div class="form-group col l12 m12 s12  pb-2"><label for="" class="form-control-label col l4 m6 s12" style="text-align:right">Nro. de Depósito :</label><div class="col l6 m6 s12"><textarea  id="text-deposito" rows="6"  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion"></textarea></div><div><div class="form-group col l6 m12 s12" style="display: flex; justify-content: flex-end"><button type="button" class="btn cyan" data-id_retiros_indice="'+ valores[0] +'" id="incluir-deposito" name="button">Agregar</button></div>');
 
     if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
           $.get('obtener-retiro-detalle',{fecha1:fecha1,fecha2:fecha2 },function(res){

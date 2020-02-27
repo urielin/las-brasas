@@ -107,6 +107,19 @@ public function getOtroRetiro(Request $request)
                       ]);
           }
     }
+
+    public function IncluirRetiro(Request $request)
+    {
+        if ($request -> ajax()) {
+
+                DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
+                $resultado= 'Retiro incluido';
+              return response()->json([
+                  'resultado'   =>$resultado
+              ]);
+        }
+    }
+
     public function upRetiro(Request $request)
     {
             if ($request -> ajax()) {
