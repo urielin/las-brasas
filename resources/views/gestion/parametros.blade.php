@@ -3,8 +3,7 @@
 @section('content')
 <div class="card card card card-default scrollspy">
   <div class="card-content">
-    <div class="row">
-
+    <div class="row"> 
           <div class="col s12">
             <div style="display: flex; justify-content: space-between;margin-bottom:10px">
               <div style="display: flex">

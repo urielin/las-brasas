@@ -1254,7 +1254,7 @@ $('#buscar-camion-r').on('submit',function(event){
       // $('.editar-gestion').on('click',function(){
       //   console.log('se clicqueoooooo');
       // });
- 
+
 
       $(document).on('click','.editar-gestion',function(){
 
