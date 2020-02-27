@@ -15,6 +15,11 @@ $(document).ready(function(){
     e.stopPropagation();
     const id = $(this)[0]['cells'][0].innerText;
     findOne(id);
+
+    let elem = $('.tabs')
+    let instance = M.Tabs.getInstance(elem);
+    instance.select('test2');
+
     getUnidadMedida(id);
     findSonId({id: id, state: ''});
     getNutricional(id);

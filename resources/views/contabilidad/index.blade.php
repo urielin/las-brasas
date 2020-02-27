@@ -39,12 +39,11 @@
                             <i class="material-icons dp48">subject</i>
                             <span class="card-title">Detalle Retiro Prosegur</span>
                           </div>
-                          <a class="btn btn-50 cyan  float-right" >
+                          <a class="btn btn-50 cyan float-right">
                             <i class="material-icons" id="agregar-retiro-indice">add_box</i>
                           </a>
-
                       </div>
-                      <table id='tableRetiroProsegur' class="table responsive-table">
+                      <table id='tableRetiroProsegur' class="table centered responsive-table">
                         <thead>
                           <tr>
                             <th width='6%'>ID</th>
@@ -68,17 +67,24 @@
                      <div class="col m12" style="margin-top: 20px;">
 
                        <span id="icono0">
-                            <h6>Ingrese el numero de deposito que desea agregar al Prosegur</h6>
-                            <br>
-                            <div class="form-group col l12 m12 s12">
-                              <label for="" class="form-control-label">Nro. de Deposito</label>
-                              <textarea  id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
-                              </textarea>
+                          <div class="form-group col l12 m12 s12 pb-2">
+                            <h6 class="center">Ingrese el numero de deposito que desea agregar al Prosegur</h6>
+                          </div>
+                            <div class="form-group col l12 m12 s12  pb-2">
+                              <label for="" class="form-control-label col l4 m6 s12" style="text-align:right">Nro. de Deposito :</label>
+                              <div class="col l6 m6 s12">
+                                <textarea disabled id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
+                                </textarea>
+                              </div>
+                            </div>
+                            <div class="form-group col l6 m12 s12" style="display: flex; justify-content: flex-end">
+                              <button type="button" class='btn cyan' name="button">Agregar</button>
                             </div>
                        </span>
                        <span id="icono1"></span>
 
                            <table id="table-detalle" class="responsive-table striped">
+
                              <thead id="depositoDetalleHead">
 
                              </thead>
@@ -119,10 +125,16 @@
 
 
                             <div class="col m12" style="margin-top: 20px;">
-                              <div style="display: flex">
-                                <i class="material-icons dp48">subject</i><span class="card-title">Detalle otros retiros prosegur</span>
-                                <a class="btn-floating cyan mb-1 float-right" >
-                                  <i class="material-icons" id="agregar-otro-retiro">add</i>
+
+
+
+                              <div style="display: flex;justify-content: space-between">
+                                <div style="display: flex;">
+                                  <i class="material-icons dp48">subject</i>
+                                  <span class="card-title">Detalle otros retiros prosegur</span>
+                                </div>
+                                <a class="btn-50 btn cyan float-right" >
+                                  <i class="material-icons" id="agregar-otro-retiro">add_box</i>
                                 </a>
                               </div>
                               <table class=" table responsive-table centered striped">

@@ -17,7 +17,7 @@
             </div>
             <div class="card-body" style="padding: 15px">
               <div class="table-wrapper" style="margin: 10px;" >
-              <table class="table responsive-table " style="padding: 15px">
+              <table class="table centered responsive-table " style="padding: 15px">
                 <thead class="thead-light">
                   <tr>
                     <th >#</th>
