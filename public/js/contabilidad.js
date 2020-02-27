@@ -12,6 +12,9 @@ $(document).on('click','#buscar-salida-bancos',function(){
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
         if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
+              $('#icono1').empty();
+              $('#depositoDetalleHead').empty();
+              $('#depositoDetalleTabla').empty();
               request = $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
                   // $('#retiro-head').empty();
                   $('#retiroTabla').empty();

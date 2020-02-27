@@ -66,6 +66,19 @@
                      </div>
 
                      <div class="col m12" style="margin-top: 20px;">
+
+                       <span id="icono0">
+                            <h6>Ingrese el numero de deposito que desea agregar al Prosegur</h6>
+                            <br>
+                            <div class="form-group col l12 m12 s12">
+                              <label for="" class="form-control-label">Nro. de Deposito</label>
+                              <textarea disabled id="insertar-migracion" rows='6'  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion">
+
+                              </textarea>
+                            </div>
+
+
+                       </span>
                        <span id="icono1"></span>
 
                            <table id="table-detalle" class="responsive-table striped">
