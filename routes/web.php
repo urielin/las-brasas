@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/retiros-generar', 'ContabilidadController@upRetiro')->name('subirRetiro');
   Route::get('/retiros-otros-generar', 'ContabilidadController@upOtroRetiro')->name('subirOtroRetiro');
   Route::get('/eliminar-item', 'ContabilidadController@deleteItemRetiro')->name('eliminarItemRetiro');
+  Route::get('/deposito-incluir-deposito', 'ContabilidadController@IncluirRetiro')->name('IncluirRetiro');
+
 
 
 
@@ -87,6 +89,10 @@ Route::group(['middleware' => 'auth_custom'], function () {
 // -------------------------------------------------------------
 
   // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
+  
+  Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
+  // http://localhost:8000/reporte-prosegur-resumen/2019-07-13/2019-07-17
+  Route::get('/reporte-comision/{año}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
 
   Route::get('/reporte', function () {
 
@@ -123,7 +129,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
-
+  Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
 
 Route::get('/reporte2', function () {
 

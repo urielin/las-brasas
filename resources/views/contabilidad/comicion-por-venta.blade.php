@@ -39,6 +39,7 @@
           <button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>
           <button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>
           <button type="button" class="btn btn-45 cyan" name="reportSells">Reporte Detalle de Ventas</button>
+          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar">Exportar</button>
         </div>
       </div>
   </div>
@@ -61,7 +62,7 @@
               <tr>
                 <th>ID Venta</th>
                 <th>Folio</th>
-                <th>Proc Folio Pedido</th>
+                <!--<th>Proc Folio Pedido</th>-->
                 <!--<th>Fecha Venta</th>-->
                 <th>FormaDePago</th>
                 <th>Código Vendedor</th>
@@ -86,35 +87,18 @@
       </div>
       <div id="test2" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
-          <table class="table table-responsive responsive-table">
-
+          <table class="table table-responsive responsive-table" id="tabla-detalles">
           <thead>
             <tr>
-              <th>Gest</th>
-              <th>Mes</th>
-              <th>FP</th>
-              <th>Forma de pago</th>
-              <th>Cant</th>
-              <th>Imp</th>
-              <th>Adic.</th>
-              <th>Total</th>
-              <th>Neto</th>
-              <th>CO</th>
-              <th>Operacion</th>
-              <th>Mes</th>
-              <th>Gest</th>
-              <th>C</th>
-              <th>Cartola</th>
-              <th>Mes</th>
-              <th>Gest.</th>
-              <th>Codigo</th>
-              <th>Producto</th>
-              <th>Monto</th>
-              <th>Comis</th>
-              <th>Total</th>
+              <th>Folio</th>
+              <th>Nombre producto</th>
+              <th>Código</th>
+              <th>Cantidad</th>
+              <th>Precio Total</th>
+              <th>Sucursal</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="contenido-detalles">
 
           </tbody>
         </table>
