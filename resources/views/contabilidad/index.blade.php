@@ -16,20 +16,20 @@
               <div class="container" style="margin-top: 30px">
                 <div class=" " data-example-id="form-group-height-sizes">
 
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
                       <input type="date" id="desde1" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
                       <input type="date" id="hasta1" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l2 m2 s2">
-                    <button type="button" id="buscar-salida-bancos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                  <div class="col l2 m2 s12">
+                    <button type="button" id="buscar-salida-bancos" class="btn cyan btn-45 col s12" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
                  <div class=" ">
@@ -101,20 +101,20 @@
               <div class="container" style="margin-top: 30px">
                 <div class=" " data-example-id="form-group-height-sizes">
 
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
                       <input type="date" id="desde2" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
                       <input type="date" id="hasta2" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l2 m2 s2">
-                    <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                  <div class="col l2 m2 s12">
+                    <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45 col s12" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
 
@@ -167,20 +167,20 @@
               <div class="container" style="margin-top: 30px">
                 <div class=" " data-example-id="form-group-height-sizes">
 
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
                       <input type="date" id="desde3" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l5 m5 s5">
+                  <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Hasta</label>
                       <input type="date" id="hasta3" class="form-control browser-default">
                     </div>
                   </div>
-                  <div class="col l2 m2 s2">
-                    <button type="button" id="buscar-depositos-pendientes" class="btn cyan btn-45" style='margin-top:21px' name="button">Buscar</button>
+                  <div class="col l2 m2 s12">
+                    <button type="button" id="buscar-depositos-pendientes" class="btn cyan btn-45 col s12" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
 
