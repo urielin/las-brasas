@@ -39,7 +39,7 @@
           <button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>
           <button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>
           <button type="button" class="btn btn-45 cyan" name="reportSells">Reporte Detalle de Ventas</button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells">Exportar</button>
+          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar">Exportar</button>
         </div>
       </div>
   </div>
