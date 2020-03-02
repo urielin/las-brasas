@@ -125,7 +125,11 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
 
-  Route::get('/reporte2', function () {
+  //-------------------------------------MODULO 4
+  Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
+
+Route::get('/reporte2', function () {
+
   $mpdf = new \Mpdf\Mpdf([
     'margin_left' => 20,
     'margin_right' => 15,

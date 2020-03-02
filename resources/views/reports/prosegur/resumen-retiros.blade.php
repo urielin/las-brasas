@@ -154,7 +154,10 @@ mpdf-->
 </thead>
 <tbody>
 <!-- ITEMS HERE -->
-{{ $total_diarios = 0 }}
+@if(isset($group_1))
+@php 
+$total_diarios = 0 ;
+@endphp
 @foreach($group_1 as $item => $value)
 <tr>
 <td   align="center">{{$loop->iteration}}</td>
@@ -172,8 +175,15 @@ mpdf-->
 <td >TOTAL</td>
 <td class="cost">{{$total_diarios}}</td>
 </tr>
+@else
+<tr><td>
+<h4 style="">No se encontraron datos</h4>
+</td>
+</tr>
+@endif
 </tbody>
 </table>
+
 <br>
 <h3 style="">2. Otros Retiros - Cobranza</h3>
 <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
@@ -187,6 +197,7 @@ mpdf-->
 </thead> -->
 <tbody>
 <!-- ITEMS HERE -->
+@if(isset($group_2))
 {{ $total_otros = 0 }}
 @foreach($group_2 as $item => $value)
 <tr>
@@ -205,6 +216,9 @@ mpdf-->
 <td >TOTAL</td>
 <td class="cost">{{$total_otros}}</td>
 </tr>
+@else
+<h4 style="">No se encontraron datos</h4>
+@endif
 </tbody>
 </table>
 <br>

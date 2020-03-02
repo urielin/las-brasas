@@ -124,7 +124,7 @@
               </li>
               <li><a href="/comicion-por-venta">
                 <i class="material-icons">radio_button_unchecked</i>
-                <span data-i18n="Page Maintenanace"> Comiciones por Venta </span></a>
+                <span data-i18n="Page Maintenanace"> Comisiones por Venta </span></a>
               </li>
 
 
