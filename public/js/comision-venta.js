@@ -113,8 +113,6 @@ $(document).ready(function(){
         }
     }); 
 
-
-
     $('#gestion').on('change', function(){
 
         var gestion;
@@ -291,7 +289,32 @@ $(document).ready(function(){
 
         $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
     })
+
+    $('#exportar').on('click',function(){
+        
+        var year,mes,sucursal,vendedor;
+        year = $('#gestion').val();
+        mes = $('#mes').val();
+        sucursal = $('#sucursal').val();
+        vendedor = $('#vendedor').val();
+
+        if(year != '' && mes != '' && sucursal != '' && vendedor !=''){
+            console.log(year);
+            console.log(mes);
+            console.log(sucursal);
+            console.log(vendedor);
+            //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
+            window.open( 'reporte-comision/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
+            //window.open().focus();
+            //window.open().focus();
+        }
+        else{
+            alert('Complete todos los campos');
+
+        }
   
+
+    });
 
 
 });

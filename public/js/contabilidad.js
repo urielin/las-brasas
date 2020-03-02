@@ -50,13 +50,18 @@ $(document).on('click','#buscar-salida-bancos',function(){
           });
         }
       });
+
+
 function habilitar_boton_pdf() {
 
   $("a.get-pdf-report").on('click',function() {
     id_retiros=$(this).attr('id');
     var data=$(this).data();
     console.log(data);
-    window.open('reporte-prosegur-resumen/'+ data.fecha1 +'/'+ data.fecha2 +'/',"_blank").focus();
+    window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
+
+
+
     // request = $.get('reporte-prosegur-resumen',{fecha1:fecha1,fecha2:fecha2 },function(res){
     //   request.done(function( msg ) {
     //     // $( "#log" ).html( msg );
