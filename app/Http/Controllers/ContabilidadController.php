@@ -112,8 +112,22 @@ public function getOtroRetiro(Request $request)
     {
         if ($request -> ajax()) {
 
-                DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
-                $resultado= 'Retiro incluido';
+                $estado = DB::select("SELECT  estado FROM  MODULO_RETIROS_INDICE WHERE id_retiros_indice = '$request->id_retiro_indice'");
+                foreach($estado as $est)
+                {
+                      $estado=$est->estado;
+                }
+
+                if ($estado == '0') {
+                      DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
+                      $resultado= 'Retiro incluido';
+                } else {
+                     $resultado= 'El depósito esta completo, no es posible agregar un retiro.';
+                }
+
+
+                //
+                  // $resultado= 'Retiro incluido';
               return response()->json([
                   'resultado'   =>$resultado
               ]);
@@ -304,9 +318,9 @@ public function deleteItemRetiro(Request $request)
           $fecha2=(string)$fecha2;
           $datos['fecha1']= $fecha1;
           $datos['fecha2']= $fecha2;
-          $datos['resumen_ventas']=DB::select("SELECT  FRPG_CODIGO, FRPG_DESCRIPCION , SUM(total) as sub_total 
-          FROM [dbo].[MODULO_VENTA_HIST] 
-          INNER JOIN  [dbo].[ADM_FORMAPAGO] ON forma_pago = FRPG_CODIGO 
+          $datos['resumen_ventas']=DB::select("SELECT  FRPG_CODIGO, FRPG_DESCRIPCION , SUM(total) as sub_total
+          FROM [dbo].[MODULO_VENTA_HIST]
+          INNER JOIN  [dbo].[ADM_FORMAPAGO] ON forma_pago = FRPG_CODIGO
           where fecha BETWEEN convert(date,'$fecha1') and convert(date,'$fecha2')
           GROUP BY FRPG_CODIGO, FRPG_DESCRIPCION");
           // where fecha BETWEEN convert(date,'2019-07-13') and convert(date,'2019-07-17')

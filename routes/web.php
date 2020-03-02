@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
 // -------------------------------------------------------------
 
   // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
-  
+
   Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
   // http://localhost:8000/reporte-prosegur-resumen/2019-07-13/2019-07-17
   Route::get('/reporte', function () {

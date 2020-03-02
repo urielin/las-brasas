@@ -42,7 +42,7 @@ table thead td { background-color: #EEEEEE;
 <htmlpageheader name="myheader">
 <table width="100%">
 <tr  height="30">
-	<td width="40%" >   
+	<td width="40%" >
 		<img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
 	</td>
 	<td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="2" >
@@ -79,7 +79,7 @@ mpdf-->
 		foreach ($depositosDetalle1 as $item) {
 			if (!isset($total_group[$item->OPER_DESC])) {
 				$total_group[$item->OPER_DESC]=0;
-			} 
+			}
 			$group[$item->OPER_DESC][] = $item;
 			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
 		}
@@ -95,14 +95,14 @@ mpdf-->
 		foreach ($depositosDetalle2 as $item) {
 			if (!isset($total_group[$item->OPER_DESC])) {
 				$total_group[$item->OPER_DESC]=0;
-			} 
+			}
 			if (!isset($total_group_2[$item->OPER_DESC])) {
 				$total_group_2[$item->OPER_DESC]=0;
 			}
 			$group_2[$item->OPER_DESC][] = $item;
 			$group[$item->OPER_DESC][] = $item;
 			$total_group_2[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
-			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;			
+			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
 		}
 		//dd($group_2);
 		//dd($total_group_2);
@@ -254,6 +254,3 @@ mpdf-->
 
 </body>
 </html>
-
-
-

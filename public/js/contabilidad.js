@@ -21,7 +21,7 @@ $(document).on('click','#buscar-salida-bancos',function(){
                   $('#retiroTabla').empty();
                   $.each(res.retiros, function(index,value){
 
-                      btn_report='<a data-id="'+value.id_retiros_indice +'" data-fecha1="'+dateUTC(value.fecha_desde)+'" data-fecha2="'+dateUTC(value.fecha_hasta) +'" type="button" value="" class="get-pdf-report btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">picture_as_pdf</i></a>';
+                      btn_report = '<a data-id="'+value.id_retiros_indice +'" data-fecha1="'+dateUTC(value.fecha_desde)+'" data-fecha2= "'+dateUTC(value.fecha_hasta) +'" type="button" value="" class="get-pdf-report btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">picture_as_pdf</i></a>';
 
                       if (value.estado == '1') {
                         $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ parseFloat(value.monto_total) +" </td><td>COMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+ btn_report +"</td></tr>");
@@ -51,15 +51,16 @@ $(document).on('click','#buscar-salida-bancos',function(){
         }
       });
 function habilitar_boton_pdf() {
+
   $("a.get-pdf-report").on('click',function() {
     id_retiros=$(this).attr('id');
     var data=$(this).data();
     console.log(data);
-    window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
+    window.open('reporte-prosegur-resumen/'+ data.fecha1 +'/'+ data.fecha2 +'/',"_blank").focus();
     // request = $.get('reporte-prosegur-resumen',{fecha1:fecha1,fecha2:fecha2 },function(res){
     //   request.done(function( msg ) {
     //     // $( "#log" ).html( msg );
-        
+
     //     console.log(msg);
 
     //   });
@@ -69,7 +70,7 @@ function habilitar_boton_pdf() {
     //     alert( "Request failed: " + textStatus + jqXHR.responseText);
     //   });
     // });
-    
+
   });
 }
 
@@ -109,8 +110,12 @@ $('#table-detalle').on('click','.eliminar-item',function(){
       console.log(id_retiro_indice);
       if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
          $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice },function(res){
-              console.log(res.resultado);
+              alert(res.resultado);
          });
+      }
+      else
+      {
+          alert('Debe ingresar el número de depósito');
       }
   });
 // -------------------------------------------------------------

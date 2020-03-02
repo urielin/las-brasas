@@ -121,7 +121,7 @@
                                <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno')">Datos de camión</div>
                                <div class='tablinks' onclick="openCity(event, 'dos')">Fecha embarque y llegada</div>
                                <div class='tablinks' onclick="openCity(event, 'cuatro')">Datos embarque y llegada</div>
-                               <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camion</div>
+                               <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camión</div>
                             </div>
 
                           <div id="uno" class="tabcontent" >
@@ -188,7 +188,7 @@
                                           </div>
                                         </div>
                                         <div class="form-group col s12 l12 pb-2">
-                                          <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Pais origen: </label>
+                                          <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">País origen: </label>
                                             <div class="col l6 m6 s6">
                                               <input name="pais_origen" id="pais_origen" type="text" class="browser-default form-control">
                                             </div>
