@@ -92,6 +92,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   
   Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
   // http://localhost:8000/reporte-prosegur-resumen/2019-07-13/2019-07-17
+  Route::get('/reporte-comision/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
+
   Route::get('/reporte', function () {
 
     $mpdf = new \Mpdf\Mpdf([
@@ -118,10 +120,10 @@ Route::group(['middleware' => 'auth_custom'], function () {
 
   });
 
-  Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
+  //Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
-
+  //--------------------------------------COMISION-VENTA
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
