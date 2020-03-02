@@ -123,10 +123,11 @@ class ComicionVentaController extends Controller
 
         if($request -> ajax()){
             
-          $tabla_detalles= DB::select("SELECT m2.CODI_RNOMBRE, m1.folio, m1.ptotal, m1.sucursal, m1.cantidad, m1.codigo, 
-                                              m2.id_codigos
-                                        FROM  MODULO_ITEM_HIST m1 INNER JOIN ADM_CODIGOS m2 ON m1.codigo = m2.CODI_RCODIGO 
-                                        WHERE m1.folio='$request->valores'");
+          $tabla_detalles= DB::select("SELECT m1.folio,  m1.codigo, m2.CODI_RNOMBRE, SUM(m1.cantidad) AS cantidad ,(SUM(m1.ptotal)/SUM(m1.cantidad)) as preciounit,SUM(m1.ptotal) as total
+                                                      
+                                                FROM  MODULO_ITEM_HIST m1 INNER JOIN ADM_CODIGOS m2 ON m1.codigo = m2.CODI_RCODIGO 
+                                                WHERE m1.folio='$request->valores' GROUP BY m2.CODI_RNOMBRE, m1.folio, 
+                                                  m1.codigo");
 
 
           return response()->json([

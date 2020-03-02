@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     $('#vendedor').on('change', function(){
 
-        var vendedor,gestion,sucursal,mes;
+        var vendedor,gestion,sucursal,mes,total;
         gestion = $('#gestion').val();
         sucursal = $('#sucursal').val();
         mes = $('#mes').val();
@@ -32,7 +32,7 @@ $(document).ready(function(){
                         })
                     }
                     else{
-                            
+                            total=0;
                             $.each(res.fecha_actual,function(index,value){
 
                                 $('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Ventas de '+value.mes+' - '+value.año+' pagadas en '+value.mes+' - '+value.año+'</td>');
@@ -41,8 +41,9 @@ $(document).ready(function(){
                             $.each(res.comision, function(index,value){
                                 $('#tabla-comisiones').append('<tr><td>'+value.id_venta+'</td><td id='+value.folio+'>'+value.folio+'</td><!--<td>'+value.proc_folio_pedido+'</td>--><td>'+value.forma_pago+'</td><td>'+value.cod_vendedor +'</td><td>'+parseFloat(value.ptotal)+'</td><td>'+parseFloat(value.impuesto)+'</td><td>'+parseFloat(value.adicional)+'</td><td>'+parseFloat(value.comision)+'</td><td>'+value.rut_cliente+'</td><td>'+ dateUTC(value.fecha2)+'</td><td>'+dateUTC(value.fecha_pago)+'</td><td>'+parseFloat(value.monto)+'</td><td>'+value.tipo_documento+'</td><td>'+value.n_deposito+'</td></tr>');
                             //$('#tabla-comisiones').append('<tr class="mostrar-detalle"><td>'+value.id_venta+'</td><td>'+value.folio+'</td><td class="detalles"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-    
+                            total=total+parseFloat(value.comision);
                             });
+                            $('#tabla-comisiones').append('<tr><td colspan="6" align="center"></td><td></td><td>'+total+'</td><td colspan="6"></td></tr>');
                     }
                     if(res.comision1 == ''){
 
@@ -275,7 +276,7 @@ $(document).ready(function(){
                     
                     //console.log('tE FALTA POQUITO CARNAL :VVVV');
     
-                    $('#tabla-detalles').append('<tr><td>'+value.folio+'</td><td class="">'+value.CODI_RNOMBRE+'</td><td>'+value.codigo+'</td><td>'+value.cantidad+'</td><td>'+value.ptotal+'</td><td>'+value.sucursal+'</td>');
+                    $('#tabla-detalles').append('<tr><td>'+value.folio+'</td><td class="">'+value.codigo+'</td><td>'+value.CODI_RNOMBRE+'</td><td>'+value.cantidad+'</td><td>'+parseFloat(value.preciounit)+'</td><td>'+value.total+'</td></tr>');
     
                 });  
     
@@ -291,6 +292,8 @@ $(document).ready(function(){
     })
 
     $('#exportar').on('click',function(){
+
+        
         
         var year,mes,sucursal,vendedor;
         year = $('#gestion').val();

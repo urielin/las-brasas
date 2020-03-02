@@ -181,7 +181,7 @@ mpdf-->
         <tr>
             <td width="20%" align="center">Folio</td>
             <td width="20%" align="center">Fecha Venta</td>
-            <td width="25%" align="center">RUC Cliente</td>
+            <td width="25%" align="center">RUT Cliente</td>
             <!--<td width="20%" align="center">Fecha Pago</td>-->
             <!--<td width="20%" align="center">Deposito</td>-->
             <td width="20%" align="center">Precio Neto</td>            

@@ -39,7 +39,7 @@
           <button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>
           <button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>
           <button type="button" class="btn btn-45 cyan" name="reportSells">Reporte Detalle de Ventas</button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar">Exportar</button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar">Exportar</button>
         </div>
       </div>
   </div>
@@ -57,7 +57,7 @@
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
 
-          <table class="table table-responsive responsive-table" id="tabla-comisiones">
+          <table class="table table-responsive responsive-table" id="tabla-comisiones" >
             <thead>
               <tr>
                 <th>ID Venta</th>
@@ -79,7 +79,7 @@
                 <th>N° Deposito</th>
               </tr>
             </thead>
-            <tbody id="contenido">
+            <tbody id="contenido" style="cursor:pointer">
 
             </tbody>
           </table>
@@ -91,11 +91,12 @@
           <thead>
             <tr>
               <th>Folio</th>
-              <th>Nombre producto</th>
               <th>Código</th>
+              <th>Nombre</th>
               <th>Cantidad</th>
+              <th>Precio Unit</th>
               <th>Precio Total</th>
-              <th>Sucursal</th>
+             
             </tr>
           </thead>
           <tbody id="contenido-detalles">

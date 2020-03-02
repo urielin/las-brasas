@@ -131,6 +131,9 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
 
+  //-------------------------------------MODULO 4
+  Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
+
 Route::get('/reporte2', function () {
 
   $mpdf = new \Mpdf\Mpdf([
