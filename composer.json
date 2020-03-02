@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
         "laravelcollective/html": "^6.0",
+        "maatwebsite/excel": "^3.1",
         "mpdf/mpdf": "^8.0",
         "yajra/laravel-datatables-oracle": "^9.8"
     },
