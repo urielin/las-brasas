@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div class="form-group col l3 m6 s12">
-          <label for="" class="form-control-label">Gestion</label>
+          <label for="" class="form-control-label">Gestión</label>
           <select class="form-control browser-default" id="gestion" name="gestion">
           <option value="">Seleccione gestión</option>  
           @foreach ($gestion as $g)
@@ -50,8 +50,8 @@
 
       <div class="col s12">
         <ul class="tabs">
-          <li class="tab col m6"><a class="active" href="#test1" id="tabla1">Resumen de comiciones</a></li>
-          <li class="tab col m6"><a href="#test2" id="tabla2">Detalle de comiciones</a></li>
+          <li class="tab col m6"><a class="active" href="#test1" id="tabla1">Resumen de comisiones</a></li>
+          <li class="tab col m6"><a href="#test2" id="tabla2">Detalle de comisiones</a></li>
         </ul>
       </div>
       <div id="test1" class="col s12">
@@ -76,7 +76,7 @@
                 <th>Fecha de Pago</th>
                 <th>Monto</th>
                 <th>Tipo de Documento</th>
-                <th>N° Deposito</th>
+                <th>N° Depósito</th>
               </tr>
             </thead>
             <tbody id="contenido" style="cursor:pointer">
@@ -94,7 +94,7 @@
               <th>Código</th>
               <th>Nombre</th>
               <th>Cantidad</th>
-              <th>Precio Unit</th>
+              <!--<th>Precio Unit</th>-->
               <th>Precio Total</th>
              
             </tr>

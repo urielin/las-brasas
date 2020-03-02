@@ -276,7 +276,7 @@ $(document).ready(function(){
                     
                     //console.log('tE FALTA POQUITO CARNAL :VVVV');
     
-                    $('#tabla-detalles').append('<tr><td>'+value.folio+'</td><td class="">'+value.codigo+'</td><td>'+value.CODI_RNOMBRE+'</td><td>'+value.cantidad+'</td><td>'+parseFloat(value.preciounit)+'</td><td>'+value.total+'</td></tr>');
+                    $('#tabla-detalles').append('<tr><td>'+value.folio+'</td><td class="">'+value.codigo+'</td><td>'+value.CODI_RNOMBRE+'</td><td>'+value.cantidad+'</td><!--<td>'+parseFloat(value.preciounit)+'</td>--><td>'+value.total+'</td></tr>');
     
                 });  
     
