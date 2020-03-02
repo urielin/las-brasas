@@ -32,10 +32,7 @@ class ProductoTerminado extends Model
                       ->where('padre.CODI_PADRE', $params['id'])
                       ->where('padre.ESTADO', 'like', '%'. $params['state'] . '%')
                       ->get();
-/*
-        return ProductoTerminado::where('CODI_PADRE', $params['id'])
-                                  ->where('ESTADO', 'like', '%'. $params['state'] . '%')
-                                  ->get();*/
+ 
      }
 
      public function updateProduct($params) {

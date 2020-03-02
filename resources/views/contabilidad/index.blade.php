@@ -89,8 +89,7 @@
             </div>
             <div id="test2" class="col s12  lighten-4">
               <div class="container" style="margin-top: 30px">
-                <div class=" " data-example-id="form-group-height-sizes">
-
+                <div class=" " data-example-id="form-group-height-sizes"> 
                   <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
@@ -107,7 +106,6 @@
                     <button type="button" id="buscar-otros-depositos" class="btn cyan btn-45 col s12" style='margin-top:21px' name="button">Buscar</button>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col s12">
                   </div>
@@ -149,14 +147,11 @@
 
                     </div>
                   </div>
-
-
               </div>
             </div>
             <div id="test3" class="col s12  lighten-4">
               <div class="container" style="margin-top: 30px">
                 <div class=" " data-example-id="form-group-height-sizes">
-
                   <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
@@ -178,8 +173,6 @@
                   <div class="col s12">
                   </div>
                   <div class="col s12 dataTables_scrollBody">
-
-
                             <div class="col m12" style="margin-top: 20px;">
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle depósitos pendientes</span>
@@ -196,12 +189,9 @@
                                 </tr>
                               </thead>
                               <tbody id="retiroPendienteTabla">
-
                               </tbody>
                             </table>
                              </div>
-
-
                     </div>
                   </div>
 
