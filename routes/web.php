@@ -30,9 +30,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
   Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
-
 // --------------------------------
-
   Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
   Route::GET('/ver-camion', 'GestionCamionController@show')->name('showCamion');
   Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
@@ -85,15 +83,10 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
 
 
-
-// ---------------------------------------Contabilidad - Confirmación bancaria
   Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
-// -------------------------------------------------------------
-
-  // Route::get('/reporte', 'ContabilidadController@getOtroRetiro')->name('getReporte');
 
   Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
-  // http://localhost:8000/reporte-prosegur-resumen/2019-07-13/2019-07-17
+
   Route::get('/reporte-comision/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
 
   Route::get('/reporte', function () {
@@ -122,16 +115,20 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
   });
 
-  //Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
-  //--------------------------------------COMISION-VENTA
+
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
+  Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
+  Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
+
+  //-------------------------------------MODULO 4
+  Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
 
 Route::get('/reporte2', function () {
 
@@ -143,7 +140,6 @@ Route::get('/reporte2', function () {
     'margin_header' => 10,
     'margin_footer' => 10
   ]);
-
   $mpdf->SetProtection(array('print'));
   $mpdf->SetTitle("Resumen de transacciones");
   $mpdf->SetAuthor("Las Brasas");
@@ -156,31 +152,31 @@ Route::get('/reporte2', function () {
   $mpdf->WriteHTML($html);
 
   $mpdf->Output();
+  });
+  Route::get('/reporte3', function () {
 
-});
-Route::get('/reporte3', function () {
+    $mpdf = new \Mpdf\Mpdf([
+      'margin_left' => 20,
+      'margin_right' => 15,
+      'margin_top' => 48,
+      'margin_bottom' => 25,
+      'margin_header' => 10,
+      'margin_footer' => 10
+    ]);
+    $mpdf->SetProtection(array('print'));
+    $mpdf->SetTitle("Resumen de transacciones");
+    $mpdf->SetAuthor("Las Brasas");
+    $mpdf->SetWatermarkText("LAS BRASAS");
+    $mpdf->showWatermarkText = true;
+    $mpdf->watermark_font = 'DejaVuSansCondensed';
+    $mpdf->watermarkTextAlpha = 0.1;
+    $mpdf->SetDisplayMode('fullpage');
+    $html =view('reports.prosegur.detalle-depositos')->render();
+    $mpdf->WriteHTML($html);
+    $mpdf->Output();
 
-  $mpdf = new \Mpdf\Mpdf([
-    'margin_left' => 20,
-    'margin_right' => 15,
-    'margin_top' => 48,
-    'margin_bottom' => 25,
-    'margin_header' => 10,
-    'margin_footer' => 10
-  ]);
+  });
 
-  $mpdf->SetProtection(array('print'));
-  $mpdf->SetTitle("Resumen de transacciones");
-  $mpdf->SetAuthor("Las Brasas");
-  $mpdf->SetWatermarkText("LAS BRASAS");
-  $mpdf->showWatermarkText = true;
-  $mpdf->watermark_font = 'DejaVuSansCondensed';
-  $mpdf->watermarkTextAlpha = 0.1;
-  $mpdf->SetDisplayMode('fullpage');
-  $html =view('reports.prosegur.detalle-depositos')->render();
-  $mpdf->WriteHTML($html);
 
-  $mpdf->Output();
 
-});
 });

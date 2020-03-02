@@ -57,7 +57,7 @@ class BodegaIdOfertasController extends Controller
      */
     public function edit(BodegaIdOfertas $BodegaIdOfertas)
     {
-        //
+    
     }
 
     /**

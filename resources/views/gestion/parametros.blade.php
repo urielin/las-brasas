@@ -32,7 +32,7 @@
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top: 20px;padding:10px">
 
-          <table class="table table-responsive responsive-table">
+          <table class="table table-responsive responsive-table" id="tabla-proveedor">
             <thead>
               <tr>
                 <th>Codigo</th>
@@ -44,10 +44,10 @@
                 <th>Movil</th>
                 <th>Fax</th>
                 <th>Email</th>
-                <th></th>
+                <th>Cambios</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="proveedor-datos">
 
             </tbody>
           </table>
@@ -60,4 +60,5 @@
 @endsection
 
 @section('js')
+  <script src="{{asset('js/parametros.js') }}"></script>
 @endsection

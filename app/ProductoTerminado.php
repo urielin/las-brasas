@@ -15,8 +15,7 @@ class ProductoTerminado extends Model
                            'FECHA_AUT', 'RECLAZAR_SOBREPROD'];
 
      public function findAllSon($params) {
-
-
+       
         return DB::table('dbo.ADM_CODIGOS_PADRE as padre')
                       ->select('padre.CODI_PADRE',
                                 'padre.CODI_RCODIGO',
@@ -32,10 +31,7 @@ class ProductoTerminado extends Model
                       ->where('padre.CODI_PADRE', $params['id'])
                       ->where('padre.ESTADO', 'like', '%'. $params['state'] . '%')
                       ->get();
-/*
-        return ProductoTerminado::where('CODI_PADRE', $params['id'])
-                                  ->where('ESTADO', 'like', '%'. $params['state'] . '%')
-                                  ->get();*/
+
      }
 
      public function updateProduct($params) {

@@ -7,6 +7,7 @@
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Las brasas | Grupo Arinez</title>
     <!-- <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon-152x152.png">-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png">
@@ -123,7 +124,7 @@
               </li>
               <li><a href="/comicion-por-venta">
                 <i class="material-icons">radio_button_unchecked</i>
-                <span data-i18n="Page Maintenanace"> Comiciones por Venta </span></a>
+                <span data-i18n="Page Maintenanace"> Comisiones por Venta </span></a>
               </li>
 
 

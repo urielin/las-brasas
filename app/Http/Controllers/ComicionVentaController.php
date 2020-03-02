@@ -38,7 +38,7 @@ class ComicionVentaController extends Controller
       return response()->json([
 
         'sucursal'              =>$sucursal
-                
+
       ]);
 
     }
@@ -48,12 +48,12 @@ class ComicionVentaController extends Controller
 
     if ($request -> ajax()){
 
-      $vendedor = DB::select("SELECT vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal FROM MODULO_VENTA_HIST vh LEFT OUTER JOIN ADM_VENDEDORES av ON vh.cod_vendedor = av.VEND_CODIGO 
+      $vendedor = DB::select("SELECT vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal FROM MODULO_VENTA_HIST vh LEFT OUTER JOIN ADM_VENDEDORES av ON vh.cod_vendedor = av.VEND_CODIGO
                               WHERE YEAR(vh.fecha) = '$request->gestion' AND MONTH(vh.fecha) = '$request->mes'  AND vh.sucursal = '$request->sucursal'
                               GROUP BY vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal");
       return response()->json([
 
-        'vendedor'              =>$vendedor      
+        'vendedor'              =>$vendedor
       ]);
     }
   }
@@ -64,37 +64,37 @@ class ComicionVentaController extends Controller
       $año = $request->gestion;
       $mes = $request->mes;
 
-      
+
 
       //$fechaInicio = DB::select("SELECT fecha=DATEFROMPARTS($año,$mes,1)");
       //$fechaFinal = DB::select("SELECT fecha=EOMONTH(DATEFROMPARTS($año,$mes,1))");
 
-      $comision = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago, 
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+      $comision = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
       m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
       m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
       FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
-      and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1)) 
+      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
+      and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       ORDER BY m1.fecha2");
 
-      $comision1=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago, 
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+      $comision1=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
       m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
       m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
       FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
-      and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1)) 
+      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
+      and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
       ORDER BY m2.fecha_pago");
 
-      $comision2=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago, 
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+      $comision2=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
       m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
       m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
       FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
+      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago IS NULL
       and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       ORDER BY m2.fecha_pago");
@@ -114,7 +114,7 @@ class ComicionVentaController extends Controller
         'fecha_actual' =>$fecha_actual,
         'fecha_anterior'=>$fecha_anterior
 
-      
+
       ]);
     }
   }
@@ -122,11 +122,12 @@ class ComicionVentaController extends Controller
   public function getDetalles(Request $request){
 
         if($request -> ajax()){
-            
-          $tabla_detalles= DB::select("SELECT m2.CODI_RNOMBRE, m1.folio, m1.ptotal, m1.sucursal, m1.cantidad, m1.codigo, 
-                                              m2.id_codigos
-                                        FROM  MODULO_ITEM_HIST m1 INNER JOIN ADM_CODIGOS m2 ON m1.codigo = m2.CODI_RCODIGO 
-                                        WHERE m1.folio='$request->valores'");
+
+          $tabla_detalles= DB::select("SELECT m1.folio,  m1.codigo, m2.CODI_RNOMBRE, SUM(m1.cantidad) AS cantidad ,(SUM(m1.ptotal)/SUM(m1.cantidad)) as preciounit,SUM(m1.ptotal) as total
+
+                                                FROM  MODULO_ITEM_HIST m1 INNER JOIN ADM_CODIGOS m2 ON m1.codigo = m2.CODI_RCODIGO
+                                                WHERE m1.folio='$request->valores' GROUP BY m2.CODI_RNOMBRE, m1.folio, 
+                                                  m1.codigo");
 
 
           return response()->json([
@@ -145,40 +146,41 @@ class ComicionVentaController extends Controller
     //$comision['mes'] = DB::select("SELECT DATENAME(MONTH,DATEFROMPARTS($year,$mes,1))");
     //$comision['sucursal'] = DB::select("SELECT SUCU_NOMBRE FROM ADM_SUCURSAL WHERE SUCU_ESTADO = 1 AND SUCU_CODIGO= $sucursal");
     //$comision['vendedor'] = DB::select("SELECT VEND_NOMBRE FROM ADM_VENDEDORES WHERE VEND_NOMBRE='$vendedor'");
-    
+
     $comision['mes'] = $request->mes;
     $comision['sucursal'] = DB::select("SELECT SUCU_NOMBRE FROM ADM_SUCURSAL WHERE (SUCU_ESTADO = 1) AND SUCU_CODIGO=$request->sucursal");
-    $comision['vendedor'] = DB::select("SELECT av.VEND_NOMBRE FROM MODULO_VENTA_HIST vh LEFT OUTER JOIN ADM_VENDEDORES av ON vh.cod_vendedor = av.VEND_CODIGO 
+    $comision['vendedor'] = DB::select("SELECT av.VEND_NOMBRE FROM MODULO_VENTA_HIST vh LEFT OUTER JOIN ADM_VENDEDORES av ON vh.cod_vendedor = av.VEND_CODIGO
     WHERE YEAR(vh.fecha) = '$year' AND MONTH(vh.fecha) = '$request->mes'  AND vh.sucursal = '$request->sucursal' AND vh.cod_vendedor='$request->vendedor'
     GROUP BY vh.cod_vendedor, av.VEND_NOMBRE, vh.sucursal");
-    
 
-    $comision['mesactual'] = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago, 
-    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+
+
+    $comision['mesactual'] = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago,
+    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
     m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
     FORMAT(m2.fecha_pago,'yyyy/MM/dd') as fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
     FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
-    and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1)) 
+    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
+    and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     and m1.fecha2 BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     ORDER BY m1.fecha2");
 
-    $comision['mesanterior']=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago, 
-    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+    $comision['mesanterior']=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago,
+    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
     m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
     FORMAT(m2.fecha_pago,'yyyy/MM/dd') as fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
     FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
-    and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1)) 
+    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
+    and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($year,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($year,$mes,1),-1)
     ORDER BY m2.fecha_pago");
 
-    $comision['messiguiente']=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago, 
-    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional, 
+    $comision['messiguiente']=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, FORMAT(m1.fecha2,'yyyy/MM/dd') as fecha2, m1.forma_pago,
+    m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
     m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
     FORMAT(m2.fecha_pago,'yyyy/MM/dd') as fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
     FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1 
+    WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
     and m2.fecha_pago IS NULL
     and m1.fecha2 BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     ORDER BY m2.fecha_pago");
@@ -208,6 +210,6 @@ class ComicionVentaController extends Controller
 
           $mpdf->WriteHTML($html);
           $mpdf->Output();
-    
+
   }
 }

@@ -9,8 +9,32 @@ use Illuminate\Support\Facades\DB;
 
 class ContenedorController extends Controller
 {
-  public function pagos() {
-    return view('gestion.pagos');
+  public function getProveedor() {
+
+    if (request() -> ajax()){
+
+      $proveedor= DB::select("SELECT id_proveedor,
+                                      ISNULL(emp_codigo,'') as emp_codigo,
+                                      ISNULL(emp_rut,'') as emp_rut,
+                                      ISNULL(emp_nombre,'') as emp_nombre,
+                                      ISNULL(direccion_pais,'') as direccion_pais,
+                                      ISNULL(direccion_direccion,'') as direccion_direccion,
+                                      ISNULL(com_telefono,'') as com_telefono,
+                                      ISNULL(com_movil,'') as com_movil,
+                                      ISNULL(com_fax,'') as com_fax,
+                                      ISNULL(com_email,'') as com_email 
+                                      FROM ADM_PROVEEDOR");
+      return response()->json([
+
+        'proveedor'              =>$proveedor
+
+      ]);
+    }
+
+    //return view('gestion.pagos');
+
+
+
   }
   public function parametros() {
     return view('gestion.parametros');
