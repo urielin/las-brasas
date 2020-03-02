@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <style>
@@ -62,15 +61,12 @@ table thead td { background-color: #EEEEEE;
 		{{$fecha2}}
 	</span></td>
 </tr></table>
-
 </htmlpageheader>
-
 <htmlpagefooter name="myfooter">
 <div style="border-top: 1px solid #000000; font-size: 9pt; text-align: center; padding-top: 3mm; ">
 Page {PAGENO} of {nb}
 </div>
 </htmlpagefooter>
-
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
 <sethtmlpagefooter name="myfooter" value="on" />
 mpdf-->
@@ -88,7 +84,6 @@ mpdf-->
 		//dd($group_1);
 		//dd($total_group_1);
 	}
-
 	//unset($group);
 	//unset($total_group);
 	if(!empty($depositosDetalle2[0])){

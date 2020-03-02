@@ -360,10 +360,10 @@ public function deleteItemRetiro(Request $request)
           $mpdf->watermarkTextAlpha = 0.1;
           $mpdf->SetDisplayMode('fullpage');
           $html =view('reports.prosegur.resumen-retiros',$datos)->render();
-          
+
           $mpdf->WriteHTML($html);
           $mpdf->Output();
-          
+
     }
 
 
