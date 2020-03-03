@@ -303,6 +303,28 @@ class ContabilidadController extends Controller
 
         }
   }
+
+  public function prueba()
+  {
+    $filename =  public_path('txt/prueba.txt');
+    $prueba = fopen($filename, "r") or die ("error al leer");
+
+    while ( !feof($prueba)) {
+      $linea = fgets($prueba);
+      $saltodelinea[] = nl2br($linea);
+      // echo $saltodelinea;
+    }
+    fclose($prueba);
+
+    // $nueva_cadena = chunk_split(("hola1  hola2   hola3    hola4     hola5"));
+    // dd($nueva_cadena);
+    foreach ($saltodelinea as $val) {
+
+          $porciones[] = explode(" ", $val);
+    }
+    dd($porciones);
+  }
+
   public function reporteResumenProsegur(Request $request)
   {
     $fecha1= $request->fecha1 ? strval($request->fecha1) : NULL;

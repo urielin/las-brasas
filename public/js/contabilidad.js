@@ -11,12 +11,12 @@ $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
-          console.log({fecha1:fecha1,fecha2:fecha2 });
+          // console.log({fecha1:fecha1,fecha2:fecha2 });
         if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
               $('#icono1').empty();
               $('#depositoDetalleHead').empty();
               $('#depositoDetalleTabla').empty();
-              request = $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
+              $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
                   // $('#retiro-head').empty();
                   $('#retiroTabla').empty();
                   $.each(res.retiros, function(index,value){
@@ -34,20 +34,22 @@ $(document).on('click','#buscar-salida-bancos',function(){
                   });
 
                   $('#retiroTabla').append('<tr "><td></td><td></td><td></td><td></td><td>'+ cantidad+"</td><td>"+ monto+"</td><td></td><td></td><td></td><td></td></tr>");
-
+                  console.log('--------------------');
+                  console.log(addCommas(monto));
+                  console.log('--------------------');
 
           });
-          request.done(function( msg ) {
-            // $( "#log" ).html( msg );
-            console.log(msg);
-            console.log("get completado");
-            habilitar_boton_pdf();
-          });
-
-          request.fail(function( jqXHR, textStatus ) {
-            //console.log(jqXHR.responseText,textStatus);
-            alert( "Request failed: " + textStatus + jqXHR.responseText);
-          });
+          // request.done(function( msg ) {
+          //   // $( "#log" ).html( msg );
+          //   console.log(msg);
+          //   console.log("get completado");
+          //   habilitar_boton_pdf();
+          // });
+          //
+          // request.fail(function( jqXHR, textStatus ) {
+          //   //console.log(jqXHR.responseText,textStatus);
+          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
+          // });
         }
       });
 
@@ -300,4 +302,18 @@ $('#agregar-retiro-indice').on('click', function(){
       }
       return number;
   }
+
+  function addCommas(nStr)
+  {
+  	nStr += '';
+  	x = nStr.split('.');
+  	x1 = x[0];
+  	x2 = x.length > 1 ? '.' + x[1] : '';
+  	var rgx = /(\d+)(\d{3})/;
+  	while (rgx.test(x1)) {
+  		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  	}
+  	return x1 + x2;
+  }
+
 });
