@@ -78,6 +78,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/retiros-otros-generar', 'ContabilidadController@upOtroRetiro')->name('subirOtroRetiro');
   Route::get('/eliminar-item', 'ContabilidadController@deleteItemRetiro')->name('eliminarItemRetiro');
   Route::get('/deposito-incluir-deposito', 'ContabilidadController@IncluirRetiro')->name('IncluirRetiro');
+// ----------------------------------------------------------------------------------------------------------------------------------
+Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
 
 

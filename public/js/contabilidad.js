@@ -11,17 +11,17 @@ $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
-          console.log({fecha1:fecha1,fecha2:fecha2 });
+          // console.log({fecha1:fecha1,fecha2:fecha2 });
         if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
               $('#icono1').empty();
               $('#depositoDetalleHead').empty();
               $('#depositoDetalleTabla').empty();
-              request = $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
+              $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
                   // $('#retiro-head').empty();
                   $('#retiroTabla').empty();
                   $.each(res.retiros, function(index,value){
 
-                      btn_report='<a data-id="'+value.id_retiros_indice +'" data-fecha1="'+dateUTC(value.fecha_desde)+'" data-fecha2="'+dateUTC(value.fecha_hasta) +'" type="button" value="" class="get-pdf-report btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">picture_as_pdf</i></a>';
+                      btn_report = '<a data-id="'+value.id_retiros_indice +'" data-fecha1="'+dateUTC(value.fecha_desde)+'" data-fecha2= "'+dateUTC(value.fecha_hasta) +'" type="button" value="" class="get-pdf-report btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">picture_as_pdf</i></a>';
 
                       if (value.estado == '1') {
                         $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ parseFloat(value.monto_total) +" </td><td>COMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+ btn_report +"</td></tr>");
@@ -34,37 +34,40 @@ $(document).on('click','#buscar-salida-bancos',function(){
                   });
 
                   $('#retiroTabla').append('<tr "><td></td><td></td><td></td><td></td><td>'+ cantidad+"</td><td>"+ monto+"</td><td></td><td></td><td></td><td></td></tr>");
-
+                  console.log('--------------------');
+                  console.log(addCommas(monto));
+                  console.log('--------------------');
 
           });
-          request.done(function( msg ) {
-            // $( "#log" ).html( msg );
-            console.log(msg);
-            console.log("get completado");
-            habilitar_boton_pdf();
-          });
-
-          request.fail(function( jqXHR, textStatus ) {
-            //console.log(jqXHR.responseText,textStatus);
-            alert( "Request failed: " + textStatus + jqXHR.responseText);
-          });
+          // request.done(function( msg ) {
+          //   // $( "#log" ).html( msg );
+          //   console.log(msg);
+          //   console.log("get completado");
+          //   habilitar_boton_pdf();
+          // });
+          //
+          // request.fail(function( jqXHR, textStatus ) {
+          //   //console.log(jqXHR.responseText,textStatus);
+          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
+          // });
         }
       });
 
 
 function habilitar_boton_pdf() {
+
   $("a.get-pdf-report").on('click',function() {
     id_retiros=$(this).attr('id');
     var data=$(this).data();
     console.log(data);
     window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
 
-    
+
 
     // request = $.get('reporte-prosegur-resumen',{fecha1:fecha1,fecha2:fecha2 },function(res){
     //   request.done(function( msg ) {
     //     // $( "#log" ).html( msg );
-        
+
     //     console.log(msg);
 
     //   });
@@ -74,7 +77,7 @@ function habilitar_boton_pdf() {
     //     alert( "Request failed: " + textStatus + jqXHR.responseText);
     //   });
     // });
-    
+
   });
 }
 
@@ -114,8 +117,12 @@ $('#table-detalle').on('click','.eliminar-item',function(){
       console.log(id_retiro_indice);
       if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
          $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice },function(res){
-              console.log(res.resultado);
+              alert(res.resultado);
          });
+      }
+      else
+      {
+          alert('Debe ingresar el número de depósito');
       }
   });
 // -------------------------------------------------------------
@@ -295,4 +302,18 @@ $('#agregar-retiro-indice').on('click', function(){
       }
       return number;
   }
+
+  function addCommas(nStr)
+  {
+  	nStr += '';
+  	x = nStr.split('.');
+  	x1 = x[0];
+  	x2 = x.length > 1 ? '.' + x[1] : '';
+  	var rgx = /(\d+)(\d{3})/;
+  	while (rgx.test(x1)) {
+  		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  	}
+  	return x1 + x2;
+  }
+
 });

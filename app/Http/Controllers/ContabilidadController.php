@@ -11,9 +11,10 @@ use App\Test;
 use App\DbsysCamiones;
 use App\AdmTrasladoSalidaExt;
 use Validator;
+use File;
 
 class ContabilidadController extends Controller
-{ 
+{
   public function index()
   {
     return view('contabilidad.index');
@@ -98,21 +99,39 @@ class ContabilidadController extends Controller
                       }
 
 
+
                         return response()->json([
                             'numOtroRetiro'   =>$numOtroRetiro
                         ]);
             }
       }
+// -----------------------
 
+
+// ------------------------------------
       public function IncluirRetiro(Request $request)
       {
           if ($request -> ajax()) {
 
+            $estado = DB::select("SELECT  estado FROM  MODULO_RETIROS_INDICE WHERE id_retiros_indice = '$request->id_retiro_indice'");
+            foreach($estado as $est)
+            {
+                  $estado=$est->estado;
+            }
+
+            if ($estado == '0') {
                   DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
                   $resultado= 'Retiro incluido';
-                return response()->json([
-                    'resultado'   =>$resultado
-                ]);
+            } else {
+                 $resultado= 'El depósito esta completo, no es posible agregar un retiro.';
+            }
+
+
+            //
+              // $resultado= 'Retiro incluido';
+          return response()->json([
+              'resultado'   =>$resultado
+          ]);
           }
       }
 
@@ -284,6 +303,28 @@ class ContabilidadController extends Controller
 
         }
   }
+
+  public function prueba()
+  {
+    $filename =  public_path('txt/prueba.txt');
+    $prueba = fopen($filename, "r") or die ("error al leer");
+
+    while ( !feof($prueba)) {
+      $linea = fgets($prueba);
+      $saltodelinea[] = nl2br($linea);
+      // echo $saltodelinea;
+    }
+    fclose($prueba);
+
+    // $nueva_cadena = chunk_split(("hola1  hola2   hola3    hola4     hola5"));
+    // dd($nueva_cadena);
+    foreach ($saltodelinea as $val) {
+
+          $porciones[] = explode(" ", $val);
+    }
+    dd($porciones);
+  }
+
   public function reporteResumenProsegur(Request $request)
   {
     $fecha1= $request->fecha1 ? strval($request->fecha1) : NULL;
@@ -342,5 +383,9 @@ class ContabilidadController extends Controller
           $mpdf->Output();
 
     }
+
+
+
+
   }
 }
