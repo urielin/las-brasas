@@ -45,9 +45,9 @@
 
                 <div class="col s12 l3">
                   <form class="" action="index.html" method="post">
-                    <label for="anio" >Ingresar año</label>
+                    <label for="anio" >Gestión</label>
                     <select class="form-control browser-default" id="anio">
-                      <option>Año</option>
+                      <option>Ingresar año</option>
                       @foreach ($year as $y)
                       <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
                       @endforeach

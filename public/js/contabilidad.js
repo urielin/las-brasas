@@ -11,7 +11,7 @@ $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
-          // console.log({fecha1:fecha1,fecha2:fecha2 });
+          console.log({fecha1:fecha1,fecha2:fecha2 });
         if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
               $('#icono1').empty();
               $('#depositoDetalleHead').empty();
@@ -35,7 +35,7 @@ $(document).on('click','#buscar-salida-bancos',function(){
 
                   $('#retiroTabla').append('<tr "><td></td><td></td><td></td><td></td><td>'+ cantidad+"</td><td>"+ monto+"</td><td></td><td></td><td></td><td></td></tr>");
                   console.log('--------------------');
-                  console.log(addCommas(monto));
+                  console.log(addCommas((9999991400.5268974).toFixed(2)));
                   console.log('--------------------');
 
           });

@@ -1,6 +1,49 @@
-
   $(document).ready(function(){
 
+      $('#camiones_vencidos').click(function(){
+          var year, clasificacion ;
+          year = $('#anior').val() ;
+          clasificacion = $('#clasificacionr').val() ;
+          $('#camiones-vencidos').empty();
+
+          var d = new Date();
+
+          var month = d.getMonth()+1;
+          var day = d.getDate();
+
+          var output = d.getFullYear() + '-' +
+              (month<10 ? '0' : '') + month + '-' +
+              (day<10 ? '0' : '') + day;
+
+          if($.trim( $('#anior').val()) != '' && $.trim($('#clasificacionr').val()) != ''  ){
+            $.get('camiones-vencidos',{anio_id:year,clasificacion_id:clasificacion },function(res){
+                if (res.camionesVencidos != '') {
+                  $.each(res.camionesVencidos, function(index,value){
+
+                    var fechaInicio = new Date(value.fecha_llegada).getTime();
+                    var fechaFin    = new Date(output).getTime();
+                    var diff = fechaFin - fechaInicio;
+                    console.log(diff/(1000*60*60*24) );
+
+                    if (diff > 30) {
+                      $('#camiones-vencidos').append('<tr>'+'<td>'+ value.codigo +"</td><td>"+ value.codigo_aux+"</td><td>"+value.descripcion+" </td><td>"+ value.fecha_llegada +"</td><td>"+ value.fecha_vencimiento +" </td><td>"+ value.ingreso_zeta +"</td><td>"+ value.marca_origen +"</td><td>"+ value.valor_total +"</td><td>"+ value.cierre_gastos +"</td><td>"+ value.lugar_arribo +"</td></tr>");
+                    }
+
+
+                  })
+                } else {
+                  alert("No hay camiones, ingrese otro valor");
+                }
+
+                console.log(res.camionesVencidos);
+
+            });
+          }
+          else
+          {
+            alert("Los campos gestión y clasificar camión deben estar llenos");
+          }
+      });
 
 
       $('#anio').on('change', function(){
@@ -89,16 +132,6 @@
 
           });
 
-
-          // request.done(function( msg ) {
-          //   // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
         }
       });
 
@@ -124,16 +157,6 @@
 
           });
 
-
-          // request.done(function( msg ) {
-          //   // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
         }
       });
 
@@ -374,17 +397,6 @@
               $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+bi+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
            });
 
-
-          // request.done(function( msg ) {
-          //   // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
-
         }
       });
 
@@ -418,10 +430,7 @@ $(document).on('submit','#consulta1',function(){
             camion_id = $('#buscar-codigo-camion').val();
             valor ='1';
           }
-          // if ($('#action').val() == 'Editar')
-          // {
-          //     action_url = 'actualizar-camion';
-          // }
+
 
           $.ajax({
             url: action_url,
@@ -486,17 +495,6 @@ $(document).on('submit','#consulta1',function(){
             }
           });
 
-          // request.done(function( msg ) {
-          //
-          // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
-
 
         });
 
@@ -505,8 +503,6 @@ $(document).on('submit','#consulta1',function(){
                   event.preventDefault();
                   var camion_id;
                   var valor ;
-                  // $('#sample_form')[0].reset();
-                  // $('#form_result').html();
 
                   var action_url = '';
                   action_url = 'actualizar-camion-fecha';
@@ -524,10 +520,6 @@ $(document).on('submit','#consulta1',function(){
                     valor ='1';
                     console.log('val 1');
                   }
-                  // if ($('#action').val() == 'Editar')
-                  // {
-                  //     action_url = 'actualizar-camion';
-                  // }
 
                   request=$.ajax({
                     url: action_url,
@@ -789,16 +781,6 @@ $(document).on('submit','#consulta1',function(){
                     }
                   });
 
-                  // request.done(function( msg ) {
-                  //
-                  // $( "#log" ).html( msg );
-                  //   console.log(msg);
-                  // });
-                  //
-                  // request.fail(function( jqXHR, textStatus ) {
-                  //   console.log(jqXHR.responseText,textStatus);
-                  //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-                  // });
 
 
                 });
@@ -908,26 +890,8 @@ $(document).on('submit','#sample_form',function(){
              // },3000);
               $('#form_result').html(html);
 
-
-             // setTimeout(function() {
-             //     $('#form_result').html(html).fadeIn(3000);
-             // },1000);
-
-             // $('#form_result').empty();
-              // $('#form_result').html(html).hide(10000);
-            }
+              }
           });
-
-          // request.done(function( msg ) {
-          //
-          // $( "#log" ).html( msg );
-          //   console.log(msg);
-          // });
-          //
-          // request.fail(function( jqXHR, textStatus ) {
-          //   console.log(jqXHR.responseText,textStatus);
-          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-          // });
 
 
         });
@@ -1004,26 +968,10 @@ $('#buscar-camion-r').on('submit',function(event){
          // tf=parseFloat()+parseFloat();
             $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+bi+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
 
-
-
-          // html= '<div class="alert alert-success">'+ data.success+'</div>';
-          // $('#sample_form')[0].reset();
-
       }
 
     }
   });
-
-  // request.done(function( msg ) {
-  //
-  // $( "#log" ).html( msg );
-  //   console.log(msg);
-  // });
-  //
-  // request.fail(function( jqXHR, textStatus ) {
-  //   console.log(jqXHR.responseText,textStatus);
-  //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-  // });
 
 
 });
@@ -1384,64 +1332,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
                 $('#camiontabla').append("<tr>"+'<td>  </td>'+"<td></td><td></td><td></td><td></td><td>"+bi+" </td><td>"+bi+" </td><td>"+mm+"</td><td></td><td></td><td></td><td></td><td>"+tf+"</td><td></td><td></td><td>"+tcf+"</td></tr>");
          });
 
-
-         // request.done(function( msg ) {
-         //   // $( "#log" ).html( msg );
-         //   console.log(msg);
-         // });
-         //
-         // request.fail(function( jqXHR, textStatus ) {
-         //   console.log(jqXHR.responseText,textStatus);
-         //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-         // });
-
       }
-     //
-     //    $(this).parents("tr").find("td").each(function(){
-     //      if (j>2) {
-     //        valores[i] =$(this).html();
-     //        i++;
-     //      }
-     //      j++;
-     //
-     //    });
-     //    // i++;
-     // if($(this).prop("checked") == true){
-     //   valores[i]=1;
-     //
-     //        request=$.get('switch-item',{bloqueo_2_id:valores[15],camion_id:valores[1],item_id:valores[0] },function(res){
-     //          console.log('actualizado');
-     //        });
-     //
-     //        request.done(function( msg ) {
-     //          // $( "#log" ).html( msg );
-     //          console.log(msg);
-     //        });
-     //
-     //        request.fail(function( jqXHR, textStatus ) {
-     //          console.log(jqXHR.responseText,textStatus);
-     //          alert( "Request failed: " + textStatus + jqXHR.responseText);
-     //        });
-     //
-     //
-     //      }else{
-     //            valores[i]=0;
-     //          // console.log(valores[15]);
-     //          request=$.get('switch-item',{bloqueo_2_id:valores[15],camion_id:valores[1],item_id:valores[0] },function(res){
-     //            console.log('actualizado');
-     //          });
-     //
-     //
-     //            request.done(function( msg ) {
-     //              // $( "#log" ).html( msg );
-     //              console.log(msg);
-     //            });
-     //
-     //            request.fail(function( jqXHR, textStatus ) {
-     //              console.log(jqXHR.responseText,textStatus);
-     //              alert( "Request failed: " + textStatus + jqXHR.responseText);
-     //            });
-     //    }
 
       });
 
@@ -1468,16 +1359,6 @@ $(document).on('change','.btn-switch',function(){
               console.log('actualizado');
             });
 
-            // request.done(function( msg ) {
-            //   // $( "#log" ).html( msg );
-            //   console.log(msg);
-            // });
-            //
-            // request.fail(function( jqXHR, textStatus ) {
-            //   console.log(jqXHR.responseText,textStatus);
-            //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-            // });
-
 
           }else{
                 valores[i]=0;
@@ -1486,16 +1367,6 @@ $(document).on('change','.btn-switch',function(){
                 console.log('actualizado');
               });
 
-
-                // request.done(function( msg ) {
-                //   // $( "#log" ).html( msg );
-                //   console.log(msg);
-                // });
-                //
-                // request.fail(function( jqXHR, textStatus ) {
-                //   console.log(jqXHR.responseText,textStatus);
-                //   alert( "Request failed: " + textStatus + jqXHR.responseText);
-                // });
         }
 
       });
@@ -1511,35 +1382,17 @@ $(document).on('change','.btn-switch',function(){
 
         ms = new Date(ms);
 
-        // ms = Date.parse(2020-01-27);
-        // fecha = new Date(ms);
-        // console.log('Año');
-        // console.log(ms.getUTCFullYear());
         año=ms.getUTCFullYear();
-        // console.log('Mes');
-        // console.log(ms.getUTCMonth()+1);
         mes=ms.getUTCMonth()+1;
-        // console.log('Dia');
-        // console.log(ms.getUTCDate());
         dia=ms.getUTCDate();
-        // console.log('Horas');
-        // console.log(ms.getUTCHours()-4);
         hora=ms.getUTCHours()-3;
-        // console.log('Minutos');
-        // console.log(ms.getUTCMinutes());
         minuto=ms.getUTCMinutes();
-        // console.log('Segundos');
-        // console.log(ms.getUTCSeconds());
         segundo=ms.getUTCSeconds();
         fecha= año+'-'+ pad(mes) +'-'+ pad(dia)+'T'+ pad(hora)+':'+ pad(minuto)+':'+ pad(segundo);
-        // console.log('fechaaaa:');
-        // console.log(fecha);
         return fecha;
       }
 
       function pad(number) {
-        // console.log('este numero es:');
-        // console.log(number);
       if (number < 10) {
         if (number == 0) {
 

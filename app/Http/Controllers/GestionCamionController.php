@@ -21,49 +21,33 @@ class GestionCamionController extends Controller
      */
     public function index()
     {
-
-      // $year=DbsysCamiones::select(('fecha_llegada'))->distinct()->get();
-      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
-
-
-
-      // $clasificaciones=DB::select('SELECT  * FROM dbo.ADM_CLASIFICACIONCODIGO');
-      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-
-      // $year->distinct();
-      // $year= DbsysCamiones::select(date('Y', strtotime('fecha_llegada')))->get();
-
-      // $year= DbsysCamiones::select(date('Y', strtotime('fecha_llegada')))->get();
-      // $y=date('Y', strtotime($request->Mes_cambiar));
-
-      // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
       $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
-      // return $datos;
+      // $camionesVencidos=DB::select('');
       return view('gestion-camion')->with(compact('year'))->with(compact('datos'));
-      // dd($year1);
+    }
 
-        // return view('gestion-camion',compact('datos'));
-        // return view('gestion-camion');
 
-        // $y=date('Y', strtotime($request->Mes_cambiar));
-        // $m=date('m', strtotime($request->Mes_cambiar));
-        // \App\TipoCambio::whereYear('CAMB_FECHA', $y)->whereMonth('CAMB_FECHA', $m)->update($form_data);
-        // return redirect('tipo-cambio')->with('success','Mes actualizado correctamente. ');
+    public function vencidoCamion(Request $request)
+    {
+          if ($request -> ajax()) {
 
+            $camionesVencidos=DB::select("SELECT *
+            FROM dbsys.camiones c
+                 inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
+            WHERE  cc.desc01  LIKE '%'+'$request->clasificacion_id'+'%' and YEAR(fecha_llegada) = $request->anio_id and estado = '2'");
+
+
+                  return response()->json([
+                    'camionesVencidos'              =>$camionesVencidos
+
+                  ]);
+          }
     }
 
     public function indexr()
     {
-
-      // $year=DB::select('SELECT DISTINCT fecha_llegada=YEAR(fecha_llegada) FROM dbsys.camiones UNION
-      // SELECT DISTINCT fecha_llegada=YEAR(fecha_viza) FROM dbo.ADM_TRASLADO_SALIDA_EXT order by fecha_llegada desc ');
-      // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-      // $datos=GestionCamion::where('camion', '0')->get();
-      //
-      // return view('gestion-camion-r')->with(compact('year'))->with(compact('datos'))->with(compact('clasificaciones'));
       $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
       $datos=GestionCamion::where('camion', '0')->get();
 
@@ -126,14 +110,8 @@ class GestionCamionController extends Controller
         if ($request -> ajax()) {
 
                 $rules = array(
-                  'codigo' => 'required',
-                  // 'codigo' => 'required',
-                  // 'cantidad_cierre' => 'required',
-                  // 'bultos_ingreso' => 'required',
-                  // 'cantidad_ingreso' => 'required',
-                  // 'cif_moneda_ext' => 'required',
-                  // 'viu_moneda_nal' => 'required',
-                  // 'precio_compra' => 'required'
+                  'codigo' => 'required'
+
                 );
 
                 $error = Validator::make($request->all(),$rules);
@@ -143,12 +121,6 @@ class GestionCamionController extends Controller
                           'errors' => $error->errors()->all()
                         ]);
                       }
-                      // return response()->json(['success'=>'Los datos fueron
-                      //       actualizados exitosamente',
-                      //       'aea'=>'Los datos fueron
-                      //               actualizados exitosamente'
-                      //
-                      //     ]);
 
                                   $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
                                     ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
@@ -189,11 +161,6 @@ class GestionCamionController extends Controller
                                                       WHERE  codigo ='$request->codigo'");
 
 
-                                          // return response()->json($documentos);
-                                          // return response()->json([
-                                          //       'documentos' => $documentos,
-                                          //       'datos_generales' => $dato_general
-                                          //   ]);
 
                                           return response()->json([
                                             'documento'              =>$documentos,
@@ -210,16 +177,6 @@ class GestionCamionController extends Controller
 
         }
 
-
-
-      // $year=DB::select('SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ');
-
-        // $clasificaciones=DB::select('SELECT  * FROM dbsys.camiones_clasificacion');
-
-        // $datos=DbsysCamiones::where('codigo', $request->codigo)->get();
-
-            // return view('gestion-camion')->with(compact('datos'))->with(compact('year'));
-
     }
 
     public function showr(Request $request)
@@ -228,14 +185,7 @@ class GestionCamionController extends Controller
       if ($request -> ajax()) {
 
               $rules = array(
-                'codigo' => 'required',
-                // 'codigo' => 'required',
-                // 'cantidad_cierre' => 'required',
-                // 'bultos_ingreso' => 'required',
-                // 'cantidad_ingreso' => 'required',
-                // 'cif_moneda_ext' => 'required',
-                // 'viu_moneda_nal' => 'required',
-                // 'precio_compra' => 'required'
+                'codigo' => 'required'
               );
 
               $error = Validator::make($request->all(),$rules);
@@ -245,12 +195,6 @@ class GestionCamionController extends Controller
                         'errors' => $error->errors()->all()
                       ]);
                     }
-                    // return response()->json(['success'=>'Los datos fueron
-                    //       actualizados exitosamente',
-                    //       'aea'=>'Los datos fueron
-                    //               actualizados exitosamente'
-                    //
-                    //     ]);
 
                     $documentos=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
                       ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
@@ -397,44 +341,6 @@ class GestionCamionController extends Controller
 
   public function test(Request $request)
   {
-  // ----------------------  Union de tablas inner join  ----------------------
-
-  // $documento=DB::select("SELECT  ingreso_zeta FROM dbsys.camiones  WHERE codigo = '15PO15' ");
-  // $doc=$documento
-  // return $doc;
-
-  // $camiones=DB::select("SELECT MERC_RZETA, CODI_RCODIGO, MERC_RENTRADA FROM dbo.ADM_MERCANCIA WHERE MERC_RZETA LIKE '101-15-015954'+'%' ");
-  // return $camiones;
-
-// ------------Declaracion de arreglos--------------
-      // $ingenieros= [
-      //         0=>  [
-      //                 'nombre'      =>'Diego',
-      //                 'especialidad'=>'Informatica'
-      //              ],
-      //         1=>  [
-      //                 'nombre'      =>'Walter',
-      //                 'especialidad'=>'Comercial'
-      //              ],
-      //
-      //         2=>  [
-      //                 'nombre'      =>'Marco',
-      //                 'especialidad'=>'Minas'
-      //              ]
-      // ];
-      //
-      // // return $ingenieros;
-      // // $ingenieros[3]['nombre']= 'Alberth';
-      // // $ingenieros[3]['especialidad']='Mecanica'
-      //
-      // $ingenieros+= [
-      // 3=>  [
-      //         'nombre'      =>'Alberth',
-      //         'especialidad'=>'Mecanica'
-      //      ]
-      //    ];
-      // return view('test')->with(compact('ingenieros')) ;
-
 
   }
 
@@ -653,9 +559,6 @@ public function changeBloqueoCamion(Request $request)
                 WHERE  codigo ='$request->cod_camion_id'");
 
 
-            // DB::update("UPDATE dbsys.camiones_detalle
-            //                 set bloqueo_2='$request->bloqueo_2_id'
-            //                 where camion_codigo= '$request->camion_id' and nro_item = '$request->item_id'");
               return response()->json($documentos);
           }
     }
@@ -789,15 +692,8 @@ public function changeBloqueoCamion(Request $request)
 
           'cantidad_cierre'  => $request->cantidad_cierre,
           'bultos_ingreso'   => $request->bultos_ingreso,
-          'cantidad_ingreso' => $request->cantidad_ingreso,
-          // 'cif_moneda_ext' => $request->cif_moneda_ext,
-          // 'viu_moneda_nal' => $request->viu_moneda_nal,
-          // 'precio_compra' => $request->precio_compra,
-        );
-        // nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
-        //                     ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
-        //                     , cif_adicional_nal,cif_final_nal,total_costo
-        //
+          'cantidad_ingreso' => $request->cantidad_ingreso  );
+
 
 
           DB::update("UPDATE dbsys.camiones_detalle
