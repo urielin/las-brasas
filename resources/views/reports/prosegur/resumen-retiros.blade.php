@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <style>
@@ -42,7 +41,7 @@ table thead td { background-color: #EEEEEE;
 <htmlpageheader name="myheader">
 <table width="100%">
 <tr  height="30">
-	<td width="40%" >   
+	<td width="40%" >
 		<img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
 	</td>
 	<td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="2" >
@@ -62,15 +61,12 @@ table thead td { background-color: #EEEEEE;
 		{{$fecha2}}
 	</span></td>
 </tr></table>
-
 </htmlpageheader>
-
 <htmlpagefooter name="myfooter">
 <div style="border-top: 1px solid #000000; font-size: 9pt; text-align: center; padding-top: 3mm; ">
 Page {PAGENO} of {nb}
 </div>
 </htmlpagefooter>
-
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
 <sethtmlpagefooter name="myfooter" value="on" />
 mpdf-->
@@ -79,7 +75,7 @@ mpdf-->
 		foreach ($depositosDetalle1 as $item) {
 			if (!isset($total_group[$item->OPER_DESC])) {
 				$total_group[$item->OPER_DESC]=0;
-			} 
+			}
 			$group[$item->OPER_DESC][] = $item;
 			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
 		}
@@ -88,21 +84,20 @@ mpdf-->
 		//dd($group_1);
 		//dd($total_group_1);
 	}
-
 	//unset($group);
 	//unset($total_group);
 	if(!empty($depositosDetalle2[0])){
 		foreach ($depositosDetalle2 as $item) {
 			if (!isset($total_group[$item->OPER_DESC])) {
 				$total_group[$item->OPER_DESC]=0;
-			} 
+			}
 			if (!isset($total_group_2[$item->OPER_DESC])) {
 				$total_group_2[$item->OPER_DESC]=0;
 			}
 			$group_2[$item->OPER_DESC][] = $item;
 			$group[$item->OPER_DESC][] = $item;
 			$total_group_2[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
-			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;			
+			$total_group[$item->OPER_DESC] += $item->monto ? (int)$item->monto : 0;
 		}
 		//dd($group_2);
 		//dd($total_group_2);
@@ -268,6 +263,3 @@ $total_diarios = 0 ;
 
 </body>
 </html>
-
-
-

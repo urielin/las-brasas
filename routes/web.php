@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');
   Route::get('/fecha-embarque', 'GestionCamionController@getembarque')->name('getembarque');
   Route::get('/cambiar-bloqueo-camion', 'GestionCamionController@changeBloqueoCamion')->name('changecamion');
+  Route::get('/camiones-vencidos', 'GestionCamionController@vencidoCamion')->name('vencidoCamion');
 // ------------------------
 
   Route::get('/productos', 'ProductController@index')->name('product.index');
@@ -78,6 +79,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/retiros-otros-generar', 'ContabilidadController@upOtroRetiro')->name('subirOtroRetiro');
   Route::get('/eliminar-item', 'ContabilidadController@deleteItemRetiro')->name('eliminarItemRetiro');
   Route::get('/deposito-incluir-deposito', 'ContabilidadController@IncluirRetiro')->name('IncluirRetiro');
+// ----------------------------------------------------------------------------------------------------------------------------------
+Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
 
 

@@ -45,9 +45,9 @@
 
                 <div class="col s12 l3">
                   <form class="" action="index.html" method="post">
-                    <label for="anio" >Ingresar año</label>
+                    <label for="anio" >Gestión</label>
                     <select class="form-control browser-default" id="anio">
-                      <option>Año</option>
+                      <option>Ingresar año</option>
                       @foreach ($year as $y)
                       <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
                       @endforeach
@@ -121,7 +121,7 @@
                                <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno')">Datos de camión</div>
                                <div class='tablinks' onclick="openCity(event, 'dos')">Fecha embarque y llegada</div>
                                <div class='tablinks' onclick="openCity(event, 'cuatro')">Datos embarque y llegada</div>
-                               <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camion</div>
+                               <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camión</div>
                             </div>
 
                           <div id="uno" class="tabcontent" >
@@ -188,7 +188,7 @@
                                           </div>
                                         </div>
                                         <div class="form-group col s12 l12 pb-2">
-                                          <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Pais origen: </label>
+                                          <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">País origen: </label>
                                             <div class="col l6 m6 s6">
                                               <input name="pais_origen" id="pais_origen" type="text" class="browser-default form-control">
                                             </div>

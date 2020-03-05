@@ -43,9 +43,9 @@
                     <div class="row">
                       <div class="col s12 l3">
                         <form >
-                          <label for="anior">Ingresar año</label>
+                          <label for="anior">Gestión</label>
                           <select class="form-control browser-default" id="anior">
-                            <option>Año</option>
+                            <option>Ingresar año</option>
                             @foreach ($year as $y)
                               <option value="{{$y->TP_GESTION}}" >{{$y->TP_GESTION}}</option>
                             @endforeach
@@ -86,7 +86,8 @@
               <ul class="tabs">
                 <li class="tab col m3"><a class="active" href="#test1">Detalle</a></li>
                 <li class="tab col m3"><a href="#test2">Actualizado</a></li>
-                <li class="tab col m6"><span id="bloquear-camion"></span></li>
+                <li class="tab col m3"><span id="bloquear-camion"></span></li>
+                <li class="tab col m3"><a id="camiones_vencidos" href="#test3">Camiones vencidos</a></li>
               </ul>
             </div>
             <div id="test1" class="col s12">
@@ -119,7 +120,7 @@
                        <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno')">Datos de camión</div>
                        <div class='tablinks' onclick="openCity(event, 'dos')">Fecha embarque y llegada</div>
                        <div class='tablinks' onclick="openCity(event, 'cuatro')">Datos embarque y llegada</div>
-                       <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camion</div>
+                       <div class='tablinks' onclick="openCity(event, 'cinco')">Valor total del camión</div>
                     </div>
 
                   <div id="uno" class="tabcontent" >
@@ -179,7 +180,7 @@
                                             </div>
                                           </div>
                                           <div class="form-group col s12 l12 pb-2">
-                                            <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Pais origen: </label>
+                                            <label for="icon_telephone" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">País origen: </label>
                                             <div class="col l6 m6 s6">
                                               <input disabled name="pais_origen" id="pais_origen" type="text" class="validate form-control browser-default">
                                             </div>
@@ -276,7 +277,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                   
+
                                     </div>
                                   </form>
                             @php } @endphp
@@ -419,6 +420,44 @@
                     </div>
                   </div>
                 </div>
+            </div>
+
+            <div id="test3" class="col s12">
+
+              <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="responsive-table" class=" ">
+                      <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+                        <h4 class="card-title"></h4>
+                        <p class="mb-2"></p>
+                        <div class="row">
+
+                          <div class="col s12 dataTables_scrollBody">
+                            <table id='tabla-vencidos' class="table centered responsive-table">
+                              <thead>
+                                <tr>
+                                  <th width='6%'>Codigo</th>
+                                  <th>Codigo auxiliar</th>
+                                  <th>Descripción</th>
+                                  <th>Fecha llegada</th>
+                                  <th>Fecha vencimiento</th>
+                                  <th>Documento zeta</th>
+                                  <th>Marca</th>
+                                  <th>Valor</th>
+                                  <th>Cierre</th>
+                                  <th>Lugar arribo</th>
+                                </tr>
+                              </thead>
+                              <tbody id="camiones-vencidos">
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
             </div>
           </div>
       </div>
