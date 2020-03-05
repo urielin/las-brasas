@@ -31,11 +31,20 @@ class ContenedorController extends Controller
       ]);
     }
 
-    //return view('gestion.pagos');
+    
 
+   
+    
 
 
   }
+
+  public function pagos(){
+
+    return view('gestion.pagos');
+
+  }
+   
   public function parametros() {
     return view('gestion.parametros');
   }

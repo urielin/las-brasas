@@ -36,10 +36,11 @@
           </select>
         </div>
         <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px">
-          <button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>
-          <button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells">Reporte Detalle de Ventas</button>
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar">Exportar</button>
+          <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
+          <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen">Exportar Resumen </button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle">Exportar Detalle </button>
+          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos">Exportar Datos Historicos</button>
         </div>
       </div>
   </div>
@@ -57,9 +58,28 @@
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
 
-          <table class="table table-responsive responsive-table" id="tabla-comisiones" >
+          <table class="table table-responsive responsive-table centered" id="tabla-comisiones" >
             <thead>
+              
               <tr>
+                <th>CodigoDocumento</th>
+                <th>Tipo Documento</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                
+              </tr>
+            </thead>
+            <tbody id="contenido">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="test2" class="col s12">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+          <table class="table table-responsive responsive-table centered" id="tabla-detalles">
+          <thead>
+            <tr>
                 <th>ID Venta</th>
                 <th>Folio</th>
                 <!--<th>Proc Folio Pedido</th>-->
@@ -77,26 +97,6 @@
                 <th>Monto</th>
                 <th>Tipo de Documento</th>
                 <th>N° Depósito</th>
-              </tr>
-            </thead>
-            <tbody id="contenido" style="cursor:pointer">
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div id="test2" class="col s12">
-        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
-          <table class="table table-responsive responsive-table" id="tabla-detalles">
-          <thead>
-            <tr>
-              <th>Folio</th>
-              <th>Código</th>
-              <th>Nombre</th>
-              <th>Cantidad</th>
-              <!--<th>Precio Unit</th>-->
-              <th>Precio Total</th>
-             
             </tr>
           </thead>
           <tbody id="contenido-detalles">

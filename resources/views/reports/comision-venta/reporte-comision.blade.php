@@ -2,7 +2,7 @@
 <html>
    
 <head>
- 
+ <meta charset="UTF-8">
 <style>
 body {font-family: sans-serif;
 	font-size: 10pt;
@@ -50,7 +50,7 @@ table thead td { background-color: #EEEEEE;
 		<img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
 	</td>
 	<td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="3" >
-		Reporte de Comisiones
+		Detalle de Comision
 	</td>
 </tr>
 <tr>
@@ -122,14 +122,14 @@ mpdf-->
             <td align="center">{{$item->rut_cliente}}</td>
             <td align="center">{{$item->fecha_pago}}</td>
             <td align="center">{{$item->n_deposito}}</td>
-            <td align="center">$ {{$item->comision}}</td>
+            <td align="center">$ {{number_format($item->comision,2)}}</td>
             {{$cuenta=$cuenta+$item->comision}}
             
         </tr>
         @endforeach
         <tr>
             <td align="center" colspan="5">TOTAL = </td>
-            <td align="center">$ {{$cuenta}}</td>
+            <td align="center">$ {{number_format($cuenta,2)}}</td>
         </tr>
     </tbody>
 </table>
@@ -161,13 +161,13 @@ mpdf-->
             <td align="center">{{$item->rut_cliente}}</td>
             <td align="center">{{$item->fecha_pago}}</td>
             <td align="center">{{$item->n_deposito}}</td>
-            <td align="center">$ {{$item->comision}}</td>
+            <td align="center">$ {{number_format($item->comision,2)}}</td>
             {{$cuenta=$cuenta+$item->comision}}
         </tr>
         @endforeach
         <tr>
             <td align="center" colspan="5">TOTAL = </td>
-            <td align="center">$ {{$cuenta}}</td>
+            <td align="center">$ {{number_format($cuenta,2)}}</td>
         </tr>
     </tbody>
 
@@ -200,14 +200,14 @@ mpdf-->
             <td align="center">{{$item->rut_cliente}}</td>
             <!--<td align="center">{{$item->fecha_pago}}</td>-->
             <!--<td align="center">{{$item->n_deposito}}</td>-->
-            <td align="center">$ {{$item->comision}}</td>
+            <td align="center">$ {{number_format($item->comision,2)}}</td>
             {{$cuenta=$cuenta+$item->comision}}
             
         </tr>
         @endforeach
         <tr>
             <td align="center" colspan="3">TOTAL = </td>
-            <td align="center">$ {{$cuenta}}</td>
+            <td align="center">$ {{number_format($cuenta,2)}}</td>
         </tr>
     </tbody>
 
