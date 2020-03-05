@@ -50,12 +50,12 @@
                             <th>Tipo Retiro</th>
                             <th>Desde</th>
                             <th>Hasta</th>
-                            <th>Cantidad</th>
-                            <th>Monto total</th>
                             <th>Estado</th>
                             <th>Fecha cierre</th>
                             <th>Responsable</th>
                             <th>Observacion</th>
+                            <th>Cantidad</th>
+                            <th>Monto total</th>
                             <th>Acciones</th>
                           </tr>
                         </thead>
@@ -89,7 +89,7 @@
             </div>
             <div id="test2" class="col s12  lighten-4">
               <div class="container" style="margin-top: 30px">
-                <div class=" " data-example-id="form-group-height-sizes"> 
+                <div class=" " data-example-id="form-group-height-sizes">
                   <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
@@ -181,11 +181,11 @@
                               <thead>
                                 <tr>
                                   <th  width='6%'>Folio</th>
-                                  <th>Monto</th>
                                   <th>Fecha caja</th>
                                   <th>Operación</th>
                                   <th>Tipo de cheque</th>
                                   <th>Deposito</th>
+                                  <th>Monto</th>
                                 </tr>
                               </thead>
                               <tbody id="retiroPendienteTabla">
