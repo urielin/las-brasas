@@ -50,12 +50,12 @@
                             <th>Tipo Retiro</th>
                             <th>Desde</th>
                             <th>Hasta</th>
-                            <th>Cantidad</th>
-                            <th>Monto total</th>
                             <th>Estado</th>
                             <th>Fecha cierre</th>
                             <th>Responsable</th>
                             <th>Observacion</th>
+                            <th>Cantidad</th>
+                            <th>Monto total</th>
                             <th>Acciones</th>
                           </tr>
                         </thead>
@@ -181,6 +181,7 @@
                                   <th>Operación</th>
                                   <th>Tipo de cheque</th>
                                   <th>Deposito</th>
+                                  <th>Monto</th>
                                 </tr>
                               </thead>
                               <tbody id="retiroPendienteTabla">
