@@ -16,37 +16,38 @@ $(document).on('click','#buscar-salida-bancos',function(){
               $('#icono1').empty();
               $('#depositoDetalleHead').empty();
               $('#depositoDetalleTabla').empty();
-              request = $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
+              $.get('obtener-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
                   // $('#retiro-head').empty();
                   $('#retiroTabla').empty();
                   $.each(res.retiros, function(index,value){
-
                       btn_report = '<a data-id="'+value.id_retiros_indice +'" data-fecha1="'+dateUTC(value.fecha_desde)+'" data-fecha2= "'+dateUTC(value.fecha_hasta) +'" type="button" value="" class="get-pdf-report btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">picture_as_pdf</i></a>';
-
                       if (value.estado == '1') {
-                        $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td>COMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ addCommas((parseFloat(value.monto_total)).toFixed(2))+"</td><td>" + btn_report +"</td></tr>");
+                        $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ parseFloat(value.monto_total) +" </td><td>COMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+ btn_report +"</td></tr>");
                       } else {
-                        $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td> </td><td>INCOMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ addCommas((parseFloat(value.monto_total)).toFixed(2))+"</td><td>" + btn_report +"</td></tr>");
+                        $('#retiroTabla').append('<tr class="mostrar-detalle"><td>' +value.id_retiros_indice +'</td><td>'+ value.TP_RET_DESCRIPCION +"</td> <td>"+ dateUTC(value.fecha_desde) +"</td><td>"+ dateUTC(value.fecha_hasta) +"</td> <td>"+parseFloat(value.doc_cantidad)+"</td><td>"+ parseFloat(value.monto_total) +" </td><td>INCOMPLETO</td><td>"+ dateUTC(value.fecha_cierre) +"</td><td>"+ value.usuario_cierre +"</td><td>"+ value.observacion +"</td><td>"+ btn_report +"</td></tr>");
                       }
-
                       cantidad+=parseFloat(value.doc_cantidad);
                       monto+=parseFloat(value.monto_total);
                   });
 
-                  $('#retiroTabla').append('<tr ><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>TOTAL</td><td>'+ cantidad+'</td><td>'+ addCommas((monto).toFixed(2))+"</td></tr>");
+                  $('#retiroTabla').append('<tr "><td></td><td></td><td></td><td></td><td>'+ cantidad+"</td><td>"+ monto+"</td><td></td><td></td><td></td><td></td></tr>");
+                  console.log('--------------------');
+                  console.log(addCommas(monto));
+                  console.log('--------------------');
+
 
           });
-          request.done(function( msg ) {
-            // $( "#log" ).html( msg );
-            console.log(msg);
-            console.log("get completado");
-            habilitar_boton_pdf();
-          });
-
-          request.fail(function( jqXHR, textStatus ) {
-            //console.log(jqXHR.responseText,textStatus);
-            alert( "Request failed: " + textStatus + jqXHR.responseText);
-          });
+          // request.done(function( msg ) {
+          //   // $( "#log" ).html( msg );
+          //   console.log(msg);
+          //   console.log("get completado");
+          //   habilitar_boton_pdf();
+          // });
+          //
+          // request.fail(function( jqXHR, textStatus ) {
+          //   //console.log(jqXHR.responseText,textStatus);
+          //   alert( "Request failed: " + textStatus + jqXHR.responseText);
+          // });
         }
       });
 
@@ -59,6 +60,21 @@ function habilitar_boton_pdf() {
     console.log(data);
     window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
 
+
+
+    // request = $.get('reporte-prosegur-resumen',{fecha1:fecha1,fecha2:fecha2 },function(res){
+    //   request.done(function( msg ) {
+    //     // $( "#log" ).html( msg );
+
+    //     console.log(msg);
+
+    //   });
+
+    //   request.fail(function( jqXHR, textStatus ) {
+    //     //console.log(jqXHR.responseText,textStatus);
+    //     alert( "Request failed: " + textStatus + jqXHR.responseText);
+    //   });
+    // });
 
   });
 }
@@ -160,7 +176,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
 
 
 
-                          $('#depositoDetalleTabla').append("<tr><td></td><td></td><td></td><td> </td><td></td><td></td><td></td><td></td><td>"+ addCommas(montoTotal.toFixed(2)) +"</td><td></td><td></td><td></td></tr>");
+                          $('#depositoDetalleTabla').append("<tr><td></td><td></td><td></td><td> </td><td></td><td></td><td></td><td>TOTAL</td><td>"+ addCommas(montoTotal.toFixed(2)) +"</td><td></td><td></td><td></td></tr>");
 
                           alert("Deposito agregado al prosegur.");
                     } else {
@@ -218,11 +234,11 @@ $(document).on('click','.mostrar-detalle',function(){
               $('#depositoDetalleHead').empty();
               $('#depositoDetalleTabla').empty();
               $('#icono1').append('<div style="display: flex"><i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span></div>');
-              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th width="10%">Tipo</th><th width="10%">Operación</th><th>Suc</th><th width="10%">Nombre sucursal</th><th width="5%">Caja</th><th>Deposito</th><th width="11%">Fecha</th><th  width="11%">Observacion</th><th width="8%">Fecha cartola</th><th width="7%">Monto</th><th>Acción</th></tr>');
+              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th width="10%">Tipo</th><th width="10%">Operación</th><th>Suc</th><th width="10%">Nombre sucursal</th><th width="5%">Caja</th><th>Deposito</th><th width="11%">Fecha</th><th width="7%">Monto</th><th  width="11%">Observacion</th><th width="8%">Fecha cartola</th><th>Acción</th></tr>');
 
               $.each(res.depositosDetalle1, function(index,value){
 
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ dateUTC(value.fecha_caja) +"</td><td>"+ value.obs +"</td><td>"+ dateUTC(value.cartola_fecha)+" </td><td>"+addCommas((parseFloat(value.monto)).toFixed(2))  +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'"  class="eliminar-item  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ dateUTC(value.fecha_caja) +" </td><td>"+addCommas((parseFloat(value.monto)).toFixed(2)) +"</td><td>"+ value.obs +"</td><td>"+ dateUTC(value.cartola_fecha) +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'"  class="eliminar-item  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
 
                   if (value.monto == null) {
                     montoTotal+=0;
@@ -241,14 +257,14 @@ $(document).on('click','.mostrar-detalle',function(){
                   let descripcion = value.descripcion == null ? '-' : value.descripcion;
                   let cartola_fecha = value.cartola_fecha == null ? '-' : value.cartola_fecha;
 
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ OPER_DESC+"</td><td>"+SUCU_CODIGO+" </td><td>"+ SUCU_NOMBRE +"</td><td> - </td><td>"+value.deposito+"</td><td>"+ fecha_ingreso +"</td><td>"+ descripcion +"</td><td>"+ cartola_fecha+" </td><td>"+ addCommas((parseFloat(monto)).toFixed(2))  +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'" class="eliminar-item  btn red btn-50 darken-1"><i class="material-icons dp48">close</i></button></td></tr>');
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>OTROS DEPOSITOS</td><td>'+ OPER_DESC+"</td><td>"+SUCU_CODIGO+" </td><td>"+ SUCU_NOMBRE +"</td><td> - </td><td>"+value.deposito+"</td><td>"+ fecha_ingreso +" </td><td>"+ addCommas((parseFloat(monto)).toFixed(2)) +"</td><td>"+ descripcion +"</td><td>"+ cartola_fecha +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'" class="eliminar-item  btn red btn-50 darken-1"><i class="material-icons dp48">close</i></button></td></tr>');
                   if (value.monto == null) {
                     montoTotal+=0;
                   } else {
                       montoTotal+=parseFloat(value.monto);
                   }
               });
-              $('#depositoDetalleTabla').append("<tr><td></td><td></td><td></td><td> </td><td></td><td></td><td></td><td></td><td></td><td>TOTAL</td><td>"+ addCommas(montoTotal.toFixed(2)) +"</td><td></td></tr>");
+              $('#depositoDetalleTabla').append("<tr><td></td><td></td><td></td><td> </td><td></td><td></td><td></td><td>TOTAL</td><td>"+ addCommas(montoTotal.toFixed(2)) +"</td><td></td><td></td><td></td></tr>");
 
 
       });
@@ -288,7 +304,6 @@ $('#buscar-depositos-pendientes').on('click', function(){
 
       var fecha1=$('#desde3').val();
       var fecha2=$('#hasta3').val();
-        var montoOtroDepositoTotal= 0;
 
     if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
 
@@ -296,33 +311,17 @@ $('#buscar-depositos-pendientes').on('click', function(){
               $('#retiroPendienteTabla').empty();
 
               $.each(res.retirosPendientes1, function(index,value){
-                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td><td>"+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td></tr>");
-                  if (value.monto == null) {
-                    montoOtroDepositoTotal+=0;
-                  } else {
-                      montoOtroDepositoTotal+=parseFloat(value.monto);
-                  }
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
               });
 
               $.each(res.retirosPendientes2, function(index,value){
-                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +'</td><td>'+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td></tr>");
-                  if (value.monto == null) {
-                    montoOtroDepositoTotal+=0;
-                  } else {
-                      montoOtroDepositoTotal+=parseFloat(value.monto);
-                  }
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
               });
 
               $.each(res.retirosPendientes3, function(index,value){
-                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +'</td><td>'+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td></tr>");
-                  if (value.monto == null) {
-                    montoOtroDepositoTotal+=0;
-                  } else {
-                      montoOtroDepositoTotal+=parseFloat(value.monto);
-                  }
+                  $('#retiroPendienteTabla').append('<tr><td>' + value.folio +'</td><td>'+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td><td>"+ value.fecha_caja+"</td><td>"+value.OPER_DESC+" </td><td>"+ value.TPCHEQUE_DESC +"</td><td>"+ value.n_deposito +"</td></tr>");
               });
 
-              $('#retiroPendienteTabla').append("<tr><td></td><td></td><td></td><td></td><td>TOTAL</td><td>"+ addCommas(montoOtroDepositoTotal.toFixed(2)) +"</td></tr>");
 
 
       });

@@ -22,29 +22,20 @@ class ContenedorController extends Controller
                                       ISNULL(com_telefono,'') as com_telefono,
                                       ISNULL(com_movil,'') as com_movil,
                                       ISNULL(com_fax,'') as com_fax,
-                                      ISNULL(com_email,'') as com_email 
+                                      ISNULL(com_email,'') as com_email
                                       FROM ADM_PROVEEDOR");
       return response()->json([
 
         'proveedor'              =>$proveedor
 
       ]);
-    }
-
-    
-
-   
-    
-
+    } 
 
   }
-
-  public function pagos(){
-
+  public function pagos( ) {
     return view('gestion.pagos');
 
   }
-   
   public function parametros() {
     return view('gestion.parametros');
   }
