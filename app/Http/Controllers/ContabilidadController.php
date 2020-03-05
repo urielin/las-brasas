@@ -315,7 +315,6 @@ class ContabilidadController extends Controller
       // echo $saltodelinea;
     }
     fclose($prueba);
-
     // $nueva_cadena = chunk_split(("hola1  hola2   hola3    hola4     hola5"));
     // dd($nueva_cadena);
     foreach ($saltodelinea as $val) {

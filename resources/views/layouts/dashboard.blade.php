@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
- <head>
+<html>
+<head lang="es">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
-    <meta name="author" content="ThemeSelect">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Las brasas | Grupo Arinez</title>
-    <!-- <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon-152x152.png">-->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/vendors.min.css') }}">
@@ -20,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/vertical-modern-menu-template/style.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/dashboard.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom/custom.css') }}">
-
-    <!-- <link href="{{ asset('assets___\js\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css') }}" rel="stylesheet" /> -->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/flag-icon/css/flag-icon.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/css/jquery.dataTables.min.css') }}">
@@ -233,7 +224,6 @@
     </div>
   </div>
 
-
     <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/sparkline/jquery.sparkline.min.js') }}"></script>
     <!--<script src="assets/vendors/chartjs/chart.min.js"></script>-->
@@ -249,6 +239,7 @@
     <script src="{{ asset('assets/js/scripts/customizer.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts/data-tables.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts/advance-ui-modals.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 

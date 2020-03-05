@@ -124,8 +124,13 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
+
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
+
+
+  Route::post('cartola/importar-plane','CatalogoController@importPlane')->name('catalogo.importPlane');
+  Route::post('cartola/migracion-plane','CatalogoController@migraciontPlane')->name('catalogo.migrationPlane');
 
   //-------------------------------------MODULO 4
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
