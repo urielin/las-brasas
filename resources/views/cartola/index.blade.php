@@ -25,7 +25,7 @@
             @endforeach
           </select>
         </div>
-        <div class="form-group col l4 m6 s12">
+        <div class="form-group col l4 m12 s12">
           <label  for="" class="form-control-label">Cartola</label>
           <input disabled id="insertar-cartolar" type='text' class="form-control browser-default" name="cartola"/>
 
@@ -33,15 +33,20 @@
         <div class="form-group col l4 m12 s12" >
           <label for="" class="form-control-label">Texto de migracion</label>
           <div class="input-group">
-            <input id='xlsFile' placeholder="Seleccionar Archivo" type="file" name="file" class="form-control input-50">
+
+            <!--<input id='xlsFile' type="file" placeholder="Seleccionar Archivo" name="file" class="form-control input-50">-->
+            <input id="txt"  class="form-control input-50 browser-default"   type="text" value = "Seleccionar Archivo" onclick ="javascript:document.getElementById('xlsFile').click();">
+
             <div class="input-group-append">
               <button class="btn btn-45 cyan" id='importCartola'>Importar</button>
+              <input id="xlsFile"  class="form-control input-50 browser-default"  type="file" style='visibility: hidden; display:none' name="file" onchange="ChangeText(this, 'txt');"/>
+
             </div>
           </div>
         </div>
         <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: flex-end; margin-top:10px">
-          <button type="button" class="btn btn-45 cyan" name="updateReport" id='migration'>Migracion</button>
-          <button type="button" class="btn btn-45 cyan" name="sumarySeller" id='borrarTemporales'>Borrar Temporales</button>
+          <button type="button" class="waves-effect  btn-flat" name="sumarySeller" id='borrarTemporales' style='margin-right: 10px'>Borrar Temporales</button>
+          <button type="button" class="btn  green" name="updateReport" id='migration'>Migracion</button>
         </div>
       </div>
   </div>
@@ -78,58 +83,65 @@
 @section('js')
     <script src="{{ asset('js/ingreso-cartola.js') }}"></script>
     <script type="text/javascript">
+      function ChangeText(oFileInput, sTargetID) {
+        document.getElementById(sTargetID).value = oFileInput.value;
+      }
       $('#borrarTemporales').on('click', function() {
         localStorage.removeItem('cartolas');
+        $('[name=cuenta] option').filter(function() {
+          return ($(this).text() == 'Seleccione cuenta');
+        }).prop('selected', true);
+        $('#insertar-cartolar').val('')
+        $("#xlsFile").val(null);
+        $("#txt").val('Seleccionar Archivo');
+
       })
       $('#migration').on('click', function() {
 
         let data = localStorage.getItem('cartolas')
-
-        $.ajax({
-          type:'POST',
-          url:'/cartola/migracion',
-          data: {cartolas: data},
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-        }).then((data) => {
-          if (data.status == 200) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              onOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-
-            Toast.fire({
-              icon: 'success',
-              title: 'Cartola migrada'
-            })
-          } else {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              onOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-
-            Toast.fire({
-              icon: 'error',
-              title: 'Cartola ya ingresada'
-            })
-          }
-
         })
+        let valid = {
+          cuenta: $('#elegir-cuenta').val(),
+          cartola: $('#insertar-cartolar').val(),
+        }
+        if (valid.cuenta != 'disabled') {
+
+          $.ajax({
+            type:'POST',
+            url:'/cartola/migracion',
+            data: {cartolas: data},
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          }).then((data) => {
+            if (data.status == 200) {
+              Toast.fire({
+                icon: 'success',
+                title: 'Cartola ingresada'
+              })
+            } else {
+              Toast.fire({
+                icon: 'error',
+                title: 'Cartola ya ha sido registrada'
+              })
+            }
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            title: 'El campo cuenta es obligatorio'
+          })
+        }
       })
       $('#importCartola').on('click', function(){
          let data = new FormData();
@@ -157,12 +169,13 @@
            array.shift();
            array.pop();
            array.forEach((item, i) => {
+             let document = item.substring(42, 48).trim() != '000000' ? item.substring(42, 48).trim() : ''
              planes.push({
                           cuenta: $('#elegir-cuenta').val(),
                           cartola: $('#insertar-cartolar').val(),
                           deposito: item.substring(0, 10).trim(),
                           descripcion: item.substring(10, 40).trim(),
-                          documento: item.substring(42, 48).trim(),
+                          documento: document,
                           fecha: fecha,
                           monto: parseInt(item.substring(49, 67).trim(), 10),
                           sucursal: item.substring(68).trim(),
@@ -179,36 +192,35 @@
 
       })
       function setCartolaDetail (data){
+        let array = [];
+        for (let i = 0; i < data.length; i++) {
+          array[i] = `<tr>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].cuenta}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].cartola}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].fecha}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].sucursal}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].descripcion}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].documento}</td>
 
-      let array = [];
-      for (let i = 0; i < data.length; i++) {
-        array[i] = `<tr>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].cuenta}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].cartola}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].fecha}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].sucursal}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].descripcion}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].documento}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].monto)}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].deposito}</td>
 
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].monto)}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].deposito}</td>
-
-                  </tr>`;
+                    </tr>`;
+        }
+        return array;
       }
-      return array;
-    }
-    function addCommas(nStr)
-    {
-    	nStr += '';
-    	x = nStr.split('.');
-    	x1 = x[0];
-    	x2 = x.length > 1 ? '.' + x[1] : '';
-    	var rgx = /(\d+)(\d{3})/;
-    	while (rgx.test(x1)) {
-    		x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    	}
-    	return x1 + x2;
-    }
+      function addCommas(nStr)
+      {
+      	nStr += '';
+      	x = nStr.split('.');
+      	x1 = x[0];
+      	x2 = x.length > 1 ? '.' + x[1] : '';
+      	var rgx = /(\d+)(\d{3})/;
+      	while (rgx.test(x1)) {
+      		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      	}
+      	return x1 + x2;
+      }
 
     </script>
  @endsection

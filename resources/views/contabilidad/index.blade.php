@@ -6,7 +6,7 @@
       <div class="card-content">
         <h4><span class="card-title">Retiros Bancos/Prosegur</span></h4>
         <div class="row">
-          <div class="col s12">
+          <div class=" ">
             <ul class="tabs">
               <li class="tab col m3"><a class='active' href="#test1">Salida Bancos</a></li>
               <li class="tab col m3"><a class="" href="#test2">Otros Depósitos</a></li>
@@ -39,7 +39,7 @@
                             <i class="material-icons dp48">subject</i>
                             <span class="card-title">Detalle Retiro Prosegur</span>
                           </div>
-                          <a class="btn btn-50 cyan float-right">
+                          <a class="btn btn-50 green float-right">
                             <i class="material-icons" id="agregar-retiro-indice">add_box</i>
                           </a>
                       </div>
@@ -73,7 +73,7 @@
                             <span id="icono1"></span>
                           </div>
 
-                           <table id="table-detalle" class="responsive-table striped">
+                           <table id="table-detalle" class="centered table responsive-table ">
 
                              <thead id="depositoDetalleHead">
 
@@ -87,9 +87,9 @@
                 </div>
               </div>
             </div>
-            <div id="test2" class="col s12  lighten-4">
+            <div id="test2">
               <div class="container" style="margin-top: 30px">
-                <div class=" " data-example-id="form-group-height-sizes"> 
+                <div class=" " data-example-id="form-group-height-sizes">
                   <div class="col l5 m5 s12">
                     <div class="form-group">
                       <label for="" class="form-control-babel">Desde</label>
@@ -110,22 +110,17 @@
                   <div class="col s12">
                   </div>
                   <div class="col s12 dataTables_scrollBody">
-
-
                             <div class="col m12" style="margin-top: 20px;">
-
-
-
                               <div style="display: flex;justify-content: space-between">
                                 <div style="display: flex;">
                                   <i class="material-icons dp48">subject</i>
                                   <span class="card-title">Detalle otros retiros prosegur</span>
                                 </div>
-                                <a class="btn-50 btn cyan float-right" >
+                                <a class="btn-50 btn green float-right" >
                                   <i class="material-icons" id="agregar-otro-retiro">add_box</i>
                                 </a>
                               </div>
-                              <table class=" table responsive-table centered striped">
+                              <table class=" table responsive-table centered ">
                                 <thead>
                                   <tr>
                                     <th width='6%'>Folio</th>
@@ -149,7 +144,7 @@
                   </div>
               </div>
             </div>
-            <div id="test3" class="col s12  lighten-4">
+            <div id="test3">
               <div class="container" style="margin-top: 30px">
                 <div class=" " data-example-id="form-group-height-sizes">
                   <div class="col l5 m5 s12">
@@ -177,10 +172,10 @@
                               <div style="display: flex">
                                 <i class="material-icons dp48">subject</i><span class="card-title">Detalle depósitos pendientes</span>
                               </div>
-                              <table class=" table responsive-table centered striped">
+                              <table class=" table responsive-table centered ">
                               <thead>
                                 <tr>
-                                  <th  width='6%'>Folio</th>
+                                  <th>Folio</th>
                                   <th>Monto</th>
                                   <th>Fecha caja</th>
                                   <th>Operación</th>

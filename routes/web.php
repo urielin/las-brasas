@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/switch-item', 'GestionCamionController@switchitem')->name('switchitem');
   Route::get('/fecha-embarque', 'GestionCamionController@getembarque')->name('getembarque');
   Route::get('/cambiar-bloqueo-camion', 'GestionCamionController@changeBloqueoCamion')->name('changecamion');
+  Route::get('/camiones-vencidos', 'GestionCamionController@vencidoCamion')->name('vencidoCamion');
 // ------------------------
 
   Route::get('/productos', 'ProductController@index')->name('product.index');
@@ -88,6 +89,7 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
   Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
 
   Route::get('/reporte-comision/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
+  Route::get('/reporte-resumen/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reportesComisionVenta')->name('reportesComisionVenta');
 
   Route::get('/reporte', function () {
 
@@ -124,7 +126,7 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
-
+  Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
 

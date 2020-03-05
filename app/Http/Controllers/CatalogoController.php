@@ -48,15 +48,15 @@ class CatalogoController extends Controller
     public function migracion(Request $request) {
       $cartolas = $request->cartolas;
       $params = json_decode($cartolas);
-      //die(json_encode($params[0]->nombre_archivo));
-      $flat = Cartola::where('nombre_archivo', $params[0]->nombre_archivo)->first();
-      if (isset($flat)) {
+
+      $flat = Cartola::where('nombre_archivo', '='  ,$params[0]->nombre_archivo)->first();
+      $flat1 = Cartola::where('cartola','=' , $params[0]->cartola)->first();
+
+      if (isset($flat)  || isset($flat1)) {
         return response()->json(['status' => 500, 'message' => 'La cartola ya se ingreso Intente con otra']);
       } else {
-
         foreach ($params as $key => $value) {
-            $documento = $value->documento == '000000' ? '' : $value->documento;
-            
+            $documento = $value->documento == '000000' ? '' : $value->documento; 
             DB::table($this->table)
               ->insert([
                 'tp_cuenta' => $value->cuenta,
