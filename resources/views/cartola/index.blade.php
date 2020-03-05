@@ -204,7 +204,6 @@
 
                         <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].monto)}</td>
                         <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].deposito}</td>
-
                     </tr>`;
         }
         return array;
