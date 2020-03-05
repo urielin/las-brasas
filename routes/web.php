@@ -86,6 +86,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/reporte-prosegur-resumen/{fecha1}/{fecha2}', 'ContabilidadController@reporteResumenProsegur')->name('reporteResumenProsegur');
 
   Route::get('/reporte-comision/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
+  Route::get('/reporte-resumen/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reportesComisionVenta')->name('reportesComisionVenta');
 
   Route::get('/reporte', function () {
 
@@ -122,6 +123,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
+  Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
 
