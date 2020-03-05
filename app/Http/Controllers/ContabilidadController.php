@@ -121,17 +121,51 @@ class ContabilidadController extends Controller
 
             if ($estado == '0') {
                   DB::raw("exec [dbo].[Retiros_Tools_Incluir_Depositos] '".$request->id_retiro_indice."','".$request->texto."'");
-                  $resultado= 'Retiro incluido';
+                  $resultado= '0';
+                  $depositosDetalle1=DB::select("SELECT rd.id_retiro_detalle,rc.folio, rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
+                                        FROM dbo.MODULO_RETIROS_INDICE ri
+                                        LEFT JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on ri.id_retiros_indice = rd.id_retiros_indice
+                                        LEFT JOIN dbo.MODULO_RETIROS_CAJA rc on rd.folio =rc.folio
+                                        LEFT JOIN dbo.MODULO_RETIROS_CAJA_DETALLE rcd on rc.folio=rcd.id_folio
+                                        LEFT JOIN ID_PUNTEROS_CAJAS ipc on rc.num_caja = ipc.id_caja
+	                                      LEFT JOIN dbo.ADM_SUCURSAL s on ipc.id_sucursal =s.SUCU_CODIGO
+                                        LEFT JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
+                                        WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo ='1'");
+
+                  $depositosDetalle2=DB::select("SELECT rd.id_retiro_detalle,rd.folio, rd.tipo, op.OPER_DESC, s.SUCU_CODIGO, s.SUCU_NOMBRE, ro.deposito, ro.fecha_ingreso, ro.monto, ro.descripcion, ro.cartola_fecha
+                                        FROM  dbo.MODULO_RETIROS_INDICE_DETALLE rd
+                                        LEFT JOIN dbo.MODULO_RETIROS_INDICE ri on ri.id_retiros_indice = rd.id_retiros_indice
+                                        LEFT JOIN dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio
+                                        LEFT JOIN dbo.ADM_SUCURSAL s on ro.sucursal =s.SUCU_CODIGO
+                                        LEFT JOIN dbo.MODULO_TP_OPERACION op on ro.t_oper= op.OPER_COD
+                                        WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo='2'");
+
+                    $depositoIncluir=DB::select("SELECT rd.id_retiro_detalle,rc.folio,  rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
+                                          FROM MODULO_RETIROS_CAJA rc
+                                           LEFT JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on rd.folio =rc.folio
+                                          left JOIN dbo.MODULO_RETIROS_CAJA_DETALLE rcd on rc.folio=rcd.id_folio
+                                          left JOIN ID_PUNTEROS_CAJAS ipc on rc.num_caja = ipc.id_caja
+  	                                      left JOIN dbo.ADM_SUCURSAL s on ipc.id_sucursal =s.SUCU_CODIGO
+                                          left JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
+                                          WHERE rc.n_deposito = '$request->texto'");
             } else {
-                 $resultado= 'El depósito esta completo, no es posible agregar un retiro.';
+                  $resultado = '1';
+                 // $resultado= 'El depósito esta completo, no es posible agregar un retiro.';
             }
 
 
             //
               // $resultado= 'Retiro incluido';
           return response()->json([
-              'resultado'   =>$resultado
-          ]);
+
+                'depositosDetalle1'              =>$depositosDetalle1,
+                'depositosDetalle2'              =>$depositosDetalle2,
+                'depositoIncluir'                =>$depositoIncluir,
+                'resultado'                      =>$resultado
+
+           ]);
+
+
           }
       }
 
@@ -212,20 +246,20 @@ class ContabilidadController extends Controller
 
                   $depositosDetalle1=DB::select("SELECT rd.id_retiro_detalle,rc.folio, rd.tipo, op.OPER_DESC, ipc.id_sucursal,s.SUCU_NOMBRE , rc.num_caja, rc.n_deposito, rc.fecha_caja, rc.monto, rc.obs, rc.cartola_fecha
                                         FROM dbo.MODULO_RETIROS_INDICE ri
-                                        INNER JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on ri.id_retiros_indice = rd.id_retiros_indice
-                                        INNER JOIN dbo.MODULO_RETIROS_CAJA rc on rd.folio =rc.folio
-                                        INNER JOIN dbo.MODULO_RETIROS_CAJA_DETALLE rcd on rc.folio=rcd.id_folio
-                                        INNER JOIN ID_PUNTEROS_CAJAS ipc on rc.num_caja = ipc.id_caja
-	                                      INNER JOIN dbo.ADM_SUCURSAL s on ipc.id_sucursal =s.SUCU_CODIGO
-                                        INNER JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
+                                        LEFT JOIN dbo.MODULO_RETIROS_INDICE_DETALLE rd on ri.id_retiros_indice = rd.id_retiros_indice
+                                        LEFT JOIN dbo.MODULO_RETIROS_CAJA rc on rd.folio =rc.folio
+                                        LEFT JOIN dbo.MODULO_RETIROS_CAJA_DETALLE rcd on rc.folio=rcd.id_folio
+                                        LEFT JOIN ID_PUNTEROS_CAJAS ipc on rc.num_caja = ipc.id_caja
+	                                      LEFT JOIN dbo.ADM_SUCURSAL s on ipc.id_sucursal =s.SUCU_CODIGO
+                                        LEFT JOIN dbo.MODULO_TP_OPERACION op on rc.cod_op= op.OPER_COD
                                         WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo ='1'");
 
                   $depositosDetalle2=DB::select("SELECT rd.id_retiro_detalle,rd.folio, rd.tipo, op.OPER_DESC, s.SUCU_CODIGO, s.SUCU_NOMBRE, ro.deposito, ro.fecha_ingreso, ro.monto, ro.descripcion, ro.cartola_fecha
                                         FROM  dbo.MODULO_RETIROS_INDICE_DETALLE rd
-                                        INNER JOIN dbo.MODULO_RETIROS_INDICE ri on ri.id_retiros_indice = rd.id_retiros_indice
-                                        INNER JOIN dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio
-                                        INNER JOIN dbo.ADM_SUCURSAL s on ro.sucursal =s.SUCU_CODIGO
-                                        INNER JOIN dbo.MODULO_TP_OPERACION op on ro.t_oper= op.OPER_COD
+                                        LEFT JOIN dbo.MODULO_RETIROS_INDICE ri on ri.id_retiros_indice = rd.id_retiros_indice
+                                        LEFT JOIN dbo.MODULO_OTROS_RETIROS_PROSEGUR ro on rd.folio= ro.folio
+                                        LEFT JOIN dbo.ADM_SUCURSAL s on ro.sucursal =s.SUCU_CODIGO
+                                        LEFT JOIN dbo.MODULO_TP_OPERACION op on ro.t_oper= op.OPER_COD
                                         WHERE fecha_desde = convert(date,'$request->fecha1') and fecha_hasta = convert(date,'$request->fecha2') and rd.tipo='2'");
 
 
@@ -248,6 +282,7 @@ class ContabilidadController extends Controller
 
         }
   }
+
   public function getRetiroPendiente(Request $request)
   {
           if ($request -> ajax()) {
