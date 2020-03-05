@@ -346,6 +346,8 @@ $(document).ready(function(){
                 //console.log(jqXHR.responseText,textStatus);
                 //alert( "Request failed: " + textStatus + jqXHR.responseText);
                 alert("Estos datos fueron exportados anteriormente");
+
+
               });
         }
         else{
@@ -354,7 +356,18 @@ $(document).ready(function(){
         }
 
         
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     })
+
     $('#tabla-detalles tbody' ).on('click','tr',function(){
 
         $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
