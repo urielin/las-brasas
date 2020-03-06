@@ -87,7 +87,7 @@
    
    <htmlpagefooter name="myfooter">
    <div style="border-top: 1px solid #000000; font-size: 9pt; text-align: center; padding-top: 3mm; ">
-   Page {PAGENO} of {nb}
+   Página {PAGENO} de {nb}
    </div>
    </htmlpagefooter>
    
@@ -175,6 +175,9 @@
    </br>
    @foreach($fechaactual as $item)
         
+        @php
+            $ventasultimo="Ventas de $item->mes - $item->año con pago posterior";
+        @endphp
        <h3 style="">3. Ventas de {{$item->mes}} - {{$item->año}} con pago posterior</h3>
    
    @endforeach
@@ -197,7 +200,7 @@
                <td align="center">{{$item->documento}}</td>
                <td align="center">$ {{number_format($item->total,2)}}</td>
                {{$cuenta3=$cuenta3+$item->total}}
-               {{$cuentafinal=$cuenta1+$cuenta2}}
+               
            </tr>
            @endforeach
            <tr>
@@ -243,14 +246,14 @@
     }
     else{
 
-        if($cuentafinal >= $nivel2){
+        if($cuenta1 >= $nivel2){
 
             $porcentaje=$comision2 * 0.01;
             $i=2;
         
         }
         else{
-            if($cuentafinal >= $nivel1){
+            if($cuenta1 >= $nivel1){
                 $porcentaje=$comision1 * 0.01;
                 $i=1;
             }
@@ -263,17 +266,17 @@
     }
 }
 else{
-    if($cuentafinal >= $nivel3){
+    if($cuenta1 >= $nivel3){
         $porcentaje=$comision3*0.01;
         $i=3;
     }
     else{
-        if($cuentafinal >= $nivel2){
+        if($cuenta1 >= $nivel2){
             $porcentaje=$comision2*0.01;
             $i=2;
         }
         else{
-            if($cuentafinal >= $nivel1){
+            if($cuenta1 >= $nivel1){
                 $porcentaje=$comision1*0.01;
                 $i=1;
             }
@@ -284,10 +287,144 @@ else{
         }
     }
 }
-$comisionfinal=$cuentafinal*$porcentaje;
-$porcentaje=$porcentaje/0.01;
+$comisionfinal1=$cuenta1*$porcentaje;
+$porcentaje1=$porcentaje/0.01;
+    @endphp
+
+    @php
+    if($comision3 == 0 && $nivel3 == 0){
+
+    if($nivel2 == 0 && $comision2==0){
+
+        if($nivel1 == 0 && $comision1 == 0){
+            $porcentaje=0;
+            $i=0;
+
+        }
+    else{
+        if($cuenta2 >= $nivel1){
+            $porcentaje=$comision1 * 0.01;
+        }
+        else{
+            $porcentaje=0;
+            $i=1;
+        }
+    }
+    }
+    else{
+
+    if($cuenta2 >= $nivel2){
+
+        $porcentaje=$comision2 * 0.01;
+        $i=2;
+
+    }
+    else{
+        if($cuenta2 >= $nivel1){
+            $porcentaje=$comision1 * 0.01;
+            $i=1;
+        }
+        else{
+            $porcentaje=0;
+            $i=0;
+        } 
+    }
+
+    }
+    }
+    else{
+    if($cuenta2 >= $nivel3){
+    $porcentaje=$comision3*0.01;
+    $i=3;
+    }
+    else{
+    if($cuenta2 >= $nivel2){
+        $porcentaje=$comision2*0.01;
+        $i=2;
+    }
+    else{
+        if($cuenta2 >= $nivel1){
+            $porcentaje=$comision1*0.01;
+            $i=1;
+        }
+        else{
+            $porcentaje=0;
+            $i=0;
+        }
+    }
+    }
+}
+$comisionfinal2=$cuenta2*$porcentaje;
+$porcentaje2=$porcentaje/0.01;
     @endphp
    
+    @php
+    if($comision3 == 0 && $nivel3 == 0){
+
+    if($nivel2 == 0 && $comision2==0){
+
+        if($nivel1 == 0 && $comision1 == 0){
+            $porcentaje=0;
+            $i=0;
+
+        }
+    else{
+        if($cuenta3 >= $nivel1){
+            $porcentaje=$comision1 * 0.01;
+        }
+        else{
+            $porcentaje=0;
+            $i=1;
+        }
+    }
+    }
+    else{
+
+    if($cuenta3 >= $nivel2){
+
+        $porcentaje=$comision2 * 0.01;
+        $i=2;
+
+    }
+    else{
+        if($cuenta3 >= $nivel1){
+            $porcentaje=$comision1 * 0.01;
+            $i=1;
+        }
+        else{
+            $porcentaje=0;
+            $i=0;
+        } 
+    }
+
+    }
+    }
+    else{
+    if($cuenta3 >= $nivel3){
+    $porcentaje=$comision3*0.01;
+    $i=3;
+    }
+    else{
+    if($cuenta3 >= $nivel2){
+        $porcentaje=$comision2*0.01;
+        $i=2;
+    }
+    else{
+        if($cuenta3 >= $nivel1){
+            $porcentaje=$comision1*0.01;
+            $i=1;
+        }
+        else{
+            $porcentaje=0;
+            $i=0;
+        }
+    }
+    }
+}
+$comisionfinal3=$cuenta3*$porcentaje;
+$comisionfinal4=$comisionfinal1+$comisionfinal2+$comisionfinal3;
+$porcentaje3=$porcentaje/0.01;
+    @endphp
    <h3 style="">4. Niveles de comisiones</h3>
 
 
@@ -356,29 +493,34 @@ $porcentaje=$porcentaje/0.01;
            <tr>
                <td width="80%" align="center">Gestion - Mes </td>
                <td width="20%" align="center">Total</td>
+               <td width="20%" align="center">Porcentaje</td>
+               <td width="20%" align="center">Comision</td>
            </tr>
        </thead>
        <tbody>
             <tr>
                 <td width="20%" align="center">{{$ventasprimero}}</td>
                 <td width="20%" align="right">{{number_format($cuenta1,2)}}</td>
+                <td width="20%" align="right">{{number_format($porcentaje1,2)}}%</td>
+                <td width="20%" align="right">{{number_format($comisionfinal1,2)}}</td>
             </tr>
             <tr>
                 <td width="20%" align="center">{{$ventassegundo}}</td>
                 <td width="20%" align="right">{{number_format($cuenta2,2)}}</td>
+                <td width="20%" align="right">{{number_format($porcentaje2,2)}}%</td>
+                <td width="20%" align="right">{{number_format($comisionfinal2,2)}}</td>
             </tr>
             <tr>
-                <td width="20%" align="center">Total</td>
-                <td width="20%" align="right">{{number_format($cuentafinal,2)}}</td>
+                <td width="20%" align="center">{{$ventasultimo}}</td>
+                <td width="20%" align="right">{{number_format($cuenta3,2)}}</td>
+                <td width="20%" align="right">{{number_format($porcentaje3,2)}}%</td>
+                <td width="20%" align="right">{{number_format($comisionfinal3,2)}}</td>
             </tr>
             <tr>
-                <td width="20%" align="center">Porcentaje comision</td>
-                <td width="20%" align="right">{{$porcentaje}}%</td>
+                <td width="20%" align="center" colspan="3">Total</td>
+                <td width="20%" align="right">{{number_format($comisionfinal4,2)}}</td>
             </tr>
-            <tr>
-                <td width="20%" align="center">Comision final</td>
-                <td width="20%" align="right">{{number_format($comisionfinal,2)}}</td>
-            </tr>
+           
        </tbody>
    </table>
 
