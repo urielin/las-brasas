@@ -42,6 +42,7 @@
    </head>
    <body>
    
+   
    <!--mpdf
    <htmlpageheader name="myheader">
    <table width="100%">
@@ -285,14 +286,15 @@ else{
 }
 $comisionfinal=$cuentafinal*$porcentaje;
 $porcentaje=$porcentaje/0.01;
-   @endphp
+    @endphp
    
    <h3 style="">4. Niveles de comisiones</h3>
 
-   <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
+
+   <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8" id="tabla">
         <thead>
            <tr>
-              
+                
                <td width="20%" align="center">Nivel 1</td>
                <td width="20%" align="center">Comision</td>
                <td width="20%" align="center">Nivel 2</td>
@@ -301,19 +303,49 @@ $porcentaje=$porcentaje/0.01;
                <td width="20%" align="center">Comision</td>
            </tr>
        </thead>
-       <tbody>
-           @php
-            <tr>
-                <td align="center" style="background:yellow">{{number_format($nivel1,2)}}</td>
+       <tbody id="cuerpo">
+           
+          <tr>
+            @if($i==0)
+                <td align="center">{{number_format($nivel1,2)}}</td>
                 <td align="center">{{number_format($comision1,2)}}%</td>
                 <td align="center">{{number_format($nivel2,2)}}</td>
                 <td align="center">{{number_format($comision2,2)}}%</td>
                 <td align="center">{{number_format($nivel3,2)}}</td>
                 <td align="center">{{number_format($comision3,2)}}%</td>
+            @else 
+                @if($i==1)
+                    <td align="center" style="background:yellow">{{number_format($nivel1,2)}}</td>
+                    <td align="center">{{number_format($comision1,2)}}%</td>
+                    <td align="center">{{number_format($nivel2,2)}}</td>
+                    <td align="center">{{number_format($comision2,2)}}%</td>
+                    <td align="center">{{number_format($nivel3,2)}}</td>
+                    <td align="center">{{number_format($comision3,2)}}%</td> 
+                @else
+
+                    @if($i==2)
+                        <td align="center">{{number_format($nivel1,2)}}</td>
+                        <td align="center">{{number_format($comision1,2)}}%</td>
+                        <td align="center"  style="background:yellow">{{number_format($nivel2,2)}}</td>
+                        <td align="center">{{number_format($comision2,2)}}%</td>
+                        <td align="center">{{number_format($nivel3,2)}}</td>
+                        <td align="center">{{number_format($comision3,2)}}%</td>
+                    @else
+                        <td align="center">{{number_format($nivel1,2)}}</td>
+                        <td align="center">{{number_format($comision1,2)}}%</td>
+                        <td align="center">{{number_format($nivel2,2)}}</td>
+                        <td align="center">{{number_format($comision2,2)}}%</td>
+                        <td align="center"   style="background:yellow">{{number_format($nivel3,2)}}</td>
+                        <td align="center">{{number_format($comision3,2)}}%</td>
+                    @endif
+                @endif
+
+            @endif 
+                
             </tr>
-            @endphp
            
        </tbody>
+            
    </table>
 
  
@@ -351,6 +383,17 @@ $porcentaje=$porcentaje/0.01;
    </table>
 
    </br>
+   <script >
+       
+            $(document).ready(function(){
+                //let cuerpo='<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+
+                $('#cuerpo').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+
+            })
+
+    </script>
    </body>
    </html>
+
    
