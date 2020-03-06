@@ -443,8 +443,8 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-
-                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
+                  alerta('success',data.success);
+                  // html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
 
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -507,18 +507,18 @@ $(document).on('submit','#consulta1',function(){
                   var action_url = '';
                   action_url = 'actualizar-camion-fecha';
 
-                  console.log('linea para la ultima condicion');
-                  console.log($('#action-producto').val());
+                  // console.log('linea para la ultima condicion');
+                  // console.log($('#action-producto').val());
                   if ($('#subbandera').val() == '2')
                   {
                     camion_id = $('#camion').val();
-                    console.log('val 2');
+                    // console.log('val 2');
                     valor= '2';
                   }
                   else{
                     camion_id = $('#buscar-codigo-camion').val();
                     valor ='1';
-                    console.log('val 1');
+                    // console.log('val 1');
                   }
 
                   request=$.ajax({
@@ -532,9 +532,9 @@ $(document).on('submit','#consulta1',function(){
 
                       if (data.success)
                       {
-                          console.log('exito');
-                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
-
+                          // console.log('exito');
+                          // html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
+                          alerta('success',data.success);
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
                                 $('#bloquear-camion').empty();
@@ -635,11 +635,11 @@ $(document).on('submit','#consulta1',function(){
               if (data.success)
               {
                   html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
-
+                  alerta('success',data.success);
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
                         $('#bloquear-camion').empty();
-                        console.log('actualizando tablaaaaa');
+                        // console.log('actualizando tablaaaaa');
                        $('#camiontabla').empty();
 
                       var bi=0;
@@ -706,8 +706,8 @@ $(document).on('submit','#consulta1',function(){
                   var action_url = '';
                   action_url = 'actualizar-camion-valor-total';
 
-                  console.log('linea para la ultima condicion');
-                  console.log($('#action-producto').val());
+                  // console.log('linea para la ultima condicion');
+                  // console.log($('#action-producto').val());
                   if ($('#subbandera').val() == '2')
                   {
                     camion_id = $('#camion').val();
@@ -739,7 +739,7 @@ $(document).on('submit','#consulta1',function(){
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
                                 $('#bloquear-camion').empty();
-                                console.log('actualizando tablaaaaa');
+                                // console.log('actualizando tablaaaaa');
                                $('#camiontabla').empty();
 
                               var bi=0;
@@ -795,8 +795,8 @@ $(document).on('submit','#sample_form',function(){
 
           var action_url = '';
           action_url = 'actualizar-camion';
-          console.log('lineaaaaaaaaa para la ultima condicion');
-          console.log($('#action-producto').val());
+          // console.log('lineaaaaaaaaa para la ultima condicion');
+          // console.log($('#action-producto').val());
           if ($('#action-producto').val() == '1')
           {
               camion_id = $('#buscar-codigo-camion').val();
@@ -806,10 +806,6 @@ $(document).on('submit','#sample_form',function(){
               camion_id = $('#camion').val();
               valor= '2';
           }
-          // if ($('#action').val() == 'Editar')
-          // {
-          //     action_url = 'actualizar-camion';
-          // }
 
           $.ajax({
             url: action_url,
@@ -831,7 +827,8 @@ $(document).on('submit','#sample_form',function(){
               if (data.success)
               {
 
-                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
+                  alerta('success',data.success);
+                  // html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
                   // $('#sample_form')[0].reset();
 
                   // ----------------
@@ -843,7 +840,7 @@ $(document).on('submit','#sample_form',function(){
 
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
                         // $('#bloquear-camion').empty();
-                        console.log('actualizando tablaaaaa');
+                        // console.log('actualizando tablaaaaa');
                        $('#camiontabla').empty();
                             $('#camiontabla-head').empty();
                       var bi=0;
@@ -931,7 +928,7 @@ $('#buscar-camion-r').on('submit',function(event){
         }
         html += '</div>'
         // $('#form_result').html(html);  sirve por mientras
-        console.log('error');
+        // console.log('error');
       }
       else
       {
@@ -988,15 +985,15 @@ $('#buscar-camion-r').on('submit',function(event){
         // action-buscar-camion: es el input que esta encima del buscador
         if ($('#action-buscar-camion').val() == 'buscar-camion')
         {
-            console.log('buscar-camion');
+            // console.log('buscar-camion');
             action_url = 'ver-camion';
             valor= '1';
             bandera_bloqueo='0';
         }
         if ($('#action-buscar-camion').val() == 'buscar-camion-r')
         {
-            console.log('errreeeeeeeeee');
-            console.log('buscar-camion-r');
+            // console.log('errreeeeeeeeee');
+            // console.log('buscar-camion-r');
             action_url = 'ver-camion-r';
             valor= '1';
             bandera_bloqueo='1';
@@ -1010,7 +1007,7 @@ $('#buscar-camion-r').on('submit',function(event){
           success:function(res)
           {
             var html ='';
-              console.log('entro');
+              // console.log('entro');
               $('#camiontabla').empty();
               $('#camiontabla-head').empty();
               $('#form_result_consulta1').empty();
@@ -1100,14 +1097,14 @@ $('#buscar-camion-r').on('submit',function(event){
 
                   $('#codigo_oficial_real4').val(res.dato_general[0]['codigo']);
 
-                  console.log('fecha de embarque');
-                  console.log('2019-03-23 00:00:00.000');
-                  console.log(dateUTC('2019-03-23 00:00:00.000'));
+                  // console.log('fecha de embarque');
+                  // console.log('2019-03-23 00:00:00.000');
+                  // console.log(dateUTC('2019-03-23 00:00:00.000'));
                   $('#fecha_de_embarque_real').val(dateUTC(res.dato_general[0]['fecha_embarque']));
 
-                  console.log('fecha de llegada');
-                  console.log('2019-01-21 00:00:00.000');
-                  console.log(dateUTC('2019-01-21 00:00:00.000'));
+                  // console.log('fecha de llegada');
+                  // console.log('2019-01-21 00:00:00.000');
+                  // console.log(dateUTC('2019-01-21 00:00:00.000'));
                   $('#fecha_de_llegada').val(dateUTC(res.dato_general[0]['fecha_llegada']));
 
                   $('#resol_sanitaria').val(res.dato_general[0]['resolucion_sanitaria']);
@@ -1222,8 +1219,8 @@ $('#buscar-camion-r').on('submit',function(event){
 
 
         // $('#formModal').modal('show');
-        console.log('-------');
-        console.log($(this).val());
+        // console.log('-------');
+        // console.log($(this).val());
 
         $('#form_result').empty();
         $('#nro_item').val(valores[0]);
@@ -1295,7 +1292,7 @@ $(document).on('change','#change-bloqueo-camion',function(){
       if($.trim(camion_id) != ''  ){
             // console.log('consicion 1');
           $.get('cambiar-bloqueo-camion',{camion_id:camion_id, bloqueo_2_id:bloqueo_2_id},function(res){
-            console.log('nueva tabla');
+            // console.log('nueva tabla');
             $('#camiontabla-head').empty();
             $('#camiontabla').empty();
            var bi=0;
@@ -1356,7 +1353,7 @@ $(document).on('change','.btn-switch',function(){
        valores[i]=1;
      // console.log(valores[15]);
             $.get('switch-item',{bloqueo_2_id:valores[15],camion_id:valores[1],item_id:valores[0] },function(res){
-              console.log('actualizado');
+              // console.log('actualizado');
             });
 
 
@@ -1364,7 +1361,7 @@ $(document).on('change','.btn-switch',function(){
                 valores[i]=0;
               // console.log(valores[15]);
               $.get('switch-item',{bloqueo_2_id:valores[15],camion_id:valores[1],item_id:valores[0] },function(res){
-                console.log('actualizado');
+                // console.log('actualizado');
               });
 
         }
