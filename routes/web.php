@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
   Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');
   Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
-  Route::get('/test', 'GestionCamionController@test')->name('test');
+  Route::get('/test', 'GestionCamionController@test')->name('test'); 
   Route::get('/gestion-camion-r', 'GestionCamionController@indexr')->name('gestion-camion-r');
   Route::GET('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
   Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
@@ -127,7 +127,6 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
-  
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
 
