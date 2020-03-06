@@ -150,7 +150,9 @@ class ContabilidadController extends Controller
                                           WHERE rc.n_deposito = '$request->texto'");
             } else {
                   $resultado = '1';
-
+                  $depositosDetalle1 = null;
+                  $depositosDetalle2 = null;
+                  $depositoIncluir   = null;
                  // $resultado= 'El depósito esta completo, no es posible agregar un retiro.';
             }
 

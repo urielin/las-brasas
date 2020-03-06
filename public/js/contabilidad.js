@@ -74,7 +74,8 @@ $('#table-detalle').on('click','.eliminar-item',function(){
             if (res.b == 'eliminado') {
                   row.remove();
             } else {
-               alert("No se puede eliminar este depósito");
+              alerta('error','No se puede eliminar este depósito')
+               // alert("No se puede eliminar este depósito");
             }
       });
 
@@ -108,8 +109,6 @@ $('#table-detalle').on('click','.eliminar-item',function(){
          request=$.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice, fecha1:fecha1 ,fecha2:fecha2 },function(res){
 
               if (res.resultado == '0') {
-
-
                     if (res.depositoIncluir != '') {
                           $('#icono1').empty();
                           $('#depositoDetalleHead').empty();
@@ -162,13 +161,16 @@ $('#table-detalle').on('click','.eliminar-item',function(){
 
                           $('#depositoDetalleTabla').append("<tr><td></td><td></td><td></td><td> </td><td></td><td></td><td></td><td></td><td>"+ addCommas(montoTotal.toFixed(2)) +"</td><td></td><td></td><td></td></tr>");
 
-                          alert("Deposito agregado al prosegur.");
+                          // alert("Deposito agregado al prosegur.");
+                          alerta('success','Deposito agregado al prosegur.');
                     } else {
-                      alert("El depósito ingresado no existe, ingrese otro.");
+                      // alert("El depósito ingresado no existe, ingrese otro.");
+                      alerta('error','El depósito ingresado no existe, ingrese otro.');
                     }
 
                   } else {
-                      alert("El depósito esta completo, no es posible agregar un retiro.");
+                      alerta('error','El depósito esta completo, no es posible agregar un retiro.');
+                      // alert("El depósito esta completo, no es posible agregar un retiro.");
                   }
          });
 
@@ -184,7 +186,8 @@ $('#table-detalle').on('click','.eliminar-item',function(){
       }
       else
       {
-          alert('Debe ingresar el número de depósito');
+          alerta('error','Debe ingresar el número de depósito');
+          // alert('Debe ingresar el número de depósito');
       }
   });
 // -------------------------------------------------------------
@@ -336,9 +339,11 @@ $('#buscar-depositos-pendientes').on('click', function(){
             // console.log(res.numOtroRetiro[0].otroNum);
             if (res.numOtroRetiro[0].otroNum == '0') {
 
-              alert("Deposito generado exitosamente");
+              // alert("Deposito generado exitosamente");
+              alerta('success','Deposito generado exitosamente');
             } else {
-              alert("Ya existe un deposito generado");
+              alerta('error','Ya existe un deposito generado');
+              // alert("Ya existe un deposito generado");
             }
          });
 
@@ -349,10 +354,13 @@ $('#agregar-retiro-indice').on('click', function(){
       $.get('retiros-generar',function(res){
 
           if (res.numRetiro[0].num == '0') {
+              alerta('success','Retiro generado exitosamente');
 
-            alert("Retiro generado exitosamente");
-          } else {
-            alert("Ya existe un retiro generado");
+              // alert("Retiro generado exitosamente");
+            } else {
+              alerta('error','Ya existe un retiro generado');
+
+              // alert("Ya existe un retiro generado");
           }
        });
 });
@@ -392,6 +400,24 @@ $('#agregar-retiro-indice').on('click', function(){
   		x1 = x1.replace(rgx, '$1' + ',' + '$2');
   	}
   	return x1 + x2;
+  }
+
+  function alerta(icon, title){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      onOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: icon,
+      title: title
+    })
   }
 
 });
