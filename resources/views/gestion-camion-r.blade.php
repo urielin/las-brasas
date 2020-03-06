@@ -112,7 +112,7 @@
                     </div>
                 </div>
               </div>
-            </div>
+            </div> 
             <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
                 <div class="row">
 

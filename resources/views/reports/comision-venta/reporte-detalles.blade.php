@@ -432,48 +432,48 @@ $porcentaje3=$porcentaje/0.01;
         <thead>
            <tr>
                 
-               <td width="20%" align="center">Nivel 1</td>
-               <td width="20%" align="center">Comision</td>
-               <td width="20%" align="center">Nivel 2</td>
-               <td width="20%" align="center">Comision</td>
-               <td width="20%" align="center">Nivel3 </td>
-               <td width="20%" align="center">Comision</td>
+               <td width="20%" align="center" style="font-size:11pt">Nivel 1</td>
+               <td width="20%" align="center" style="font-size:11pt">Comision</td>
+               <td width="20%" align="center" style="font-size:11pt">Nivel 2</td>
+               <td width="20%" align="center" style="font-size:11pt">Comision</td>
+               <td width="20%" align="center" style="font-size:11pt">Nivel3 </td>
+               <td width="20%" align="center" style="font-size:11pt">Comision</td>
            </tr>
        </thead>
        <tbody id="cuerpo">
            
           <tr>
             @if($i==0)
-                <td align="center">{{number_format($nivel1,2)}}</td>
-                <td align="center">{{number_format($comision1,2)}}%</td>
-                <td align="center">{{number_format($nivel2,2)}}</td>
-                <td align="center">{{number_format($comision2,2)}}%</td>
-                <td align="center">{{number_format($nivel3,2)}}</td>
-                <td align="center">{{number_format($comision3,2)}}%</td>
+                <td align="center" style="font-size:11pt">{{number_format($nivel1,2)}}</td>
+                <td align="center" style="font-size:11pt">{{number_format($comision1,2)}}%</td>
+                <td align="center" style="font-size:11pt">{{number_format($nivel2,2)}}</td>
+                <td align="center" style="font-size:11pt">{{number_format($comision2,2)}}%</td>
+                <td align="center" style="font-size:11pt">{{number_format($nivel3,2)}}</td>
+                <td align="center" style="font-size:11pt">{{number_format($comision3,2)}}%</td>
             @else 
                 @if($i==1)
-                    <td align="center" style="background:yellow">{{number_format($nivel1,2)}}</td>
-                    <td align="center">{{number_format($comision1,2)}}%</td>
-                    <td align="center">{{number_format($nivel2,2)}}</td>
-                    <td align="center">{{number_format($comision2,2)}}%</td>
-                    <td align="center">{{number_format($nivel3,2)}}</td>
-                    <td align="center">{{number_format($comision3,2)}}%</td> 
+                    <td align="center" style="background:yellow; font-size:11pt;">{{number_format($nivel1,2)}}</td>
+                    <td align="center" style="font-size:11pt">{{number_format($comision1,2)}}%</td>
+                    <td align="center" style="font-size:11pt">{{number_format($nivel2,2)}}</td>
+                    <td align="center" style="font-size:11pt">{{number_format($comision2,2)}}%</td>
+                    <td align="center" style="font-size:11pt">{{number_format($nivel3,2)}}</td>
+                    <td align="center" style="font-size:11pt">{{number_format($comision3,2)}}%</td> 
                 @else
 
                     @if($i==2)
-                        <td align="center">{{number_format($nivel1,2)}}</td>
-                        <td align="center">{{number_format($comision1,2)}}%</td>
-                        <td align="center"  style="background:yellow">{{number_format($nivel2,2)}}</td>
-                        <td align="center">{{number_format($comision2,2)}}%</td>
-                        <td align="center">{{number_format($nivel3,2)}}</td>
-                        <td align="center">{{number_format($comision3,2)}}%</td>
+                        <td align="center" style="font-size:11pt">{{number_format($nivel1,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision1,2)}}%</td>
+                        <td align="center"  style="background:yellow; font-size:11pt;">{{number_format($nivel2,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision2,2)}}%</td>
+                        <td align="center" style="font-size:11pt">{{number_format($nivel3,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision3,2)}}%</td>
                     @else
-                        <td align="center">{{number_format($nivel1,2)}}</td>
-                        <td align="center">{{number_format($comision1,2)}}%</td>
-                        <td align="center">{{number_format($nivel2,2)}}</td>
-                        <td align="center">{{number_format($comision2,2)}}%</td>
-                        <td align="center"   style="background:yellow">{{number_format($nivel3,2)}}</td>
-                        <td align="center">{{number_format($comision3,2)}}%</td>
+                        <td align="center" style="font-size:11pt">{{number_format($nivel1,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision1,2)}}%</td>
+                        <td align="center" style="font-size:11pt">{{number_format($nivel2,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision2,2)}}%</td>
+                        <td align="center"   style="background:yellow; font-size:11pt;">{{number_format($nivel3,2)}}</td>
+                        <td align="center" style="font-size:11pt">{{number_format($comision3,2)}}%</td>
                     @endif
                 @endif
 
@@ -491,50 +491,40 @@ $porcentaje3=$porcentaje/0.01;
     <table class="items" width="100%" style="font-size: 9pt; border-collapse: collapse; " cellpadding="8">
         <thead>
            <tr>
-               <td width="80%" align="center">Gestion - Mes </td>
-               <td width="20%" align="center">Total</td>
-               <td width="20%" align="center">Porcentaje</td>
-               <td width="20%" align="center">Comision</td>
+               <td width="80%" align="center" style="font-size:15pt">Gestion - Mes </td>
+               <td width="20%" align="center" style="font-size:15pt">Total</td>
+               <td width="20%" align="center" style="font-size:15pt">Porcentaje</td>
+               <td width="20%" align="center" style="font-size:15pt">Comision</td>
            </tr>
        </thead>
        <tbody>
             <tr>
-                <td width="20%" align="center">{{$ventasprimero}}</td>
-                <td width="20%" align="right">{{number_format($cuenta1,2)}}</td>
-                <td width="20%" align="right">{{number_format($porcentaje1,2)}}%</td>
-                <td width="20%" align="right">{{number_format($comisionfinal1,2)}}</td>
+                <td width="80%" align="center" style="font-size:13pt">{{$ventasprimero}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($cuenta1,2)}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($porcentaje1,2)}}%</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($comisionfinal1,2)}}</td>
             </tr>
             <tr>
-                <td width="20%" align="center">{{$ventassegundo}}</td>
-                <td width="20%" align="right">{{number_format($cuenta2,2)}}</td>
-                <td width="20%" align="right">{{number_format($porcentaje2,2)}}%</td>
-                <td width="20%" align="right">{{number_format($comisionfinal2,2)}}</td>
+                <td width="80%" align="center" style="font-size:13pt">{{$ventassegundo}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($cuenta2,2)}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($porcentaje2,2)}}%</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($comisionfinal2,2)}}</td>
             </tr>
             <tr>
-                <td width="20%" align="center">{{$ventasultimo}}</td>
-                <td width="20%" align="right">{{number_format($cuenta3,2)}}</td>
-                <td width="20%" align="right">{{number_format($porcentaje3,2)}}%</td>
-                <td width="20%" align="right">{{number_format($comisionfinal3,2)}}</td>
+                <td width="80%" align="center" style="font-size:13pt">{{$ventasultimo}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($cuenta3,2)}}</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($porcentaje3,2)}}%</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($comisionfinal3,2)}}</td>
             </tr>
             <tr>
-                <td width="20%" align="center" colspan="3">Total</td>
-                <td width="20%" align="right">{{number_format($comisionfinal4,2)}}</td>
+                <td width="80%" align="center" style="font-size:13pt" colspan="3">Total</td>
+                <td width="20%" align="right" style="font-size:13pt">{{number_format($comisionfinal4,2)}}</td>
             </tr>
            
        </tbody>
    </table>
 
    </br>
-   <script >
-       
-            $(document).ready(function(){
-                //let cuerpo='<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
-
-                $('#cuerpo').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-
-            })
-
-    </script>
    </body>
    </html>
 
