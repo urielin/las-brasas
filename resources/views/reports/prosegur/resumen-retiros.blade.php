@@ -64,7 +64,7 @@ table thead td { background-color: #EEEEEE;
 </htmlpageheader>
 <htmlpagefooter name="myfooter">
 <div style="border-top: 1px solid #000000; font-size: 9pt; text-align: center; padding-top: 3mm; ">
-Page {PAGENO} of {nb}
+Pagina {PAGENO} de {nb}
 </div>
 </htmlpagefooter>
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
@@ -150,7 +150,7 @@ mpdf-->
 <tbody>
 <!-- ITEMS HERE -->
 @if(isset($group_1))
-@php 
+@php
 $total_diarios = 0 ;
 @endphp
 @foreach($group_1 as $item => $value)
