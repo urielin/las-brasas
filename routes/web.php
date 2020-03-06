@@ -127,6 +127,7 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
+  
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
 
