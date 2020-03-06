@@ -538,7 +538,7 @@ $(document).on('submit','#consulta1',function(){
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
                                 $('#bloquear-camion').empty();
-                                console.log('actualizando tablaaaaa');
+                                // console.log('actualizando tablaaaaa');
                                $('#camiontabla').empty();
 
                               var bi=0;
@@ -606,8 +606,8 @@ $(document).on('submit','#consulta1',function(){
           var action_url = '';
           action_url = 'actualizar-camion-embarque';
 
-          console.log('linea para la ultima condicion');
-          console.log($('#action-producto').val());
+          // console.log('linea para la ultima condicion');
+          // console.log($('#action-producto').val());
           if ($('#subbandera').val() == '2')
           {
             camion_id = $('#camion').val();
@@ -634,7 +634,7 @@ $(document).on('submit','#consulta1',function(){
 
               if (data.success)
               {
-                  html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
+                  // html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
                   alerta('success',data.success);
                   if($.trim(camion_id) != ''){
                       $.get('tabla-camion',{camion_id:camion_id },function(res){
@@ -734,8 +734,8 @@ $(document).on('submit','#consulta1',function(){
 
                       if (data.success)
                       {
-                          html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
-
+                          // html= '<div class="card-alert card green"><div class="card-content white-text">'+ data.success+'</div></div>';
+                          alerta('success',data.success)
                           if($.trim(camion_id) != ''){
                               $.get('tabla-camion',{camion_id:camion_id },function(res){
                                 $('#bloquear-camion').empty();
