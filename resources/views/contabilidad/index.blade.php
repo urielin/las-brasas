@@ -176,7 +176,6 @@
                               <thead>
                                 <tr>
                                   <th>Folio</th>
-                                  <th>Monto</th>
                                   <th>Fecha caja</th>
                                   <th>Operación</th>
                                   <th>Tipo de cheque</th>
