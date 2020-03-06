@@ -11,7 +11,7 @@ $(document).on('click','#buscar-salida-bancos',function(){
           var fecha1=$('#desde1').val();
           var fecha2=$('#hasta1').val();
           var cantidad= 0 , monto= 0;
-          console.log({fecha1:fecha1,fecha2:fecha2 });
+          // console.log({fecha1:fecha1,fecha2:fecha2 });
         if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
               $('#icono1').empty();
               $('#depositoDetalleHead').empty();
@@ -56,7 +56,7 @@ function habilitar_boton_pdf() {
   $("a.get-pdf-report").on('click',function() {
     id_retiros=$(this).attr('id');
     var data=$(this).data();
-    console.log(data);
+    // console.log(data);
     window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
 
 
@@ -99,14 +99,14 @@ $('#table-detalle').on('click','.eliminar-item',function(){
       var fecha1 = $(this).attr('data-fecha_1');
       var fecha2 = $(this).attr('data-fecha_2');
       var montoTotal= 0;
-      console.log(texto);
-      console.log(id_retiro_indice);
-      console.log("fecha 1");
-      console.log(fecha1);
-      console.log("fecha 2");
-      console.log(fecha2);
+      // console.log(texto);
+      // console.log(id_retiro_indice);
+      // console.log("fecha 1");
+      // console.log(fecha1);
+      // console.log("fecha 2");
+      // console.log(fecha2);
       if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
-         request=$.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice, fecha1:fecha1 ,fecha2:fecha2 },function(res){
+         $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice, fecha1:fecha1 ,fecha2:fecha2 },function(res){
 
               if (res.resultado == '0') {
                     if (res.depositoIncluir != '') {
@@ -174,15 +174,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
                   }
          });
 
-         request.done(function( msg ) {
-           // $( "#log" ).html( msg );
-           console.log(msg);
-         });
 
-         request.fail(function( jqXHR, textStatus ) {
-           console.log(jqXHR.responseText,textStatus);
-           alert( "Request failed: " + textStatus + jqXHR.responseText);
-         });
       }
       else
       {
@@ -203,7 +195,7 @@ $(document).on('click','.mostrar-detalle',function(){
         $($(this)).find("td").each(function(){
             if (j>0) {
               valores[i] =$(this).html();
-                    console.log(valores[i] );
+                    // console.log(valores[i] );
                     // console.log('entro al if');
               i++;
             }
@@ -267,7 +259,7 @@ $(document).on('click','#buscar-otros-depositos',function(){
     if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
 
           $.get('obtener-otro-retiro',{fecha1:fecha1,fecha2:fecha2 },function(res){
-                  console.log(res);
+                  // console.log(res);
               $('#otroRetiroTabla').empty();
               $.each(res.otrosRetiros, function(index,value){
                   $('#otroRetiroTabla').append('<tr><td>' + value.folio +'</td><td>'+ value.fecha_ingreso +"</td><td>"+ value.descripcion+"</td><td>"+value.SUCU_NOMBRE+" </td><td>"+ value.OPER_DESC +"</td><td>"+ value.usuario +" </td><td>"+ value.deposito +"</td><td>"+ addCommas((parseFloat(value.monto)).toFixed(2)) +"</td></tr>");
