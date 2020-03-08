@@ -136,6 +136,8 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
   //-------------------------------------MODULO 4
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
+  Route::get('/obtener-datos','ContenedorController@getDato')->name('getDato');
+  
 
 Route::get('/reporte2', function () {
 

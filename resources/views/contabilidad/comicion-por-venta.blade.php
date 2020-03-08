@@ -12,7 +12,7 @@
           <label for="" class="form-control-label">Gestión</label>
           <select class="form-control browser-default" id="gestion" name="gestion">
           <option value="">Seleccione gestión</option>  
-          @foreach ($gestion as $g)
+            @foreach ($gestion as $g)
                 <option value="{{$g->TP_GESTION}}">{{$g->ges}}</option>
             @endforeach 
           </select>

@@ -13,7 +13,12 @@
             </div>
             <div class="form-group">
               <label for="" class="form-control-label">Proveedor</label>
-              <input type="text" class="form-control browser-default" name="proveedor" value="">
+              <select class="form-control browser-default" id="proveedor" name="proveedor">
+                <option value="">Seleccione un proveedor</option>
+                @foreach ($proveedor as $p)
+                  <option value="{{$p->id_proveedor}}">{{$p->emp_nombre}}</option>
+                @endforeach 
+               </select>
             </div>
           </div>
         </div>
@@ -32,7 +37,7 @@
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top: 20px;padding:10px">
 
-          <table class="table table-responsive responsive-table" id="tabla-proveedor">
+          <table class="table table-responsive responsive-table centered" id="tabla-proveedor">
             <thead>
               <tr>
                 <th>Codigo</th>

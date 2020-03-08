@@ -354,18 +354,6 @@ $(document).ready(function(){
 
             alert('LLene los campos respectivos');
         }
-
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     })
 
     $('#tabla-detalles tbody' ).on('click','tr',function(){
