@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/obtener-camion', 'GestionCamionController@getcamion')->name('getCamion');
   Route::get('/tabla-camion', 'GestionCamionController@gettablecamion')->name('gettableCamion');
   Route::get('/select-clasificacion', 'GestionCamionController@getclasificacion')->name('getClasificacion');
-  Route::get('/test', 'GestionCamionController@test')->name('test'); 
+  Route::get('/test', 'GestionCamionController@test')->name('test');
   Route::get('/gestion-camion-r', 'GestionCamionController@indexr')->name('gestion-camion-r');
   Route::GET('/ver-camion-r', 'GestionCamionController@showr')->name('showCamion-r');
   Route::get('/obtener-camion-r', 'GestionCamionController@getcamionr')->name('getCamion-r');
@@ -80,9 +80,17 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/eliminar-item', 'ContabilidadController@deleteItemRetiro')->name('eliminarItemRetiro');
   Route::get('/deposito-incluir-deposito', 'ContabilidadController@IncluirRetiro')->name('IncluirRetiro');
 // ----------------------------------------------------------------------------------------------------------------------------------
-Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
+
+//D------Administracion-camiones-------------------------------------------
+
+Route::get('/gestion-administracion', 'GestionAdministracionController@index')->name('gestion-administracion.index');
+Route::get('/administrar-tabla-codigo', 'GestionAdministracionController@administrarTablaCodigo')->name('administrarTablaCodigo');
+Route::get('/administrar-tabla-clasificacion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaClasificacion');
+Route::get('/administrar-tabla-estado', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaEstado');
 
 
+
+//-----------------------------------------------------------------------
 
   Route::get('/ingreso-cartolas', 'IngresoCartolaController@index')->name('cartola.indxe');
 
