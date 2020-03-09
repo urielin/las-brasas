@@ -29,9 +29,9 @@ class ContenedorController extends Controller
         'proveedor'              =>$proveedor
 
       ]);
-    } 
+    }
 
-  }
+  } 
   public function pagos( ) {
     return view('gestion.pagos');
 

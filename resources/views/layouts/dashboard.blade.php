@@ -190,6 +190,10 @@
           </a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li><a href="{{route('gestion-administracion.index')}}">
+                <i class="material-icons">radio_button_unchecked</i>
+                <span data-i18n="Page Maintenanace"> Gestión / Administración </span></a>
+              </li>
               <li><a href="{{route('contenedor.pagos')}}">
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Seguimiento a Pagos </span></a>
@@ -239,7 +243,7 @@
     <script src="{{ asset('assets/js/scripts/customizer.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts/data-tables.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts/advance-ui-modals.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 

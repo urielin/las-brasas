@@ -57,7 +57,6 @@
              // $('#camion').append("<option value=''> Seleccione un camión </option>");
              $.each(res, function(index,value){
                $('#clasificacion').append("<option value='"+ value +"'>"+ value +"</option>");
-
              })
           });
 
