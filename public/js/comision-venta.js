@@ -21,7 +21,7 @@ $(document).ready(function(){
         if($.trim(vendedor) != '' && $.trim(gestion) != '' && $.trim(mes) != '' && $.trim(sucursal) != ''){
 
             request = $.get('obtener-detalles',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
-                
+
                 var totales;
                 //console.log(res);
                 $('#contenido').empty();
@@ -46,7 +46,7 @@ $(document).ready(function(){
                         });
 
                         totales=totales.toFixed(2);
-                        $('#tabla-comisiones').append('<tr><td align="center" colspan="2">Total</td><td>=</td><td>'+addCommas(totales)+'</td></tr>');
+                        $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(totales)+'</td></tr>');
                 }
                 if(res.detalle1 == ''){
 
@@ -69,7 +69,7 @@ $(document).ready(function(){
                     });
 
                     total=total.toFixed(2);
-                    $('#tabla-comisiones').append('<tr><td align="center" colspan="2">Total</td><td>=</td><td>'+addCommas(total)+'</td></tr>');
+                    $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
 
                 }
 
@@ -92,7 +92,7 @@ $(document).ready(function(){
                     total=total+parseFloat(value.total);
                     });
                     total=total.toFixed(2);
-                    $('#tabla-comisiones').append('<tr><td align="center" colspan="2">Total</td><td>=</td><td>'+addCommas(total)+'</td></tr>');
+                    $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
 
                 }
 
@@ -124,7 +124,7 @@ $(document).ready(function(){
                             total=total+parseFloat(value.comision);
                             });
                             total=total.toFixed(2);
-                            $('#tabla-detalles').append('<tr><td align="center" colspan="6">Total</td><td>=</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
+                            $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
                     }
                     if(res.comision1 == ''){
 
@@ -146,7 +146,7 @@ $(document).ready(function(){
                         total=total+parseFloat(value.comision);
                         });
                         total=total.toFixed(2);
-                        $('#tabla-detalles').append('<tr><td align="center" colspan="6">Total</td><td>=</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
+                        $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
 
                     }
 
@@ -169,16 +169,16 @@ $(document).ready(function(){
                             total=total+parseFloat(value.comision);
                         });
                         total=total.toFixed(2);
-                        $('#tabla-detalles').append('<tr><td align="center" colspan="6">Total</td><td>=</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
+                        $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
 
                     }
 
                     $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #00a6d6; color: white}</style>');
 
-                
+
             });
 
-            
+
         }
     });
 
@@ -333,7 +333,7 @@ $(document).ready(function(){
                 alert("¡Datos históricos exportados con exito!");
 
 
-                
+
             });
             request.done(function( msg ) {
                 // $( "#log" ).html( msg );
@@ -341,7 +341,7 @@ $(document).ready(function(){
                 console.log("get completado");
                 //habilitar_boton_pdf();
               });
-    
+
               request.fail(function( jqXHR, textStatus ) {
                 //console.log(jqXHR.responseText,textStatus);
                 //alert( "Request failed: " + textStatus + jqXHR.responseText);

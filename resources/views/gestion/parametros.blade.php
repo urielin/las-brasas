@@ -36,7 +36,21 @@
       </div>
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top: 20px;padding:10px">
-
+<div style="display: flex; justify-content: space-between">
+                          <!--<div style="display: flex">
+                            <i class="material-icons dp48">subject</i><span class="card-title">Catalogo de Productos</span>
+                          </div>-->
+                       
+                          <div style="display: flex;">
+                            <select class="form-control browser-default col-md-1 float-right"  style='height:35px !important' id="filter_state">
+                              <option value="" selected>Nuevo</option>
+                              
+                            </select>
+                            <button type="button"  class="btn btn-50 btn-add-product cyan pull-right btn-icon-only rounded-circle float-right" name="button">
+                              <i class="material-icons dp48">add_box</i>
+                            </button>
+                          </div>
+                        </div>
           <table class="table table-responsive responsive-table centered" id="tabla-proveedor">
             <thead>
               <tr>
