@@ -99,12 +99,13 @@ $(document).ready(function(){
        $('#tabla-administracion-cuerpo').empty();
        if ( $.trim(codigo)!= '') {
             $.get('administrar-tabla-codigo',{codigo:codigo},function(res){
-              let monto_cierre = value.monto_cierre == null ? '-' : value.monto_cierre;
-              let ingreso_zeta = value.ingreso_zeta == null ? '-' : value.ingreso_zeta;
-              let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
-              let naviera = value.naviera == null ? '-' : value.naviera;
+
                 if (res.camiones != '') {
                   $.each(res.camiones,function(index,value){
+                    let monto_cierre = value.monto_cierre == null ? '-' : value.monto_cierre;
+                    let ingreso_zeta = value.ingreso_zeta == null ? '-' : value.ingreso_zeta;
+                    let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
+                    let naviera = value.naviera == null ? '-' : value.naviera;
                     $('#tabla-administracion-cuerpo').append(`
                       <tr>
                       <td>${value.id_camion}</td>

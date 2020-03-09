@@ -63,10 +63,14 @@
             </div>
           </div>
 
-            <div class="row">
-              <div class="col s12">
-                <div class="card card card-default scrollspy">
-
+          <div id="responsive-table" class=" ">
+            <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+              <h4 class="card-title"></h4>
+              <p class="mb-2"></p>
+              <div class="row">
+                <div class="col s12">
+                </div>
+                <div class="col s12 dataTables_scrollBody">
                   <table class="responsive-table centered">
                     <thead>
                     <tr>
@@ -92,7 +96,10 @@
 
                     </tbody>
                   </table>
-
+                </div>
+              </div>
+        </div>
+      </div>
                 </div>
               </div>
             </div>
