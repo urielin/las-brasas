@@ -130,7 +130,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
                               } else {
                                   montoTotal+=parseFloat(value.monto);
                               }
-                          });
+                          }); 
 
                           $.each(res.depositosDetalle2, function(index,value){
 

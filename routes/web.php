@@ -87,6 +87,9 @@ Route::get('/gestion-administracion', 'GestionAdministracionController@index')->
 Route::get('/administrar-tabla-codigo', 'GestionAdministracionController@administrarTablaCodigo')->name('administrarTablaCodigo');
 Route::get('/administrar-tabla-clasificacion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaClasificacion');
 Route::get('/administrar-tabla-estado', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaEstado');
+Route::get('/detalle-administrar-camion', 'GestionAdministracionController@administrarDetalleCamion')->name('administrarDetalleCamion');
+
+
 
 
 

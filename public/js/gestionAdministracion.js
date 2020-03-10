@@ -8,7 +8,6 @@ $(document).ready(function(){
       $('#tabla-administracion-cuerpo').empty();
       if ( $.trim(clasificacion) != '') {
           $.get('administrar-tabla-clasificacion',{clasificacion:clasificacion,estado:estado},function(res){
-                console.log(res);
                 if (res.camiones != '') {
                   $.each(res.camiones,function(index,value){
                     let monto_cierre = value.monto_cierre == null ? '-' : value.monto_cierre;
@@ -17,7 +16,7 @@ $(document).ready(function(){
                     let naviera = value.naviera == null ? '-' : value.naviera;
 
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr>
+                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
                       <td>${value.id_camion}</td>
                       <td>${value.codigo}</td>
                       <td>${value.estado}</td>
@@ -63,7 +62,7 @@ $(document).ready(function(){
                       let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
                       let naviera = value.naviera == null ? '-' : value.naviera;
                       $('#tabla-administracion-cuerpo').append(`
-                        <tr>
+                        <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
                         <td>${value.id_camion}</td>
                         <td>${value.codigo}</td>
                         <td>${value.estado}</td>
@@ -107,7 +106,7 @@ $(document).ready(function(){
                     let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
                     let naviera = value.naviera == null ? '-' : value.naviera;
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr>
+                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
                       <td>${value.id_camion}</td>
                       <td>${value.codigo}</td>
                       <td>${value.estado}</td>
@@ -137,6 +136,22 @@ $(document).ready(function(){
        } else {
           alerta('error','Debes ingresar un código de camión');
        }
+   });
+
+
+   $('#tabla-administracion-cuerpo').on('click','.administrar-detalle',function(){
+          let id_camion;
+
+          let elem = $('.tabs')
+          let instance = M.Tabs.getInstance(elem);
+          instance.select('test2');
+
+          id_camion = $(this).attr('data-id_camion');
+          $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
+              console.log(res);
+              
+
+          });
    });
 
    function dateUTC(ms) {

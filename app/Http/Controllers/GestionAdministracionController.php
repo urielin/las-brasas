@@ -51,6 +51,20 @@ class GestionAdministracionController extends Controller
 
     }
 
+    public function administrarDetalleCamion(Request $request)
+    {
+        if ($request->ajax()) {
+            $camionesDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones where id_camion = '$request->id_camion' ");
+
+
+            return response()->json([
+                'camionesDetalle'        =>$camionesDetalle
+            ]);
+        }
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
