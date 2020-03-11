@@ -168,6 +168,50 @@ class GestionAdministracionController extends Controller
 
     }
 
+    public function upDatosGenerales(Request $request)
+    {
+        if ($request->ajax()) {
+          DB::update("UPDATE dbsys.camiones
+                          set
+                          -- codigo='$request->codigo_detalle',
+                          codigo_aux='$request->codigo_aux',
+                          estado='$request->estado_detalle',
+                          descripcion='$request->descripcion',
+                          contenido='$request->contenido',
+                          observaciones='$request->observaciones',
+                          proveedor='$request->proveedor',
+                          marca_origen='$request->marca_origen',
+                          clasif_mercancia='$request->clasif_mercancia',
+                          fecha_cierre='$request->fecha_cierre',
+                          cantidad_unidades='$request->cantidad_unidades',
+                          tipo_unidades='$request->tipo_unidades'
+                          --
+                          -- monto_unitario='$request->monto_unitario',
+                          -- monto_cierre='$request->monto_cierre',
+                          -- tipo_moneda='$request->tipo_moneda',
+                          -- forma_pago='$request->forma_pago',
+                          -- despues_dias='$request->despues_dias',
+                          -- despues_fecha='$request->despues_fecha',
+                          -- lugar_arribo='$request->lugar_arribo',
+                          -- fecha_embarque1='$request->fecha_embarque1',
+                          -- fecha_embarque2='$request->fecha_embarque2',
+                          -- fecha_llegada1='$request->fecha_llegada1',
+                          -- fecha_llegada2='$request->fecha_llegada2',
+                          -- fecha_produccion='$request->fecha_produccion',
+                          -- fecha_produccion2='$request->fecha_produccion2',
+                          -- fecha_vencimiento='$request->fecha_vencimiento',
+                          -- fecha_vencimiento2='$request->fecha_vencimiento2',
+                          -- observacion_fecha='$request->observacion_fecha'
+                          FROM dbsys.camiones where id_camion = '$request->id_codigo_detalle'
+                    ");
+
+              return response()->json(['success'=>'Los datos fueron
+                      actualizados exitosamente',
+                    ]);
+        }
+
+    }
+
 
     /**
      * Show the form for creating a new resource.

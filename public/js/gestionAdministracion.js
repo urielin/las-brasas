@@ -320,6 +320,39 @@ $(document).ready(function(){
           });
    });
 
+   // $('#uno2').on('submit','#actualizar-datosGenerales',function(){
+    $('#actualizar-datosGenerales').on('submit', function(){
+        event.preventDefault();
+
+        // console.log($(this).serialize());
+             request=$.ajax({
+               url: 'subir-datosGenerales',
+               method:"POST",
+               data:$(this).serialize(),
+               dataType:"json",
+               success:function(res)
+               {
+
+                 if (res.success)
+                 {
+                   alerta('success','Actualizado correctamente');
+                 }
+              }
+             });
+
+             request.done(function( msg ) {
+
+             $( "#log" ).html( msg );
+               console.log(msg);
+             });
+
+             request.fail(function( jqXHR, textStatus ) {
+               console.log(jqXHR.responseText,textStatus);
+               alert( "Request failed: " + textStatus + jqXHR.responseText);
+             });
+
+   });
+
    function dateUTCR(ms) {
      var ms, fecha,año, mes, dia, hora, minuto, segundo;
      // ms= res.dato_general[0]['fecha_embarque1']+' UTC';

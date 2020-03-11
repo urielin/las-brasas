@@ -88,7 +88,7 @@ Route::get('/administrar-tabla-codigo', 'GestionAdministracionController@adminis
 Route::get('/administrar-tabla-clasificacion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaClasificacion');
 Route::get('/administrar-tabla-estado', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaEstado');
 Route::get('/detalle-administrar-camion', 'GestionAdministracionController@administrarDetalleCamion')->name('administrarDetalleCamion');
-
+Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGenerales')->name('upDatosGenerales');
 
 
 

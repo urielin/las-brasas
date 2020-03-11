@@ -123,6 +123,9 @@
                     </div>
 
                     <div id="uno2" class="tabcontent" >
+                      <form  method="post" id="actualizar-datosGenerales" class="col s12">
+                                @csrf
+
                           <div class="row ">
                             <div class="col l12">
                                   <div class="form-horizontal form-inline">
@@ -131,6 +134,7 @@
                                       <div class="form-group col s12 l12 pb-2">
                                        <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                        <div class="col l6 m6 s6">
+                                          <input class="form-control browser-default" name="id_codigo_detalle" id="id_codigo_detalle" type="hidden" >
                                          <input class="form-control browser-default" name="codigo_detalle" id="codigo_detalle" type="text" >
                                        </div>
                                      </div>
@@ -290,7 +294,7 @@
                                             <div class="form-group col s12 l12 pb-2">
                                               <label for="fecha_embarque2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
                                               <div class="col l6 m6 s6">
-                                                <input name="fecha_embarque1" id="fecha_embarque2" type="datetime-local" class="browser-default form-control">
+                                                <input name="fecha_embarque2" id="fecha_embarque2" type="datetime-local" class="browser-default form-control">
                                               </div>
                                             </div>
 
@@ -339,13 +343,14 @@
                                       </div>
                                       <div class="form-group col s12 l12 " style="display: flex;   justify-content: flex-end;">
                                         <div class="col l6 m6 s6">
-                                          <input type="submit" name="action_b1" id="action_b1" class="btn cyan mt-1 float-center" value="Actualizar">
+                                          <input type="submit" name="action_1" id="action_1" class="btn cyan mt-1 float-center" value="Actualizar">
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                             </div>
                           </div>
+                        </form>
                     </div>
                     <div id="dos2" class="tabcontent"  style="padding-top:20px">
                       <div class="row ">
