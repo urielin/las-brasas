@@ -134,7 +134,7 @@
                                       <div class="form-group col s12 l12 pb-2">
                                        <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                        <div class="col l6 m6 s6">
-                                          <input class="form-control browser-default" name="id_codigo_detalle" id="id_codigo_detalle" type="hidden" >
+                                         <input class="form-control browser-default" name="id_codigo_detalle" id="id_codigo_detalle" type="hidden" >
                                          <input class="form-control browser-default" name="codigo_detalle" id="codigo_detalle" type="text" >
                                        </div>
                                      </div>
@@ -353,6 +353,8 @@
                         </form>
                     </div>
                     <div id="dos2" class="tabcontent"  style="padding-top:20px">
+                      <form  method="post" id="actualizar-datosLogistica" class="col s12">
+                                @csrf
                       <div class="row ">
                         <div class="col l12">
                               <div class="form-horizontal form-inline">
@@ -360,19 +362,20 @@
                                   <div class="form-group col s12 l12 pb-2">
                                    <label for="id_logistica" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Id: </label>
                                    <div class="col l6 m6 s6">
-                                     <input class="form-control browser-default" name="id_logistica" id="id_logistica" type="text" >
+                                     <input disabled class="form-control browser-default" name="id_logistica" id="id_logistica" type="text" >
+                                     <input class="form-control browser-default" name="id_codigo_logistica" id="id_codigo_logistica" type="hidden" >
                                    </div>
                                  </div>
                                  <div class="form-group col s12 l12 pb-2">
                                    <label for="codigo_logistica" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                    <div class="col l6 m6 s6">
-                                     <input class=" form-control browser-default" name="codigo_logistica" id="codigo_logistica" type="text" >
+                                     <input disabled class=" form-control browser-default" name="codigo_logistica" id="codigo_logistica" type="text" >
                                    </div>
                                  </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="fecha_cierre_logistica" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha cierre: </label>
                                       <div class="col l6 m6 s6">
-                                        <input name="fecha_cierre_logistica" id="fecha_cierre_logistica" type="datetime-local" class="browser-default form-control">
+                                        <input disabled name="fecha_cierre_logistica" id="fecha_cierre_logistica" type="datetime-local" class="browser-default form-control">
                                       </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -438,15 +441,18 @@
 
                                   <div class="form-group col s12 l12 " style="display: flex;   justify-content: flex-end;">
                                     <div class="col l6 m6 s6">
-                                      <input type="submit" name="action_b1" id="action_b1" class="btn cyan mt-1 float-center" value="Actualizar">
+                                      <input type="submit" name="action_2" id="action_2" class="btn cyan mt-1 float-center" value="Actualizar">
                                     </div>
                                   </div>
                                 </div>
                               </div>
                         </div>
                       </div>
+                      </form>
                     </div>
                     <div id="cuatro2" class="tabcontent"  style="padding-top:20px">
+                      <form  method="post" id="actualizar-datosTecnicos" class="col s12">
+                                @csrf
                       <div class="row ">
                         <div class="col l12">
                               <div class="form-horizontal form-inline">
@@ -477,6 +483,7 @@
                                     <label for="transporte_nombre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Transporte nombre: </label>
                                       <div class="col l6 m6 s6">
                                         <input name="transporte_nombre" id="transporte_nombre" type="text" class="browser-default form-control">
+                                        <input name="id_codigo_tecnico" id="id_codigo_tecnico" type="hidden" class="browser-default form-control">
                                       </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -680,13 +687,14 @@
 
                                   <div class="form-group col s12 l12 " style="display: flex;   justify-content: flex-end;">
                                     <div class="col l6 m6 s6">
-                                      <input type="submit" name="action_b1" id="action_b1" class="btn cyan mt-1 float-center" value="Actualizar">
+                                      <input type="submit" name="action_3" id="action_3" class="btn cyan mt-1 float-center" value="Actualizar">
                                     </div>
                                   </div>
                                 </div>
                               </div>
                         </div>
                       </div>
+                      </form>
                     </div>
                     <div id="cinco2" class="tabcontent"  style="padding-top:20px">
                           <div id="responsive-table" class=" ">

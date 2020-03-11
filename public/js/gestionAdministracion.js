@@ -156,6 +156,7 @@ $(document).ready(function(){
           $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
               // console.log();
               //Detalle
+                $("#id_codigo_detalle").val(res.camionesDetalle[0]['id_camion']);
                 $("#codigo_detalle").val(res.camionesDetalle[0]['codigo']);
                 $("#codigo_aux").val(res.camionesDetalle[0]['codigo_aux']);
                 $("#estado_detalle").val(res.camionesDetalle[0]['estado']);
@@ -186,6 +187,7 @@ $(document).ready(function(){
                 $("#observacion_fecha").val(res.camionesDetalle[0]['observacion_fecha']);
 
           //Logistica
+                $("#id_codigo_logistica").val(res.camionesDetalle[0]['id_camion']);
                 $("#id_logistica").val(res.camionesDetalle[0]['id_camion']);
                 $("#codigo_logistica").val(res.camionesDetalle[0]['codigo']);
                 $("#fecha_cierre_logistica").val(dateUTCR(res.camionesDetalle[0]['fecha_cierre']));
@@ -214,6 +216,7 @@ $(document).ready(function(){
             let declara_clausula = res.camionesDetalle[0]['declara_clausula'] == null ? '0' : res.camionesDetalle[0]['declara_clausula'];
             let sucursal = res.camionesDetalle[0]['sucursal'] == null ? '0' : res.camionesDetalle[0]['sucursal'];
 
+                $("#id_codigo_tecnico").val(res.camionesDetalle[0]['id_camion']);
                 $("#naviera").val(res.camionesDetalle[0]['naviera']);
                 $("#agencia").val(res.camionesDetalle[0]['agencia']);
                 $("#transporte_nombre").val(res.camionesDetalle[0]['transporte_nombre']);
@@ -324,7 +327,7 @@ $(document).ready(function(){
     $('#actualizar-datosGenerales').on('submit', function(){
         event.preventDefault();
 
-        // console.log($(this).serialize());
+        console.log($(this).serialize());
              request=$.ajax({
                url: 'subir-datosGenerales',
                method:"POST",
@@ -352,6 +355,71 @@ $(document).ready(function(){
              });
 
    });
+
+   $('#actualizar-datosLogistica').on('submit', function(){
+       event.preventDefault();
+
+       // console.log($(this).serialize());
+            request=$.ajax({
+              url: 'subir-datosLogistica',
+              method:"POST",
+              data:$(this).serialize(),
+              dataType:"json",
+              success:function(res)
+              {
+
+                if (res.success)
+                {
+                  alerta('success','Actualizado correctamente');
+                }
+             }
+            });
+
+            request.done(function( msg ) {
+
+            $( "#log" ).html( msg );
+              console.log(msg);
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+              console.log(jqXHR.responseText,textStatus);
+              alert( "Request failed: " + textStatus + jqXHR.responseText);
+            });
+
+  });
+
+
+  $('#actualizar-datosTecnicos').on('submit', function(){
+      event.preventDefault();
+
+      console.log($(this).serialize());
+           request=$.ajax({
+             url: 'subir-datosTecnicos',
+             method:"POST",
+             data:$(this).serialize(),
+             dataType:"json",
+             success:function(res)
+             {
+
+               if (res.success)
+               {
+                 alerta('success','Actualizado correctamente');
+               }
+            }
+           });
+
+           request.done(function( msg ) {
+
+           $( "#log" ).html( msg );
+             console.log(msg);
+           });
+
+           request.fail(function( jqXHR, textStatus ) {
+             console.log(jqXHR.responseText,textStatus);
+             alert( "Request failed: " + textStatus + jqXHR.responseText);
+           });
+
+  });
 
    function dateUTCR(ms) {
      var ms, fecha,año, mes, dia, hora, minuto, segundo;

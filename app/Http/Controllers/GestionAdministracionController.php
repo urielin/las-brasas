@@ -171,9 +171,20 @@ class GestionAdministracionController extends Controller
     public function upDatosGenerales(Request $request)
     {
         if ($request->ajax()) {
+
+          $fecha_cierre       = date('d-m-Y H:i:s', strtotime($request->fecha_cierre));
+          $fecha_embarque1    = date('d-m-Y H:i:s', strtotime($request->fecha_embarque1));
+          $fecha_embarque2    = date('d-m-Y H:i:s', strtotime($request->fecha_embarque2));
+          $fecha_llegada1     = date('d-m-Y H:i:s', strtotime($request->fecha_llegada1));
+          $fecha_llegada2     = date('d-m-Y H:i:s', strtotime($request->fecha_llegada2));
+          $fecha_produccion   = date('d-m-Y H:i:s', strtotime($request->fecha_produccion));
+          $fecha_produccion2  = date('d-m-Y H:i:s', strtotime($request->fecha_produccion2));
+          $fecha_vencimiento  = date('d-m-Y H:i:s', strtotime($request->fecha_vencimiento));
+          $fecha_vencimiento2 = date('d-m-Y H:i:s', strtotime($request->fecha_vencimiento2));
+
           DB::update("UPDATE dbsys.camiones
                           set
-                          -- codigo='$request->codigo_detalle',
+                          codigo='$request->codigo_detalle',
                           codigo_aux='$request->codigo_aux',
                           estado='$request->estado_detalle',
                           descripcion='$request->descripcion',
@@ -182,37 +193,117 @@ class GestionAdministracionController extends Controller
                           proveedor='$request->proveedor',
                           marca_origen='$request->marca_origen',
                           clasif_mercancia='$request->clasif_mercancia',
-                          fecha_cierre='$request->fecha_cierre',
+                          fecha_cierre='$fecha_cierre',
                           cantidad_unidades='$request->cantidad_unidades',
-                          tipo_unidades='$request->tipo_unidades'
-                          --
-                          -- monto_unitario='$request->monto_unitario',
-                          -- monto_cierre='$request->monto_cierre',
-                          -- tipo_moneda='$request->tipo_moneda',
-                          -- forma_pago='$request->forma_pago',
-                          -- despues_dias='$request->despues_dias',
-                          -- despues_fecha='$request->despues_fecha',
-                          -- lugar_arribo='$request->lugar_arribo',
-                          -- fecha_embarque1='$request->fecha_embarque1',
-                          -- fecha_embarque2='$request->fecha_embarque2',
-                          -- fecha_llegada1='$request->fecha_llegada1',
-                          -- fecha_llegada2='$request->fecha_llegada2',
-                          -- fecha_produccion='$request->fecha_produccion',
-                          -- fecha_produccion2='$request->fecha_produccion2',
-                          -- fecha_vencimiento='$request->fecha_vencimiento',
-                          -- fecha_vencimiento2='$request->fecha_vencimiento2',
-                          -- observacion_fecha='$request->observacion_fecha'
+                          tipo_unidades='$request->tipo_unidades',
+
+                          monto_unitario='$request->monto_unitario',
+                          monto_cierre='$request->monto_cierre',
+                          tipo_moneda='$request->tipo_moneda',
+                          forma_pago='$request->forma_pago',
+                          despues_dias='$request->despues_dias',
+                          despues_fecha='$request->despues_fecha',
+                          lugar_arribo='$request->lugar_arribo',
+
+                          fecha_embarque1='$fecha_embarque1',
+                          fecha_embarque2='$fecha_embarque2',
+                          fecha_llegada1='$fecha_llegada1',
+                          fecha_llegada2='$fecha_llegada2',
+                          fecha_produccion='$fecha_produccion',
+                          fecha_produccion2='$fecha_produccion2',
+                          fecha_vencimiento='$fecha_vencimiento',
+                          fecha_vencimiento2='$fecha_vencimiento2',
+                          observacion_fecha='$request->observacion_fecha'
                           FROM dbsys.camiones where id_camion = '$request->id_codigo_detalle'
                     ");
 
-              return response()->json(['success'=>'Los datos fueron
-                      actualizados exitosamente',
+              return response()->json([
+                'success'=>'Los datos fueron actualizados exitosamente'
                     ]);
         }
 
     }
 
+    public function upDatosLogistica(Request $request)
+    {
+        if ($request->ajax()) {
 
+          $fecha_embarque               = date('d-m-Y H:i:s', strtotime($request->fecha_embarque));
+          $fecha_declaracion            = date('d-m-Y H:i:s', strtotime($request->fecha_declaracion));
+          $fecha_transbordo             = date('d-m-Y H:i:s', strtotime($request->fecha_transbordo));
+          $fecha_llegada_estimada       = date('d-m-Y H:i:s', strtotime($request->fecha_llegada_estimada));
+          $fecha_llegada                = date('d-m-Y H:i:s', strtotime($request->fecha_llegada));
+          $fecha_descarga               = date('d-m-Y H:i:s', strtotime($request->fecha_descarga));
+          $fecha_devolucion_contenedor  = date('d-m-Y H:i:s', strtotime($request->fecha_devolucion_contenedor));
+          $fecha_cumplimiento           = date('d-m-Y H:i:s', strtotime($request->fecha_cumplimiento));
+          $fecha_finalizacion           = date('d-m-Y H:i:s', strtotime($request->fecha_finalizacion));
+
+          DB::update("UPDATE dbsys.camiones
+
+                          set
+                          fecha_embarque='$fecha_embarque',
+                          fecha_declaracion='$fecha_declaracion',
+                          fecha_transbordo='$fecha_transbordo',
+                          fecha_llegada_estimada='$fecha_llegada_estimada',
+                          fecha_llegada='$fecha_llegada',
+                          fecha_descarga='$fecha_descarga',
+                          fecha_devolucion_contenedor='$fecha_devolucion_contenedor',
+                          fecha_cumplimiento='$fecha_cumplimiento',
+                          fecha_finalizacion='$fecha_finalizacion'
+                          FROM dbsys.camiones where id_camion = '$request->id_codigo_logistica'
+                    ");
+
+              return response()->json([
+                'success'=>'Los datos fueron actualizados exitosamente'
+                    ]);
+        }
+
+    }
+
+    public function upDatosTecnicos(Request $request)
+    {
+        if ($request->ajax()) {
+
+          $ingreso_zeta_fecha               = date('d-m-Y H:i:s', strtotime($request->ingreso_zeta_fecha));
+
+          DB::update("UPDATE dbsys.camiones
+            set
+                    naviera='$request->naviera',
+                    agencia='$request->agencia',
+                    transporte_nombre='$request->transporte_nombre',
+                    ingreso_zeta='$request->ingreso_zeta',
+                    ingreso_zeta_fecha='$ingreso_zeta_fecha',
+            	      declara_tramite='$request->declara_tramite',
+                    declara_origen='$request->declara_origen',
+                    declara_zona_ext='$request->declara_zona_ext',
+                    declara_zona_exp='$request->declara_zona_exp',
+                    declara_zona_franca='$request->declara_zona_franca',
+            	      declara_region='$request->declara_region',
+                    declara_tipo_transp='$request->declara_tipo_transp',
+                    declara_pais_origen='$request->declara_pais_origen',
+                    declara_pais_procedencia='$request->declara_pais_procedencia',
+            	      declara_puerto_embarque='$request->declara_puerto_embarque',
+                    declara_trasb_ext='$request->declara_trasb_ext',
+                    declara_trasb_nal='$request->declara_trasb_nal',
+                    declara_almacen='$request->declara_almacen',
+                    declara_almacen_ubic='$request->declara_almacen_ubic',
+            	      declara_clausula='$request->declara_clausula',
+                    valor_flete='$request->valor_flete',
+                    valor_seguro='$request->valor_seguro',
+                    valor_fob='$request->valor_fob',
+                    valor_total='$request->valor_total',
+                    valor_total_nal='$request->valor_total_nal',
+                    sucursal='$request->sucursal'
+
+                FROM dbsys.camiones where id_camion = '$request->id_codigo_tecnico'
+                    ");
+
+              return response()->json([
+                'success'=>'Los datos fueron actualizados exitosamente'
+                    ]);
+        }
+
+    }
     /**
      * Show the form for creating a new resource.
      *
