@@ -146,6 +146,12 @@ $(document).ready(function(){
           let instance = M.Tabs.getInstance(elem);
           instance.select('test2');
 
+          $('#tabla-camionesContenedorDetalle-body').empty();
+          $('#tabla-itemsContenedorDetalle-body').empty();
+          $('#tabla-camionesBultoDetalle-body').empty();
+          $('#tabla-camionesAdjuntoDetalle-body').empty();
+          $('#tabla-camionesAutorizacionDetalle-body').empty();
+
           id_camion = $(this).attr('data-id_camion');
           $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
               // console.log();
@@ -279,12 +285,35 @@ $(document).ready(function(){
 
                   $.each(res.camionesContenedorDetalle,function(index,value){
                     $('#tabla-camionesContenedorDetalle-body').append(`
-                      <tr >, , , ,
+                      <tr >
                       <td>${value.tipo_cont}</td>
                       <td>${value.id_contenedor}</td>
                       <td>${value.cont_obs}</td>
                       <td>${value.usuario}</td>
                       <td>${dateUTC(value.fecha)}</td>
+                      </tr>
+                      `);
+                  });
+
+                  $.each(res.camionesItems,function(index,value){
+
+                    let total_compra = value.total_compra == null ? '0' : value.total_compra;
+                    let total_costo  = value.total_costo == null ? '0' : value.total_costo;
+
+                    $('#tabla-itemsContenedorDetalle-body').append(`
+                      <tr >
+                      <td>${value.nro_item}</td>
+                      <td>${value.producto}</td>
+                      <td>${value.cantidad_cierre}</td>
+                      <td>${value.bultos_ingreso}</td>
+                      <td>${value.cantidad_ingresos}</td>
+                      <td>${value.cif_moneda_ext}</td>
+                      <td>${value.viu_moneda_nal}</td>
+                      <td>${value.precio_compra}</td>
+                      <td>${total_compra}</td>
+                      <td>${value.cif_adicional_nal}</td>
+                      <td>${value.cif_final_nal}</td>
+                      <td>${total_costo}</td>
                       </tr>
                       `);
                   });

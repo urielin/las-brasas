@@ -148,14 +148,21 @@ class GestionAdministracionController extends Controller
 
             $camionesContenedorDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones_contenedor WHERE id_camion = '$request->id_camion' ");
 
-              
+            $camionesItems=DB::select("SELECT cd.bloqueo_2,nro_item,c.codigo,producto=(ac.CODI_RNOMBRE+'-'+atu.tume_sigla),cantidad_cierre,cd.bultos_ingreso,cd.cantidad_ingreso,bultos_ingresos=cantidad_cierre,cantidad_ingresos=cantidad_cierre
+                              ,cantidad_diferencia,cif_moneda_ext,viu_moneda_nal, cif_moneda_nal, precio_compra,total_compra
+                                , cif_adicional_nal,cif_final_nal,total_costo FROM dbsys.camiones c
+                                                    inner join dbsys.camiones_detalle cd on c.id_camion = cd.id_camion
+                                      inner join  ADM_CODIGOS ac on  cd.codigo = ac.CODI_RCODIGO
+                                      left outer join ADM_TP_UNIDMEDIDA atu on ac.TUME_CODIGO=atu.TUME_CODIGO
+                                      WHERE  c.id_camion = '$request->id_camion' ORDER BY nro_item asc ");
 
             return response()->json([
                 'camionesDetalle'               =>$camionesDetalle,
                 'camionesAutorizacionDetalle'   =>$camionesAutorizacionDetalle,
                 'camionesAdjuntoDetalle'        =>$camionesAdjuntoDetalle,
                 'camionesBultoDetalle'          =>$camionesBultoDetalle,
-                'camionesContenedorDetalle'     =>$camionesContenedorDetalle
+                'camionesContenedorDetalle'     =>$camionesContenedorDetalle,
+                'camionesItems'                 =>$camionesItems
             ]);
         }
 

@@ -804,7 +804,44 @@
                     </div>
                   </div>
               </div>
-              <div id="test3" class="col s12">Test 3</div>
+              <div id="test3" class="col s12">
+
+                <div id="responsive-table" class=" ">
+                  <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
+                    <h4 class="card-title"></h4>
+                    <p class="mb-2"></p>
+                    <div class="row">
+                      <div class="col s12">
+                      </div>
+                      <div class="col s12 dataTables_scrollBody">
+                          <table id="itemsContenedorDetalle">
+                            <thead>
+                            <tr>
+                              <th>Nº item</th>
+                              <th>Producto</th>
+                              <th>Cantidad cierre</th>
+                              <th>Bultos</th>
+                              <th>Cantidad ingreso</th>
+                              <th>CIF</th>
+                              <th>VIU</th>
+                              <th>Precio compra</th>
+                              <th>Total compra</th>
+                              <th>CIF adicional</th>
+                              <th>CIF final</th>
+                              <th>Total costo</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabla-itemsContenedorDetalle-body">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+              </div>
               {{-- <div id="test4" class="col s12">Test 4</div> --}}
               </div>
             </div>
