@@ -18,10 +18,94 @@ class GestionAdministracionController extends Controller
                             FROM    dbsys.camiones_clasificacion
                             WHERE cod_int > 0
                             ORDER BY cod_int");
+
           $estados        = DB::select("SELECT    CAM_ESTADO, CAM_DESCEST
                             FROM         dbsys.camiones_tp_estados");
 
-          return view('gestion.gestionAdministracion')->with(compact('clasificaciones'))->with(compact('estados'));
+          $unidades       = DB::select("SELECT     TUME_CODIGO, TUME_DESCR
+                            FROM         ADM_TP_UNIDMEDIDA
+                            WHERE     (mercancia = 1)
+                            ORDER BY TUME_DESCR");
+
+          $tipoMonedas    = DB::select("SELECT     TMDA_CODIGO, TMDA_DESCRIPCION
+                            FROM         ADM_TP_MONEDA
+                            WHERE     (estado = 1)");
+
+          $formaPagos    = DB::select("SELECT     cod_int, desc01
+                            FROM         dbsys.parametros
+                            WHERE     (tabla = N'CAMIONES_FORMA_PAGO')
+                            ORDER BY cod_int");
+          $formaPagosDias    = DB::select("SELECT     cod_int, desc01
+                                FROM         dbsys.parametros
+                                WHERE     (tabla = N'CAMIONES_DIAS_PAGO')
+                                ORDER BY cod_int");
+
+          $formaPagosFechas    = DB::select("SELECT     cod_int, desc01
+                                  FROM         dbsys.parametros
+                                  WHERE     (tabla = N'CAMIONES_FECHA_POST_PAGO')
+                                  ORDER BY cod_int");
+
+          $lugarArribos        = DB::select("SELECT     ciudad_codigo, descripcion
+                                  FROM         ADM_CIUDAD");
+
+          $navieras            = DB::select("SELECT     NAV_CODIGO, NAV_DETALLE
+                                  FROM         ADM_TP_NAVIERAS");
+
+          $agencias            = DB::select("SELECT     AGE_CODIGO, AGE_DETALLE
+                                  FROM         ADM_TP_AGENCIAS");
+
+          $tramites            = DB::select("SELECT     cod_txt, desc01
+                                  FROM         dbsys.parametros_aduana
+                                  WHERE     (tabla = N'TRAMITE_TIPO')");
+
+
+          $mercanciaOrigenes    = DB::select("SELECT     cod_txt, desc01
+                                  FROM         dbsys.parametros_aduana
+                                  WHERE     (tabla = 'PROCEDENCIAS')");
+
+
+          $zonasFrancas    = DB::select("SELECT     cod_int, desc01
+                                  FROM         dbsys.parametros_aduana
+                                  WHERE     (tabla = 'ZONAS_FRANCAS_EXTENSION')");
+
+          $zonasExportaciones    = DB::select("SELECT     cod_int, desc01
+                                    FROM         dbsys.parametros_aduana
+                                    WHERE     (tabla = 'ZONAS_EXPORTACION')");
+
+          $zonaFrancas    = DB::select("SELECT     cod_int, desc01
+                                      FROM         dbsys.parametros_aduana
+                                      WHERE     (tabla = 'ZONAS_FRANCAS')");
+
+          $regiones    = DB::select("SELECT     cod_txt, desc01
+                                FROM         dbsys.parametros_aduana
+                                WHERE     (tabla = 'REGIONES')");
+
+          $transportes    = DB::select("SELECT     cod_int, desc01
+                              FROM         dbsys.parametros_aduana
+                              WHERE     (tabla = 'MEDIOS_TRANSPORTE')");
+
+          $transExts    = DB::select("SELECT     cod_txt, desc01
+                            FROM         dbsys.parametros_aduana
+                            WHERE     (tabla = '_SINO_')");
+
+          $transNal    = DB::select("SELECT     cod_txt, desc01
+                          FROM         dbsys.parametros_aduana
+                          WHERE     (tabla = '_SINO_')");
+
+          $clausulas    = DB::select("SELECT     cod_txt, desc01
+                          FROM         dbsys.parametros_aduana
+                          WHERE     (tabla = N'CLAUSULA_TIPO')");
+
+           $sucursales  = DB::select("SELECT      SUCU_CODIGO, SUCU_UBICACION,SUCU_NOMBRE
+                           FROM         ADM_SUCURSAL
+                           WHERE     (SUCU_ESTADO = 1)
+                           ORDER BY SUCU_CODIGO");
+
+          return view('gestion.gestionAdministracion')->with(compact('clasificaciones'))->with(compact('estados'))->with(compact('unidades'))->with(compact('tipoMonedas'))->with(compact('formaPagos'))
+          ->with(compact('formaPagosDias'))->with(compact('formaPagosFechas'))->with(compact('lugarArribos'))->with(compact('navieras'))
+          ->with(compact('agencias'))->with(compact('tramites'))->with(compact('mercanciaOrigenes'))->with(compact('zonasFrancas'))->with(compact('zonasExportaciones'))
+          ->with(compact('zonaFrancas'))->with(compact('regiones'))->with(compact('transportes'))->with(compact('transExts'))
+          ->with(compact('transNal'))->with(compact('clausulas'))->with(compact('sucursales'));
     }
 
     public function administrarTablaClasificacion(Request $request)
@@ -56,9 +140,22 @@ class GestionAdministracionController extends Controller
         if ($request->ajax()) {
             $camionesDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones where id_camion = '$request->id_camion' ");
 
+            $camionesAutorizacionDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones_autorizaciones WHERE id_camion = '$request->id_camion' ");
+
+            $camionesAdjuntoDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones_adjuntos WHERE id_camion = '$request->id_camion' ");
+
+            $camionesBultoDetalle = DB::SELECT(" SELECT * FROM  dbsys.camiones_bultos WHERE id_camion = '$request->id_camion' ");
+
+            $camionesContenedorDetalle = DB::SELECT(" SELECT * FROM dbsys.camiones_contenedor WHERE id_camion = '$request->id_camion' ");
+
+              
 
             return response()->json([
-                'camionesDetalle'        =>$camionesDetalle
+                'camionesDetalle'               =>$camionesDetalle,
+                'camionesAutorizacionDetalle'   =>$camionesAutorizacionDetalle,
+                'camionesAdjuntoDetalle'        =>$camionesAdjuntoDetalle,
+                'camionesBultoDetalle'          =>$camionesBultoDetalle,
+                'camionesContenedorDetalle'     =>$camionesContenedorDetalle
             ]);
         }
 

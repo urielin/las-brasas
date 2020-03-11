@@ -140,12 +140,17 @@
                                          <input class=" form-control browser-default" name="codigo_aux" id="codigo_aux" type="text" >
                                        </div>
                                      </div>
-                                      {{-- <div class="form-group col s12 l12 pb-2">
-                                        <label for="icon_prefix" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Estado: </label>
+                                      <div class="form-group col s12 l12 pb-2">
+                                        <label for="estado_detalle" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Estado: </label>
                                           <div class="col l6 m6 s6">
-                                            <input name="nro_de_contenedor" id="nro_de_contenedor" type="text" class="browser-default form-control">
+                                              <select class="form-control browser-default" name="estado_detalle" id="estado_detalle">
+                                                @foreach ($estados as $estado)
+                                                <option value="{{$estado->CAM_ESTADO}}" >{{$estado->CAM_DESCEST}}</option>
+                                                @endforeach
+                                              </select>
                                           </div>
-                                      </div> --}}
+                                      </div>
+
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="descripcion" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Descripción: </label>
                                         <div class="col l6 m6 s6">
@@ -155,8 +160,7 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="contenido" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Cotenido: </label>
                                         <div class="col l6 m6 s6">
-                                          <select class="form-control browser-default" name="contenido" id="contenido">
-                                          </select>
+                                          <input name="contenido" id="contenido" type="text" class="validate form-control browser-default">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -172,7 +176,7 @@
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
-                                        <label for="marca_origen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Marcade origen: </label>
+                                        <label for="marca_origen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Marca de origen: </label>
                                           <div class="col l6 m6 s6">
                                             <input name="marca_origen" id="marca_origen" type="text" class="browser-default form-control">
                                           </div>
@@ -181,9 +185,13 @@
                                     <div class="row">
                                       <div class="form-group col s12 l12  pb-2">
 
-                                        <label for="clasif_mercancia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Clasificaión: </label>
+                                        <label for="clasif_mercancia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Clasificación: </label>
                                         <div class="col l6 m6 s6">
-                                            <input name="clasif_mercancia" id="clasif_mercancia" type="text" class="browser-default form-control">
+                                            <select class="form-control browser-default" name="clasif_mercancia" id="clasif_mercancia">
+                                              @foreach ($clasificaciones as $clasificacion)
+                                              <option value="{{$clasificacion->cod_int}}" >{{$clasificacion->desc01}}</option>
+                                              @endforeach
+                                            </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12  pb-2">
@@ -197,13 +205,17 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="cantidad_unidades" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Cantidad cierre: </label>
                                         <div class="col l6 m6 s6">
-                                          <select class="form-control browser-default" name="cantidad_unidades" id="cantidad_unidades"></select>
+                                          <input name="cantidad_unidades" id="cantidad_unidades" type="text" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="tipo_unidades" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Unidades: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="tipo_unidades" id="tipo_unidades" type="tel" class="browser-default form-control">
+                                          <select class="form-control browser-default" name="tipo_unidades" id="tipo_unidades">
+                                            @foreach ($unidades as $unidad)
+                                            <option value="{{$unidad->TUME_CODIGO}}" >{{$unidad->TUME_DESCR}}</option>
+                                            @endforeach
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -221,31 +233,51 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="tipo_moneda" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Tipo moneda: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="tipo_moneda" id="tipo_moneda" type="tel" class="browser-default form-control">
+                                          <select class="form-control browser-default" name="tipo_moneda" id="tipo_moneda">
+                                            @foreach ($tipoMonedas as $tipoMoneda)
+                                            <option value="{{$tipoMoneda->TMDA_CODIGO}}" >{{$tipoMoneda->TMDA_DESCRIPCION}}</option>
+                                            @endforeach
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="forma_pago" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Forma de pago: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="forma_pago" id="forma_pago" type="tel" class="browser-default form-control">
+                                          <select class="form-control browser-default" name="forma_pago" id="forma_pago">
+                                            @foreach ($formaPagos as $formaPago)
+                                            <option value="{{$formaPago->cod_int}}" >{{$formaPago->desc01}}</option>
+                                            @endforeach
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="despues_dias" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">.: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="despues_dias" id="despues_dias" type="tel" class="browser-default form-control">
+                                          <select class="form-control browser-default" name="despues_dias" id="despues_dias">
+                                            @foreach ($formaPagosDias as $formaPagosDia)
+                                            <option value="{{$formaPagosDia->cod_int}}" >{{$formaPagosDia->desc01}}</option>
+                                            @endforeach
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="despues_fecha" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">..: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="despues_fecha" id="despues_fecha" type="tel" class="browser-default form-control">
+                                          <select class="form-control browser-default" name="despues_fecha" id="despues_fecha">
+                                            @foreach ($formaPagosFechas as $formaPagosFecha)
+                                            <option value="{{$formaPagosFecha->cod_int}}" >{{$formaPagosFecha->desc01}}</option>
+                                            @endforeach
+                                          </select>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="lugar_arribo" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Lugar arribo: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="lugar_arribo" id="lugar_arribo" type="tel" class="browser-default form-control">
+                                            <select class="form-control browser-default" name="lugar_arribo" id="lugar_arribo">
+                                              @foreach ($lugarArribos as $lugarArribo)
+                                              <option value="{{$lugarArribo->ciudad_codigo}}" >{{$lugarArribo->descripcion}}</option>
+                                              @endforeach
+                                            </select>
                                         </div>
                                       </div>
 
@@ -262,6 +294,18 @@
                                               </div>
                                             </div>
 
+                                            <div class="form-group col s12 l12 pb-2">
+                                              <label for="fecha_llegada1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de llegada: </label>
+                                              <div class="col l6 m6 s6">
+                                                <input name="fecha_llegada1" id="fecha_llegada1" type="datetime-local" class="browser-default form-control">
+                                              </div>
+                                            </div>
+                                            <div class="form-group col s12 l12 pb-2">
+                                              <label for="fecha_llegada2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
+                                              <div class="col l6 m6 s6">
+                                                <input name="fecha_llegada2" id="fecha_llegada2" type="datetime-local" class="browser-default form-control">
+                                              </div>
+                                            </div>
 
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_produccion" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de producción: </label>
@@ -405,14 +449,24 @@
                                   <div class="form-group col s12 l12 pb-2">
                                    <label for="naviera" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Naviera: </label>
                                    <div class="col l6 m6 s6">
-                                     <input class="form-control browser-default" name="naviera" id="naviera" type="text" >
+                                     <select class="form-control browser-default" name="naviera" id="naviera">
+                                       <option value="0" >SIN SELECCIONAR</option>
+                                       @foreach ($navieras as $naviera)
+                                       <option value="{{$naviera->NAV_CODIGO}}" >{{$naviera->NAV_DETALLE}}</option>
+                                       @endforeach
+                                     </select>
                                    </div>
                                  </div>
                                  <div class="form-group col s12 l12 pb-2">
                                    <label for="agencia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Agencia: </label>
                                    <div class="col l6 m6 s6">
-                                     <input class=" form-control browser-default" name="agencia" id="agencia" type="text" >
-                                   </div>
+                                     <select class="form-control browser-default" name="agencia" id="agencia">
+                                       <option value="0" >SIN SELECCIONAR</option>
+                                       @foreach ($agencias as $agencia)
+                                       <option value="{{$agencia->AGE_CODIGO}}" >{{$agencia->AGE_DETALLE}}</option>
+                                       @endforeach
+                                     </select>
+                                  </div>
                                  </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="transporte_nombre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Transporte nombre: </label>
@@ -436,47 +490,82 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_tramite" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Tipo de tramite: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_tramite" id="declara_tramite" type="text" class="validate form-control browser-default">
+                                      <select class="form-control browser-default" name="declara_tramite" id="declara_tramite">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($tramites as $tramite)
+                                        <option value="{{$tramite->cod_txt}}" >{{$tramite->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_origen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Origen de la mercancia: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_origen" id="declara_origen"  type="text" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_origen" id="declara_origen">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($mercanciaOrigenes as $mercanciaOrigen)
+                                        <option value="{{$mercanciaOrigen->cod_txt}}" >{{$mercanciaOrigen->cod_txt}} - {{$mercanciaOrigen->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_zona_ext" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Zona de franca de extensión: </label>
                                       <div class="col l6 m6 s6">
-                                        <input name="declara_zona_ext" id="declara_zona_ext" type="text" class="browser-default form-control">
+                                        <select class="form-control browser-default" name="declara_zona_ext" id="declara_zona_ext">
+                                          <option value="0" >SIN SELECCIONAR</option>
+                                          @foreach ($zonasFrancas as $zonasFranca)
+                                          <option value="{{$zonasFranca->cod_int}}" >{{$zonasFranca->desc01}}</option>
+                                          @endforeach
+                                        </select>
                                       </div>
                                   </div>
 
                                   <div class="form-group col s12 l12  pb-2">
 
-                                    <label for="declara_zona_exp" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Zona franca de exportacioón: </label>
+                                    <label for="declara_zona_exp" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Zona franca de exportación: </label>
                                     <div class="col l6 m6 s6">
-                                        <input name="declara_zona_exp" id="declara_zona_exp" type="text" class="browser-default form-control">
+                                        <select class="form-control browser-default" name="declara_zona_exp" id="declara_zona_exp">
+                                          <option value="0" >SIN SELECCIONAR</option>
+                                          @foreach ($zonasExportaciones as $zonasExportacion)
+                                          <option value="{{$zonasExportacion->cod_int}}" >{{$zonasExportacion->desc01}}</option>
+                                          @endforeach
+                                        </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12  pb-2">
 
                                     <label for="declara_zona_franca" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Zona franca: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_zona_franca" id="declara_zona_franca" type="text" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_zona_franca" id="declara_zona_franca">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($zonaFrancas as $zonaFranca)
+                                        <option value="{{$zonaFranca->cod_int}}" >{{$zonaFranca->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
 
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_region" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Región: </label>
                                     <div class="col l6 m6 s6">
-                                      <input class="form-control browser-default" name="declara_region" type="text" id="declara_region">
+                                      <select class="form-control browser-default" name="declara_region" id="declara_region">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($regiones as $region)
+                                        <option value="{{$region->cod_txt}}" >{{$region->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_tipo_transp" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Medio transporte: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_tipo_transp" id="declara_tipo_transp" type="text" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_tipo_transp" id="declara_tipo_transp">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($transportes as $transporte)
+                                        <option value="{{$transporte->cod_int}}" >{{$transporte->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -500,13 +589,23 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_trasb_ext" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Trans. Extranjero: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_trasb_ext" id="declara_trasb_ext" type="tel" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_trasb_ext" id="declara_trasb_ext">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($transExts as $transExt)
+                                        <option value="{{$transExt->cod_txt}}" >{{$transExt->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_trasb_nal" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Trans. Nacional: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_trasb_nal" id="declara_trasb_nal" type="tel" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_trasb_nal" id="declara_trasb_nal">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($transNal as $transNa)
+                                        <option value="{{$transNa->cod_txt}}" >{{$transNa->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -524,7 +623,12 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_clausula" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Claúsula: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_clausula" id="declara_clausula" type="tel" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="declara_clausula" id="declara_clausula">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($clausulas as $clausula)
+                                        <option value="{{$clausula->cod_txt}}" >{{$clausula->desc01}}</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -560,7 +664,12 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="sucursal" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Ubicación destino: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="sucursal" id="sucursal" type="tel" class="browser-default form-control">
+                                      <select class="form-control browser-default" name="sucursal" id="sucursal">
+                                        <option value="0" >SIN SELECCIONAR</option>
+                                        @foreach ($sucursales as $sucursal)
+                                        <option value="{{$sucursal->SUCU_CODIGO}}" >{{$sucursal->SUCU_NOMBRE}} ( {{$sucursal->SUCU_UBICACION}})</option>
+                                        @endforeach
+                                      </select>
                                     </div>
                                   </div>
 
@@ -575,112 +684,123 @@
                       </div>
                     </div>
                     <div id="cinco2" class="tabcontent"  style="padding-top:20px">
+                          <div id="responsive-table" class=" ">
+                            <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
+                              <h4 class="card-title"></h4>
+                              <p class="mb-2"></p>
+                              <div class="row">
+                                <div class="col s12">
+                                </div>
+                                <div class="col s12 dataTables_scrollBody">
+                                  <table id="tabla-camionesAutorizacionDetalle">
+                                    <thead>
+                                    <tr>
+                                      <th>Certificado</th>
+                                      <th>Organismo</th>
+                                      <th>Tipo</th>
+                                      <th>Número</th>
+                                      <th>Fecha</th>
+                                      <th>Glosa</th>
+                                      <th>Usuario</th>
+                                      <th>Fecha</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tabla-camionesAutorizacionDetalle-body">
 
-                          <table>
-                            <thead>
-                            <tr>
-                              <th>Certificado</th>
-                              <th>Organismo</th>
-                              <th>Tipo</th>
-                              <th>Número</th>
-                              <th>Fecha</th>
-                              <th>Glosa</th>
-                              <th>Usuario</th>
-                              <th>Fecha</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                            </tr>
+                                    </tbody>
+                                  </table>
+                             </div>
+                            </div>
+                           </div>
+                          </div>
+                          <br>
 
-                            </tbody>
-                          </table>
+                          <div id="responsive-table" class=" ">
+                            <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
+                              <h4 class="card-title"></h4>
+                              <p class="mb-2"></p>
+                              <div class="row">
+                                <div class="col s12">
+                                </div>
+                                <div class="col s12 dataTables_scrollBody">
+                                      <table id="tabla-camionesAdjuntoDetalle">
+                                        <thead>
+                                        <tr>
+                                          <th>Tipo</th>
+                                          <th>Número documento</th>
+                                          <th>Fecha documento</th>
+                                          <th>Nombre emisor</th>
+                                          <th>Número</th>
+                                          <th>Usuario</th>
+                                          <th>Fecha</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tabla-camionesAdjuntoDetalle-body">
+
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                   </div>
+                                  </div>
+                                 </div>
 
                           <br>
 
-                          <table>
-                            <thead>
-                            <tr>
-                              <th>Tipo</th>
-                              <th>Número documento</th>
-                              <th>Fecha documento</th>
-                              <th>Nombre emisor</th>
-                              <th>Número</th>
-                              <th>Usuario</th>
-                              <th>Fecha</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                            </tr>
+                          <div id="responsive-table" class=" ">
+                            <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
+                              <h4 class="card-title"></h4>
+                              <p class="mb-2"></p>
+                              <div class="row">
+                                <div class="col s12">
+                                </div>
+                                <div class="col s12 dataTables_scrollBody">
+                                    <table id="tabla-camionesBultoDetalle">
+                                      <thead>
+                                      <tr>
+                                        <th>Tipo</th>
+                                        <th>Cantidad</th>
+                                        <th>Peso bruto</th>
+                                        <th>Descripción</th>
+                                        <th>Usuario</th>
+                                        <th>Fecha</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody id="tabla-camionesBultoDetalle-body">
 
-                            </tbody>
-                          </table>
-
+                                      </tbody >
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           <br>
 
-                          <table>
-                            <thead>
-                            <tr>
-                              <th>Tipo</th>
-                              <th>Cantidad</th>
-                              <th>Peso bruto</th>
-                              <th>Descripción</th>
-                              <th>Usuario</th>
-                              <th>Fecha</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                            </tr>
+                          <div id="responsive-table" class=" ">
+                            <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
+                              <h4 class="card-title"></h4>
+                              <p class="mb-2"></p>
+                              <div class="row">
+                                <div class="col s12">
+                                </div>
+                                <div class="col s12 dataTables_scrollBody">
+                                    <table id="camionesContenedorDetalle">
+                                      <thead>
+                                      <tr>
+                                        <th>Tipo</th>
+                                        <th>Contenedor/camión</th>
+                                        <th>Observaciones</th>
+                                        <th>Usuario</th>
+                                        <th>Fecha</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody id="tabla-camionesContenedorDetalle-body">
 
-                            </tbody>
-                          </table>
-
-                          <br>
-
-                          <table>
-                            <thead>
-                            <tr>
-                              <th>Tipo</th>
-                              <th>Contenedor/camión</th>
-                              <th>Observaciones</th>
-                              <th>Usuario</th>
-                              <th>Fecha</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                              <td>Alvin</td>
-                              <td>Eclair</td>
-                              <td>$0.87</td>
-                              <td>Alvin</td>
-                              <td>Alvin</td>
-                            </tr>
-
-                            </tbody>
-                          </table>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                     </div>
                   </div>
               </div>
