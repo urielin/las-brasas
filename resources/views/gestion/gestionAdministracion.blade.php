@@ -63,6 +63,16 @@
             </div>
           </div>
 
+          <div style="display: flex;justify-content: space-between">
+              <div style="display: flex;">
+                <i class="material-icons dp48">subject</i>
+                <span class="card-title">Agregar contenedor</span>
+              </div>
+              <a class="btn btn-50 green float-right">
+                <i class="material-icons" id="agregar-camion">add_box</i>
+              </a>
+          </div>
+
           <div class="row">
               <div class="col s12">
                 <ul class="tabs tab-demo z-depth-1">
@@ -74,7 +84,6 @@
                 </ul>
               </div>
               <div id="test1" class="col s12">
-
                 <div id="responsive-table" class=" ">
                   <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
                     <h4 class="card-title"></h4>
@@ -134,8 +143,7 @@
                                       <div class="form-group col s12 l12 pb-2">
                                        <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                        <div class="col l6 m6 s6">
-                                         <input class="form-control browser-default" name="id_codigo_detalle" id="id_codigo_detalle" type="hidden" >
-                                         <input required class="form-control browser-default" name="codigo_detalle" id="codigo_detalle" type="text" >
+                                         <input required class="form-control browser-default" name="codigo_detalle"  type="text" >
                                        </div>
                                      </div>
                                      <div class="form-group col s12 l12 pb-2">
@@ -164,13 +172,13 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="contenido" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Cotenido: </label>
                                         <div class="col l6 m6 s6">
-                                          <input required name="contenido" id="contenido" type="text" class="validate form-control browser-default">
+                                          <textarea required name="contenido" id="contenido" type="text" class="validate form-control browser-default"> </textarea>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="observaciones" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Observaciones: </label>
                                         <div class="col l6 m6 s6">
-                                          <input required name="observaciones" id="observaciones" type="text" class="validate form-control browser-default">
+                                          <textarea required name="observaciones" id="observaciones" type="text" class="validate form-control browser-default"></textarea>
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -859,6 +867,92 @@
 
 @section('js')
   <script src="{{ asset('js/gestionAdministracion.js') }}"></script>
+@endsection
+
+@section('modal')
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+  <div id="formModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="row">
+            <div class=" col s6 pb-2">
+              <h5 class="modal-title">Agregar nuevo contenedor</h5>
+            </div>
+            <div class="col s6" align="right">
+              <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <span id="form_result"></span>
+          <form  method="POST" id="nuevo-camion" class="form-horizontal">
+            @csrf
+            <div class="row container">
+                                  <div class="row pb-2">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Código: </label>
+                                          <input required type="text" name="codigo_agregar" id="codigo_agregar" class="validate form-control" step="1">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Auxiliar:</label>
+                                          <input required type="text" name="auxiliar_agregar" id="auxiliar_agregar" class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+
+                                  <div class="row pb-2">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Descripción: </label>
+                                          <input required type="text" name="descripcion_agregar" id="descripcion_agregar" class="validate form-control" step="1">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Contenido:</label>
+                                          <input required type="text" name="contenido_agregar" id="contenido_agregar" class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+                                  <div class="row pb-2">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Documento: </label>
+                                          <input required type="text" name="documento_agregar"  id="documento_agregar" class="validate form-control" step="1">
+                                        </div>
+                                        <div class="col s12 l6">
+                                          <label for="icon_telephone">Fecha documento:</label>
+                                          <input required type="datetime-local" name="fecha_agregar"  id="fecha_agregar" class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+
+                                  <div class="row pb-2">
+                                        <div class="col s12 l6">
+                                          <label for="icon_prefix">Observaciones: </label>
+                                          <input required type="text" name="observaciones_agregar" id="observaciones_agregar" class="validate form-control" step="1">
+                                        </div>
+
+                                  </div>
+                                  <div class="row ">
+                                        <div class="col s12 l12">
+                                        </div>
+                                  </div>
+                                  <div class="row " align="right">
+                                        <div class="col s12 l12">
+                                          <input type="submit" name="action_button" id="action_enviar"  class="btn btn-warning" value="Agregar">
+                                        </div>
+                                  </div>
+            </div>
+            <br />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('after-scripts')
