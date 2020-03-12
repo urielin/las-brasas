@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  $("#tableAdministrador tbody").on('click','tr', function(e){
+    $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
+  });
+});
+
+$(document).ready(function(){
+
    $('#clasificacionad').on('change', function(){
      let clasificacion, estado;
       clasificacion = $(this).val();
@@ -300,23 +307,14 @@ $(document).ready(function(){
 
                   $.each(res.camionesItems,function(index,value){
 
-                    let total_compra = value.total_compra == null ? '0' : value.total_compra;
-                    let total_costo  = value.total_costo == null ? '0' : value.total_costo;
+                    let esp_nombre = value.esp_nombre == null ? '-' : value.esp_nombre;
 
                     $('#tabla-itemsContenedorDetalle-body').append(`
                       <tr >
                       <td>${value.nro_item}</td>
+                      <td>${esp_nombre}</td>
+                      <td>${value.codigo}</td>
                       <td>${value.producto}</td>
-                      <td>${value.cantidad_cierre}</td>
-                      <td>${value.bultos_ingreso}</td>
-                      <td>${value.cantidad_ingresos}</td>
-                      <td>${value.cif_moneda_ext}</td>
-                      <td>${value.viu_moneda_nal}</td>
-                      <td>${value.precio_compra}</td>
-                      <td>${total_compra}</td>
-                      <td>${value.cif_adicional_nal}</td>
-                      <td>${value.cif_final_nal}</td>
-                      <td>${total_costo}</td>
                       </tr>
                       `);
                   });

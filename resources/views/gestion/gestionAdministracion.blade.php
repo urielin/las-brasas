@@ -83,7 +83,7 @@
                       <div class="col s12">
                       </div>
                       <div class="col s12 dataTables_scrollBody">
-                        <table class="responsive-table centered">
+                        <table id="tableAdministrador" class="responsive-table centered">
                           <thead>
                             <tr>
                               <th>Id</th>
@@ -135,13 +135,13 @@
                                        <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                        <div class="col l6 m6 s6">
                                          <input class="form-control browser-default" name="id_codigo_detalle" id="id_codigo_detalle" type="hidden" >
-                                         <input class="form-control browser-default" name="codigo_detalle" id="codigo_detalle" type="text" >
+                                         <input required class="form-control browser-default" name="codigo_detalle" id="codigo_detalle" type="text" >
                                        </div>
                                      </div>
                                      <div class="form-group col s12 l12 pb-2">
                                        <label for="codigo_aux" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Auxiliar: </label>
                                        <div class="col l6 m6 s6">
-                                         <input class=" form-control browser-default" name="codigo_aux" id="codigo_aux" type="text" >
+                                         <input required class=" form-control browser-default" name="codigo_aux" id="codigo_aux" type="text" >
                                        </div>
                                      </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -158,31 +158,31 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="descripcion" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Descripción: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="descripcion" id="descripcion" type="text" class="browser-default form-control">
+                                          <input required name="descripcion" id="descripcion" type="text" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="contenido" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Cotenido: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="contenido" id="contenido" type="text" class="validate form-control browser-default">
+                                          <input required name="contenido" id="contenido" type="text" class="validate form-control browser-default">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="observaciones" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Observaciones: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="observaciones" id="observaciones" type="text" class="validate form-control browser-default">
+                                          <input required name="observaciones" id="observaciones" type="text" class="validate form-control browser-default">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="proveedor" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Proveedor: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="proveedor" id="proveedor"  type="text" class="browser-default form-control">
+                                          <input required name="proveedor" id="proveedor"  type="text" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="marca_origen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Marca de origen: </label>
                                           <div class="col l6 m6 s6">
-                                            <input name="marca_origen" id="marca_origen" type="text" class="browser-default form-control">
+                                            <input required name="marca_origen" id="marca_origen" type="number" class="browser-default form-control">
                                           </div>
                                       </div>
                                     </div>
@@ -193,7 +193,7 @@
                                         <div class="col l6 m6 s6">
                                             <select class="form-control browser-default" name="clasif_mercancia" id="clasif_mercancia">
                                               @foreach ($clasificaciones as $clasificacion)
-                                              <option value="{{$clasificacion->cod_int}}" >{{$clasificacion->desc01}}</option>
+                                              <option value="{{$clasificacion->cod_int}}"> {{$clasificacion->desc01}} </option>
                                               @endforeach
                                             </select>
                                         </div>
@@ -202,14 +202,14 @@
 
                                         <label for="fecha_cierre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha cierre: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="fecha_cierre" id="fecha_cierre" type="datetime-local" class="browser-default form-control">
+                                          <input required name="fecha_cierre" id="fecha_cierre" type="datetime-local" class="browser-default form-control">
                                         </div>
                                       </div>
 
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="cantidad_unidades" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Cantidad cierre: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="cantidad_unidades" id="cantidad_unidades" type="text" class="browser-default form-control">
+                                          <input required step="any" name="cantidad_unidades" id="cantidad_unidades" type="number" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -225,13 +225,13 @@
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="monto_unitario" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Unitario: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="monto_unitario" id="monto_unitario" type="tel" class="browser-default form-control">
+                                          <input required step="any" name="monto_unitario" id="monto_unitario" type="number"  class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="monto_cierre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Total: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="monto_cierre" id="monto_cierre" type="tel" class="browser-default form-control">
+                                          <input required step="any" name="monto_cierre" id="monto_cierre" type="number" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
@@ -288,57 +288,57 @@
                                             <div class="form-group col s12 l12 pb-2">
                                               <label for="fecha_embarque1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha embarque: </label>
                                               <div class="col l6 m6 s6">
-                                                <input name="fecha_embarque1" id="fecha_embarque1" type="datetime-local" class="browser-default form-control">
+                                                <input required name="fecha_embarque1" id="fecha_embarque1" type="datetime-local" class="browser-default form-control">
                                               </div>
                                             </div>
                                             <div class="form-group col s12 l12 pb-2">
                                               <label for="fecha_embarque2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
                                               <div class="col l6 m6 s6">
-                                                <input name="fecha_embarque2" id="fecha_embarque2" type="datetime-local" class="browser-default form-control">
+                                                <input required name="fecha_embarque2" id="fecha_embarque2" type="datetime-local" class="browser-default form-control">
                                               </div>
                                             </div>
 
                                             <div class="form-group col s12 l12 pb-2">
                                               <label for="fecha_llegada1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de llegada: </label>
                                               <div class="col l6 m6 s6">
-                                                <input name="fecha_llegada1" id="fecha_llegada1" type="datetime-local" class="browser-default form-control">
+                                                <input required name="fecha_llegada1" id="fecha_llegada1" type="datetime-local" class="browser-default form-control">
                                               </div>
                                             </div>
                                             <div class="form-group col s12 l12 pb-2">
                                               <label for="fecha_llegada2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
                                               <div class="col l6 m6 s6">
-                                                <input name="fecha_llegada2" id="fecha_llegada2" type="datetime-local" class="browser-default form-control">
+                                                <input required name="fecha_llegada2" id="fecha_llegada2" type="datetime-local" class="browser-default form-control">
                                               </div>
                                             </div>
 
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_produccion" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de producción: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="fecha_produccion" id="fecha_produccion" type="datetime-local" class="browser-default form-control">
+                                          <input required name="fecha_produccion" id="fecha_produccion" type="datetime-local" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_produccion2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="fecha_produccion2" id="fecha_produccion2" type="datetime-local" class="browser-default form-control">
+                                          <input required name="fecha_produccion2" id="fecha_produccion2" type="datetime-local" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_vencimiento" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de vencimiento: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="fecha_vencimiento" id="fecha_vencimiento" type="datetime-local" class="browser-default form-control">
+                                          <input required name="fecha_vencimiento" id="fecha_vencimiento" type="datetime-local" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_vencimiento2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="fecha_vencimiento2" id="fecha_vencimiento2" type="datetime-local" class="browser-default form-control">
+                                          <input required name="fecha_vencimiento2" id="fecha_vencimiento2" type="datetime-local" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="observacion_fecha" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Observación: </label>
                                         <div class="col l6 m6 s6">
-                                          <input name="observacion_fecha" id="observacion_fecha" type="tel" class="browser-default form-control">
+                                          <input required name="observacion_fecha" id="observacion_fecha"  type="tel" class="browser-default form-control">
                                         </div>
                                       </div>
                                       <div class="form-group col s12 l12 " style="display: flex;   justify-content: flex-end;">
@@ -363,7 +363,7 @@
                                    <label for="id_logistica" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Id: </label>
                                    <div class="col l6 m6 s6">
                                      <input disabled class="form-control browser-default" name="id_logistica" id="id_logistica" type="text" >
-                                     <input class="form-control browser-default" name="id_codigo_logistica" id="id_codigo_logistica" type="hidden" >
+                                     <input required class="form-control browser-default" name="id_codigo_logistica" id="id_codigo_logistica" type="hidden" >
                                    </div>
                                  </div>
                                  <div class="form-group col s12 l12 pb-2">
@@ -482,20 +482,20 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="transporte_nombre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Transporte nombre: </label>
                                       <div class="col l6 m6 s6">
-                                        <input name="transporte_nombre" id="transporte_nombre" type="text" class="browser-default form-control">
+                                        <input required name="transporte_nombre" id="transporte_nombre" type="text" class="browser-default form-control">
                                         <input name="id_codigo_tecnico" id="id_codigo_tecnico" type="hidden" class="browser-default form-control">
                                       </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="ingreso_zeta" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Documento: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="ingreso_zeta" id="ingreso_zeta" type="text" class="browser-default form-control">
+                                      <input required name="ingreso_zeta" id="ingreso_zeta" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="ingreso_zeta_fecha" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha: </label>
                                     <div class="col l6 m6 s6">
-                                      <input class="form-control browser-default" name="ingreso_zeta_fecha" type="datetime-local" id="ingreso_zeta_fecha">
+                                      <input required class="form-control browser-default" name="ingreso_zeta_fecha" type="datetime-local" id="ingreso_zeta_fecha">
 
                                     </div>
                                   </div>
@@ -583,19 +583,19 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_pais_origen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Pais de origen: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_pais_origen" id="declara_pais_origen" type="text" class="browser-default form-control">
+                                      <input required name="declara_pais_origen" id="declara_pais_origen" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_pais_procedencia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Pais de procedencia: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_pais_procedencia" id="declara_pais_procedencia" type="text" class="browser-default form-control">
+                                      <input required name="declara_pais_procedencia" id="declara_pais_procedencia" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_puerto_embarque" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Puerto de embarque: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_puerto_embarque" id="declara_puerto_embarque" type="tel" class="browser-default form-control">
+                                      <input required name="declara_puerto_embarque" id="declara_puerto_embarque" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -623,13 +623,13 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_almacen" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Almacenista: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_almacen" id="declara_almacen" type="tel" class="browser-default form-control">
+                                      <input required name="declara_almacen" id="declara_almacen" type="tel" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="declara_almacen_ubic" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Ubicación primaria: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="declara_almacen_ubic" id="declara_almacen_ubic" type="tel" class="browser-default form-control">
+                                      <input required name="declara_almacen_ubic" id="declara_almacen_ubic" type="tel" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -646,31 +646,31 @@
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="valor_flete" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">7% de total EXT: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="valor_flete" id="valor_flete" type="tel" class="browser-default form-control">
+                                      <input required name="valor_flete" id="valor_flete" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="valor_seguro" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">2% de total EXT: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="valor_seguro" id="valor_seguro" type="tel" class="browser-default form-control">
+                                      <input required name="valor_seguro" id="valor_seguro" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="valor_fob" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">FOB(Flete + seguro)- Total EXT: </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="valor_fob" id="valor_fob" type="tel" class="browser-default form-control">
+                                      <input required name="valor_fob" id="valor_fob" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="valor_total" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Total $(EXT): </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="valor_total" id="valor_total" type="tel" class="browser-default form-control">
+                                      <input required name="valor_total" id="valor_total" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
                                     <label for="valor_total_nal" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Valor $(NAL): </label>
                                     <div class="col l6 m6 s6">
-                                      <input name="valor_total_nal" id="valor_total_nal" type="tel" class="browser-default form-control">
+                                      <input required name="valor_total_nal" id="valor_total_nal" type="number" class="browser-default form-control">
                                     </div>
                                   </div>
                                   <div class="form-group col s12 l12 pb-2">
@@ -687,7 +687,7 @@
 
                                   <div class="form-group col s12 l12 " style="display: flex;   justify-content: flex-end;">
                                     <div class="col l6 m6 s6">
-                                      <input type="submit" name="action_3" id="action_3" class="btn cyan mt-1 float-center" value="Actualizar">
+                                      <input  type="submit" name="action_3" id="action_3" class="btn cyan mt-1 float-center" value="Actualizar">
                                     </div>
                                   </div>
                                 </div>
@@ -827,21 +827,13 @@
                       <div class="col s12">
                       </div>
                       <div class="col s12 dataTables_scrollBody">
-                          <table id="itemsContenedorDetalle">
+                          <table id="itemsContenedorDetalle" class="centered">
                             <thead>
                             <tr>
                               <th>Nº item</th>
+                              <th>Nombre</th>
+                              <th>Código</th>
                               <th>Producto</th>
-                              <th>Cantidad cierre</th>
-                              <th>Bultos</th>
-                              <th>Cantidad ingreso</th>
-                              <th>CIF</th>
-                              <th>VIU</th>
-                              <th>Precio compra</th>
-                              <th>Total compra</th>
-                              <th>CIF adicional</th>
-                              <th>CIF final</th>
-                              <th>Total costo</th>
                             </tr>
                             </thead>
                             <tbody id="tabla-itemsContenedorDetalle-body">
