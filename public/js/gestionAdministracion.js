@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $("#tableAdministrador tbody").on('click','tr', function(e){
+  $("#tableAdministrador tbody").on('mouseover','tr', function(e){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
 });
@@ -308,10 +308,11 @@ $(document).ready(function(){
                   $.each(res.camionesItems,function(index,value){
 
                     let esp_nombre = value.esp_nombre == null ? '-' : value.esp_nombre;
+                    let nro_item = value.nro_item == null ? '-' : value.nro_item;
 
                     $('#tabla-itemsContenedorDetalle-body').append(`
                       <tr >
-                      <td>${value.nro_item}</td>
+                      <td>${nro_item}</td>
                       <td>${esp_nombre}</td>
                       <td>${value.codigo}</td>
                       <td>${value.producto}</td>
