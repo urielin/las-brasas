@@ -481,7 +481,7 @@ class ComicionVentaController extends Controller
         $mail->addAddress($destinatario);
         $mail->isHTML(true);                                 
         $mail->Subject = $asunto;
-        $mail->Body    = view('reports/comision-venta/email');
+        $mail->Body    = view('reports/comision-venta/email')->with(compact('asunto'));
         if($mail->send()){
             return json_encode(array("status" => 200, "response" => array("message" => "Correo Enviado")));
         }
