@@ -90,9 +90,8 @@ Route::get('/administrar-tabla-estado', 'GestionAdministracionController@adminis
 Route::get('/detalle-administrar-camion', 'GestionAdministracionController@administrarDetalleCamion')->name('administrarDetalleCamion');
 Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGenerales')->name('upDatosGenerales');
 Route::POST('/subir-datosLogistica', 'GestionAdministracionController@upDatosLogistica')->name('upDatosLogistica');
-
 Route::POST('/subir-datosTecnicos', 'GestionAdministracionController@upDatosTecnicos')->name('upDatosTecnicos');
-
+Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregarCamion')->name('administrarAgregarCamion');
 
 //-----------------------------------------------------------------------
 

@@ -388,6 +388,7 @@ $(document).ready(function(){
   });
 
 
+
   $('#actualizar-datosTecnicos').on('submit', function(){
       event.preventDefault();
 
@@ -417,7 +418,48 @@ $(document).ready(function(){
              console.log(jqXHR.responseText,textStatus);
              alert( "Request failed: " + textStatus + jqXHR.responseText);
            });
+  });
 
+  $('#agregar-camion').on('click', function(){
+
+      console.log('click !');
+      $('#formModal').modal('open');
+  });
+
+  $('#nuevo-camion').on('submit', function(){
+      event.preventDefault();
+
+      console.log($(this).serialize());
+           request=$.ajax({
+             url: 'subir-camion',
+             method:"POST",
+             data:$(this).serialize(),
+             dataType:"json",
+             success:function(res)
+             {
+
+                 alerta('success','Se creo un nuevo contenedor');
+            }
+           });
+
+           $('#codigo_agregar').val('');
+           $('#auxiliar_agregar').val('');
+           $('#descripcion_agregar').val('');
+           $('#contenido_agregar').val('');
+           $('#documento_agregar').val('');
+           $('#fecha_agregar').val('');
+           $('#observaciones_agregar').val('');
+
+           request.done(function( msg ) {
+
+           $( "#log" ).html( msg );
+             console.log(msg);
+           });
+
+           request.fail(function( jqXHR, textStatus ) {
+             console.log(jqXHR.responseText,textStatus);
+             alert( "Request failed: " + textStatus + jqXHR.responseText);
+           });
   });
 
    function dateUTCR(ms) {
