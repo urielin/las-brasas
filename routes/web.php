@@ -87,7 +87,11 @@ Route::get('/gestion-administracion', 'GestionAdministracionController@index')->
 Route::get('/administrar-tabla-codigo', 'GestionAdministracionController@administrarTablaCodigo')->name('administrarTablaCodigo');
 Route::get('/administrar-tabla-clasificacion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaClasificacion');
 Route::get('/administrar-tabla-estado', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaEstado');
+Route::get('/detalle-administrar-camion', 'GestionAdministracionController@administrarDetalleCamion')->name('administrarDetalleCamion');
+Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGenerales')->name('upDatosGenerales');
+Route::POST('/subir-datosLogistica', 'GestionAdministracionController@upDatosLogistica')->name('upDatosLogistica');
 
+Route::POST('/subir-datosTecnicos', 'GestionAdministracionController@upDatosTecnicos')->name('upDatosTecnicos');
 
 
 //-----------------------------------------------------------------------
