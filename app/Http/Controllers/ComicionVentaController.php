@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-
-
-
+use App\Libreria\Mail\PHPMailer;
+use App\Libreria\Mail\Exception;
 
 class ComicionVentaController extends Controller
 {
@@ -464,7 +463,32 @@ class ComicionVentaController extends Controller
 
     (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
     $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision)");
+        
+        $asunto = 'Almacenes Con Stock Limitado';
+        $destinatario = 'jhonwilbermendozachino@gmail.com';
+        
 
+        $mail = new PHPMailer(true);  
+        $mail->SMTPDebug = 2;
+        $mail->isSMTP();                    
+        $mail->Host       = 'smtp.gmail.com';             
+        $mail->SMTPAuth   = true;                               
+        $mail->Username   = 'jhonwilbermendozachino@gmail.com';
+        $mail->Password   = '71780874Mc%';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;        
+        $mail->Port       = 587;          
+        $mail->setFrom('jhonwilbermendozachino@gmail.com', 'Frigorifico Las Brasas');
+        $mail->addAddress($destinatario);
+        $mail->isHTML(true);                                 
+        $mail->Subject = $asunto;
+        $mail->Body    = view('reports/comision-venta/email');
+        if($mail->send()){
+            return json_encode(array("status" => 200, "response" => array("message" => "Correo Enviado")));
+        }
+        else{
+            return response()->json(array("status" => 100, "message" => "Error al enviar correo"));
+        }
+       
     }
       return response()->json([
 
@@ -474,4 +498,5 @@ class ComicionVentaController extends Controller
       ]);
     }
   }
+
 }

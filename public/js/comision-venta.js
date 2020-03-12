@@ -344,8 +344,8 @@ $(document).ready(function(){
 
               request.fail(function( jqXHR, textStatus ) {
                 //console.log(jqXHR.responseText,textStatus);
-                //alert( "Request failed: " + textStatus + jqXHR.responseText);
-                alert("Estos datos fueron exportados anteriormente");
+                alert( "Request failed: " + textStatus + jqXHR.responseText);
+                //alert("Estos datos fueron exportados anteriormente");
 
 
               });
@@ -421,4 +421,6 @@ $(document).ready(function(){
   	}
   	return x1 + x2;
     }
+
+   
 });

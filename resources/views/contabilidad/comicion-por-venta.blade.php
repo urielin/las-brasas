@@ -41,6 +41,7 @@
           <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen">Exportar Resumen </button>
           <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle">Exportar Detalle </button>
           <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos">Exportar Datos Historicos</button>
+          
         </div>
       </div>
   </div>

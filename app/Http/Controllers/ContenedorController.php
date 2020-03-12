@@ -67,4 +67,66 @@ class ContenedorController extends Controller
     }
 
   }
+  public function setNew(){
+
+    if (request()->ajax()){
+
+        DB::insert("INSERT INTO [dbo].[ADM_PROVEEDOR]
+        ([emp_codigo]
+        ,[emp_tipo]
+        ,[emp_rut]
+        ,[emp_nombre]
+        ,[emp_descripcion]
+        ,[direccion_pais]
+        ,[direccion_region]
+        ,[direccion_direccion]
+        ,[com_telefono]
+        ,[com_movil]
+        ,[com_fax]
+        ,[com_email]
+        ,[i_estado]
+        ,[i_usuario]
+        ,[i_datetime])
+         VALUES
+            ('NUEVO',0,'NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO',0,0,getdate())");
+      
+      }
+    }
+  
+    public function getNew(){
+      if (request()->ajax()){
+
+        $new = DB::select("SELECT TOP 1 * from ADM_PROVEEDOR order by id_proveedor desc");
+      
+      }
+      return response()->json([
+
+        'new'              =>$new
+
+      ]);
+    }
+
+    public function updateProveedor(Request $request){
+      if (request()->ajax()){
+
+       DB::update("UPDATE ADM_PROVEEDOR
+                    SET [emp_codigo] = '$request->codigo'
+                    ,[emp_rut] = '$request->rut'
+                    ,[emp_nombre] = '$request->empNombre'
+       
+                    ,[direccion_pais] = '$request->direccionPais'
+         
+                    ,[direccion_direccion] = '$request->direcciondire'
+                    ,[com_telefono] = '$request->telefono'
+                    ,[com_movil] = '$request->movil'
+                    ,[com_fax] = '$request->fax'
+                    ,[com_email] = '$request->email'
+          
+              WHERE [id_proveedor] = $request->id");
+
+         
+      
+      }
+
+    }
 }

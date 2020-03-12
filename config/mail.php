@@ -28,8 +28,9 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-
+    
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+ 
 
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ return [
     */
 
     'port' => env('MAIL_PORT', 587),
+   
 
     /*
     |--------------------------------------------------------------------------
@@ -60,6 +62,7 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+  
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -72,7 +75,7 @@ return [
     */
 
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-
+   
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username

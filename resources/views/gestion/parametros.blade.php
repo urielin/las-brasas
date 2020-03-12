@@ -42,18 +42,18 @@
                           </div>-->
                        
                           <div style="display: flex;">
-                            <select class="form-control browser-default col-md-1 float-right"  style='height:35px !important' id="filter_state">
-                              <option value="" selected>Nuevo</option>
-                              
-                            </select>
-                            <button type="button"  class="btn btn-50 btn-add-product cyan pull-right btn-icon-only rounded-circle float-right" name="button">
+                           
+                            <button type="button"  class="btn btn-50 btn-add-product blue pull-right btn-icon-only rounded-circle float-right" id="btn-nuevo"name="button">
                               <i class="material-icons dp48">add_box</i>
                             </button>
+                            
                           </div>
                         </div>
+                        <br>
           <table class="table table-responsive responsive-table centered" id="tabla-proveedor">
             <thead>
               <tr>
+                <th>Cambios</th>
                 <th>Codigo</th>
                 <th>RUT</th>
                 <th>Empresa</th>
@@ -63,7 +63,7 @@
                 <th>Movil</th>
                 <th>Fax</th>
                 <th>Email</th>
-                <th>Cambios</th>
+                
               </tr>
             </thead>
             <tbody id="proveedor-datos">
@@ -77,6 +77,8 @@
   </div>
 </div>
 @endsection
+
+
 
 @section('js')
   <script src="{{asset('js/parametros.js') }}"></script>
