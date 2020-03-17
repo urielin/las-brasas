@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
   Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
+  Route::get('/email', 'PrecioCamionController@sendEmail')->name('sendEmail');
+  
 // --------------------------------
   Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
   Route::GET('/ver-camion', 'GestionCamionController@show')->name('showCamion');
@@ -153,6 +155,8 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');
+
+  
   
 
 

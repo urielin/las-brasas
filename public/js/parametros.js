@@ -9,15 +9,81 @@ $(document).ready(function(){
         $('#proveedor-datos').empty();
         $.each(res.proveedor,function(index,value){
 
-            btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">edit</i></a>';
-            $('#tabla-proveedor').append('<tr data-id="'+value.id_proveedor +'" data-codigo="'+value.emp_codigo+'" data-rut="'+value.emp_rut+'" data-empNombre="'+value.emp_nombre+'" data-direccionPais="'+value.direccion_pais+'" data-direcciondire="'+value.direccion_direccion+'" data-telefono="'+value.com_telefono+'" data-movil="'+value.com_movil+'" data-fax="'+value.com_fax+'" data-email="'+value.com_email+'"><td>'+btn_editar+'</td><td>'+value.emp_codigo+'</td><td>'+value.emp_rut+'</td><td>'+value.emp_nombre+'</td><td>'+value.direccion_pais+'</td><td>'+value.direccion_direccion+'</td><td>'+value.com_telefono+'</td><td>'+value.com_movil+'</td><td>'+value.com_fax+'</td><td>'+value.com_email+'</td></tr>');
+            btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+            html='<tr data-id="'+value.id_proveedor +'"'; 
+            html+='data-codigo="'+value.emp_codigo+'"'; 
+            html+='data-rut="'+value.emp_rut+'"'; 
+            html+='data-empNombre="'+value.emp_nombre+'"'; 
+            html+='data-direccionPais="'+value.direccion_pais+'"';
+            html+='data-direcciondire="'+value.direccion_direccion+'"';
+            html+='data-telefono="'+value.com_telefono+'"';
+            html+='data-movil="'+value.com_movil+'"'; 
+            html+='data-fax="'+value.com_fax+'"';
+            html+='data-email="'+value.com_email+'">';    
+            html+='<td>'+btn_editar+'</td>';
+            if(value.emp_codigo == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.emp_codigo+'</td>';
+            }
+            if(value.emp_rut == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.emp_rut+'</td>';
+            }
+            if(value.emp_nombre == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.emp_nombre+'</td>';
+            }
+            if(value.direccion_pais == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.direccion_pais+'</td>';
+            }
+            if(value.direccion_direccion == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.direccion_direccion+'</td>';
+            }
+            if(value.com_telefono == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.com_telefono+'</td>';
+            }
+            if(value.com_movil == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.com_movil+'</td>';
+            }
+            if(value.com_fax == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.com_fax+'</td>';
+            }
+            if(value.com_email == ''){
+                html+='<td>-</td>'; 
+            }
+            else{
+                html+='<td>'+value.com_email+'</td></tr>';
+            }
+            
+            $('#tabla-proveedor').append(html);        
         })
 
     });
 
     $('#proveedor').on('change',function(){
         
-        var valor;
+        var valor,html;
         
         valor=$(this).val();
 
@@ -37,8 +103,74 @@ $(document).ready(function(){
                 console.log(res);
                 $.each(res.datos,function(index,value){
 
-                    btn_editar='<a  type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">edit</i></a>';
-                    $('#tabla-proveedor').append('<tr data-id="'+value.id_proveedor +'" data-codigo="'+value.emp_codigo+'" data-rut="'+value.emp_rut+'" data-empNombre="'+value.emp_nombre+'" data-direccionPais="'+value.direccion_pais+'" data-direcciondire="'+value.direccion_direccion+'" data-telefono="'+value.com_telefono+'" data-movil="'+value.com_movil+'" data-fax="'+value.com_fax+'" data-email="'+value.com_email+'"><td>'+btn_editar+'</td><td>'+value.emp_codigo+'</td><td>'+value.emp_rut+'</td><td>'+value.emp_nombre+'</td><td>'+value.direccion_pais+'</td><td>'+value.direccion_direccion+'</td><td>'+value.com_telefono+'</td><td>'+value.com_movil+'</td><td>'+value.com_fax+'</td><td>'+value.com_email+'</td></tr>');
+                    btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                    html='<tr data-id="'+value.id_proveedor +'"'; 
+                    html+='data-codigo="'+value.emp_codigo+'"'; 
+                    html+='data-rut="'+value.emp_rut+'"'; 
+                    html+='data-empNombre="'+value.emp_nombre+'"'; 
+                    html+='data-direccionPais="'+value.direccion_pais+'"';
+                    html+='data-direcciondire="'+value.direccion_direccion+'"';
+                    html+='data-telefono="'+value.com_telefono+'"';
+                    html+='data-movil="'+value.com_movil+'"'; 
+                    html+='data-fax="'+value.com_fax+'"';
+                    html+='data-email="'+value.com_email+'">';    
+                    html+='<td>'+btn_editar+'</td>';
+                    if(value.emp_codigo == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_codigo+'</td>';
+                    }
+                    if(value.emp_rut == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_rut+'</td>';
+                    }
+                    if(value.emp_nombre == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_nombre+'</td>';
+                    }
+                    if(value.direccion_pais == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.direccion_pais+'</td>';
+                    }
+                    if(value.direccion_direccion == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.direccion_direccion+'</td>';
+                    }
+                    if(value.com_telefono == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_telefono+'</td>';
+                    }
+                    if(value.com_movil == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_movil+'</td>';
+                    }
+                    if(value.com_fax == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_fax+'</td>';
+                    }
+                    if(value.com_email == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_email+'</td></tr>';
+                    }
+                    
+                    $('#tabla-proveedor').append(html);  
                 })
               });
         }
@@ -62,15 +194,15 @@ $(document).ready(function(){
 
         console.log(id);
         
-        $(this).parents("tr").find("td:eq(1)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="codigo" id="nombre" value="'+codigo+'" >');
-        $(this).parents("tr").find("td:eq(2)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="rut" value="'+rut+'" >');
-        $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="empNombre" value="'+empNombre+'" >');
-        $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="direccionPais" value="'+direccionPais+'" >');
-        $(this).parents("tr").find("td:eq(5)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="direcciondire" value="'+direcciondire+'" >');
-        $(this).parents("tr").find("td:eq(6)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="telefono" value="'+telefono+'" >');
-        $(this).parents("tr").find("td:eq(7)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="movil" value="'+movil+'" >');
-        $(this).parents("tr").find("td:eq(8)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="fax" value="'+fax+'" >');
-        $(this).parents("tr").find("td:eq(9)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" name="email" value="'+email+'" >');
+        $(this).parents("tr").find("td:eq(1)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Código" name="codigo" id="nombre" value="'+codigo+'" >');
+        $(this).parents("tr").find("td:eq(2)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="RUT" name="rut" value="'+rut+'" >');
+        $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Empresa" name="empNombre" value="'+empNombre+'" >');
+        $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="País" name="direccionPais" value="'+direccionPais+'" >');
+        $(this).parents("tr").find("td:eq(5)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Dirección" name="direcciondire" value="'+direcciondire+'" >');
+        $(this).parents("tr").find("td:eq(6)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Teléfono" name="telefono" value="'+telefono+'" >');
+        $(this).parents("tr").find("td:eq(7)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Móvil" name="movil" value="'+movil+'" >');
+        $(this).parents("tr").find("td:eq(8)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Fax" name="fax" value="'+fax+'" >');
+        $(this).parents("tr").find("td:eq(9)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="ejm:usuario@example.com" name="email" value="'+email+'" >');
         $(this).parents("tr").find("td:eq(0)").prepend(`<span style='display: flex;'>
                                                       <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'>
 
@@ -107,19 +239,74 @@ $(document).ready(function(){
        
         console.log(data);
 
-        $(this).parents("tr").find("td:eq(1)").text(codigo);
-        $(this).parents("tr").find("td:eq(2)").text(rut);
-        $(this).parents("tr").find("td:eq(3)").text(empNombre);
-        $(this).parents("tr").find("td:eq(4)").text(direccionPais);
-        $(this).parents("tr").find("td:eq(5)").text(direcciondire);
+        //codigo='-';
+        if(codigo==''){
+            $(this).parents("tr").find("td:eq(1)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(1)").text(codigo);
+        }
+        
+        if(rut==''){
+            $(this).parents("tr").find("td:eq(2)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(2)").text(rut);
+        }
+        
+        if(empNombre==''){
+            $(this).parents("tr").find("td:eq(3)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(3)").text(empNombre);
+        }
+        
+        if(direccionPais==''){
+            $(this).parents("tr").find("td:eq(4)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(4)").text(direccionPais);
+        }
+        
+        if(direcciondire==''){
+            $(this).parents("tr").find("td:eq(5)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(5)").text(direcciondire);
+        }
+        if(telefono==''){
+            $(this).parents("tr").find("td:eq(6)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(6)").text(telefono);
+        }
+        if(movil==''){
+            $(this).parents("tr").find("td:eq(7)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(7)").text(movil);
+        }
+        if(fax==''){
+            $(this).parents("tr").find("td:eq(8)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(8)").text(fax);
+        }
+        if(email==''){
+            $(this).parents("tr").find("td:eq(9)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(9)").text(email);
+        }
+        //$(this).parents("tr").find("td:eq(1)").text(codigo);
+        //$(this).parents("tr").find("td:eq(2)").text(rut);
+        //$(this).parents("tr").find("td:eq(3)").text(empNombre);
+        //$(this).parents("tr").find("td:eq(4)").text(direccionPais);
+        /*$(this).parents("tr").find("td:eq(5)").text(direcciondire);
         $(this).parents("tr").find("td:eq(6)").text(telefono);
         $(this).parents("tr").find("td:eq(7)").text(movil);
         $(this).parents("tr").find("td:eq(8)").text(fax);
-        $(this).parents("tr").find("td:eq(9)").text(email);
-
-       
-
-  
+        $(this).parents("tr").find("td:eq(9)").text(email);*/
         $(this).parents("tr").find(".get-pdf-edit").show();
         $(this).parents("tr").find(".btn-update").remove();
         $(this).parents("tr").find(".btn-cancel").remove();
@@ -135,9 +322,74 @@ $(document).ready(function(){
                 console.log(res);
                 $.each(res.new,function(index,value){
 
-                    btn_editar='<a data-id="'+value.id_proveedor +'" type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" href="#"> <i class="material-icons dp48">edit</i></a>';
+                    btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                    html='<tr data-id="'+value.id_proveedor +'"'; 
+                    html+='data-codigo="'+value.emp_codigo+'"'; 
+                    html+='data-rut="'+value.emp_rut+'"'; 
+                    html+='data-empNombre="'+value.emp_nombre+'"'; 
+                    html+='data-direccionPais="'+value.direccion_pais+'"';
+                    html+='data-direcciondire="'+value.direccion_direccion+'"';
+                    html+='data-telefono="'+value.com_telefono+'"';
+                    html+='data-movil="'+value.com_movil+'"'; 
+                    html+='data-fax="'+value.com_fax+'"';
+                    html+='data-email="'+value.com_email+'">';    
+                    html+='<td>'+btn_editar+'</td>';
+                    if(value.emp_codigo == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_codigo+'</td>';
+                    }
+                    if(value.emp_rut == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_rut+'</td>';
+                    }
+                    if(value.emp_nombre == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.emp_nombre+'</td>';
+                    }
+                    if(value.direccion_pais == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.direccion_pais+'</td>';
+                    }
+                    if(value.direccion_direccion == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.direccion_direccion+'</td>';
+                    }
+                    if(value.com_telefono == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_telefono+'</td>';
+                    }
+                    if(value.com_movil == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_movil+'</td>';
+                    }
+                    if(value.com_fax == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_fax+'</td>';
+                    }
+                    if(value.com_email == ''){
+                        html+='<td>-</td>'; 
+                    }
+                    else{
+                        html+='<td>'+value.com_email+'</td></tr>';
+                    }
                     
-                    $('#tabla-proveedor > tbody > tr:first').before('<tr><td>'+btn_editar+'</td><td>'+value.emp_codigo+'</td><td>'+value.emp_rut+'</td><td>'+value.emp_nombre+'</td><td>'+value.direccion_pais+'</td><td>'+value.direccion_direccion+'</td><td>'+value.com_telefono+'</td><td>'+value.com_movil+'</td><td>'+value.com_fax+'</td><td>'+value.com_email+'</td></tr>');
+                    $('#tabla-proveedor > tbody > tr:first').before(html);
                 })
               });
         });
@@ -156,15 +408,64 @@ $(document).ready(function(){
         //let id = $(this).parents("tr").find("input[name='code']").val();
 
         //console.log(rut);
-        $(this).parents("tr").find("td:eq(1)").text(codigo);
-        $(this).parents("tr").find("td:eq(2)").text(rut);
-        $(this).parents("tr").find("td:eq(3)").text(empNombre);
-        $(this).parents("tr").find("td:eq(4)").text(direccionPais);
-        $(this).parents("tr").find("td:eq(5)").text(direcciondire);
-        $(this).parents("tr").find("td:eq(6)").text(telefono);
-        $(this).parents("tr").find("td:eq(7)").text(movil);
-        $(this).parents("tr").find("td:eq(8)").text(fax);
-        $(this).parents("tr").find("td:eq(9)").text(email);
+        if(codigo==''){
+            $(this).parents("tr").find("td:eq(1)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(1)").text(codigo);
+        }
+        
+        if(rut==''){
+            $(this).parents("tr").find("td:eq(2)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(2)").text(rut);
+        }
+        
+        if(empNombre==''){
+            $(this).parents("tr").find("td:eq(3)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(3)").text(empNombre);
+        }
+        
+        if(direccionPais==''){
+            $(this).parents("tr").find("td:eq(4)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(4)").text(direccionPais);
+        }
+        
+        if(direcciondire==''){
+            $(this).parents("tr").find("td:eq(5)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(5)").text(direcciondire);
+        }
+        if(telefono==''){
+            $(this).parents("tr").find("td:eq(6)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(6)").text(telefono);
+        }
+        if(movil==''){
+            $(this).parents("tr").find("td:eq(7)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(7)").text(movil);
+        }
+        if(fax==''){
+            $(this).parents("tr").find("td:eq(8)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(8)").text(fax);
+        }
+        if(email==''){
+            $(this).parents("tr").find("td:eq(9)").text('-');
+        }
+        else{
+            $(this).parents("tr").find("td:eq(9)").text(email);
+        }
 
         $(this).parents('tr').attr('data-codigo',codigo);
         $(this).parents('tr').attr('data-rut',rut);

@@ -43,7 +43,7 @@
                        
                           <div style="display: flex;">
                            
-                            <button type="button"  class="btn btn-50 btn-add-product blue pull-right btn-icon-only rounded-circle float-right" id="btn-nuevo"name="button">
+                            <button type="button"  class="btn btn-50 btn-add-product green pull-rigth btn-icon-only rounded-circle float-right" id="btn-nuevo"name="button">
                               <i class="material-icons dp48">add_box</i>
                             </button>
                             
@@ -53,14 +53,14 @@
           <table class="table table-responsive responsive-table centered" id="tabla-proveedor">
             <thead>
               <tr>
-                <th>Cambios</th>
-                <th>Codigo</th>
+                <th>Acción</th>
+                <th>Código</th>
                 <th>RUT</th>
                 <th>Empresa</th>
-                <th>Pais</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
-                <th>Movil</th>
+                <th>País</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Móvil</th>
                 <th>Fax</th>
                 <th>Email</th>
                 

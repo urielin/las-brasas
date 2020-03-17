@@ -464,7 +464,7 @@ class ComicionVentaController extends Controller
     (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
     $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision)");
         
-        $asunto = 'Almacenes Con Stock Limitado';
+        /*$asunto = 'Almacenes Con Stock Limitado';
         $destinatario = 'jhonwilbermendozachino@gmail.com';
         
 
@@ -487,7 +487,7 @@ class ComicionVentaController extends Controller
         }
         else{
             return response()->json(array("status" => 100, "message" => "Error al enviar correo"));
-        }
+        }*/
        
     }
       return response()->json([

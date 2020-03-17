@@ -66,7 +66,7 @@
       </div>
     </header>
 
-    <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
+    <aside class="sidenav-main nav-collapsible sidenav-light sidenav-active-square nav-collapsed">
       <div class="brand-sidebar">
         <h1 class="logo-wrapper"><a class="brand-logo darken-1 hide-on-med-and-down" href="/">
         <img class="" src="{{ asset('assets/images/favicon/icon.png') }}" alt="materialize logo" style=" position: absolute; top: 15px; margin: 0 6px; height: 32px; ">
@@ -74,7 +74,7 @@
         <img class="" src="{{ asset('assets/images/favicon/logo.png') }}" alt="materialize logo" style=" position: relative; top: -20px; height: 60px; width: 150px; ">
         </span>
         </a>
-        <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a>
+        <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_unchecked</i></a>
         </h1>
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
@@ -212,7 +212,7 @@
        </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>
-    <div id="main">
+    <div id="main" class="main-full">
       <div class="row">
         <div class="col s12">
           <div class="container">
