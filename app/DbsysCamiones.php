@@ -8,5 +8,5 @@ class DbsysCamiones extends Model
 {
     protected $table = "dbsys.camiones";
     public $timestamps=false;
-    protected $dates = ['fecha_llegada'];
+        
 }

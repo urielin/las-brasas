@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/eliminar-item', 'ContabilidadController@deleteItemRetiro')->name('eliminarItemRetiro');
   Route::get('/deposito-incluir-deposito', 'ContabilidadController@IncluirRetiro')->name('IncluirRetiro');
 // ----------------------------------------------------------------------------------------------------------------------------------
-Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
+  Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
 
 
@@ -119,7 +119,10 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+  Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
+  Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
 
+  
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
@@ -133,8 +136,7 @@ Route::get('prueba', 'ContabilidadController@prueba')->name('prueba');
 
   Route::post('cartola/importar-plane','CatalogoController@importPlane')->name('catalogo.importPlane');
   Route::post('cartola/migracion-plane','CatalogoController@migraciontPlane')->name('catalogo.migrationPlane');
-
-  //-------------------------------------MODULO 4
+ 
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
 
 Route::get('/reporte2', function () {
