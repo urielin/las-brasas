@@ -54,12 +54,13 @@
  tbody td, .tbody td, tbody .td, .tbody .td {
 	 border-bottom: 1px solid #eee;
 }
+/*
  tbody td > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), .tbody td > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), tbody .td > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), .tbody .td > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]) {
 	 background-color: transparent;
 	 border: none;
 	 height: auto;
 	 padding: 0;
-}
+}*/
  tfoot, .tfoot {
 	 display: table-footer-group;
 }
@@ -338,7 +339,12 @@ tr td button {
   padding-left: 15px !important;
   margin-left: 1px !important;
   padding-bottom: 15px !important;
-}/*
-table.responsive-table {
+}
+
+/*table.responsive-table {
   table-layout: auto !important;
 }*/
+
+#pagoTable tbody tr td {
+  padding: 0px 12px;
+}

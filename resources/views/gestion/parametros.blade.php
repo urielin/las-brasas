@@ -36,11 +36,13 @@
       </div>
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top: 20px;padding:10px">
-<div style="display: flex; justify-content: space-between">
+            <div style="display: flex; justify-content: space-between">
                           <!--<div style="display: flex">
                             <i class="material-icons dp48">subject</i><span class="card-title">Catalogo de Productos</span>
                           </div>-->
-                       
+                          <div class="">
+
+                          </div>
                           <div style="display: flex;">
                            
                             <button type="button"  class="btn btn-50 btn-add-product green pull-rigth btn-icon-only rounded-circle float-right" id="btn-nuevo"name="button">

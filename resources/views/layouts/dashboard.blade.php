@@ -7,7 +7,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/icon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-
+     
+  
+     
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/vertical-modern-menu-template/materialize.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/vertical-modern-menu-template/style.min.css') }}">
@@ -18,11 +20,18 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/css/jquery.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-tables/css/select.dataTables.min.css') }}">
-     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/data-tables.min.css') }}">
-     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/variables.css') }}">
-     <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
-     <link href="{{ asset('assets/css/tabs.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/data-tables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/variables.css') }}">
+    <link href="{{ asset('css/las-brasas.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/tabs.css') }}" rel="stylesheet">
+     <style>
+      body { 
+          font-family: Muli, sans-serif !important;
+          font-size: 14px;
+          color: #000;
+          font-weight: lighter;
+      }
+    </style>
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
    </head>

@@ -19,19 +19,19 @@
                    <div class="row">
                      <div class="col l3 m6 s12">
                        <div class="form-group">
-                         <label class="form-control-label">Codigo</label>
+                         <label class="form-control-label">Código</label>
                          <input type="text" class="form-control browser-default" placeholder="codigo" id='code' value="">
                        </div>
                      </div>
                      <div class="col l3 m6 s12">
                        <div class="form-group">
-                         <label class="form-control-label">Descripcion</label>
+                         <label class="form-control-label">Descripción</label>
                          <input type="text" class="form-control browser-default" placeholder="descripcion" id="description" value="">
                        </div>
                      </div>
                      <div class="col l3 m6 s12">
                        <div class="form-group">
-                         <label for="" class="form-control-label">Clasificacion</label>
+                         <label for="" class="form-control-label">Clasificación</label>
                          <select class="form-control browser-default" id='clasificacion'  style="height:46px">
                            <option value="" selected>selecciona ...</option>
                            @foreach($clasificacion as $value)
@@ -62,7 +62,7 @@
               <thead>
                 <tr>
                   <th style='width: 30%;'>COD.</th>
-                  <th style='width: 70%;'>DESCRIPCION</th>
+                  <th style='width: 70%;'>DESCRIPCIÓN</th>
                 </tr>
               </thead>
               <tbody class="member">
@@ -80,32 +80,26 @@
             <div class="row">
               <div class="col s12">
                 <ul class="tabs">
-                  <li class="tab col m3" class="active"><a href="#test1">Editar Codigo</a></li>
+                  <li class="tab col m3" class="active"><a href="#test1">Editar Código</a></li>
                   <li class="tab col m3"><a  href="#test2" id='tab_id2'>Catalogo de Productos</a></li>
-                  <li class="tab col m3"><a href="#test3">Crear Codigo</a></li>
-                  <li class="tab col m3"><a href="#test4">Informacion nutricional</a></li>
+                  <li class="tab col m3"><a href="#test3">Crear Código</a></li>
+                  <li class="tab col m3"><a href="#test4">Información nutricional</a></li>
 
                 </ul>
               </div>
               <div id="test1" class="col s12">
 
-                <div class="container" style="margin-top: 30px">
-                  <!--<div style="display: flex; justify-content: space-between">
-
-                      <div style="display: flex">
-                        <i class="material-icons dp48">subject</i><span class="card-title">Editar Codigo</span>
-                      </div>
-                  </div>-->
+                <div class="container" style="margin-top: 30px"> 
                   <div class="bs-example" data-example-id="form-group-height-sizes">
                     <form class="form-horizontal form-inline">
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputLarge">Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputLarge">Código: </label>
                         <div class="col l6 m6 s6">
                           <input class="form-control browser-default" type="text" id="edt-code" placeholder="ejm. 1020">
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Nombre Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Nombre Código: </label>
                         <div class="col l6 m6 s6  ">
                           <input class="form-control browser-default" type="text" id="edt-name" placeholder="ejm. posta rosada">
                         </div>
@@ -123,11 +117,11 @@
                       <div class="form-group  col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"   for="">Mult/Unidad: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="edt-multi-unid" placeholder="">
+                          <input class="form-control browser-default" type="text" id="edt-multi-unid" placeholder="ejm. kg">
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"   for="">Tipo Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"   for="">Tipo Código: </label>
                         <div class="col l6 m6 s6  ">
                           <select  id="edt-tipo-code" name="edt-tipo-code"   class="form-control  browser-default" style="height:46px">
                             <option value="1" selected>MERCANCIA</option>
@@ -137,13 +131,13 @@
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Descripcion: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Descripción: </label>
                         <div class="col l6 m6 s6  ">
                           <input class="form-control browser-default" type="text" id="edt-descripcion" placeholder="">
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Peso / Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Peso / Código: </label>
                         <div class="col l6 m6 s6  ">
                           <input class="form-control browser-default" type="text" id="edt-peso" placeholder="">
                         </div>
@@ -160,13 +154,13 @@
                       <div class="form-group  col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Impuesto Adicional %: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="number" id="edt-impuesto" placeholder="">
+                          <input class="form-control browser-default" type="number" id="edt-impuesto" placeholder=" ejm. 22 ">
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Codigo Arancelario: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Código Arancelario: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="number" id="edt-code-arancelario" placeholder="">
+                          <input class="form-control browser-default" type="number" id="edt-code-arancelario" placeholder="ejm. 660310">
                         </div>
                       </div>
                       <div class="form-group  col l12 m12 s12 pb-1">
@@ -244,7 +238,7 @@
                         <thead>
                           <tr >
                             <th width='7%'>Padre</th>
-                            <th width='8%'>Codigo</th>
+                            <th width='8%'>Código</th>
                             <th width='14%'>Producto</th>
                             <th width='8%'>Multipl.</th>
                             <th width='8%'>Divisor</th>
@@ -255,8 +249,7 @@
                             <th width='11%'></th>
                           </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody> 
                         </tbody>
                       </table>
                     </div>
@@ -264,22 +257,17 @@
                 </div>
               </div>
               <div id="test3" class="col s12">
-                <div class="container" style="margin: 20px">
-                  <!--<div style="display: flex; justify-content: space-between">
-                      <div style="display: flex">
-                        <i class="material-icons dp48">subject</i><span class="card-title">Crear Codigo</span>
-                      </div>
-                  </div>-->
+                <div class="container" style="margin: 20px"> 
                   <div class="bs-example" data-example-id="form-group-height-sizes">
                     <form class="form-horizontal form-inline">
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputLarge">Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="formGroupInputLarge">Código: </label>
                         <div class="col l6 m6 s6">
                           <input class="form-control browser-default" type="text"  id="create-code" placeholder="ejm. 1020">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6  form-control-label" style="text-align: right; display: inline-block;"  for="">Nombre Codigo: </label>
+                        <label class="col l6 m6 s6  form-control-label" style="text-align: right; display: inline-block;"  for="">Nombre Código: </label>
                         <div class="col l6 m6 s6  ">
                           <input class="form-control browser-default" type="text" id="create-name" placeholder="ejm. posta rosada">
                         </div>
@@ -297,11 +285,11 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Mult/Unidad: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="text" id="create-multi-unid" placeholder="">
+                          <input class="form-control browser-default" type="text" id="create-multi-unid" placeholder="ejm. kg">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label " style="text-align: right; display: inline-block;"  for="">Tipo Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label " style="text-align: right; display: inline-block;"  for="">Tipo Código: </label>
                         <div class="col l6 m6 s6">
                           <select  id="create-tipo-code " name="TPCO_CODIGO" dl="0"  class="form-control browser-default">
                             <option value="1" selected>MERCANCIA</option>
@@ -311,13 +299,13 @@
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Descripcion: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Descripción: </label>
                         <div class="col l6 m6 s6">
                           <input class="form-control browser-default" type="text" id="create-descripcion" placeholder="">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Peso / Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Peso / Código: </label>
                         <div class="col l6 m6 s6">
                           <input class="form-control browser-default" type="text" id="create-peso" placeholder="">
                         </div>
@@ -334,13 +322,13 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Impuesto Adicional %: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="number" id="create-impuesto" placeholder="">
+                          <input class="form-control browser-default" type="number" id="create-impuesto" placeholder="ejm. 22 ">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Codigo Arancelario: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;"  for="">Código Arancelario: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="number" id="create-code-arancelario" placeholder="">
+                          <input class="form-control browser-default" type="number" id="create-code-arancelario" placeholder="ejm. 660310">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
@@ -409,113 +397,113 @@
                   <div class="bs-example" data-example-id="form-group-height-sizes">
                     <form class="form-horizontal form-inline">
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputLarge">Codigo: </label>
+                        <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputLarge">Código: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="text" id="info-code">
+                          <input class="form-control browser-default" type="text" id="info-code" placeholder="ejm. 1020">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Porcion: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-porcion">
+                          <input class="form-control browser-default" type="text" id="info-porcion" placeholder="ejm. 1000">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  "  style="text-align: right; display: inline-block;" for="">Calorias: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-calorias">
+                          <input class="form-control browser-default" type="text" id="info-calorias" placeholder="ejm. 107.00">
 
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Grasas Totales: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-grasas-totales">
+                          <input class="form-control browser-default" type="text" id="info-grasas-totales" placeholder="ejm. 2.62">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Grasas Saturadas: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-grasas-saturadas">
+                          <input class="form-control browser-default" type="text" id="info-grasas-saturadas" placeholder="ejm. 1.05">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Grasas Trans: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-grasas-trans">
+                          <input class="form-control browser-default" type="text" id="info-grasas-trans" placeholder="ejm. .00">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Grasas Mono Insaturada </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-mono-insaturada">
+                          <input class="form-control browser-default" type="text" id="info-mono-insaturada" placeholder="ejm. .94">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Grasas Poli Saturada: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="text" id="info-poli-saturada">
+                          <input class="form-control browser-default" type="text" id="info-poli-saturada" placeholder="ejm. .31">
 
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Colesterol: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="number" id="info-colesterol">
+                          <input class="form-control browser-default" type="number" id="info-colesterol" placeholder="ejm. 40.44">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Sodio: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="number" id="info-sodio">
+                          <input class="form-control browser-default" type="number" id="info-sodio" placeholder="ejm. 95.21">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Total Carbohidratos: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-total-carbohidratos"/>
+                          <input class="form-control browser-default" type="text" id="info-total-carbohidratos" placeholder="ejm. .00"/>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Fibra dietetica: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" style="text-align: right; display: inline-block;" id="info-fibra-dietetica"/>
+                          <input class="form-control browser-default" type="text" style="display: inline-block;" id="info-fibra-dietetica" placeholder="ejm. 2.6g"/>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Azucar: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-azucar">
+                          <input class="form-control browser-default" type="text" id="info-azucar" placeholder="ejm. 0.5">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Proteinas: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-proteinas">
+                          <input class="form-control browser-default" type="text" id="info-proteinas" placeholder="ejm. 1.1">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Vitamina A: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-vitamina-a">
+                          <input class="form-control browser-default" type="text" id="info-vitamina-a" placeholder="ejm. 1.127">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Vitamina C: </label>
                         <div class="col l6 m6 s6 ">
-                          <input class="form-control browser-default" type="text" id="info-vitamina-c">
+                          <input class="form-control browser-default" type="text" id="info-vitamina-c" placeholder="ejm. 8.7">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Calcio: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-calcio">
+                          <input class="form-control browser-default" type="text" id="info-calcio" placeholder="ejm. 5mg">
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Hierro: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-hierro">
+                          <input class="form-control browser-default" type="text" id="info-hierro" placeholder="ejm. 0.3 mg">
                         </div>
                       </div>
                       <div class="form-group col l6 m12 s12 pb-1">
