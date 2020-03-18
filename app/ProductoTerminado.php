@@ -51,8 +51,10 @@ class ProductoTerminado extends Model
                         'tipo' => $params['tipo'],
                         'estado' => $params['estado'],
                       ]);
+
+                  $son = DB::table($this->table2)->select('CODI_RNOMBRE')->where('CODI_RCODIGO', $params['code'])->first();
                 } else {
-                  DB::table($this->table)
+                    DB::table($this->table)
                       ->where('CODI_RCODIGO', $params['code'])
                       ->insert([
                         'CODI_PADRE' => $params['parent'],
@@ -61,12 +63,13 @@ class ProductoTerminado extends Model
                         'factor_div' => $params['factor_div'],
                         'tipo' => $params['tipo'],
                         'estado' => $params['estado'],
-                      ]);
+                    ]);
+                    $son = DB::table($this->table2)->select('CODI_RNOMBRE')->where('CODI_RCODIGO', $params['code'])->first(); 
                 }
 
-             return 'ok';
+             return response()->json(['status' => 200, 'message' => 'Producto Terminado Actualizado', 'data' => $son]);
        }
-       return 'error';
+       return response()->json(['status' => 500, 'message' => 'Producto no xiste']);
 
      }
      public function deleteProduct($params) {

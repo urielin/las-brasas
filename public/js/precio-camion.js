@@ -7,7 +7,7 @@ $(document).ready(function(){
     function asignarEventoModalCeldas(){
       $('.mostrar-info').click(function(){
         var data=$(this).data();
-        console.log(data);
+        //console.log(data);
         // debugger
         $('#pc-modal #codigo').val(data.codigo);
         $('#pc-modal #descripcion').val(data.descripcion);
@@ -22,32 +22,51 @@ $(document).ready(function(){
         // interval= $('#pc-modal #interval').val(data.interval);
         interval=Math.floor(data.interval);
         $('#pc-modal #cif_tierra').val(data.cif_tierra);
-        console.log(interval);
+        //console.log(interval);
+        console.log(data.camion);
+        console.log(data.descripcion);
+        console.log(data.codigo);
+        //console.log('1');
         if (interval<0) {
             $('#pc-modal .modal-title').html('Modificar precio <br>(La oferta expiro hace  '+Math.abs(interval)+' horas)');
             $('#pc-modal .modal-header').css("border-bottom", "1px solid red");
             //$('#pc-modal .modal-title').css("color", "red");
             // console.log(data.fecha_baja);
+            
+            $.get('/email',data,function(res){
+              console.log('paso1');
+            });
 
         }else if(interval==0) {
             // $('#pc-modal .modal-title').html('Modificar precio (Es una nueva oferta)');
             // $('#pc-modal .modal-header').css("border-bottom", "1px solid #565cc0");
             // $('#pc-modal .modal-title').css("color", "#565cc0");
             // console.log(data.fecha_baja);
+            
+            $.get('/email',data,function(res){
+              console.log('paso2');
+            });
 
         }else if(interval<=48) {
             $('#pc-modal .modal-title').html('Modificar precio <br>(Quedan menos de '+interval+' horas)');
             $('#pc-modal .modal-header').css("border-bottom", "1px solid yellow");
             //$('#pc-modal .modal-title').css("color", "yellow");
             // console.log(data.fecha_baja);
-
+            
+            $.get('/email',data,function(res){
+              console.log('paso3');
+            });
         }else if(interval<=168) {
             $('#pc-modal .modal-title').html('Modificar precio <br>(Quedan menos de '+interval+' horas)');
             $('#pc-modal .modal-header').css("border-bottom", "1px solid green");
             //$('#pc-modal .modal-title').css("color", "green");
             // console.log(data.fecha_baja);
-
+            
+            $.get('/email',data,function(res){
+              console.log('paso4');
+            });
         }
+        
         $('#pc-modal').modal('open');
 
     });
@@ -70,9 +89,14 @@ $(document).ready(function(){
       form_data.append('clasificacion', clasificacion);
       var sucursal=$('select#pc_sucursal').val();
       form_data.append('sucursal', sucursal);
+
+     
       // debugger
       // console.log(json);
-      console.log(...form_data)
+
+      //console.log(...form_data)
+
+
       // for (var value of form_data.values()) {
       //   console.log(value);
       // }
@@ -86,6 +110,7 @@ $(document).ready(function(){
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Si, Actualizar'
+
         }).then((result) => {
           if (($('input#action_button').val()=='Actualizar Datos') &&(result.value)){
             var request = $.ajax({
@@ -102,7 +127,7 @@ $(document).ready(function(){
 
             request.done(function( response ) {
               // $( "#log" ).html( response );
-              console.log(response);
+              //console.log(response);
               // activar loader
               // $('div.loader-6').removeClass('d-none');
 
@@ -134,7 +159,7 @@ $(document).ready(function(){
           // form_data=new FormData();
           // form_data.append('sucursal', sucursal);
           // form_data.append('sucursal', clasificacion);
-          console.log(...form_data)
+          //console.log(...form_data)
           // debugger
           var request = $.ajax({
             url: form_url,

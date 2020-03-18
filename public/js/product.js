@@ -93,32 +93,56 @@ $(document).ready(function(){
       $(this).parents("tr").find(".btn-update").remove();
       $(this).parents("tr").find(".btn-cancel").remove();
   });
-  $("#catalogoTable").on("click", ".btn-update", function(){
-      var code = $(this).parents("tr").find("input[name='code']").val();
-      var factor_multi = $(this).parents("tr").find("input[name='factor_multi']").val();
-      var factor_div = $(this).parents("tr").find("input[name='factor_div']").val();
-      var tipo = $(this).parents("tr").find("select[name='tipo']").val();
-      var estado = $(this).parents("tr").find("select[name='estado']").val();
+  $("#catalogoTable").on("click", ".btn-update", async function(){
+     
+    var code = $(this).parents("tr").find("input[name='code']").val();
+    var factor_multi = $(this).parents("tr").find("input[name='factor_multi']").val();
+    var factor_div = $(this).parents("tr").find("input[name='factor_div']").val();
+    var tipo = $(this).parents("tr").find("select[name='tipo']").val();
+    var estado = $(this).parents("tr").find("select[name='estado']").val();
+       
+      
+    let current = JSON.parse(localStorage.getItem('mercancia')); 
 
-      $(this).parents("tr").find("td:eq(1)").text(code);
-      $(this).parents("tr").find("td:eq(3)").text(factor_multi);
-      $(this).parents("tr").find("td:eq(4)").text(factor_div);
-      $(this).parents("tr").find("td:eq(5)").text(tipo == 1 ? 'POR CAJA': "FACTORIZADO");
-      $(this).parents("tr").find("td:eq(6)").text(estado == 1 ? 'SI': "NO");
-
-      $(this).parents("tr").attr('data-code', code);
-      $(this).parents("tr").attr('data-factor_multi', factor_multi);
-      $(this).parents("tr").attr('data-factor_div', factor_div);
-      $(this).parents("tr").attr('data-tipo', tipo);
-      $(this).parents("tr").attr('data-estado', estado);
-
-      $(this).parents("tr").find(".btn-edit").show();
-      $(this).parents("tr").find(".btn-cancel").remove();
-      $(this).parents("tr").find(".btn-update").remove();
-      let current = JSON.parse(localStorage.getItem('mercancia'));
-
-      updateProduct({ parent:current.CODI_RCODIGO, code: code, factor_multi: factor_multi, factor_div: factor_div, tipo: tipo, estado: estado, _token: $("meta[name='csrf-token']").attr("content") });
-  });
+      const data = await updateProduct({ 
+                      parent:current.CODI_RCODIGO, code: code, factor_multi: factor_multi, factor_div: factor_div, 
+                      tipo: tipo, estado: estado, _token: $("meta[name='csrf-token']").attr("content") }); 
+                     
+      let self = $(this);       
+        if(data.status == 200) {  
+          console.log(data)
+        self.parents("tr").find("td:eq(1)").text(code); 
+        self.parents("tr").find("td:eq(2)").text(data.data.CODI_RNOMBRE); 
+        self.parents("tr").find("td:eq(3)").text(factor_multi);
+        self.parents("tr").find("td:eq(4)").text(factor_div);
+        self.parents("tr").find("td:eq(5)").text(tipo == 1 ? 'POR CAJA': "FACTORIZADO");
+        self.parents("tr").find("td:eq(6)").text(estado == 1 ? 'SI': "NO"); 
+        self.parents("tr").attr('data-code', code);
+        self.parents("tr").attr('data-factor_multi', factor_multi);
+        self.parents("tr").attr('data-factor_div', factor_div);
+        self.parents("tr").attr('data-tipo', tipo);
+        self.parents("tr").attr('data-estado', estado);
+        self.parents("tr").find(".btn-edit").show();
+        self.parents("tr").find(".btn-cancel").remove();
+        self.parents("tr").find(".btn-update").remove()
+      } else {  
+        let code1 = 'No existe codigo';
+        self.parents("tr").find("td:eq(1)").text(code1);
+        self.parents("tr").find("td:eq(2)").text(code1);  
+        self.parents("tr").find("td:eq(3)").text(factor_multi);
+        self.parents("tr").find("td:eq(4)").text(factor_div);
+        self.parents("tr").find("td:eq(5)").text(tipo == 1 ? 'POR CAJA': "FACTORIZADO");
+        self.parents("tr").find("td:eq(6)").text(estado == 1 ? 'SI': "NO"); 
+        self.parents("tr").attr('data-code', code1);
+        self.parents("tr").attr('data-factor_multi', factor_multi);
+        self.parents("tr").attr('data-factor_div', factor_div);
+        self.parents("tr").attr('data-tipo', tipo);
+        self.parents("tr").attr('data-estado', estado);
+        self.parents("tr").find(".btn-edit").show();
+        self.parents("tr").find(".btn-cancel").remove();
+        self.parents("tr").find(".btn-update").remove()
+      } 
+    });
   $("#productTable tbody").on('click','tr', function(e){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
@@ -204,10 +228,10 @@ $(document).ready(function(){
         array[i] = `<tr id='${data[i].CODI_RCODIGO}' data-factor_multi='${data[i].factor_multi}' data-tipo='${data[i].tipo}'
                         data-factor_div='${data[i].factor_div}' data-estado='${data[i].ESTADO}' data-code='${data[i].CODI_RCODIGO}'>
 
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_PADRE}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RCODIGO}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RNOMBRE}</td>
-                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].factor_multi}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_PADRE ? data[i].CODI_PADRE : '-'}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RCODIGO ? data[i].CODI_RCODIGO : '-'}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].CODI_RNOMBRE ? data[i].CODI_RNOMBRE: '-'}</td>
+                      <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].factor_multi ? data[i].factor_multi: '-'}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].factor_div}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].tipo == 1 ? "POR CAJA" : "FACTORIZADO"}</td>
                       <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].ESTADO == 1 ? "SI" : "NO"}</td>
@@ -350,13 +374,11 @@ $(document).ready(function(){
 
     })
   }
-  function updateProduct(data) {
-    $.ajax({
+   function updateProduct(data) { 
+    return $.ajax({
       type:'POST',
       url:'/productos/terminado/update',
       data: data,
-    }).then((data) => {
-      alert('producto actualizado')
     })
   }
   function getNutricional(id){

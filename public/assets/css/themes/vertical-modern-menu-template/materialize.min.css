@@ -5811,7 +5811,7 @@ label {
 ::placeholder {
 	color: #d1d1d1
 }
-
+/*
 input:not([type]),
 input[type=date]:not(.browser-default),
 input[type=datetime-local]:not(.browser-default),
@@ -6359,7 +6359,7 @@ textarea.materialize-textarea+label:after {
 	transition: .3s color;
 	color: transparent
 }
-
+*/
 textarea {
 	/*width: 100%;*/
 	/*height: 3rem;*/
