@@ -17,10 +17,16 @@ $(document).ready(function(){
           $.get('administrar-tabla-clasificacion',{clasificacion:clasificacion,estado:estado},function(res){
                 if (res.camiones != '') {
                   $.each(res.camiones,function(index,value){
-                    let monto_cierre = value.monto_cierre == null ? '-' : value.monto_cierre;
-                    let ingreso_zeta = value.ingreso_zeta == null ? '-' : value.ingreso_zeta;
-                    let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
-                    let naviera = value.naviera == null ? '-' : value.naviera;
+                    let monto_cierre = value.monto_cierre == null || value.monto_cierre == '' ? '-' : value.monto_cierre;
+                    let ingreso_zeta = value.ingreso_zeta == null || value.monto_cierre == '' ? '-' : value.ingreso_zeta;
+                    let declara_origen = value.declara_origen == null || value.monto_cierre == '' ? '-' : value.declara_origen;
+                    let naviera = value.naviera == null || value.monto_cierre == '' ? '-' : value.naviera;
+                    let proveedor = value.proveedor == null || value.proveedor == '' ? '-' : value.proveedor;
+                    let tipo_moneda = value.tipo_moneda == null || value.tipo_moneda == '' ? '-' : value.tipo_moneda;
+                    let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
+
+
+
 
                     $('#tabla-administracion-cuerpo').append(`
                       <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
@@ -30,12 +36,12 @@ $(document).ready(function(){
                       <td>${value.codigo_aux}</td>
                       <td>${value.descripcion}</td>
                       <td>${dateUTC(value.fecha_cierre)}</td>
-                      <td>${value.proveedor}</td>
+                      <td>${proveedor}</td>
                       <td>${monto_cierre}</td>
-                      <td>${value.tipo_moneda}</td>
+                      <td>${tipo_moneda}</td>
                       <td>${dateUTC(value.fecha_embarque)}</td>
                       <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                      <td>${value.lugar_arribo}</td>
+                      <td>${lugar_arribo}</td>
                       <td>${declara_origen}</td>
                       <td>${ingreso_zeta}</td>
                       <td>${naviera}</td>
@@ -68,6 +74,10 @@ $(document).ready(function(){
                       let ingreso_zeta = value.ingreso_zeta == null ? '-' : value.ingreso_zeta;
                       let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
                       let naviera = value.naviera == null ? '-' : value.naviera;
+                      let proveedor = value.proveedor == null || value.proveedor == '' ? '-' : value.proveedor;
+                      let tipo_moneda = value.tipo_moneda == null || value.tipo_moneda == '' ? '-' : value.tipo_moneda;
+                      let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
+
                       $('#tabla-administracion-cuerpo').append(`
                         <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
                         <td>${value.id_camion}</td>
@@ -76,12 +86,12 @@ $(document).ready(function(){
                         <td>${value.codigo_aux}</td>
                         <td>${value.descripcion}</td>
                         <td>${dateUTC(value.fecha_cierre)}</td>
-                        <td>${value.proveedor}</td>
+                        <td>${proveedor}</td>
                         <td>${monto_cierre}</td>
-                        <td>${value.tipo_moneda}</td>
+                        <td>${tipo_moneda}</td>
                         <td>${dateUTC(value.fecha_embarque)}</td>
                         <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                        <td>${value.lugar_arribo}</td>
+                        <td>${lugar_arribo}</td>
                         <td>${declara_origen}</td>
                         <td>${ingreso_zeta}</td>
                         <td>${naviera}</td>
@@ -112,20 +122,30 @@ $(document).ready(function(){
                     let ingreso_zeta = value.ingreso_zeta == null ? '-' : value.ingreso_zeta;
                     let declara_origen = value.declara_origen == '' ? '-' : value.declara_origen;
                     let naviera = value.naviera == null ? '-' : value.naviera;
+                    let proveedor = value.proveedor == null || value.proveedor == '' ? '-' : value.proveedor;
+                    let tipo_moneda = value.tipo_moneda == null || value.tipo_moneda == '' ? '-' : value.tipo_moneda;
+                    let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
+
+                    let id_camion = value.id_camion == '' ? '-' : value.id_camion;
+                    let codigo = value.codigo == null ? '-' : value.codigo;
+                    let estado = value.estado == null || value.estado == '' ? '-' : value.estado;
+                    let codigo_aux = value.codigo_aux == null || value.codigo_aux == '' ? '-' : value.codigo_aux;
+                    let descripcion = value.descripcion == null || value.descripcion == '' ? '-' : value.descripcion;
+
                     $('#tabla-administracion-cuerpo').append(`
                       <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
-                      <td>${value.id_camion}</td>
-                      <td>${value.codigo}</td>
-                      <td>${value.estado}</td>
-                      <td>${value.codigo_aux}</td>
-                      <td>${value.descripcion}</td>
+                      <td>${id_camion}</td>
+                      <td>${codigo}</td>
+                      <td>${estado}</td>
+                      <td>${codigo_aux}</td>
+                      <td>${descripcion}</td>
                       <td>${dateUTC(value.fecha_cierre)}</td>
-                      <td>${value.proveedor}</td>
+                      <td>${proveedor}</td>
                       <td>${monto_cierre}</td>
-                      <td>${value.tipo_moneda}</td>
+                      <td>${tipo_moneda}</td>
                       <td>${dateUTC(value.fecha_embarque)}</td>
                       <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                      <td>${value.lugar_arribo}</td>
+                      <td>${lugar_arribo}</td>
                       <td>${declara_origen}</td>
                       <td>${ingreso_zeta}</td>
                       <td>${naviera}</td>
@@ -163,6 +183,15 @@ $(document).ready(function(){
           $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
               // console.log();
               //Detalle
+
+                let clasif_mercancia = res.camionesDetalle[0]['clasif_mercancia'] == null || res.camionesDetalle[0]['clasif_mercancia'] == '' ? '0' : res.camionesDetalle[0]['clasif_mercancia'];
+                let tipo_unidades    = res.camionesDetalle[0]['tipo_unidades'] == null || res.camionesDetalle[0]['tipo_unidades'] == '' ? '0' : res.camionesDetalle[0]['tipo_unidades'];
+                let tipo_moneda    = res.camionesDetalle[0]['tipo_moneda'] == null || res.camionesDetalle[0]['tipo_moneda'] == '' ? '0' : res.camionesDetalle[0]['tipo_moneda'];
+                let forma_pago    = res.camionesDetalle[0]['forma_pago'] == null || res.camionesDetalle[0]['forma_pago'] == '' ? '0' : res.camionesDetalle[0]['forma_pago'];
+                let despues_dias    = res.camionesDetalle[0]['despues_dias'] == null || res.camionesDetalle[0]['despues_dias'] == '' ? '0' : res.camionesDetalle[0]['despues_dias'];
+                let despues_fecha    = res.camionesDetalle[0]['despues_fecha'] == null || res.camionesDetalle[0]['despues_fecha'] == '' ? '0' : res.camionesDetalle[0]['despues_fecha'];
+                let lugar_arribo    = res.camionesDetalle[0]['lugar_arribo'] == null || res.camionesDetalle[0]['lugar_arribo'] == '' ? '0' : res.camionesDetalle[0]['lugar_arribo'];
+
                 $("#id_codigo_detalle").val(res.camionesDetalle[0]['id_camion']);
                 $("#codigo_detalle").val(res.camionesDetalle[0]['codigo']);
                 $("#codigo_aux").val(res.camionesDetalle[0]['codigo_aux']);
@@ -172,17 +201,17 @@ $(document).ready(function(){
                 $("#observaciones").val(res.camionesDetalle[0]['observaciones']);
                 $("#proveedor").val(res.camionesDetalle[0]['proveedor']);
                 $("#marca_origen").val(res.camionesDetalle[0]['marca_origen']);
-                $("#clasif_mercancia").val(res.camionesDetalle[0]['clasif_mercancia']);
+                $("#clasif_mercancia").val(clasif_mercancia);
                 $("#fecha_cierre").val(dateUTCR(res.camionesDetalle[0]['fecha_cierre']));
                 $("#cantidad_unidades").val(res.camionesDetalle[0]['cantidad_unidades']);
-                $("#tipo_unidades").val(res.camionesDetalle[0]['tipo_unidades']);
+                $("#tipo_unidades").val(tipo_unidades);
                 $("#monto_unitario").val(res.camionesDetalle[0]['monto_unitario']);
                 $("#monto_cierre").val(res.camionesDetalle[0]['monto_cierre']);
-                $("#tipo_moneda").val(res.camionesDetalle[0]['tipo_moneda']);
-                $("#forma_pago").val(res.camionesDetalle[0]['forma_pago']);
-                $("#despues_dias").val(res.camionesDetalle[0]['despues_dias']);
-                $("#despues_fecha").val(res.camionesDetalle[0]['despues_fecha']);
-                $("#lugar_arribo").val(res.camionesDetalle[0]['lugar_arribo']);
+                $("#tipo_moneda").val(tipo_moneda);
+                $("#forma_pago").val(forma_pago);
+                $("#despues_dias").val(despues_dias);
+                $("#despues_fecha").val(despues_fecha);
+                $("#lugar_arribo").val(lugar_arribo);
                 $("#fecha_embarque1").val(dateUTCR(res.camionesDetalle[0]['fecha_embarque1']));
                 $("#fecha_embarque2").val(dateUTCR(res.camionesDetalle[0]['fecha_embarque2']));
                 $("#fecha_llegada1").val(dateUTCR(res.camionesDetalle[0]['fecha_llegada1']));
@@ -194,6 +223,7 @@ $(document).ready(function(){
                 $("#observacion_fecha").val(res.camionesDetalle[0]['observacion_fecha']);
 
           //Logistica
+
                 $("#id_codigo_logistica").val(res.camionesDetalle[0]['id_camion']);
                 $("#id_logistica").val(res.camionesDetalle[0]['id_camion']);
                 $("#codigo_logistica").val(res.camionesDetalle[0]['codigo']);
@@ -209,23 +239,28 @@ $(document).ready(function(){
                 $("#fecha_finalizacion").val(dateUTCR(res.camionesDetalle[0]['fecha_finalizacion']));
 
             //Datos tecnicos
-            let declara_tramite = res.camionesDetalle[0]['declara_tramite'] == null ? '0' : res.camionesDetalle[0]['declara_tramite'];
-            let declara_origen = res.camionesDetalle[0]['declara_origen'] == null ? '0' : res.camionesDetalle[0]['declara_origen'];
-            let declara_zona_ext = res.camionesDetalle[0]['declara_zona_ext'] == null ? '0' : res.camionesDetalle[0]['declara_zona_ext'];
-            let declara_zona_exp = res.camionesDetalle[0]['declara_zona_exp'] == null ? '0' : res.camionesDetalle[0]['declara_zona_exp'];
-            let declara_zona_franca = res.camionesDetalle[0]['declara_zona_franca'] == null ? '0' : res.camionesDetalle[0]['declara_zona_franca'];
 
-            let declara_region = res.camionesDetalle[0]['declara_region'] == null ? '0' : res.camionesDetalle[0]['declara_region'];
-            let declara_tipo_transp = res.camionesDetalle[0]['declara_tipo_transp'] == null ? '0' : res.camionesDetalle[0]['declara_tipo_transp'];
-            let declara_trasb_ext = res.camionesDetalle[0]['declara_trasb_ext'] == null ? '0' : res.camionesDetalle[0]['declara_trasb_ext'];
-            let declara_trasb_nal = res.camionesDetalle[0]['declara_trasb_nal'] == null ? '0' : res.camionesDetalle[0]['declara_trasb_nal'];
+          
+            let naviera = res.camionesDetalle[0]['naviera'] == null || res.camionesDetalle[0]['naviera'] == '' ? '0' : res.camionesDetalle[0]['naviera'];
+            let agencia = res.camionesDetalle[0]['agencia'] == null || res.camionesDetalle[0]['agencia'] == '' ? '0' : res.camionesDetalle[0]['agencia'];
 
-            let declara_clausula = res.camionesDetalle[0]['declara_clausula'] == null ? '0' : res.camionesDetalle[0]['declara_clausula'];
-            let sucursal = res.camionesDetalle[0]['sucursal'] == null ? '0' : res.camionesDetalle[0]['sucursal'];
+            let declara_tramite = res.camionesDetalle[0]['declara_tramite'] == null || res.camionesDetalle[0]['declara_tramite'] == '' ? '0' : res.camionesDetalle[0]['declara_tramite'];
+            let declara_origen = res.camionesDetalle[0]['declara_origen'] == null || res.camionesDetalle[0]['declara_origen'] == '' ? '0' : res.camionesDetalle[0]['declara_origen'];
+            let declara_zona_ext = res.camionesDetalle[0]['declara_zona_ext'] == null || res.camionesDetalle[0]['declara_zona_ext'] == '' ? '0' : res.camionesDetalle[0]['declara_zona_ext'];
+            let declara_zona_exp = res.camionesDetalle[0]['declara_zona_exp'] == null || res.camionesDetalle[0]['declara_zona_exp'] == '' ? '0' : res.camionesDetalle[0]['declara_zona_exp'];
+            let declara_zona_franca = res.camionesDetalle[0]['declara_zona_franca'] == null || res.camionesDetalle[0]['declara_zona_franca'] == '' ? '0' : res.camionesDetalle[0]['declara_zona_franca'];
+
+            let declara_region = res.camionesDetalle[0]['declara_region'] == null || res.camionesDetalle[0]['declara_region'] == '' ? '0' : res.camionesDetalle[0]['declara_region'];
+            let declara_tipo_transp = res.camionesDetalle[0]['declara_tipo_transp'] == null || res.camionesDetalle[0]['declara_tipo_transp'] == '' ? '0' : res.camionesDetalle[0]['declara_tipo_transp'];
+            let declara_trasb_ext = res.camionesDetalle[0]['declara_trasb_ext'] == null || res.camionesDetalle[0]['declara_trasb_ext'] == '' ? '0' : res.camionesDetalle[0]['declara_trasb_ext'];
+            let declara_trasb_nal = res.camionesDetalle[0]['declara_trasb_nal'] == null || res.camionesDetalle[0]['declara_trasb_nal'] == '' ? '0' : res.camionesDetalle[0]['declara_trasb_nal'];
+
+            let declara_clausula = res.camionesDetalle[0]['declara_clausula'] == null || res.camionesDetalle[0]['declara_clausula'] == '' ? '0' : res.camionesDetalle[0]['declara_clausula'];
+            let sucursal = res.camionesDetalle[0]['sucursal'] == null || res.camionesDetalle[0]['sucursal'] == '' ? '0' : res.camionesDetalle[0]['sucursal'];
 
                 $("#id_codigo_tecnico").val(res.camionesDetalle[0]['id_camion']);
-                $("#naviera").val(res.camionesDetalle[0]['naviera']);
-                $("#agencia").val(res.camionesDetalle[0]['agencia']);
+                $("#naviera").val(naviera);
+                $("#agencia").val(agencia);
                 $("#transporte_nombre").val(res.camionesDetalle[0]['transporte_nombre']);
                 $("#ingreso_zeta").val(res.camionesDetalle[0]['ingreso_zeta']);
                 $("#ingreso_zeta_fecha").val(dateUTCR(res.camionesDetalle[0]['ingreso_zeta_fecha']));
@@ -466,16 +501,19 @@ $(document).ready(function(){
      var ms, fecha,año, mes, dia, hora, minuto, segundo;
      // ms= res.dato_general[0]['fecha_embarque1']+' UTC';
 
-     ms = new Date(ms);
-
-     año=ms.getUTCFullYear();
-     mes=ms.getUTCMonth()+1;
-     dia=ms.getUTCDate();
-     hora=ms.getUTCHours()-3;
-     minuto=ms.getUTCMinutes();
-     segundo=ms.getUTCSeconds();
-     fecha= año+'-'+ pad(mes) +'-'+ pad(dia)+'T'+ pad(hora)+':'+ pad(minuto)+':'+ pad(segundo);
-     return fecha;
+     if ( ms != null) {
+       ms = new Date(ms);
+       año=ms.getUTCFullYear();
+       mes=ms.getUTCMonth()+1;
+       dia=ms.getUTCDate();
+       hora=ms.getUTCHours()-3;
+       minuto=ms.getUTCMinutes();
+       segundo=ms.getUTCSeconds();
+       fecha= año+'-'+ pad(mes) +'-'+ pad(dia)+'T'+ pad(hora)+':'+ pad(minuto)+':'+ pad(segundo);
+       return fecha;
+     } else {
+       return '';
+     }
    }
 
    function dateUTC(ms) {
