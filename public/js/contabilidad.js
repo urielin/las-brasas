@@ -99,12 +99,17 @@ $('#table-detalle').on('click','.eliminar-item',function(){
       var fecha1 = $(this).attr('data-fecha_1');
       var fecha2 = $(this).attr('data-fecha_2');
       var montoTotal= 0;
-      // console.log(texto);
-      // console.log(id_retiro_indice);
-      // console.log("fecha 1");
-      // console.log(fecha1);
-      // console.log("fecha 2");
-      // console.log(fecha2);
+      var valores;
+
+      console.log("------------------");
+      // console.log();
+    // $(".eliminar-item").parents("tr").each(function(){
+    //         valores+=$(this).html()+"\n";
+    //     });
+      valores = $(".eliminar-item").parents("tr")[2];
+      console.log(valores.find());
+      console.log("------------------");
+
       if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
          $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice, fecha1:fecha1 ,fecha2:fecha2 },function(res){
 
@@ -125,7 +130,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
                               } else {
                                   montoTotal+=parseFloat(value.monto);
                               }
-                          });
+                          }); 
 
                           $.each(res.depositosDetalle2, function(index,value){
 

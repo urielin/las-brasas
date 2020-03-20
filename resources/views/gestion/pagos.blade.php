@@ -149,6 +149,19 @@
           </tbody>
         </table>
           <nav>
+            <ul>
+              <li class="page-item" v-if="pagination.current_page > 1">
+                <a class="page-link" href="#" onclick="cambiarPagina(pagination.current_page - 1)">Ant</a>
+              </li>
+              <li class="page-item" v-for="page in pagesNumber" :key="page" :class="[page == isActived ? 'active' : '']">
+                <a class="page-link" href="#" onclick="cambiarPagina(page,buscar,criterio)" v-text="page"></a>
+              </li>
+              <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+                <a class="page-link" href="#" onclick="cambiarPagina(pagination.current_page)">Sig</a>
+              </li>
+            </ul>
+
+
             @if ($histories->lastPage() > 1)
               <ul class="pagination">
                   <li class="{{ ($histories->currentPage() == 1) ? ' disabled' : '' }}">
@@ -173,5 +186,72 @@
 @endsection
 
 @section('js')
+  <script>
+    
+  </script>
   <script src="{{asset('js/pagos.js')}}"></script>
+  <script>
+    $(document).ready(function(){
+      this.paginator.listarPagos()
+    })
+    let paginator = { 
+      pagesNumber() => {
+                if(!this.pagination.to) {
+                    return [];
+                }
+
+                var from = this.pagination.current_page - this.offset;
+                if(from < 1) {
+                    from = 1;
+                }
+
+                var to = from + (this.offset * 2);
+                if(to >= this.pagination.last_page){
+                    to = this.pagination.last_page;
+                }
+
+                var pagesArray = [];
+                while(from <= to) {
+                    pagesArray.push(from);
+                    from++;
+                }
+                return pagesArray;
+      },
+      setPaginatorHTML() => {
+        let numberPager = this.pagesNumber();
+        let hmtl = [];
+        for (let i = 0; i < numberPager.length; i++) {
+          let page == numberPager[i] ? 'active' : '';
+          html =. `<li class="page-item">
+                    <a class="page-link" href="#" onclick="paginator.cambiarPagina(${numberPager[i]})" v-text="page"></a>
+                  </li>` 
+        } 
+      },
+      cambiarPagina(page){
+          let me = this; 
+          me.pagination.current_page = page; 
+          this.listarIngreso(page);
+      },
+      listarPagos(page = 1){
+        let me=this;
+        var url= 'contenedores-camiones/pagos?page=' + page;
+
+        $.ajax({
+          url: url,
+          type: 'GET',
+        }).then((data) => {
+          var respuesta= response.data;
+          me.arrayIngreso = respuesta.ingresos.data;
+          me.pagination= respuesta.pagination;
+          
+        })
+        axios.get(url).then(function (response) {
+        
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+      }
+    } 
+  </script>
 @endsection
