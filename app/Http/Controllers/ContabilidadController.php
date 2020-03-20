@@ -93,9 +93,11 @@ class ContabilidadController extends Controller
                           }
                           DB::update("UPDATE dbo.ID_PUNTEROS set Valor = Valor + 1 where (id_puntero = 20)");
 
+                          $camionAgregar =  session('user');
+                          $camionAgregar= $camionAgregar['usuario'];
 
                           DB::insert("INSERT INTO MODULO_OTROS_RETIROS_PROSEGUR (folio, descripcion, estado, usuario, fecha_ingreso, monto, t_oper )
-                          VALUES ( '$valor' , '',0, 'laura',GETDATE(),0,1)");
+                          VALUES ( '$valor' , '',0, '$camionAgregar',GETDATE(),0,1)");
                       }
 
 

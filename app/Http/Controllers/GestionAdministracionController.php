@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -140,12 +142,20 @@ class GestionAdministracionController extends Controller
     {
         if ($request->ajax()) {
 
-            $fecha_agregar       = date('d-m-Y H:i:s', strtotime($request->fecha_agregar));
+            $existe = DB::SELECT("SELECT * FROM dbsys.camiones Where codigo = '$request->codigo_agregar'");
 
-            DB::insert("INSERT INTO dbsys.camiones (codigo, descripcion, contenido,codigo_aux, ingreso_zeta, ingreso_zeta_fecha,observaciones, estado )
-            VALUES ('$request->codigo_agregar' ,'$request->descripcion_agregar','$request->contenido_agregar', '$request->auxiliar_agregar','$request->documento_agregar','$fecha_agregar','$request->observaciones_agregar','1')");
+            if ($existe != null) {
 
-            $camionAgregar = 'Agregado';
+                $camionAgregar =  '1';
+            }else {
+                $fecha_agregar  = date('d-m-Y H:i:s', strtotime($request->fecha_agregar));
+
+                DB::insert("INSERT INTO dbsys.camiones (codigo, descripcion, contenido,codigo_aux, ingreso_zeta, ingreso_zeta_fecha,observaciones, estado )
+                VALUES ('$request->codigo_agregar' ,'$request->descripcion_agregar','$request->contenido_agregar', '$request->auxiliar_agregar','$request->documento_agregar','$fecha_agregar','$request->observaciones_agregar','1')");
+
+                $camionAgregar = '0';
+            }
+
             return response()->json([
                 'camionAgregar'               =>$camionAgregar
             ]);

@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
+                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">
                       <td>${value.id_camion}</td>
                       <td>${value.codigo}</td>
                       <td>${value.estado}</td>
@@ -79,7 +79,7 @@ $(document).ready(function(){
                       let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
 
                       $('#tabla-administracion-cuerpo').append(`
-                        <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
+                        <tr class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">
                         <td>${value.id_camion}</td>
                         <td>${value.codigo}</td>
                         <td>${value.estado}</td>
@@ -167,7 +167,7 @@ $(document).ready(function(){
 
 
    $('#tabla-administracion-cuerpo').on('click','.administrar-detalle',function(){
-          let id_camion;
+          let id_camion,estado;
 
           let elem = $('.tabs')
           let instance = M.Tabs.getInstance(elem);
@@ -180,6 +180,17 @@ $(document).ready(function(){
           $('#tabla-camionesAutorizacionDetalle-body').empty();
 
           id_camion = $(this).attr('data-id_camion');
+          estado = $(this).attr('data-estado');
+          console.log(estado);
+
+          if (estado == '1') {
+              $('.activo').prop("disabled", false);
+              $('.accion').show();
+          } else {
+              $('.activo').prop("disabled", true);
+              $('.accion').hide();
+          }
+
           $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
               // console.log();
               //Detalle
@@ -240,7 +251,7 @@ $(document).ready(function(){
 
             //Datos tecnicos
 
-          
+
             let naviera = res.camionesDetalle[0]['naviera'] == null || res.camionesDetalle[0]['naviera'] == '' ? '0' : res.camionesDetalle[0]['naviera'];
             let agencia = res.camionesDetalle[0]['agencia'] == null || res.camionesDetalle[0]['agencia'] == '' ? '0' : res.camionesDetalle[0]['agencia'];
 
@@ -473,7 +484,12 @@ $(document).ready(function(){
              success:function(res)
              {
 
-                 alerta('success','Se creo un nuevo contenedor');
+                if (res.camionAgregar == '0') {
+                     alerta('success','Se creo un nuevo contenedor');
+                } else {
+                    alerta('error','El contenedor ya existe, ingrese otro código');
+                }
+
             }
            });
 
