@@ -130,7 +130,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
                               } else {
                                   montoTotal+=parseFloat(value.monto);
                               }
-                          }); 
+                          });
 
                           $.each(res.depositosDetalle2, function(index,value){
 
@@ -329,7 +329,7 @@ $('#buscar-depositos-pendientes').on('click', function(){
     }
   });
   //--------------------------------------------------------------
-  $('#agregar-otro-retiro').on('click', function(){
+  $('#agregar-otro-retiro').on('click', function(){ 
 
         $.get('retiros-otros-generar',function(res){
 
