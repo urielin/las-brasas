@@ -421,6 +421,197 @@ $(document).ready(function(){
   	}
   	return x1 + x2;
     }
+    $('#tabla3').on('click',function(){
 
-   
+        $.get('comisiones-vendedor',function(res){
+
+            //$('#contenido-vendedor').empty();
+            console.log(res);
+            $.each(res.comisiones,function(index,value){
+
+                btn_editar='<a type="button" value="" class="edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                html='<tr data-id="'+value.id_vendedor+'"'; 
+                html+='data-nombre="'+value.nombre_vendedor+'"'; 
+                html+='data-nivel1="'+value.nivel1+'"'; 
+                html+='data-comision1="'+value.comision1+'"'; 
+                html+='data-nivel2="'+value.nivel2+'"'; 
+                html+='data-comision2="'+value.comision2+'"'; 
+                html+='data-nivel3="'+value.nivel3+'"'; 
+                html+='data-comision3="'+value.comision3+'">'; 
+                   
+                html+='<td>'+btn_editar+'</td>';
+                /*html+='<td>'+value.nombre_vendedor+'</td>';
+                html+='<td>'+value.nivel1+'</td>';
+                html+='<td>'+value.comision1+'</td>';
+                html+='<td>'+value.nivel2+'</td>';
+                html+='<td>'+value.comision2+'</td>';
+                html+='<td>'+value.nivel3+'</td>';
+                //html+='<td>'+value.comision3+'</td><tr>';*/
+                
+                if(value.nombre_vendedor == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.nombre_vendedor+'</td>';
+                }
+                if(value.nivel1 == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+addCommas(value.nivel1)+'</td>';
+                }
+                if(value.comision1 == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.comision1+'%</td>';
+                }
+                if(value.nivel2 == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+addCommas(value.nivel2)+'</td>';
+                }
+                if(value.comision2 == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.comision2+'%</td>';
+                }
+                if(value.nivel3 == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+addCommas(value.nivel3)+'</td>';
+                }
+                
+                if(value.comision3 == ''){
+                    html+='<td>-</td><tr>'; 
+                }
+                else{
+                    html+='<td>'+value.comision3+'%</td><tr>';
+                }
+        
+                $('#contenido-vendedor').append(html);  
+            })
+
+        })
+
+        
+
+    })
+    $('#comisiones-vendedor').on('click ','a.edit',function() {
+        
+        //console.log('gaaa');
+        /*if($(this).parents('tr').attr('data-nivel1')==null){
+            let nivel1 ='';
+        }
+        else{
+            let nivel1 = $(this).parents('tr').attr('data-nivel1');
+        }*/
+        let nivel1 = $(this).parents('tr').attr('data-nivel1');
+        let comision1 = $(this).parents('tr').attr('data-comision1');
+        let nivel2 = $(this).parents('tr').attr('data-nivel2');
+        let comision2 = $(this).parents('tr').attr('data-comision2');
+        let nivel3 = $(this).parents('tr').attr('data-nivel3');
+        let comision3 = $(this).parents('tr').attr('data-comision3');
+        
+       
+
+        console.log(comision3);
+        
+        $(this).parents("tr").find("td:eq(2)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Código" name="nivel1" id="nombre" value="'+nivel1+'" >');
+        $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="RUT" name="comision1" value="'+comision1+'" >');
+        $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Empresa" name="nivel2" value="'+nivel2+'" >');
+        $(this).parents("tr").find("td:eq(5)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="País" name="comision2" value="'+comision2+'" >');
+        $(this).parents("tr").find("td:eq(6)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Dirección" name="nivel3" value="'+nivel3+'" >');
+        $(this).parents("tr").find("td:eq(7)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Teléfono" name="comision3" value="'+comision3+'" >');
+        $(this).parents("tr").find("td:eq(0)").prepend(`<span style='display: flex;'>
+                                                      <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'>
+
+                                                          <i class="material-icons dp48">save</i>
+
+                                                      </button>
+                                                      <button title='Cancelar' style='padding: 5px 10px;' class='btn btn-50 red btn-xs btn-cancel'>
+
+                                                          <i class="material-icons dp48">close</i>
+
+                                                      </button>
+                                                    </span>`)
+        $(this).hide();
+
+        //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
+    
+        //console.log('gaa');
+       
+    
+    
+    })
+    $("#comisiones-vendedor").on("click", ".btn-cancel", function(){
+        let nivel1 = $(this).parents('tr').attr('data-nivel1');
+        let comision1 = $(this).parents('tr').attr('data-comision1');
+        let nivel2 = $(this).parents('tr').attr('data-nivel2');
+        let comision2 = $(this).parents('tr').attr('data-comision2');
+        let nivel3 = $(this).parents('tr').attr('data-nivel3');
+        let comision3 = $(this).parents('tr').attr('data-comision3');
+        
+        $(this).parents("tr").find("td:eq(2)").text(nivel1);
+        $(this).parents("tr").find("td:eq(3)").text(comision1);
+        $(this).parents("tr").find("td:eq(4)").text(nivel2);
+        $(this).parents("tr").find("td:eq(5)").text(comision2);
+        $(this).parents("tr").find("td:eq(6)").text(nivel3);
+        $(this).parents("tr").find("td:eq(7)").text(comision3);
+
+        $(this).parents("tr").find(".edit").show();
+        $(this).parents("tr").find(".btn-update").remove();
+        $(this).parents("tr").find(".btn-cancel").remove();
+    })
+
+    $("#comisiones-vendedor").on("click", ".btn-update",function(){
+        let id = $(this).parents('tr').attr('data-id');
+        let nivel1 = $(this).parents('tr').find("input[name='nivel1']").val();
+        let comision1 = $(this).parents('tr').find("input[name='comision1']").val();
+        let nivel2 = $(this).parents('tr').find("input[name='nivel2']").val();
+        let comision2 = $(this).parents('tr').find("input[name='comision2']").val();
+        let nivel3 = $(this).parents('tr').find("input[name='nivel3']").val();
+        let comision3 = $(this).parents('tr').find("input[name='comision3']").val();
+
+        $(this).parents("tr").find("td:eq(2)").text(nivel1);
+        $(this).parents("tr").find("td:eq(3)").text(comision1);
+        $(this).parents("tr").find("td:eq(4)").text(nivel2);
+        $(this).parents("tr").find("td:eq(5)").text(comision2);
+        $(this).parents("tr").find("td:eq(6)").text(nivel3);
+        $(this).parents("tr").find("td:eq(7)").text(comision3);
+
+        let data = {id:id,
+            nivel1:nivel1,
+            comision1:comision1,
+            nivel2:nivel2,
+            comision2:comision2,
+            nivel3:nivel3,
+            comision3:comision3,
+            _token:$("meta[name='csrf-token']").attr("content")};
+
+            $.ajax({
+                type:'POST',
+                url:'updatevendedor',
+                data: data,
+                headers:{_token:$("meta[name='csrf-token']").attr("content")},
+              }).then((data) => {
+                alert('Vendedor actualizado');
+              })
+          
+        $(this).parents('tr').attr('data-nivel1',nivel1);
+        $(this).parents('tr').attr('data-comision1',comision1);
+        $(this).parents('tr').attr('data-nivel2',nivel2);
+        $(this).parents('tr').attr('data-comision2',comision2);
+        $(this).parents('tr').attr('data-nivel3',nivel3);
+        $(this).parents('tr').attr('data-comision3',comision3);
+
+        $(this).parents("tr").find(".edit").show();
+        $(this).parents("tr").find(".btn-cancel").remove();
+        $(this).parents("tr").find(".btn-update").remove();
+
+    })
+
 });

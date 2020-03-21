@@ -498,5 +498,31 @@ class ComicionVentaController extends Controller
       ]);
     }
   }
+  public function comisiones(Request $request){
 
+    if (request() -> ajax()){
+
+      $comisiones= DB::select("SELECT id_vendedor, nombre_vendedor, ISNULL(nivel1,'') as nivel1,ISNULL(comision1,'') as comision1,ISNULL(nivel2,'') as nivel2,ISNULL(comision2,'') as comision2,ISNULL(nivel3,'') as nivel3,ISNULL(comision3,'') as comision3 FROM ADM_VENDEDOR_PARAMETROS_COMISION");
+      return response()->json([
+
+        'comisiones'              =>$comisiones
+
+      ]);
+    }
+  }
+
+  public function updateVendedor(Request $request){
+    if(request() -> ajax()){
+
+      DB::update("UPDATE [dbo].[ADM_VENDEDOR_PARAMETROS_COMISION]
+                  SET [nivel1] = $request->nivel1
+                      ,[comision1] = $request->comision1
+                      ,[nivel2] = $request->nivel2
+                      ,[comision2] = $request->comision2
+                      ,[nivel3] = $request->nivel3
+                      ,[comision3] = $request->comision3
+                  WHERE id_vendedor=$request->id");
+    }
+
+  }
 }

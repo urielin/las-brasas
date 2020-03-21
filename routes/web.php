@@ -144,6 +144,8 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
+  Route::post('updatevendedor','ComicionVentaController@updateVendedor')->name('updatevendedor');
+  Route::get('comisiones-vendedor','ComicionVentaController@comisiones')->name('comisionesVendedor');
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
   //Route::resource('email','ComicionVentaController@sendEmail')->name('email');

@@ -52,8 +52,10 @@
 
       <div class="col s12">
         <ul class="tabs">
-          <li class="tab col m6"><a class="active" href="#test1" id="tabla1">Resumen de comisiones</a></li>
-          <li class="tab col m6"><a href="#test2" id="tabla2">Detalle de comisiones</a></li>
+          <li class="tab"><a class="active" href="#test1" id="tabla1">Resumen de comisiones</a></li>
+          <li class="tab"><a href="#test2" id="tabla2">Detalle de comisiones</a></li>
+          <li class="tab"><a href="#test3" id="tabla3">Comisiones de proveedores</a></li>
+          
         </ul>
       </div>
       <div id="test1" class="col s12">
@@ -104,6 +106,28 @@
 
           </tbody>
         </table>
+        </div>
+      </div>
+      <div id="test3" class="col s12">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+
+          <table class="table table-responsive responsive-table centered" id="comisiones-vendedor" >
+            <thead>
+              <tr>
+                <th>Acción</th>
+                <th>Vendedor</th>
+                <th>Nivel 1</th>
+                <th>Comisión</th>
+                <th>Nivel 2</th>
+                <th>Comisión</th>
+                <th>Nivel 3</th>
+                <th>Comisión</th>
+              </tr>
+            </thead>
+            <tbody id="contenido-vendedor">
+
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

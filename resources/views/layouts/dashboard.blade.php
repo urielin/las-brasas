@@ -76,6 +76,7 @@
     </header>
 
     <aside class="sidenav-main nav-collapsible sidenav-light sidenav-active-square nav-collapsed">
+    <!--aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square"-->
       <div class="brand-sidebar">
         <h1 class="logo-wrapper"><a class="brand-logo darken-1 hide-on-med-and-down" href="/">
         <img class="" src="{{ asset('assets/images/favicon/icon.png') }}" alt="materialize logo" style=" position: absolute; top: 15px; margin: 0 6px; height: 32px; ">
