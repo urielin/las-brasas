@@ -181,7 +181,6 @@ $(document).ready(function(){
 
           id_camion = $(this).attr('data-id_camion');
           estado = $(this).attr('data-estado');
-          console.log(estado);
 
           if (estado == '1') {
               $('.activo').prop("disabled", false);
@@ -192,8 +191,6 @@ $(document).ready(function(){
           }
 
           $.get('detalle-administrar-camion',{id_camion:id_camion},function(res){
-              // console.log();
-              //Detalle
 
                 let clasif_mercancia = res.camionesDetalle[0]['clasif_mercancia'] == null || res.camionesDetalle[0]['clasif_mercancia'] == '' ? '0' : res.camionesDetalle[0]['clasif_mercancia'];
                 let tipo_unidades    = res.camionesDetalle[0]['tipo_unidades'] == null || res.camionesDetalle[0]['tipo_unidades'] == '' ? '0' : res.camionesDetalle[0]['tipo_unidades'];
