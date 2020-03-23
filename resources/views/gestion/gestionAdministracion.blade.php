@@ -2,13 +2,14 @@
 
 @section('content')
 
-  <div style="display: flex; justify-content: space-between">
-    <div style="display: flex">
-      <i class="material-icons dp48">subject</i><span class="card-title">GESTIÓN DE CAMIONES Y CARGA</span>
-    </div>
-  </div>
+
   <div class="card card card-default scrollspy">
     <div class="row" style="padding:20px">
+      <div style="display: flex; justify-content: space-between">
+        <div style="display: flex">
+          <i class="material-icons dp48">subject</i><span class="card-title">GESTIÓN DE CAMIONES Y CARGA</span>
+        </div>
+      </div>
         <div class="col s12 l4" style="margin-top: 20px;">
           <div class="row">
               <div class="mb-1 col s12 l12">
@@ -50,18 +51,19 @@
     </div>
   </div>
 
-  <div style="display: flex;justify-content: space-between">
-      <div style="display: flex;">
-        <i class="material-icons dp48">subject</i><span class="card-title">AGREGAR CONTENEDOR</span>
-      </div>
-      <a class="btn btn-50 green float-right">
-        <i class="material-icons" id="agregar-camion">add_box</i>
-      </a>
-  </div>
+
 {{-- -------------------------------------------- --}}
   <div class="row">
     <div class="col s12">
-      <div class="card card card-default scrollspy">
+      <div class="card card card-default scrollspy" style="padding:20px">
+        <div style="display: flex;justify-content: space-between">
+            <div style="display: flex;">
+              <i class="material-icons dp48">subject</i><span class="card-title">AGREGAR CONTENEDOR</span>
+            </div>
+            <a class="btn btn-50 green float-right">
+              <i class="material-icons" id="agregar-camion">add_box</i>
+            </a>
+        </div>
           <div class="row pb-4">
                   <div class="col s12">
                     <ul class="tabs">
@@ -85,14 +87,8 @@
                                   <th>Descripción</th>
                                   <th>Fecha cierre</th>
                                   <th>Proveedor</th>
-                                  <th>Monto cierre</th>
-                                  <th>Moneda</th>
-                                  <th>Embarque</th>
-                                  <th>Llegada estimada</th>
-                                  <th>Lugar llegada</th>
-                                  <th>Origen</th>
-                                  <th>Documento</th>
-                                  <th>Empresa transporte</th>
+                                  <th>Mostrar detalle</th>
+
                                 </tr>
                               </thead>
                               <tbody id="tabla-administracion-cuerpo">
@@ -855,15 +851,7 @@
 @endsection
 
 @section('modal')
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+
   <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -938,6 +926,77 @@
       </div>
     </div>
   </div>
+
+  <div id="formModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="row">
+            <div class=" col s6 pb-2">
+              <h5 class="modal-title">Detalle general</h5>
+            </div>
+            <div class="col s6" align="right">
+              <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <span id="form_result"></span>
+
+            <div class="row container">
+              <div class="row pb-2">
+                <div class="col s12 l6">
+                  <label for="monto_cierred">Monto cierre: </label>
+                  <input disabled type="text" name="monto_cierred" id="monto_cierred"  class="validate form-control" step="1">
+                </div>
+                <div class="col s12 l6">
+                  <label for="tipo_monedad">Moneda:</label>
+                  <input disabled type="text" name="tipo_monedad" id="tipo_monedad"  class="validate form-control" step="1">
+                </div>
+              </div>
+
+              <div class="row pb-2">
+                <div class="col s12 l6">
+                  <label for="fecha_embarqued">embarque: </label>
+                  <input disabled type="text" name="fecha_embarqued" id="fecha_embarqued"  class="validate form-control" step="1">
+                </div>
+                <div class="col s12 l6">
+                  <label for="fecha_llegada_estimadad">Llegada estimada:</label>
+                  <input disabled type="text" name="fecha_llegada_estimadad" id="fecha_llegada_estimadad"  class="validate form-control" step="1">
+                </div>
+              </div>
+              <div class="row pb-2">
+                <div class="col s12 l6">
+                  <label for="lugar_arribod">Lugar llegada: </label>
+                  <input disabled type="text" name="lugar_arribod"  id="lugar_arribod" class="validate form-control" step="1">
+                </div>
+                <div class="col s12 l6">
+                  <label for="declara_origend">Origen: </label>
+                  <input disabled type="text" name="declara_origend"  id="declara_origend"  class="validate form-control" step="1">
+                </div>
+              </div>
+
+              <div class="row pb-2">
+                <div class="col s12 l6">
+                  <label for="ingreso_zetad">Documento: </label>
+                  <input disabled type="text" name="ingreso_zetad"  id="ingreso_zetad" class="validate form-control" step="1">
+                </div>
+                <div class="col s12 l6">
+                  <label for="navierad">Empresa transporte: </label>
+                  <input disabled type="text" name="navierad"  id="navierad" class="validate form-control" step="1">
+                </div>
+              </div>
+             </div>
+            <br />
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- --------------------------------------------------- --}}
+
 @endsection
 
 @section('after-scripts')

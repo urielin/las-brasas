@@ -37,14 +37,20 @@ $(document).ready(function(){
                       <td>${value.descripcion}</td>
                       <td>${dateUTC(value.fecha_cierre)}</td>
                       <td>${proveedor}</td>
-                      <td>${monto_cierre}</td>
-                      <td>${tipo_moneda}</td>
-                      <td>${dateUTC(value.fecha_embarque)}</td>
-                      <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                      <td>${lugar_arribo}</td>
-                      <td>${declara_origen}</td>
-                      <td>${ingreso_zeta}</td>
-                      <td>${naviera}</td>
+                      <td>
+                          <a class="btn btn-50 blue">
+                            <i class="material-icons detalle-camion"
+                              data-monto_cierre="${monto_cierre}"
+                              data-tipo_moneda="${tipo_moneda}"
+                              data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
+                              data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
+                              data-lugar_arribo="${lugar_arribo}"
+                              data-declara_origen="${declara_origen}"
+                              data-ingreso_zeta="${ingreso_zeta}"
+                              data-naviera="${naviera}" >
+                            expand_more</i>
+                          </a>
+                      </td>
                       </tr>
                       `);
                     });
@@ -87,14 +93,20 @@ $(document).ready(function(){
                         <td>${value.descripcion}</td>
                         <td>${dateUTC(value.fecha_cierre)}</td>
                         <td>${proveedor}</td>
-                        <td>${monto_cierre}</td>
-                        <td>${tipo_moneda}</td>
-                        <td>${dateUTC(value.fecha_embarque)}</td>
-                        <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                        <td>${lugar_arribo}</td>
-                        <td>${declara_origen}</td>
-                        <td>${ingreso_zeta}</td>
-                        <td>${naviera}</td>
+                        <td>
+                            <a class="btn btn-50 blue">
+                              <i class="material-icons detalle-camion"
+                                data-monto_cierre="${monto_cierre}"
+                                data-tipo_moneda="${tipo_moneda}"
+                                data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
+                                data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
+                                data-lugar_arribo="${lugar_arribo}"
+                                data-declara_origen="${declara_origen}"
+                                data-ingreso_zeta="${ingreso_zeta}"
+                                data-naviera="${naviera}" >
+                              expand_more</i>
+                            </a>
+                        </td>
                         </tr>
                         `);
                       });
@@ -133,7 +145,7 @@ $(document).ready(function(){
                     let descripcion = value.descripcion == null || value.descripcion == '' ? '-' : value.descripcion;
 
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}">
+                      <tr  data-id_camion="${value.id_camion}" class="administrar-detalle">
                       <td>${id_camion}</td>
                       <td>${codigo}</td>
                       <td>${estado}</td>
@@ -141,16 +153,24 @@ $(document).ready(function(){
                       <td>${descripcion}</td>
                       <td>${dateUTC(value.fecha_cierre)}</td>
                       <td>${proveedor}</td>
-                      <td>${monto_cierre}</td>
-                      <td>${tipo_moneda}</td>
-                      <td>${dateUTC(value.fecha_embarque)}</td>
-                      <td>${dateUTC(value.fecha_llegada_estimada)}</td>
-                      <td>${lugar_arribo}</td>
-                      <td>${declara_origen}</td>
-                      <td>${ingreso_zeta}</td>
-                      <td>${naviera}</td>
+                      <td>
+                          <a class="btn btn-50 blue">
+                            <i class="material-icons detalle-camion"
+                              data-monto_cierre="${monto_cierre}"
+                              data-tipo_moneda="${tipo_moneda}"
+                              data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
+                              data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
+                              data-lugar_arribo="${lugar_arribo}"
+                              data-declara_origen="${declara_origen}"
+                              data-ingreso_zeta="${ingreso_zeta}"
+                              data-naviera="${naviera}" >
+                            expand_more</i>
+                          </a>
+                      </td>
+
                       </tr>
                       `);
+
                     });
                 } else {
                   $('#tabla-administracion-cuerpo').append(`
@@ -469,6 +489,22 @@ $(document).ready(function(){
       $('#formModal').modal('open');
   });
 
+
+$('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
+      console.log('click2 !');
+
+      $('#monto_cierred').val($(this).attr('data-monto_cierre'));
+      $('#tipo_monedad').val($(this).attr('data-tipo_moneda'));
+      $('#fecha_embarqued').val($(this).attr('data-fecha_embarque'));
+      $('#fecha_llegada_estimadad').val($(this).attr('data-fecha_llegada_estimada'));
+      $('#lugar_arribod').val($(this).attr('data-lugar_arribo'));
+      $('#declara_origend').val($(this).attr('data-declara_origen'));
+      $('#ingreso_zetad').val($(this).attr('data-ingreso_zeta'));
+      $('#navierad').val($(this).attr('data-naviera'));
+
+      $('#formModal2').modal('open');
+  });
+
   $('#nuevo-camion').on('submit', function(){
       event.preventDefault();
 
@@ -587,6 +623,7 @@ $(document).ready(function(){
        title: title
      })
    }
+
 
 
 });
