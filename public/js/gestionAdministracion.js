@@ -29,14 +29,14 @@ $(document).ready(function(){
 
 
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">
-                      <td>${value.id_camion}</td>
-                      <td>${value.codigo}</td>
-                      <td>${value.estado}</td>
-                      <td>${value.codigo_aux}</td>
-                      <td>${value.descripcion}</td>
-                      <td>${dateUTC(value.fecha_cierre)}</td>
-                      <td>${proveedor}</td>
+                      <tr>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.id_camion}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.codigo}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.estado}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.codigo_aux}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.descripcion}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${dateUTC(value.fecha_cierre)}</td>
+                      <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${proveedor}</td>
                       <td>
                           <a class="btn btn-50 blue">
                             <i class="material-icons detalle-camion"
@@ -70,6 +70,7 @@ $(document).ready(function(){
      let clasificacion, estado;
       estado = $(this).val();
       clasificacion = $('#clasificacionad').val();
+      console.log(estado);
 
       $('#tabla-administracion-cuerpo').empty();
       if ( $.trim(clasificacion) != '') {
@@ -85,14 +86,14 @@ $(document).ready(function(){
                       let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
 
                       $('#tabla-administracion-cuerpo').append(`
-                        <tr class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">
-                        <td>${value.id_camion}</td>
-                        <td>${value.codigo}</td>
-                        <td>${value.estado}</td>
-                        <td>${value.codigo_aux}</td>
-                        <td>${value.descripcion}</td>
-                        <td>${dateUTC(value.fecha_cierre)}</td>
-                        <td>${proveedor}</td>
+                        <tr>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.id_camion}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.codigo}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.estado}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.codigo_aux}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${value.descripcion}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${dateUTC(value.fecha_cierre)}</td>
+                        <td class="administrar-detalle" data-id_camion="${value.id_camion}" data-estado="${estado}">${proveedor}</td>
                         <td>
                             <a class="btn btn-50 blue">
                               <i class="material-icons detalle-camion"
@@ -145,28 +146,30 @@ $(document).ready(function(){
                     let descripcion = value.descripcion == null || value.descripcion == '' ? '-' : value.descripcion;
 
                     $('#tabla-administracion-cuerpo').append(`
-                      <tr  data-id_camion="${value.id_camion}" class="administrar-detalle">
-                      <td>${id_camion}</td>
-                      <td>${codigo}</td>
-                      <td>${estado}</td>
-                      <td>${codigo_aux}</td>
-                      <td>${descripcion}</td>
-                      <td>${dateUTC(value.fecha_cierre)}</td>
-                      <td>${proveedor}</td>
-                      <td>
-                          <a class="btn btn-50 blue">
-                            <i class="material-icons detalle-camion"
-                              data-monto_cierre="${monto_cierre}"
-                              data-tipo_moneda="${tipo_moneda}"
-                              data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
-                              data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
-                              data-lugar_arribo="${lugar_arribo}"
-                              data-declara_origen="${declara_origen}"
-                              data-ingreso_zeta="${ingreso_zeta}"
-                              data-naviera="${naviera}" >
-                            expand_more</i>
-                          </a>
-                      </td>
+                      <tr >
+
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${id_camion}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${codigo}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${estado}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${codigo_aux}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${descripcion}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${dateUTC(value.fecha_cierre)}</td>
+                        <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${proveedor}</td>
+
+                        <td>
+                            <a class="btn btn-50 blue">
+                              <i class="material-icons detalle-camion"
+                                data-monto_cierre="${monto_cierre}"
+                                data-tipo_moneda="${tipo_moneda}"
+                                data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
+                                data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
+                                data-lugar_arribo="${lugar_arribo}"
+                                data-declara_origen="${declara_origen}"
+                                data-ingreso_zeta="${ingreso_zeta}"
+                                data-naviera="${naviera}" >
+                              expand_more</i>
+                            </a>
+                        </td>
 
                       </tr>
                       `);
@@ -181,7 +184,7 @@ $(document).ready(function(){
                 }
             })
        } else {
-          alerta('error','Debes ingresar un código de camión');
+          alerta('info','Debes ingresar un código de camión');
        }
    });
 
@@ -201,6 +204,9 @@ $(document).ready(function(){
 
           id_camion = $(this).attr('data-id_camion');
           estado = $(this).attr('data-estado');
+
+          console.log(id_camion);
+          console.log(estado);
 
           if (estado == '1') {
               $('.activo').prop("disabled", false);
@@ -400,7 +406,9 @@ $(document).ready(function(){
 
                  if (res.success)
                  {
-                   alerta('success','Actualizado correctamente');
+                   sweetalerta('Listo!','Actualizado correctamente','success' );
+
+
                  }
               }
              });
@@ -432,7 +440,7 @@ $(document).ready(function(){
 
                 if (res.success)
                 {
-                  alerta('success','Actualizado correctamente');
+                  sweetalerta('Listo!','Actualizado correctamente','success' );
                 }
              }
             });
@@ -466,7 +474,7 @@ $(document).ready(function(){
 
                if (res.success)
                {
-                 alerta('success','Actualizado correctamente');
+                 sweetalerta('Listo!','Actualizado correctamente','success' );
                }
             }
            });
@@ -518,9 +526,9 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
              {
 
                 if (res.camionAgregar == '0') {
-                     alerta('success','Se creo un nuevo contenedor');
+                     sweetalerta('Listo!','Actualizado correctamente','success' );
                 } else {
-                    alerta('error','El contenedor ya existe, ingrese otro código');
+                    alerta('info','El contenedor ya existe, ingrese otro código');
                 }
 
             }
@@ -623,6 +631,15 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
        title: title
      })
    }
+
+   function sweetalerta(title,text,icon ){
+     Swal.fire({
+          icon: icon,
+          title: title,
+          text: text,
+          })
+   }
+
 
 
 

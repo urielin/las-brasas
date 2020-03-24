@@ -115,7 +115,7 @@ class GestionAdministracionController extends Controller
         if ($request->ajax()) {
             $camiones = DB::SELECT("  SELECT * FROM dbsys.camiones c
                      inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
-                WHERE  cc.cod_int ='$request->clasificacion' and  estado = '$request->estado'");
+                WHERE  cc.cod_int ='$request->clasificacion' and  estado = '$request->estado' order by id_camion desc");
 
 
             return response()->json([

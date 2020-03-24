@@ -85,8 +85,8 @@
           <div class="row pb-4">
                   <div class="col s12">
                     <ul class="tabs">
-                      <li class="tab col m6"><a class="active" href="#test1">Detalle</a></li>
-                      <li class="tab col m6"><a href="#test2">Actualizar</a></li>
+                      <li class="tab col m12"><a class="active" href="#test1">Detalle</a></li>
+                      {{-- <li class="tab col m6"><a href="#test2">Actualizar</a></li> --}}
                     </ul>
                   </div>
                   <div id="test1" class="col s12">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                   </div>
-                  <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
+                  {{-- <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
                         <div class="row">
                             <div class="tab">
                                <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno')">Datos de camión</div>
@@ -313,7 +313,7 @@
                                                 </div>
 
                                             </div>
-                                            
+
                                           </form>
                                     @php } @endphp
                             </div>
@@ -476,7 +476,7 @@
                             </div>
                           </div>
                         </div>
-                  </div>
+                  </div> --}}
           </div>
       </div>
       <!--<div class="card card card-default scrollspy">
