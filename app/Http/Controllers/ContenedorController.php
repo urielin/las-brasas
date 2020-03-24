@@ -21,7 +21,7 @@ class ContenedorController extends Controller
                                       ISNULL(com_movil,'') as com_movil,
                                       ISNULL(com_fax,'') as com_fax,
                                       ISNULL(com_email,'') as com_email
-                                      FROM ADM_PROVEEDOR");
+                                      FROM ADM_PROVEEDOR ORDER BY id_proveedor DESC" );
       return response()->json([ 
         'proveedor' => $proveedor 
       ]);
@@ -111,28 +111,32 @@ class ContenedorController extends Controller
     }
 
   }
-  public function setNew(){
+  public function setNew(Request $request){
 
-    if (request()->ajax()){
+    if ($request->ajax()){
 
         DB::insert("INSERT INTO [dbo].[ADM_PROVEEDOR]
         ([emp_codigo]
-        ,[emp_tipo]
         ,[emp_rut]
         ,[emp_nombre]
-        ,[emp_descripcion]
         ,[direccion_pais]
-        ,[direccion_region]
         ,[direccion_direccion]
         ,[com_telefono]
         ,[com_movil]
         ,[com_fax]
         ,[com_email]
-        ,[i_estado]
-        ,[i_usuario]
         ,[i_datetime])
          VALUES
-            ('NUEVO',0,'NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO','NUEVO',0,0,getdate())");
+            ( '$request->codigo_nuevo',
+              '$request->rut_nuevo',
+              '$request->empresa_nuevo',
+              '$request->pais_nuevo',
+              '$request->direccion_nuevo',
+              '$request->telefono_nuevo',
+              '$request->movil_nuevo',
+              '$request->fax_nuevo',
+              '$request->email_nuevo',
+              getdate())");
       
       }
     }
@@ -151,25 +155,22 @@ class ContenedorController extends Controller
     }
 
     public function updateProveedor(Request $request){
-      if (request()->ajax()){
+      if ($request->ajax()){
 
        DB::update("UPDATE ADM_PROVEEDOR
-                    SET [emp_codigo] = '$request->codigo'
-                    ,[emp_rut] = '$request->rut'
-                    ,[emp_nombre] = '$request->empNombre'
+                    SET [emp_codigo] = '$request->codigo_edit'
+                    ,[emp_rut] = '$request->rut_edit'
+                    ,[emp_nombre] = '$request->empNombre_edit'
        
-                    ,[direccion_pais] = '$request->direccionPais'
+                    ,[direccion_pais] = '$request->direccionPais_edit'
          
-                    ,[direccion_direccion] = '$request->direcciondire'
-                    ,[com_telefono] = '$request->telefono'
-                    ,[com_movil] = '$request->movil'
-                    ,[com_fax] = '$request->fax'
-                    ,[com_email] = '$request->email'
+                    ,[direccion_direccion] = '$request->direcciondire_edit'
+                    ,[com_telefono] = '$request->telefono_edit'
+                    ,[com_movil] = '$request->movil_edit'
+                    ,[com_fax] = '$request->fax_edit'
+                    ,[com_email] = '$request->email_edit'
           
-              WHERE [id_proveedor] = $request->id");
-
-         
-      
+              WHERE [id_proveedor] = $request->id_edit");
       }
 
     }
