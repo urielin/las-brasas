@@ -38,9 +38,10 @@
         <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px">
           <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
           <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen">Exportar Resumen </button>
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle">Exportar Detalle </button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos">Exportar Datos Historicos</button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
+          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Datos Historicos</button>
+          
           
         </div>
       </div>
@@ -52,8 +53,10 @@
 
       <div class="col s12">
         <ul class="tabs">
-          <li class="tab col m6"><a class="active" href="#test1" id="tabla1">Resumen de comisiones</a></li>
-          <li class="tab col m6"><a href="#test2" id="tabla2">Detalle de comisiones</a></li>
+          <li class="tab"><a class="active" href="#test1" id="tabla1">Resumen de comisiones</a></li>
+          <li class="tab"><a href="#test2" id="tabla2">Detalle de comisiones</a></li>
+          <li class="tab"><a href="#test3" id="tabla3">Comisiones de proveedores</a></li>
+          
         </ul>
       </div>
       <div id="test1" class="col s12">
@@ -106,6 +109,28 @@
         </table>
         </div>
       </div>
+      <div id="test3" class="col s12">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+
+          <table class="table table-responsive responsive-table centered" id="comisiones-vendedor" >
+            <thead>
+              <tr>
+                <th>Acción</th>
+                <th>Vendedor</th>
+                <th>Nivel 1</th>
+                <th>Comisión</th>
+                <th>Nivel 2</th>
+                <th>Comisión</th>
+                <th>Nivel 3</th>
+                <th>Comisión</th>
+              </tr>
+            </thead>
+            <tbody id="contenido-vendedor">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -113,4 +138,5 @@
   
 @section('js')
     <script src="{{asset('js/comision-venta.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection

@@ -11,7 +11,7 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   //evt.currentTarget.className += "active";
   let id  = document.getElementById(cityName);
-  //id.classList.add('active'); 
+  //id.classList.add('active');
    if(id){
      id.classList.remove('active');
    }
@@ -21,4 +21,4 @@ function openCity(evt, cityName) {
   const active = document.querySelector('.active');
   */
 }
- document.getElementById("openDefault").click();
+ //document.getElementById("openDefault").click();
