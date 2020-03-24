@@ -56,7 +56,7 @@ function habilitar_boton_pdf() {
   $("a.get-pdf-report").on('click',function() {
     id_retiros=$(this).attr('id');
     var data=$(this).data();
-    // console.log(data);
+    console.log('data');
     window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
 
 
@@ -130,7 +130,7 @@ $('#table-detalle').on('click','.eliminar-item',function(){
                               } else {
                                   montoTotal+=parseFloat(value.monto);
                               }
-                          }); 
+                          });
 
                           $.each(res.depositosDetalle2, function(index,value){
 
@@ -329,7 +329,7 @@ $('#buscar-depositos-pendientes').on('click', function(){
     }
   });
   //--------------------------------------------------------------
-  $('#agregar-otro-retiro').on('click', function(){
+  $('#agregar-otro-retiro').on('click', function(){ 
 
         $.get('retiros-otros-generar',function(res){
 

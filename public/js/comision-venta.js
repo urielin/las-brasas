@@ -95,8 +95,8 @@ $(document).ready(function(){
                     $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
 
                 }
-
-                $('#tabla-comisiones').append('<style type="text/css">.meses{background-color: #00a6d6; color: white}</style>');
+                //COLOR A CAMBIAR
+               // $('#tabla-comisiones').append('<style type="text/css">.meses{background-color: #00a6d6; color: black}</style>');
 
             });
 
@@ -165,7 +165,7 @@ $(document).ready(function(){
                         $.each(res.comision2, function(index,value){
                         //console.log(res.comision2);
                         //console.log('tE FALTA POQUITO CARNAL :VVVV');
-                            $('#tabla-detalles').append('<tr><td id="prueba">'+value.id_venta+'</td><td class="">'+value.folio+'</td><!--<td class="detalles">'+value.proc_folio_pedido+'</td>--><td>'+value.forma_pago+'</td><td>'+value.cod_vendedor +'</td><td>'+addCommas(value.ptotal)+'</td><td>'+addCommas(value.impuesto)+'</td><td>'+addCommas(value.adicional)+'</td><td>'+addCommas(value.comision)+'</td><td>'+value.rut_cliente+'</td><td>'+ dateUTC(value.fecha2)+'</td><td></td><td></td><td></td><td></td></tr>');
+                            $('#tabla-detalles').append('<tr><td id="prueba">'+value.id_venta+'</td><td class="">'+value.folio+'</td><!--<td class="detalles">'+value.proc_folio_pedido+'</td>--><td>'+value.forma_pago+'</td><td>'+value.cod_vendedor +'</td><td>'+addCommas(value.ptotal)+'</td><td>'+addCommas(value.impuesto)+'</td><td>'+addCommas(value.adicional)+'</td><td>'+addCommas(value.comision)+'</td><td>'+value.rut_cliente+'</td><td>'+ dateUTC(value.fecha2)+'</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>');
                             total=total+parseFloat(value.comision);
                         });
                         total=total.toFixed(2);
@@ -173,7 +173,7 @@ $(document).ready(function(){
 
                     }
 
-                    $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #00a6d6; color: white}</style>');
+                    $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #9A9696; color: white}</style>');
 
 
             });
@@ -344,8 +344,8 @@ $(document).ready(function(){
 
               request.fail(function( jqXHR, textStatus ) {
                 //console.log(jqXHR.responseText,textStatus);
-                //alert( "Request failed: " + textStatus + jqXHR.responseText);
-                alert("Estos datos fueron exportados anteriormente");
+                alert( "Request failed: " + textStatus + jqXHR.responseText);
+                //alert("Estos datos fueron exportados anteriormente");
 
 
               });
@@ -354,18 +354,6 @@ $(document).ready(function(){
 
             alert('LLene los campos respectivos');
         }
-
-
-
-
-
-
-
-
-
-
-
-
     })
 
     $('#tabla-detalles tbody' ).on('click','tr',function(){
@@ -433,4 +421,6 @@ $(document).ready(function(){
   	}
   	return x1 + x2;
     }
+
+   
 });

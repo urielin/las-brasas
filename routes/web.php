@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::put('/actualizar-cambio', 'TipoCambioController@update')->name('updateCambio');
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
   Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
+  Route::get('/email', 'PrecioCamionController@sendEmail')->name('sendEmail');
+  
 // --------------------------------
   Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
   Route::GET('/ver-camion', 'GestionCamionController@show')->name('showCamion');
@@ -144,12 +146,24 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
+  //Route::resource('email','ComicionVentaController@sendEmail')->name('email');
 
 
   Route::post('cartola/importar-plane','CatalogoController@importPlane')->name('catalogo.importPlane');
   Route::post('cartola/migracion-plane','CatalogoController@migraciontPlane')->name('catalogo.migrationPlane');
  
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
+  Route::get('/obtener-datos','ContenedorController@getDato')->name('getDato');
+  Route::get('/nuevo','ContenedorController@setNew')->name('setNew');
+  Route::get('/get-new','ContenedorController@getNew')->name('getNew');
+  //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
+  Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');
+
+  
+  
+
+
+  
 
 Route::get('/reporte2', function () {
 

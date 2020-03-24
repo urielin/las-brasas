@@ -212,7 +212,7 @@ class PrecioCamionController extends Controller
             return $e->getMessage();   // insert query
          }
          // DEVOLVER DATOS ACTUALIZADOS A LA TABLA PRECIO CAMION
-         $datos['PrecioCamion']=DB::select("		 SELECT  id_oferta_precio, camion , codigo, ADM_CODIGOS.CODI_RNOMBRE AS descripcion, ADM_CODIGOS.CODI_P_VENTA AS lista_publico,
+         $datos['PrecioCamion']=DB::select("SELECT  id_oferta_precio, camion , codigo, ADM_CODIGOS.CODI_RNOMBRE AS descripcion, ADM_CODIGOS.CODI_P_VENTA AS lista_publico,
          ADM_CODIGOS.codi_p_venta_x_m1 AS lista_mayor, ISNULL(precio, 0) AS precio_publico, ISNULL(mayorista, 0) AS precio_mayor,
          bodega_id_ofertas.fecha_baja as fecha_baja,ISNULL(bodega_id_ofertas.sucursal, 0) as sucursal,
          (SELECT top 1 ISNULL(dbsys.camiones_detalle.cif_final_nal, 0)
@@ -250,5 +250,10 @@ class PrecioCamionController extends Controller
     public function destroy(PrecioCamion $precioCamion)
     {
         //
+    }
+
+    public function sendEmail(Request $request)
+    {
+        
     }
 }

@@ -12,7 +12,7 @@
           <label for="" class="form-control-label">Gestión</label>
           <select class="form-control browser-default" id="gestion" name="gestion">
           <option value="">Seleccione gestión</option>  
-          @foreach ($gestion as $g)
+            @foreach ($gestion as $g)
                 <option value="{{$g->TP_GESTION}}">{{$g->ges}}</option>
             @endforeach 
           </select>
@@ -41,6 +41,7 @@
           <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen">Exportar Resumen </button>
           <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle">Exportar Detalle </button>
           <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos">Exportar Datos Historicos</button>
+          
         </div>
       </div>
   </div>
