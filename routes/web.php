@@ -156,7 +156,7 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
  
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
   Route::get('/obtener-datos','ContenedorController@getDato')->name('getDato');
-  Route::get('/nuevo','ContenedorController@setNew')->name('setNew');
+  Route::post('/nuevo','ContenedorController@setNew')->name('setNew');
   Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');

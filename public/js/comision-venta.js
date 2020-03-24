@@ -173,7 +173,7 @@ $(document).ready(function(){
 
                     }
 
-                    $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #9A9696; color: white}</style>');
+                    $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #3D8989; color: white}</style>');
 
 
             });
@@ -330,7 +330,31 @@ $(document).ready(function(){
         if($.trim(vendedor) != '' && $.trim(gestion) != '' && $.trim(mes) != '' && $.trim(sucursal) != ''){
 
             request = $.get('exportar-datos',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
-                alert("¡Datos históricos exportados con exito!");
+
+                if(res.estadoFinal == 1){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Los datos han sido guardados exitosamente!',
+                        //text: '¡LLene los campos respectivos!',
+                        showConfirmButton: false,
+                        timer: 800
+                        //footer: '<a href>Why do I have this issue?</a>'
+                      }) 
+                }
+                else{
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¡Los datos ya han sido guardados anteriormente!',
+                        //text: '¡LLene los campos respectivos!',
+                        showConfirmButton: true,
+                        //timer: 800
+                        //footer: '<a href>Why do I have this issue?</a>'
+                      })
+
+                }
+
+                
 
 
 
@@ -351,8 +375,13 @@ $(document).ready(function(){
               });
         }
         else{
-
-            alert('LLene los campos respectivos');
+              Swal.fire({
+                icon: 'error',
+                title: 'No se pudo exportar los datos',
+                text: '¡LLene los campos respectivos!'
+                
+                //footer: '<a href>Why do I have this issue?</a>'
+              })
         }
     })
 
@@ -380,7 +409,15 @@ $(document).ready(function(){
             //window.open().focus();
         }
         else{
-            alert('Complete todos los campos');
+           
+
+              Swal.fire({
+                icon: 'error',
+                title: 'No se pudo exportar el reporte',
+                text: '¡Complete todos los campos!'
+                //footer: '<a href>Why do I have this issue?</a>'
+              })
+
 
         }
     });
@@ -404,7 +441,15 @@ $(document).ready(function(){
             //window.open().focus();
         }
         else{
-            alert('Complete todos los campos');
+          
+
+            Swal.fire({
+                icon: 'error',
+                title: 'No se pudo exportar el reporte',
+                text: '¡Complete todos los campos!'
+                //footer: '<a href>Why do I have this issue?</a>'
+                
+              })
 
         }
     });
@@ -568,49 +613,75 @@ $(document).ready(function(){
     })
 
     $("#comisiones-vendedor").on("click", ".btn-update",function(){
-        let id = $(this).parents('tr').attr('data-id');
-        let nivel1 = $(this).parents('tr').find("input[name='nivel1']").val();
-        let comision1 = $(this).parents('tr').find("input[name='comision1']").val();
-        let nivel2 = $(this).parents('tr').find("input[name='nivel2']").val();
-        let comision2 = $(this).parents('tr').find("input[name='comision2']").val();
-        let nivel3 = $(this).parents('tr').find("input[name='nivel3']").val();
-        let comision3 = $(this).parents('tr').find("input[name='comision3']").val();
 
-        $(this).parents("tr").find("td:eq(2)").text(nivel1);
-        $(this).parents("tr").find("td:eq(3)").text(comision1);
-        $(this).parents("tr").find("td:eq(4)").text(nivel2);
-        $(this).parents("tr").find("td:eq(5)").text(comision2);
-        $(this).parents("tr").find("td:eq(6)").text(nivel3);
-        $(this).parents("tr").find("td:eq(7)").text(comision3);
+        Swal.fire({
+            title: '¿Esta seguro de guardar los cambios?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Actualizar'
+  
+          }).then((result) => {
 
-        let data = {id:id,
-            nivel1:nivel1,
-            comision1:comision1,
-            nivel2:nivel2,
-            comision2:comision2,
-            nivel3:nivel3,
-            comision3:comision3,
-            _token:$("meta[name='csrf-token']").attr("content")};
+            if(result.value){
+                let id = $(this).parents('tr').attr('data-id');
+                let nivel1 = $(this).parents('tr').find("input[name='nivel1']").val();
+                let comision1 = $(this).parents('tr').find("input[name='comision1']").val();
+                let nivel2 = $(this).parents('tr').find("input[name='nivel2']").val();
+                let comision2 = $(this).parents('tr').find("input[name='comision2']").val();
+                let nivel3 = $(this).parents('tr').find("input[name='nivel3']").val();
+                let comision3 = $(this).parents('tr').find("input[name='comision3']").val();
 
-            $.ajax({
-                type:'POST',
-                url:'updatevendedor',
-                data: data,
-                headers:{_token:$("meta[name='csrf-token']").attr("content")},
-              }).then((data) => {
-                alert('Vendedor actualizado');
-              })
-          
-        $(this).parents('tr').attr('data-nivel1',nivel1);
-        $(this).parents('tr').attr('data-comision1',comision1);
-        $(this).parents('tr').attr('data-nivel2',nivel2);
-        $(this).parents('tr').attr('data-comision2',comision2);
-        $(this).parents('tr').attr('data-nivel3',nivel3);
-        $(this).parents('tr').attr('data-comision3',comision3);
+                $(this).parents("tr").find("td:eq(2)").text(nivel1);
+                $(this).parents("tr").find("td:eq(3)").text(comision1);
+                $(this).parents("tr").find("td:eq(4)").text(nivel2);
+                $(this).parents("tr").find("td:eq(5)").text(comision2);
+                $(this).parents("tr").find("td:eq(6)").text(nivel3);
+                $(this).parents("tr").find("td:eq(7)").text(comision3);
 
-        $(this).parents("tr").find(".edit").show();
-        $(this).parents("tr").find(".btn-cancel").remove();
-        $(this).parents("tr").find(".btn-update").remove();
+                let data = {id:id,
+                    nivel1:nivel1,
+                    comision1:comision1,
+                    nivel2:nivel2,
+                    comision2:comision2,
+                    nivel3:nivel3,
+                    comision3:comision3,
+                    _token:$("meta[name='csrf-token']").attr("content")};
+
+                    $.ajax({
+                        type:'POST',
+                        url:'updatevendedor',
+                        data: data,
+                        headers:{_token:$("meta[name='csrf-token']").attr("content")},
+                    }).then((data) => {
+                        
+
+                        Swal.fire({
+                            //position: 'top-end',
+                            icon: 'success',
+                            title: '¡Comisiones actualizadas con exito!',
+                            showConfirmButton: false,
+                            timer: 800
+                          })
+                    })
+                
+                $(this).parents('tr').attr('data-nivel1',nivel1);
+                $(this).parents('tr').attr('data-comision1',comision1);
+                $(this).parents('tr').attr('data-nivel2',nivel2);
+                $(this).parents('tr').attr('data-comision2',comision2);
+                $(this).parents('tr').attr('data-nivel3',nivel3);
+                $(this).parents('tr').attr('data-comision3',comision3);
+
+                $(this).parents("tr").find(".edit").show();
+                $(this).parents("tr").find(".btn-cancel").remove();
+                $(this).parents("tr").find(".btn-update").remove();
+
+            }
+          })
+
+        
 
     })
 

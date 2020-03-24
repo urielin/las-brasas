@@ -332,138 +332,227 @@ class ComicionVentaController extends Controller
 
       $año = $request->gestion;
       $mes = $request->mes;
+      $vendedor=$request->vendedor;
+      $sucursal=$request->sucursal;
+      //$estado= "lleno";
+      $datosOriginal=DB::select("SELECT folio FROM MODULO_COMISION_VENTA_HIST WHERE fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+      and fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH(DATEFROMPARTS($año,$mes,1))");
 
-      $comision = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
-      m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
-      m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+      $datos2=DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       ORDER BY m1.fecha2");
 
-      foreach($comision as $num)
-      {
-        $folio=$num->folio;
-        $id_venta=$num->id_venta;
-        $proc_folio_pedido=$num->proc_folio_pedido;
-        $fecha2=$num->fecha2;
-        $forma_pago=$num->forma_pago;
-        $cod_vendedor=$num->cod_vendedor;
-        $ptotal=$num->ptotal;
-        $impuesto=$num->impuesto;
-        $adicional=$num->adicional;
-        $total=$num->total;
-        $rut_cliente=$num->rut_cliente;
-        $comision=$num->comision;
-        $fecha_pago=$num->fecha_pago;
-        $monto=$num->monto;
-        $tipo_documento=$num->tipo_documento;
-        $n_deposito=$num->n_deposito;
-
-        if($proc_folio_pedido==null){
-
-          $proc_folio_pedido='NULL';
-        }
-          
-          DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
-          (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
-          comision,fecha_pago,monto,tipo_documento,n_deposito)
-          VALUES
-
-          (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
-          $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
-
-      }
+      $datos3 = DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+                            WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
+                            and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+                            and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
+                          ");
 
 
-      $comision1=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
-      m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
-      m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
-      and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
-      and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
-      ORDER BY m2.fecha_pago");
+      $datosFinal=array_merge($datos2,$datos3);
+      //$result = array_diff($datosOriginal,$datosFinal);
+      if(empty($datosOriginal)){
 
-      foreach($comision1 as $num)
-            {
-              $folio=$num->folio;
-              $id_venta=$num->id_venta;
-              $proc_folio_pedido=$num->proc_folio_pedido;
-              $fecha2=$num->fecha2;
-              $forma_pago=$num->forma_pago;
-              $cod_vendedor=$num->cod_vendedor;
-              $ptotal=$num->ptotal;
-              $impuesto=$num->impuesto;
-              $adicional=$num->adicional;
-              $total=$num->total;
-              $rut_cliente=$num->rut_cliente;
-              $comision=$num->comision;
-              $fecha_pago=$num->fecha_pago;
-              $monto=$num->monto;
-              $tipo_documento=$num->tipo_documento;
-              $n_deposito=$num->n_deposito;
-
-              if($proc_folio_pedido==null){
-
-                $proc_folio_pedido='NULL';
-              }
-                
-                DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
-                (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
-                comision,fecha_pago,monto,tipo_documento,n_deposito)
-                VALUES
-
-                (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
-                $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
-
-            }
-
-      $comision2=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
-      m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
-      m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
-      m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
-      WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
-      and m2.fecha_pago IS NULL
-      and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
-      ORDER BY m2.fecha_pago");
-
-      foreach($comision2 as $num)
-      {
-        $folio=$num->folio;
-        $id_venta=$num->id_venta;
-        $proc_folio_pedido=$num->proc_folio_pedido;
-        $fecha2=$num->fecha2;
-        $forma_pago=$num->forma_pago;
-        $cod_vendedor=$num->cod_vendedor;
-        $ptotal=$num->ptotal;
-        $impuesto=$num->impuesto;
-        $adicional=$num->adicional;
-        $total=$num->total;
-        $rut_cliente=$num->rut_cliente;
-        $comision=$num->comision;
-        $fecha_pago=$num->fecha_pago;
-        $monto=$num->monto;
-        $tipo_documento=$num->tipo_documento;
-        $n_deposito=$num->n_deposito;
-
-        if($proc_folio_pedido==null){
-
-          $proc_folio_pedido='NULL';
-        }
+          $estado = "vacio";
+          $estado_final=1;
+          $comision = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+          m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
+          m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
+          m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+          WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
+          and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+          and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+          ORDER BY m1.fecha2");
+      
+          $comision1=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+          m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
+          m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
+          m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+          WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
+          and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+          and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
+          ORDER BY m2.fecha_pago");
     
-    DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
-    (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
-    comision)
-    VALUES
+          foreach($comision as $num)
+          {
+            $folio=$num->folio;
+            $id_venta=$num->id_venta;
+            $proc_folio_pedido=$num->proc_folio_pedido;
+            $fecha2=$num->fecha2;
+            $forma_pago=$num->forma_pago;
+            $cod_vendedor=$num->cod_vendedor;
+            $ptotal=$num->ptotal;
+            $impuesto=$num->impuesto;
+            $adicional=$num->adicional;
+            $total=$num->total;
+            $rut_cliente=$num->rut_cliente;
+            $comision=$num->comision;
+            $fecha_pago=$num->fecha_pago;
+            $monto=$num->monto;
+            $tipo_documento=$num->tipo_documento;
+            $n_deposito=$num->n_deposito;
+      
+            if($proc_folio_pedido==null){
+      
+              $proc_folio_pedido='NULL';
+            }
+              
+              DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
+              (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
+              comision,fecha_pago,monto,tipo_documento,n_deposito)
+              VALUES
+      
+              (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
+              $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
+      
+          }
+          foreach($comision1 as $num)
+          {
+                  $folio=$num->folio;
+                  $id_venta=$num->id_venta;
+                  $proc_folio_pedido=$num->proc_folio_pedido;
+                  $fecha2=$num->fecha2;
+                  $forma_pago=$num->forma_pago;
+                  $cod_vendedor=$num->cod_vendedor;
+                  $ptotal=$num->ptotal;
+                  $impuesto=$num->impuesto;
+                  $adicional=$num->adicional;
+                  $total=$num->total;
+                  $rut_cliente=$num->rut_cliente;
+                  $comision=$num->comision;
+                  $fecha_pago=$num->fecha_pago;
+                  $monto=$num->monto;
+                  $tipo_documento=$num->tipo_documento;
+                  $n_deposito=$num->n_deposito;
+      
+                  if($proc_folio_pedido==null){
+      
+                    $proc_folio_pedido='NULL';
+                  }
+                    
+                    DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
+                    (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
+                    comision,fecha_pago,monto,tipo_documento,n_deposito)
+                    VALUES
+      
+                    (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
+                    $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
+      
+          }
+        } 
+        else{
+          //$result = array_diff($datosOriginal,$datosFinal);
+            $estado = "NO REPETIDO";
+            foreach($datosOriginal as $valor1){
+              foreach($datosFinal as $valor2){
+                if($valor1->folio == $valor2->folio){
+                  $estado="REPETIDO";
+                  break 2;
+                }
+              }
+            }
+            if($estado == "NO REPETIDO"){
 
-    (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
-    $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision)");
-        
+                $estado_final=1;
+                $comision = DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+                m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
+                m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
+                m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
+                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+                WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
+                and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+                and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+                ORDER BY m1.fecha2");
+            
+                $comision1=DB::select("SELECT m1.folio, m1.id_venta, m1.proc_folio_pedido, m1.fecha2, m1.forma_pago,
+                m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
+                m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional)) as comision,
+                m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
+                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio
+                WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
+                and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
+                and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
+                ORDER BY m2.fecha_pago");
+      
+                foreach($comision as $num)
+                {
+                  $folio=$num->folio;
+                  $id_venta=$num->id_venta;
+                  $proc_folio_pedido=$num->proc_folio_pedido;
+                  $fecha2=$num->fecha2;
+                  $forma_pago=$num->forma_pago;
+                  $cod_vendedor=$num->cod_vendedor;
+                  $ptotal=$num->ptotal;
+                  $impuesto=$num->impuesto;
+                  $adicional=$num->adicional;
+                  $total=$num->total;
+                  $rut_cliente=$num->rut_cliente;
+                  $comision=$num->comision;
+                  $fecha_pago=$num->fecha_pago;
+                  $monto=$num->monto;
+                  $tipo_documento=$num->tipo_documento;
+                  $n_deposito=$num->n_deposito;
+            
+                  if($proc_folio_pedido==null){
+            
+                    $proc_folio_pedido='NULL';
+                  }
+                    
+                    DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
+                    (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
+                    comision,fecha_pago,monto,tipo_documento,n_deposito)
+                    VALUES
+            
+                    (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
+                    $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
+            
+                }
+                foreach($comision1 as $num)
+                {
+                        $folio=$num->folio;
+                        $id_venta=$num->id_venta;
+                        $proc_folio_pedido=$num->proc_folio_pedido;
+                        $fecha2=$num->fecha2;
+                        $forma_pago=$num->forma_pago;
+                        $cod_vendedor=$num->cod_vendedor;
+                        $ptotal=$num->ptotal;
+                        $impuesto=$num->impuesto;
+                        $adicional=$num->adicional;
+                        $total=$num->total;
+                        $rut_cliente=$num->rut_cliente;
+                        $comision=$num->comision;
+                        $fecha_pago=$num->fecha_pago;
+                        $monto=$num->monto;
+                        $tipo_documento=$num->tipo_documento;
+                        $n_deposito=$num->n_deposito;
+            
+                        if($proc_folio_pedido==null){
+            
+                          $proc_folio_pedido='NULL';
+                        }
+                          
+                          DB::insert("INSERT INTO MODULO_COMISION_VENTA_HIST
+                          (folio,id_venta,proc_folio_pedido,fecha2,forma_pago,cod_vendedor,ptotal,impuesto,adicional,total,rut_cliente,
+                          comision,fecha_pago,monto,tipo_documento,n_deposito)
+                          VALUES
+            
+                          (convert(varchar,'$num->folio'),	$num->id_venta,$proc_folio_pedido,	convert(date,'$num->fecha2'),	$num->forma_pago,	$num->cod_vendedor,	$num->ptotal,	$num->impuesto,	
+                          $num->adicional,	$num->total,	convert(varchar,'$num->rut_cliente'),	$num->comision,	convert(date,'$num->fecha_pago'),	$num->monto,	$num->tipo_documento	,$num->n_deposito)");
+            
+                }   
+            }
+            else{
+                $estado_final=2;
+            }
+            
+          
+        }
+
+      /*
         /*$asunto = 'Almacenes Con Stock Limitado';
         $destinatario = 'jhonwilbermendozachino@gmail.com';
         
@@ -487,14 +576,20 @@ class ComicionVentaController extends Controller
         }
         else{
             return response()->json(array("status" => 100, "message" => "Error al enviar correo"));
-        }*/
+        }//
        
-    }
+      }
+      */
       return response()->json([
 
-        'comision'    =>$comision,
-        'comision1'   =>$comision1,
-        'comision2'   =>$comision2
+        //'comision'    =>$comision,
+        //'comision1'   =>$comision1,
+        //'comision2'   =>$comision2,
+        'estado'      =>$estado,
+        'datosFinal'  =>$datosFinal,
+        //'result'      =>$result,
+        'datosOriginal'=>$datosOriginal,
+        'estadoFinal'  =>$estado_final
       ]);
     }
   }
@@ -525,4 +620,6 @@ class ComicionVentaController extends Controller
     }
 
   }
+
+  
 }

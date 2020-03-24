@@ -492,7 +492,7 @@ $(document).ready(function(){
 
             }
            });
-
+           
            $('#codigo_agregar').val('');
            $('#auxiliar_agregar').val('');
            $('#descripcion_agregar').val('');

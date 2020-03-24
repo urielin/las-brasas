@@ -38,9 +38,10 @@
         <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px">
           <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
           <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen">Exportar Resumen </button>
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle">Exportar Detalle </button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos">Exportar Datos Historicos</button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
+          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
+          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Datos Historicos</button>
+          
           
         </div>
       </div>
@@ -137,4 +138,5 @@
   
 @section('js')
     <script src="{{asset('js/comision-venta.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection

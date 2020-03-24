@@ -1,85 +1,8 @@
 $(document).ready(function(){
 
-    var request;
+    var id;
+    tabla();
     
-    $.get('/proveedor',function(res){
-
-
-        console.log(res);
-        $('#proveedor-datos').empty();
-        $.each(res.proveedor,function(index,value){
-
-            btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-            html='<tr data-id="'+value.id_proveedor +'"'; 
-            html+='data-codigo="'+value.emp_codigo+'"'; 
-            html+='data-rut="'+value.emp_rut+'"'; 
-            html+='data-empNombre="'+value.emp_nombre+'"'; 
-            html+='data-direccionPais="'+value.direccion_pais+'"';
-            html+='data-direcciondire="'+value.direccion_direccion+'"';
-            html+='data-telefono="'+value.com_telefono+'"';
-            html+='data-movil="'+value.com_movil+'"'; 
-            html+='data-fax="'+value.com_fax+'"';
-            html+='data-email="'+value.com_email+'">';    
-            html+='<td>'+btn_editar+'</td>';
-            if(value.emp_codigo == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.emp_codigo+'</td>';
-            }
-            if(value.emp_rut == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.emp_rut+'</td>';
-            }
-            if(value.emp_nombre == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.emp_nombre+'</td>';
-            }
-            if(value.direccion_pais == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.direccion_pais+'</td>';
-            }
-            if(value.direccion_direccion == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.direccion_direccion+'</td>';
-            }
-            if(value.com_telefono == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.com_telefono+'</td>';
-            }
-            if(value.com_movil == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.com_movil+'</td>';
-            }
-            if(value.com_fax == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.com_fax+'</td>';
-            }
-            if(value.com_email == ''){
-                html+='<td>-</td>'; 
-            }
-            else{
-                html+='<td>'+value.com_email+'</td></tr>';
-            }
-            
-            $('#tabla-proveedor').append(html);        
-        })
-
-    });
 
     $('#proveedor').on('change',function(){
         
@@ -104,6 +27,8 @@ $(document).ready(function(){
                 $.each(res.datos,function(index,value){
 
                     btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                    btn_detalles='<a type="button" value="" class="detalles btn " style="cursor: pointer; background-color:#B41111">Ver</a>';
+
                     html='<tr data-id="'+value.id_proveedor +'"'; 
                     html+='data-codigo="'+value.emp_codigo+'"'; 
                     html+='data-rut="'+value.emp_rut+'"'; 
@@ -145,7 +70,7 @@ $(document).ready(function(){
                     else{
                         html+='<td>'+value.direccion_direccion+'</td>';
                     }
-                    if(value.com_telefono == ''){
+                    /*if(value.com_telefono == ''){
                         html+='<td>-</td>'; 
                     }
                     else{
@@ -167,20 +92,53 @@ $(document).ready(function(){
                         html+='<td>-</td>'; 
                     }
                     else{
-                        html+='<td>'+value.com_email+'</td></tr>';
-                    }
+                        html+='<td>'+value.com_email+'</td>';
+                    }*/
+                    html+='<td>'+btn_detalles+'</td></tr>';
+        
                     
                     $('#tabla-proveedor').append(html);  
                 })
               });
         }
     });
-
+    
     $('#tabla-proveedor').on('click ','a.get-pdf-edit',function() {
         //var id_retiros=$(this).attr('id');
         //var data=$(this).data();
         //console.log(data);
+        let codigo = $(this).parents("tr").attr('data-codigo');
+        let rut = $(this).parents("tr").attr('data-rut');
+        let empNombre = $(this).parents("tr").attr('data-empNombre');
+        let direccionPais = $(this).parents("tr").attr('data-direccionPais');
+        let direcciondire = $(this).parents("tr").attr('data-direcciondire');
+        let telefono = $(this).parents("tr").attr('data-telefono');
+        let movil = $(this).parents("tr").attr('data-movil');
+        let fax = $(this).parents("tr").attr('data-fax');
+        let email = $(this).parents("tr").attr('data-email');
+        let id = $(this).parents("tr").attr('data-id');
+    
 
+        $('#formEdit').modal('open');
+
+        $('#codigo_edit').val(codigo);
+        $('#rut_edit').val(rut);
+        $('#empresa_edit').val(empNombre);
+        $('#pais_edit').val(direccionPais);
+        $('#direccion_edit').val(direcciondire);
+        $('#telefono_edit').val(telefono);
+        $('#movil_edit').val(movil);
+        $('#fax_edit').val(fax);
+        $('#email_edit').val(email);
+        $('#id_edit').val(id);
+
+        
+        
+
+     
+       
+        
+/*          
         let codigo = $(this).parents('tr').attr('data-codigo');
         let rut = $(this).parents('tr').attr('data-rut');
         let empNombre = $(this).parents('tr').attr('data-empNombre');
@@ -218,13 +176,104 @@ $(document).ready(function(){
         $(this).hide();
         //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
     
-        //console.log('gaa');
+        //console.log('gaa');*/
        
       });
 
-      $("#tabla-proveedor").on("click", ".btn-cancel", function(){
+    $('#editar-proveedor').on('submit', function(){
 
-        let codigo = $(this).parents("tr").attr('data-codigo');
+        event.preventDefault();
+        Swal.fire({
+            title: '¿Esta seguro de guardar los cambios?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Actualizar'
+  
+          }).then((result) => {
+
+            if(result.value){
+                
+            event.preventDefault();
+            let codigo_edit = $('#codigo_edit').val();
+            let rut_edit = $('#rut_edit').val();
+            let empNombre_edit = $('#empresa_edit').val();
+            let direccionPais_edit = $('#pais_edit').val();
+            let direcciondire_edit = $('#direccion_edit').val();
+            let telefono_edit = $('#telefono_edit').val();
+            let movil_edit = $('#movil_edit').val();
+            let fax_edit = $('#fax_edit').val();
+            let email_edit = $('#email_edit').val();
+            let id_edit = $('#id_edit').val();
+            
+           
+            //let id = find("input[name='_edit']").val();
+    
+            let data = {id_edit:id_edit,
+                        codigo_edit:codigo_edit,
+                        rut_edit:rut_edit,
+                        empNombre_edit:empNombre_edit,
+                        direccionPais_edit:direccionPais_edit,
+                        direcciondire_edit:direcciondire_edit,
+                        telefono_edit:telefono_edit,
+                        movil_edit:movil_edit,
+                        fax_edit:fax_edit,
+                        email_edit:email_edit,
+                        _token:$("meta[name='csrf-token']").attr("content")};
+    
+                        console.log(data);
+                        
+                request=$.ajax({
+                    type:'POST',
+                    url:'/updateproveedor',
+                    data: data,
+                    headers:{_token:$("meta[name='csrf-token']").attr("content")},
+                  }).then((data) => {
+    
+                       
+                  })
+        
+                request.done(function( msg ) {
+        
+                    $( "#log" ).html( msg );
+                      console.log(msg);
+                });
+         
+                request.fail(function( jqXHR, textStatus ) {
+                      console.log(jqXHR.responseText,textStatus);
+                      alert( "Request failed: " + textStatus + jqXHR.responseText);
+                });
+            
+            
+            //alert('Proveedor actualizado');
+            tabla();
+            $('#formEdit').modal('close');
+             
+
+              Swal.fire({
+                icon: 'success',
+                title: '¡Proveedor actualizado exitosamente!',
+                //text: '¡Complete todos los campos!'
+                //footer: '<a href>Why do I have this issue?</a>'
+                showConfirmButton: false,
+                timer: 800
+              })
+
+            }
+            
+             
+
+          }) 
+       
+
+    })
+
+
+     /* $("#tabla-proveedor").on("click", ".btn-cancel", function(){
+
+        /*let codigo = $(this).parents("tr").attr('data-codigo');
         let rut = $(this).parents("tr").attr('data-rut');
         let empNombre = $(this).parents("tr").attr('data-empNombre');
         let direccionPais = $(this).parents("tr").attr('data-direccionPais');
@@ -297,7 +346,7 @@ $(document).ready(function(){
         }
         else{
             $(this).parents("tr").find("td:eq(9)").text(email);
-        }
+        }*/
         //$(this).parents("tr").find("td:eq(1)").text(codigo);
         //$(this).parents("tr").find("td:eq(2)").text(rut);
         //$(this).parents("tr").find("td:eq(3)").text(empNombre);
@@ -307,13 +356,17 @@ $(document).ready(function(){
         $(this).parents("tr").find("td:eq(7)").text(movil);
         $(this).parents("tr").find("td:eq(8)").text(fax);
         $(this).parents("tr").find("td:eq(9)").text(email);*/
-        $(this).parents("tr").find(".get-pdf-edit").show();
+        /*$(this).parents("tr").find(".get-pdf-edit").show();
         $(this).parents("tr").find(".btn-update").remove();
         $(this).parents("tr").find(".btn-cancel").remove();
-    });
+    });*/
     
+
+
+
     $('#btn-nuevo').on('click', function(){
-        console.log('nuevo');
+        $('#formNuevo').modal('open');
+        /*console.log('nuevo');
         $.get('/nuevo',function(){
             //let news='<tr><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td><td>gaaaa</td></tr>'
             console.log('gaa');
@@ -392,10 +445,10 @@ $(document).ready(function(){
                     $('#tabla-proveedor > tbody > tr:first').before(html);
                 })
               });
-        });
+        });*/
     });
 
-    $("#tabla-proveedor").on("click", ".btn-update",function(){
+    /*$("#tabla-proveedor").on("click", ".btn-update",function(){
         let codigo = $(this).parents("tr").find("input[name='codigo']").val();
         let rut = $(this).parents("tr").find("input[name='rut']").val();
         let empNombre = $(this).parents("tr").find("input[name='empNombre']").val();
@@ -502,7 +555,187 @@ $(document).ready(function(){
         $(this).parents("tr").find(".get-pdf-edit").show();
         $(this).parents("tr").find(".btn-cancel").remove();
         $(this).parents("tr").find(".btn-update").remove();
+    })*/
+
+    $('#tabla-proveedor').on('click ','a.detalles',function() {
+        //console.log('gaaaa');
+        let codigo = $(this).parents("tr").attr('data-codigo');
+        let rut = $(this).parents("tr").attr('data-rut');
+        let empNombre = $(this).parents("tr").attr('data-empNombre');
+        let direccionPais = $(this).parents("tr").attr('data-direccionPais');
+        let direcciondire = $(this).parents("tr").attr('data-direcciondire');
+        let telefono = $(this).parents("tr").attr('data-telefono');
+        let movil = $(this).parents("tr").attr('data-movil');
+        let fax = $(this).parents("tr").attr('data-fax');
+        let email = $(this).parents("tr").attr('data-email');
+
+        $('#formModal').modal('open');
+
+        $('#codigo_detalle').val(codigo);
+        $('#rut_detalle').val(rut);
+        $('#empresa_detalle').val(empNombre);
+        $('#pais_detalle').val(direccionPais);
+        $('#direccion_detalle').val(direcciondire);
+        $('#telefono_detalle').val(telefono);
+        $('#movil_detalle').val(movil);
+        $('#fax_detalle').val(fax);
+        $('#email_detalle').val(email);
+
+        /*$('#formModal').modal('close');
+        console.log('asda');*/
+    });
+
+    $('#nuevo-proveedor').on('submit', function(){
+        event.preventDefault();
+
+        console.log($(this).serialize());
+        
+           request=$.ajax({
+             url: '/nuevo',
+             method:"POST",
+             data:$(this).serialize(),
+             dataType:"json",
+             success:function(res)
+             {
+
+                /*if (res.camionAgregar == '0') {*/
+                    // alert('Se creo un nuevo proveedor');
+                /*} else {
+                    alerta('error','El contenedor ya existe, ingrese otro código');
+                }*/
+
+            }
+           });
+        
+
+          Swal.fire({
+            icon: 'success',
+            title: '¡Proveedor creado exitosamente!',
+            //text: '¡Complete todos los campos!'
+            //footer: '<a href>Why do I have this issue?</a>'
+            showConfirmButton: false,
+            timer: 800
+          })
+           tabla();
+           $('#codigo_nuevo').val('');
+           $('#rut_nuevo').val('');
+           $('#empresa_nuevo').val('');
+           $('#pais_nuevo').val('');
+           $('#direccion_nuevo').val('');
+           $('#telefono_nuevo').val('');
+           $('#movil_nuevo').val('');
+           $('#fax_nuevo').val('');
+           $('#email_nuevo').val('');
+
+           
+           /*$('#codigo_agregar').val('');
+           $('#auxiliar_agregar').val('');
+           $('#descripcion_agregar').val('');
+           $('#contenido_agregar').val('');
+           $('#documento_agregar').val('');
+           $('#fecha_agregar').val('');
+           $('#observaciones_agregar').val('');*/
+
+           /*request.done(function( msg ) {
+
+           $( "#log" ).html( msg );
+             console.log(msg);
+           });
+
+           request.fail(function( jqXHR, textStatus ) {
+             console.log(jqXHR.responseText,textStatus);
+             alert( "Request failed: " + textStatus + jqXHR.responseText);
+           });*/
+        
+       
+        //$('#formNuevo').modal('close');
+
     })
 
+    function tabla(){
+        $.get('/proveedor',function(res){
+
+
+            //console.log(res);
+            $('#proveedor-datos').empty();
+            $.each(res.proveedor,function(index,value){
+    
+                btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                btn_detalles='<a type="button" value="" class="detalles btn" style="cursor: pointer; background-color:#B41111">Ver</a>';
+                html='<tr data-id="'+value.id_proveedor +'"'; 
+                html+='data-codigo="'+value.emp_codigo+'"'; 
+                html+='data-rut="'+value.emp_rut+'"'; 
+                html+='data-empNombre="'+value.emp_nombre+'"'; 
+                html+='data-direccionPais="'+value.direccion_pais+'"';
+                html+='data-direcciondire="'+value.direccion_direccion+'"';
+                html+='data-telefono="'+value.com_telefono+'"';
+                html+='data-movil="'+value.com_movil+'"'; 
+                html+='data-fax="'+value.com_fax+'"';
+                html+='data-email="'+value.com_email+'">';    
+                html+='<td>'+btn_editar+'</td>';
+                if(value.emp_codigo == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.emp_codigo+'</td>';
+                }
+                if(value.emp_rut == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.emp_rut+'</td>';
+                }
+                if(value.emp_nombre == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.emp_nombre+'</td>';
+                }
+                if(value.direccion_pais == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.direccion_pais+'</td>';
+                }
+                if(value.direccion_direccion == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.direccion_direccion+'</td>';
+                }
+                /*if(value.com_telefono == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.com_telefono+'</td>';
+                }
+                if(value.com_movil == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.com_movil+'</td>';
+                }
+                if(value.com_fax == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.com_fax+'</td>';
+                }
+                if(value.com_email == ''){
+                    html+='<td>-</td>'; 
+                }
+                else{
+                    html+='<td>'+value.com_email+'</td>';
+                }*/
+                html+='<td>'+btn_detalles+'</td></tr>';
+    
+                
+                $('#tabla-proveedor').append(html);        
+            })
+    
+        }); 
+    }
+
+ 
 });
 

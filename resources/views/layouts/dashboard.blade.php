@@ -33,6 +33,7 @@
       }
     </style>
      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
@@ -88,6 +89,12 @@
         </h1>
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+        <li class=" bold">
+          <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
+            <i class="material-icons">home</i>
+            <span class="menu-title" data-i18n="Dashboard">Administrador</span>
+          </a>
+        </li>
         <li class="navigation-header">
           <a class="navigation-header-text">Applications</a>
           <i class="navigation-header-icon material-icons">more_horiz</i>
@@ -187,16 +194,11 @@
        </li>
 
 
-        <li class=" bold">
-          <a class="  waves-effect waves-cyan " href="{{route('usuarios')}}">
-            <i class="material-icons">home</i>
-            <span class="menu-title" data-i18n="Dashboard">Administrador</span>
-          </a>
-        </li>
+        
         <li class=" bold">
           <a class="collapsible-header waves-effect waves-cyan">
             <i class="material-icons">local_shipping</i>
-            <span class="menu-title" data-i18n="Dashboard">Contenedor/Camion</span>
+            <span class="menu-title" data-i18n="Dashboard">Contenedor/Camión</span>
           </a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -210,7 +212,7 @@
               </li>
               <li><a href="{{route('contenedor.parametros')}}">
                 <i class="material-icons">radio_button_unchecked</i>
-                <span data-i18n="Page Maintenanace"> Gestion de Parametros </span></a>
+                <span data-i18n="Page Maintenanace"> Gestión de Parámetros </span></a>
               </li>
             </ul>
           </div>
