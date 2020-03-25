@@ -366,7 +366,7 @@
                           <form  method="post" id="actualizar-datosLogistica" class="col s12">
                                     @csrf
                           <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
-                              <h7>Información logistica del contenedor</h7>
+                              <h7>Información logística del contenedor</h7>
                           </div>
 
                           <div class="row ">
@@ -752,7 +752,11 @@
                           </div>
                           </form>
                         </div>
-                        <div id="cinco2" class="tabcontent"  style="padding-top:20px">
+                        <div id="cinco2" class="tabcontent"  >
+                          <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                              <h7>Autorizaciones adjuntas</h7>
+                          </div>
+
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -783,6 +787,10 @@
                                </div>
                               </div>
                               <br>
+
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Documento adjuntos</h7>
+                              </div>
 
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
@@ -815,6 +823,10 @@
 
                               <br>
 
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Descripción de bultos</h7>
+                              </div>
+
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -844,6 +856,9 @@
                                 </div>
                               <br>
 
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Lista de contenedores</h7>
+                              </div>
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -1019,7 +1034,7 @@
 
               <div class="row pb-2">
                 <div class="col s12 l6">
-                  <label for="fecha_embarqued">embarque: </label>
+                  <label for="fecha_embarqued">Embarque: </label>
                   <input disabled type="text" name="fecha_embarqued" id="fecha_embarqued"  class="validate form-control" step="1">
                 </div>
                 <div class="col s12 l6">

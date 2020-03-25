@@ -191,10 +191,16 @@ $(document).ready(function(){
 
    $('#tabla-administracion-cuerpo').on('click','.administrar-detalle',function(){
           let id_camion,estado;
+          //
+          // let elem = $('.tabs')
+          // let instance = M.Tabs.getInstance(elem);
+          // instance.select('test2');
 
-          let elem = $('.tabs')
+          let elem = $('.tab')
           let instance = M.Tabs.getInstance(elem);
-          instance.select('test2');
+          instance.select('uno2');
+
+
 
           $('#tabla-camionesContenedorDetalle-body').empty();
           $('#tabla-itemsContenedorDetalle-body').empty();
@@ -533,7 +539,7 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
 
             }
            });
-           
+
            $('#codigo_agregar').val('');
            $('#auxiliar_agregar').val('');
            $('#descripcion_agregar').val('');
