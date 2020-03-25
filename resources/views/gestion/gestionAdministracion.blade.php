@@ -104,7 +104,7 @@
                   <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
                     <div class="row">
                         <div class="tab">
-                           <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno2')">Datos generales</div>
+                           <div selected class="tablinks active" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno2')">Datos generales</div>
                            <div class='tablinks' onclick="openCity(event, 'dos2')">Logística</div>
                            <div class='tablinks' onclick="openCity(event, 'cuatro2')">Datos técnicos</div>
                            <div class='tablinks' onclick="openCity(event, 'cinco2')">Referencias</div>
