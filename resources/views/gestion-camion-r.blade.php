@@ -84,10 +84,10 @@
         <div class="row pb-4">
             <div class="col s12">
               <ul class="tabs">
-                <li class="tab col m3"><a class="active" href="#test1">Detalle</a></li>
-                <li class="tab col m3"><a href="#test2">Actualizado</a></li>
-                <li class="tab col m3"><span id="bloquear-camion"></span></li>
-                <li class="tab col m3"><a id="camiones_vencidos" href="#test3">Camiones vencidos</a></li>
+                <li class="tab col m4"><a class="active" href="#test1">Detalle</a></li>
+                {{-- <li class="tab col m3"><a href="#test2">Actualizado</a></li> --}}
+                <li class="tab col m4"><span id="bloquear-camion"></span></li>
+                <li class="tab col m4"><a id="camiones_vencidos" href="#test3">Camiones vencidos</a></li>
               </ul>
             </div>
             <div id="test1" class="col s12">
@@ -112,8 +112,8 @@
                     </div>
                 </div>
               </div>
-            </div> 
-            <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
+            </div>
+            {{-- <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
                 <div class="row">
 
                     <div class="tab">
@@ -420,7 +420,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div id="test3" class="col s12">
 

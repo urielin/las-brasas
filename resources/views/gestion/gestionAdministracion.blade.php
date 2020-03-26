@@ -104,7 +104,7 @@
                   <div id="test2" class="col s12" style="padding-top: 20px; padding-left: 40px; padding-right: 40px;">
                     <div class="row">
                         <div class="tab">
-                           <div class="tablinks" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno2')">Datos generales</div>
+                           <div selected class="tablinks active" style="border-top-width: 1px;" id='openDefault' onclick="openCity(event, 'uno2')">Datos generales</div>
                            <div class='tablinks' onclick="openCity(event, 'dos2')">Logística</div>
                            <div class='tablinks' onclick="openCity(event, 'cuatro2')">Datos técnicos</div>
                            <div class='tablinks' onclick="openCity(event, 'cinco2')">Referencias</div>
@@ -116,9 +116,12 @@
 
                               <div class="row ">
                                 <div class="col l12">
-                                      <div class="form-horizontal form-inline">
+                                      {{-- <div class=""> --}}
+                                        <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                              <h7>Información general</h7>
+                                        </div>
 
-                                        <div class="row">
+                                    <div class="row">
                                           <div class="form-group col s12 l12 pb-2">
                                            <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
                                            <div class="col l6 m6 s6">
@@ -174,8 +177,7 @@
                                                 <input required name="marca_origen" id="marca_origen" type="number" class="activo browser-default form-control" placeholder="ejm. 1">
                                               </div>
                                           </div>
-                                        </div>
-                                        <div class="row">
+
                                           <div class="form-group col s12 l12  pb-2">
 
                                             <label for="clasif_mercancia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Clasificación: </label>
@@ -188,8 +190,13 @@
                                                 </select>
                                             </div>
                                           </div>
-                                          <div class="form-group col s12 l12  pb-2">
+                                      </div>
 
+                                      <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                            <h7>Información de cierre y forma de pago convenido</h7>
+                                      </div>
+                                      <div class="row">
+                                          <div class="form-group col s12 l12  pb-2">
                                             <label for="fecha_cierre" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha cierre: </label>
                                             <div class="col l6 m6 s6">
                                               <input required name="fecha_cierre" id="fecha_cierre" type="text" class="activo activo browser-default form-control"  placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
@@ -269,6 +276,13 @@
                                               </select>
                                             </div>
                                           </div>
+
+                                        </div>
+                                        <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                              <h7>Información logística de envio de la mercancía</h7>
+                                        </div>
+                                        <div class="row">
+
                                           <div class="form-group col s12 l12 pb-2">
                                             <label for="lugar_arribo" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Lugar arribo: </label>
                                             <div class="col l6 m6 s6">
@@ -281,31 +295,31 @@
                                             </div>
                                           </div>
 
-                                                <div class="form-group col s12 l12 pb-2">
-                                                  <label for="fecha_embarque1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha embarque: </label>
-                                                  <div class="col l6 m6 s6">
-                                                    <input required name="fecha_embarque1" id="fecha_embarque1" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                                                  </div>
-                                                </div>
-                                                <div class="form-group col s12 l12 pb-2">
-                                                  <label for="fecha_embarque2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
-                                                  <div class="col l6 m6 s6">
-                                                    <input required name="fecha_embarque2" id="fecha_embarque2" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                                                  </div>
-                                                </div>
+                                          <div class="form-group col s12 l12 pb-2">
+                                            <label for="fecha_embarque1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha embarque: </label>
+                                            <div class="col l6 m6 s6">
+                                              <input required name="fecha_embarque1" id="fecha_embarque1" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                                            </div>
+                                          </div>
+                                          <div class="form-group col s12 l12 pb-2">
+                                            <label for="fecha_embarque2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
+                                            <div class="col l6 m6 s6">
+                                              <input required name="fecha_embarque2" id="fecha_embarque2" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                                            </div>
+                                          </div>
 
-                                                <div class="form-group col s12 l12 pb-2">
-                                                  <label for="fecha_llegada1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de llegada: </label>
-                                                  <div class="col l6 m6 s6">
-                                                    <input required name="fecha_llegada1" id="fecha_llegada1" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                                                  </div>
-                                                </div>
-                                                <div class="form-group col s12 l12 pb-2">
-                                                  <label for="fecha_llegada2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
-                                                  <div class="col l6 m6 s6">
-                                                    <input required name="fecha_llegada2" id="fecha_llegada2" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                                                  </div>
-                                                </div>
+                                          <div class="form-group col s12 l12 pb-2">
+                                            <label for="fecha_llegada1" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de llegada: </label>
+                                            <div class="col l6 m6 s6">
+                                              <input required name="fecha_llegada1" id="fecha_llegada1" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                                            </div>
+                                          </div>
+                                          <div class="form-group col s12 l12 pb-2">
+                                            <label for="fecha_llegada2" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Al: </label>
+                                            <div class="col l6 m6 s6">
+                                              <input required name="fecha_llegada2" id="fecha_llegada2" type="text" class="activo browser-default form-control" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                                            </div>
+                                          </div>
 
                                           <div class="form-group col s12 l12 pb-2">
                                             <label for="fecha_produccion" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha de producción: </label>
@@ -343,17 +357,21 @@
                                             </div>
                                           </div>
                                         </div>
-                                      </div>
+                                      {{-- </div> --}}
                                 </div>
                               </div>
                             </form>
                         </div>
-                        <div id="dos2" class="tabcontent"  style="padding-top:20px">
+                        <div id="dos2" class="tabcontent"  >
                           <form  method="post" id="actualizar-datosLogistica" class="col s12">
                                     @csrf
+                          <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                              <h7>Información logística del contenedor</h7>
+                          </div>
+
                           <div class="row ">
                             <div class="col l12">
-                                  <div class="form-horizontal form-inline">
+                                  {{-- <div class="form-horizontal form-inline"> --}}
                                     <div class="row">
                                       <div class="form-group col s12 l12 pb-2">
                                        <label for="id_logistica" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Id: </label>
@@ -374,6 +392,17 @@
                                             <input disabled  name="fecha_cierre_logistica" id="fecha_cierre_logistica" type="datetime-local" class="browser-default form-control">
                                           </div>
                                       </div>
+
+                                    </div>
+
+                                    <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                        <h7>Ingrese las fechas efectivas segun los datos obtenidos</h7>
+                                    </div>
+
+
+
+                                    <div class="row">
+
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="fecha_embarque" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Fecha embarque: </label>
                                         <div class="col l6 m6 s6">
@@ -440,17 +469,21 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  {{-- </div> --}}
                             </div>
                           </div>
                           </form>
                         </div>
-                        <div id="cuatro2" class="tabcontent"  style="padding-top:20px">
+                        <div id="cuatro2" class="tabcontent" >
                           <form  method="post" id="actualizar-datosTecnicos" class="col s12">
                                     @csrf
                           <div class="row ">
                             <div class="col l12">
-                                  <div class="form-horizontal form-inline">
+                                  {{-- <div class="form-horizontal form-inline"> --}}
+                                    <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                        <h7>Empresas relacionadas con el transporte</h7>
+                                    </div>
+
                                     <div class="row">
                                       <div class="form-group col s12 l12 pb-2">
                                        <label for="naviera" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Naviera: </label>
@@ -481,6 +514,13 @@
                                             <input name="id_codigo_tecnico" id="id_codigo_tecnico" type="hidden" class="browser-default form-control">
                                           </div>
                                       </div>
+                                    </div>
+
+                                    <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                        <h7>Referencia a documento aduanero</h7>
+                                    </div>
+
+                                    <div class="row">
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="ingreso_zeta" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Documento: </label>
                                         <div class="col l6 m6 s6">
@@ -494,6 +534,13 @@
 
                                         </div>
                                       </div>
+                                    </div>
+
+                                      <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                        <h7>Información para tramitación</h7>
+                                      </div>
+
+                                    <div class="row">
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="declara_tramite" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Tipo de tramite: </label>
                                         <div class="col l6 m6 s6">
@@ -627,6 +674,14 @@
                                           <input required name="declara_almacen_ubic" id="declara_almacen_ubic" type="text" class="activo browser-default form-control" placeholder="ejm. Nombre de ubicación">
                                         </div>
                                       </div>
+
+                                    </div>
+
+                                    <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                      <h7>Información de valorización</h7>
+                                    </div>
+                                    <div class="row">
+
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="declara_clausula" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Claúsula: </label>
                                         <div class="col l6 m6 s6">
@@ -668,6 +723,12 @@
                                           <input required  step="any" name="valor_total_nal" id="valor_total_nal" type="number" class="activo browser-default form-control" placeholder="ejm. 137,0000">
                                         </div>
                                       </div>
+
+                                      </div>
+                                      <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
+                                        <h7>Destino de la mercancía</h7>
+                                      </div>
+                                      <div class="row">
                                       <div class="form-group col s12 l12 pb-2">
                                         <label for="sucursal" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Ubicación destino: </label>
                                         <div class="col l6 m6 s6">
@@ -686,12 +747,16 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  {{-- </div> --}}
                             </div>
                           </div>
                           </form>
                         </div>
-                        <div id="cinco2" class="tabcontent"  style="padding-top:20px">
+                        <div id="cinco2" class="tabcontent"  >
+                          <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                              <h7>Autorizaciones adjuntas</h7>
+                          </div>
+
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -722,6 +787,10 @@
                                </div>
                               </div>
                               <br>
+
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Documento adjuntos</h7>
+                              </div>
 
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
@@ -754,6 +823,10 @@
 
                               <br>
 
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Descripción de bultos</h7>
+                              </div>
+
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -783,6 +856,9 @@
                                 </div>
                               <br>
 
+                              <div  class="row ml-2 pt-1 pb-1 pl-1 " style="background-color:#aaa">
+                                  <h7>Lista de contenedores</h7>
+                              </div>
                               <div id="responsive-table" class=" ">
                                 <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
@@ -958,7 +1034,7 @@
 
               <div class="row pb-2">
                 <div class="col s12 l6">
-                  <label for="fecha_embarqued">embarque: </label>
+                  <label for="fecha_embarqued">Embarque: </label>
                   <input disabled type="text" name="fecha_embarqued" id="fecha_embarqued"  class="validate form-control" step="1">
                 </div>
                 <div class="col s12 l6">
