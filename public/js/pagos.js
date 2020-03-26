@@ -44,13 +44,13 @@ $(document).ready(function(){
         let swift = $(this).parents("tr").attr('data-swift') == undefined ? ' ': $(this).parents("tr").attr('data-swift');
         let switf_fecha = $(this).parents("tr").attr('data-switf_fecha') == undefined ? ' ': $(this).parents("tr").attr('data-switf_fecha');
          
-        $(this).parents("tr").find("td:eq(7)").html('<input style="width:110px;height: 35px !important;" class="form-control browser-default" name="forward" value="'+forward+'">');
-        $(this).parents("tr").find("td:eq(8)").html('<input type="date" style="width:155px;height: 35px !important;" class="form-control browser-default" name="forward_fecha" value="'+forward_fecha+'">');
-        $(this).parents("tr").find("td:eq(9)").html('<input type="date" style="width:155px;height: 35px !important;" class="form-control browser-default" name="forward_compromiso" value="'+forward_compromiso+'">');
-        $(this).parents("tr").find("td:eq(10)").html('<input style="width:110px; height: 35px !important;" class="form-control browser-default" name="swift" value="'+swift+'">');
-        $(this).parents("tr").find("td:eq(11)").html('<input type="date" style="width:155px;height: 35px !important;" class="form-control browser-default" name="switf_fecha" value="'+switf_fecha+'">');
+        $(this).parents("tr").find("td:eq(5)").html('<input style="width:110px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward" value="'+forward+'">');
+        $(this).parents("tr").find("td:eq(6)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward_fecha" value="'+forward_fecha+'">');
+        $(this).parents("tr").find("td:eq(7)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward_compromiso" value="'+forward_compromiso+'">');
+        $(this).parents("tr").find("td:eq(8)").html('<input style="width:70px; height: 30px !important;font-size: 11px;" class="form-control browser-default" name="swift" value="'+swift+'">');
+        $(this).parents("tr").find("td:eq(9)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="switf_fecha" value="'+switf_fecha+'">');
         
-        $(this).parents("tr").find("td:eq(13)").prepend(`<span style='display: flex;'>
+        $(this).parents("tr").find("td:eq(11)").prepend(`<span style='display: flex;'>
                                                           <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'> 
                                                               <i class="material-icons dp48">save</i> 
                                                           </button>
@@ -70,11 +70,11 @@ $(document).ready(function(){
           let switf_fecha = $(this).parents("tr").attr('data-switf_fecha');
          
      
-          $(this).parents("tr").find("td:eq(7)").text(forward); 
-          $(this).parents("tr").find("td:eq(8)").text(forward_fecha);
-          $(this).parents("tr").find("td:eq(9)").text(forward_compromiso);
-          $(this).parents("tr").find("td:eq(10)").text(swift);
-          $(this).parents("tr").find("td:eq(11)").text(switf_fecha);
+          $(this).parents("tr").find("td:eq(5)").text(forward); 
+          $(this).parents("tr").find("td:eq(6)").text(forward_fecha);
+          $(this).parents("tr").find("td:eq(7)").text(forward_compromiso);
+          $(this).parents("tr").find("td:eq(8)").text(swift);
+          $(this).parents("tr").find("td:eq(9)").text(switf_fecha);
 
           $(this).parents("tr").find(".btn-edit").show();
           $(this).parents("tr").find(".btn-update").remove();
@@ -83,18 +83,18 @@ $(document).ready(function(){
 
       $("#pagoTable").on("click", ".btn-update", function(){ 
           
-            let code = $(this).parents("tr").find("td:eq(1)").text();
+          let code = $(this).parents("tr").find("td:eq(1)").text();
           let forward = $(this).parents("tr").find("input[name='forward']").val();  
           let forward_fecha = $(this).parents("tr").find("input[name='forward_fecha']").val();
           let forward_compromiso = $(this).parents("tr").find("input[name='forward_compromiso']").val();
           let swift = $(this).parents("tr").find("input[name='swift']").val();
           let switf_fecha = $(this).parents("tr").find("input[name='switf_fecha']").val();
      
-          $(this).parents("tr").find("td:eq(7)").text(forward);
-          $(this).parents("tr").find("td:eq(8)").text(forward_fecha);
-          $(this).parents("tr").find("td:eq(9)").text(forward_compromiso);
-          $(this).parents("tr").find("td:eq(10)").text(swift);
-          $(this).parents("tr").find("td:eq(11)").text(switf_fecha);
+          $(this).parents("tr").find("td:eq(5)").text(forward);
+          $(this).parents("tr").find("td:eq(6)").text(forward_fecha);
+          $(this).parents("tr").find("td:eq(7)").text(forward_compromiso);
+          $(this).parents("tr").find("td:eq(8)").text(swift);
+          $(this).parents("tr").find("td:eq(9)").text(switf_fecha);
      
           $(this).parents("tr").attr('data-forward', forward); 
           $(this).parents("tr").attr('data-forward_fecha', forward_fecha);

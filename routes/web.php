@@ -130,6 +130,9 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
     $mpdf->Output();
 
   });
+  
+  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne');
 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
