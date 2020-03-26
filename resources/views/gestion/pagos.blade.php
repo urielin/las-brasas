@@ -188,6 +188,7 @@
 
 @section('js')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+
   <script src="{{asset('js/pagos.js')}}"></script>
   <script>
     $(document).ready(function(){
@@ -195,29 +196,26 @@
     })
     let paginator = { 
         async showPago(id) {
-          $('#showModal').modal('open');
-          console.log('id', id)
 
-     
-        let url= '/contenedores-camiones/find-one?id=' + id; 
-        let { data: info, status } = await axios.get(url);   
-        const data  = info.data;
-        console.log('DATA',data);
-        
-        $('#show_code').text(data.codigo)  
-        $('#show_descripcion').text(data.descripcion)  
-        $('#show_proveedor').text(data.proveedor)  
-        $('#show_valor_total').text(data.valor_total)   
-        $('#show_tipo_moneda').text(data.tipo_moneda)    
-        $('#show_fecha_llegada').text(data.fecha_llegada)    
-        $('#show_forward').text(data.forward)    
-        $('#show_fowrard_fecha').text(data.fowrard_fecha)    
-        $('#show_forward_compromiso').text(data.forward_compromiso)    
-        $('#show_swift').text(data.swift)    
-        $('#show_switf_fecha').text(data.switf_fecha)    
-        $('#show_tipo_moneda').text(data.tipo_moneda)    
-        $('#show_pagado_fecha').text(data.pagado_fecha)    
- 
+          $('#showModal').modal('open'); 
+          let url= '/contenedores-camiones/find-one?id=' + id; 
+          let { data: info, status } = await axios.get(url);   
+          const data  = info.data;
+          
+          $('#show_code').text(data.codigo)  
+          $('#show_descripcion').text(data.descripcion)  
+          $('#show_proveedor').text(data.proveedor)  
+          $('#show_valor_total').text(data.valor_total)   
+          $('#show_tipo_moneda').text(data.tipo_moneda)    
+          $('#show_fecha_llegada').text(data.fecha_llegada)    
+          $('#show_forward').text(data.forward)    
+          $('#show_fowrard_fecha').text(data.fowrard_fecha)    
+          $('#show_forward_compromiso').text(data.forward_compromiso)    
+          $('#show_swift').text(data.swift)    
+          $('#show_switf_fecha').text(data.switf_fecha)    
+          $('#show_tipo_moneda').text(data.tipo_moneda)    
+          $('#show_pagado_fecha').text(data.pagado_fecha)    
+  
      
       },
       pagesNumber(pagination) {
@@ -245,8 +243,8 @@
                 return pagesArray;
       },
       setPaginatorHTML(data) {
-         let numberPager = this.pagesNumber(data);
-         
+        let numberPager = this.pagesNumber(data);
+        
         let html = [], preview, next;
         for (let i = 0; i < numberPager.length; i++) {
           let active = numberPager[i]  == data.current_page  ? 'active' : '';
@@ -259,13 +257,10 @@
               next = `<li class="page-item "  >
                         <a class="page-link "  onclick="paginator.cambiarPagina('${data.current_page + 1}')">Sig</a>
                      </li>`
-          } 
-           
-            html[i] =  `<li class="page-item  ${active}">
-                        <a class="page-link"  onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
-                      </li>` 
-           
-          
+          }  
+          html[i] =  `<li class="page-item  ${active}">
+                      <a class="page-link"  onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
+                    </li>`  
         }
         html.unshift(preview);
         html.push(next);
