@@ -14,6 +14,7 @@
             <div class="form-group">
               <label for="" class="form-control-label">Proveedor</label>
               <select class="form-control browser-default" id="proveedor" name="proveedor">
+              <!--<select size class="form-control browser-default" id="proveedor" name="proveedor">-->
                 <option value="">Seleccione un proveedor</option>
                 @foreach ($proveedor as $p)
                   <option value="{{$p->id_proveedor}}">{{$p->emp_nombre}}</option>
@@ -65,7 +66,7 @@
                 <th>Móvil</th>
                 <th>Fax</th>
                 <th>Email</th>-->
-                <th>Detalles</th>
+                <th>Ver</th>
 
               </tr>
             </thead>
@@ -118,55 +119,71 @@
           <form  method="POST" id="" class="form-horizontal">
             @csrf
             <div class="row container">
-                                  <div class="row pb-2">
-                                        <div class="col s12 l6">
+                                  <div class="row">
+                                        <div class="col s12 l12">
                                           <label for="codigo_agregar">Código: </label>
-                                          <input type="text" name="codigo_detalle" readonly="readonly" id="codigo_detalle" placeholder=" " class="validate form-control" step="1">
+                                          <input disabled type="text" name="codigo_detalle" readonly="readonly" id="codigo_detalle" placeholder=" " class="validate form-control" step="1">
                                         </div>
-                                        <div class="col s12 l6">
-                                          <label for="auxiliar_agregar">RUT:</label>
-                                          <input type="text" name="rut_detalle" readonly="readonly" id="rut_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
-                                  </div>
-
-                                  <div class="row pb-2">
-                                        <div class="col s12 l6">
-                                          <label for="descripcion_agregar">Empresa: </label>
-                                          <input type="text" name="empresa_detalle" readonly="readonly" id="empresa_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
-                                        <div class="col s12 l6">
-                                          <label for="contenido_agregar">País:</label>
-                                          <input type="text" name="pais_detalle" readonly="readonly" id="pais_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
-                                  </div>
-                                  
-                                  <div class="row pb-2">
-                                        <div class="col s12 l6">
-                                          <label for="documento_agregar">Móvil: </label>
-                                          <input type="text" name="movil_detalle" readonly="readonly" id="movil_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
-                                        <div class="col s12 l6">
-                                          <label for="fecha_agregar">Fax:</label>
-                                          <input type="text" name="fax_detalle" readonly="readonly" id="fax_detalle" placeholder=" "  class="validate form-control" step="1">
-                                        </div>
-                                  </div>
-
-                                  <div class="row pb-2">
-                                        <div class="col s12 l6">
-                                          <label for="observaciones_agregar">Email: </label>
-                                          <input type="text" name="email_detalle" readonly="readonly" id="email_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
-                                        <div class="col s12 l6">
-                                          <label for="fecha_agregar">Teléfono:</label>
-                                          <input type="text" name="telefono_detalle" readonly="readonly" id="telefono_detalle" placeholder=" "  class="validate form-control" step="1">
-                                        </div>
-
+                                        
                                   </div>
 
                                   <div class="row">
                                         <div class="col s12 l12">
-                                          <label for="documento_agregar">Dirección: </label>
-                                          <input type="text" name="direccion_detalle" readonly="readonly" id="direccion_detalle" placeholder=" " class="validate form-control" step="1">
+                                          <label for="auxiliar_agregar">RUT:</label>
+                                          <input disabled type="text" name="rut_detalle" readonly="readonly" id="rut_detalle" placeholder=" " class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="descripcion_agregar">Empresa: </label>
+                                          <input disabled type="text" name="empresa_detalle" readonly="readonly" id="empresa_detalle" placeholder=" " class="validate form-control" step="1">
+                                        </div>
+                                        
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="contenido_agregar">País:</label>
+                                          <input disabled type="text" name="pais_detalle" readonly="readonly" id="pais_detalle" placeholder=" " class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+                                  
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="documento_agregar">Móvil: </label>
+                                          <input disabled type="text" name="movil_detalle" readonly="readonly" id="movil_detalle" placeholder=" " class="validate form-control" step="1">
+                                        </div>
+                                        
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="fecha_agregar">Fax:</label>
+                                          <input disabled type="text" name="fax_detalle" readonly="readonly" id="fax_detalle" placeholder=" "  class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="observaciones_agregar">Email: </label>
+                                          <input disabled type="text" name="email_detalle" readonly="readonly" id="email_detalle" placeholder=" " class="validate form-control" step="1">
+                                        </div>
+                                        
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="fecha_agregar">Teléfono:</label>
+                                          <input disabled type="text" name="telefono_detalle" readonly="readonly" id="telefono_detalle" placeholder=" "  class="validate form-control" step="1">
+                                        </div>
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col s12 l12">
+                                          <label for="documento_agregar">Dirección: 
+                                          <input style=""disabled type="text" name="direccion_detalle" readonly="readonly" id="direccion_detalle" placeholder=" " class="validate form-control" step="1">
+                                          </label>
                                         </div>
                                         
                                   </div>

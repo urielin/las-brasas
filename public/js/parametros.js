@@ -27,7 +27,7 @@ $(document).ready(function(){
                 $.each(res.datos,function(index,value){
 
                     btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-                    btn_detalles='<a type="button" value="" class="detalles btn " style="cursor: pointer; background-color:#B41111">Ver</a>';
+                    btn_detalles='<a type="button" value="" class="detalles btn blue btn-50 darken-1" style="cursor: pointer"><i class="material-icons dp48">remove_red_eye</i></a>';
 
                     html='<tr data-id="'+value.id_proveedor +'"'; 
                     html+='data-codigo="'+value.emp_codigo+'"'; 
@@ -661,7 +661,8 @@ $(document).ready(function(){
             $.each(res.proveedor,function(index,value){
     
                 btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-                btn_detalles='<a type="button" value="" class="detalles btn" style="cursor: pointer; background-color:#B41111">Ver</a>';
+                btn_detalles='<a type="button" value="" class="detalles btn blue btn-50 darken-1" style="cursor: pointer"><i class="material-icons dp48">remove_red_eye</i></a>';
+                
                 html='<tr data-id="'+value.id_proveedor +'"'; 
                 html+='data-codigo="'+value.emp_codigo+'"'; 
                 html+='data-rut="'+value.emp_rut+'"'; 
