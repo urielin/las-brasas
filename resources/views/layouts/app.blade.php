@@ -27,7 +27,19 @@
     <link href="{{ asset('assets/js/plugins/nucleo/css/nucleo.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" /> 
+    <style>
+        body {
+            font-size: 12px;
+
+        }   
+        button :focus {
+            outline: none;
+        } 
+        #pagoTable tbody tr td{
+            padding: 5px 15px !important;
+        }
+    </style> 
 </head>
 <body>
     <div id="app">

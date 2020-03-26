@@ -14,7 +14,7 @@
       </div>
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin: 15px;"> 
-         <table id='pagoTable' class="table centered responsive-table">
+         <table id='pagoTable' class="table centered responsive-table" style="font-size:13px">
             <thead>
               <tr>
                 <th> </th>
@@ -23,81 +23,39 @@
                 <th>Pagar a:</th>
                <!--<th>Total de Factura</th>--> 
                 <th>Total</th>
-                <th>Moneda</th>
-                <th>Fecha Llegada</th>
+                <!--<th>Moneda</th>
+                <th>Fecha Llegada</th>-->
                 <th>Forward</th>
                 <th>Fecha Forward</th>
                 <th>Fecha compromiso</th>
                 <th>Swift</th>
                 <th>Fecha Swift</th> 
-                <th>Pagado Fecha</th>
-                <th></th>
+                <!--<th>Pagado Fecha</th>-->
+                <th>Ver</th>
+
+                <th>Editar</th>
               </tr>
             </thead>
-            <tbody>
-                @foreach ($paginator as $camion) 
-                    <tr data-code='{{$camion->codigo}}' 
-                        data-forward='{{$camion->forward}}'
-                        data-fecha_llegada='{{$camion->fecha_llegada}}'
-                        data-forward_fecha='{{$camion->forward_fecha}}' 
-                        data-forward_compromiso='{{$camion->forward_compromiso}}'
-                        data-swift='{{$camion->swift}}'
-                        data-switf_fecha='{{$camion->switf_fecha}}' >
-
-                      <td> 
-                        @if ($camion->pagado == 0)
-                          <button data-id='{{$camion->codigo}}' class ='btn btn-50 cyan btn-check' >
-                            <i class="material-icons dp48"> check </i>  
-                          </button>
-                        @endif 
-                      </td>
-                      <td>{{$camion->codigo}}</td>
-                      <td>{{$camion->descripcion ? $camion->descripcion : '-' }}</td>
-                      <td>{{$camion->proveedor ? $camion->proveedor : '-' }}</td>
-                      <td>{{$camion->valor_total ? $camion->valor_total : '-' }}</td>
-                      <td>{{$camion->tipo_moneda ? $camion->tipo_moneda : '-' }}</td>
-                      <td>{{$camion->fecha_llegada ? $camion->fecha_llegada : '-' }}</td>
-                      <td>{{$camion->forward ? $camion->forward : '-' }}</td>
-                      <td>{{$camion->forward_fecha ? $camion->forward_fecha : '-'}}</td> 
-                      <td>{{$camion->forward_compromiso ? $camion->forward_compromiso : '-' }}</td>
-                      <td>{{$camion->swift ? $camion->swift : '-' }}</td>
-                      <td>{{$camion->switf_fecha ? $camion->swift_fecha : '-' }}</td> 
-                      <td>{{$camion->pagado_fecha ? $camion->pagado_fecha : '-'}}</td>
-                      <td> 
-                        <button data-id='{{$camion->codigo}}' class ='btn btn-50 cyan btn-edit' >
-                        <i class="material-icons dp48"> edit </i>  
-                        </button> 
-                      </td>
-                    </tr>  
-                @endforeach
-                    <tr >
-                      <td colspan="3"> 
-                       
-                      </td> 
-                      <td>Total</td>
-                      <td> 
-                       {{$total}}
-                      </td>  
-                    </tr> 
+            <tbody> 
+            
             </tbody>
+             
+              <!--<tr >
+                <td colspan="3"> 
+                 
+                </td> 
+                <td>Total</td>
+                <td> 
+                 {{$total}}
+                </td>  
+              </tr>-->
+             
           </table> 
         </div>
-        <nav>
-          @if ($paginator->lastPage() > 1)
-            <ul class="pagination">
-                <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }}">
-                    <a href="{{ $paginator->url(1) }}">Previous</a>
-                </li>
-                @for ($i = 1; $i <= $paginator->lastPage(); $i++)
-                    <li class=" page-item {{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
-                        <a class='page-link' href="{{ $paginator->url($i) }}">{{ $i }}</a>
-                    </li>
-                @endfor
-                <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
-                    <a href="{{ $paginator->url($paginator->currentPage()+1) }}" >Next</a>
-                </li>
-            </ul>
-          @endif
+        <nav style="box-shadow: none; background:white;margin-left: 14px;">
+          <ul id="paginationNav">
+
+          </ul>
 
         </nav>
         
@@ -148,24 +106,80 @@
                
           </tbody>
         </table>
-          <nav>
-            @if ($histories->lastPage() > 1)
-              <ul class="pagination">
-                  <li class="{{ ($histories->currentPage() == 1) ? ' disabled' : '' }}">
-                      <a href="{{ $histories->url(1) }}">Previous</a>
-                  </li>
-                  @for ($i = 1; $i <= $histories->lastPage(); $i++)
-                      <li class=" page-item {{ ($histories->currentPage() == $i) ? ' active' : '' }}">
-                          <a class='page-link' href="{{ $histories->url($i) }}">{{ $i }}</a>
-                      </li>
-                  @endfor
-                  <li class="{{ ($histories->currentPage() == $histories->lastPage()) ? ' disabled' : '' }}">
-                      <a href="{{ $histories->url($histories->currentPage()+1) }}" >Next</a>
-                  </li>
+           
+            <ul>
+          
+ 
+              <ul  class="pagination">
+                   
               </ul>
-            @endif
-          </nav>
+             
         </div>
+      </div>
+
+    </div>
+    <div id="showModal" class="modal">
+      <div class="modal-content">
+        <div class="col l12 m12 s12">
+
+          <h5>CAMIONES A PAGAR DETALLE</h5>
+        </div>
+        <div class="row">
+          <div class="col l12 m12 s12">
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Codigo: </label>
+              <span id="show_code"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Descripcion: </label>
+              <span id="show_descripcion"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Proveedor: </label>
+              <span id="show_proveedor"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Valor Total: </label>
+              <span id="show_valor_total"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Fecha llegada: </label>
+              <span id="show_fecha_llegada"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Forward: </label>
+              <span id="show_forward"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Fecha Forward: </label>
+              <span id="show_fowrard_fecha"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Forward compromiso: </label>
+              <span id="show_forward_compromiso"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Swift: </label>
+              <span id="show_swift"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Fecha swift: </label>
+              <span id="show_switf_fecha"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Tipo moneda: </label>
+              <span id="show_tipo_moneda"> </span>
+            </div>
+            <div class="form-group col l6 m6 s12">  
+              <label for=""> Fecha Pagado: </label>
+              <span id="show_pagado_fecha"> </span>
+            </div>
+             
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect  btn-flat">Cerrar</a>
       </div>
     </div>
   </div>
@@ -173,5 +187,172 @@
 @endsection
 
 @section('js')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+
   <script src="{{asset('js/pagos.js')}}"></script>
+  <script>
+    $(document).ready(function(){
+       paginator.listarPagos()
+    })
+    let paginator = { 
+        async showPago(id) {
+
+          $('#showModal').modal('open'); 
+          let url= '/contenedores-camiones/find-one?id=' + id; 
+          let { data: info, status } = await axios.get(url);   
+          const data  = info.data;
+          
+          $('#show_code').text(data.codigo)  
+          $('#show_descripcion').text(data.descripcion)  
+          $('#show_proveedor').text(data.proveedor)  
+          $('#show_valor_total').text(data.valor_total)   
+          $('#show_tipo_moneda').text(data.tipo_moneda)    
+          $('#show_fecha_llegada').text(data.fecha_llegada)    
+          $('#show_forward').text(data.forward)    
+          $('#show_fowrard_fecha').text(data.fowrard_fecha)    
+          $('#show_forward_compromiso').text(data.forward_compromiso)    
+          $('#show_swift').text(data.swift)    
+          $('#show_switf_fecha').text(data.switf_fecha)    
+          $('#show_tipo_moneda').text(data.tipo_moneda)    
+          $('#show_pagado_fecha').text(data.pagado_fecha)    
+  
+     
+      },
+      pagesNumber(pagination) {
+        let offset = 8;
+        
+                if(!pagination.to) {
+                    return [];
+                }
+
+                var from = pagination.current_page - offset;
+                if(from < 1) {
+                    from = 1;
+                }
+
+                var to = from + (offset * 2);
+                if(to >= pagination.last_page){
+                    to = pagination.last_page;
+                }
+
+                var pagesArray = [];
+                while(from <= to) {
+                    pagesArray.push(from);
+                    from++;
+                }
+                return pagesArray;
+      },
+      setPaginatorHTML(data) {
+        let numberPager = this.pagesNumber(data);
+        
+        let html = [], preview, next;
+        for (let i = 0; i < numberPager.length; i++) {
+          let active = numberPager[i]  == data.current_page  ? 'active' : '';
+          if (data.current_page> 1) {
+              preview =  `<li class="page-item" >
+                              <a class="page-link"  onclick="paginator.cambiarPagina('${data.current_page - 1}')">Ant</a>
+                          </li>`
+          } 
+          if (data.current_page < data.last_page) {
+              next = `<li class="page-item "  >
+                        <a class="page-link "  onclick="paginator.cambiarPagina('${data.current_page + 1}')">Sig</a>
+                     </li>`
+          }  
+          html[i] =  `<li class="page-item  ${active}">
+                      <a class="page-link"  onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
+                    </li>`  
+        }
+        html.unshift(preview);
+        html.push(next);
+
+        return html;  
+      },
+      setPagosHtml(data) {
+        let html = [];
+        let check = [];
+        for (let i = 0; i < data.length; i++) {
+         
+          
+          if (data[i].pagado == 0) {
+            check[0] = `<button data-id='${data[i].codigo}'  class ='btn btn-50 green btn-check' >
+                          <i class="material-icons dp48"> check </i>  
+                        </button>`
+          } else {
+            check[0] = '-'
+          }
+          let descripcion = data[i].descripcion ? data[i].proveedor : '-'; 
+          let proveedor = data[i].proveedor ? data[i].proveedor : '-';
+          let valor_total = data[i].valor_total ? data[i].valor_total : '-';
+          let tipo_moneda = data[i].tipo_moneda ? data[i].tipo_moneda : '-';
+          let fecha_llegada = data[i].fecha_llegada ? data[i].fecha_llegada : '-';
+          let forward = data[i].forward ? data[i].forward : '-';
+          let forward_fecha = data[i].forward_fecha ? data[i].forward_fecha : '-';
+          let forward_compromiso = data[i].forward_compromiso ? data[i].forward_compromiso : '-' ;
+          let swift = data[i].swift ? data[i].swift : '-';
+          let switf_fecha = data[i].switf_fecha ? data[i].swift_fecha : '-';
+          let pagado_fecha = data[i].pagado_fecha ? data[i].pagado_fecha : '-';
+
+          html[i] = `<tr data-code='${data[i].codigo}' 
+                        data-forward='${data[i].forward}'
+                        data-fecha_llegada='${data[i].fecha_llegada}'
+                        data-forward_fecha='${data[i].forward_fecha}' 
+                        data-forward_compromiso='${data[i].forward_compromiso}'
+                        data-swift='${data[i].swift}'
+                        data-switf_fecha='${data[i].switf_fecha}' >
+
+                      <td> 
+                        ${check[0]}
+                      </td>
+                      <td>${data[i].codigo}</td>
+                      <td>${descripcion}</td>
+                      <td>${proveedor}</td>
+                      <td>${this.addCommas(valor_total)}</td>
+                      <!--<td>${tipo_moneda}</td>
+                      <td>${fecha_llegada}</td>-->
+                      <td>${forward}</td>
+                      <td>${forward_fecha}</td> 
+                      <td>${forward_compromiso}</td>
+                      <td>${swift}</td>
+                      <td>${switf_fecha}</td> 
+                      <!--  <td>${pagado_fecha}</td>-->
+                      <td> 
+                        <button  data-id='${data[i].codigo}' onclick="paginator.showPago('${data[i].codigo}')" class ='btn btn-50 cyan btn-ver ' > 
+                        <i class="material-icons dp48"> remove_red_eye </i>  
+                        </button> 
+                      </td>
+                      <td> 
+                        <button data-id='${data[i].codigo}' class ='btn btn-50 cyan btn-edit' >
+                        <i class="material-icons dp48"> edit </i>  
+                        </button> 
+                      </td>
+                    </tr>`;
+        }
+        return html; 
+      },
+      cambiarPagina(page){ 
+          localStorage.setItem('page', page)
+          this.listarPagos(page);
+      },
+      async listarPagos(page = 0){
+        let me=this;
+        var url= '/contenedores-camiones/paginador?page=' + page; 
+        let { data: data, status } = await axios.get(url); 
+        let pagination = this.setPaginatorHTML(data.pagination)
+        let pagos = this.setPagosHtml(data.pagos.data); 
+        $('#pagoTable tbody').empty().append(pagos);
+        $('#paginationNav ').empty().append(pagination); 
+      },
+      addCommas(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+      }
+    }  
+  </script>
 @endsection

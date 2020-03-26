@@ -110,7 +110,7 @@ $(document).ready(function(){
                      
       let self = $(this);       
         if(data.status == 200) {  
-          console.log(data)
+          
         self.parents("tr").find("td:eq(1)").text(code); 
         self.parents("tr").find("td:eq(2)").text(data.data.CODI_RNOMBRE); 
         self.parents("tr").find("td:eq(3)").text(factor_multi);

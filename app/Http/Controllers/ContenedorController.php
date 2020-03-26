@@ -26,9 +26,7 @@ class ContenedorController extends Controller
         'proveedor' => $proveedor 
       ]);
     }
-
-  } 
- 
+  }
   public function list() {
     $camiones  = DbsysCamiones::all();
     return response()->json([ 'camiones' => $camiones  ]);
@@ -81,6 +79,61 @@ class ContenedorController extends Controller
     return view('gestion.pagos' ,compact('paginator', 'histories', 'total'));
 
   }
+
+  public function paginador(Request $request) {
+      $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
+                            ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
+                            ->select(
+                            'ADM_PROVEEDOR.emp_nombre as proveedor', 
+                            'dbsys.camiones.codigo as codigo', 
+                            'dbsys.camiones.valor_total', 
+                            'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda', 
+                            'dbsys.camiones.descripcion',   
+                              DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "), 
+                              DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "), 
+                              DB::raw("FORMAT(dbsys.camiones.forward_compromiso, 'yyyy-MM-dd') as forward_compromiso "), 
+                              DB::raw("FORMAT(dbsys.camiones.switf_fecha, 'yyyy-MM-dd') as switf_fecha "),
+                            'dbsys.camiones.forward', 
+                            'dbsys.camiones.swift',
+                            'dbsys.camiones.pagado', 
+                            'dbsys.camiones.pagado_fecha') 
+                              ->where('dbsys.camiones.estado_pagado', 0) 
+                              ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
+                              ->paginate(10);
+     
+
+    return response()->json([
+      'pagination' => [
+        'total'         => $data->total(),
+        'current_page'  => $data->currentPage(),
+        'per_page'      => $data->perPage(),
+        'last_page'     => $data->lastPage(),
+        'from'          => $data->firstItem(),
+        'to'            => $data->lastItem(),
+      ],
+      'pagos' => $data,  
+    ]);
+  }
+  public function findOne(Request $request) {
+    $pago = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
+                          ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
+                          ->select(
+                          'ADM_PROVEEDOR.emp_nombre as proveedor', 
+                          'dbsys.camiones.codigo as codigo', 
+                          'dbsys.camiones.valor_total', 
+                          'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda', 
+                          'dbsys.camiones.descripcion',   
+                            DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "), 
+                            DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "), 
+                            DB::raw("FORMAT(dbsys.camiones.forward_compromiso, 'yyyy-MM-dd') as forward_compromiso "), 
+                            DB::raw("FORMAT(dbsys.camiones.switf_fecha, 'yyyy-MM-dd') as switf_fecha "),
+                          'dbsys.camiones.forward', 
+                          'dbsys.camiones.swift',
+                          'dbsys.camiones.pagado', 
+                          'dbsys.camiones.pagado_fecha')   
+                          ->where('dbsys.camiones.codigo', $request->id)->first();
+    return response()->json(['data' => $pago]);
+  }
   public function parametros() {
     $proveedor = DB::select('SELECT id_proveedor, emp_nombre FROM ADM_PROVEEDOR');
     
@@ -105,7 +158,7 @@ class ContenedorController extends Controller
         
         return response()->json([
 
-        'datos'              =>$datos
+        'datos' =>$datos
 
       ]);
     }
