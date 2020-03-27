@@ -77,7 +77,7 @@
                       <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh;">
                         <div class="row">
                           <div class="col s12 dataTables_scrollBody">
-                            <table id="tableAdministrador" class="responsive-table centered">
+                            <table id="tableAdministrador" class="table responsive-table centered">
                               <thead>
                                 <tr>
                                   <th>Id</th>
@@ -1011,9 +1011,6 @@
             <div class=" col s6 pb-2">
               <h5 class="modal-title">Detalle general</h5>
             </div>
-            <div class="col s6" align="right">
-              <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
-            </div>
           </div>
         </div>
 
@@ -1061,6 +1058,12 @@
                 <div class="col s12 l6">
                   <label for="navierad">Empresa transporte: </label>
                   <input disabled type="text" name="navierad"  id="navierad" class="validate form-control" step="1">
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <div class="col s12 l12" align="right">
+                  <button type="button" class="modal-action modal-close waves-effect  btn-flat" data-dismiss="modal">Cerrar</button>
                 </div>
               </div>
              </div>

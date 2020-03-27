@@ -48,7 +48,7 @@ $(document).ready(function(){
                               data-declara_origen="${declara_origen}"
                               data-ingreso_zeta="${ingreso_zeta}"
                               data-naviera="${naviera}" >
-                            expand_more</i>
+                            remove_red_eye</i>
                           </a>
                       </td>
                       </tr>
@@ -105,7 +105,7 @@ $(document).ready(function(){
                                 data-declara_origen="${declara_origen}"
                                 data-ingreso_zeta="${ingreso_zeta}"
                                 data-naviera="${naviera}" >
-                              expand_more</i>
+                              remove_red_eye</i>
                             </a>
                         </td>
                         </tr>
@@ -167,7 +167,7 @@ $(document).ready(function(){
                                 data-declara_origen="${declara_origen}"
                                 data-ingreso_zeta="${ingreso_zeta}"
                                 data-naviera="${naviera}" >
-                              expand_more</i>
+                              remove_red_eye</i>
                             </a>
                         </td>
 
