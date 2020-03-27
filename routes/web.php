@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
   Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
   Route::get('/email', 'PrecioCamionController@sendEmail')->name('sendEmail');
-  
+
 // --------------------------------
   Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
   Route::GET('/ver-camion', 'GestionCamionController@show')->name('showCamion');
@@ -130,16 +130,13 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
     $mpdf->Output();
 
   });
-  
-  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
-  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne');
 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
   Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
 
-  
+
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
@@ -156,7 +153,7 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
 
   Route::post('cartola/importar-plane','CatalogoController@importPlane')->name('catalogo.importPlane');
   Route::post('cartola/migracion-plane','CatalogoController@migraciontPlane')->name('catalogo.migrationPlane');
- 
+
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
   Route::get('/obtener-datos','ContenedorController@getDato')->name('getDato');
   Route::post('/nuevo','ContenedorController@setNew')->name('setNew');
@@ -164,11 +161,11 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');
 
-  
-  
 
 
-  
+
+
+
 
 Route::get('/reporte2', function () {
 

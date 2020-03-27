@@ -48,7 +48,7 @@ $(document).ready(function(){
                               data-declara_origen="${declara_origen}"
                               data-ingreso_zeta="${ingreso_zeta}"
                               data-naviera="${naviera}" >
-                            expand_more</i>
+                            remove_red_eye</i>
                           </a>
                       </td>
                       </tr>
@@ -105,7 +105,7 @@ $(document).ready(function(){
                                 data-declara_origen="${declara_origen}"
                                 data-ingreso_zeta="${ingreso_zeta}"
                                 data-naviera="${naviera}" >
-                              expand_more</i>
+                              remove_red_eye</i>
                             </a>
                         </td>
                         </tr>
@@ -167,7 +167,7 @@ $(document).ready(function(){
                                 data-declara_origen="${declara_origen}"
                                 data-ingreso_zeta="${ingreso_zeta}"
                                 data-naviera="${naviera}" >
-                              expand_more</i>
+                              remove_red_eye</i>
                             </a>
                         </td>
 
@@ -195,7 +195,7 @@ $(document).ready(function(){
           let elem = $('.tabs')
           let instance = M.Tabs.getInstance(elem);
           instance.select('test2');
-          // 
+          //
           // let elem = $('.tablinks')
           // let instance = M.Tabs.getInstance(elem);
           // instance.select('uno2');
@@ -532,7 +532,7 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
              {
 
                 if (res.camionAgregar == '0') {
-                     sweetalerta('Listo!','Actualizado correctamente','success' );
+                     sweetalerta('Listo!','Creado correctamente','success' );
                 } else {
                     alerta('info','El contenedor ya existe, ingrese otro código');
                 }
