@@ -36,13 +36,23 @@
           </select>
         </div>
         <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
           <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
           <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-resumen"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
-          <button type="button" class="btn btn-45 cyan" name="exportSells" id="exportar-detalle"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
-          <button type="button" class="btn btn-45 cyan" name="reportSells" id="exportar-datos"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Datos Historicos</button>
-          
-          
+          <button type="button" class="btn cyan" name="exportSells" id="exportar-resumen"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
+          <button type="button" class="btn cyan" name="exportSells" id="exportar-detalle"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
+          <button type="button" class="btn cyan" name="reportSells" id="exportar-datos"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>
         </div>
       </div>
   </div>
@@ -60,7 +70,7 @@
         </ul>
       </div>
       <div id="test1" class="col s12">
-        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top:20px;">
 
           <table class="table table-responsive responsive-table centered" id="tabla-comisiones" >
             <thead>
@@ -80,7 +90,7 @@
         </div>
       </div>
       <div id="test2" class="col s12">
-        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top:20px;">
           <table class="table table-responsive responsive-table centered" id="tabla-detalles">
           <thead>
             <tr>
@@ -110,7 +120,7 @@
         </div>
       </div>
       <div id="test3" class="col s12">
-        <div class="responsive-table" style="overflow-x: scroll; width: 100%;">
+        <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin-top:20px;">
 
           <table class="table table-responsive responsive-table centered" id="comisiones-vendedor" >
             <thead>

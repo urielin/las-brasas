@@ -53,7 +53,7 @@
                           </div>
                         </div>
                         <br>
-          <table class="table table-responsive responsive-table centered" id="tabla-proveedor">
+          <table class="table table-responsive responsive-table centered"  id="tabla-proveedor">
             <thead>
               <tr>
                 <th>Acción</th>
@@ -119,78 +119,83 @@
           <form  method="POST" id="" class="form-horizontal">
             @csrf
             <div class="row container">
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <div class="detalle">
+                                       
                                           <label for="codigo_agregar">Código: </label>
-                                          <input disabled type="text" name="codigo_detalle" readonly="readonly" id="codigo_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="codigo_detalle" readonly="readonly" id="codigo_detalle" placeholder=" " class="validate form-control-jhon" step="1">
                                         
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <p></p>
+                                  <div class="detalle">
+                                        
                                           <label for="auxiliar_agregar">RUT:</label>
-                                          <input disabled type="text" name="rut_detalle" readonly="readonly" id="rut_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="rut_detalle" readonly="readonly" id="rut_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                       
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <p></p>
+                                  <div class="detalle">
+                                        
                                           <label for="descripcion_agregar">Empresa: </label>
-                                          <input disabled type="text" name="empresa_detalle" readonly="readonly" id="empresa_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="empresa_detalle" readonly="readonly" id="empresa_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                     
                                         
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <p></p>
+                                  <div class="detalle">
+                                        
                                           <label for="contenido_agregar">País:</label>
-                                          <input disabled type="text" name="pais_detalle" readonly="readonly" id="pais_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="pais_detalle" readonly="readonly" id="pais_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                        
                                   </div>
-                                  
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <p></p>
+                                  <div class="detalle">
+                                        
                                           <label for="documento_agregar">Móvil: </label>
-                                          <input disabled type="text" name="movil_detalle" readonly="readonly" id="movil_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="movil_detalle" readonly="readonly" id="movil_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                        
                                         
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
+                                  <p></p>
+                                  <div class="detalle">
+                                        
                                           <label for="fecha_agregar">Fax:</label>
-                                          <input disabled type="text" name="fax_detalle" readonly="readonly" id="fax_detalle" placeholder=" "  class="validate form-control" step="1">
-                                        </div>
-                                  </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
-                                          <label for="observaciones_agregar">Email: </label>
-                                          <input disabled type="text" name="email_detalle" readonly="readonly" id="email_detalle" placeholder=" " class="validate form-control" step="1">
-                                        </div>
+                                          <input disabled type="text" name="fax_detalle" readonly="readonly" id="fax_detalle" placeholder=" "  class="validate form-control-jhon" step="1">
                                         
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
-                                          <label for="fecha_agregar">Teléfono:</label>
-                                          <input disabled type="text" name="telefono_detalle" readonly="readonly" id="telefono_detalle" placeholder=" "  class="validate form-control" step="1">
-                                        </div>
+                                  <p></p>
+                                  <div class="detalle">
+                                        
+                                          <label for="observaciones_agregar">Email: </label>
+                                          <input disabled type="text" name="email_detalle" readonly="readonly" id="email_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                      
+                                        
                                   </div>
-
-                                  <div class="row">
-                                        <div class="col s12 l12">
-                                          <label for="documento_agregar">Dirección: 
-                                          <input style=""disabled type="text" name="direccion_detalle" readonly="readonly" id="direccion_detalle" placeholder=" " class="validate form-control" step="1">
-                                          </label>
-                                        </div>
+                                  <p></p>
+                                  <div class="detalle">
+                                        
+                                          <label for="fecha_agregar">Teléfono:</label><p></p>
+                                          <input disabled type="text" name="telefono_detalle" readonly="readonly" id="telefono_detalle" placeholder=" "  class="validate form-control-jhon" step="1">
+                                        
+                                  </div>
+                                    <p></p>
+                                  <div class="detalle">
+                                        
+                                          <label for="documento_agregar">Dirección: </label>
+                                          <input disabled type="text" name="direccion_detalle" readonly="readonly" id="direccion_detalle" placeholder=" " class="validate form-control-jhon" step="1">
+                                          
                                         
                                   </div>
                                   <div class="row ">
-                                        <div class="col s12 l12">
+                                        
                                         </div>
                                   </div>
+                                  <style>
+                                    .detalle label{
+                                      width:100px;
+                                      float:left;
+                                      text-align: right;
+                                    }
+                                  </style>
                                   
              </div>
             <br />
@@ -222,43 +227,43 @@
             <div class="row pb-2">
                                     <div class="col s12 l6">
                                           <label for="codigo_agregar">Código: </label>
-                                          <input type="text" name="codigo_nuevo"  id="codigo_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="codigo_nuevo"  id="codigo_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="auxiliar_agregar">RUT:</label>
-                                          <input type="text" name="rut_nuevo"  id="rut_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="rut_nuevo"  id="rut_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                   </div>
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="descripcion_agregar">Empresa: </label>
-                                          <input type="text" name="empresa_nuevo"  id="empresa_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="empresa_nuevo"  id="empresa_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="contenido_agregar">País:</label>
-                                          <input type="text" name="pais_nuevo"  id="pais_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="pais_nuevo"  id="pais_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                   </div>
                                   
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="documento_agregar">Móvil: </label>
-                                          <input type="text" name="movil_nuevo" id="movil_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="movil_nuevo" id="movil_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="fecha_agregar">Fax:</label>
-                                          <input type="text" name="fax_nuevo"  id="fax_nuevo" placeholder=" "  class="validate form-control" step="1">
+                                          <input type="text" name="fax_nuevo"  id="fax_nuevo" placeholder=" "  class="validate form-controls" step="1">
                                         </div>
                                   </div>
 
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="observaciones_agregar">Email: </label>
-                                          <input type="text" name="email_nuevo"  id="email_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="email_nuevo"  id="email_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="fecha_agregar">Teléfono:</label>
-                                          <input type="text" name="telefono_nuevo"  id="telefono_nuevo" placeholder=" "  class="validate form-control" step="1">
+                                          <input type="text" name="telefono_nuevo"  id="telefono_nuevo" placeholder=" "  class="validate form-controls" step="1">
                                         </div>
 
                                   </div>
@@ -266,18 +271,18 @@
                                   <div class="row">
                                         <div class="col s12 l12">
                                           <label for="documento_agregar">Dirección: </label>
-                                          <input type="text" name="direccion_nuevo"  id="direccion_nuevo" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="direccion_nuevo"  id="direccion_nuevo" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         
                                   </div>
                                   <div class="row ">
-                                        <div class="col s12 l12">
+                                        
                                         </div>
                                   </div>
                                   
                                   <br>
                                   <div class="row " align="right">
-                                        <div class="col s12 l12">
+                                        
                                           <input type="submit" name="agregar_button" id="action_agregar"  class="btn btn-warning" value="Agregar">
                                         </div>
                                   </div>
@@ -310,64 +315,64 @@
             <div class="row pb-2">
                                     <div class="col s12 l6">
                                           <label for="codigo_agregar">Código: </label>
-                                          <input type="text" name="codigo_edit"  id="codigo_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="codigo_edit"  id="codigo_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="auxiliar_agregar">RUT:</label>
-                                          <input type="text" name="rut_edit"  id="rut_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="rut_edit"  id="rut_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                   </div>
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="descripcion_agregar">Empresa: </label>
-                                          <input type="text" name="empresa_edit"  id="empresa_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="empresa_edit"  id="empresa_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="contenido_agregar">País:</label>
-                                          <input type="text" name="pais_edit"  id="pais_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="pais_edit"  id="pais_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                   </div>
                                   
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="documento_agregar">Móvil: </label>
-                                          <input type="text" name="movil_edit"  id="movil_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="movil_edit"  id="movil_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="fecha_agregar">Fax:</label>
-                                          <input type="text" name="fax_edit"  id="fax_edit" placeholder=" "  class="validate form-control" step="1">
+                                          <input type="text" name="fax_edit"  id="fax_edit" placeholder=" "  class="validate form-controls" step="1">
                                         </div>
                                   </div>
 
                                   <div class="row pb-2">
                                         <div class="col s12 l6">
                                           <label for="observaciones_agregar">Email: </label>
-                                          <input type="text" name="email_edit"  id="email_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="email_edit"  id="email_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="fecha_agregar">Teléfono:</label>
-                                          <input type="text" name="telefono_edit"  id="telefono_edit" placeholder=" "  class="validate form-control" step="1">
+                                          <input type="text" name="telefono_edit"  id="telefono_edit" placeholder=" "  class="validate form-controls" step="1">
                                         </div>
 
                                   </div>
 
                                   <div class="row">
-                                        <div class="col s12 l12">
+                                        
                                           <label for="documento_agregar">Dirección: </label>
-                                          <input type="text" name="direccion_edit"  id="direccion_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="direccion_edit"  id="direccion_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                         <div id="ocultar-id" style="display:none">
-                                          <input type="text" name="id_edit"  id="id_edit" placeholder=" " class="validate form-control" step="1">
+                                          <input type="text" name="id_edit"  id="id_edit" placeholder=" " class="validate form-controls" step="1">
                                         </div>
                                   </div>
                                   <div class="row ">
-                                        <div class="col s12 l12">
+                                        
                                         </div>
                                   </div>
                                   
                                   <br>
                                   <div class="row " align="right">
-                                        <div class="col s12 l12">
+                                        
                                           <input type="submit" name="update_button" id="action_actualizar"  class="btn btn-warning" value="Actualizar">
                                         </div>
                                   </div>
