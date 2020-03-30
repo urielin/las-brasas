@@ -219,3 +219,59 @@ Route::get('/reporte2', function () {
 
 
 });
+
+
+/*PRIMERO*/
+/*
+CREATE TABLE [dbo].[ADM_VENDEDOR_PARAMETROS_COMISION](
+	[id_vendedor] [int] NOT NULL,
+	[nombre_vendedor] [varchar](100) NULL
+	
+ CONSTRAINT [PK_ADM_VENDEDOR_PARAMETROS_COMISION] PRIMARY KEY CLUSTERED 
+(
+	[id_vendedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/*SEGUNDO*/
+/*
+CREATE TABLE [dbo].[MODULO_COMISION_VENTA_HIST](
+	[folio] [varchar](50) NULL,
+	[id_venta] [bigint] NOT NULL,
+	[proc_folio_pedido] [numeric](18, 0) NULL,
+	[fecha2] [datetime] NULL,
+	[forma_pago] [numeric](18, 0) NULL,
+	[cod_vendedor] [numeric](18, 0) NOT NULL,
+	[ptotal] [numeric](18, 2) NULL,
+	[impuesto] [numeric](18, 0) NULL,
+	[adicional] [numeric](18, 0) NULL,
+	[total] [numeric](18, 0) NULL,
+	[rut_cliente] [varchar](50) NULL,
+	[comision] [numeric](18, 2) NULL,
+	[fecha_pago] [datetime] NULL,
+	[monto] [numeric](18, 0) NULL,
+	[tipo_documento] [numeric](18, 0) NULL,
+	[n_deposito] [nvarchar](20) NULL,
+ CONSTRAINT [PK_MODULO_COMISION_VENTA_HIST] PRIMARY KEY CLUSTERED 
+(
+	[id_venta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*TERCERO*/
+/*
+INSERT INTO ADM_VENDEDOR_PARAMETROS_COMISION
+ SELECT VEND_CODIGO, VEND_NOMBRE FROM ADM_VENDEDORES
+
+/*CUARTO*//*
+ ALTER TABLE ADM_VENDEDOR_PARAMETROS_COMISION
+ ADD [nivel1] [int] NULL,
+	[comision1] [int] NULL,
+	[nivel2] [int] NULL,
+	[comision2] [int] NULL,
+	[nivel3] [int] NULL,
+	[comision3] [int] NULL
+
+
+*/
