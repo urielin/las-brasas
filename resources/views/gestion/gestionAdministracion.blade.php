@@ -1018,7 +1018,7 @@
             <div class="row container">
               <div class="row pb-2">
                 <div class="col s12 l6">
-                      <table id="tableMostrarAdicional" class="table responsive-table centered">
+                      <table id="tableMostrarAdicional" class="table responsive-table centered striped">
 
                         <tbody id="tableMostrarAdicional-cuerpo">
 
@@ -1027,7 +1027,7 @@
                 </div>
 
                 <div class="col s12 l6">
-                      <table id="tableMostrarAdicional2" class="table responsive-table centered">
+                      <table id="tableMostrarAdicional2" class="table responsive-table centered striped">
 
                         <tbody id="tableMostrarAdicional2-cuerpo">
 
