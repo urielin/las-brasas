@@ -36,8 +36,13 @@
         button :focus {
             outline: none;
         } 
-        #pagoTable tbody tr td{
+        #pagoTable,#historieTable tbody tr td {
             padding: 5px 15px !important;
+        }
+        .modal {
+            overflow-y: auto;
+            width: 55%;
+            max-height: 100% !important;
         }
     </style> 
 </head>

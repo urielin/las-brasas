@@ -138,6 +138,7 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
   Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
+  Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
   
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
