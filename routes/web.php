@@ -136,7 +136,6 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
   Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
-  Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
 
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
@@ -260,11 +259,11 @@ CREATE TABLE [dbo].[MODULO_COMISION_VENTA_HIST](
 GO
 
 /*TERCERO*/
-/*
+
 INSERT INTO ADM_VENDEDOR_PARAMETROS_COMISION
  SELECT VEND_CODIGO, VEND_NOMBRE FROM ADM_VENDEDORES
 
-/*CUARTO*//*
+/*CUARTO*/
  ALTER TABLE ADM_VENDEDOR_PARAMETROS_COMISION
  ADD [nivel1] [int] NULL,
 	[comision1] [int] NULL,
