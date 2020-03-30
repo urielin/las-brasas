@@ -114,13 +114,58 @@ class ContenedorController extends Controller
       'pagos' => $data,  
     ]);
   }
+  public function histories(Request $request) {
+    $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
+      ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
+      ->select(
+        'dbsys.camiones.id_camion',
+        'dbsys.camiones.codigo',
+        'dbsys.camiones.descripcion',
+        DB::raw("FORMAT(dbsys.camiones.fecha_resolucion, 'yyyy-MM-dd') as fecha_resolucion "), 
+        DB::raw("FORMAT(dbsys.camiones.fecha_embarque, 'yyyy-MM-dd') as fecha_embarque "), 
+        DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "), 
+        DB::raw("FORMAT(dbsys.camiones.fecha_pago, 'yyyy-MM-dd') as fecha_pago "), 
+        DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "), 
+        'dbsys.camiones.cierre_items',
+        'dbsys.camiones.forma_pago',
+        'dbsys.camiones.despues_dias',
+        'dbsys.camiones.despues_fecha',
+        'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda', 
+        'dbsys.camiones.valor_total',
+        'dbsys.camiones.pagado' )
+        ->where('dbsys.camiones.estado_pagado', 2 )
+      ->paginate(10);
+   
+
+  return response()->json([
+    'pagination' => [
+      'total'         => $data->total(),
+      'current_page'  => $data->currentPage(),
+      'per_page'      => $data->perPage(),
+      'last_page'     => $data->lastPage(),
+      'from'          => $data->firstItem(),
+      'to'            => $data->lastItem(),
+    ],
+    'histories' => $data,  
+  ]);
+}
   public function findOne(Request $request) {
     $pago = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
                           ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
                           ->select(
+                          'dbsys.camiones.id_camion',
                           'ADM_PROVEEDOR.emp_nombre as proveedor', 
                           'dbsys.camiones.codigo as codigo', 
                           'dbsys.camiones.valor_total', 
+                          'dbsys.camiones.fecha_resolucion', 
+                          'dbsys.camiones.fecha_embarque', 
+                          'dbsys.camiones.fecha_llegada', 
+                          'dbsys.camiones.fecha_pago', 
+                          'dbsys.camiones.cierre_items', 
+                          'dbsys.camiones.forma_pago', 
+                          'dbsys.camiones.despues_dias', 
+                          'dbsys.camiones.despues_fecha', 
+                          'dbsys.camiones.pagado',   
                           'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda', 
                           'dbsys.camiones.descripcion',   
                             DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "), 

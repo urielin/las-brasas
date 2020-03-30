@@ -62,120 +62,203 @@
       </div>
       <div id="test2" class="col s12">
         <div  style="overflow-x: scroll; width: 100%;margin: 15px;">
-          <table class="table centered responsive-table" >
+          <table id="historieTable" class="table centered responsive-table" >
           <thead>
             <tr>
               <th>Código</th>
-              <th>Descripción</th>
-              <th>FP</th>
-              <th>Resol. Sanit</th>
-              <th>Embarque</th>
-              <th>Llegada</th>
+              <th width='18%'>Descripción</th>
+              <!--<th>FP</th>-->
+              <!--<th>Resol. Sanit</th>-->
+              <!--<th>Embarque</th>-->
+              <th width='10%'>Llegada</th>
               <th>Pago Estimado.</th>
-              <th>Ítems</th>
-              <th>Forma Pago</th>
-              <th>-</th>
-              <th>Déspues</th>
+              <!--<th>Ítems</th>-->
+              <th>Forma Pago</th> 
+              <!--<th>Déspues</th>-->
               <th>Moneda</th>
-              <th>Total Factura</th>
+              <th>Total Factura</th> 
               <th>Pagado</th>
-             <!-- <th>Total Pagos</th>-->
+              <th>Total pagado</th>
+
+             <th>Ver</th> 
             </tr>
           </thead>
-          <tbody>
-            @foreach ($histories as $camion)
-                
-                    <tr> 
-                       <td>{{$camion->codigo}}</td> 
-                      <td>{{$camion->descripcion ? $camion->descripcion : '-' }}</td> 
-                      <td>{{$camion->fecha_resolucion ? $camion->fecha_resolucion : '-' }}</td> 
-                      <td>{{$camion->fecha_embarque ? $camion->fecha_embarque : '-' }}</td> 
-                      <td>{{$camion->fecha_llegada ? $camion->fecha_llegada : '-' }}</td> 
-                      <td>{{$camion->fecha_pago ? $camion->fecha_pago : '-' }}</td> 
-                      <td>{{$camion->forward_fecha ? $camion->forward_fecha : '-' }}</td> 
-                      <td>{{$camion->cierre_items? $camion->cierre_items : '-' }}</td> 
-                      <td>{{$camion->forma_pago ? $camion->forma_pago : '-' }}</td> 
-                      <td>{{$camion->despues_dias ? $camion->despues_dias : '-' }}</td> 
-                      <td>{{$camion->despues_fecha ? $camion->despues_fecha : '-' }}</td> 
-                      <td>{{$camion->tipo_moneda ? $camion->tipo_moneda : '-' }}</td> 
-                      <td>{{$camion->valor_total ? $camion->valor_total : '-' }}</td> 
-                      <td>{{$camion->pagado ? $camion->pagado : '-' }}</td> 
-                      <!--<td>"10000"</td>  -->
-                    </tr>  
-                @endforeach
-               
+          <tbody> 
+
           </tbody>
-        </table>
-           
-            <ul>
-          
- 
-              <ul  class="pagination">
-                   
-              </ul>
-             
+        </table>  
+        
+         
         </div>
+        <nav style="box-shadow: none; background:white; margin-left:14px">
+          <ul id="paginationNav2">
+
+          </ul>
+
+        </nav>
       </div>
 
     </div>
     <div id="showModal" class="modal">
+      <div class="modal-content">
+        <div style="margin-bottom: 20px;">
+
+          <h5>CAMIONES A PAGAR DETALLE</h5>
+        </div>
+        <div class="row" style="margin-top: 20px">
+       
+        <div class="col l6 m6 s12">
+          <table class="table striped">
+            <tbody>
+              <tr>
+                <td style="text-align:right;"><label for="">Codigo: </label></td>
+                <td id="show_code"></td>
+              </tr>
+              <tr>
+                <td style="text-align:right;"><label for="">Descripcion: </label></td>
+                <td id="show_descripcion"></td>
+              </tr>
+              <tr>
+                <td style="text-align:right;"><label for=""> Proveedor:</label> </td>
+                <td id="show_proveedor"></td>
+              </tr>
+              <tr>
+                <td style="text-align:right;"><label for=""> Valor Total: </label></td>
+                <td id="show_valor_total"></td>
+              </tr>
+              <tr>
+                <td style="text-align:right;"><label for=""> Tipo moneda: </label></td>
+                <td id="show_tipo_moneda"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col l6 m6 s12">
+          <table class="table striped">   
+            <tbody>
+              
+              <tr>
+                <td  style="text-align:right; "><label for="">Fecha llegada: </label></td>
+                <td  id="show_fecha_llegada"> </td>
+              </tr>
+              <tr>
+                <td  style="text-align:right;"><label for="">Forward: </label></td>
+                <td  id="show_forward"> </td>
+              </tr>
+              <tr>
+                <td  style="text-align:right;"><label for="">Fecha Forward: </label></td>
+                <td  id="show_fowrard_fecha"> </td>
+              </tr>
+              <tr>
+                <td  style="text-align:right;"><label for="">Forward compromiso: </label></td>
+                <td  id="show_forward_compromiso"> </td>
+              </tr>
+              <tr>
+                <td  style="text-align:right;"><label for="">Swift: </label></td>
+                <td  id="show_swift"> </td>
+              </tr>
+              <tr>
+                <td  style="text-align:right;"><label for="">Fecha Pagado: </label></td>
+                <td  id="show_pagado_fecha"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> 
+      
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col l12 m12 s12"> 
+          <a href="#!" class="modal-action modal-close waves-effect  btn-flat">Cerrar</a>
+        </div>
+      </div>
+    </div>
+    <div id="showModal2" class="modal">
       <div class="modal-content">
         <div class="col l12 m12 s12">
 
           <h5>CAMIONES A PAGAR DETALLE</h5>
         </div>
         <div class="row">
-          <div class="col l12 m12 s12">
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Codigo: </label>
-              <span id="show_code"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Descripcion: </label>
-              <span id="show_descripcion"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Proveedor: </label>
-              <span id="show_proveedor"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Valor Total: </label>
-              <span id="show_valor_total"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Fecha llegada: </label>
-              <span id="show_fecha_llegada"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Forward: </label>
-              <span id="show_forward"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Fecha Forward: </label>
-              <span id="show_fowrard_fecha"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Forward compromiso: </label>
-              <span id="show_forward_compromiso"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Swift: </label>
-              <span id="show_swift"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Fecha swift: </label>
-              <span id="show_switf_fecha"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Tipo moneda: </label>
-              <span id="show_tipo_moneda"> </span>
-            </div>
-            <div class="form-group col l6 m6 s12">  
-              <label for=""> Fecha Pagado: </label>
-              <span id="show_pagado_fecha"> </span>
-            </div>
-             
+            
+          <div class="col l6 m6 s12">
+            <table class="table striped">
+              <tbody>
+                <tr>
+                  <td style="text-align:right;"><label for="">Camion: </label></td>
+                  <td id="show_id_camion2" width='45%'></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for="">Codigo: </label></td>
+                  <td id="show_codigo"></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for="">Descripcion: </label></td>
+                  <td id="show_descripcion2"></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for=""> Fecha resolucion:</label> </td>
+                  <td id="show_fecha_resolucion2"></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for=""> Fecha embarque: </label></td>
+                  <td id="show_fecha_embarque2"></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for=""> Fecha llegada: </label></td>
+                  <td id="show_fecha_llegada2"></td>
+                </tr>
+                <tr>
+                  <td style="text-align:right;"><label for=""> Fecha pago: </label></td>
+                  <td id="show_fecha_pago2"></td>
+                </tr> 
+                <tr>
+                  <td  style="text-align:right; "><label for="">Cierre items: </label></td>
+                  <td  id="show_cierre_items2"> </td>
+                </tr>
+              </tbody> 
+            </table>
           </div>
+          <div class="col l6 m6 s12">
+            <table class="table striped">   
+              <tbody>
+                
+                <tr>
+                  <td  style="text-align:right;"><label for="">Forma Pago: </label></td>
+                  <td  id="show_forma_pago2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Tipo Moneda: </label></td>
+                  <td  id="show_tipo_moneda2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Dias despues: </label></td>
+                  <td  id="show_dias_despues2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Despues fecha: </label></td>
+                  <td  id="show_despues_fecha2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Fecha Pagado: </label></td>
+                  <td  id="show_pagado_fecha"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Valor total: </label></td>
+                  <td  id="show_valor_total2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Pagado: </label></td>
+                  <td  id="show_tipo_pagado2"> </td>
+                </tr>
+                <tr>
+                  <td  style="text-align:right;"><label for="">Total pagado: </label></td>
+                  <td  id="show_total_pagos2"> </td>
+                </tr>
+              </tbody>
+            </table> 
+
+        
         </div>
       </div>
       <div class="modal-footer">
@@ -193,9 +276,10 @@
   <script>
     $(document).ready(function(){
        paginator.listarPagos()
+       paginator.listarHistories()
     })
     let paginator = { 
-        async showPago(id) {
+      async showPago(id) {
 
           $('#showModal').modal('open'); 
           let url= '/contenedores-camiones/find-one?id=' + id; 
@@ -204,7 +288,7 @@
           
           $('#show_code').text(data.codigo)  
           $('#show_descripcion').text(data.descripcion)  
-          $('#show_proveedor').text(data.proveedor)  
+          $('#show_fecha_resolucion2').text(data.proveedor)  
           $('#show_valor_total').text(data.valor_total)   
           $('#show_tipo_moneda').text(data.tipo_moneda)    
           $('#show_fecha_llegada').text(data.fecha_llegada)    
@@ -217,6 +301,29 @@
           $('#show_pagado_fecha').text(data.pagado_fecha)    
   
      
+      },
+      async showPago2(id) {
+        $('#showModal2').modal('open'); 
+          let url= '/contenedores-camiones/find-one?id=' + id; 
+          let { data: info, status } = await axios.get(url);   
+          const data  = info.data; 
+          console.log("DATA", data)
+          $('#show_id_camion2').text(data.id_camion)   
+          $('#show_codigo2').text(data.codigo)  
+          $('#show_descripcion2').text(data.descripcion)    
+          $('#show_fecha_resolucion2').text(data.fecha_resolucion)  
+          $('#show_fecha_embarque2').text(data.fecha_embarque)   
+          $('#show_fecha_llegada2').text(data.fecha_llegada)    
+          $('#show_fecha_pago2').text(data.fecha_pago)    
+          $('#show_cierre_items2').text(data.cierre_items)    
+          $('#show_forma_pago2').text(data.forma_pago)    
+          $('#show_dias_despues2').text(data.despues_dias)    
+          $('#show_despues_fecha2').text(data.despues_fecha)    
+          $('#show_tipo_moneda2').text(data.tipo_moneda)   
+          $('#show_tipo_valor_total2').text(data.valor_total)   
+          $('#show_tipo_pagado2').text(data.pagado)   
+          $('#show_total_pagos2').text(data.total_pagos)   
+
       },
       pagesNumber(pagination) {
         let offset = 8;
@@ -267,6 +374,55 @@
 
         return html;  
       },
+      setHistorieHTML(data) {
+        let html = []; 
+        for (let i = 0; i < data.length; i++) {
+         
+          let codigo = data[i].codigo ? data[i].codigo : '-';
+          let descripcion = data[i].descripcion ? data[i].descripcion : '-'; 
+          let fecha_resolucion = data[i].fecha_resolucion ? data[i].fecha_resolucion : '-';
+          let fecha_embarque = data[i].fecha_embarque ? data[i].fecha_embarque : '-';
+
+          let fecha_pago = data[i].fecha_pago ? data[i].fecha_pago : '-';
+          let fecha_llegada = data[i].fecha_llegada ? data[i].fecha_llegada : '-'; 
+          let forward_fecha = data[i].forward_fecha ? data[i].forward_fecha : '-';
+
+          let cierre_items = data[i].cierre_items ? data[i].cierre_items : '-' ;
+          let forma_pago = data[i].forma_pago ? data[i].forma_pago : '-';
+          let despues_dias = data[i].despues_dias ? data[i].despues_dias : '-';
+          
+          let despues_fecha = data[i].despues_fecha ? data[i].despues_fecha : '-';
+          let tipo_moneda = data[i].tipo_moneda ? data[i].tipo_moneda : '-';
+          let valor_total = data[i].valor_total ? data[i].valor_total : '-';
+          let pagado = data[i].pagado ? data[i].pagado : '-';
+
+           
+
+          html[i] = `<tr> 
+                    <td>${codigo}</td>
+                    <td>${descripcion}</td>
+                    <!--<td>${fecha_resolucion}</td>-->
+                    <!--<td>${fecha_embarque }</td>-->
+                     <!-- <td>${fecha_pago}</td>-->
+                    <td>${fecha_llegada}</td> 
+                    <td>${forward_fecha}</td>
+                    <!--<td>${cierre_items}</td> -->
+                    <td>${forma_pago}</td>
+                    <!--<td>${despues_dias}</td>-->
+                    <td>${despues_fecha}</td> 
+                      <td>${tipo_moneda}</td> 
+                      <td>${valor_total}</td> 
+                      <td>${pagado}</td> 
+                    <td> 
+                      <button  data-id='${codigo}' onclick="paginator.showPago2('${codigo}')" class ='btn btn-50 cyan btn-ver2 ' > 
+                      <i class="material-icons dp48"> remove_red_eye </i>  
+                      </button> 
+                    </td>
+                  
+                  </tr>`;
+        }
+        return html; 
+      },
       setPagosHtml(data) {
         let html = [];
         let check = [];
@@ -280,7 +436,7 @@
           } else {
             check[0] = '-'
           }
-          let descripcion = data[i].descripcion ? data[i].proveedor : '-'; 
+          let descripcion = data[i].descripcion ? data[i].descripcion : '-'; 
           let proveedor = data[i].proveedor ? data[i].proveedor : '-';
           let valor_total = data[i].valor_total ? data[i].valor_total : '-';
           let tipo_moneda = data[i].tipo_moneda ? data[i].tipo_moneda : '-';
@@ -341,6 +497,15 @@
         let pagos = this.setPagosHtml(data.pagos.data); 
         $('#pagoTable tbody').empty().append(pagos);
         $('#paginationNav ').empty().append(pagination); 
+      },
+      async listarHistories(page = 0) {
+        let me=this;
+        var url= '/contenedores-camiones/histories?page=' + page; 
+        let { data: data, status } = await axios.get(url); 
+        let pagination = this.setPaginatorHTML(data.pagination)
+        let historie = this.setHistorieHTML(data.histories.data); 
+        $('#historieTable tbody').empty().append(historie);
+        $('#paginationNav2').empty().append(pagination); 
       },
       addCommas(nStr) {
         nStr += '';

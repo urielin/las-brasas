@@ -2805,7 +2805,7 @@ tr {
 td,
 th {
 	display: table-cell;
-	padding: 15px 5px;
+ 
 	text-align: left;
 	vertical-align: middle;
 	border-radius: 2px
@@ -5452,7 +5452,7 @@ body.keyboard-focused .dropdown-content li:focus {
 .modal {
 	overflow-y: auto;
 	width: 55%;
-	max-height: 70%;
+	/*max-height: 70%;*/
 	margin: auto;
 	padding: 0;
 	border-radius: 2px;
