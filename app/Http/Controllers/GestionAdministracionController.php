@@ -124,6 +124,12 @@ class GestionAdministracionController extends Controller
         }
 
     }
+
+    public function prueba(Request $request)
+    {
+      return view('gestion.prueba');
+    }
+
     public function administrarTablaCodigo(Request $request)
     {
         if ($request->ajax()) {

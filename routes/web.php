@@ -95,6 +95,7 @@ Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGen
 Route::POST('/subir-datosLogistica', 'GestionAdministracionController@upDatosLogistica')->name('upDatosLogistica');
 Route::POST('/subir-datosTecnicos', 'GestionAdministracionController@upDatosTecnicos')->name('upDatosTecnicos');
 Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregarCamion')->name('administrarAgregarCamion');
+Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
 
 //-----------------------------------------------------------------------
 
