@@ -102,6 +102,7 @@ class ContenedorController extends Controller
   }
 
   public function paginador(Request $request) {
+
       $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
                             ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda')
                             ->select(

@@ -86,11 +86,6 @@
 
 
 
-@section('js')
-  <script src="{{asset('js/parametros.js') }}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-@endsection
 
 @section('modal')
   <div id="modal1" class="modal">
@@ -432,9 +427,12 @@
       </div>
     </div>
   </div>
-@endsection
-
+@endsection 
 @section('after-scripts')
     <script type="text/javascript" src="{{asset('js/tabs.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@endsection 
+@section('js')
+  <script src="{{asset('js/parametros.js') }}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 @endsection

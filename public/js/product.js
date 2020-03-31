@@ -1,4 +1,15 @@
 $(document).ready(function(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
   $("#searchCatalogo").on('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -14,13 +25,15 @@ $(document).ready(function(){
     e.preventDefault();
     e.stopPropagation();
     const id = $(this)[0]['cells'][0].innerText;
+     
     findOne(id);
-
+    $('#catalogoTable tbody').empty();
     let elem = $('.tabs')
     let instance = M.Tabs.getInstance(elem);
     instance.select('test2');
-
+    
     getUnidadMedida(id);
+    setLastId();
     findSonId({id: id, state: ''});
     getNutricional(id);
   })
@@ -100,13 +113,20 @@ $(document).ready(function(){
     var factor_div = $(this).parents("tr").find("input[name='factor_div']").val();
     var tipo = $(this).parents("tr").find("select[name='tipo']").val();
     var estado = $(this).parents("tr").find("select[name='estado']").val();
-       
+     var FECHA_REG = $('#catalogoTable tbody tr')[0]['cells'][8].innerText;
+
       
     let current = JSON.parse(localStorage.getItem('mercancia')); 
 
       const data = await updateProduct({ 
-                      parent:current.CODI_RCODIGO, code: code, factor_multi: factor_multi, factor_div: factor_div, 
-                      tipo: tipo, estado: estado, _token: $("meta[name='csrf-token']").attr("content") }); 
+                      parent:current.CODI_RCODIGO, 
+                      code: code, 
+                      factor_multi: factor_multi, 
+                      factor_div: factor_div, 
+                      tipo: tipo, 
+                      FECHA_REG: FECHA_REG, 
+                      estado: estado, 
+                      _token: $("meta[name='csrf-token']").attr("content") }); 
                      
       let self = $(this);       
         if(data.status == 200) {  
@@ -126,8 +146,8 @@ $(document).ready(function(){
         self.parents("tr").find(".btn-cancel").remove();
         self.parents("tr").find(".btn-update").remove()
       } else {  
-        let code1 = 'No existe codigo';
-        self.parents("tr").find("td:eq(1)").text(code1);
+        let code1 = 'Codigo no existe';
+        self.parents("tr").find("td:eq(1)").text(' ');
         self.parents("tr").find("td:eq(2)").text(code1);  
         self.parents("tr").find("td:eq(3)").text(factor_multi);
         self.parents("tr").find("td:eq(4)").text(factor_div);
@@ -177,8 +197,8 @@ $(document).ready(function(){
                     </button>
                   </td>
               </tr>`;
-
-    $('#catalogoTable > tbody > tr:first').before(news);
+    console.log(news)
+    $('#catalogoTable  tbody').prepend(news);
 
   })
   $('#filter_state').on('change', function() {
@@ -223,7 +243,7 @@ $(document).ready(function(){
   async function setCatalogo(data){
     let array = [];
     for (let i = 0; i < data.length; i++) {
-      let params = await findName(data[i].CODI_RCODIGO);
+     
       if (i >= 0) {
         array[i] = `<tr id='${data[i].CODI_RCODIGO}' data-factor_multi='${data[i].factor_multi}' data-tipo='${data[i].tipo}'
                         data-factor_div='${data[i].factor_div}' data-estado='${data[i].ESTADO}' data-code='${data[i].CODI_RCODIGO}'>
@@ -313,7 +333,7 @@ $(document).ready(function(){
     })
   }
   function createSon() {
-    let current = JSON.parse(localStorage.getItem('mercancia'));
+   // let current = JSON.parse(localStorage.getItem('mercancia'));
     const data = {
         CODI_RCODIGO: $('#create-code').val(),
         CODI_RNOMBRE: $('#create-name').val(),
@@ -336,15 +356,20 @@ $(document).ready(function(){
       url:'/productos/create',
       data: data,
     }).then((data) => {
-       alert("creado")
-       $('#create-code').val(' ');
-       $('#create-name').val(' ');
+      if(data.status == '200') {
+        Toast.fire({
+          icon: 'success',
+          title: 'Codigo Actualizado'
+        });
+        $('#create-code').val(' ');
+        $('#create-name').val(' ');
         $('#create-multi-unid').val(' ');
-       $('#create-tipo-code').val(' ');
-       $('#create-descripcion').val(' ');
-       $('#create-peso').val(' ');
+        $('#create-tipo-code').val(' ');
+        $('#create-descripcion').val(' ');
+        $('#create-peso').val(' ');
         $('#create-impuesto').val(' ');
-       $('#create-code-arancelario').val(' ');
+        $('#create-code-arancelario').val(' ');
+      }
     })
   }
   function update() {
@@ -374,12 +399,12 @@ $(document).ready(function(){
 
     })
   }
-   function updateProduct(data) { 
+  function updateProduct(data) { 
     return $.ajax({
       type:'POST',
       url:'/productos/terminado/update',
       data: data,
-    })
+    }) 
   }
   function getNutricional(id){
     $.ajax({
@@ -523,16 +548,43 @@ $(document).ready(function(){
       vitaminac: $('#info-vitamina-c').val(),
       calcio: $('#info-calcio').val(),
       hierro: $('#info-hierro').val(),
-      _token: $("meta[name='csrf-token']").attr("content"),
-
+      _token: $("meta[name='csrf-token']").attr("content"), 
     }
-    $.ajax({
-      type:'POST',
-      url:'/products/nutricionals/update',
-      data: data,
-    }).then((data) => {
+    let validate = validateNutricional(data);
+    if (validate == 'success') {
+      console.log("GAAA", validate)
+      $.ajax({
+        type:'POST',
+        url:'/products/nutricionals/update',
+        data: data,
+      }).then((data) => {
+          console.log("DATA", data)
+          Toast.fire({
+            icon: 'success',
+            title: 'Codigo Actualizado'
+          })
+       
+      })
+    } else { 
+      Toast.fire({
+        title: 'Error!',
+        icon: 'error', 
+        title: validate
+      })
+    }
 
-    })
+    
+  }
+  function validateNutricional (data) {
+     
+    if (data.energia == '') return 'Campo calorias es necesario'; 
+    if (data.grasa_total == '') return 'Campo grasa total es necesario'; 
+    if (data.ac_grasa_mono == '') return 'Campo grasa insaturada es necesario'; 
+    if (data.ac_grasa_poli == '') return 'Campo grasa polisaturada es necesario'; 
+    if (data.colesterol == '') return 'Campo colesterol es necesario'; 
+    if (data.sodio == '') return 'Campo sodio es necesario'; 
+    if (data.proteina == '') return 'Campo proteina es necesario';  
+    return 'success'
   }
   function deleteProduct(id) {
     $.ajax({
@@ -541,6 +593,15 @@ $(document).ready(function(){
       data: {id: id, _token: $("meta[name='csrf-token']").attr("content")},
     }).then((data) => {
 
+    })
+  }
+  function setLastId() {
+    $.ajax({
+      url: '/productos/getLastId',
+      type:'GET', 
+      data: {_token: $("meta[name='csrf-token']").attr("content")},
+    }).then((data)=> {
+      console.log(data)
     })
   }
  })
