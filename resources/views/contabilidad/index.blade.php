@@ -56,7 +56,7 @@
                             <th>Observacion</th>
                             <th>Cantidad</th>
                             <th>Monto total</th>
-                            <th>Acciones</th>
+                            <th>Acción</th>
                           </tr>
                         </thead>
                         <tbody id="retiroTabla">
