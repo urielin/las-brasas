@@ -530,7 +530,7 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
 
       $('#tableMostrarAdicional-cuerpo').append(`
         <tr>
-            <td class="strong">Monto cierre:</td><td>${$(this).attr('data-monto_cierre')}</td>
+            <td class="strong" width="60%">Monto cierre:</td><td width="40%">${$(this).attr('data-monto_cierre')}</td>
         </tr>
         <tr>
             <td class="strong">Moneda:</td><td>${$(this).attr('data-tipo_moneda')}</td>
@@ -545,7 +545,7 @@ $('#tabla-administracion-cuerpo').on('click','.detalle-camion',function(){
 
         $('#tableMostrarAdicional2-cuerpo').append(`
           <tr>
-              <td class="strong">Lugar llegada:</td><td>${$(this).attr('data-lugar_arribo')}</td>
+              <td class="strong" width="60%">Lugar llegada:</td><td width="40%">${$(this).attr('data-lugar_arribo')}</td>
           </tr>
           <tr>
               <td class="strong">Origen:</td><td>${$(this).attr('data-declara_origen')}</td>
