@@ -7,12 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
-     protected $table = "dbo.ADM_CODIGOS";
+    protected $table = "dbo.ADM_CODIGOS";
     protected $table1 = 'dbo.ADM_CLASIFICACIONCODIGO';
     protected $table2 = 'dbo.ADM_CLASIFICACIONCODIGO_2';
     protected $table3 = 'dbo.ADM_CODIGOS_NUTRICION';
     protected $table4 = "dbo.ADM_CODIGOS_PADRE";
-
 
     protected $fillable = ['CODI_RCODIGO' ,'TUME_CODIGO' ,'TUME_MULT' ,'TPCO_CODIGO' ,'CODI_RNOMBRE' ,'CODI_RDESCRIP',
                            'CODI_RCODADU' ,'CODI_RAFECTO5' ,'CODI_PESO' ,'IMP_ADICIONAL' ,'CODI_P_VENTA' ,'codi_arancelario',
@@ -57,6 +56,10 @@ class Product extends Model
             ]);
     }
     public function create($request){
+      
+      $valid = DB::table($this->table)->where('CODI_RCODIGO')->first();
+      
+      die($valid);
       DB::table($this->table)
           ->insert([
               //'CODI_PADRE' => $request['CODI_PADRE'],
@@ -76,6 +79,7 @@ class Product extends Model
               'prod_mayor' => $request['prod_mayor'],
               'estado' => $request['estado'],
           ]);
+        
     }
     public function clasifications() {
       return DB::table($this->table1)->get();
@@ -108,6 +112,8 @@ class Product extends Model
             'calcio' => $request['calcio'],
             'hierro' => $request['hierro'],
           ]);
+          return response()->json(['status' => 200, 'message' => 'Codigo Actualizado']);
+
     }
     public function productoTerminado () {
       return $this->hasMany('App\ProductoTerminado', 'CODI_PADRE' ,'CODI_RCODIGO');

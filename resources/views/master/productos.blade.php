@@ -395,11 +395,11 @@
                         </div>
                     </div>-->
                   <div class="bs-example" data-example-id="form-group-height-sizes">
-                    <form class="form-horizontal form-inline">
+                    <div class="form-horizontal form-inline">
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="formGroupInputLarge">Código: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="text" id="info-code" placeholder="ejm. 1020">
+                          <input disabled class="form-control browser-default" type="text" id="info-code" placeholder="ejm. 1020" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
@@ -411,20 +411,20 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  "  style="text-align: right; display: inline-block;" for="">Calorias: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-calorias" placeholder="ejm. 107.00">
+                          <input class="form-control browser-default" type="text" id="info-calorias" placeholder="ejm. 107.00" required>
 
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
-                        <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Grasas Totales: </label>
+                        <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="" >Grasas Totales: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-grasas-totales" placeholder="ejm. 2.62">
+                          <input class="form-control browser-default" type="text" id="info-grasas-totales" placeholder="ejm. 2.62" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label  " style="text-align: right; display: inline-block;" for="">Grasas Saturadas: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-grasas-saturadas" placeholder="ejm. 1.05">
+                          <input class="form-control browser-default" type="text" id="info-grasas-saturadas" placeholder="ejm. 1.05" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
@@ -436,26 +436,26 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Grasas Mono Insaturada </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-mono-insaturada" placeholder="ejm. .94">
+                          <input class="form-control browser-default" type="text" id="info-mono-insaturada" placeholder="ejm. .94" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Grasas Poli Saturada: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="text" id="info-poli-saturada" placeholder="ejm. .31">
+                          <input class="form-control browser-default" type="text" id="info-poli-saturada" placeholder="ejm. .31" required>
 
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Colesterol: </label>
                         <div class="col l6 m6 s6">
-                          <input class="form-control browser-default" type="number" id="info-colesterol" placeholder="ejm. 40.44">
+                          <input class="form-control browser-default" type="number" id="info-colesterol" placeholder="ejm. 40.44" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Sodio: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="number" id="info-sodio" placeholder="ejm. 95.21">
+                          <input class="form-control browser-default" type="number" id="info-sodio" placeholder="ejm. 95.21" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
@@ -479,7 +479,7 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Proteinas: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-proteinas" placeholder="ejm. 1.1">
+                          <input class="form-control browser-default" type="text" id="info-proteinas" placeholder="ejm. 1.1" required>
                         </div>
                       </div>
                       <div class="form-group col l12 m12 s12 pb-1">
@@ -503,14 +503,13 @@
                       <div class="form-group col l12 m12 s12 pb-1">
                         <label class="col l6 m6 s6 form-control-label" style="text-align: right; display: inline-block;" for="">Hierro: </label>
                         <div class="col l6 m6 s6  ">
-                          <input class="form-control browser-default" type="text" id="info-hierro" placeholder="ejm. 0.3 mg">
+                          <input class="form-control browser-default" type="text" id="info-hierro" placeholder="ejm. 0.3 mg" required>
                         </div>
                       </div>
                       <div class="form-group col l6 m12 s12 pb-1">
-                           <button type="button" class="btn cyan float-right" id='info-nutricional' name="button">Actualizar</button>
-
+                           <button  class="btn cyan float-right" id='info-nutricional' name="button">Actualizar</button>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,12 +1,12 @@
-<?php
+<?php 
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers; 
 use App\TipoCambio;
 use App\Clasificacion;
 use App\Product;
 use App\UnidadMedida;
 use App\ProductoTerminado;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -19,10 +19,9 @@ class ProductController extends Controller
       $this->oProduct = new Product();
       $this->oUnidadMedida = new UnidadMedida();
       $this->oProductoTerminado = new ProductoTerminado();
-    }
-
+    } 
     public function index()
-    {
+    { 
        $clasificacion = $this->oClasificacion->list();
        $unidades = $this->oUnidadMedida->list();
        $clasifications = $this->oProduct->clasifications();
@@ -72,5 +71,8 @@ class ProductController extends Controller
     }
     public function deleteProduct(Request $request) {
       return $this->oProductoTerminado->deleteProduct($request->all());
+    }
+    public function getLastId(Request $request) {
+      return $this->oProductoTerminado->getLastItem($request->all());
     }
 }

@@ -34,7 +34,7 @@ class ContenedorController extends Controller
     
 
       $data= Proveedor::select("*")->paginate(10);
-      dd($data);
+    
       return response()->json([ 
         'pagination' => [
           'total'         => $data->total(),
@@ -103,6 +103,7 @@ class ContenedorController extends Controller
   }
 
   public function paginador(Request $request) {
+    
       $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
                             ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
                             ->select(
@@ -121,8 +122,7 @@ class ContenedorController extends Controller
                             'dbsys.camiones.pagado_fecha') 
                               ->where('dbsys.camiones.estado_pagado', 0) 
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
-                              ->paginate(10);
-     
+                              ->paginate(10); 
 
     return response()->json([
       'pagination' => [
