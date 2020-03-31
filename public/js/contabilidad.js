@@ -48,6 +48,9 @@ $(document).on('click','#buscar-salida-bancos',function(){
             alert( "Request failed: " + textStatus + jqXHR.responseText);
           });
         }
+        else{
+          alerta('info','Ingrese primero la fecha desde y hasta');
+        }
       });
 
 
@@ -210,7 +213,7 @@ $(document).on('click','.mostrar-detalle',function(){
         fecha1=valores[2];
         fecha2=valores[3];
     $('#icono0').empty();
-    $('#icono0').append('<div class="form-group col l12 m12 s12 pb-2"><h6 class="center">Ingrese el número de depósito que desea agregar al Prosegur</h6></div><div class="form-group col l12 m12 s12  pb-2"><label for="" class="form-control-label col l4 m6 s12" style="text-align:right">Nro. de Depósito :</label><div class="col l6 m6 s12"><textarea  id="text-deposito" rows="6"  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion"></textarea></div><div><div class="form-group col l6 m12 s12" style="display: flex; justify-content: flex-end"><button type="button" class="btn cyan" data-fecha_2="'+ fecha2 +'" data-fecha_1="'+ fecha1 +'"  data-id_retiros_indice="'+ valores[0] +'" id="incluir-deposito" name="button">Agregar</button></div>');
+    $('#icono0').append('<div class="form-group col l12 m12 s12 pb-2"><h6 class="center">Ingrese el número de depósito que desea agregar al Prosegur</h6></div><div class="form-group col l12 m12 s12  pb-2"><label for="" class="form-control-label col l4 m6 s12" style="text-align:left">Nro. de Depósito :</label><div class="col l6 m6 s12"><textarea  id="text-deposito" rows="6"  class="form-control-textarea browser-default" style="width:100%" name="txt_migracion"></textarea></div><div><div class="form-group col l6 m12 s12" style="display: flex; justify-content: flex-end"><button type="button" class="btn cyan" data-fecha_2="'+ fecha2 +'" data-fecha_1="'+ fecha1 +'"  data-id_retiros_indice="'+ valores[0] +'" id="incluir-deposito" name="button">Agregar</button></div>');
 
     if($.trim(fecha1) != '' && $.trim(fecha2) != '' ){
           $.get('obtener-retiro-detalle',{fecha1:fecha1,fecha2:fecha2 },function(res){
@@ -253,6 +256,10 @@ $(document).on('click','.mostrar-detalle',function(){
 
       });
     }
+    // else
+    // {
+    //   alerta('info','Ingrese primero la fecha desde y hasta');
+    // }
   });
 // -------------------------------------------------------------
 $(document).on('click','#buscar-otros-depositos',function(){
@@ -279,8 +286,10 @@ $(document).on('click','#buscar-otros-depositos',function(){
 
 
       });
-
-
+    }
+    else
+    {
+      alerta('info','Ingrese primero la fecha desde y hasta');
     }
   });
 //--------------------------------------------------------------
@@ -326,6 +335,10 @@ $('#buscar-depositos-pendientes').on('click', function(){
 
 
       });
+    }
+    else
+    {
+      alerta('info','Ingrese primero la fecha desde y hasta');
     }
   });
   //--------------------------------------------------------------

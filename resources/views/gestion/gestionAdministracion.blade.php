@@ -85,7 +85,7 @@
                       <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh;">
                         <div class="row">
                           <div class="col s12 dataTables_scrollBody">
-                            <table id="tableAdministrador" class="table responsive-table centered">
+                            <table id="tableAdministrador" class="table  centered">
                               <thead>
                                 <tr>
                                   <th>Id</th>
