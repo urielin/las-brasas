@@ -503,6 +503,9 @@
         let html = [];
         //let check = [];
         for (let i = 0; i < data.length; i++) {
+
+            btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+            btn_detalles='<a type="button" value="" class="detalles btn blue btn-50 darken-1" style="cursor: pointer"><i class="material-icons dp48">remove_red_eye</i></a>';
             
             let id = data[i].id_proveedor;
             let emp_codigo = data[i].emp_codigo;
@@ -526,18 +529,14 @@
                         data-fax='${data[i].com_fax}'
                         data-email='${data[i].com_email}'>
 
-                      <td></td>
+                      <td>${btn_editar}</td>
                       <td>${emp_codigo}</td>
                       <td>${emp_rut}</td>
                       <td>${emp_nombre}</td>
                       
                       <td>${direccion_pais}</td>
                       <td>${direccion_direccion}</td> 
-                      <td> 
-                        <!--<button  data-id='${data[i].codigo}' onclick="paginator.showPago('${data[i].codigo}')" class ='btn btn-50 cyan btn-ver ' > 
-                        <i class="material-icons dp48"> remove_red_eye </i>  
-                        </button> 
-                      </td>
+                      <td>${btn_detalles}</td>
                       
                     </tr>`;
         }
