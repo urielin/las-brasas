@@ -32,9 +32,9 @@ class ContenedorController extends Controller
   public function paginadorProveedor(Request $request){
 
 
-      $data= Proveedor::select("*")->paginate(10);
-      dd($data);
-      return response()->json([
+      $data= Proveedor::select("*")->orderBy('ADM_PROVEEDOR.id_proveedor', 'desc')->paginate(10);
+    
+      return response()->json([ 
         'pagination' => [
           'total'         => $data->total(),
           'current_page'  => $data->currentPage(),
