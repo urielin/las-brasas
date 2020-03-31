@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::post('/products/nutricionals/update', 'ProductController@updateNutricional')->name('product.updateNutricional');
   Route::post('/productos/terminado/update', 'ProductController@updateProduct')->name('product.updateProduct');
   Route::post('/productos/delete', 'ProductController@deleteProduct')->name('product.delete');
-
+  Route::get('/productos/getLastId', 'ProductController@getLastId')->name('product.getLastId');
 //---------------------------------------Contabilidad - Retiros prosegur
   Route::get('/contabilidad', 'ContabilidadController@index')->name('contabilidad.index');
   Route::get('/obtener-retiro', 'ContabilidadController@getRetiro')->name('getRetiro');
@@ -132,8 +132,7 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   });
   
   Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
-  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne');
-
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');

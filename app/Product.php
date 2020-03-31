@@ -108,6 +108,8 @@ class Product extends Model
             'calcio' => $request['calcio'],
             'hierro' => $request['hierro'],
           ]);
+          return response()->json(['status' => 200, 'message' => 'Codigo Actualizado']);
+
     }
     public function productoTerminado () {
       return $this->hasMany('App\ProductoTerminado', 'CODI_PADRE' ,'CODI_RCODIGO');

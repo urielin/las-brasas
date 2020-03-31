@@ -49,6 +49,8 @@ class ProductoTerminado extends Model
                         'factor_multi' => $params['factor_multi'],
                         'factor_div' => $params['factor_div'],
                         'tipo' => $params['tipo'],
+                        'usuario'=> session('user')->usuario,
+                        'FECHA_REG' => $params['fecha'],
                         'estado' => $params['estado'],
                       ]);
 
@@ -82,5 +84,9 @@ class ProductoTerminado extends Model
      }
      public function getKeyName(){
         return "CODI_RCODIGO";
+    }
+    public function getLastItem($params) {
+      $lastId = ProductoTerminado::select('CODI_RCODIGO')->orderBy('FECHA_REG','desc')->get();
+      return $lastId;
     }
 }

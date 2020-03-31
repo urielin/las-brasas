@@ -7,6 +7,7 @@ use App\Clasificacion;
 use App\Product;
 use App\UnidadMedida;
 use App\ProductoTerminado;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class ProductController extends Controller
     }
 
     public function index()
-    {
+    { 
        $clasificacion = $this->oClasificacion->list();
        $unidades = $this->oUnidadMedida->list();
        $clasifications = $this->oProduct->clasifications();
@@ -72,5 +73,8 @@ class ProductController extends Controller
     }
     public function deleteProduct(Request $request) {
       return $this->oProductoTerminado->deleteProduct($request->all());
+    }
+    public function getLastId(Request $request) {
+      return $this->oProductoTerminado->getLastItem($request->all());
     }
 }

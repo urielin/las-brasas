@@ -33,9 +33,7 @@
       }
 
     </style>
-     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+     
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -240,6 +238,8 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
 
     <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/sparkline/jquery.sparkline.min.js') }}"></script>
