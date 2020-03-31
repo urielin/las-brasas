@@ -77,7 +77,7 @@
                       <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh;">
                         <div class="row">
                           <div class="col s12 dataTables_scrollBody">
-                            <table id="tableAdministrador" class="responsive-table centered">
+                            <table id="tableAdministrador" class="table responsive-table centered">
                               <thead>
                                 <tr>
                                   <th>Id</th>
@@ -1011,56 +1011,35 @@
             <div class=" col s6 pb-2">
               <h5 class="modal-title">Detalle general</h5>
             </div>
-            <div class="col s6" align="right">
-              <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
-            </div>
           </div>
         </div>
 
         <div class="modal-body">
-          <span id="form_result"></span>
-
             <div class="row container">
               <div class="row pb-2">
                 <div class="col s12 l6">
-                  <label for="monto_cierred">Monto cierre: </label>
-                  <input disabled type="text" name="monto_cierred" id="monto_cierred"  class="validate form-control" step="1">
+                      <table id="tableMostrarAdicional" class="table responsive-table centered striped">
+
+                        <tbody id="tableMostrarAdicional-cuerpo">
+
+                        </tbody>
+                      </table>
                 </div>
+
                 <div class="col s12 l6">
-                  <label for="tipo_monedad">Moneda:</label>
-                  <input disabled type="text" name="tipo_monedad" id="tipo_monedad"  class="validate form-control" step="1">
+                      <table id="tableMostrarAdicional2" class="table responsive-table centered striped">
+
+                        <tbody id="tableMostrarAdicional2-cuerpo">
+
+                        </tbody>
+                      </table>
                 </div>
               </div>
 
-              <div class="row pb-2">
-                <div class="col s12 l6">
-                  <label for="fecha_embarqued">Embarque: </label>
-                  <input disabled type="text" name="fecha_embarqued" id="fecha_embarqued"  class="validate form-control" step="1">
-                </div>
-                <div class="col s12 l6">
-                  <label for="fecha_llegada_estimadad">Llegada estimada:</label>
-                  <input disabled type="text" name="fecha_llegada_estimadad" id="fecha_llegada_estimadad"  class="validate form-control" step="1">
-                </div>
-              </div>
-              <div class="row pb-2">
-                <div class="col s12 l6">
-                  <label for="lugar_arribod">Lugar llegada: </label>
-                  <input disabled type="text" name="lugar_arribod"  id="lugar_arribod" class="validate form-control" step="1">
-                </div>
-                <div class="col s12 l6">
-                  <label for="declara_origend">Origen: </label>
-                  <input disabled type="text" name="declara_origend"  id="declara_origend"  class="validate form-control" step="1">
-                </div>
-              </div>
 
-              <div class="row pb-2">
-                <div class="col s12 l6">
-                  <label for="ingreso_zetad">Documento: </label>
-                  <input disabled type="text" name="ingreso_zetad"  id="ingreso_zetad" class="validate form-control" step="1">
-                </div>
-                <div class="col s12 l6">
-                  <label for="navierad">Empresa transporte: </label>
-                  <input disabled type="text" name="navierad"  id="navierad" class="validate form-control" step="1">
+              <div class="modal-footer">
+                <div class="col s12 l12" align="right">
+                  <button type="button" class="modal-action modal-close waves-effect grey lighten-1 btn-flat" data-dismiss="modal">Cerrar</button>
                 </div>
               </div>
              </div>

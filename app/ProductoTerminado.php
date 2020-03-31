@@ -35,9 +35,11 @@ class ProductoTerminado extends Model
      }
 
      public function updateProduct($params) {
+
        $father = DB::table($this->table2)
                       ->where('CODI_RCODIGO', $params['code'])
                       ->where('TPCO_CODIGO', '2')->get();
+
        if (isset($father[0])) {
          $flat = DB::table($this->table)
                       ->where('CODI_RCODIGO', $params['code'])->get();
@@ -77,16 +79,15 @@ class ProductoTerminado extends Model
      public function deleteProduct($params) {
        ProductoTerminado::where('CODI_RCODIGO', $params['id'])->delete();
      }
-
      public function products()
      {
         return $this->belongsTo('App\Product',  'CODI_RCODIGO');
      }
      public function getKeyName(){
         return "CODI_RCODIGO";
-    }
-    public function getLastItem($params) {
+     }
+     public function getLastItem($params) {
       $lastId = ProductoTerminado::select('CODI_RCODIGO')->orderBy('FECHA_REG','desc')->get();
       return $lastId;
-    }
+     }
 }

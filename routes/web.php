@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth_custom'], function () {
   Route::get('/mostrar-cambio', 'TipoCambioController@show')->name('showCambio');
   Route::post('/actualizar-ofertas', 'PrecioCamionController@update')->name('actualizar-ofertas');
   Route::get('/email', 'PrecioCamionController@sendEmail')->name('sendEmail');
-  
+
 // --------------------------------
   Route::get('/gestion-camion', 'GestionCamionController@index')->name('gestion-camion');
   Route::GET('/ver-camion', 'GestionCamionController@show')->name('showCamion');
@@ -95,6 +95,7 @@ Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGen
 Route::POST('/subir-datosLogistica', 'GestionAdministracionController@upDatosLogistica')->name('upDatosLogistica');
 Route::POST('/subir-datosTecnicos', 'GestionAdministracionController@upDatosTecnicos')->name('upDatosTecnicos');
 Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregarCamion')->name('administrarAgregarCamion');
+Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
 
 //-----------------------------------------------------------------------
 
@@ -125,21 +126,26 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
     $mpdf->watermarkTextAlpha = 0.1;
     $mpdf->SetDisplayMode('fullpage');
     $html =view('reports.prosegur.resumen-retiros')->render();
-    $mpdf->WriteHTML($html);
-
-    $mpdf->Output();
-
+    $mpdf->WriteHTML($html); 
+    $mpdf->Output(); 
   });
-  
-  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+   
   Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+  
+  /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
+  Route::get('contenedores-camiones/parametros1', 'ContenedorController@parametros1')->name('contenedor.parametros1');
+
+  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+  
+  Route::get('contenedores-camiones/proveedors','ContenedorController@paginadorProveedor')->name('paginateProveedor');
+  /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
   Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
   Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
-  
+
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
   Route::get('obtener-mes','ComicionVentaController@getMes')->name('getMes');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
@@ -156,7 +162,7 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
 
   Route::post('cartola/importar-plane','CatalogoController@importPlane')->name('catalogo.importPlane');
   Route::post('cartola/migracion-plane','CatalogoController@migraciontPlane')->name('catalogo.migrationPlane');
- 
+
   Route::get('/proveedor','ContenedorController@getProveedor')->name('getProveedor');
   Route::get('/obtener-datos','ContenedorController@getDato')->name('getDato');
   Route::post('/nuevo','ContenedorController@setNew')->name('setNew');
@@ -164,11 +170,19 @@ Route::POST('/subir-camion', 'GestionAdministracionController@administrarAgregar
   //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');
 
-  
-  
+  /*PAGINADOR*/
+
+  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
+  Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
+  Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+  Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
+  Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
+  Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
 
-  
+
+
 
 Route::get('/reporte2', function () {
 
@@ -220,3 +234,55 @@ Route::get('/reporte2', function () {
 
 
 });
+
+
+/*PRIMERO*/
+/*
+CREATE TABLE [dbo].[ADM_VENDEDOR_PARAMETROS_COMISION](
+	[id_vendedor] [int] NOT NULL,
+	[nombre_vendedor] [varchar](100) NULL
+	
+ CONSTRAINT [PK_ADM_VENDEDOR_PARAMETROS_COMISION] PRIMARY KEY CLUSTERED 
+(
+	[id_vendedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/*SEGUNDO*/
+/*
+CREATE TABLE [dbo].[MODULO_COMISION_VENTA_HIST](
+	[folio] [varchar](50) NULL,
+	[id_venta] [bigint] NOT NULL,
+	[proc_folio_pedido] [numeric](18, 0) NULL,
+	[fecha2] [datetime] NULL,
+	[forma_pago] [numeric](18, 0) NULL,
+	[cod_vendedor] [numeric](18, 0) NOT NULL,
+	[ptotal] [numeric](18, 2) NULL,
+	[impuesto] [numeric](18, 0) NULL,
+	[adicional] [numeric](18, 0) NULL,
+	[total] [numeric](18, 0) NULL,
+	[rut_cliente] [varchar](50) NULL,
+	[comision] [numeric](18, 2) NULL,
+	[fecha_pago] [datetime] NULL,
+	[monto] [numeric](18, 0) NULL,
+	[tipo_documento] [numeric](18, 0) NULL,
+	[n_deposito] [nvarchar](20) NULL,
+ CONSTRAINT [PK_MODULO_COMISION_VENTA_HIST] PRIMARY KEY CLUSTERED 
+(
+	[id_venta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/*TERCERO*/
+/*
+INSERT INTO ADM_VENDEDOR_PARAMETROS_COMISION
+ SELECT VEND_CODIGO, VEND_NOMBRE FROM ADM_VENDEDORES
+/*CUARTO*//*
+ ALTER TABLE ADM_VENDEDOR_PARAMETROS_COMISION
+ ADD [nivel1] [int] NULL,
+	[comision1] [int] NULL,
+	[nivel2] [int] NULL,
+	[comision2] [int] NULL,
+	[nivel3] [int] NULL,
+	[comision3] [int] NULL
+*/

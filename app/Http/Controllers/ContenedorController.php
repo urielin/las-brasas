@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB; 
 use App\DbsysCamiones;
+use App\Proveedor;
 class ContenedorController extends Controller
 {
   
@@ -23,10 +24,31 @@ class ContenedorController extends Controller
                                       ISNULL(com_email,'') as com_email
                                       FROM ADM_PROVEEDOR ORDER BY id_proveedor DESC" );
       return response()->json([ 
+        
         'proveedor' => $proveedor 
       ]);
     }
   }
+  /*Pruebaaaaaaaaaaa */
+  public function paginadorProveedor(Request $request){
+    
+
+      $data= Proveedor::select("*")->paginate(10);
+    
+      return response()->json([ 
+        'pagination' => [
+          'total'         => $data->total(),
+          'current_page'  => $data->currentPage(),
+          'per_page'      => $data->perPage(),
+          'last_page'     => $data->lastPage(),
+          'from'          => $data->firstItem(),
+          'to'            => $data->lastItem(),
+        ],
+        'pagos' => $data 
+      ]);
+    
+  }
+  /*Pruebaaaaaaaaaaa */
   public function list() {
     $camiones  = DbsysCamiones::all();
     return response()->json([ 'camiones' => $camiones  ]);
@@ -81,6 +103,7 @@ class ContenedorController extends Controller
   }
 
   public function paginador(Request $request) {
+    
       $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
                             ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda') 
                             ->select(
@@ -99,8 +122,7 @@ class ContenedorController extends Controller
                             'dbsys.camiones.pagado_fecha') 
                               ->where('dbsys.camiones.estado_pagado', 0) 
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
-                              ->paginate(10);
-     
+                              ->paginate(10); 
 
     return response()->json([
       'pagination' => [
@@ -137,17 +159,17 @@ class ContenedorController extends Controller
       ->paginate(10);
    
 
-  return response()->json([
-    'pagination' => [
-      'total'         => $data->total(),
-      'current_page'  => $data->currentPage(),
-      'per_page'      => $data->perPage(),
-      'last_page'     => $data->lastPage(),
-      'from'          => $data->firstItem(),
-      'to'            => $data->lastItem(),
-    ],
-    'histories' => $data,  
-  ]);
+    return response()->json([
+      'pagination' => [
+        'total'         => $data->total(),
+        'current_page'  => $data->currentPage(),
+        'per_page'      => $data->perPage(),
+        'last_page'     => $data->lastPage(),
+        'from'          => $data->firstItem(),
+        'to'            => $data->lastItem(),
+      ],
+      'histories' => $data,  
+      ]);
 }
   public function findOne(Request $request) {
     $pago = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
@@ -184,7 +206,12 @@ class ContenedorController extends Controller
     
     return view('gestion.parametros')->with(compact('proveedor'));
   }
+  public function parametros1(){
+    $proveedor = DB::select('SELECT id_proveedor, emp_nombre FROM ADM_PROVEEDOR');
+    
+    return view('gestion.parametros1')->with(compact('proveedor'));
 
+  }
   public function getDato(Request $request){
 
     if (request()->ajax()){

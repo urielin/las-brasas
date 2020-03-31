@@ -107,8 +107,8 @@ $('#table-detalle').on('click','.eliminar-item',function(){
     //         valores+=$(this).html()+"\n";
     //     });
       valores = $(".eliminar-item").parents("tr")[2];
-      console.log(valores.find());
-      console.log("------------------");
+      // console.log(valores.find());
+      // console.log("------------------");
 
       if($.trim(texto) != '' &&  $.trim(id_retiro_indice) != '' ){
          $.get('deposito-incluir-deposito',{texto:texto,id_retiro_indice:id_retiro_indice, fecha1:fecha1 ,fecha2:fecha2 },function(res){
@@ -329,7 +329,7 @@ $('#buscar-depositos-pendientes').on('click', function(){
     }
   });
   //--------------------------------------------------------------
-  $('#agregar-otro-retiro').on('click', function(){ 
+  $('#agregar-otro-retiro').on('click', function(){
 
         $.get('retiros-otros-generar',function(res){
 

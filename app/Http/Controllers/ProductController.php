@@ -1,7 +1,6 @@
-<?php
+<?php 
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers; 
 use App\TipoCambio;
 use App\Clasificacion;
 use App\Product;
@@ -20,8 +19,7 @@ class ProductController extends Controller
       $this->oProduct = new Product();
       $this->oUnidadMedida = new UnidadMedida();
       $this->oProductoTerminado = new ProductoTerminado();
-    }
-
+    } 
     public function index()
     { 
        $clasificacion = $this->oClasificacion->list();
