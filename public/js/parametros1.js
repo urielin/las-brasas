@@ -196,7 +196,7 @@ $(document).ready(function(){
             
             
             //alert('Proveedor actualizado');
-            tabla();
+            //tabla();
             $('#formEdit').modal('close');
              
 
@@ -296,7 +296,7 @@ $(document).ready(function(){
             showConfirmButton: false,
             timer: 800
           })
-           tabla();
+           //tabla();
            $('#codigo_nuevo').val('');
            $('#rut_nuevo').val('');
            $('#empresa_nuevo').val('');
