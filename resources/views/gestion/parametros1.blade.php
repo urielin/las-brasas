@@ -70,13 +70,18 @@
 
               </tr>
             </thead>
-            <tbody id="proveedor-datos">
+            <tbody >
 
             </tbody>
           </table>
         </div>
 
-        
+        <nav style="box-shadow: none; background:white;margin-left: 14px;">
+          <ul id="paginationNav">
+
+          </ul>
+
+        </nav>
       </div>
 
     </div>
@@ -87,9 +92,9 @@
 
 
 @section('js')
-  <script src="{{asset('js/parametros.js') }}"></script>
+  <script src="{{asset('js/parametros1.js') }}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+  
 @endsection
 
 @section('modal')
@@ -437,4 +442,132 @@
 @section('after-scripts')
     <script type="text/javascript" src="{{asset('js/tabs.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+  <script>
+    $(document).ready(function(){
+       paginator.listarPagos();
+    })
+    let paginator = { 
+      pagesNumber(pagination) {
+        let offset = 8;
+        
+                if(!pagination.to) {
+                    return [];
+                }
+
+                var from = pagination.current_page - offset;
+                if(from < 1) {
+                    from = 1;
+                }
+
+                var to = from + (offset * 2);
+                if(to >= pagination.last_page){
+                    to = pagination.last_page;
+                }
+
+                var pagesArray = [];
+                while(from <= to) {
+                    pagesArray.push(from);
+                    from++;
+                }
+                return pagesArray;
+      },
+      setPaginatorHTML(data) {
+        let numberPager = this.pagesNumber(data);
+        
+        let html = [], preview, next;
+        for (let i = 0; i < numberPager.length; i++) {
+          let active = numberPager[i]  == data.current_page  ? 'active' : '';
+          if (data.current_page> 1) {
+              preview =  `<li class="page-item" >
+                              <a class="page-link"  onclick="paginator.cambiarPagina('${data.current_page - 1}')">Ant</a>
+                          </li>`
+          } 
+          if (data.current_page < data.last_page) {
+              next = `<li class="page-item "  >
+                        <a class="page-link "  onclick="paginator.cambiarPagina('${data.current_page + 1}')">Sig</a>
+                     </li>`
+          }  
+          html[i] =  `<li class="page-item  ${active}">
+                      <a class="page-link"  onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
+                    </li>`  
+        }
+        html.unshift(preview);
+        html.push(next);
+
+        return html;  
+      },
+      
+      setPagosHtml(data) {
+        let html = [];
+        //let check = [];
+        for (let i = 0; i < data.length; i++) {
+            
+            let id = data[i].id_proveedor;
+            let emp_codigo = data[i].emp_codigo;
+            let emp_rut = data[i].emp_rut;
+            let emp_nombre = data[i].emp_nombre;
+            let direccion_pais = data[i].direccion_pais;
+            let direccion_direccion = data[i].direccion_direccion;
+            let com_telefono = data[i].com_telefono;
+            let com_movil = data[i].com_movil;
+            let com_fax = data[i].com_fax;
+            let com_email = data[i].com_email;
+
+          html[i] = `<tr data-id='${data[i].id_proveedor}'
+                        data-codigo='${data[i].emp_codigo}'
+                        data-rut='${data[i].emp_rut}'
+                        data-empNombre= '${data[i].emp_nombre}'
+                        data-direccionPais='${data[i].direccion_pais}'
+                        data-direcciondire='${data[i].direccion_direccion}'
+                        data-telefono='${data[i].com_telefono}'
+                        data-movil='${data[i].com_movil}'
+                        data-fax='${data[i].com_fax}'
+                        data-email='${data[i].com_email}'>
+
+                      <td></td>
+                      <td>${emp_codigo}</td>
+                      <td>${emp_rut}</td>
+                      <td>${emp_nombre}</td>
+                      
+                      <td>${direccion_pais}</td>
+                      <td>${direccion_direccion}</td> 
+                      <td> 
+                        <!--<button  data-id='${data[i].codigo}' onclick="paginator.showPago('${data[i].codigo}')" class ='btn btn-50 cyan btn-ver ' > 
+                        <i class="material-icons dp48"> remove_red_eye </i>  
+                        </button> 
+                      </td>
+                      
+                    </tr>`;
+        }
+        return html; 
+      },
+      cambiarPagina(page){ 
+          localStorage.setItem('page', page)
+          this.listarPagos(page);
+      },
+      async listarPagos(page = 0){
+        let me=this;
+        var url= '/contenedores-camiones/proveedors?page=' + page; 
+        let { data: data, status } = await axios.get(url); 
+        let pagination = this.setPaginatorHTML(data.pagination)
+        let pagos = this.setPagosHtml(data.pagos.data); 
+        $('#tabla-proveedor tbody').empty().append(pagos);
+        $('#paginationNav ').empty().append(pagination); 
+      },
+      
+      addCommas(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+      }
+    }  
+  </script>
 @endsection

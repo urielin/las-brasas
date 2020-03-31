@@ -134,8 +134,17 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
 
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+  
+  /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
+  Route::get('contenedores-camiones/parametros1', 'ContenedorController@parametros1')->name('contenedor.parametros1');
+
+  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+  
+  Route::get('contenedores-camiones/proveedors','ContenedorController@paginadorProveedor')->name('paginateProveedor');
+  /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
   Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
+  Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
 
   Route::get('comicion-por-venta', 'ComicionVentaController@index')->name('comicion.venta');
@@ -162,7 +171,15 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   //Route::get('/get-new','ContenedorController@getNew')->name('getNew');
   Route::post('/updateproveedor','ContenedorController@updateProveedor')->name('updateProveedor');
 
+  /*PAGINADOR*/
 
+  Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
+  Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
+  Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
+  Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
+  Route::post('contenedores-camiones/pagos/check', 'ContenedorController@check')->name('contenedor.pagos.check');
+  Route::get('contenedores-camiones/histories', 'ContenedorController@histories')->name('contenedor.histories');
 
 
 
@@ -257,13 +274,11 @@ CREATE TABLE [dbo].[MODULO_COMISION_VENTA_HIST](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
 /*TERCERO*/
-
+/*
 INSERT INTO ADM_VENDEDOR_PARAMETROS_COMISION
  SELECT VEND_CODIGO, VEND_NOMBRE FROM ADM_VENDEDORES
-
-/*CUARTO*/
+/*CUARTO*//*
  ALTER TABLE ADM_VENDEDOR_PARAMETROS_COMISION
  ADD [nivel1] [int] NULL,
 	[comision1] [int] NULL,
@@ -271,6 +286,4 @@ INSERT INTO ADM_VENDEDOR_PARAMETROS_COMISION
 	[comision2] [int] NULL,
 	[nivel3] [int] NULL,
 	[comision3] [int] NULL
-
-
 */
