@@ -14,42 +14,42 @@
       </div>
       <div id="test1" class="col s12">
         <div class="responsive-table" style="overflow-x: scroll; width: 100%;margin: 15px;"> 
-         <table id='pagoTable' class="table centered responsive-table" style="font-size:13px">
-            <thead>
-              <tr>
-                <th> </th>
-                <th>Código</th>
-                <th>Descripción</th>
-                <th>Pagar a:</th>
-               <!--<th>Total de Factura</th>--> 
-                <th>Total</th>
-                <!--<th>Moneda</th>
-                <th>Fecha Llegada</th>-->
-                <th>Forward</th>
-                <th>Fecha Forward</th>
-                <th>Fecha compromiso</th>
-                <th>Swift</th>
-                <th>Fecha Swift</th> 
-                <!--<th>Pagado Fecha</th>-->
-                <th>Ver</th>
+          <table id='pagoTable' class="table centered responsive-table" style="font-size:13px">
+              <thead>
+                <tr>
+                  <th> </th>
+                  <th>Código</th>
+                  <th>Descripción</th>
+                  <th>Pagar a:</th>
+                <!--<th>Total de Factura</th>--> 
+                  <th>Total</th>
+                  <!--<th>Moneda</th>
+                  <th>Fecha Llegada</th>-->
+                  <th>Forward</th>
+                  <th>Fecha Forward</th>
+                  <th>Fecha compromiso</th>
+                  <th>Swift</th>
+                  <th>Fecha Swift</th> 
+                  <!--<th>Pagado Fecha</th>-->
+                  <th>Ver</th>
 
-                <th>Editar</th>
-              </tr>
-            </thead>
-            <tbody> 
-            
-            </tbody>
-             
-              <!--<tr >
-                <td colspan="3"> 
-                 
-                </td> 
-                <td>Total</td>
-                <td> 
-                 {{$total}}
-                </td>  
-              </tr>-->
-             
+                  <th>Editar</th>
+                </tr>
+              </thead>
+              <tbody> 
+              
+              </tbody>
+              
+                <!--<tr >
+                  <td colspan="3"> 
+                  
+                  </td> 
+                  <td>Total</td>
+                  <td> 
+                  {{$total}}
+                  </td>  
+                </tr>-->
+              
           </table> 
         </div>
         <nav style="box-shadow: none; background:white;margin-left: 14px;">

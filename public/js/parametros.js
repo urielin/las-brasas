@@ -558,31 +558,45 @@ $(document).ready(function(){
     })*/
 
     $('#tabla-proveedor').on('click ','a.detalles',function() {
-        //console.log('gaaaa');
-        let codigo = $(this).parents("tr").attr('data-codigo');
-        let rut = $(this).parents("tr").attr('data-rut');
-        let empNombre = $(this).parents("tr").attr('data-empNombre');
-        let direccionPais = $(this).parents("tr").attr('data-direccionPais');
-        let direcciondire = $(this).parents("tr").attr('data-direcciondire');
-        let telefono = $(this).parents("tr").attr('data-telefono');
-        let movil = $(this).parents("tr").attr('data-movil');
-        let fax = $(this).parents("tr").attr('data-fax');
-        let email = $(this).parents("tr").attr('data-email');
+        $('#tableMostrarAdicional-cuerpo').empty();
+        $('#tableMostrarAdicional2-cuerpo').empty();
 
-        $('#formModal').modal('open');
+        $('#tableMostrarAdicional-cuerpo').append(`
+            <tr>
+                <td class="strong" style="text-align:right" >Código:</td><td style="text-align:left">${$(this).parents("tr").attr('data-codigo')==''? '-':$(this).parents("tr").attr('data-codigo')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">RUT:</td><td style="text-align:left">${$(this).parents("tr").attr('data-rut')==''?'-':$(this).parents("tr").attr('data-rut')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Nombre:</td><td style="text-align:left">${$(this).parents("tr").attr('data-empNombre')==''?'-':$(this).parents("tr").attr('data-empNombre')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Pais:</td><td style="text-align:left">${$(this).parents("tr").attr('data-direccionPais')==''?'-':$(this).parents("tr").attr('data-direccionPais')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Email:</td><td style="text-align:left">${$(this).parents("tr").attr('data-email')==''?'-':$(this).parents("tr").attr('data-email')}</td>
+            </tr>
+            `);
 
-        $('#codigo_detalle').val(codigo);
-        $('#rut_detalle').val(rut);
-        $('#empresa_detalle').val(empNombre);
-        $('#pais_detalle').val(direccionPais);
-        $('#direccion_detalle').val(direcciondire);
-        $('#telefono_detalle').val(telefono);
-        $('#movil_detalle').val(movil);
-        $('#fax_detalle').val(fax);
-        $('#email_detalle').val(email);
+            $('#tableMostrarAdicional2-cuerpo').append(`
+            
+            <tr>
+                <td class="strong" style="text-align:right">Teléfono:</td><td style="text-align:left">${$(this).parents("tr").attr('data-telefono')==''?'-':$(this).parents("tr").attr('data-telefono')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Movil:</td><td style="text-align:left">${$(this).parents("tr").attr('data-movil')==''?'-':$(this).parents("tr").attr('data-movil')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Fax:</td><td style="text-align:left">${$(this).parents("tr").attr('data-fax')==''?'-':$(this).parents("tr").attr('data-fax')}</td>
+            </tr>
+            <tr>
+                <td class="strong" style="text-align:right">Direccion:</td><td style="text-align:left">${$(this).parents("tr").attr('data-direcciondire')=='' ? '-':$(this).parents("tr").attr('data-direcciondire')}</td>
+            </tr>
+            `);
 
-        /*$('#formModal').modal('close');
-        console.log('asda');*/
+            $('#formModal2').modal('open');
+
     });
 
     $('#nuevo-proveedor').on('submit', function(){

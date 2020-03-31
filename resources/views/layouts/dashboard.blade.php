@@ -215,6 +215,10 @@
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Gestión de Parámetros </span></a>
               </li>
+              <li><a href="{{route('contenedor.parametros1')}}">
+                <i class="material-icons">radio_button_unchecked</i>
+                <span data-i18n="Page Maintenanace">Parámetros Prueba</span></a>
+              </li>
             </ul>
           </div>
         </li>

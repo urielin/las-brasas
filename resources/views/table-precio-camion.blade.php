@@ -18,7 +18,7 @@
              <tr>
               <th scope="col"colspan="2"></th>
 
-              <th scope="col"colspan="2"></th>
+              <th scope="col"colspan="2" style="text-align:center">Precio Base</th>
               @if(!empty($result))
               @foreach($result as $key => $value)
               <th scope="col"colspan="2" class="text-center">{{$key}}</th>
@@ -27,7 +27,8 @@
             </tr>
             <tr>
               <th scope="col"colspan="2"></th>
-              <th scope="col"colspan="2"></th>
+              <th scope="col">Publico</th>
+              <th scope="col">P.Mayor</th>
               @if(!empty($col_count))
               @for($i = 0; $i < $col_count; $i++)
               <th scope="col">Publico</th>
