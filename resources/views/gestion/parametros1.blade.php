@@ -515,6 +515,7 @@
                   
                   
                   //alert('Proveedor actualizado');
+                  
                   paginator.listarPagos();
                   $('#formEdit').modal('close');
                   
@@ -722,7 +723,7 @@
                         </li>`
               }  
               html[i] =  `<li class="page-item  ${active}">
-                          <a class="page-link"  onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
+                          <a class="page-link" onclick="paginator.cambiarPagina(${numberPager[i]})">${numberPager[i]}</a>
                         </li>`  
             }
             html.unshift(preview);

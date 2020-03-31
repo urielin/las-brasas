@@ -209,13 +209,13 @@
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Seguimiento a Pagos </span></a>
               </li>
-              <li><a href="{{route('contenedor.parametros')}}">
+              <!--<li><a href="{{route('contenedor.parametros')}}">
                 <i class="material-icons">radio_button_unchecked</i>
                 <span data-i18n="Page Maintenanace"> Gestión de Parámetros </span></a>
-              </li>
+              </li>-->
               <li><a href="{{route('contenedor.parametros1')}}">
                 <i class="material-icons">radio_button_unchecked</i>
-                <span data-i18n="Page Maintenanace">Parámetros Prueba</span></a>
+                <span data-i18n="Page Maintenanace">Gestión de Parámetros</span></a>
               </li>
             </ul>
           </div>
