@@ -265,12 +265,12 @@
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 
     <script src="{{ asset('js/gestion-camion.js') }}"></script>
-    <script src="{{ asset('js/product.js') }}"></script>
+    
     <!--<script src="{{ asset('js/tabs.js') }}"></script>-->
     @yield('js')
     @yield('modal')
     @yield('after-scripts')
-
+    
 
 
   </body>

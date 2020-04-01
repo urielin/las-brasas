@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  setLastId();
   const Toast = Swal.mixin({
     toast: true,
     position: 'bottom-end',
@@ -9,7 +10,7 @@ $(document).ready(function(){
       toast.addEventListener('mouseenter', Swal.stopTimer)
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-  })
+  });
   $("#searchCatalogo").on('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -20,7 +21,7 @@ $(document).ready(function(){
       tipo: $('#tipo').val(),
     }
     filter(params);
-  })
+  });
   $('#productTable').on('click', ' tbody tr', function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -33,7 +34,7 @@ $(document).ready(function(){
     instance.select('test2');
     
     getUnidadMedida(id);
-    setLastId();
+   
     findSonId({id: id, state: ''});
     getNutricional(id);
   })
@@ -162,7 +163,7 @@ $(document).ready(function(){
         self.parents("tr").find(".btn-cancel").remove();
         self.parents("tr").find(".btn-update").remove()
       } 
-    });
+  });
   $("#productTable tbody").on('click','tr', function(e){
     $(this).addClass('tr-selected').siblings().removeClass('tr-selected');
   });
@@ -170,7 +171,7 @@ $(document).ready(function(){
     let id = $(this).attr('data-id');
     deleteProduct(id);
     $(this).parents("tr").remove();
-   });
+  });
   $(".btn-add-product").on("click", function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -200,7 +201,7 @@ $(document).ready(function(){
     console.log(news)
     $('#catalogoTable  tbody').prepend(news);
 
-  })
+  });
   $('#filter_state').on('change', function() {
     let state = $('#filter_state').val();
     let data = JSON.parse(localStorage.getItem('mercancia'));
@@ -208,6 +209,7 @@ $(document).ready(function(){
     console.log("id", {id: data.CODI_RCODIGO, state: state});
     findSonId({id: data.CODI_RCODIGO, state: state})
   });
+  
   function getCurrentDate() {
     let date = new Date();
 
@@ -359,8 +361,8 @@ $(document).ready(function(){
       if(data.status == '200') {
         Toast.fire({
           icon: 'success',
-          title: 'Codigo Actualizado'
-        });
+          title: 'El codigo a sido creado con exito'
+        });  
         $('#create-code').val(' ');
         $('#create-name').val(' ');
         $('#create-multi-unid').val(' ');
@@ -369,6 +371,15 @@ $(document).ready(function(){
         $('#create-peso').val(' ');
         $('#create-impuesto').val(' ');
         $('#create-code-arancelario').val(' ');
+        let elem = $('.tabs')
+        let instance = M.Tabs.getInstance(elem);
+        instance.select('test2');
+      } else {
+        Toast.fire({
+          title: 'Error!',
+          icon: 'error',
+          title: 'Codigo ya existe'
+        })
       }
     })
   }
@@ -596,12 +607,17 @@ $(document).ready(function(){
     })
   }
   function setLastId() {
+    console.log("GAAAA")
     $.ajax({
       url: '/productos/getLastId',
       type:'GET', 
       data: {_token: $("meta[name='csrf-token']").attr("content")},
     }).then((data)=> {
-      console.log(data)
+      if(data.status == 200) {
+        $('#create-code').val(data.id);
+      }
     })
-  }
+  } 
  })
+ 
+
