@@ -7,14 +7,87 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
+
+  $('#gestionad').on('change', function(){
+    let clasificacion, estado,gestion;
+     clasificacion = $('#clasificacionad').val();
+     gestion = $(this).val();
+     estado = $('#estado').val();
+
+
+     $('#tabla-administracion-cuerpo').empty();
+     if ( $.trim(clasificacion) != '') {
+         $.get('administrar-tabla-gestion',{clasificacion:clasificacion,estado:estado,gestion:gestion},function(res){
+               if (res.camiones != '') {
+                 $.each(res.camiones,function(index,value){
+                   let monto_cierre = value.monto_cierre == null || value.monto_cierre == '' ? '-' : value.monto_cierre;
+                   let ingreso_zeta = value.ingreso_zeta == null || value.ingreso_zeta == ''? '-' : value.ingreso_zeta;
+                   let declara_origen = value.declara_origen == null || value.declara_origen == '' ? '-' : value.declara_origen;
+                   let naviera = value.naviera == null || value.naviera == '' ? '-' : value.naviera;
+                   let proveedor = value.proveedor == null || value.proveedor == '' ? '-' : value.proveedor;
+                   let tipo_moneda = value.tipo_moneda == null || value.tipo_moneda == '' ? '-' : value.tipo_moneda;
+                   let lugar_arribo = value.lugar_arribo == null || value.lugar_arribo == '' ? '-' : value.lugar_arribo;
+
+                   let id_camion = value.id_camion == null || value.id_camion == '' ? '-' : value.id_camion;
+                   let codigo = value.codigo == null || value.codigo == '' ? '-' : value.codigo;
+                   let estado = value.estado == null || value.estado == '' ? '-' : value.estado;
+                   let codigo_aux = value.codigo_aux == null || value.codigo_aux == '' ? '-' : value.codigo_aux;
+                   let descripcion = value.descripcion == null || value.descripcion == '' ? '-' : value.descripcion;
+
+                   $('#tabla-administracion-cuerpo').append(`
+                     <tr >
+
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${id_camion}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${codigo}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${estado}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${codigo_aux}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${descripcion}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${dateUTC(value.fecha_cierre)}</td>
+                       <td data-id_camion="${value.id_camion}" data-estado="${value.estado}" class="administrar-detalle">${proveedor}</td>
+
+                       <td>
+                           <a class="btn btn-50 blue">
+                             <i class="material-icons detalle-camion"
+                               data-monto_cierre="${monto_cierre}"
+                               data-tipo_moneda="${tipo_moneda}"
+                               data-fecha_embarque="${dateUTC(value.fecha_embarque)}"
+                               data-fecha_llegada_estimada="${dateUTC(value.fecha_llegada_estimada)}"
+                               data-lugar_arribo="${lugar_arribo}"
+                               data-declara_origen="${declara_origen}"
+                               data-ingreso_zeta="${ingreso_zeta}"
+                               data-naviera="${naviera}" >
+                             remove_red_eye</i>
+                           </a>
+                       </td>
+
+                     </tr>
+                     `);
+
+                   });
+               } else {
+                 $('#tabla-administracion-cuerpo').append(`
+                   <tr class="group">
+                     <td colspan="15">Camiones no encontrados</td>
+                   </tr>
+                 `);
+               }
+         });
+     }
+     else{
+       alerta('info','Ingrese la clasificación');
+     }
+
+  });
+
    $('#clasificacionad').on('change', function(){
-     let clasificacion, estado;
+     let clasificacion, estado,gestion;
+      gestion = $('#gestionad').val();
       clasificacion = $(this).val();
       estado = $('#estado').val();
 
       $('#tabla-administracion-cuerpo').empty();
       if ( $.trim(clasificacion) != '') {
-          $.get('administrar-tabla-clasificacion',{clasificacion:clasificacion,estado:estado},function(res){
+          $.get('administrar-tabla-clasificacion',{clasificacion:clasificacion,estado:estado,gestion:gestion},function(res){
                 if (res.camiones != '') {
                   $.each(res.camiones,function(index,value){
                     let monto_cierre = value.monto_cierre == null || value.monto_cierre == '' ? '-' : value.monto_cierre;
@@ -74,14 +147,15 @@ $(document).ready(function(){
    });
 
    $('#estado').on('change', function(){
-     let clasificacion, estado;
+     let clasificacion, estado,gestion;
+      gestion = $('#gestionad').val();
       estado = $(this).val();
       clasificacion = $('#clasificacionad').val();
-      console.log(estado);
+      console.log(gestion);
 
       $('#tabla-administracion-cuerpo').empty();
       if ( $.trim(clasificacion) != '') {
-          $.get('administrar-tabla-estado',{clasificacion:clasificacion,estado:estado},function(res){
+          $.get('administrar-tabla-estado',{clasificacion:clasificacion,estado:estado,gestion:gestion},function(res){
               if (res.camiones != '') {
                     $.each(res.camiones,function(index,value){
 

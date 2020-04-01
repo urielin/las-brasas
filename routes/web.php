@@ -90,6 +90,7 @@ Route::get('/gestion-administracion', 'GestionAdministracionController@index')->
 Route::get('/administrar-tabla-codigo', 'GestionAdministracionController@administrarTablaCodigo')->name('administrarTablaCodigo');
 Route::get('/administrar-tabla-clasificacion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaClasificacion');
 Route::get('/administrar-tabla-estado', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaEstado');
+Route::get('/administrar-tabla-gestion', 'GestionAdministracionController@administrarTablaClasificacion')->name('administrarTablaGestion');  
 Route::get('/detalle-administrar-camion', 'GestionAdministracionController@administrarDetalleCamion')->name('administrarDetalleCamion');
 Route::POST('/subir-datosGenerales', 'GestionAdministracionController@upDatosGenerales')->name('upDatosGenerales');
 Route::POST('/subir-datosLogistica', 'GestionAdministracionController@upDatosLogistica')->name('upDatosLogistica');
@@ -126,19 +127,19 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
     $mpdf->watermarkTextAlpha = 0.1;
     $mpdf->SetDisplayMode('fullpage');
     $html =view('reports.prosegur.resumen-retiros')->render();
-    $mpdf->WriteHTML($html); 
-    $mpdf->Output(); 
+    $mpdf->WriteHTML($html);
+    $mpdf->Output();
   });
-   
-  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
+
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne');
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
-  
+
   /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
   Route::get('contenedores-camiones/parametros1', 'ContenedorController@parametros1')->name('contenedor.parametros1');
 
   Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
-  
+
   Route::get('contenedores-camiones/proveedors','ContenedorController@paginadorProveedor')->name('paginateProveedor');
   /*PRUEBAAAAAAAAAAAAAAAAAAAAAAAA*/
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
@@ -176,7 +177,7 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   /*PAGINADOR*/
 
   Route::get('contenedores-camiones/paginador', 'ContenedorController@paginador')->name('contenedor.paginador');
-  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne'); 
+  Route::get('contenedores-camiones/find-one', 'ContenedorController@findOne')->name('contenedor.findOne');
   Route::get('contenedores-camiones/pagos', 'ContenedorController@pagos')->name('contenedor.pagos');
   Route::get('contenedores-camiones/parametros', 'ContenedorController@parametros')->name('contenedor.parametros');
   Route::post('contenedores-camiones/pagos/update', 'ContenedorController@update')->name('contenedor.pagos.update');
@@ -244,8 +245,8 @@ Route::get('/reporte2', function () {
 CREATE TABLE [dbo].[ADM_VENDEDOR_PARAMETROS_COMISION](
 	[id_vendedor] [int] NOT NULL,
 	[nombre_vendedor] [varchar](100) NULL
-	
- CONSTRAINT [PK_ADM_VENDEDOR_PARAMETROS_COMISION] PRIMARY KEY CLUSTERED 
+
+ CONSTRAINT [PK_ADM_VENDEDOR_PARAMETROS_COMISION] PRIMARY KEY CLUSTERED
 (
 	[id_vendedor] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -270,7 +271,7 @@ CREATE TABLE [dbo].[MODULO_COMISION_VENTA_HIST](
 	[monto] [numeric](18, 0) NULL,
 	[tipo_documento] [numeric](18, 0) NULL,
 	[n_deposito] [nvarchar](20) NULL,
- CONSTRAINT [PK_MODULO_COMISION_VENTA_HIST] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_MODULO_COMISION_VENTA_HIST] PRIMARY KEY CLUSTERED
 (
 	[id_venta] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]

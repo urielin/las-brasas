@@ -10,6 +10,7 @@
           <i class="material-icons dp48">subject</i><span class="card-title">GESTIÓN DE CAMIONES Y CARGA</span>
         </div>
       </div>
+
         <div class="col s12 l4" style="margin-top: 20px;">
           <div class="row">
               <div class="mb-1 col s12 l12">
@@ -27,7 +28,15 @@
         </div>
         <div class="col s12 l8" style="margin-top: 20px;">
           <div class="row">
-            <div class="col s12 l6">
+            <div class="col s12 l2">
+                <label for="clasificacion" >Gestión</label>
+                <select class="form-control browser-default" id="gestionad">
+                  @foreach ($gestiones as $gestion)
+                  <option value="{{$gestion->TP_GESTION}}" >{{$gestion->TP_GESTION}}</option>
+                  @endforeach
+                </select>
+            </div>
+            <div class="col s12 l5">
                 <label for="clasificacion" >Clasificación</label>
                 <select class="form-control browser-default" id="clasificacionad">
                   <option disabled selected value="0">Ingrese la clasificación</option>
@@ -36,7 +45,7 @@
                   @endforeach
                 </select>
             </div>
-            <div class="col s12 l6">
+            <div class="col s12 l5">
               <form >
                 <label for="estado">Estado </label>
                 <select class="form-control browser-default" id="estado">
@@ -50,6 +59,7 @@
       </div>
     </div>
   </div>
+
 
 
 {{-- -------------------------------------------- --}}
@@ -77,7 +87,7 @@
                       <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh;">
                         <div class="row">
                           <div class="col s12 dataTables_scrollBody">
-                            <table id="tableAdministrador" class="table responsive-table centered">
+                            <table id="tableAdministrador" class="table  centered">
                               <thead>
                                 <tr>
                                   <th>Id</th>
