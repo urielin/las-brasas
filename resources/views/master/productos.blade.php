@@ -518,5 +518,11 @@
         </div>
       </div>
     </div>
+    
 
+@endsection
+
+
+@section('after-scripts')
+  <script src="{{ asset('js/product.js') }}"></script>
 @endsection

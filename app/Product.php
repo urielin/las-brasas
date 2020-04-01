@@ -36,6 +36,7 @@ class Product extends Model
       return DB::table($this->table)->where('CODI_RCODIGO', 'like', '%'. $params['id'] . '%')->get();
     }
     public function updateSon($request){
+     
       DB::table($this->table)
           ->where('CODI_RCODIGO', $request['CODI_RCODIGO'])
           ->update([
@@ -57,10 +58,11 @@ class Product extends Model
     }
     public function create($request){
       
-      $valid = DB::table($this->table)->where('CODI_RCODIGO')->first();
+      $valid = DB::table($this->table)->where('CODI_RCODIGO', $request['CODI_RCODIGO'])->first();
       
-      die($valid);
-      DB::table($this->table)
+    
+      if(!isset($valid)) {
+        DB::table($this->table)
           ->insert([
               //'CODI_PADRE' => $request['CODI_PADRE'],
               'CODI_RCODIGO' => $request['CODI_RCODIGO'],
@@ -79,7 +81,10 @@ class Product extends Model
               'prod_mayor' => $request['prod_mayor'],
               'estado' => $request['estado'],
           ]);
-        
+        return response()->json(['status' => 200 , 'message' => 'Codigo creado']);
+      } else {
+        return response()->json(['status' => 500 , 'message' => 'Error el codigo ya existe']); 
+      }
     }
     public function clasifications() {
       return DB::table($this->table1)->get();

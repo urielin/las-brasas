@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Arr;
+ 
 class ProductoTerminado extends Model
 {
 
@@ -30,20 +31,25 @@ class ProductoTerminado extends Model
                       ->Join('dbo.ADM_CODIGOS as cod', 'cod.CODI_RCODIGO', '=', 'padre.CODI_RCODIGO')
                       ->where('padre.CODI_PADRE', $params['id'])
                       ->where('padre.ESTADO', 'like', '%'. $params['state'] . '%')
+                      ->orderBy('padre.FECHA_REG' , 'desc')
                       ->get();
 
      }
 
      public function updateProduct($params) {
-
+       
        $father = DB::table($this->table2)
                       ->where('CODI_RCODIGO', $params['code'])
                       ->where('TPCO_CODIGO', '2')->get();
-
+         
        if (isset($father[0])) {
-         $flat = DB::table($this->table)
+        $date = strtotime($params['FECHA_REG']); 
+        $fecha =  date('d/M/Y h:i:s', $date); 
+        $flat = DB::table($this->table)
                       ->where('CODI_RCODIGO', $params['code'])->get();
                 if (isset($flat[0])) {
+                  
+                  
                   DB::table($this->table)
                       ->where('CODI_RCODIGO', $params['code'])
                       ->update([
@@ -51,8 +57,8 @@ class ProductoTerminado extends Model
                         'factor_multi' => $params['factor_multi'],
                         'factor_div' => $params['factor_div'],
                         'tipo' => $params['tipo'],
-                        'usuario'=> session('user')->usuario,
-                        'FECHA_REG' => $params['fecha'],
+                        'USUARIO'=> session('user')->usuario,
+                        'FECHA_REG' => $fecha,
                         'estado' => $params['estado'],
                       ]);
 
@@ -66,6 +72,8 @@ class ProductoTerminado extends Model
                         'factor_multi' => $params['factor_multi'],
                         'factor_div' => $params['factor_div'],
                         'tipo' => $params['tipo'],
+                        'USUARIO'=> session('user')->usuario,
+                        'FECHA_REG' => $fecha,
                         'estado' => $params['estado'],
                     ]);
                     $son = DB::table($this->table2)->select('CODI_RNOMBRE')->where('CODI_RCODIGO', $params['code'])->first(); 
@@ -87,7 +95,27 @@ class ProductoTerminado extends Model
         return "CODI_RCODIGO";
      }
      public function getLastItem($params) {
-      $lastId = ProductoTerminado::select('CODI_RCODIGO')->orderBy('FECHA_REG','desc')->get();
-      return $lastId;
+        
+        $data = DB::table($this->table)->select('CODI_RCODIGO')->orderBy('CODI_RCODIGO','desc')->get();
+        $codigos = [];
+        $collection = collect();
+        $collection2 = collect();
+
+        $i = 0;
+        foreach ($data as $key => $value) { 
+          if (is_numeric($value->CODI_RCODIGO)){  
+            //array_push($codigos, ['codigo' => number_format($value->CODI_RCODIGO)]);
+            $collection->push(array('codigo' => $value->CODI_RCODIGO)); 
+          }
+        }  
+     
+        $variables = $collection->sortByDesc('codigo');
+       
+        foreach ($variables as $value) {
+          $collection2->push(array('codigo' => $value['codigo']));
+        }
+        
+        $id = intval($collection2[0]['codigo']) +1;
+        return response()->json(['status' => 200 , 'message' => 'Codigo creado', 'id' => $id]);  
      }
 }
