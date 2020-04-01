@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Libreria\Mail\PHPMailer;
 use App\Libreria\Mail\Exception;
+use App\Comision;
 
 class ComicionVentaController extends Controller
 {
@@ -604,6 +605,23 @@ class ComicionVentaController extends Controller
 
       ]);
     }
+  }
+  public function comisiones1(Request $request){
+    
+    $data= Comision::select("*")->paginate(10);
+      return response()->json([
+        'pagination' => [
+          'total'         => $data->total(),
+          'current_page'  => $data->currentPage(),
+          'per_page'      => $data->perPage(),
+          'last_page'     => $data->lastPage(),
+          'from'          => $data->firstItem(),
+          'to'            => $data->lastItem(),
+        ],
+        'pagos'              =>$data
+
+      ]);
+
   }
 
   public function updateVendedor(Request $request){

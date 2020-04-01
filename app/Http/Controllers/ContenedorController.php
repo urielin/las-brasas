@@ -122,8 +122,7 @@ class ContenedorController extends Controller
                               ->where('dbsys.camiones.estado_pagado', 0)
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
                               ->paginate(10);
-
-
+                              
     return response()->json([
       'pagination' => [
         'total'         => $data->total(),

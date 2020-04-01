@@ -466,15 +466,15 @@ $(document).ready(function(){
   	}
   	return x1 + x2;
     }
-    $('#tabla3').on('click',function(){
+   /* $('#tabla3').on('click',function(){
 
         $.get('comisiones-vendedor',function(res){
 
-            //$('#contenido-vendedor').empty();
             console.log(res);
             $.each(res.comisiones,function(index,value){
 
                 btn_editar='<a type="button" value="" class="edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
+                
                 html='<tr data-id="'+value.id_vendedor+'"'; 
                 html+='data-nombre="'+value.nombre_vendedor+'"'; 
                 html+='data-nivel1="'+value.nivel1+'"'; 
@@ -485,13 +485,7 @@ $(document).ready(function(){
                 html+='data-comision3="'+value.comision3+'">'; 
                    
                 html+='<td>'+btn_editar+'</td>';
-                /*html+='<td>'+value.nombre_vendedor+'</td>';
-                html+='<td>'+value.nivel1+'</td>';
-                html+='<td>'+value.comision1+'</td>';
-                html+='<td>'+value.nivel2+'</td>';
-                html+='<td>'+value.comision2+'</td>';
-                html+='<td>'+value.nivel3+'</td>';
-                //html+='<td>'+value.comision3+'</td><tr>';*/
+                
                 
                 if(value.nombre_vendedor == ''){
                     html+='<td>-</td>'; 
@@ -544,7 +538,7 @@ $(document).ready(function(){
 
         
 
-    })
+    })*/
     $('#comisiones-vendedor').on('click ','a.edit',function() {
         
         //console.log('gaaa');
@@ -611,7 +605,6 @@ $(document).ready(function(){
         $(this).parents("tr").find(".btn-update").remove();
         $(this).parents("tr").find(".btn-cancel").remove();
     })
-
     $("#comisiones-vendedor").on("click", ".btn-update",function(){
 
         Swal.fire({
@@ -627,19 +620,19 @@ $(document).ready(function(){
 
             if(result.value){
                 let id = $(this).parents('tr').attr('data-id');
-                let nivel1 = $(this).parents('tr').find("input[name='nivel1']").val();
-                let comision1 = $(this).parents('tr').find("input[name='comision1']").val();
-                let nivel2 = $(this).parents('tr').find("input[name='nivel2']").val();
-                let comision2 = $(this).parents('tr').find("input[name='comision2']").val();
-                let nivel3 = $(this).parents('tr').find("input[name='nivel3']").val();
-                let comision3 = $(this).parents('tr').find("input[name='comision3']").val();
+                let nivel1 = $(this).parents('tr').find("input[name='nivel1']").val()=='' ? '0':$(this).parents('tr').find("input[name='nivel1']").val();
+                let comision1 = $(this).parents('tr').find("input[name='comision1']").val()==''?'0':$(this).parents('tr').find("input[name='comision1']").val();
+                let nivel2 = $(this).parents('tr').find("input[name='nivel2']").val()==''?'0':$(this).parents('tr').find("input[name='nivel2']").val();
+                let comision2 = $(this).parents('tr').find("input[name='comision2']").val()==''?'0':$(this).parents('tr').find("input[name='comision2']").val();
+                let nivel3 = $(this).parents('tr').find("input[name='nivel3']").val()==''?'0':$(this).parents('tr').find("input[name='nivel3']").val();
+                let comision3 = $(this).parents('tr').find("input[name='comision3']").val()==''?'0':$(this).parents('tr').find("input[name='comision3']").val();
 
-                $(this).parents("tr").find("td:eq(2)").text(nivel1);
-                $(this).parents("tr").find("td:eq(3)").text(comision1);
-                $(this).parents("tr").find("td:eq(4)").text(nivel2);
-                $(this).parents("tr").find("td:eq(5)").text(comision2);
-                $(this).parents("tr").find("td:eq(6)").text(nivel3);
-                $(this).parents("tr").find("td:eq(7)").text(comision3);
+                $(this).parents("tr").find("td:eq(2)").text(addCommas(nivel1));
+                $(this).parents("tr").find("td:eq(3)").text(comision1+'%');
+                $(this).parents("tr").find("td:eq(4)").text(addCommas(nivel2));
+                $(this).parents("tr").find("td:eq(5)").text(comision2+'%');
+                $(this).parents("tr").find("td:eq(6)").text(addCommas(nivel3));
+                $(this).parents("tr").find("td:eq(7)").text(comision3+'%');
 
                 let data = {id:id,
                     nivel1:nivel1,

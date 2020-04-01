@@ -155,6 +155,9 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
   Route::post('updatevendedor','ComicionVentaController@updateVendedor')->name('updatevendedor');
   Route::get('comisiones-vendedor','ComicionVentaController@comisiones')->name('comisionesVendedor');
+  /*Pruebaaaaa*/
+  Route::get('comisiones-vendedor1','ComicionVentaController@comisiones1')->name('comisionesVendedor1');
+  /*Pruebaaaaa*/
   Route::post('cartola/importar','CatalogoController@import')->name('catalogo.import');
   Route::post('cartola/migracion','CatalogoController@migracion')->name('catalogo.migracion');
   //Route::resource('email','ComicionVentaController@sendEmail')->name('email');
