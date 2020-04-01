@@ -35,7 +35,17 @@
           
           </select>
         </div>
-        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px">
+        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px;     margin-left: 17px;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
         <div></div>
         <div></div>
         <div></div>
@@ -125,7 +135,7 @@
           <table class="table table-responsive responsive-table centered" id="comisiones-vendedor" >
             <thead>
               <tr>
-                <th>Acción</th>
+                <th>Editar</th>
                 <th>Vendedor</th>
                 <th>Nivel 1</th>
                 <th>Comisión</th>

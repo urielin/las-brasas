@@ -564,7 +564,7 @@ class ComicionVentaController extends Controller
         $mail->Host       = 'smtp.gmail.com';             
         $mail->SMTPAuth   = true;                               
         $mail->Username   = 'jhonwilbermendozachino@gmail.com';
-        $mail->Password   = '71780874Mc%';
+        $mail->Password   = 'Contraseña';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;        
         $mail->Port       = 587;          
         $mail->setFrom('jhonwilbermendozachino@gmail.com', 'Frigorifico Las Brasas');
