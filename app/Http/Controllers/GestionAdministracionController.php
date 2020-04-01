@@ -24,6 +24,8 @@ class GestionAdministracionController extends Controller
           $estados        = DB::select("SELECT    CAM_ESTADO, CAM_DESCEST
                             FROM         dbsys.camiones_tp_estados");
 
+          $gestiones      = DB::select("SELECT TP_GESTION FROM dbo.ADM_TP_GESTION order by TP_GESTION desc ");
+
           $unidades       = DB::select("SELECT     TUME_CODIGO, TUME_DESCR
                             FROM         ADM_TP_UNIDMEDIDA
                             WHERE     (mercancia = 1)
@@ -103,7 +105,7 @@ class GestionAdministracionController extends Controller
                            WHERE     (SUCU_ESTADO = 1)
                            ORDER BY SUCU_CODIGO");
 
-          return view('gestion.gestionAdministracion')->with(compact('clasificaciones'))->with(compact('estados'))->with(compact('unidades'))->with(compact('tipoMonedas'))->with(compact('formaPagos'))
+          return view('gestion.gestionAdministracion')->with(compact('clasificaciones'))->with(compact('estados'))->with(compact('gestiones'))->with(compact('unidades'))->with(compact('tipoMonedas'))->with(compact('formaPagos'))
           ->with(compact('formaPagosDias'))->with(compact('formaPagosFechas'))->with(compact('lugarArribos'))->with(compact('navieras'))
           ->with(compact('agencias'))->with(compact('tramites'))->with(compact('mercanciaOrigenes'))->with(compact('zonasFrancas'))->with(compact('zonasExportaciones'))
           ->with(compact('zonaFrancas'))->with(compact('regiones'))->with(compact('transportes'))->with(compact('transExts'))
@@ -115,7 +117,7 @@ class GestionAdministracionController extends Controller
         if ($request->ajax()) {
             $camiones = DB::SELECT("  SELECT * FROM dbsys.camiones c
                      inner join dbsys.camiones_clasificacion cc on c.clasif_mercancia = cc.cod_int
-                WHERE  cc.cod_int ='$request->clasificacion' and  estado = '$request->estado' order by id_camion desc");
+                WHERE  cc.cod_int ='$request->clasificacion' and  estado = '$request->estado' and YEAR(fecha_llegada) = '$request->gestion' order by id_camion desc");
 
 
             return response()->json([

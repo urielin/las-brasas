@@ -1,104 +1,7 @@
 $(document).ready(function(){
     var id;
     //tabla();
-    $('#proveedor').on('change',function(){
-        
-        var valor,html;
-        
-        valor=$(this).val();
-
-        if($.trim(valor) !== ''){
-
-            console.log('valor');
-            $('#proveedor-datos').empty();
-            /*$.ajax({
-                type: 'GET',
-                data: {valor:valor},
-                url: '/obtener-datos'
-              }).then((data) => {
-                
-              })*/
-              $.get('/obtener-datos',{valor:valor},function(res){
-                
-                console.log(res);
-                $.each(res.datos,function(index,value){
-
-                    btn_editar='<a type="button" value="" class="get-pdf-edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-                    btn_detalles='<a type="button" value="" class="detalles btn blue btn-50 darken-1" style="cursor: pointer"><i class="material-icons dp48">remove_red_eye</i></a>';
-
-                    html='<tr data-id="'+value.id_proveedor +'"'; 
-                    html+='data-codigo="'+value.emp_codigo+'"'; 
-                    html+='data-rut="'+value.emp_rut+'"'; 
-                    html+='data-empNombre="'+value.emp_nombre+'"'; 
-                    html+='data-direccionPais="'+value.direccion_pais+'"';
-                    html+='data-direcciondire="'+value.direccion_direccion+'"';
-                    html+='data-telefono="'+value.com_telefono+'"';
-                    html+='data-movil="'+value.com_movil+'"'; 
-                    html+='data-fax="'+value.com_fax+'"';
-                    html+='data-email="'+value.com_email+'">';    
-                    html+='<td>'+btn_editar+'</td>';
-                    if(value.emp_codigo == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.emp_codigo+'</td>';
-                    }
-                    if(value.emp_rut == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.emp_rut+'</td>';
-                    }
-                    if(value.emp_nombre == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.emp_nombre+'</td>';
-                    }
-                    if(value.direccion_pais == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.direccion_pais+'</td>';
-                    }
-                    if(value.direccion_direccion == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.direccion_direccion+'</td>';
-                    }
-                    /*if(value.com_telefono == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.com_telefono+'</td>';
-                    }
-                    if(value.com_movil == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.com_movil+'</td>';
-                    }
-                    if(value.com_fax == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.com_fax+'</td>';
-                    }
-                    if(value.com_email == ''){
-                        html+='<td>-</td>'; 
-                    }
-                    else{
-                        html+='<td>'+value.com_email+'</td>';
-                    }*/
-                    html+='<td>'+btn_detalles+'</td></tr>';
-        
-                    
-                    $('#tabla-proveedor').append(html);  
-                })
-              });
-        }
-    });
+    
     
     $('#tabla-proveedor').on('click ','a.get-pdf-edit',function() {
         //var id_retiros=$(this).attr('id');
@@ -126,9 +29,9 @@ $(document).ready(function(){
         $('#fax_edit').val(fax);
         $('#email_edit').val(email);
         $('#id_edit').val(id);
-      });
+    });
 
-    $('#editar-proveedor').on('submit', function(){
+    /*$('#editar-proveedor').on('submit', function(){
 
         event.preventDefault();
         Swal.fire({
@@ -216,13 +119,14 @@ $(document).ready(function(){
           }) 
        
 
-    })
+    })*/
 
-    $('#btn-nuevo').on('click', function(){
+    $('#btn-nuevo1').on('click', function(){
+        console.log('asdasd');
         $('#formNuevo').modal('open');
        
     });
-
+    
     $('#tabla-proveedor').on('click ','a.detalles',function() {
         $('#tableMostrarAdicional-cuerpo').empty();
         $('#tableMostrarAdicional2-cuerpo').empty();
@@ -265,50 +169,7 @@ $(document).ready(function(){
 
     });
 
-    $('#nuevo-proveedor').on('submit', function(){
-        event.preventDefault();
-
-        console.log($(this).serialize());
-        
-           request=$.ajax({
-             url: '/nuevo',
-             method:"POST",
-             data:$(this).serialize(),
-             dataType:"json",
-             success:function(res)
-             {
-
-                /*if (res.camionAgregar == '0') {*/
-                    // alert('Se creo un nuevo proveedor');
-                /*} else {
-                    alerta('error','El contenedor ya existe, ingrese otro código');
-                }*/
-
-            }
-           });
-        
-
-          Swal.fire({
-            icon: 'success',
-            title: '¡Proveedor creado exitosamente!',
-            //text: '¡Complete todos los campos!'
-            //footer: '<a href>Why do I have this issue?</a>'
-            showConfirmButton: false,
-            timer: 800
-          })
-           //tabla();
-           $('#codigo_nuevo').val('');
-           $('#rut_nuevo').val('');
-           $('#empresa_nuevo').val('');
-           $('#pais_nuevo').val('');
-           $('#direccion_nuevo').val('');
-           $('#telefono_nuevo').val('');
-           $('#movil_nuevo').val('');
-           $('#fax_nuevo').val('');
-           $('#email_nuevo').val('');
-
-    })
-
+    
     function tabla(){
         $.get('/proveedor',function(res){
 
@@ -370,6 +231,6 @@ $(document).ready(function(){
     
         }); 
     }
-
+    
  
 });
