@@ -10,6 +10,7 @@
           <i class="material-icons dp48">subject</i><span class="card-title">GESTIÓN DE CAMIONES Y CARGA</span>
         </div>
       </div>
+
         <div class="col s12 l4" style="margin-top: 20px;">
           <div class="row">
               <div class="mb-1 col s12 l12">
@@ -58,6 +59,7 @@
       </div>
     </div>
   </div>
+
 
 
 {{-- -------------------------------------------- --}}
