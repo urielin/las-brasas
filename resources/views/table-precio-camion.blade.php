@@ -13,8 +13,8 @@
 
 
         @endphp
-        <table class="table-precio-camion" style="background: white;margin-top: -6px;width: auto;max-height: 60vh;">
-          <thead class="thead-light">
+        <table class="table table-precio-camion" style="background: white;margin-top: -6px;width: auto; ">
+          <thead >
              <tr>
               <th scope="col"colspan="2"></th>
 

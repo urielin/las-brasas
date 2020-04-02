@@ -93,15 +93,15 @@
                     <div class="row">
                         <div class="col s12 m12 l12">
                               <div id="responsive-table" class=" ">
-                                <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+                                <div class="card-content" style=" margin-top: -6px; overflow: auto;  ">
                                   <h4 class="card-title"></h4>
                                   <p class="mb-2"></p>
                                   <div class="row">
                                     <div class="col s12">
                                     </div>
                                     <div class="col s12 dataTables_scrollBody">
-                                       <table class="responsive-table striped">
-                                            <thead class="thead-light" id="camiontabla-head">
+                                       <table class="table striped">
+                                            <thead  id="camiontabla-head">
 
                                             </thead>
                                             <tbody id="camiontabla">
@@ -569,11 +569,10 @@
                                   <div class="row " align="right">
                                         <div class="col s12 l12">
                                           <input type="hidden" name="action" id="action-producto">
-                                          <input type="submit" name="action_button" id="action_button"  class="btn btn-warning" value="Actualizar">
+                                          <input type="submit" name="action_button" id="action_button"  class="mb-1 btn waves-effect waves-light cyan" value="Actualizar">
                                         </div>
                                   </div>
             </div>
-            <br />
           </form>
         </div>
       </div>

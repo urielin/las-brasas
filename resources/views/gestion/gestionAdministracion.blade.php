@@ -907,7 +907,7 @@
                           <div class="col s12">
                           </div>
                           <div class="col s12 dataTables_scrollBody">
-                              <table id="itemsContenedorDetalle" class="centered">
+                              <table id="itemsContenedorDetalle" class="table centered">
                                 <thead>
                                 <tr>
                                   <th>Nº item</th>
@@ -943,10 +943,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <div class="row">
-            <div class=" col s6 pb-2">
+            <div class=" col s8 pb-2">
               <h5 class="modal-title">Agregar nuevo contenedor</h5>
             </div>
-            <div class="col s6" align="right">
+            <div class="col s4" align="right">
               <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">&times;</button>
             </div>
           </div>
@@ -1002,11 +1002,10 @@
                                   </div>
                                   <div class="row " align="right">
                                         <div class="col s12 l12">
-                                          <input type="submit" name="action_button" id="action_enviar"  class="btn btn-warning" value="Agregar">
+                                          <input type="submit" name="action_button" id="action_enviar"  class="mb-6 btn waves-effect waves-light green darken-1" style="color:white;" value="Agregar">
                                         </div>
                                   </div>
              </div>
-            <br />
           </form>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="main-content">
-  <div class=" container pb-3 pt-3">
+  <div class=" container ">
 
     <div class="container">
       @if ($message = Session::get('success'))
@@ -19,8 +19,7 @@
           @foreach ($errors->all() as  $error)
             <div class="card-content white-text">
                 <li>{{ $error }}</li>
-            </div>
-
+            </div> 
           @endforeach
         </div>
       @endif
@@ -30,11 +29,11 @@
         <div class="col s12">
           <div class="card card card-default scrollspy">
               <div class="card-content">
-                <div style="display: flex">
+                <!--<div style="display: flex;align-items: center">
                   <i class="material-icons dp48">subject</i><span class="card-title">Actualizar tipo de cambio  </span>
-                </div>
+                </div>-->
 
-                  <div class="row pb-4">
+                  <div class="row ">
                     <div class="col s12">
                       <ul class="tabs">
                         <li class="tab col m6"><a class="active" href="#test1">Seleccione el periodo a verificar</a></li>
@@ -109,9 +108,9 @@
                     </div>
                   </div>
 
-                   <div class="" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
-                       <table class="table striped centered">
-                          <thead class="thead-light" id="camiontabla-head">
+                   <div class="" style=" margin-top: -6px; overflow: auto;   ">
+                       <table class="table   centered">
+                          <thead  id="camiontabla-head">
                             <tr>
                               <th >Fecha</th>
                               <th >Cambio</th>

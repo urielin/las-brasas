@@ -95,7 +95,7 @@
               <div class="row">
                 <div class="col s12 m12 l12">
                   <div id="responsive-table" class=" ">
-                    <div class="card-content" style=" margin-top: -6px; overflow: auto; height: 60vh; ">
+                    <div class="card-content" style=" margin-top: -6px; overflow: auto; ">
                       <h4 class="card-title"></h4>
                       <p class="mb-2"></p>
                       <div class="row">

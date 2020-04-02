@@ -5,7 +5,9 @@
   <div class="card-content">
       <div style="display: flex">
         <i class="material-icons dp48">subject</i>
-        <span>Seleccionar resumen por mes de los asientos contables</span>
+        <span style="margin-bottom: 10px;">Seleccionar resumen por mes de los asientos contables</span>
+
+       
       </div>
       <div class="row">
         <div class="form-group col l3 m6 s12">
@@ -35,34 +37,13 @@
           
           </select>
         </div>
-        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: space-around; margin-top:10px;     margin-left: 17px;">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: flex-end; margin-top:10px;     margin-left: 20px;">
+       
           <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
           <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
-          <button type="button" class="btn cyan" name="exportSells" id="exportar-resumen"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
-          <button type="button" class="btn cyan" name="exportSells" id="exportar-detalle"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
-          <button type="button" class="btn cyan" name="reportSells" id="exportar-datos"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>
+          <button type="button" class="btn cyan" name="exportSells" id="exportar-resumen" style="width: 120px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
+          <button type="button" class="btn cyan" name="exportSells" id="exportar-detalle" style="width: 110px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
+          <button type="button" class="btn cyan" name="reportSells" id="exportar-datos" style="width: 130px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>
         </div>
       </div>
   </div>
