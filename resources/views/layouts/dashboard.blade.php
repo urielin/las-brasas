@@ -32,8 +32,45 @@
           font-weight: lighter;
       }
 
+      [type=checkbox]:checked+span:not(.lever):before {
+        top: 0px;
+        left: 2px;
+        width: 12px;
+        height: 21px;
+        -webkit-transform: rotate(40deg);
+        -ms-transform: rotate(40deg);
+        transform: rotate(40deg);
+        -webkit-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+        border-top: 2px solid transparent;
+        border-right: 2px solid #ff4081;
+        border-bottom: 2px solid #ff4081;
+        border-left: 2px solid transparent;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      [type=checkbox]+span:not(.lever):before,
+[type=checkbox]:not(.filled-in)+span:not(.lever):after {
+  position: absolute;
+  z-index: 0;
+  top: 6;
+  left: 7px;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  content: '';
+  -webkit-transition: .2s;
+  transition: .2s;
+  border: 2px solid #5a5a5a;
+  border-radius: 1px;
+}
+
+
+
     </style>
-     
+
    </head>
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
@@ -265,12 +302,12 @@
     <!-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> -->
 
     <script src="{{ asset('js/gestion-camion.js') }}"></script>
-    
+
     <!--<script src="{{ asset('js/tabs.js') }}"></script>-->
     @yield('js')
     @yield('modal')
     @yield('after-scripts')
-    
+
 
 
   </body>
