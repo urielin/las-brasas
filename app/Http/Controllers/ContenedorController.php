@@ -33,8 +33,8 @@ class ContenedorController extends Controller
 
 
       $data= Proveedor::select("*")->orderBy('ADM_PROVEEDOR.id_proveedor', 'desc')->paginate(10);
-    
-      return response()->json([ 
+
+      return response()->json([
         'pagination' => [
           'total'         => $data->total(),
           'current_page'  => $data->currentPage(),
@@ -47,7 +47,7 @@ class ContenedorController extends Controller
       ]);
 
   }
-  /*Pruebaaaaaaaaaaa */
+
   public function list() {
     $camiones  = DbsysCamiones::all();
     return response()->json([ 'camiones' => $camiones  ]);
@@ -122,7 +122,9 @@ class ContenedorController extends Controller
                               ->where('dbsys.camiones.estado_pagado', 0)
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
                               ->paginate(10);
-                              
+    $total  = DbsysCamiones::select(DB::raw('SUM(dbsys.camiones.valor_total) as valor_total'))
+                                    ->where('dbsys.camiones.estado_pagado', 0)
+    ->get()[0]->valor_total;
     return response()->json([
       'pagination' => [
         'total'         => $data->total(),
@@ -133,25 +135,34 @@ class ContenedorController extends Controller
         'to'            => $data->lastItem(),
       ],
       'pagos' => $data,
+      'total' => $total,
     ]);
   }
   public function findOne(Request $request) {
     $pago = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
-                          ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda')
-                          ->select(
-                          'ADM_PROVEEDOR.emp_nombre as proveedor',
-                          'dbsys.camiones.codigo as codigo',
-                          'dbsys.camiones.valor_total',
-                          'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda',
+                        ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda')
+                        ->join('dbsys.parametros', 'dbsys.parametros.cod_int' , '=', 'camiones.forma_pago')
+                        ->join('dbsys.camiones_pagos', 'dbsys.camiones_pagos.id_camion' , '=', 'camiones.id_camion')
+
+                        ->select(
+                          'dbsys.camiones.id_camion',
+                          'dbsys.camiones.codigo',
                           'dbsys.camiones.descripcion',
-                            DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "),
-                            DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "),
-                            DB::raw("FORMAT(dbsys.camiones.forward_compromiso, 'yyyy-MM-dd') as forward_compromiso "),
-                            DB::raw("FORMAT(dbsys.camiones.switf_fecha, 'yyyy-MM-dd') as switf_fecha "),
-                          'dbsys.camiones.forward',
-                          'dbsys.camiones.swift',
-                          'dbsys.camiones.pagado',
-                          'dbsys.camiones.pagado_fecha')
+                          'ADM_PROVEEDOR.emp_nombre as proveedor',
+
+                          DB::raw("FORMAT(dbsys.camiones.fecha_resolucion, 'yyyy-MM-dd') as fecha_resolucion "),
+                          DB::raw("FORMAT(dbsys.camiones.fecha_embarque, 'yyyy-MM-dd') as fecha_embarque "),
+                          DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "),
+                          DB::raw("FORMAT(dbsys.camiones.fecha_pago, 'yyyy-MM-dd') as fecha_pago "),
+                          DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "),
+                          'dbsys.camiones.cierre_items',
+                          'dbsys.parametros.desc01 as forma_pago',
+                          'dbsys.camiones.despues_dias',
+                          'dbsys.camiones.despues_fecha',
+                          'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda',
+                          'dbsys.camiones.valor_total',
+                          'dbsys.camiones_pagos.monto_pago as pagado',
+                          'dbsys.camiones_pagos.monto_pago as total_pagos' )
                           ->where('dbsys.camiones.codigo', $request->id)->first();
     return response()->json(['data' => $pago]);
   }
@@ -255,7 +266,7 @@ class ContenedorController extends Controller
     }
   public function update(Request $request) {
 
-    $result = DB::table($this->table)
+    $result = DB::table('dbsys.camiones')
         ->where('codigo', $request->code)
         ->update([
           'forward' => $request->forward ,
@@ -273,7 +284,7 @@ class ContenedorController extends Controller
   }
   public function check(Request $request) {
 
-    $result = DB::table($this->table)
+    $result = DB::table('dbsys.camiones')
         ->where('codigo', $request->codigo)
         ->update([
           'pagado' => 1 ,
@@ -288,9 +299,14 @@ class ContenedorController extends Controller
   public function histories(Request $request) {
     $data  = DbsysCamiones::join('ADM_PROVEEDOR','ADM_PROVEEDOR.id_proveedor', '=', 'dbsys.camiones.proveedor')
       ->join('ADM_TP_MONEDA', 'ADM_TP_MONEDA.TMDA_CODIGO', '=', 'camiones.tipo_moneda')
+      ->join('dbsys.parametros', 'dbsys.parametros.cod_int' , '=', 'camiones.forma_pago')
+      ->join('dbsys.camiones_pagos', 'dbsys.camiones_pagos.id_camion' , '=', 'camiones.id_camion')
+
       ->select(
         'dbsys.camiones.id_camion',
         'dbsys.camiones.codigo',
+        'ADM_PROVEEDOR.emp_nombre as proveedor',
+
         'dbsys.camiones.descripcion',
         DB::raw("FORMAT(dbsys.camiones.fecha_resolucion, 'yyyy-MM-dd') as fecha_resolucion "),
         DB::raw("FORMAT(dbsys.camiones.fecha_embarque, 'yyyy-MM-dd') as fecha_embarque "),
@@ -298,13 +314,16 @@ class ContenedorController extends Controller
         DB::raw("FORMAT(dbsys.camiones.fecha_pago, 'yyyy-MM-dd') as fecha_pago "),
         DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "),
         'dbsys.camiones.cierre_items',
-        'dbsys.camiones.forma_pago',
+        'dbsys.parametros.desc01 as forma_pago',
         'dbsys.camiones.despues_dias',
         'dbsys.camiones.despues_fecha',
         'dbo.ADM_TP_MONEDA.TMDA_DESCRIPCION as tipo_moneda',
         'dbsys.camiones.valor_total',
-        'dbsys.camiones.pagado' )
+        'dbsys.camiones_pagos.monto_pago as pagado',
+        'dbsys.camiones_pagos.monto_pago as total_pagos' )
         ->where('dbsys.camiones.estado_pagado', 2 )
+        ->where('dbsys.parametros.tabla', 'CAMIONES_FORMA_PAGO' )
+
       ->paginate(10);
 
 

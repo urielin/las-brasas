@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+  
     $('#pagoTable').on('click', 'tbody tr td button.btn-check', function (event) {
         let code = $(this).parents("tr").find("td:eq(1)").text();
         let self = this;
@@ -38,17 +40,17 @@ $(document).ready(function(){
     });
     $('#pagoTable').on('click', 'tbody tr td button.btn-edit', function (event) {
    
-        let forward = $(this).parents("tr").attr('data-forward') == undefined ? ' ': $(this).parents("tr").attr('data-forward');
-        let forward_fecha = $(this).parents("tr").attr('data-forward_fecha') == undefined ? ' ': $(this).parents("tr").attr('data-forward_fecha'); 
-        let forward_compromiso = $(this).parents("tr").attr('data-forward_compromiso') == undefined ? ' ': $(this).parents("tr").attr('data-forward_compromiso');
-        let swift = $(this).parents("tr").attr('data-swift') == undefined ? ' ': $(this).parents("tr").attr('data-swift');
-        let switf_fecha = $(this).parents("tr").attr('data-switf_fecha') == undefined ? ' ': $(this).parents("tr").attr('data-switf_fecha');
+        let forward = $(this).parents("tr").attr('data-forward') == 'null' ? '-': $(this).parents("tr").attr('data-forward');
+        let forward_fecha = $(this).parents("tr").attr('data-forward_fecha') === 'null' ? '': $(this).parents("tr").attr('data-forward_fecha'); 
+        let forward_compromiso = $(this).parents("tr").attr('data-forward_compromiso') === 'null' ? '': $(this).parents("tr").attr('data-forward_compromiso');
+        let swift = $(this).parents("tr").attr('data-swift') == 'null' ? '-': $(this).parents("tr").attr('data-swift'); 
+        let switf_fecha = $(this).parents("tr").attr('data-switf_fecha') === 'null' ?  '': $(this).parents("tr").attr('data-switf_fecha');
          
-        $(this).parents("tr").find("td:eq(5)").html('<input style="width:110px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward" value="'+forward+'">');
-        $(this).parents("tr").find("td:eq(6)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward_fecha" value="'+forward_fecha+'">');
-        $(this).parents("tr").find("td:eq(7)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward_compromiso" value="'+forward_compromiso+'">');
-        $(this).parents("tr").find("td:eq(8)").html('<input style="width:70px; height: 30px !important;font-size: 11px;" class="form-control browser-default" name="swift" value="'+swift+'">');
-        $(this).parents("tr").find("td:eq(9)").html('<input type="date" style="width:138px;height: 30px !important;font-size: 11px;" class="form-control browser-default" name="switf_fecha" value="'+switf_fecha+'">');
+        $(this).parents("tr").find("td:eq(5)").html('<input   style="height: 30px !important;font-size: 11px;" class="form-control browser-default" name="forward" value="'+forward+'">');
+        $(this).parents("tr").find("td:eq(6)").html('<input onclick="dateInputMask(event)"  maxlength="10"  style="height: 30px !important;font-size: 11px;" class="form-control browser-default js-date" name="forward_fecha" placeholder="yyyy-mm-dd" value="'+forward_fecha+'">');
+        $(this).parents("tr").find("td:eq(7)").html('<input onclick="dateInputMask(event)" maxlength="10"  style="height: 30px !important;font-size: 11px;" class="form-control browser-default js-date" name="forward_compromiso" placeholder="yyyy-mm-dd" value="'+forward_compromiso+'">');
+        $(this).parents("tr").find("td:eq(8)").html('<input style="height: 30px !important;font-size: 11px;" class="form-control browser-default" name="swift" value="'+swift+'">');
+        $(this).parents("tr").find("td:eq(9)").html('<input onclick="dateInputMask(event)" maxlength="10"  style="height: 30px !important;font-size: 11px;" class="form-control browser-default js-date" name="switf_fecha" placeholder="yyyy-mm-dd" value="'+switf_fecha+'">');
         
         $(this).parents("tr").find("td:eq(11)").prepend(`<span style='display: flex;'>
                                                           <button title='Guardar' style='padding: 5px 10px;' class='btn btn-50 cyan btn-xs btn-update'> 
@@ -62,13 +64,12 @@ $(document).ready(function(){
         $(this).hide();
       });
 
-      $("#pagoTable").on("click", ".btn-cancel", function(){
-          let forward = $(this).parents("tr").attr('data-forward');
-          let forward_fecha = $(this).parents("tr").attr('data-forward_fecha');
-          let forward_compromiso = $(this).parents("tr").attr('data-forward_compromiso');
-          let swift = $(this).parents("tr").attr('data-swift');
-          let switf_fecha = $(this).parents("tr").attr('data-switf_fecha');
-         
+      $("#pagoTable").on("click", ".btn-cancel", function(){  
+          let forward = $(this).parents("tr").attr('data-forward') == 'null' ? '-': $(this).parents("tr").attr('data-forward');
+          let forward_fecha = $(this).parents("tr").attr('data-forward_fecha') === 'null' ? '': $(this).parents("tr").attr('data-forward_fecha'); 
+          let forward_compromiso = $(this).parents("tr").attr('data-forward_compromiso') === 'null' ? '': $(this).parents("tr").attr('data-forward_compromiso');
+          let swift = $(this).parents("tr").attr('data-swift') == 'null' ? '-': $(this).parents("tr").attr('data-swift'); 
+          let switf_fecha = $(this).parents("tr").attr('data-switf_fecha') === 'null' ?  '': $(this).parents("tr").attr('data-switf_fecha');
      
           $(this).parents("tr").find("td:eq(5)").text(forward); 
           $(this).parents("tr").find("td:eq(6)").text(forward_fecha);
@@ -137,10 +138,39 @@ function updatePagos(data) {
 
       }
     }).then((data) => {
-      alert('CAMION ACTUALIZADO')
+      
     })
   }
 function checkPagos(data) {
     let self = data.self;
     
   } 
+  function dateInputMask(e) {
+    console.log('dada',e)
+      let elm = e.target;
+      elm.addEventListener('keypress', function(e) {
+      if(e.keyCode < 47 || e.keyCode > 57) {
+        e.preventDefault();
+      }
+      
+      var len = elm.value.length;
+      
+      // If we're at a particular place, let the user type the slash
+      // i.e., 12/12/1212
+      if(len !== 4 || len !== 7) {
+        if(e.keyCode == 47) {
+          e.preventDefault();
+        }
+      }
+      
+      // If they don't add the slash, do it for them...
+      if(len === 4) {
+        elm.value += '-';
+      }
+
+      // If they don't add the slash, do it for them...
+      if(len === 7) {
+        elm.value += '-';
+      }
+    });
+  }
