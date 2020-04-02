@@ -7,15 +7,14 @@
   <div class="row" style="padding:20px">
       <div style="display: flex; justify-content: space-between">
           <div style="display: flex">
-            <i class="material-icons dp48">subject</i><span class="card-title">Contenedores / Camiones - PARA RECEPCIÓN</span>
+            <i class="pl-3 material-icons dp48">subject</i><span class="card-title" style="font-size:16px">Contenedores / Camiones - PARA RECEPCIÓN</span>
           </div>
       </div>
       <div class="col s12 l4" style="margin-top: 20px;">
-            <div class="">
-              <div class="row">
+              <div class="row pl-2">
                 <form  method="post" id="buscar-camion" class="col s12">
                   <div class="row">
-                    <div class="mb-1 col s12 l12">
+                    <div class="mb-1">
                       @csrf
                       <label for="buscar-codigo-camion">Buscar camión</label>
                       <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion">
@@ -29,11 +28,8 @@
                       </div>
                     </div>
                   </div>
-
-
                 </form>
               </div>
-            </div>
 
       </div>
       <div class="col s12 l8" style="margin-top: 20px;">
@@ -43,7 +39,7 @@
             <form class="col s12">
               <div class="row">
 
-                <div class="col s12 l3">
+                <div class="col s12 l4">
                   <form class="" action="index.html" method="post">
                     <label for="anio" >Gestión</label>
                     <select class="form-control browser-default" id="anio">
@@ -62,7 +58,7 @@
                   </form>
                 </div>
 
-                <div class="col s12 l5">
+                <div class="col s12 l4">
                   <form >
                     <input type="hidden" name="action" id="icamion"  value="camion">
                     <label for="camion">Seleccionar camión </label>
