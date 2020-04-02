@@ -21,4 +21,4 @@ function openCity(evt, cityName) {
   const active = document.querySelector('.active');
   */
 }
- //document.getElementById("openDefault").click();
+ document.getElementById("openDefault").click();

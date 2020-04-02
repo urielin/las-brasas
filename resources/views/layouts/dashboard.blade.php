@@ -136,12 +136,7 @@
           <a class="navigation-header-text">Contabilidad</a>
           <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold">
-          <a class="waves-effect waves-cyan " href="./">
-            <i class="material-icons">public</i>
-            <span class="menu-title" data-i18n="Mail">Prosegur</span>
-           </a>
-        </li>
+        
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan">
             <i class="material-icons">insert_chart</i>

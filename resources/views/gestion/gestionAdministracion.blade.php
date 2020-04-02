@@ -129,8 +129,7 @@
                                       {{-- <div class=""> --}}
                                         <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
                                               <h7>Información general</h7>
-                                        </div>
-
+                                        </div> 
                                     <div class="row">
                                           <div class="form-group col s12 l12 pb-2">
                                            <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>

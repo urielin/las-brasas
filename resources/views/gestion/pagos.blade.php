@@ -183,7 +183,7 @@
                 </tr>
                 <tr>
                   <td style="text-align:right;"><label for="">Codigo: </label></td>
-                  <td id="show_codigo"></td>
+                  <td id="show_codigo2"></td>
                 </tr>
                 <tr>
                   <td style="text-align:right;"><label for="">Descripcion: </label></td>
@@ -270,6 +270,9 @@
     $(document).ready(function(){
        paginator.listarPagos()
        paginator.listarHistories()
+
+
+
     })
     let paginator = { 
       async showPago(id) {
@@ -279,7 +282,9 @@
           let { data: info, status } = await axios.get(url);   
           const data  = info.data;
           
-          $('#show_code').text(data.codigo)  
+          $('#show_code').text(data.codigo)   
+
+          $('#show_proveedor').text(data.proveedor)  
           $('#show_descripcion').text(data.descripcion)  
           $('#show_fecha_resolucion2').text(data.proveedor)  
           $('#show_valor_total').text(data.valor_total)   
@@ -367,6 +372,31 @@
 
         return html;  
       },
+      setPaginatorHTML2(data) {
+        let numberPager = this.pagesNumber(data);
+        
+        let html = [], preview, next;
+        for (let i = 0; i < numberPager.length; i++) {
+          let active = numberPager[i]  == data.current_page  ? 'active' : '';
+          if (data.current_page> 1) {
+              preview =  `<li class="page-item" >
+                              <a class="page-link"  onclick="paginator.cambiarPagina2('${data.current_page - 1}')">Ant</a>
+                          </li>`
+          } 
+          if (data.current_page < data.last_page) {
+              next = `<li class="page-item "  >
+                        <a class="page-link "  onclick="paginator.cambiarPagina2('${data.current_page + 1}')">Sig</a>
+                     </li>`
+          }  
+          html[i] =  `<li class="page-item  ${active}">
+                      <a class="page-link"  onclick="paginator.cambiarPagina2(${numberPager[i]})">${numberPager[i]}</a>
+                    </li>`  
+        }
+        html.unshift(preview);
+        html.push(next);
+
+        return html;  
+      },
       setHistorieHTML(data) {
         let html = []; 
         for (let i = 0; i < data.length; i++) {
@@ -400,12 +430,14 @@
                       <td>${tipo_moneda}</td> 
                       <td>${valor_total}</td> 
                       <td>${pagado}</td> 
+                      <td>${pagado}</td> 
+
                     <td> 
                       <button  data-id='${codigo}' onclick="paginator.showPago2('${codigo}')" class ='btn btn-50 cyan btn-ver2 ' > 
                       <i class="material-icons dp48"> remove_red_eye </i>  
                       </button> 
                     </td>
-                    
+
                   </tr>`;
         }
         return html; 
@@ -478,9 +510,12 @@
         html.push(last)
         return html; 
       },
-      cambiarPagina(page){ 
-          localStorage.setItem('page', page)
+      cambiarPagina(page){  
           this.listarPagos(page);
+
+      },
+      cambiarPagina2(page){   
+          this.listarHistories(page); 
       },
       async listarPagos(page = 0){
         let me=this;
@@ -495,7 +530,7 @@
         let me=this;
         var url= '/contenedores-camiones/histories?page=' + page; 
         let { data: data, status } = await axios.get(url); 
-        let pagination = this.setPaginatorHTML(data.pagination)
+        let pagination = this.setPaginatorHTML2(data.pagination)
         let historie = this.setHistorieHTML(data.histories.data); 
         $('#historieTable tbody').empty().append(historie);
         $('#paginationNav2').empty().append(pagination); 
@@ -510,7 +545,8 @@
           x1 = x1.replace(rgx, '$1' + ',' + '$2');
         }
         return x1 + x2;
-      }
+      }, 
+      
     }  
   </script>
 @endsection
