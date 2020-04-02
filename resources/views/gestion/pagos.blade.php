@@ -40,17 +40,10 @@
               
               </tbody>
               
-                <!--<tr >
-                  <td colspan="3"> 
-                  
-                  </td> 
-                  <td>Total</td>
-                  <td> 
-                  {{$total}}
-                  </td>  
-                </tr>-->
+                
               
           </table> 
+           
         </div>
         <nav style="box-shadow: none; background:white;margin-left: 14px;">
           <ul id="paginationNav">
@@ -400,16 +393,10 @@
 
           html[i] = `<tr> 
                     <td>${codigo}</td>
-                    <td>${descripcion}</td>
-                    <!--<td>${fecha_resolucion}</td>-->
-                    <!--<td>${fecha_embarque }</td>-->
-                     <!-- <td>${fecha_pago}</td>-->
+                    <td>${descripcion}</td> 
                     <td>${fecha_llegada}</td> 
-                    <td>${forward_fecha}</td>
-                    <!--<td>${cierre_items}</td> -->
-                    <td>${forma_pago}</td>
-                    <!--<td>${despues_dias}</td>-->
-                    <td>${despues_fecha}</td> 
+                    <td>${forward_fecha}</td> 
+                    <td>${forma_pago}</td>  
                       <td>${tipo_moneda}</td> 
                       <td>${valor_total}</td> 
                       <td>${pagado}</td> 
@@ -418,12 +405,12 @@
                       <i class="material-icons dp48"> remove_red_eye </i>  
                       </button> 
                     </td>
-                  
+                    
                   </tr>`;
         }
         return html; 
       },
-      setPagosHtml(data) {
+      setPagosHtml(data, total) {
         let html = [];
         let check = [];
         for (let i = 0; i < data.length; i++) {
@@ -483,6 +470,12 @@
                       </td>
                     </tr>`;
         }
+        const last = `<tr> 
+                        <td colspan='3'></td>
+                        <td>Total: </td> 
+                        <td>${total}</td> 
+                      </tr>`;
+        html.push(last)
         return html; 
       },
       cambiarPagina(page){ 
@@ -494,7 +487,7 @@
         var url= '/contenedores-camiones/paginador?page=' + page; 
         let { data: data, status } = await axios.get(url); 
         let pagination = this.setPaginatorHTML(data.pagination)
-        let pagos = this.setPagosHtml(data.pagos.data); 
+        let pagos = this.setPagosHtml(data.pagos.data, data.total); 
         $('#pagoTable tbody').empty().append(pagos);
         $('#paginationNav ').empty().append(pagination); 
       },

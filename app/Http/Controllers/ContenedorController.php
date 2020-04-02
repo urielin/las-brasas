@@ -122,7 +122,9 @@ class ContenedorController extends Controller
                               ->where('dbsys.camiones.estado_pagado', 0)
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
                               ->paginate(10);
-
+    $total  = DbsysCamiones::select(DB::raw('SUM(dbsys.camiones.valor_total) as valor_total'))
+                                    ->where('dbsys.camiones.estado_pagado', 0)
+    ->get()[0]->valor_total;
     return response()->json([
       'pagination' => [
         'total'         => $data->total(),
@@ -133,6 +135,7 @@ class ContenedorController extends Controller
         'to'            => $data->lastItem(),
       ],
       'pagos' => $data,
+      'total' => $total,
     ]);
   }
   public function findOne(Request $request) {
