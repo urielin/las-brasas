@@ -10,7 +10,7 @@
               <div class="row align-items-center">
                 <div style="display: flex; justify-content: space-between">
                   <div style="display: flex">
-                    <i class="material-icons dp48">subject</i><span class="card-title">Usuarios</span>
+                    <i class="material-icons dp48">subject</i><span class="card-title">Lista de usuarios</span>
                   </div>
                 </div>
               </div>
@@ -18,22 +18,23 @@
             <div class="card-body" style="padding: 15px">
               <div class="table-wrapper" style="margin: 10px;" >
               <table class="table centered responsive-table " style="padding: 15px">
-                <thead class="thead-light">
+                <thead >
                   <tr>
                     <th >#</th>
-                    <th scope="col" >Usuario</th>
-                    <th scope="col" >Ap. Paterno</th>
-                    <th scope="col" >Ap. Materno</th>
-                    <th scope="col" >Nombres</th>
-                    <th scope="col">Cargo</th>
+                    <th  >Usuario</th>
+                    <th >Ap. Paterno</th>
+                    <th >Ap. Materno</th>
+                    <th >Nombres</th>
+                    <th  >Cargo</th>
+               
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($usuarios as $usuario)
                     <tr>
-                      <th style='text-align: center;'>
+                      <td >
                         {{$usuario->id_usuario}}
-                      </th>
+                      </td>
                       <td>
                         {{$usuario->usuario}}
                       </td>

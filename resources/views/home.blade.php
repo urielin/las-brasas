@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <div class="section valign-wrapper" style=" position: relative; height: calc(100vh - 150px); ">
+    <div class="section valign-wrapper" style=" position: relative; height: calc(100vh - 150px); display: flex; align-items: center; justify-content: center; ">
     <div class="row vertical-modern-dashboard">
       <div class="col s12 m4 l4 offset-l2">
          <!-- Current Balance -->

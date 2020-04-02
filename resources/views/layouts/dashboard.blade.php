@@ -75,7 +75,8 @@
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
     <header class="page-topbar" id="header">
       <div class="navbar navbar-fixed">
-        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
+         
+        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-light   no-shadow">
           <div class="nav-wrapper">
 
             <ul class="navbar-list right">
@@ -132,7 +133,7 @@
           </a>
         </li>
         <li class="navigation-header">
-          <a class="navigation-header-text">Applications</a>
+          <a class="navigation-header-text">Contabilidad</a>
           <i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="bold">
@@ -150,7 +151,7 @@
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li>
                 <a class="collapsible-header waves-effect waves-cyan" >
-                  <i class="material-icons">radio_button_unchecked</i>
+                  <i class="material-icons" style=" font-size: 1.2rem; ">attach_money</i>
                   <span data-i18n="404">Prosegur</span>
                 </a>
                 <div class="collapsible-body">
@@ -182,14 +183,14 @@
 
         <li class="bold">
           <a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)">
-            <i class="material-icons">local_shipping</i>
+            <i class="material-icons">apps</i>
             <span class="menu-title" data-i18n="Misc">Maestro</span>
           </a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li>
                 <a href="{{route('precio-camion')}}" >
-                  <i class="material-icons" style=" font-size: 1.2rem; ">local_offer</i>
+                  <i class="material-icons" >radio_button_unchecked</i>
                   <span data-i18n="404">Precios por camion</span>
                 </a>
               </li>
@@ -199,26 +200,26 @@
               </li>
               <li>
                 <a href="{{route('tipo-cambio')}}">
-                <i class="material-icons" style=" font-size: 1.2rem; ">monetization_on</i>
+                <i class="material-icons" >radio_button_unchecked</i>
                 <span data-i18n="500">Tipo de cambio </span>
                 </a>
               </li>
               <li class="">
                 <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0">
-                  <i class="material-icons" style=" font-size: 1.2rem; ">local_shipping</i>
+                  <i class="material-icons" style=" font-size: 1.2rem; " >local_shipping</i>
                   <span data-i18n="Second level child">Gestión de camiones</span>
                 </a>
                 <div class="collapsible-body" style="">
                   <ul class="collapsible" data-collapsible="accordion">
                     <li>
                       <a href="{{route('gestion-camion')}}">
-                        <i class="material-icons" style=" font-size: 1.2rem; ">call_made</i>
+                        <i class="material-icons" >radio_button_unchecked</i>
                         <span data-i18n="Third level"> Para recepción</span>
                       </a>
                     </li>
                     <li>
                       <a href="{{route('gestion-camion-r')}}">
-                        <i class="material-icons" style=" font-size: 1.2rem; ">call_received</i>
+                        <i class="material-icons" >radio_button_unchecked</i>
                         <span data-i18n="Third level"> Recepcionados</span>
                       </a>
                     </li>
@@ -233,7 +234,7 @@
 
         <li class=" bold">
           <a class="collapsible-header waves-effect waves-cyan">
-            <i class="material-icons">local_shipping</i>
+            <i class="material-icons">inbox</i>
             <span class="menu-title" data-i18n="Dashboard">Contenedor/Camión</span>
           </a>
           <div class="collapsible-body">
