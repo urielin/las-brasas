@@ -148,7 +148,7 @@
                     <div style="display: flex;justify-content: space-between">
                       <div style="display: flex;">
                         <i class="material-icons dp48">subject</i>
-                        <span class="card-title" style="font-size:16px">Detalle otros retiros prosegur</span>
+                        <span class="card-title" style="font-size:16px; line-height: 20px;">Detalle otros retiros prosegur</span>
                       </div>
                       <a class="btn-50 btn green float-right" >
                         <i class="material-icons" id="agregar-otro-retiro">add_box</i>
@@ -216,7 +216,7 @@
                     <div style="display: flex;justify-content: space-between">
                       <div style="display: flex;">
                         <i class="material-icons dp48">subject</i>
-                        <span class="card-title" style="font-size:16px">Detalle depósitos pendientes</span>
+                        <span class="card-title" style="font-size:16px; line-height: 20px;">Detalle depósitos pendientes</span>
                       </div>
                     </div>
                   </div>
