@@ -6,13 +6,13 @@
         <div class="row" style="padding:20px">
           <div style="display: flex; justify-content: space-between">
             <div style="display: flex">
-              <i class="material-icons dp48">subject</i><span class="card-title">Contenedores / Camiones - RECEPCIONADOS</span>
+              <i class="pl-3 material-icons dp48">subject</i><span class="card-title" style="font-size:16px">Contenedores / Camiones - RECEPCIONADOS</span>
             </div>
           </div>
           <div class="col s12 l4" style="margin-top: 20px;">
-            <div class="row">
+            <div class="row" style="margin-left:-16px">
               <form  method="post" id="buscar-camion" class="col s12">
-                <div class="mb-1 col s12 l12">
+                <div class="mb-1">
                   @csrf
                   <label for="buscar-codigo-camion">Buscar camión</label>
                   <input type="hidden" name="action" id="action-buscar-camion"  value="buscar-camion-r">

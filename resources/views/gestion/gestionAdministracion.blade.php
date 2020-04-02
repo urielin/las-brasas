@@ -5,10 +5,10 @@
 
   <div class="card card card-default scrollspy">
     <div class="row" style="padding:20px">
-      <div style="display: flex; justify-content: space-between">
-        <div style="display: flex">
-          <i class="material-icons dp48">subject</i><span class="card-title">GESTIÓN DE CAMIONES Y CARGA</span>
-        </div>
+      <div style="display: flex;justify-content: space-between">
+          <div style="display: flex;">
+            <i class="pl-5 material-icons dp48">subject</i><span class="card-title" style="font-size:16px">GESTIÓN DE CAMIONES Y CARGA</span>
+          </div>
       </div>
 
         <div class="col s12 l4" style="margin-top: 20px;">
@@ -68,7 +68,7 @@
       <div class="card card card-default scrollspy" style="padding:20px">
         <div style="display: flex;justify-content: space-between">
             <div style="display: flex;">
-              <i class="material-icons dp48">subject</i><span class="card-title">AGREGAR CONTENEDOR</span>
+              <i class="material-icons dp48">subject</i><span class="card-title" style="font-size:16px">AGREGAR CONTENEDOR</span>
             </div>
             <a class="btn btn-50 green float-right">
               <i class="material-icons" id="agregar-camion">add_box</i>

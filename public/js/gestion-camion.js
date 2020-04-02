@@ -25,8 +25,6 @@
                     var diff = fechaFin - fechaInicio;
 
                     if (diff > 30) {
-                      console.log("__________");
-                      console.log(value.codigo_aux);
                       let codigo_aux = value.codigo_aux == null || value.codigo_aux == '' ? '-' : value.codigo_aux;
                       let ingreso_zeta = value.ingreso_zeta == null || value.ingreso_zeta == '' ? '-' : value.ingreso_zeta;
 
@@ -191,7 +189,28 @@
                 else
                 {
 
-                    $('#camiontabla').append("<tr>"+'<td style="height: 45px;"> <a type="button" value="'+valor+'" class="editar-gestion  btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a></td><td>'+ value.nro_item +"</td><td>"+ value.codigo+"</td><td>"+value.producto+" </td><td>"+ addCommas((parseFloat(value.cantidad_cierre)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.bultos_ingreso)).toFixed(2)) +" </td><td>"+ addCommas((parseFloat(value.cantidad_ingreso)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cantidad_diferencia)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cif_moneda_ext)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.viu_moneda_nal)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cif_moneda_nal)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.precio_compra)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cif_adicional_nal)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cif_adicional_nal)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.cif_final_nal)).toFixed(2)) +"</td><td>"+ addCommas((parseFloat(value.total_costo)).toFixed(2)) +"</td></tr>");
+                    $('#camiontabla').append(`
+                      <tr>
+                        <td style="height: 45px;">
+                          <a type="button" value="${valor}" class="editar-gestion  btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>
+                        </td>
+                        <td>${value.nro_item}</td>
+                        <td>${value.codigo}  </td>
+                        <td>${value.producto}</td>
+                        <td>${addCommas((parseFloat(value.cantidad_cierre)).toFixed(2))}     </td>
+                        <td>${addCommas((parseFloat(value.bultos_ingreso)).toFixed(2))}      </td>
+                        <td>${addCommas((parseFloat(value.cantidad_ingreso)).toFixed(2))}    </td>
+                        <td>${addCommas((parseFloat(value.cantidad_diferencia)).toFixed(2))} </td>
+                        <td>${addCommas((parseFloat(value.cif_moneda_ext)).toFixed(2))}      </td>
+                        <td>${addCommas((parseFloat(value.viu_moneda_nal)).toFixed(2))}      </td>
+                        <td>${addCommas((parseFloat(value.cif_moneda_nal)).toFixed(2))}      </td>
+                        <td>${addCommas((parseFloat(value.precio_compra)).toFixed(2))}       </td>
+                        <td>${addCommas((parseFloat(value.cif_adicional_nal)).toFixed(2))}   </td>
+                        <td>${addCommas((parseFloat(value.cif_adicional_nal)).toFixed(2))}   </td>
+                        <td>${addCommas((parseFloat(value.cif_final_nal)).toFixed(2))}       </td>
+                        <td>${addCommas((parseFloat(value.total_costo)).toFixed(2))}         </td>
+                      </tr>
+                    `);
 
 
                     bi+=parseFloat(value.bultos_ingreso);

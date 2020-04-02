@@ -33,8 +33,8 @@ class ContenedorController extends Controller
 
 
       $data= Proveedor::select("*")->orderBy('ADM_PROVEEDOR.id_proveedor', 'desc')->paginate(10);
-
-      return response()->json([
+    
+      return response()->json([ 
         'pagination' => [
           'total'         => $data->total(),
           'current_page'  => $data->currentPage(),
@@ -153,6 +153,8 @@ class ContenedorController extends Controller
                           DB::raw("FORMAT(dbsys.camiones.fecha_resolucion, 'yyyy-MM-dd') as fecha_resolucion "),
                           DB::raw("FORMAT(dbsys.camiones.fecha_embarque, 'yyyy-MM-dd') as fecha_embarque "),
                           DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "),
+                          DB::raw("FORMAT(dbsys.camiones.switf_fecha, 'yyyy-MM-dd') as switf_fecha "),
+ 
                           DB::raw("FORMAT(dbsys.camiones.fecha_pago, 'yyyy-MM-dd') as fecha_pago "),
                           DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "),
                           'dbsys.camiones.cierre_items',
@@ -312,6 +314,8 @@ class ContenedorController extends Controller
         DB::raw("FORMAT(dbsys.camiones.fecha_embarque, 'yyyy-MM-dd') as fecha_embarque "),
         DB::raw("FORMAT(dbsys.camiones.fecha_llegada, 'yyyy-MM-dd') as fecha_llegada "),
         DB::raw("FORMAT(dbsys.camiones.fecha_pago, 'yyyy-MM-dd') as fecha_pago "),
+        DB::raw("FORMAT(dbsys.camiones.switf_fecha, 'yyyy-MM-dd') as switf_fecha "),
+
         DB::raw("FORMAT(dbsys.camiones.forward_fecha, 'yyyy-MM-dd') as forward_fecha "),
         'dbsys.camiones.cierre_items',
         'dbsys.parametros.desc01 as forma_pago',

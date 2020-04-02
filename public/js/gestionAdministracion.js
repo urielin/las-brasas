@@ -129,7 +129,6 @@ $(document).ready(function(){
                               remove_red_eye</i>
                             </a>
                         </td>
-
                       </tr>
                       `);
 

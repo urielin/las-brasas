@@ -221,11 +221,11 @@ $(document).on('click','.mostrar-detalle',function(){
               $('#depositoDetalleHead').empty();
               $('#depositoDetalleTabla').empty();
               $('#icono1').append('<div style="display: flex"><i class="material-icons dp48">subject</i><span class="card-title">Detalle Retiro Prosegur</span></div>');
-              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th width="10%">Tipo</th><th width="10%">Operación</th><th>Suc</th><th width="10%">Nombre sucursal</th><th width="5%">Caja</th><th>Deposito</th><th width="11%">Fecha</th><th  width="11%">Observacion</th><th width="8%">Fecha cartola</th><th width="7%">Monto</th><th>Acción</th></tr>');
+              $('#depositoDetalleHead').append('<tr><th width="6%">Folio</th><th width="10%">Tipo</th><th width="10%">Operación</th><th>Suc</th><th width="10%">Nombre sucursal</th><th width="5%">Caja</th><th>Deposito</th><th width="11%">Fecha</th><th  width="11%">Observacion</th><th width="8%">Fecha cartola</th><th width="7%">Monto</th><th>Eliminar</th></tr>');
 
               $.each(res.depositosDetalle1, function(index,value){
 
-                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ dateUTC(value.fecha_caja) +"</td><td>"+ value.obs +"</td><td>"+ dateUTC(value.cartola_fecha)+" </td><td>"+addCommas((parseFloat(value.monto)).toFixed(2))  +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'"  class="eliminar-item  btn red btn-50 darken-1"> <i class="material-icons dp48">close</i></button></td></tr>');
+                    $('#depositoDetalleTabla').append('<tr><td>' + value.folio +'</td><td>RETIROS DIARIOS</td><td>'+ value.OPER_DESC +"</td><td>"+value.id_sucursal +"</td><td>"+value.SUCU_NOMBRE+"</td><td>"+ value.num_caja+"</td><td>"+value.n_deposito +"</td><td>"+ dateUTC(value.fecha_caja) +"</td><td>"+ value.obs +"</td><td>"+ dateUTC(value.cartola_fecha)+" </td><td>"+addCommas((parseFloat(value.monto)).toFixed(2))  +'</td><td><button type="button" value="" data-id="'+ value.id_retiro_detalle+'"  class="eliminar-item  btn red btn-50 darken-1"> <i class="material-icons dp48">cancel</i></button></td></tr>');
 
                   if (value.monto == null) {
                     montoTotal+=0;

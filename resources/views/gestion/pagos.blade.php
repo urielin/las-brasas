@@ -464,7 +464,7 @@
           let forward_fecha = data[i].forward_fecha ? data[i].forward_fecha : '-';
           let forward_compromiso = data[i].forward_compromiso ? data[i].forward_compromiso : '-' ;
           let swift = data[i].swift ? data[i].swift : '-';
-          let switf_fecha = data[i].switf_fecha ? data[i].swift_fecha : '-';
+          let switf_fecha = data[i].switf_fecha ? data[i].switf_fecha : '-';
           let pagado_fecha = data[i].pagado_fecha ? data[i].pagado_fecha : '-';
 
           html[i] = `<tr data-code='${data[i].codigo}' 
@@ -482,14 +482,12 @@
                       <td>${descripcion}</td>
                       <td>${proveedor}</td>
                       <td>${this.addCommas(valor_total)}</td>
-                      <!--<td>${tipo_moneda}</td>
-                      <td>${fecha_llegada}</td>-->
+                     
                       <td>${forward}</td>
                       <td>${forward_fecha}</td> 
                       <td>${forward_compromiso}</td>
                       <td>${swift}</td>
-                      <td>${switf_fecha}</td> 
-                      <!--  <td>${pagado_fecha}</td>-->
+                      <td>${switf_fecha}</td>  
                       <td> 
                         <button  data-id='${data[i].codigo}' onclick="paginator.showPago('${data[i].codigo}')" class ='btn btn-50 cyan btn-ver ' > 
                         <i class="material-icons dp48"> remove_red_eye </i>  
