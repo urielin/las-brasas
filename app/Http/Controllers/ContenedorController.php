@@ -33,8 +33,8 @@ class ContenedorController extends Controller
 
 
       $data= Proveedor::select("*")->orderBy('ADM_PROVEEDOR.id_proveedor', 'desc')->paginate(10);
-
-      return response()->json([
+    
+      return response()->json([ 
         'pagination' => [
           'total'         => $data->total(),
           'current_page'  => $data->currentPage(),
@@ -122,7 +122,7 @@ class ContenedorController extends Controller
                               ->where('dbsys.camiones.estado_pagado', 0)
                               ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
                               ->paginate(10);
-
+                              
     return response()->json([
       'pagination' => [
         'total'         => $data->total(),

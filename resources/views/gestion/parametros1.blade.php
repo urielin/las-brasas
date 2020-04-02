@@ -56,7 +56,7 @@
           <table class="table table-responsive responsive-table centered"  id="tabla-proveedor">
             <thead>
               <tr>
-                <th>Acción</th>
+                <th>Editar</th>
                 <th>Código</th>
                 <th>RUT</th>
                 <th>Empresa</th>
@@ -278,10 +278,10 @@
           <form  method="POST" id="nuevo-proveedor" class="form-horizontal">
             @csrf
             <div class="row container">
-            <div class="row pb-2">
+                                  <div class="row pb-2">
                                     <div class="col s12 l6">
                                           <label for="codigo_agregar">Código: </label>
-                                          <input type="text" name="codigo_nuevo"  id="codigo_nuevo" placeholder="¡Solo 8 caracteres!" class="validate form-controls" step="1">
+                                          <input type="text" name="codigo_nuevo"  id="codigo_nuevo" placeholder="¡Solo 8 caracteres!" class="validate form-controls" step="1" maxlength="8">
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="auxiliar_agregar">RUT:</label>
@@ -331,13 +331,13 @@
                                   </div>
                                   <div class="row ">
                                         
-                                        </div>
+                                        
                                   </div>
                                   
                                   <br>
-                                  <div class="row " align="right">
-                                        
-                                          <input type="submit" name="agregar_button" id="action_agregar"  class="btn btn-warning" value="Agregar">
+                                  <div class="row pb-2" align="right">
+                                        <div class="col s12 l12">
+                                          <input type="submit" name="agregar_button" id="action_agregar" style="background-color: #2D9741" class="btn btn-warning" value="Agregar">
                                         </div>
                                   </div>
              </div>
@@ -369,7 +369,7 @@
             <div class="row pb-2">
                                     <div class="col s12 l6">
                                           <label for="codigo_agregar">Código: </label>
-                                          <input type="text" name="codigo_edit"  id="codigo_edit" placeholder="¡Solo 8 caracteres!" class="validate form-controls" step="1">
+                                          <input type="text" name="codigo_edit"  id="codigo_edit" placeholder="¡Solo 8 caracteres!" class="validate form-controls" step="1" maxlength="8" >
                                         </div>
                                         <div class="col s12 l6">
                                           <label for="auxiliar_agregar">RUT:</label>
@@ -411,7 +411,7 @@
                                   </div>
 
                                   <div class="row">
-                                        
+                                      <div class="col s12 l12">
                                           <label for="documento_agregar">Dirección: </label>
                                           <input type="text" name="direccion_edit"  id="direccion_edit" placeholder="Ejm. Av. Bolognesi 1458" class="validate form-controls" step="1">
                                         </div>
@@ -425,9 +425,9 @@
                                   </div>
                                   
                                   <br>
-                                  <div class="row " align="right">
-                                        
-                                          <input type="submit" name="update_button" id="action_actualizar"  class="btn btn-warning" value="Actualizar">
+                                  <div class="row" align="right">
+                                        <div class="col s12 l12">
+                                          <input type="submit" name="update_button" id="action_actualizar" style="background-color: #2D9741; margin: 5px;" class="btn btn-warning" value="Actualizar">
                                         </div>
                                   </div>
              </div>
