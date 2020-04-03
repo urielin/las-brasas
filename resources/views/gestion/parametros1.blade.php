@@ -260,8 +260,9 @@
   </div>
 
   <div id="formNuevo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog" style="margin: 0px;">
+      <div class="modal-content" style="height: 537px;
+    padding: 15px;">
         <div class="modal-header">
           <div class="row">
             <div class=" col s6 pb-2">
@@ -333,7 +334,7 @@
                                   </div>
                                   
                                   <br>
-                                  <div class="row pb-2" align="right">
+                                  <div class="row pb-2" align="right" style="  margin-top: 5px;">
                                         <div class="col s12 l12">
 
 
@@ -353,7 +354,7 @@
   </div>
   <div id="formEdit" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="height: 540px; padding: 17px;">
         <div class="modal-header">
           <div class="row">
             <div class="col s6 pb-2">
