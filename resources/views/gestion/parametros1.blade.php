@@ -431,7 +431,6 @@
                                           <button type="button" class="modal-action modal-close waves-effect grey lighten-1 btn-flat" style="margin-right: 25px;" data-dismiss="modal">Cerrar</button>
 
                                           <input type="submit" name="update_button" id="action_actualizar" style="background-color: #2D9741; margin: 5px;" class="btn btn-warning" value="Actualizar">
-                                                                                    <button type="button" class="modal-action modal-close waves-effect grey lighten-1 btn-flat" style="margin-right: 25px;" data-dismiss="modal">Cerrar</button>
 
                                         </div>
                                   </div>
