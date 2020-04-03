@@ -58,9 +58,9 @@
 
                 <div class="row" style="margin-top: 20px;">
                   <div id="responsive-table" class="col l12 m12 s12" class="pt-1">
-                    <div style=" margin-top: -6px; overflow: auto; height: 60vh;">
+                    <div style=" margin-top: -6px; overflow: auto; ">
                       <div class="row">
-                        <div class="col s12 dataTables_scrollBody">
+                        <div class=" dataTables_scrollBody">
                           <table id='tableRetiroProsegur' class="table centered ">
                             <thead>
                               <tr>

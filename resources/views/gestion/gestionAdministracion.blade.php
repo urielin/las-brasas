@@ -129,7 +129,7 @@
                                       {{-- <div class=""> --}}
                                         <div  class="row pt-1 pb-1 pl-1 mb-2" style="background-color:#aaa">
                                               <h7>Información general</h7>
-                                        </div> 
+                                        </div>
                                     <div class="row">
                                           <div class="form-group col s12 l12 pb-2">
                                            <label class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Código: </label>
@@ -774,7 +774,7 @@
                                     <div class="col s12">
                                     </div>
                                     <div class="col s12 dataTables_scrollBody">
-                                      <table id="tabla-camionesAutorizacionDetalle">
+                                      <table id="tabla-camionesAutorizacionDetalle" class="table centered">
                                         <thead>
                                         <tr>
                                           <th>Certificado</th>
@@ -809,7 +809,7 @@
                                     <div class="col s12">
                                     </div>
                                     <div class="col s12 dataTables_scrollBody">
-                                          <table id="tabla-camionesAdjuntoDetalle">
+                                          <table id="tabla-camionesAdjuntoDetalle" class="table centered">
                                             <thead>
                                             <tr>
                                               <th>Tipo</th>
@@ -844,7 +844,7 @@
                                     <div class="col s12">
                                     </div>
                                     <div class="col s12 dataTables_scrollBody">
-                                        <table id="tabla-camionesBultoDetalle">
+                                        <table id="tabla-camionesBultoDetalle" class="table centered">
                                           <thead>
                                           <tr>
                                             <th>Tipo</th>
@@ -876,7 +876,7 @@
                                     <div class="col s12">
                                     </div>
                                     <div class="col s12 dataTables_scrollBody">
-                                        <table id="camionesContenedorDetalle">
+                                        <table id="camionesContenedorDetalle" class="table centered">
                                           <thead>
                                           <tr>
                                             <th>Tipo</th>
