@@ -436,11 +436,8 @@ $(document).on('submit','#consulta1',function(){
                   // ------------------------
 
               }
-              setTimeout(function() {
-              //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-
-              $('#form_result_consulta1').html(html);}, 1500);
+              $('#form_result_consulta1').html(html);
             }
           });
 
@@ -506,10 +503,8 @@ $(document).on('submit','#consulta1',function(){
                           // ------------------------
 
                       }
-                      setTimeout(function() {
-                      //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-                      $('#form_result_consulta2').html(html);}, 1500);
+                      $('#form_result_consulta2').html(html);
                     }
                   });
 
@@ -714,7 +709,9 @@ $(document).on('submit','#sample_form',function(){
               if (data.success)
               {
 
-                  alerta('success',data.success);
+                   sweetalerta('Listo!','Actualizado correctamente','success' );
+                         $('#formModal').modal('close');
+                  // alerta('success',data.success);
 
                   if($.trim(camion_id) != ''){
 
@@ -1232,5 +1229,13 @@ $(document).on('change','.btn-switch',function(){
           icon: icon,
           title: title
         })
+      }
+
+      function sweetalerta(title,text,icon ){
+        Swal.fire({
+             icon: icon,
+             title: title,
+             text: text,
+             })
       }
   });
