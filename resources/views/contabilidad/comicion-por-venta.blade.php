@@ -37,13 +37,14 @@
           
           </select>
         </div>
-        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: flex-end; margin-top:10px;     margin-left: 20px;">
+        <div class="form-group col l12 m12 s12 " style="display:flex; justify-content: flex-end; margin-top:10px;margin-left: 20px;" id="botones">
        
           <!--<button type="button" class="btn btn-45 cyan" name="updateReport" id="actualizar">Actualizar Informes</button>-->
           <!--<button type="button" class="btn btn-45 cyan" name="sumarySeller">Resumen por Vendedor</button>-->
           <button type="button" class="btn cyan" name="exportSells" id="exportar-resumen" style="width: 120px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Resumen</button>
           <button type="button" class="btn cyan" name="exportSells" id="exportar-detalle" style="width: 110px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_download</i> Detalle </button>
-          <button type="button" class="btn cyan" name="reportSells" id="exportar-datos" style="width: 130px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>
+          <button type="button" class="btn cyan" name="reportSells" id="exportar-datos" style="width: 130px;padding: 2px;margin-right: 20px;display:none;"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>
+
         </div>
       </div>
   </div>
@@ -94,6 +95,7 @@
                 <th>Precio Total</th>
                 <th>Impuesto</th>
                 <th>Adicional</th>
+                
                 <th>Precio Neto</th>
                 <th>RUT Cliente</th>
                 <!--<th>Comision</th>-->
@@ -102,6 +104,7 @@
                 <th>Monto</th>
                 <th>Tipo de Documento</th>
                 <th>N° Depósito</th>
+                <th>ID Cartola</th>
             </tr>
           </thead>
           <tbody id="contenido-detalles">
