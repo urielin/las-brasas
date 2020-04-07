@@ -156,10 +156,10 @@ class GestionAdministracionController extends Controller
 
                 $camionAgregar =  '1';
             }else {
-                $fecha_agregar  = date('d-m-Y H:i:s', strtotime($request->fecha_agregar));
+                // $fecha_agregar  = date('d-m-Y H:i:s', strtotime($request->fecha_agregar));
 
                 DB::insert("INSERT INTO dbsys.camiones (codigo, descripcion, contenido,codigo_aux, ingreso_zeta, ingreso_zeta_fecha,observaciones, estado )
-                VALUES ('$request->codigo_agregar' ,'$request->descripcion_agregar','$request->contenido_agregar', '$request->auxiliar_agregar','$request->documento_agregar','$fecha_agregar','$request->observaciones_agregar','1')");
+                VALUES ('$request->codigo_agregar' ,'$request->descripcion_agregar','$request->contenido_agregar', '$request->auxiliar_agregar','$request->documento_agregar',GETDATE(),'$request->observaciones_agregar','1')");
 
                 $camionAgregar = '0';
             }
