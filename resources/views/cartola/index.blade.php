@@ -63,15 +63,13 @@
               <th>Fecha</th>
               <th>Sucursal</th>
               <th>Descripcion</th>
-              <th>Documento</th>
-            <!--  <th>Cargos</th>
-              <th>Abono</th>-->
-              <th>Saldo</th>
-              <th>Deposito</th>
+              <th>Documento</th> 
+              <th>Cargo</th> 
+              <th>Abono</th> 
+              <th>Saldo</th> 
             </tr>
           </thead>
-          <tbody>
-
+          <tbody> 
           </tbody>
         </table>
       </div>
@@ -156,6 +154,7 @@
            for(var i = 0; i < lines.length; i++){
                array[i] = lines[i];
            }
+          let saldo_init = parseInt(array[0].substring(145 ,159).trim(), 10); 
           let date = array[0].substring(161, 169)
           let fecha = date.substring(0,2)+'/'+ date.substring(2,4)+'/'+ date.substring(4)
           var fullPath = document.getElementById('xlsFile').value;
@@ -168,24 +167,40 @@
           }
            array.shift();
            array.pop();
-           array.forEach((item, i) => {
-             let document = item.substring(42, 48).trim() != '000000' ? item.substring(42, 48).trim() : ''
-             planes.push({
+           array.forEach((item, i) => { 
+            let documento = item.substring(41, 48).trim() == '0000000' ? '': '00'+''+item.substring(41, 48).trim();
+            let cargo = -parseInt(item.substring(49, 63).trim(), 10) < 0 ? 0 : -parseInt(item.substring(49, 63).trim(), 10);
+            let abono = parseInt(item.substring(49, 63).trim(), 10) > 0 ? parseInt(item.substring(49, 63).trim(), 10) : 0; 
+            let saldo = 0;
+            if(i == 0) {
+              if(cargo == 0) {
+                saldo = saldo_init + abono;
+              } else {
+                saldo = saldo_init + cargo; 
+              }
+            } else {
+              if(cargo == 0) {
+                saldo = planes[i-1].saldo + abono;
+              } else {
+                saldo = planes[i-1].saldo + cargo; 
+              }
+            }
+            
+            planes.push({
                           cuenta: $('#elegir-cuenta').val(),
-                          cartola: $('#insertar-cartolar').val(),
-                          deposito: item.substring(0, 10).trim(),
+                          cartola: $('#insertar-cartolar').val(), 
                           descripcion: item.substring(10, 40).trim(),
-                          documento: document,
+                          documento: documento,
                           fecha: fecha,
-                          monto: parseInt(item.substring(49, 67).trim(), 10),
+                          cargo: cargo,
+                          abono: abono,
+                          saldo: saldo,
                           sucursal: item.substring(68).trim(),
-                          nombre_archivo: filename,
-
+                          nombre_archivo: filename, 
                         })
-           });
-
-           localStorage.setItem('cartolas', JSON.stringify(planes))
-           const html  = setCartolaDetail(planes)
+           });  
+           localStorage.setItem('cartolas', JSON.stringify(planes));
+           const html  = setCartolaDetail(planes);
            $('#detalleCartola tbody').empty().append(html);
           };
           reader.readAsText(file, "ISO-8859-1");
@@ -200,10 +215,10 @@
                         <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].fecha}</td>
                         <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].sucursal}</td>
                         <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].descripcion}</td>
-                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].documento}</td>
-
-                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].monto)}</td>
-                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].deposito}</td>
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${data[i].documento}</td> 
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].cargo)}</td> 
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].abono)}</td>  
+                        <td style='padding-right: 1rem;padding-left: 1rem;;'>${addCommas(data[i].saldo)}</td> 
                     </tr>`;
         }
         return array;
