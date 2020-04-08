@@ -378,3 +378,15 @@ class ContenedorController extends Controller
     } else {
       return response()->json(['status' => 500, 'message' => 'Error Interno']);
     }*/
+/*
+    delete from MODULO_COMISION_VENTA_HIST
+
+
+
+ALTER TABLE MODULO_COMISION_VENTA_HIST ADD
+cartola bigint, 
+iva numeric(18, 2),
+año NVARCHAR(4),
+mes NVARCHAR(15),
+sucursal NVARCHAR(5),
+vendedor NVARCHAR(5)*/
