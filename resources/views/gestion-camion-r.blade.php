@@ -70,7 +70,7 @@
                 <li class="tab col m4"><a class="active" href="#test1">Detalle</a></li>
                 {{-- <li class="tab col m3"><a href="#test2">Actualizado</a></li> --}}
                 <li class="tab col m4"><span id="bloquear-camion"></span></li>
-                <li class="tab col m4"><a id="camiones_vencidos" href="#test3">Camiones vencidos</a></li>
+                <li class="tab col m4"><a  href="#test3">Camiones vencidos</a></li>
               </ul>
             </div>
             <div id="test1" class="col s12">
@@ -91,17 +91,28 @@
             </div>
 
             <div id="test3" class="col s12">
+              <div class="row">
+                <div class="col s12 l2" style="padding-left:43px">
+                    <label for="clasificacion" >Más de:</label>
+                    <select class="form-control browser-default" id="camiones_vencidos">
+                      <option disabled selected value="0">( ) días</option>
+                      <option value="30">30 días</option>
+                      <option value="45">45 días</option>
+                      <option value="95">95 días</option>
+                    </select>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col s12 m12 l12">
-                  <div id="responsive-table" class=" ">
-                    <div class="card-content" style=" margin-top: -6px; overflow: auto; ">
+                  <div id="responsive-table">
+                    <div class="card-content" style=" margin-top: -10px; overflow: auto; ">
                       <h4 class="card-title"></h4>
                       <p class="mb-2"></p>
                       <div class="row">
 
                         <div class="col s12 dataTables_scrollBody">
-                          <table id='tabla-vencidos' class="table centered responsive-table">
+                          <table id='tabla-vencidos' class="table centered ">
                             <thead>
                               <tr>
                                 <th width='6%'>Codigo</th>

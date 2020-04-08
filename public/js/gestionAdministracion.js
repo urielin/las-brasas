@@ -286,12 +286,6 @@ $(document).ready(function(){
           let elem = $('.tabs')
           let instance = M.Tabs.getInstance(elem);
           instance.select('test2');
-          //
-          // let elem = $('.tablinks')
-          // let instance = M.Tabs.getInstance(elem);
-          // instance.select('uno2');
-
-
 
           $('#tabla-camionesContenedorDetalle-body').empty();
           $('#tabla-itemsContenedorDetalle-body').empty();
@@ -417,7 +411,10 @@ $(document).ready(function(){
                 $("#valor_total_nal").val(res.camionesDetalle[0]['valor_total_nal']);
                 $("#sucursal").val(sucursal);
             //Referencias
+
+
                   $.each(res.camionesAutorizacionDetalle,function(index,value){
+                    let glosa = value.glosa == null || value.glosa == '' ? '-' : value.glosa;
                     $('#tabla-camionesAutorizacionDetalle-body').append(`
                       <tr >
                       <td>${value.certificado}</td>
@@ -425,7 +422,7 @@ $(document).ready(function(){
                       <td>${value.tipo}</td>
                       <td>${value.numero_aut}</td>
                       <td>${dateUTC(value.fecha_aut)}</td>
-                      <td>${value.glosa}</td>
+                      <td>${glosa}</td>
                       <td>${value.usuario}</td>
                       <td>${dateUTC(value.fecha)}</td>
                       </tr>
@@ -433,13 +430,14 @@ $(document).ready(function(){
                   });
 
                   $.each(res.camionesAdjuntoDetalle,function(index,value){
+                    let numero_fiscal = value.numero_fiscal == null || value.numero_fiscal == '' ? '-' : value.numero_fiscal;
                     $('#tabla-camionesAdjuntoDetalle-body').append(`
                       <tr >
                       <td>${value.tipo_adjunto}</td>
                       <td>${value.numero_documento}</td>
                       <td>${dateUTC(value.fecha_documento)}</td>
                       <td>${value.emisor}</td>
-                      <td>${value.numero_fiscal}</td>
+                      <td>${numero_fiscal}</td>
                       <td>${value.usuario}</td>
                       <td>${dateUTC(value.fecha)}</td>
                       </tr>
@@ -460,11 +458,12 @@ $(document).ready(function(){
                   });
 
                   $.each(res.camionesContenedorDetalle,function(index,value){
+                    let cont_obs = value.cont_obs == null || value.cont_obs == '' ? '-' : value.cont_obs;
                     $('#tabla-camionesContenedorDetalle-body').append(`
                       <tr >
                       <td>${value.tipo_cont}</td>
                       <td>${value.id_contenedor}</td>
-                      <td>${value.cont_obs}</td>
+                      <td>${cont_obs}</td>
                       <td>${value.usuario}</td>
                       <td>${dateUTC(value.fecha)}</td>
                       </tr>

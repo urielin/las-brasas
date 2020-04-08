@@ -983,25 +983,18 @@
                                           <input required type="text" name="documento_agregar"  id="documento_agregar" placeholder="ejm. 003-15-000006" class="validate form-control" step="1">
                                         </div>
                                         <div class="col s12 l6">
-                                          <label for="fecha_agregar">Fecha documento:</label>
-                                          <input required type="text" name="fecha_agregar"  id="fecha_agregar" placeholder="Ingrese una fecha"  onfocus="(this.type='datetime-local')" onblur="(this.type='text')" class="validate form-control" step="1">
-                                        </div>
-                                  </div>
-
-                                  <div class="row pb-2">
-                                        <div class="col s12 l6">
                                           <label for="observaciones_agregar">Observaciones: </label>
                                           <input required type="text" name="observaciones_agregar" id="observaciones_agregar" placeholder="ejm. CARRETERO SAN PEDRO-IQUIQUE" class="validate form-control" step="1">
                                         </div>
-
                                   </div>
+
                                   <div class="row ">
                                         <div class="col s12 l12">
                                         </div>
                                   </div>
                                   <div class="row " align="right">
                                         <div class="col s12 l12">
-                                          <input type="submit" name="action_button" id="action_enviar"  class="mb-6 btn waves-effect waves-light green darken-1" style="color:white;" value="Agregar">
+                                          <input type="submit" name="action_button" id="action_enviar"  class="btn waves-effect waves-light green darken-1" style="color:white;" value="Agregar">
                                         </div>
                                   </div>
              </div>

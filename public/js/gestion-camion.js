@@ -1,7 +1,9 @@
   $(document).ready(function(){
 
-      $('#camiones_vencidos').click(function(){
-          var year, clasificacion ;
+      $('#camiones_vencidos').on('change', function(){
+          var year, clasificacion,n ;
+          n = $(this).val();
+          console.log(n);
           year = $('#anior').val() ;
           clasificacion = $('#clasificacionr').val() ;
           $('#camiones-vencidos').empty();
@@ -24,12 +26,13 @@
                     var fechaFin    = new Date(output).getTime();
                     var diff = fechaFin - fechaInicio;
 
-                    if (diff > 30) {
+                    if (diff >= n) {
                       let codigo_aux = value.codigo_aux == null || value.codigo_aux == '' ? '-' : value.codigo_aux;
                       let ingreso_zeta = value.ingreso_zeta == null || value.ingreso_zeta == '' ? '-' : value.ingreso_zeta;
 
                       $('#camiones-vencidos').append('<tr><td>'+ value.codigo +"</td><td>"+ codigo_aux+"</td><td>"+value.descripcion+" </td><td>"+ dateUTC(value.fecha_llegada) +"</td><td>"+ dateUTC(value.fecha_vencimiento) +" </td><td>"+ ingreso_zeta +"</td><td>"+ value.marca_origen +"</td><td>"+ NumericoDecimal(value.valor_total) +"</td><td>"+ NumericoDecimal(value.cierre_gastos) +"</td><td>"+ value.lugar_arribo +"</td></tr>");
                     }
+
                   })
                 } else {
                   alerta('info','No hay camiones, ingrese otro valor');
@@ -436,11 +439,8 @@ $(document).on('submit','#consulta1',function(){
                   // ------------------------
 
               }
-              setTimeout(function() {
-              //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-
-              $('#form_result_consulta1').html(html);}, 1500);
+              $('#form_result_consulta1').html(html);
             }
           });
 
@@ -506,10 +506,8 @@ $(document).on('submit','#consulta1',function(){
                           // ------------------------
 
                       }
-                      setTimeout(function() {
-                      //   $('div.loader-6').addClass('d-none'); }, 1500);
 
-                      $('#form_result_consulta2').html(html);}, 1500);
+                      $('#form_result_consulta2').html(html);
                     }
                   });
 
@@ -714,7 +712,9 @@ $(document).on('submit','#sample_form',function(){
               if (data.success)
               {
 
-                  alerta('success',data.success);
+                   sweetalerta('Listo!','Actualizado correctamente','success' );
+                         $('#formModal').modal('close');
+                  // alerta('success',data.success);
 
                   if($.trim(camion_id) != ''){
 
@@ -1232,5 +1232,13 @@ $(document).on('change','.btn-switch',function(){
           icon: icon,
           title: title
         })
+      }
+
+      function sweetalerta(title,text,icon ){
+        Swal.fire({
+             icon: icon,
+             title: title,
+             text: text,
+             })
       }
   });

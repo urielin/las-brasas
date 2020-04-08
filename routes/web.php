@@ -107,6 +107,10 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   Route::get('/reporte-comision/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta')->name('reporteComisionVenta');
   Route::get('/reporte-resumen/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reportesComisionVenta')->name('reportesComisionVenta');
 
+
+  Route::get('/reporte-comision1/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reporteComisionVenta1')->name('reporteComisionVenta1');
+  Route::get('/reporte-resumen1/{year}/{mes}/{sucursal}/{vendedor}', 'ComicionVentaController@reportesComisionVenta1')->name('reportesComisionVenta1');
+
   Route::get('/reporte', function () {
 
     $mpdf = new \Mpdf\Mpdf([
@@ -152,7 +156,10 @@ Route::get('/prueba', 'GestionAdministracionController@prueba')->name('prueba');
   Route::get('obtener-sucursal','ComicionVentaController@getSucursal')->name('getSucursal');
   Route::get('obtener-vendedor','ComicionVentaController@getVendedor')->name('getVendedor');
   Route::get('obtener-reporte','ComicionVentaController@getComision')->name('getComision');
+  Route::get('validacion','ComicionVentaController@validacion')->name('validacion');
   Route::get('obtener-detalles','ComicionVentaController@getDetalles')->name('getDetalles');
+  Route::get('obtener-detalles1','ComicionVentaController@getDetalles1')->name('getDetalles1');
+  Route::get('obtener-reporte1','ComicionVentaController@getComision1')->name('getComision1');
   Route::get('exportar-datos','ComicionVentaController@setDatos')->name('setDatos');
   Route::post('updatevendedor','ComicionVentaController@updateVendedor')->name('updatevendedor');
   Route::get('comisiones-vendedor','ComicionVentaController@comisiones')->name('comisionesVendedor');
