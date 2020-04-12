@@ -122,12 +122,12 @@ class ContenedorController extends Controller
                 'dbsys.camiones.swift',
                 'dbsys.camiones.pagado',
                 'dbsys.camiones.pagado_fecha')
-                  ->where('dbsys.camiones.estado_pagado', 0)
+                  ->where('dbsys.camiones.pagado','=' , 0)  
                   ->orderBy('dbsys.camiones.fecha_llegada', 'desc')
-                  ->paginate(10);
+                  ->paginate(7);
 
     $total  = DbsysCamiones::select(DB::raw('SUM(dbsys.camiones.valor_total) as valor_total'))
-                                    ->where('dbsys.camiones.estado_pagado', 0)
+                                    ->where('dbsys.camiones.pagado', '=', 0)
                                     ->get()[0]->valor_total;
 
     return response()->json([
@@ -351,7 +351,7 @@ class ContenedorController extends Controller
         'dbsys.camiones.valor_total',
         'dbsys.camiones_pagos.monto_pago as pagado',
         'dbsys.camiones_pagos.monto_pago as total_pagos')
-        ->where('dbsys.camiones.estado_pagado', 2 )
+        ->where('dbsys.camiones.estado_pagado', '=' ,2 )
         ->where('dbsys.parametros.tabla', 'CAMIONES_FORMA_PAGO' ) 
       ->paginate(10); 
 

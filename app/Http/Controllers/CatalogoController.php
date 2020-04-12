@@ -57,19 +57,18 @@ class CatalogoController extends Controller
       } else {
         foreach ($params as $key => $value) {
             
-            $documento = $value->documento == '000000' ? '' : $value->documento; 
+            $deposito = $value->deposito == '000000' ? '' : $value->deposito; 
             DB::table($this->table)
               ->insert([
                 'tp_cuenta' => $value->cuenta,
-                'cartola' => $value->cartola,
-                'saldo' => $value->saldo,
+                'cartola' => $value->cartola, 
                 'descripcion' => $value->descripcion,
                 'fecha' => $value->fecha,
                 'cargo' => $value->cargo,
                 'abono' => $value->abono,
                 'nombre_archivo' => $value->nombre_archivo,
                 'sucursal' => $value->sucursal, 
-                'documento' => $documento
+                'deposito' => $deposito
 
               ]);
         }
