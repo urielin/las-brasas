@@ -89,7 +89,7 @@ class ComicionVentaController extends Controller
       m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
       m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
       m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,u.id_cartola_bancos
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
@@ -106,7 +106,7 @@ class ComicionVentaController extends Controller
       m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
       m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
       m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,u.id_cartola_bancos
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
@@ -162,7 +162,7 @@ class ComicionVentaController extends Controller
       //$fechaFinal = DB::select("SELECT fecha=EOMONTH(DATEFROMPARTS($año,$mes,1))");
 
       $detalle = DB::select("SELECT m2.tipo_documento, m3.TPDC_DESCRIPCION,count(m2.tipo_documento) as documento,sum((m1.ptotal-(m1.impuesto+m1.adicional+m1.iva))) as total
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
       INNER JOIN ADM_TP_DOCUMENTO m3 ON m2.tipo_documento=m3.TPDC_CODIGO
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
@@ -178,7 +178,7 @@ class ComicionVentaController extends Controller
       GROUP BY m3.TPDC_DESCRIPCION,m2.tipo_documento");
 
       $detalle1=DB::select("SELECT m2.tipo_documento, m3.TPDC_DESCRIPCION,count(m2.tipo_documento) as documento,sum((m1.ptotal-(m1.impuesto+m1.adicional+m1.iva))) as total
-      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
       INNER JOIN ADM_TP_DOCUMENTO m3 ON m2.tipo_documento=m3.TPDC_CODIGO
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
@@ -243,7 +243,7 @@ class ComicionVentaController extends Controller
     m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
     m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
     FORMAT(m2.fecha_pago,'yyyy/MM/dd') as fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
-    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
     WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
     and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     and m1.fecha2 BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
@@ -253,7 +253,7 @@ class ComicionVentaController extends Controller
     m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
     m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
     FORMAT(m2.fecha_pago,'yyyy/MM/dd') as fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito
-    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
     WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
     and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
     and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($year,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($year,$mes,1),-1)
@@ -387,7 +387,7 @@ class ComicionVentaController extends Controller
 
 
     $comision['mesactual'] = DB::select("SELECT m2.tipo_documento, m3.TPDC_DESCRIPCION,count(m2.tipo_documento) as documento,sum((m1.ptotal-(m1.impuesto+m1.adicional+m1.iva))) as total
-    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
     INNER JOIN ADM_TP_DOCUMENTO m3 ON m2.tipo_documento=m3.TPDC_CODIGO
 
     WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
@@ -396,7 +396,7 @@ class ComicionVentaController extends Controller
     GROUP BY m3.TPDC_DESCRIPCION,m2.tipo_documento");
 
     $comision['mesanterior']=DB::select("SELECT m2.tipo_documento, m3.TPDC_DESCRIPCION,count(m2.tipo_documento) as documento,sum((m1.ptotal-(m1.impuesto+m1.adicional+m1.iva))) as total
-    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+    FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
     INNER JOIN ADM_TP_DOCUMENTO m3 ON m2.tipo_documento=m3.TPDC_CODIGO
     WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
     and m2.fecha_pago BETWEEN DATEFROMPARTS($year,$mes,1) AND EOMONTH(DATEFROMPARTS($year,$mes,1))
@@ -526,13 +526,13 @@ class ComicionVentaController extends Controller
       /*$datosOriginal=DB::select("SELECT folio FROM MODULO_COMISION_VENTA_HIST WHERE fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH(DATEFROMPARTS($año,$mes,1))");
 
-      $datos2=DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      $datos2=DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
       WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
       and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
       ORDER BY m1.fecha2");
 
-      $datos3 = DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+      $datos3 = DB::select("SELECT m1.folio FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
                             WHERE m1.cod_vendedor='$request->vendedor' and m1.sucursal='$request->sucursal' and m1.estado=1
                             and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
                             and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
@@ -549,7 +549,7 @@ class ComicionVentaController extends Controller
           m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
           m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
           m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos
-          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
           WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
           and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
           and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
@@ -559,7 +559,7 @@ class ComicionVentaController extends Controller
           m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
           m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
           m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos, m1.cod_vendedor,m1.sucursal
-          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
           WHERE m1.estado=1 and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
           and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
           ORDER BY m1.fecha2");
@@ -568,7 +568,7 @@ class ComicionVentaController extends Controller
           m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
           m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
           m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos
-          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
           WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
           and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
           and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
@@ -578,7 +578,7 @@ class ComicionVentaController extends Controller
           m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
           m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
           m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos, m1.cod_vendedor,m1.sucursal
-          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+          FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
           WHERE m1.estado=1 and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
           and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
           ORDER BY m2.fecha_pago");
@@ -677,7 +677,7 @@ class ComicionVentaController extends Controller
                 m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
                 m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
                 m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos
-                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
                 WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
                 and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
                 and m1.fecha2 BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
@@ -687,7 +687,7 @@ class ComicionVentaController extends Controller
                 m1.cod_vendedor, m1.ptotal, m1.impuesto, m1.adicional,
                 m1.total, m1.rut_cliente, (m1.ptotal-(m1.impuesto+m1.adicional+m1.iva)) as comision,
                 m2.fecha_pago, m2.monto, m2.tipo_documento, m2.n_deposito,m1.iva,u.id_cartola_bancos
-                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito 
+                FROM MODULO_VENTA_HIST m1 INNER JOIN CREDITO_HISTORIAL_CLIENTES m2 ON m1.folio = m2.folio INNER JOIN CARTOLA_BANCOS u ON m2.n_deposito = u.deposito OR m2.n_deposito = u.documento 
                 WHERE m1.cod_vendedor='$vendedor' and m1.sucursal='$sucursal' and m1.estado=1
                 and m2.fecha_pago BETWEEN DATEFROMPARTS($año,$mes,1) AND EOMONTH(DATEFROMPARTS($año,$mes,1))
                 and m1.fecha2 BETWEEN DATEADD(mm,-1,DATEADD(mm,DATEDIFF(mm,0,DATEFROMPARTS($año,$mes,1)),0)) AND EOMONTH (DATEFROMPARTS($año,$mes,1),-1)
