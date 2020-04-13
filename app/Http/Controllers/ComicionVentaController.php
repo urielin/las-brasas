@@ -514,6 +514,12 @@ class ComicionVentaController extends Controller
           $mpdf->Output();
 
   }
+
+
+
+
+
+  
   //ya esta
   public function setDatos(Request $request){
     if($request -> ajax()){
