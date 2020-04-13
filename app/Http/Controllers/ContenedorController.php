@@ -317,7 +317,7 @@ class ContenedorController extends Controller
         if(isset($result)) {
           $result = DB::table('dbsys.camiones')
                       ->where('id_camion',  $request->id_camion)
-                      ->update(['dbsys.camiones.estado_pagado' => 2]); 
+                      ->update(['dbsys.camiones.estado_pagado' => 2 , 'dbsys.camiones.pagado' => 1]); 
           return response()->json(['status' => 200, 'message' => 'El camion a sido pagado']);
         } else {
           return response()->json(['status' => 500, 'message' => 'Error interno']);
