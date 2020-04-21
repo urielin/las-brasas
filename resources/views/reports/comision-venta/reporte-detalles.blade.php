@@ -225,70 +225,67 @@
                     $comision3=0;
                     $comision3+=$item->comision3;
                 }
-    if($comision3 == 0 && $nivel3 == 0){
+                if($comision3 == 0 && $nivel3 == 0){
 
-        if($nivel2 == 0 && $comision2==0){
+                    if($nivel2 == 0 && $comision2==0){
 
-            if($nivel1 == 0 && $comision1 == 0){
-                $porcentaje=0;
-                $i=0;
-        
-            }
-        else{
-            if($cuentafinal >= $nivel1){
-                $porcentaje=$comision1 * 0.01;
-            }
-            else{
-                $porcentaje=0;
-                $i=1;
-            }
-        }
-    }
-    else{
+                        if($nivel1 == 0 && $comision1 == 0){
+                            $porcentaje=0;
+                            $i=0;
+                    
+                        }
+                        else{
+                            if($cuenta1 >= $nivel1){
+                                $porcentaje=$comision1 * 0.01;
+                            }
+                            else{
+                                $porcentaje=0;
+                                $i=1;
+                            }
+                        }
+                    }
+                    else{
+                        if($cuenta1 >= $nivel2){
 
-        if($cuenta1 >= $nivel2){
-
-            $porcentaje=$comision2 * 0.01;
-            $i=2;
-        
-        }
-        else{
-            if($cuenta1 >= $nivel1){
-                $porcentaje=$comision1 * 0.01;
-                $i=1;
-            }
-            else{
-                $porcentaje=0;
-                $i=0;
-            } 
-        }
-    
-    }
-}
-else{
-    if($cuenta1 >= $nivel3){
-        $porcentaje=$comision3*0.01;
-        $i=3;
-    }
-    else{
-        if($cuenta1 >= $nivel2){
-            $porcentaje=$comision2*0.01;
-            $i=2;
-        }
-        else{
-            if($cuenta1 >= $nivel1){
-                $porcentaje=$comision1*0.01;
-                $i=1;
-            }
-            else{
-                $porcentaje=0;
-                $i=0;
-            }
-        }
-    }
-}
-$comisionfinal1=$cuenta1*$porcentaje;
-$porcentaje1=$porcentaje/0.01;
+                            $porcentaje=$comision2 * 0.01;
+                            $i=2;    
+                        }
+                        else{
+                            if($cuenta1 >= $nivel1){
+                                $porcentaje=$comision1 * 0.01;
+                                $i=1;
+                            }
+                            else{
+                                $porcentaje=0;
+                                $i=0;
+                            } 
+                        }
+                    }
+                }
+                else{
+                    if($cuenta1 >= $nivel3){
+                        $porcentaje=$comision3*0.01;
+                        $i=3;
+                    }
+                    else{
+                        if($cuenta1 >= $nivel2){
+                            $porcentaje=$comision2*0.01;
+                            $i=2;
+                        }
+                        else{
+                            if($cuenta1 >= $nivel1){
+                                $porcentaje=$comision1*0.01;
+                                $i=1;
+                            }
+                            else{
+                                $porcentaje=0;
+                                $i=0;
+                            }
+                        }
+                    }
+                }
+                $comisionfinal1=$cuenta1*$porcentaje;
+                $porcentaje1=$porcentaje/0.01;
     @endphp
 
     @php

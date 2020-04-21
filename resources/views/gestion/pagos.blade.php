@@ -92,6 +92,51 @@
       </div>
 
     </div>
+    <div id="donePage" class="modal" style="width: 60%;">
+      <div class="modal-content">
+        <div style="margin-bottom: 20px;"> 
+          <h5>CAMIONES A PAGAR DETALLE</h5>
+        </div>
+        <div class="row" style="margin-top: 20px">
+        
+          <div class="form-group col l3">
+            <label for="">Tipo de Pago</label>
+            <select id='tipo_pago' name="tipo_pago" class="form-control browser-default">
+              <option value="0">--------</option>
+              <option value="1">PAGO EN EFECTIVO</option>
+              <option value="2">PAGO EN CHEQUE</option>
+              <option value="3">GIRO BANCARIO</option>
+              <option value="4">CIERRE FORWARD</option>
+              <option value="5">DESCUENTOS</option>
+            </select>
+          </div>
+          <div class="form-group col l3"> 
+            <label for="">Fecha de pago</label>
+            <input type="date" id='fecha_pago' class="form-control browser-default">
+          </div>
+          <div class="form-group col l3">
+            <label>Tipo de cambio</label>
+            <input type="text" id="tipo_cambio" class="form-control browser-default" value="718.00"> 
+          </div>
+          <div class="form-group col l3">
+            <label>Monto Pagado</label>
+            <input type="text" id="monto_pagado" class="form-control browser-default " value="114082.0000"> 
+          </div>
+          <div class="form-group col l12">
+            <label>Observaciones</label>
+            <textarea rows='4' id="observaciones" class="form-control browser-default" style="height:auto !important">valor solo referencia </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col l12 m12 s12"> 
+          <a href="#!" class="modal-action modal-close waves-effect  btn-flat">Cerrar</a>
+          <a href="#!" class="btn green btn-4 btn-save-page">Guardar</a>
+
+        </div>
+      </div>
+    </div>
+
     <div id="showModal" class="modal">
       <div class="modal-content">
         <div style="margin-bottom: 20px;">
@@ -261,7 +306,6 @@
   </div>
 </div>
 @endsection
-
 @section('js')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
 
@@ -269,12 +313,10 @@
   <script>
     $(document).ready(function(){
        paginator.listarPagos()
-       paginator.listarHistories()
-
-
-
-    })
+       paginator.listarHistories() 
+    });
     let paginator = { 
+      
       async showPago(id) {
 
           $('#showModal').modal('open'); 
@@ -282,8 +324,7 @@
           let { data: info, status } = await axios.get(url);   
           const data  = info.data;
           
-          $('#show_code').text(data.codigo)   
-
+          $('#show_code').text(data.codigo)  
           $('#show_proveedor').text(data.proveedor)  
           $('#show_descripcion').text(data.descripcion)  
           $('#show_fecha_resolucion2').text(data.proveedor)  
@@ -448,13 +489,7 @@
         for (let i = 0; i < data.length; i++) {
          
           
-          if (data[i].pagado == 0) {
-            check[0] = `<button data-id='${data[i].codigo}'  class ='btn btn-50 green btn-check' >
-                          <i class="material-icons dp48"> check </i>  
-                        </button>`
-          } else {
-            check[0] = '-'
-          }
+        
           let descripcion = data[i].descripcion ? data[i].descripcion : '-'; 
           let proveedor = data[i].proveedor ? data[i].proveedor : '-';
           let valor_total = data[i].valor_total ? data[i].valor_total : '-';
@@ -467,7 +502,8 @@
           let switf_fecha = data[i].switf_fecha ? data[i].switf_fecha : '-';
           let pagado_fecha = data[i].pagado_fecha ? data[i].pagado_fecha : '-';
 
-          html[i] = `<tr data-code='${data[i].codigo}' 
+          html[i] = `<tr  
+                        data-code='${data[i].codigo}' 
                         data-forward='${data[i].forward}'
                         data-fecha_llegada='${data[i].fecha_llegada}'
                         data-forward_fecha='${data[i].forward_fecha}' 
@@ -476,7 +512,9 @@
                         data-switf_fecha='${data[i].switf_fecha}' >
 
                       <td> 
-                        ${check[0]}
+                        <button data-id=${data[i].id_camion}  class ='btn btn-50 green btn-check' >
+                          <i class="material-icons dp48"> check </i>  
+                        </button>
                       </td>
                       <td>${data[i].codigo}</td>
                       <td>${descripcion}</td>
@@ -490,12 +528,12 @@
                       <td>${switf_fecha}</td>  
                       <td> 
                         <button  data-id='${data[i].codigo}' onclick="paginator.showPago('${data[i].codigo}')" class ='btn btn-50 cyan btn-ver ' > 
-                        <i class="material-icons dp48"> remove_red_eye </i>  
+                          <i class="material-icons dp48"> remove_red_eye </i>  
                         </button> 
                       </td>
                       <td> 
-                        <button data-id='${data[i].codigo}' class ='btn btn-50 cyan btn-edit' >
-                        <i class="material-icons dp48"> edit </i>  
+                        <button data-id='${data[i].codigo}' data-id_camion=${data[i].id_camion} class ='btn btn-50 cyan btn-edit' >
+                         <i class="material-icons dp48"> edit </i>  
                         </button> 
                       </td>
                     </tr>`;

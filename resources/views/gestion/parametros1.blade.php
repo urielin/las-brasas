@@ -11,7 +11,7 @@
                 <span >DETALLE DE PROVEEDORES</span>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group col l4" style="padding:0px">
               <label for="" class="form-control-label">Proveedor</label>
               <select class="form-control browser-default" id="proveedor" name="proveedor">
               <!--<select size class="form-control browser-default" id="proveedor" name="proveedor">-->

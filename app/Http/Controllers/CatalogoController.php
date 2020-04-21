@@ -56,20 +56,23 @@ class CatalogoController extends Controller
         return response()->json(['status' => 500, 'message' => 'La cartola ya se ingreso Intente con otra']);
       } else {
         foreach ($params as $key => $value) {
-            $documento = $value->documento == '000000' ? '' : $value->documento; 
+            
+            $deposito = $value->deposito == '000000' ? '' : $value->deposito; 
             DB::table($this->table)
               ->insert([
                 'tp_cuenta' => $value->cuenta,
-                'cartola' => $value->cartola,
-                'saldo' => $value->monto,
+                'cartola' => $value->cartola, 
                 'descripcion' => $value->descripcion,
                 'fecha' => $value->fecha,
-                'documento' => $documento,
+                'cargo' => $value->cargo,
+                'abono' => $value->abono,
                 'nombre_archivo' => $value->nombre_archivo,
-                'sucursal' => $value->sucursal,
-                'deposito' => $value->deposito
+                'sucursal' => $value->sucursal, 
+                'deposito' => $deposito
+
               ]);
         }
+        
         return response()->json(['status' => 200, 'message' => 'Cartola ingresada']);
 
       }
