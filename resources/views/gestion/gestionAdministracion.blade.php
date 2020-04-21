@@ -494,8 +494,8 @@
                                     </div>
 
                                     <div class="row">
-                                      <div class="form-group col s12 l12 pb-2">
-                                       <label for="naviera" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Naviera: </label>
+                                      <div class="form-group col s12 l12 pb-2" id="label_naviera">
+                                       <label for="naviera"  class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Naviera: </label>
                                        <div class="col l6 m6 s6">
                                          <select class="activo form-control browser-default" name="naviera" id="naviera">
                                            <option  value="0">Selecciona una opción</option>
@@ -505,8 +505,8 @@
                                          </select>
                                        </div>
                                      </div>
-                                     <div class="form-group col s12 l12 pb-2">
-                                       <label for="agencia" class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Agencia: </label>
+                                     <div class="form-group col s12 l12 pb-2" id="label_agencia">
+                                       <label for="agencia"  class="form-control-label col l6 m6 s6" style="text-align: right;display: inline-block;">Agencia: </label>
                                        <div class="col l6 m6 s6">
                                          <select required class="activo form-control browser-default" name="agencia" id="agencia">
                                            <option  value="0">Selecciona una opción</option>
@@ -988,10 +988,19 @@
                                         </div>
                                   </div>
 
-                                  <div class="row ">
-                                        <div class="col s12 l12">
-                                        </div>
+                                  <div class="row pb-2">
+                                    <div class="col s12 l6">
+                                      <label for="declara_tipo_transpN">Medio transporte:</label>
+                                      <select class="form-control browser-default" name="declara_tipo_transpN" id="declara_tipo_transpN">
+                                        <option  value="0">Selecciona una opción</option>
+                                        @foreach ($transportes as $transporteN)
+                                        <option value="{{$transporteN->cod_int}}" >{{$transporteN->desc01}}</option>
+                                        @endforeach
+                                      </select>
+                                    </div>
                                   </div>
+
+
                                   <div class="row " align="right">
                                         <div class="col s12 l12">
                                           <input type="submit" name="action_button" id="action_enviar"  class="btn waves-effect waves-light green darken-1" style="color:white;" value="Agregar">

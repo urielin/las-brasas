@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 
-
-
     $('#vendedor').on('change', function(){
 
         var vendedor,gestion,sucursal,mes,total;
@@ -339,7 +337,7 @@ $(document).ready(function(){
                         showConfirmButton: false,
                         timer: 800
                         //footer: '<a href>Why do I have this issue?</a>'
-                      }) 
+                      })
                 }
                 else{
 
@@ -354,7 +352,7 @@ $(document).ready(function(){
 
                 }
 
-                
+
 
 
 
@@ -379,7 +377,7 @@ $(document).ready(function(){
                 icon: 'error',
                 title: 'No se pudo exportar los datos',
                 text: '¡LLene los campos respectivos!'
-                
+
                 //footer: '<a href>Why do I have this issue?</a>'
               })
         }
@@ -409,7 +407,7 @@ $(document).ready(function(){
             //window.open().focus();
         }
         else{
-           
+
 
               Swal.fire({
                 icon: 'error',
@@ -441,14 +439,14 @@ $(document).ready(function(){
             //window.open().focus();
         }
         else{
-          
+
 
             Swal.fire({
                 icon: 'error',
                 title: 'No se pudo exportar el reporte',
                 text: '¡Complete todos los campos!'
                 //footer: '<a href>Why do I have this issue?</a>'
-                
+
               })
 
         }
@@ -474,73 +472,73 @@ $(document).ready(function(){
             $.each(res.comisiones,function(index,value){
 
                 btn_editar='<a type="button" value="" class="edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-                
-                html='<tr data-id="'+value.id_vendedor+'"'; 
-                html+='data-nombre="'+value.nombre_vendedor+'"'; 
-                html+='data-nivel1="'+value.nivel1+'"'; 
-                html+='data-comision1="'+value.comision1+'"'; 
-                html+='data-nivel2="'+value.nivel2+'"'; 
-                html+='data-comision2="'+value.comision2+'"'; 
-                html+='data-nivel3="'+value.nivel3+'"'; 
-                html+='data-comision3="'+value.comision3+'">'; 
-                   
+
+                html='<tr data-id="'+value.id_vendedor+'"';
+                html+='data-nombre="'+value.nombre_vendedor+'"';
+                html+='data-nivel1="'+value.nivel1+'"';
+                html+='data-comision1="'+value.comision1+'"';
+                html+='data-nivel2="'+value.nivel2+'"';
+                html+='data-comision2="'+value.comision2+'"';
+                html+='data-nivel3="'+value.nivel3+'"';
+                html+='data-comision3="'+value.comision3+'">';
+
                 html+='<td>'+btn_editar+'</td>';
-                
-                
+
+
                 if(value.nombre_vendedor == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.nombre_vendedor+'</td>';
                 }
                 if(value.nivel1 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel1)+'</td>';
                 }
                 if(value.comision1 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.comision1+'%</td>';
                 }
                 if(value.nivel2 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel2)+'</td>';
                 }
                 if(value.comision2 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.comision2+'%</td>';
                 }
                 if(value.nivel3 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel3)+'</td>';
                 }
-                
+
                 if(value.comision3 == ''){
-                    html+='<td>-</td><tr>'; 
+                    html+='<td>-</td><tr>';
                 }
                 else{
                     html+='<td>'+value.comision3+'%</td><tr>';
                 }
-        
-                $('#contenido-vendedor').append(html);  
+
+                $('#contenido-vendedor').append(html);
             })
 
         })
 
-        
+
 
     })*/
     $('#comisiones-vendedor').on('click ','a.edit',function() {
-        
+
         //console.log('gaaa');
         /*if($(this).parents('tr').attr('data-nivel1')==null){
             let nivel1 ='';
@@ -554,11 +552,11 @@ $(document).ready(function(){
         let comision2 = $(this).parents('tr').attr('data-comision2');
         let nivel3 = $(this).parents('tr').attr('data-nivel3');
         let comision3 = $(this).parents('tr').attr('data-comision3');
-        
-       
+
+
 
         console.log(comision3);
-        
+
         $(this).parents("tr").find("td:eq(2)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Código" name="nivel1" id="nombre" value="'+nivel1+'" >');
         $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="RUT" name="comision1" value="'+comision1+'" >');
         $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Empresa" name="nivel2" value="'+nivel2+'" >');
@@ -580,11 +578,11 @@ $(document).ready(function(){
         $(this).hide();
 
         //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
-    
+
         //console.log('gaa');
-       
-    
-    
+
+
+
     })
     $("#comisiones-vendedor").on("click", ".btn-cancel", function(){
         let nivel1 = $(this).parents('tr').attr('data-nivel1');
@@ -593,7 +591,7 @@ $(document).ready(function(){
         let comision2 = $(this).parents('tr').attr('data-comision2');
         let nivel3 = $(this).parents('tr').attr('data-nivel3');
         let comision3 = $(this).parents('tr').attr('data-comision3');
-        
+
         $(this).parents("tr").find("td:eq(2)").text(nivel1);
         $(this).parents("tr").find("td:eq(3)").text(comision1);
         $(this).parents("tr").find("td:eq(4)").text(nivel2);
@@ -615,7 +613,7 @@ $(document).ready(function(){
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Si, Actualizar'
-  
+
           }).then((result) => {
 
             if(result.value){
@@ -649,7 +647,7 @@ $(document).ready(function(){
                         data: data,
                         headers:{_token:$("meta[name='csrf-token']").attr("content")},
                     }).then((data) => {
-                        
+
 
                         Swal.fire({
                             //position: 'top-end',
@@ -659,7 +657,7 @@ $(document).ready(function(){
                             timer: 800
                           })
                     })
-                
+
                 $(this).parents('tr').attr('data-nivel1',nivel1);
                 $(this).parents('tr').attr('data-comision1',comision1);
                 $(this).parents('tr').attr('data-nivel2',nivel2);
@@ -674,7 +672,7 @@ $(document).ready(function(){
             }
           })
 
-        
+
 
     })
 

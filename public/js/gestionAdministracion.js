@@ -382,10 +382,25 @@ $(document).ready(function(){
 
             let declara_clausula = res.camionesDetalle[0]['declara_clausula'] == null || res.camionesDetalle[0]['declara_clausula'] == '' ? '0' : res.camionesDetalle[0]['declara_clausula'];
             let sucursal = res.camionesDetalle[0]['sucursal'] == null || res.camionesDetalle[0]['sucursal'] == '' ? '0' : res.camionesDetalle[0]['sucursal'];
+            console.log(declara_tipo_transp);
 
+            if (declara_tipo_transp == '1') {
+              console.log('aparece');
+              $('#naviera').show();
+              $('#agencia').show();
+              $('#label_agencia').show();
+              $('#label_naviera').show();
+              $("#naviera").val(naviera);
+              $("#agencia").val(agencia);
+            } else {
+              console.log('desaparece');
+              $('#label_agencia').hide();
+              $('#label_naviera').hide();
+              $('#naviera').hide();
+              $('#agencia').hide();
+            }
                 $("#id_codigo_tecnico").val(res.camionesDetalle[0]['id_camion']);
-                $("#naviera").val(naviera);
-                $("#agencia").val(agencia);
+
                 $("#transporte_nombre").val(res.camionesDetalle[0]['transporte_nombre']);
                 $("#ingreso_zeta").val(res.camionesDetalle[0]['ingreso_zeta']);
                 $("#ingreso_zeta_fecha").val(dateUTCR(res.camionesDetalle[0]['ingreso_zeta_fecha']));
