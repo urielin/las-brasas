@@ -291,69 +291,67 @@
     @php
     if($comision3 == 0 && $nivel3 == 0){
 
-    if($nivel2 == 0 && $comision2==0){
+        if($nivel2 == 0 && $comision2==0){
 
-        if($nivel1 == 0 && $comision1 == 0){
-            $porcentaje=0;
-            $i=0;
+            if($nivel1 == 0 && $comision1 == 0){
+                $porcentaje=0;
+                $i=0;
 
-        }
-    else{
-        if($cuenta2 >= $nivel1){
-            $porcentaje=$comision1 * 0.01;
-        }
-        else{
-            $porcentaje=0;
-            $i=1;
-        }
-    }
-    }
-    else{
-
-    if($cuenta2 >= $nivel2){
-
-        $porcentaje=$comision2 * 0.01;
-        $i=2;
-
-    }
-    else{
-        if($cuenta2 >= $nivel1){
-            $porcentaje=$comision1 * 0.01;
-            $i=1;
+            }
+            else{
+                if($cuenta2 >= $nivel1){
+                    $porcentaje=$comision1 * 0.01;
+                }
+                else{
+                    $porcentaje=0;
+                    $i=1;
+                }
+            }
         }
         else{
-            $porcentaje=0;
-            $i=0;
-        } 
-    }
+            if($cuenta2 >= $nivel2){
 
-    }
+                $porcentaje=$comision2 * 0.01;
+                $i=2;
+
+            }
+            else{
+                if($cuenta2 >= $nivel1){
+                    $porcentaje=$comision1 * 0.01;
+                    $i=1;
+                }
+                else{
+                    $porcentaje=0;
+                    $i=0;
+                } 
+            }
+        }
     }
     else{
-    if($cuenta2 >= $nivel3){
-    $porcentaje=$comision3*0.01;
-    $i=3;
-    }
-    else{
-    if($cuenta2 >= $nivel2){
-        $porcentaje=$comision2*0.01;
-        $i=2;
-    }
-    else{
-        if($cuenta2 >= $nivel1){
-            $porcentaje=$comision1*0.01;
-            $i=1;
+        if($cuenta2 >= $nivel3){
+            $porcentaje=$comision3*0.01;
+            $i=3;
         }
         else{
-            $porcentaje=0;
-            $i=0;
+            if($cuenta2 >= $nivel2){
+                $porcentaje=$comision2*0.01;
+                $i=2;
+            }
+            else{
+                if($cuenta2 >= $nivel1){
+                    $porcentaje=$comision1*0.01;
+                    $i=1;
+                }
+                else{
+                    $porcentaje=0;
+                    $i=0;
+                }
+            }
         }
     }
-    }
-}
-$comisionfinal2=$cuenta2*$porcentaje;
-$porcentaje2=$porcentaje/0.01;
-    @endphp
+    $comisionfinal2=$cuenta2*$porcentaje;
+    $porcentaje2=$porcentaje/0.01;
+@endphp
    
     @php
     if($comision3 == 0 && $nivel3 == 0){

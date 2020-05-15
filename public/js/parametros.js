@@ -117,7 +117,9 @@ $(document).ready(function(){
         let fax = $(this).parents("tr").attr('data-fax');
         let email = $(this).parents("tr").attr('data-email');
         let id = $(this).parents("tr").attr('data-id');
-    
+        
+        //let mensaje = $(this).attr('data-id');
+        //console.log('mensaje');
 
         $('#formEdit').modal('open');
 
