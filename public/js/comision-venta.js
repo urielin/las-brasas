@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 
-
-
     $('#vendedor').on('change', function(){
 
         var vendedor,gestion,sucursal,mes,total;
@@ -21,12 +19,12 @@ $(document).ready(function(){
         if($.trim(vendedor) != '' && $.trim(gestion) != '' && $.trim(mes) != '' && $.trim(sucursal) != ''){
 
             request=$.get('validacion',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
-                
+
                     console.log(res.datos);
                     let datos=res.datos;
                     if(datos.length == 0){
-                        
-                        //document.getElementById("exportar-datos").style.display = "block";  
+
+                        //document.getElementById("exportar-datos").style.display = "block";
                         console.log('vacio');
                         request = $.get('obtener-detalles',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
 
@@ -36,16 +34,16 @@ $(document).ready(function(){
                             $('#contenido').empty();
                             //$('#botones').append('<button type="button" class="btn cyan" name="reportSells" id="exportar-datos" style="width: 130px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>');
                             if(res.detalle == ''){
-            
+
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mes+' - '+value.año+'</td>');
                                 })
                             }
                             else{
                                     totales=0;
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">Ventas de '+value.mes+' - '+value.año+' pagadas en '+value.mes+' - '+value.año+'</td>');
                                     })
                                         //$('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Mes</td>');
@@ -54,21 +52,21 @@ $(document).ready(function(){
                                     //$('#tabla-comisiones').append('<tr class="mostrar-detalle"><td>'+value.id_venta+'</td><td>'+value.folio+'</td><td class="detalles"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
                                     totales=totales+parseFloat(value.total);
                                     });
-            
+
                                     totales=totales.toFixed(2);
                                     $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(totales)+'</td></tr>');
                             }
                             if(res.detalle1 == ''){
-            
+
                                 $.each(res.fecha_anterior,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                 })
                             }
                             else{
                                 total=0;
                                 $.each(res.fecha_anterior,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">Ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                 })
                                 $.each(res.detalle1, function(index,value){
@@ -77,22 +75,22 @@ $(document).ready(function(){
                                 $('#tabla-comisiones').append('<tr><td>'+value.tipo_documento+'</td><td>'+value.TPDC_DESCRIPCION+'</td><td>'+value.documento+'</td><td>'+addCommas(value.total)+'</td></tr>');
                                 total=total+parseFloat(value.total);
                                 });
-            
+
                                 total=total.toFixed(2);
                                 $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
-            
+
                             }
-            
+
                             if(res.detalle2 == ''){
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                 })
                             }
                             else{
                                 total=0;
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                 })
                                 $.each(res.detalle2, function(index,value){
@@ -103,13 +101,13 @@ $(document).ready(function(){
                                 });
                                 total=total.toFixed(2);
                                 $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
-            
+
                             }
                             //COLOR A CAMBIAR
                            // $('#tabla-comisiones').append('<style type="text/css">.meses{background-color: #00a6d6; color: black}</style>');
-            
+
                         });
-            
+
                         request = $.get('obtener-reporte',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
                             //console.log(res);
                             console.log(res.comisionvalidado);
@@ -117,16 +115,16 @@ $(document).ready(function(){
                             $('#contenido-detalles').empty();
                             //$('#contenido').empty();
                                 if(res.comision == ''){
-            
+
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mes+' - '+value.año+'</td>');
                                     })
                                 }
                                 else{
                                         total=0;
                                         $.each(res.fecha_actual,function(index,value){
-            
+
                                             $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mes+' - '+value.año+' pagadas en '+value.mes+' - '+value.año+'</td>');
                                         })
                                             //$('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Mes</td>');
@@ -139,16 +137,16 @@ $(document).ready(function(){
                                         $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
                                 }
                                 if(res.comision1 == ''){
-            
+
                                     $.each(res.fecha_anterior,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                     })
                                 }
                                 else{
                                     total=0;
                                     $.each(res.fecha_anterior,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                     })
                                     $.each(res.comision1, function(index,value){
@@ -159,19 +157,19 @@ $(document).ready(function(){
                                     });
                                     total=total.toFixed(2);
                                     $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
-            
+
                                 }
-            
+
                                 if(res.comision2 == ''){
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                     })
                                 }
                                 else{
                                     total=0;
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                     })
                                     $.each(res.comision2, function(index,value){
@@ -182,14 +180,14 @@ $(document).ready(function(){
                                     });
                                     total=total.toFixed(2);
                                     $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="6"></td></tr>');
-            
+
                                 }
                                 $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #3D8989; color: white}</style>');
                         });
                     }
                     else{
                        // document.getElementById("exportar-datos").style.display = "none";
-                        console.log('lleno');  
+                        console.log('lleno');
 
                         request = $.get('obtener-detalles1',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
 
@@ -199,16 +197,16 @@ $(document).ready(function(){
                             $('#contenido').empty();
                             //$('#botones').append('<button type="button" class="btn cyan" name="reportSells" id="exportar-datos" style="width: 130px;padding: 2px;margin-right: 20px;"><i class="material-icons dp48 icon-preview col s6 m3">file_upload</i> Históricos</button>');
                             if(res.validado == ''){
-            
+
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mes+' - '+value.año+'</td>');
                                 })
                             }
                             else{
                                     totales=0;
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">Ventas de '+value.mes+' - '+value.año+' pagadas en '+value.mes+' - '+value.año+'</td>');
                                     })
                                         //$('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Mes</td>');
@@ -217,21 +215,21 @@ $(document).ready(function(){
                                     //$('#tabla-comisiones').append('<tr class="mostrar-detalle"><td>'+value.id_venta+'</td><td>'+value.folio+'</td><td class="detalles"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
                                     totales=totales+parseFloat(value.total);
                                     });
-            
+
                                     totales=totales.toFixed(2);
                                     $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(totales)+'</td></tr>');
                             }
                             if(res.validado1 == ''){
-            
+
                                 $.each(res.fecha_anterior,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                 })
                             }
                             else{
                                 total=0;
                                 $.each(res.fecha_anterior,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">Ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                 })
                                 $.each(res.validado1, function(index,value){
@@ -240,22 +238,22 @@ $(document).ready(function(){
                                 $('#tabla-comisiones').append('<tr><td>'+value.tipo_documento+'</td><td>'+value.TPDC_DESCRIPCION+'</td><td>'+value.documento+'</td><td>'+addCommas(value.total)+'</td></tr>');
                                 total=total+parseFloat(value.total);
                                 });
-            
+
                                 total=total.toFixed(2);
                                 $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
-            
+
                             }
-            
+
                             if(res.detalle2 == ''){
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="4">No hay ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                 })
                             }
                             else{
                                 total=0;
                                 $.each(res.fecha_actual,function(index,value){
-            
+
                                     $('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                 })
                                 $.each(res.detalle2, function(index,value){
@@ -266,13 +264,13 @@ $(document).ready(function(){
                                 });
                                 total=total.toFixed(2);
                                 $('#tabla-comisiones').append('<tr><td align="center" colspan="2"></td><td>Total</td><td>'+addCommas(total)+'</td></tr>');
-            
+
                             }
                             //COLOR A CAMBIAR
                            // $('#tabla-comisiones').append('<style type="text/css">.meses{background-color: #00a6d6; color: black}</style>');
-            
+
                         });
-            
+
                         request = $.get('obtener-reporte1',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
                             //console.log(res);
                             console.log(res.comisionvalidado);
@@ -280,16 +278,16 @@ $(document).ready(function(){
                             $('#contenido-detalles').empty();
                             //$('#contenido').empty();
                                 if(res.comisionvalidado == ''){
-            
+
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mes+' - '+value.año+'</td>');
                                     })
                                 }
                                 else{
                                         total=0;
                                         $.each(res.fecha_actual,function(index,value){
-            
+
                                             $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mes+' - '+value.año+' pagadas en '+value.mes+' - '+value.año+'</td>');
                                         })
                                             //$('#tabla-comisiones').append('<tr class="meses"><td colspan="14">Mes</td>');
@@ -302,16 +300,16 @@ $(document).ready(function(){
                                         $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="7"></td></tr>');
                                 }
                                 if(res.comisionvalidado1 == ''){
-            
+
                                     $.each(res.fecha_anterior,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                     })
                                 }
                                 else{
                                     total=0;
                                     $.each(res.fecha_anterior,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mesAnt+' - '+value.añoAnt+' pagadas en '+value.mes+' - '+value.añoAnt+'</td>');
                                     })
                                     $.each(res.comisionvalidado1, function(index,value){
@@ -322,19 +320,19 @@ $(document).ready(function(){
                                     });
                                     total=total.toFixed(2);
                                     $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="7"></td></tr>');
-            
+
                                 }
-            
+
                                 if(res.comision2 == ''){
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">No hay ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                     })
                                 }
                                 else{
                                     total=0;
                                     $.each(res.fecha_actual,function(index,value){
-            
+
                                         $('#tabla-detalles').append('<tr class="meses"><td colspan="15">Ventas de '+value.mes+' - '+value.año+' con pago posterior</td>');
                                     })
                                     $.each(res.comision2, function(index,value){
@@ -345,18 +343,18 @@ $(document).ready(function(){
                                     });
                                     total=total.toFixed(2);
                                     $('#tabla-detalles').append('<tr><td align="center" colspan="6"></td><td>Total</td><td>'+addCommas(total)+'</td><td colspan="7"></td></tr>');
-            
+
                                 }
                                 $('#tabla-detalles').append('<style type="text/css">.meses{background-color: #3D8989; color: white}</style>');
                         });
-                        
+
                     }
 
             });
-            
-            
 
-            
+
+
+
 
 
         }
@@ -422,12 +420,12 @@ $(document).ready(function(){
             let datos=res.datos;
             if(datos.length == 0){
 
-                document.getElementById("exportar-datos").style.display = "block";  
+                document.getElementById("exportar-datos").style.display = "block";
             }
             else{
-                document.getElementById("exportar-datos").style.display = "none";  
+                document.getElementById("exportar-datos").style.display = "none";
             }
-            
+
 
         });
 
@@ -523,7 +521,7 @@ $(document).ready(function(){
 
         if($.trim(gestion) != '' && $.trim(mes) != ''){
 
-                
+
 
             request = $.get('exportar-datos',{vendedor:vendedor,gestion:gestion,mes:mes,sucursal:sucursal},function(res){
 
@@ -535,7 +533,7 @@ $(document).ready(function(){
                         showConfirmButton: false,
                         timer: 800
                         //footer: '<a href>Why do I have this issue?</a>'
-                      }) 
+                      })
                 /*}
                 else{
 
@@ -550,7 +548,7 @@ $(document).ready(function(){
 
                 }*/
 
-                
+
 
 
 
@@ -575,11 +573,11 @@ $(document).ready(function(){
                 icon: 'error',
                 title: 'No se pudo importar los datos',
                 text: '¡LLene los campos de Gestion y Mes!'
-                
+
                 //footer: '<a href>Why do I have this issue?</a>'
               })
         }
-        document.getElementById("exportar-datos").style.display = "none";  
+        document.getElementById("exportar-datos").style.display = "none";
     })
 
     $('#tabla-detalles tbody' ).on('click','tr',function(){
@@ -604,22 +602,22 @@ $(document).ready(function(){
                 request=$.get('validacion',{gestion:gestion,mes:mes},function(res){
                 let datos=res.datos;
                 if(datos.length == 0){
-    
+
                     window.open( 'reporte-comision/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
                 }
                 else{
-                    window.open( 'reporte-comision1/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();  
+                    window.open( 'reporte-comision1/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
                 }
-                
-    
-            });    
+
+
+            });
             //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
             //window.open( 'reporte-comision/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
             //window.open().focus();
             //window.open().focus();
         }
         else{
-           
+
 
               Swal.fire({
                 icon: 'error',
@@ -648,29 +646,29 @@ $(document).ready(function(){
             request=$.get('validacion',{gestion:gestion,mes:mes},function(res){
                 let datos=res.datos;
                 if(datos.length == 0){
-    
+
                     window.open( 'reporte-resumen/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
                 }
                 else{
                     window.open( 'reporte-resumen1/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
                 }
-                
-    
-            });    
+
+
+            });
             //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
             //window.open( 'reporte-resumen/'+year+'/'+mes+'/'+sucursal+'/'+vendedor+'/',"_blank").focus();
             //window.open().focus();
             //window.open().focus();
         }
         else{
-          
+
 
             Swal.fire({
                 icon: 'error',
                 title: 'No se pudo exportar el reporte',
                 text: '¡Complete todos los campos!'
                 //footer: '<a href>Why do I have this issue?</a>'
-                
+
               })
 
         }
@@ -696,73 +694,73 @@ $(document).ready(function(){
             $.each(res.comisiones,function(index,value){
 
                 btn_editar='<a type="button" value="" class="edit btn blue btn-50 darken-1" style="cursor: pointer"> <i class="material-icons dp48">edit</i></a>';
-                
-                html='<tr data-id="'+value.id_vendedor+'"'; 
-                html+='data-nombre="'+value.nombre_vendedor+'"'; 
-                html+='data-nivel1="'+value.nivel1+'"'; 
-                html+='data-comision1="'+value.comision1+'"'; 
-                html+='data-nivel2="'+value.nivel2+'"'; 
-                html+='data-comision2="'+value.comision2+'"'; 
-                html+='data-nivel3="'+value.nivel3+'"'; 
-                html+='data-comision3="'+value.comision3+'">'; 
-                   
+
+                html='<tr data-id="'+value.id_vendedor+'"';
+                html+='data-nombre="'+value.nombre_vendedor+'"';
+                html+='data-nivel1="'+value.nivel1+'"';
+                html+='data-comision1="'+value.comision1+'"';
+                html+='data-nivel2="'+value.nivel2+'"';
+                html+='data-comision2="'+value.comision2+'"';
+                html+='data-nivel3="'+value.nivel3+'"';
+                html+='data-comision3="'+value.comision3+'">';
+
                 html+='<td>'+btn_editar+'</td>';
-                
-                
+
+
                 if(value.nombre_vendedor == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.nombre_vendedor+'</td>';
                 }
                 if(value.nivel1 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel1)+'</td>';
                 }
                 if(value.comision1 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.comision1+'%</td>';
                 }
                 if(value.nivel2 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel2)+'</td>';
                 }
                 if(value.comision2 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+value.comision2+'%</td>';
                 }
                 if(value.nivel3 == ''){
-                    html+='<td>-</td>'; 
+                    html+='<td>-</td>';
                 }
                 else{
                     html+='<td>'+addCommas(value.nivel3)+'</td>';
                 }
-                
+
                 if(value.comision3 == ''){
-                    html+='<td>-</td><tr>'; 
+                    html+='<td>-</td><tr>';
                 }
                 else{
                     html+='<td>'+value.comision3+'%</td><tr>';
                 }
-        
-                $('#contenido-vendedor').append(html);  
+
+                $('#contenido-vendedor').append(html);
             })
 
         })
 
-        
+
 
     })*/
     $('#comisiones-vendedor').on('click ','a.edit',function() {
-        
+
         //console.log('gaaa');
         /*if($(this).parents('tr').attr('data-nivel1')==null){
             let nivel1 ='';
@@ -776,11 +774,11 @@ $(document).ready(function(){
         let comision2 = $(this).parents('tr').attr('data-comision2');
         let nivel3 = $(this).parents('tr').attr('data-nivel3');
         let comision3 = $(this).parents('tr').attr('data-comision3');
-        
-       
+
+
 
         console.log(comision3);
-        
+
         $(this).parents("tr").find("td:eq(2)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Código" name="nivel1" id="nombre" value="'+nivel1+'" >');
         $(this).parents("tr").find("td:eq(3)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="RUT" name="comision1" value="'+comision1+'" >');
         $(this).parents("tr").find("td:eq(4)").html('<input style="width:100%;height: 35px !important;" class="form-control browser-default" placeholder="Empresa" name="nivel2" value="'+nivel2+'" >');
@@ -802,11 +800,11 @@ $(document).ready(function(){
         $(this).hide();
 
         //window.open( 'reporte-prosegur-resumen/'+data.fecha1+'/'+data.fecha2+'/',"_blank").focus();
-    
+
         //console.log('gaa');
-       
-    
-    
+
+
+
     })
     $("#comisiones-vendedor").on("click", ".btn-cancel", function(){
         let nivel1 = $(this).parents('tr').attr('data-nivel1');
@@ -815,7 +813,7 @@ $(document).ready(function(){
         let comision2 = $(this).parents('tr').attr('data-comision2');
         let nivel3 = $(this).parents('tr').attr('data-nivel3');
         let comision3 = $(this).parents('tr').attr('data-comision3');
-        
+
         $(this).parents("tr").find("td:eq(2)").text(nivel1);
         $(this).parents("tr").find("td:eq(3)").text(comision1);
         $(this).parents("tr").find("td:eq(4)").text(nivel2);
@@ -837,7 +835,7 @@ $(document).ready(function(){
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Si, Actualizar'
-  
+
           }).then((result) => {
 
             if(result.value){
@@ -871,7 +869,7 @@ $(document).ready(function(){
                         data: data,
                         headers:{_token:$("meta[name='csrf-token']").attr("content")},
                     }).then((data) => {
-                        
+
 
                         Swal.fire({
                             //position: 'top-end',
@@ -881,7 +879,7 @@ $(document).ready(function(){
                             timer: 800
                           })
                     })
-                
+
                 $(this).parents('tr').attr('data-nivel1',nivel1);
                 $(this).parents('tr').attr('data-comision1',comision1);
                 $(this).parents('tr').attr('data-nivel2',nivel2);
@@ -896,7 +894,7 @@ $(document).ready(function(){
             }
           })
 
-        
+
 
     })
 
