@@ -46,42 +46,43 @@
    <!--mpdf
    <htmlpageheader name="myheader">
    <table width="100%">
-   <tr  height="30">
-       <td width="40%" >   
-           <img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
-       </td>
-       <td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="3" >
-           Resumen de Comisiones
-       </td>
-   </tr>
-   <tr>
-       <td width="40%" style="color:#000000; font-size: 10px;">
-           <span > Alejandro Azolas 2999, Arica - Chile</span>
-           <br />
-           <span style="font-family:dejavusanscondensed;">&#9742;</span> +56 58 247 5880
-       </td>
-       <td width="12%" style="text-align: left; ">Gestión<br/><span style="font-weight: bold; font-size: 10pt;">
-           {{$year}}
-       </span></td>
-       <td width="12%" style="text-align: left;">Mes: <br />
-           
-           @foreach($fechaactual as $item)
-               <span style="font-weight: bold; font-size: 10pt;">{{$item->mes}}</span>
-           @endforeach
-           
-       </td>
-       <td width="12%" style="text-align: left;">Sucursal: <br /><span style="font-weight: bold; font-size: 10pt;">
-           @foreach($sucursal as $item)
-               <span style="font-weight: bold; font-size: 10pt;">{{$item->SUCU_NOMBRE}}</span>
-           @endforeach
-       </span></td>
-   
-       <td width="12%" style="text-align: left;">Vendedor: <br /><span style="font-weight: bold; font-size: 10pt;">
-           @foreach($vendedor as $item)
-               <span style="font-weight: bold; font-size: 10pt;">{{$item->VEND_NOMBRE}}</span>
-           @endforeach
-       </span></td>
-   </tr></table>
+        <tr  height="30">
+            <td width="40%" >   
+                <img class="" src="assets/images/favicon/logo.png" alt="materialize logo" style=" position: relative;  height: 60px; width: 150px; ">
+            </td>
+            <td width="60%"  style="text-align: right; font-weight: bold; font-size: 14pt; vertical-align: middle;" colspan="3" >
+                Resumen de Comisiones
+            </td>
+        </tr>
+        <tr>
+            <td width="40%" style="color:#000000; font-size: 10px;">
+                <span > Alejandro Azolas 2999, Arica - Chile</span>
+                <br />
+                <span style="font-family:dejavusanscondensed;">&#9742;</span> +56 58 247 5880
+            </td>
+            <td width="12%" style="text-align: left; ">Gestión<br/><span style="font-weight: bold; font-size: 10pt;">
+                {{$year}}
+            </span></td>
+            <td width="12%" style="text-align: left;">Mes: <br />
+                
+                @foreach($fechaactual as $item)
+                    <span style="font-weight: bold; font-size: 10pt;">{{$item->mes}}</span>
+                @endforeach
+                
+            </td>
+            <td width="12%" style="text-align: left;">Sucursal: <br /><span style="font-weight: bold; font-size: 10pt;">
+                @foreach($sucursal as $item)
+                    <span style="font-weight: bold; font-size: 10pt;">{{$item->SUCU_NOMBRE}}</span>
+                @endforeach
+            </span></td>
+        
+            <td width="12%" style="text-align: left;">Vendedor: <br /><span style="font-weight: bold; font-size: 10pt;">
+                @foreach($vendedor as $item)
+                    <span style="font-weight: bold; font-size: 10pt;">{{$item->VEND_NOMBRE}}</span>
+                @endforeach
+            </span></td>
+        </tr>
+   </table>
    
    </htmlpageheader>
    
